@@ -16,7 +16,8 @@
     </div>
     <div class="span-13 last">
       <div class="box">
-        <%= f.text_area :text %><br />
+	<%= fckeditor_textarea(:comment, :text, :toolbarSet => 'Comment', :width => '80%', :height => '200px') %>	
+        <br />
         <%= f.submit 'Create' %>
       </div>
     </div>

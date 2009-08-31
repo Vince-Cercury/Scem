@@ -29,5 +29,11 @@ FCKConfig.ToolbarSets["Simple"] = [
 	['Image','Table','Rule','Smiley'],
 	['FontName','FontSize'],
 	['TextColor','BGColor'],
-	['-','About']
+	['-']
 ] ;
+
+FCKConfig.ToolbarSets["Comment"] = [
+	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About', 'Smiley']
+] ;
+
+
