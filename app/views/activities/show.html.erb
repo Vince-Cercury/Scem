@@ -1,0 +1,12 @@
+<h2 class="caps">Activity <%=h @activity.name %></h2>
+<p>
+  <b>Description:</b>
+  <%=h @activity.description %>
+</p>
+
+<h3 class="caps">LISTING ORGANISMS</h3>
+<%= render :partial => "/organisms/organisms_list" %>
+
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

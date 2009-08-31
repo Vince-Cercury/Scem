@@ -1,0 +1,18 @@
+Dear <%=h @user.login %>,
+
+You receive this email because you are a moderator or admin of an organism.
+
+A picture has been updated
+
+You can eventually:
+
+Suspend the picture (in case it's not respecting the rules):
+  <%=h @url_suspend %>
+
+You can see the picture:
+ <%=h @url_picture %>
+
+The context of this picture is:
+ <%=h @url_context %>
+
+Regards.

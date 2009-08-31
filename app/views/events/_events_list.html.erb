@@ -1,0 +1,24 @@
+<hr />
+<div id="results">
+  <% @events.each do |event| %>
+    <div class="span-4 colborder">
+      <%= display_event_cover(event, :small) %>
+    </div>
+    <div class="span-12 last">
+      <div class="box">
+      <h4 class="prepend-5"><%= link_to(event.name, event) %></h4>
+      <%=h event.description_short %>
+      
+
+        <% event.terms.each do |term| %>
+           <div class="quiet">
+            <%= display_term_box(term.start, term.end) %>
+          </div>
+        <% end %>
+       ( <%= link_to 'Edit', edit_event_path(event) %> <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %> )
+      </div>
+    </div>
+    <hr />
+  <% end %>
+  <%= will_paginate @events %>
+</div>

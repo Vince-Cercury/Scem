@@ -1,0 +1,16 @@
+<div id="results">
+  <% @activities.each do |activity| %>
+    <div class="span-4">
+      <div class="box">
+        <% if activity.organisms.size>0 %>
+          <h4><%= link_to(activity.name, activity) %></h4>
+        <% else %>
+          <h4><%= activity.name %></h4>
+        <% end %>
+        ( <%= link_to 'Edit', edit_activity_path(activity) %> <%= link_to 'Destroy', activity, :confirm => 'Are you sure?', :method => :delete %> )
+      </div>
+    </div>
+  <% end %>
+  <hr />
+  <%= will_paginate @activities %>
+</div>

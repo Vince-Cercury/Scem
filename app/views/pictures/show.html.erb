@@ -1,0 +1,39 @@
+<div class="span-11">
+  <h3>Pictures - <%= @parent_object.name %></h3>
+  Picture <%= @picture.position %> of <%= @picture.last_position %> |
+  <%= link_to 'Back to gallery', url_for(@parent_object) %>
+  <% if !@parent_object.get_parent_object.nil? %>
+    | <%= link_to "Back to #{@parent_object.get_parent_object.type}", url_for(@parent_object.get_parent_object) %>
+  <% end %>
+</div>
+<div class="span-6 last">
+  <% if  !@parent_object.pictures.nil? %>
+  <br />
+  <br />
+  <%= link_to("previous", @picture.previous_item) unless @picture.first_item? %>&nbsp;&nbsp;
+  <%= link_to("next", @picture.next_item) unless @picture.last_item? %>
+<% end %>
+</div>
+<hr />
+<div class="span-15 last prepend-1 append-1">
+  <%= link_to(image_tag(@picture.attached.url(:large)), url_for(@parent_object)) %>
+</div>
+<br />
+  <%= link_to 'Edit', edit_picture_path(@picture) %>
+
+
+<% if @picture.description %>
+<p>
+  <b>Description:</b>
+  <%=h @picture.description %>
+</p>
+<% end %>
+<p>
+  <b>Creator:</b>
+  <%=h get_user_name_or_pseudo_by_id(@picture.creator_id) %>
+</p>
+
+<h2>Comments</h2
+<%= render :partial => "/comments/list" %>
+<%= render :partial => "/comments/form" %>
+

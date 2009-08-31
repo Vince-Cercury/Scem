@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <title>SCEM - Events Manager [ <%= controller_name %> => <%= controller.action_name %> ]</title>
+<%#= stylesheet_link_tag 'scaffold' %>
+    <%= stylesheet_link_tag 'swapselect' %>
+    <%= stylesheet_link_tag 'calendar/grey/style' %>
+    <%= stylesheet_link_tag 'blueprint/screen', :media => "all" %>
+    <%= stylesheet_link_tag 'blueprint/print.css', :media => "print" %>
+    <!--[if lt IE 8]>
+<link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+    <%= javascript_include_tag 'prototype', 'effects', 'dragdrop', 'controls', 'swapselect', 'application' %>
+    <%= javascript_include_tag :fckeditor %>
+ 
+    <%= javascript_include_tag :defaults%>
+  </head>
+  <body>
+ 
+    <%= fb_connect_javascript_tag %>
+    <%= init_fb_connect "XFBML"%>
+    <div class="container">
+      <div class="span-10 prepend-13 append-1">
+ 
+        <%= render :partial => "users/user_bar" %>
+ 
+      </div>
+      <!--Header of the web site containing menus -->
+      <div id="header" class="span-24">
+        <div class="span-8">
+ 
+            <%= link_to(image_tag("logo108.jpg"), url_for(root_path)) %>
+ 
+        </div>
+        <div class="span-16 last prepend-top">
+          <div class="box">
+            
+              <%= link_to("Events by dates", url_for(terms_path)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= link_to("Yellow pages", url_for(activities_path)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= link_to("Pictures Galleries", url_for(galleries_path)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%= link_to("Users", url_for(users_path)) %>
+              <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              (<%= link_to("events", url_for(events_path)) %> -
+              <%= link_to("organisms", url_for(organisms_path)) %> -
+              <%= link_to("categories", url_for(categories_path)) %> -
+              <%= link_to("pictures", url_for(pictures_path)) %>)
+          
+          </div>
+        </div>
+ 
+        <hr />
+ 
+        <%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first))) %>&nbsp;
+ 
+        <% categories_to_display.each do |@category| %>
+          <%= link_to(@category.name, url_for(category_path(@category))) %>&nbsp;&nbsp;&nbsp;
+        <% end %>
+ 
+ 
+ 
+ 
+      </div>
+      <hr />
+ 
+      <!-- Content of the web site -->
+      <div id="subheader" class="span-24 last">
+        <!-- Main big left column -->
+        <div class="span-17 colborder" id="content">
+ 
+          <% flash.each do |key, msg| %>
+            <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+          <% end %>
+          <%= yield %>
+        </div>
+ 
+        <!-- Right column -->
+        <div class="span-6 last" id="sidebar">
+          <h3 class="caps">Search into <%= get_current_search_controller %></h3>
+          <div class="box">
+            <% form_tag url_for(get_current_search_controller), :method => 'get' do %>
+              <p>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Go", :name => nil %>
+              </p>
+            <% end %>
+          </div>
+          <h3 class="caps">Calendar</h3>
+ 
+          <%= events_calendar_display %>
+          <br />
+          <h3 class="caps">Logo | Ads</h3>
+          <div class="box">
+            ...<br />
+            ...<br />
+            ...<br />
+            ...<br />
+            ...<br />
+            ...<br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

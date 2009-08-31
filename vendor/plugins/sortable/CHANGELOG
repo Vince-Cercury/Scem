@@ -1,0 +1,45 @@
+2009-07-06 - Sean Huber (shuber@huberry.com)
+  * Fix bug related to boolean scopes
+  * Update gemspec
+
+2009-05-30 - Sean Huber (shuber@huberry.com)
+  * Always convert options[:conditions] into an array
+  * options[:conditions] can be a hash
+  * Add higher_items and lower_items instance methods
+  * Update README.rdoc
+  * Update gemspec
+
+2009-05-29 - Sean Huber (shuber@huberry.com)
+  * Call remove_from_lists after destroy instead of before in case any other before_destroy callbacks fail
+
+2009-05-28 - Sean Huber (shuber@huberry.com)
+  * All active record versions >= 2.0.0 are now fully supported
+
+2009-05-27 - Sean Huber (shuber@huberry.com)
+  * Use self.class.base_class when scoping records
+  * Fix conflicts
+
+2009-05-14 - Sean Huber (shuber@huberry.com)
+  * Remove MIT-LICENSE from gemspec - github complaining for some reason
+  * Type cast position and offset arguments as integers
+
+2009-05-13 - Sean Huber (shuber@huberry.com)
+  * Fix bug - item_at_offset method was not scoping correctly
+  * Rename MIT_LICENSE to MIT-LICENSE
+
+2009-01-17 - Sean Huber (shuber@huberry.com)
+  * Update code documentation
+  * Make the sortable_scope_changes instance method public
+  * Add more tests
+  * Update README
+  * Add gemspec
+
+2009-01-16 - Sean Huber (shuber@huberry.com)
+  * Update logic and add some tests
+  * Add more tests
+  * Rename README.markdown to README.rdoc
+  * Symbolize arguments for calls to the "send" method
+
+2009-01-15 - Sean Huber (shuber@huberry.com)
+  * Initial commit
+  * Add logic

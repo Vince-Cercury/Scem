@@ -1,0 +1,20 @@
+Dear <%=h @user.login %>,
+
+You receive this email because you are a moderator or admin of an organism.
+
+A comment has been posted
+
+Comment's text:
+  <%=h @comment.text %>
+
+You can :
+
+Accept the comment:
+  <%=h @url_activate %>
+(do nothing if you don't want the comment to be published)
+
+You can see the comment in its context:
+ <%=h @url_context %>
+
+Regards.
+

@@ -1,0 +1,21 @@
+Dear <%=h @user.login %>,
+
+You receive this email because you are a system moderator or admin.
+A comment has been created. Moderation is not activated.
+By so, the comment is already published and visible.
+
+Comment's text:
+  <%=h @comment.text %>
+
+You can eventually:
+
+Edit the comment:
+  <%=h @url_edit %>
+
+Suspend the comment:
+  <%=h @url_suspend %>
+
+You can see the comment in its context:
+ <%=h @url_context %>
+
+Regards.

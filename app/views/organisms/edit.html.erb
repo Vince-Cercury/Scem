@@ -1,0 +1,49 @@
+<h1>Editing organism</h1>
+
+<% form_for(@organism) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description_short %><br />
+    <%= f.text_area :description_short %>
+  </p>
+  <p>
+    <%= f.label :description_long %><br />
+    <%= fckeditor_textarea(:organism, :description_long, :toolbarSet => 'Simple', :width => '80%', :height => '400px') %>
+
+  </p>
+  <p>
+    <%= f.label :activities %>
+    <%=  swapselect :organism,
+      @organism,
+      :activities,
+      Activity.all.map{ |activity| [activity.name, activity.id] }
+  %>
+  </p>
+  <p>
+    <%= f.label :manager_name %><br />
+    <%= f.text_field :manager_name %>
+  </p>
+  <p>
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :in_directory %><br />
+    <%= f.check_box :in_directory %>
+  </p>
+  <p>
+    <%= f.label :members_password %><br />
+    <%= f.text_field :members_password %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @organism %> |
+<%= link_to 'Back', organisms_path %>

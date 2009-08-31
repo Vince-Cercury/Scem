@@ -1,0 +1,22 @@
+<h3>Add pictures for <%= @gallery.name %></h3>
+<h3>gallery of <%= @parent_object.name %></h3>
+
+<% form_for @gallery, :url => { :action => "do_add_pics" }, :html => { :multipart => true }  do |f| %>
+
+  <%= f.error_messages %>
+
+  <div id="pictures">
+    <%= render :partial => 'picture', :collection => @new_pictures %>
+  </div>
+
+  <%= link_to_function "Add a picture" do |page|
+    page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
+  end %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Back to the gallery', @gallery %>

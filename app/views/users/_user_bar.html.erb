@@ -1,0 +1,21 @@
+<% if logged_in? -%>
+  <div class="span-2">
+    <%= display_user_cover(current_user, "mini") %>
+  </div>
+  <div class="span-7 last">
+    <% if current_user.facebook_user? %>
+      Logged in as <%= link_to_current_user :content_method => :first_name %> <%= link_to_current_user :content_method => :last_name %>
+      (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'>Log out</a>)
+    <% else %>
+      Logged in as <%= link_to_current_user :content_method => :login %>
+      <br />(<%= link_to "Log out", logout_path, { :title => "Log out" }    %>)
+    <% end %>
+  </div>
+<% else -%>
+        <!--<div id="user-bar-greeting"><%#= link_to_login_with_IP 'Not logged in', :style => 'border: none;' %></div>-->
+  Login with Facebook: <%= fb_login_button('window.location = "/facebook";')%> <br />
+  <%= link_to "Or log in with limited account",  login_path,  { :title => "Log in" } %> -
+  <%= link_to "Sign up", signup_path, { :title => "Create an account" } %>
+
+<% end -%>
+

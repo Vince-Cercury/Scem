@@ -1,0 +1,40 @@
+<% @event.terms.each do |@term| %>
+  <div class="span-8">
+    <div class="box"><%=  display_term_box(@term.start, @term.end) %>
+
+      <% if current_user && @event.is_user_moderator?(current_user) %>
+        <br />
+        <%= link_to 'Edit', edit_term_path(@term, :event_id=>@event.id) %> | 
+        <%= link_to 'Destroy', @term, :confirm => 'Are you sure?', :method => :delete %>
+      <% end  %>
+        </div>
+  </div>
+  <div class="span-9 last">
+    <div class="box">
+
+      <% if logged_in? -%>
+        <% form_tag :controller => 'participations', :action => 'create_or_update' do %>
+          <%=  hidden_field_tag 'term_id', @term.id %>
+          <%=  hidden_field_tag 'user_id', current_user.id %>
+          
+          I'll be there<%= radio_button :participation, :role, "sure", :checked => @term.is_user_participant(current_user, 'sure')%>
+
+          May be<%= radio_button :participation, :role, "maybe", :checked => @term.is_user_participant(current_user, 'maybe') %>
+
+          I won't<%= radio_button :participation, :role, "not", :checked => @term.is_user_participant(current_user, 'not') %>
+
+
+          <%= submit_tag "Go", :name => nil %>
+        <% end  %>
+      <% end  %>
+          Participation:
+      <%= link_to "sure", participations_path(:term_id => @term.id, :role =>:sure) %>: <%= @term.sure_participants.size %> |
+      <%= link_to "may be", participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %> |
+      <%= link_to "no", participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %>
+
+
+    </div>
+  </div>
+
+  <hr />
+<% end %>

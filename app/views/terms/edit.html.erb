@@ -1,0 +1,21 @@
+<h1>Editing a term for "<%= @event.name %>"</h1>
+
+<% form_for(@term) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :start %><br />
+    <%= f.datetime_select :start %>
+  </p>
+  <p>
+    <%= f.label :end %><br />
+    <%= f.datetime_select :end %>
+  </p>
+  <%=  hidden_field_tag 'event_id', @event.id %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', term_path(@term,:event_id=>@event.id) %> |
+<%= link_to 'Back', terms_path(:event_id=>@event.id) %>

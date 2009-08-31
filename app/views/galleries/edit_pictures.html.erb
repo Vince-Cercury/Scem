@@ -1,0 +1,23 @@
+<h1>Editing pictures for <%= @gallery.name %></h1>
+<h3>gallery of <%= @parent_object.name %></h3>
+Pictures you are the owner or allowed to edit:<br />
+<% for picture in @gallery.pictures %>
+  <% if picture.creator_id == current_user.id or @gallery.is_user_moderator?(current_user) %>
+
+  <div class="span-5">
+    <div class="box">
+    <%=  image_tag(picture.attached.url(:small)) %>
+   <br /> <%= link_to("Drop", url_for(:controller => 'pictures', :action => 'suspend', :id => picture.id)) %>
+    <% if @gallery.is_user_moderator?(current_user) %>
+      <br /><%= link_to("Set as cover", url_for(:controller => 'galleries', :action => 'set_cover', :id => @gallery.id, :picture_id => picture.id)) unless picture.cover %>
+      <br /><%= link_to("Move before", url_for(:controller => 'galleries', :action => 'move_a_pic', :picture_id => picture.id, :id => @gallery.id, :direction => 'up')) unless picture.first_item?  %>
+       <%= link_to("Move after", url_for(:controller => 'galleries', :action => 'move_a_pic', :picture_id => picture.id, :id => @gallery.id, :direction => 'down')) unless picture.last_item? %>
+    <% end %>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+<hr />
+
+
+<%= link_to 'Back to the gallery', @gallery %>

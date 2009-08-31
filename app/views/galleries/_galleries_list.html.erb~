@@ -1,0 +1,30 @@
+<hr />
+<div id="results">
+  <% @galleries.each do |gallery| %>
+    <div class="span-4 colborder" id="gallery-left">
+      <%= display_gallery_cover(gallery, :small) %>
+               <%= gallery.pictures.size %>&nbsp;photos
+        
+      <br />Created by <%= get_user_name_or_pseudo_link_by_id(gallery.creator_id) %>
+    </div>
+    <div class="span-12 last" id="gallery-right">
+      <div class="box">
+        <h4 class="prepend-5"><%= link_to(gallery.name, gallery) %></h4>
+        <%=h gallery.description %>
+        <br />
+
+        From <%= gallery.parent_type %> <%=  link_to(gallery.get_parent_object.name, gallery.get_parent_object) %>
+        
+
+        <div class="quiet">
+          <%= link_to 'Show', gallery %>
+          <%= link_to 'Edit', edit_gallery_path(gallery) %>
+          <%= link_to 'Destroy', gallery, :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      </div>
+    </div>
+    <hr />
+  <% end %>
+  <%= will_paginate @galleries %>
+
+</div>

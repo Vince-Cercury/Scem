@@ -1,0 +1,14 @@
+Dear <%=h @receiver.login %>,
+
+You receive this email because you are a system moderator or administrator
+
+A user has notified his participation status to the event <%=h @event.name %>:
+<%= @url_event %>
+
+The user is profil is visible here:
+<%= @url_user %>
+
+You can get all information about participants of the event at this address:
+<%= @url_participants %>
+
+Regards.

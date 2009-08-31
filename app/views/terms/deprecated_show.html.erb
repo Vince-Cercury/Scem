@@ -1,0 +1,15 @@
+<h1>Showing a term for "<%= @event.name %>"</h1>
+<p>
+  <b>Start:</b>
+  <%=h display_classic_date(@term.start) %> <%= display_nice_time(@term.start) %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%=h display_classic_date(@term.end) %> <%= display_nice_time(@term.end) %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_term_path(@term, :event_id=>@event.id) %> |
+<%= link_to 'Back', terms_path(:event_id=>@event.id) %>

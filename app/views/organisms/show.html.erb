@@ -1,0 +1,106 @@
+<div class="span-13">
+  <h2><%=h @organism.name %></h2>
+</div>
+<div class="span-4 last">
+  <% if current_user && @organism.is_user_moderator?(current_user) %>
+    ( <%= link_to 'Edit', edit_organism_path(@organism) %> <%= link_to 'Destroy', @organism, :confirm => 'Are you sure?', :method => :delete %> )
+  <% end %>
+</div>
+<hr />
+<div class="span-7 colborder">
+  <div class="box">
+    <% if @organism.picture.nil? %>
+      <%= get_default_event_picture(:medium) %><br />
+      <%= link_to("Attach a picture !", url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+    <% else %>
+      <%= link_to(image_tag(@organism.picture.attached.url(:medium)), url_for(@organism.picture)) %><br />
+      <%= link_to("Change the image", url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+    <% end %>
+  </div>
+</div>
+<div class="span-9 last">
+  <div class="box">
+    <%=h @organism.description_short %>
+  </div>
+  <% if @organism.description_long && @organism.description_long!='' %>
+    <div class="box">
+      LONG: <%= @organism.description_long %>
+    </div>
+  <% end %>
+</div>
+<hr />
+ <div class="box">
+<p>
+  <b>Activities:</b>
+  <% @organism.activities.each do |@activity| %>
+    <%= link_to(@activity.name, url_for(activity_path(@activity))) %>&nbsp;
+  <% end %>
+</p>
+
+<p>
+  <b>Manager name:</b>
+  <%=h @organism.manager_name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%=h @organism.phone %>
+</p>
+
+<p>
+  <b>In directory:</b>
+  <%=h boolean_to_literal(@organism.in_directory) %>
+</p>
+ </div>
+  <% if logged_in? -%>
+<hr />
+  <h4 class="caps">BECOME A MEMBER</h4>
+<div class="box">
+
+
+    <% if @organism.is_user_related?(current_user) %>
+      <%= link_to 'Not be a member anymore', { :controller => "organisms_users", :action => "destroy_current_user_relation", :organism_id => @organism.id  }%>
+    <% elsif @organism.is_user_pending?(current_user) %>
+      <%= link_to 'Membership pending for activation. Cancel ?', { :controller => "organisms_users", :action => "destroy_current_user_relation", :organism_id => @organism.id }%>
+    <% else %>
+      <% form_tag  :controller => "organisms_users", :action => "create_or_update_current_user", :organism_id => @organism.id , :method => 'get' do %>
+      <p>
+        Optionnal password: <%= text_field_tag :members_password, params[:members_password] %> (only if you know it, not mandatory)
+        <%= submit_tag "GO", :name => nil %>
+      </p>
+    <% end %>
+  <% end  %>
+
+</div>
+
+<hr />
+<% end  %>
+<%= render :partial => "/galleries/galleries_bar" %>
+<hr />
+<div class="span-4 colborder">
+  <h4 class="caps">LAST MEMBERS</h4>
+  <br />
+<%= link_to "members (#{@organism.members.size})", organisms_users_path(:organism_id => @organism.id, :role =>:members) %>
+<br /> <%= link_to "moderators (#{@organism.moderators.size})", organisms_users_path(:organism_id => @organism.id, :role =>:moderators) %>
+<br /><%= link_to "admins (#{@organism.admins.size})", organisms_users_path(:organism_id => @organism.id, :role =>:admins) %>
+
+</div>
+<div class="span-12 last">
+  <% @organism.members[0,4].each do |user| %>
+    <div class="span-3">
+      <div class="box">
+        <%= display_user_cover(user, :thumb) %><br />
+        <%= get_user_name_or_pseudo_link(user) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<hr />
+
+
+<h2>Comments</h2
+<%= render :partial => "/comments/list" %>
+<%= render :partial => "/comments/form" %>
+
+<%= link_to 'Edit', edit_organism_path(@organism) %> |
+<%= link_to 'Back', organisms_path %>

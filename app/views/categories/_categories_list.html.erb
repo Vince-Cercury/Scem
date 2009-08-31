@@ -1,0 +1,14 @@
+<div id="results">
+  <% @categories.each do |category| %>
+    <div class="box">
+      <h5 class="caps"><%=h category.name %></h5>
+      <p>
+        <%=h category.description %>
+      </p>
+      <%= link_to 'Show', category %>
+      <%= link_to 'Edit', edit_category_path(category) %></td>
+      <%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %>
+    </div>
+  <% end %>
+  <%= will_paginate @categories %>
+</div>

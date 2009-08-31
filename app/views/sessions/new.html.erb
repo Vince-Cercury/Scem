@@ -1,0 +1,29 @@
+<div class="span-5 colborder">
+  <h4 class="caps">Log in with limited account</h4>
+  <% form_tag session_path do -%>
+    <p><%= label_tag 'login' %><br />
+    <%= text_field_tag 'login', @login %></p>
+
+    <p><%= label_tag 'password' %><br/>
+    <%= password_field_tag 'password', nil %></p>
+
+    <!-- Uncomment this if you want this functionality -->
+    <p><%= label_tag 'remember_me', 'Remember me' %>
+    <%= check_box_tag 'remember_me', '1', @remember_me %></p>
+
+    <p><%= submit_tag 'Log in' %></p>
+  <% end -%>
+
+  <h4 class="caps"><%= link_to "Sign up", signup_path, { :title => "Create an account" } %></h4>
+</div>
+<div class="span-11 last">
+  <h3 class="caps">OR LOG IN WITH FACEBOOK CONNECT:</h3>
+  
+  <%= fb_login_button('window.location = "/facebook";')%>
+    <br /> <br />
+    If you got an facebook account, don't hesitate.
+    It's way easier!
+</div>
+
+
+

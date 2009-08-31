@@ -1,0 +1,25 @@
+<% if @current_object.galleries.size > 0%>
+  <div class="span-4 colborder">
+    <h4 class="caps">PICTURES GALLERIES</h4>
+    <br />
+     <%#= link_to("All the galleries (#{@current_object.galleries.size})", url_for(:controller => 'galleries', :action => 'index', :event_id => @event.id)) %>
+    <br />
+    <%= link_to("Attach a new gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
+  </div>
+  <div class="span-12 last">
+    <% @current_object.galleries.each do |gallery| %>
+      <div class="span-3">
+        <div class="box">
+          <%= link_to(display_gallery_cover(gallery, :thumb), gallery) %>&nbsp;
+          <%= link_to gallery.name, gallery %>
+          <%= gallery.pictures.size %>&nbsp;photos
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h4 class="caps">PICTURES GALLERIES</h4>
+  <div class="box">
+    <%= link_to("Attache a new gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
+  </div>
+<% end %>

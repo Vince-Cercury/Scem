@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description_short: MyText
+  description_long: MyText
+  manager_name: MyString
+  phone: MyString
+  is_active: false
+  in_directory: false
+
+two:
+  name: MyString
+  description_short: MyText
+  description_long: MyText
+  manager_name: MyString
+  phone: MyString
+  is_active: false
+  in_directory: false

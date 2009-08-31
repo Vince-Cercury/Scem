@@ -1,0 +1,6 @@
+<h3 class="caps"><% if params[:period]=='past'%>Last events<% else %>Next events coming<% end %></h3>
+
+<% if params[:period]=='past'%><%= link_to "(see next events coming)", terms_path(:period => @period_link_param) %><% else %></h4><%= link_to "(already started or past events)", terms_path(:period => @period_link_param) %><% end %>
+<%= render :partial => "/terms/terms_list" %>
+
+<%= link_to 'New event', new_event_path %>

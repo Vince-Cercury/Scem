@@ -1,0 +1,39 @@
+<hr />
+<div id="results">
+  <% @users.each do |user| %>
+    <div class="span-4 colborder">
+      <%= display_user_cover(user, :small) %>
+    </div>
+    <div class="span-12 last">
+      <div class="box">
+        <h4 class="prepend-5"><%= link_to(get_user_name_or_pseudo(user), user) %></h4>
+
+                  TODO: Add as a friend link <br />(if logged in, else redirect to login page)
+            <% if logged_in? && @organism -%>
+            <% if @organism.is_user_moderator?(current_user) %>
+
+              <% if !@organism.nil?   %>
+                <% if !@organism.admins.include?(user) %>
+                  <%= link_to 'Make him an admin of the organism', { :controller => "organisms_users", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :admin }%>
+                <% end  %>
+                <% if !@organism.moderators.include?(user) %>
+                  <%= link_to 'Make him a moderator of the organism', { :controller => "organisms_users", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :moderator }%>
+                <% end  %>
+                <% if !@organism.members.include?(user) %>
+                  <%= link_to 'Make him a member of the organism', { :controller => "organisms_users", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :member }%>
+                <% end  %>
+                <%= link_to 'Destroy his relation with this organism', { :controller => "organisms_users", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
+              <% end  %>
+              <br />
+            <% end %>
+          <% end -%>
+        <div class="quiet">
+              <%= link_to 'Edit', edit_user_path(user) %>
+              <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+      </div>
+    </div>
+    <hr />
+  <% end %>
+  <%= will_paginate @users %>
+</div>

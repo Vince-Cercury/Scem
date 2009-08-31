@@ -1,0 +1,14 @@
+This user wants to become a member.
+
+  User login: <%=h @user.login %>
+  User name: <%=h @user.first_name %> <%=h @user.last_name %>
+
+You can:
+
+- accept as a member <%= @url_member %>
+
+
+- accept as a moderator <%= @url_moderator %>
+- accept as an admin <%= @url_admin %>
+
+- refuse <%= @url_refuse %>

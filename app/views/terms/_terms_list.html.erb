@@ -1,0 +1,34 @@
+<hr />  
+<div id="results">
+  <% @terms.each do |term| %>
+    <% event=term.event %>
+
+    <div class="span-4 colborder" id="event-left">
+      <%=  display_term_box(term.start, term.end) %><br />
+      <%= display_event_cover(event, :small) %>
+    </div>
+    <div class="span-12 last" id="event-right">
+      <div class="box">
+        <h4 class="prepend-5"><%= link_to(event.name, event) %></h4>
+        <%=h event.description_short %>
+
+        <div class="quiet">
+          <%= link_to('Number of participants: ' + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
+          <%= link_to('Number of comments: ' + event.comments.size.to_s, event) unless  event.comments.size == 0 %><br />
+          <%= link_to 'Edit', edit_event_path(event) %>
+          <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %>
+        </div>
+
+      </div>
+    </div>
+    <hr />
+
+  <% end %>
+    <% if @terms.size == 0 %>
+      <div class="box">
+        <h5 class="caps">Currently no events in this category</h5>
+      </div>
+    <% end %>
+  <%= will_paginate @terms %>
+
+</div>

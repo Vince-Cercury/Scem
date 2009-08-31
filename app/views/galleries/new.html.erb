@@ -1,0 +1,41 @@
+<h1>New gallery</h1>
+
+<% form_for @gallery, :html => { :multipart => true }  do |f| %>
+
+  <%=  hidden_field_tag :parent_id, params[:parent_id] %>
+  <%=  hidden_field_tag :parent_type, params[:parent_type] %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+    <p>
+    <%= f.label :add_picture_right %><br />
+ <%=  select("gallery", "add_picture_right", @rights, {}, { }) %>
+
+
+  </p>
+      <p>
+    <%= f.label :add_picture_moderation %><br />
+    <%= f.check_box :add_picture_moderation %>
+  </p>
+
+
+<div id="pictures">
+  <%#= render :partial => 'picture', :collection => @new_pictures %>
+</div>
+
+  <%#= link_to_function "Add a picture" do |page|
+    page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
+  end %>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', galleries_path %>

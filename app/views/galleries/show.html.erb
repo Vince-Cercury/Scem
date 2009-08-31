@@ -1,0 +1,51 @@
+<div class="span-11">
+  <h3>Gallery - <%= @gallery.name %></h3>
+  <% if !@parent_object.nil? %>
+    <%= link_to "Back to #{@parent_object.type}", url_for(@parent_object) %>
+  <% end %>
+</div>
+<div class="span-6 last">
+  <br /><br />
+  <%= link_to("Edit pictures", url_for(:controller => 'galleries', :action => 'edit_pics', :id => @gallery.id)) %>
+  <%= link_to("Add pictures", url_for(:controller => 'galleries', :action => 'add_pics', :id => @gallery.id)) %>
+  <%= link_to 'Edit the gallery', edit_gallery_path(@gallery) %>
+</div>
+<hr />
+<div class="span-8">
+  <%= display_gallery_cover(@gallery, :medium) %>
+</div>
+<div class="span-9 last">
+  <% if @gallery.description && @gallery.description!='' %>
+  <div class="box">
+    <b>Description:</b>
+    <%= @gallery.description %>
+  </div>
+  <% end %>
+  <div class="box">
+    <b>Creator:</b>
+    <%=h get_user_name_or_pseudo_by_id(@gallery.creator_id) %>
+  </div>
+</div>
+<hr />
+<% cc = 1 %>
+<% for picture in @gallery.pictures %>
+  <div class="span-5">
+    <div class="box">
+      <%= link_to(image_tag(picture.attached.url(:small)), url_for(picture)) %>
+    </div>
+  </div>
+  <% if cc.modulo(3)==0 %>
+    <div class="append-3 last "></div>
+  <% end %>
+  <% cc += 1 %>
+<% end %>
+<hr />
+
+
+
+<h2>Comments</h2
+<%= render :partial => "/comments/list" %>
+<%= render :partial => "/comments/form" %>
+
+<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+<%= link_to 'Back', @parent_object %>

@@ -1,0 +1,79 @@
+
+<div class="span-13">
+  <h2><%=h @event.name %></h2>
+</div>
+<div class="span-4 last">
+  <% if current_user && @event.is_user_moderator?(current_user) %>
+    ( <%= link_to 'Edit', edit_event_path(@event) %> <%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %> )
+  <% end %>
+</div>
+<hr />
+<div class="span-7 colborder">
+  <div class="box">
+    <% if @event.picture.nil? %>
+      <%= get_default_event_picture(:medium) %><br />
+      <%= link_to("Attache a picture !", url_for(:controller => 'pictures', :action => 'new', :parent_id => @event.id, :parent_type => "Event")) %>
+    <% else %>
+      <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for(@event.picture)) %><br />
+      <%= link_to("Change the image", url_for(:controller => 'pictures', :action => 'new', :parent_id => @event.id, :parent_type => "Event")) %>
+    <% end %>
+  </div>
+</div>
+<div class="span-9 last">
+  <div class="box">
+    <%=h @event.description_short %>
+  </div>
+  <% if @event.description_long && @event.description_long!='' %>
+    <div class="box">
+      LONG: <%=h @event.description_long %>
+    </div>
+  <% end %>
+</div>
+<hr />
+<div class="span-7 colborder">
+  <%= render :partial => "/events/organizers" %>
+</div>
+<div class="span-9 last">
+  <div class="box">
+    <b>Is charged:</b>
+    <%=h boolean_to_literal(@event.is_charged) %><br />
+    <b>Is private:</b>
+    <%=h boolean_to_literal(@event.is_private) %><br />
+    <b>Categories:</b>
+    <% @event.categories.each do |@category| %>
+      <%= link_to(@category.name, url_for(category_path(@category))) %>&nbsp;
+    <% end %>
+  </div>
+</div>
+<hr />
+<div class="span-13"><h4 class="caps">DATE</h4></div>
+<div class="span-4 last"><%= link_to 'New term', new_term_path(:event_id => @event.id) %></div>
+<hr />
+<%= render :partial => "a_term" %>
+<% if @term.sure_participants.size>0 %>
+<div class="span-4 colborder">
+  <h4 class="caps">LAST PARTICIPANTS</h4>
+</div>
+<div class="span-12 last">
+  <% @term.sure_participants.each do |user| %>
+    <div class="span-3">
+      <div class="box">
+        <%= display_user_cover(user, :thumb) %><br />
+        <%= get_user_name_or_pseudo_link(user) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<hr />
+<% end %>
+<% if @event.galleries.size>0 %>
+<%= render :partial => "/galleries/galleries_bar" %>
+<hr />
+<% end %>
+
+
+<h4 class="caps">COMMENTS</h4>
+<%= render :partial => "/comments/list" %>
+<%= render :partial => "/comments/form" %>
+
+<hr />
