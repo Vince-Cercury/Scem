@@ -73,6 +73,8 @@ class PictureMailer < ActionMailer::Base
     @from        = "#{ENV['ADMINEMAIL']}"
     @subject     = "[SCEM] "
     @sent_on     = Time.now
+    @content_type = "text/html"
+    headers       "Reply-to" => "support@vrails.lebounce.com"
     @body[:user] = user
     @body[:picture] = picture
   end
