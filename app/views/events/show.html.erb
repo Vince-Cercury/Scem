@@ -29,6 +29,11 @@
   <% end %>
 </div>
 <hr />
+<h4 class="caps">RATING</h4>
+<div class="box">
+  <%#= render :partial => "rates/rating" %>
+</div>
+<hr />
 <div class="span-7 colborder">
   <%= render :partial => "organizers" %>
 </div>
@@ -52,7 +57,7 @@
 
 <div class="span-4 colborder">
   <h4 class="caps">LAST PARTICIPANTS</h4>
-  
+
 </div>
 <div class="span-12 last">
   <% @event.list_participants[0,4].each do |user| %>

@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
 
   acts_as_commentable
 
+  acts_as_rateable
+
   validates_presence_of :name, :description_short
   
   has_many :terms
@@ -29,75 +31,75 @@ class Event < ActiveRecord::Base
   end
 
 
-    # in the future we can change the select to have many publisher per event
-    #but now we want to restrict to just one
-    def get_first_publisher
-      self.publishers.all.first.id unless self.publishers.all.first.nil?
+  # in the future we can change the select to have many publisher per event
+  #but now we want to restrict to just one
+  def get_first_publisher
+    self.publishers.all.first.id unless self.publishers.all.first.nil?
+  end
+
+  def is_granted_to_edit?(user)
+    result = false
+
+    if(user.has_system_role("moderator"))
+      result = true
     end
 
-    def is_granted_to_edit?(user)
-      result = false
-
-      if(user.has_system_role("moderator"))
+    self.publishers.each do |organism|
+      if organism.is_user_moderator?(user)
         result = true
       end
-
-      self.publishers.each do |organism|
-        if organism.is_user_moderator?(user)
-          result = true
-        end
-      end
-
-      #NOTE:uncomment if you want the organizers allowed to edit event
-      #    self.organizers.each do |organism|
-      #      if organism.is_user_moderator?(user)
-      #        result = true
-      #      end
-      #    end
-
-      #NOTE:uncomment if you want the partners allowed to edit event
-      #    self.partners.each do |organism|
-      #      if organism.is_user_moderator?(user)
-      #        result = true
-      #      end
-      #    end
-
-      return result
     end
 
-    def get_moderators_list
-      puts "build the moderators list of the event..."
-      moderators_list = Array.new
-      self.publishers.each do |organism|
-        moderators_list +=organism.get_moderators_list
-      end
-      moderators_list
+    #NOTE:uncomment if you want the organizers allowed to edit event
+    #    self.organizers.each do |organism|
+    #      if organism.is_user_moderator?(user)
+    #        result = true
+    #      end
+    #    end
+
+    #NOTE:uncomment if you want the partners allowed to edit event
+    #    self.partners.each do |organism|
+    #      if organism.is_user_moderator?(user)
+    #        result = true
+    #      end
+    #    end
+
+    return result
+  end
+
+  def get_moderators_list
+    puts "build the moderators list of the event..."
+    moderators_list = Array.new
+    self.publishers.each do |organism|
+      moderators_list +=organism.get_moderators_list
     end
+    moderators_list
+  end
 
 
-    def is_user_moderator?(user)
-      result = false
+  def is_user_moderator?(user)
+    result = false
 
 
-      self.publishers.each do |organism|
-        if organism.is_user_moderator?(user)
-          result = true
-        end
+    self.publishers.each do |organism|
+      if organism.is_user_moderator?(user)
+        result = true
       end
-      return result
     end
+    return result
+  end
 
-    def is_user_member?(user)
-      result = false
+  def is_user_member?(user)
+    result = false
 
 
-      self.publishers.each do |organism|
-        if organism.is_user_member?(user)
-          result = true
-        end
+    self.publishers.each do |organism|
+      if organism.is_user_member?(user)
+        result = true
       end
-      return result
     end
+    return result
+  end
 
   def list_participants
     list = Array.new
@@ -107,5 +109,9 @@ class Event < ActiveRecord::Base
     return list
   end
 
+  def get_parent_object
+    nil
   end
+
+end
 

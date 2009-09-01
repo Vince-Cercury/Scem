@@ -7,3 +7,6 @@
 [submodule "vendor/plugins/paperclip"]
 	path = vendor/plugins/paperclip
 	url = git://github.com/thoughtbot/paperclip.git
+[submodule "vendor/plugins/acts_as_rateable"]
+	path = vendor/plugins/acts_as_rateable
+	url = git://github.com/azabaj/acts_as_rateable.git

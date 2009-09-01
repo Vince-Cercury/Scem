@@ -115,14 +115,19 @@ class EventsController < ApplicationController
 
   # DELETE /events/1
   # DELETE /events/1.xml
-  def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
+#  def destroy
+#    @event = Event.find(params[:id])
+#    @event.destroy
+#
+#    respond_to do |format|
+#      format.html { redirect_to(events_url) }
+#      format.xml  { head :ok }
+#    end
+#  end
 
-    respond_to do |format|
-      format.html { redirect_to(events_url) }
-      format.xml  { head :ok }
-    end
+  def rate
+    @event = Event.find(params[:id])
+    @event.rate_it( params[:vote], current_user.id ) if params[:vote] && params[:vote]>0 && params[:vote]< 5 && !@event.rated_by?(current_user)
   end
   
   private

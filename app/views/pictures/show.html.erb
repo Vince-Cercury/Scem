@@ -1,13 +1,13 @@
 <div class="span-11">
   <h3>Pictures - <%= @parent_object.name %></h3>
   Picture <%= @picture.position %> of <%= @picture.last_position %> |
-  <%= link_to 'Back to gallery', url_for(@parent_object) %>
+  <%= link_to "Back to #{@parent_object.type}", url_for(@parent_object) %>
   <% if !@parent_object.get_parent_object.nil? %>
     | <%= link_to "Back to #{@parent_object.get_parent_object.type}", url_for(@parent_object.get_parent_object) %>
   <% end %>
 </div>
 <div class="span-6 last">
-  <% if  !@parent_object.pictures.nil? %>
+  <% if  @parent_object.type == 'Gallery' %>
   <br />
   <br />
   <%= link_to("previous", @picture.previous_item) unless @picture.first_item? %>&nbsp;&nbsp;

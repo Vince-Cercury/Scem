@@ -125,9 +125,9 @@ class Organism < ActiveRecord::Base
   #
   # will return true if the logged in user has organism role of Moderator('admin') or Administrator('admin')
   # or system moderator or system admin
-#	def ensure_user_moderator?(user)
-#    no_permission_redirection unless is_user_moderator?(user)
-#	end
+  #	def ensure_user_moderator?(user)
+  #    no_permission_redirection unless is_user_moderator?(user)
+  #	end
 
   def is_user_moderator?(user)
     user && (self.moderators.include?(user) or self.admins.include?(user)) or user.has_system_role('moderator')
@@ -151,6 +151,10 @@ class Organism < ActiveRecord::Base
 
   def get_moderators_list
     admins + moderators
+  end
+
+  def get_parent_object
+    nil
   end
 
   protected
