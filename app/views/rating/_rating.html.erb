@@ -1,0 +1,38 @@
+<div id="star-ratings-block">
+  <%= number_with_precision(current_object.rating, 1) %>/5 Stars 
+  <ul class='star-rating'>
+    <li class='current-rating' style='width:<%= (current_object.rating * 30).to_i -%>px;'>
+      Currently <%= number_with_precision(current_object.rating, 1) %>/5 Stars.
+    </li>
+    <% if logged_in? -%>
+      <li>
+        <%= link_to_remote( "1", {:url => { :controller => "rating",
+              :action => "rate", :parent_type => current_object.class, :parent_id => current_object.id, :rating => 1}},
+          :class => 'one-star', :name => '1 star out of 5') %>
+      </li>
+      <li>
+        <%= link_to_remote( "2", {:url => { :controller => "rating",
+              :action => "rate", :parent_type => current_object.class, :parent_id => current_object.id, :rating => 2}},
+          :class => 'two-stars', :name => '2 stars out of 5') %>
+      </li>
+      <li>
+        <%= link_to_remote( "3", {:url => { :controller => "rating",
+              :action => "rate", :parent_type => current_object.class, :parent_id => current_object.id, :rating => 3}},
+          :class => 'three-stars', :name => '3 stars out of 5') %>
+      </li>
+      <li>
+        <%= link_to_remote( "4", {:url => { :controller => "rating",
+              :action => "rate", :parent_type => current_object.class, :parent_id => current_object.id, :rating => 4}},
+          :class => 'four-stars', :name => '4 stars out of 5') %>
+      </li>
+      <li>
+        <%= link_to_remote( "5", {:url => { :controller => "rating",
+              :action => "rate", :parent_type => current_object.class, :parent_id => current_object.id, :rating => 5}},
+          :class => 'five-stars', :name => '5 stars out of 5') %>
+      </li>
+    <% end -%>
+  </ul>
+  <% if !logged_in? -%>
+    <%= link_to "log in to vote",  login_path,  { :title => "Log in" } %>
+  <% end -%>
+</div>

@@ -12,8 +12,9 @@
         <td><%=  link_to(image_tag(picture.attached.url(:small)), picture) %></td>
         <td>From <%= picture.parent_type %> <%=  link_to(picture.get_parent_object.name, picture.get_parent_object) %></td>
         <td><%=h picture.description %></td>
-        <td><%= get_user_name_or_pseudo_link(picture.creator_id) %></td>
+        <td><%= get_user_name_or_pseudo_link_by_id(picture.creator_id) %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <td><%= render :partial => "rating/rating", :locals => { :current_object => picture } if picture.rating > 0 %></td>
       </tr>
     <% end %>
   </table>

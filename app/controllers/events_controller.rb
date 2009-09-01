@@ -125,10 +125,7 @@ class EventsController < ApplicationController
 #    end
 #  end
 
-  def rate
-    @event = Event.find(params[:id])
-    @event.rate_it( params[:vote], current_user.id ) if params[:vote] && params[:vote]>0 && params[:vote]< 5 && !@event.rated_by?(current_user)
-  end
+
   
   private
   

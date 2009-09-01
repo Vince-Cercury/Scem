@@ -8,6 +8,9 @@ class Organism < ActiveRecord::Base
 
   acts_as_commentable
 
+  acts_as_rateable
+
+
   include AASM
   aasm_column :state
 

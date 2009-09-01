@@ -1,7 +1,8 @@
-<div class="span-13">
+<div class="span-12">
   <h2><%=h @event.name %></h2>
 </div>
-<div class="span-4 last">
+<div class="span-5 last">
+  <%= render :partial => "rating/rating", :locals => { :current_object => @current_object } %>
   <% if current_user && @event.is_user_moderator?(current_user) %>
     ( <%= link_to 'Edit', edit_event_path(@event) %> <%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %> )
   <% end %>
@@ -27,11 +28,6 @@
       LONG: <%= @event.description_long %>
     </div>
   <% end %>
-</div>
-<hr />
-<h4 class="caps">RATING</h4>
-<div class="box">
-  <%#= render :partial => "rates/rating" %>
 </div>
 <hr />
 <div class="span-7 colborder">

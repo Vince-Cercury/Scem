@@ -2,6 +2,8 @@
   <h2><%=h @organism.name %></h2>
 </div>
 <div class="span-4 last">
+  <%= render :partial => "rating/rating", :locals => { :current_object => @organism } %>
+  <br />
   <% if current_user && @organism.is_user_moderator?(current_user) %>
     ( <%= link_to 'Edit', edit_organism_path(@organism) %> <%= link_to 'Destroy', @organism, :confirm => 'Are you sure?', :method => :delete %> )
   <% end %>

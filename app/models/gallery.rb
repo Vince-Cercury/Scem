@@ -13,6 +13,9 @@ class Gallery < ActiveRecord::Base
 
   acts_as_commentable
 
+  acts_as_rateable
+
+
   def self.search(search, page)
     paginate :per_page => ENV['PER_PAGE'], :page => page,
       :conditions => ['name like ?', "%#{search}%"],

@@ -18,6 +18,8 @@ class Picture < ActiveRecord::Base
 
   acts_as_commentable
 
+  acts_as_rateable
+
   include AASM
   aasm_column :state
   aasm_initial_state :initial => :passive

@@ -5,7 +5,8 @@
   <% end %>
 </div>
 <div class="span-6 last">
-  <br /><br />
+  <%= render :partial => "rating/rating", :locals => { :current_object => @gallery } %>
+  <br />
   <%= link_to("Edit pictures", url_for(:controller => 'galleries', :action => 'edit_pics', :id => @gallery.id)) %>
   <%= link_to("Add pictures", url_for(:controller => 'galleries', :action => 'add_pics', :id => @gallery.id)) %>
   <%= link_to 'Edit the gallery', edit_gallery_path(@gallery) %>
@@ -32,10 +33,11 @@
   <div class="span-5">
     <div class="box">
       <%= link_to(image_tag(picture.attached.url(:small)), url_for(picture)) %>
+      <%= render :partial => "rating/rating", :locals => { :current_object => picture } if picture.rating > 0 %>
     </div>
   </div>
   <% if cc.modulo(3)==0 %>
-    <div class="append-3 last "></div>
+<hr />
   <% end %>
   <% cc += 1 %>
 <% end %>

@@ -156,21 +156,15 @@ ActiveRecord::Schema.define(:version => 20090831145715) do
     t.boolean  "cover",                 :default => false
   end
 
-  create_table "rates", :force => true do |t|
-    t.integer "score"
-  end
-
   create_table "ratings", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "rate_id"
-    t.integer  "rateable_id"
-    t.string   "rateable_type", :limit => 32
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "rating",                      :default => 0
+    t.datetime "created_at",                                  :null => false
+    t.string   "rateable_type", :limit => 15, :default => "", :null => false
+    t.integer  "rateable_id",                 :default => 0,  :null => false
+    t.integer  "user_id",                     :default => 0,  :null => false
   end
 
-  add_index "ratings", ["rate_id"], :name => "index_ratings_on_rate_id"
-  add_index "ratings", ["rateable_id", "rateable_type"], :name => "index_ratings_on_rateable_id_and_rateable_type"
+  add_index "ratings", ["user_id"], :name => "fk_ratings_user"
 
   create_table "terms", :force => true do |t|
     t.datetime "start"
