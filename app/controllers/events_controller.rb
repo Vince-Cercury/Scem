@@ -115,15 +115,15 @@ class EventsController < ApplicationController
 
   # DELETE /events/1
   # DELETE /events/1.xml
-#  def destroy
-#    @event = Event.find(params[:id])
-#    @event.destroy
-#
-#    respond_to do |format|
-#      format.html { redirect_to(events_url) }
-#      format.xml  { head :ok }
-#    end
-#  end
+  #  def destroy
+  #    @event = Event.find(params[:id])
+  #    @event.destroy
+  #
+  #    respond_to do |format|
+  #      format.html { redirect_to(events_url) }
+  #      format.xml  { head :ok }
+  #    end
+  #  end
 
 
   
@@ -158,8 +158,14 @@ class EventsController < ApplicationController
   end
 
   def not_granted_redirection
-    flash[:error] = "Not allowed to do this. May be log in could help."
-    redirect_to login_path
+    if current_user
+      flash[:error] = "Not allowed to do this."
+      redirect_back_or_default('/')
+    else
+      flash[:error] = "Not allowed to do this. May be log in could help."
+      redirect_to login_path
+    end
+
   end
 
 end

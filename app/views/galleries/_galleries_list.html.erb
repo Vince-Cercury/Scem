@@ -12,7 +12,7 @@
         <h4 class="prepend-5"><%= link_to(gallery.name, gallery) %></h4>
         <%= gallery.description %>
         <br />
-        <%= render :partial => "rating/rating", :locals => { :current_object => gallery } if gallery.rating > 0 %>
+        <%= render :partial => "rating/mini_rating", :locals => { :current_object => gallery } if gallery.rating > 0 %>
         <br />
         From <%= gallery.parent_type %> <%=  link_to(gallery.get_parent_object.name, gallery.get_parent_object) %>
         

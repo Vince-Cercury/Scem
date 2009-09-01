@@ -14,7 +14,7 @@
         <td><%=h picture.description %></td>
         <td><%= get_user_name_or_pseudo_link_by_id(picture.creator_id) %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= render :partial => "rating/rating", :locals => { :current_object => picture } if picture.rating > 0 %></td>
+        <td><%= render :partial => "rating/mini_rating", :locals => { :current_object => picture } if picture.rating > 0 %></td>
       </tr>
     <% end %>
   </table>

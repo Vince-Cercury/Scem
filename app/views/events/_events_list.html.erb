@@ -15,7 +15,7 @@
             <%= display_term_box(term.start, term.end) %>
           </div>
         <% end %>
-      <%= render :partial => "rating/rating", :locals => { :current_object => event } if event.rating > 0 %>
+      <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
        ( <%= link_to 'Edit', edit_event_path(event) %> <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %> )
       </div>
     </div>

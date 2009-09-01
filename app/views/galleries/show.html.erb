@@ -33,7 +33,7 @@
   <div class="span-5">
     <div class="box">
       <%= link_to(image_tag(picture.attached.url(:small)), url_for(picture)) %>
-      <%= render :partial => "rating/rating", :locals => { :current_object => picture } if picture.rating > 0 %>
+      <%= render :partial => "rating/mini_rating", :locals => { :current_object => picture } if picture.rating > 0 %>
     </div>
   </div>
   <% if cc.modulo(3)==0 %>

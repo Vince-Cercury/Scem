@@ -13,7 +13,7 @@
         <%=h event.description_short %>
 
         <div class="quiet">
-          <%= render :partial => "rating/rating", :locals => { :current_object => event } if event.rating > 0 %>
+          <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
           <%= link_to('Number of participants: ' + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
           <%= link_to('Number of comments: ' + event.comments.size.to_s, event) unless  event.comments.size == 0 %><br />
           <%= link_to 'Edit', edit_event_path(event) %>

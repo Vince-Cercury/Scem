@@ -6,6 +6,12 @@ class RatingController < ApplicationController
         params[:parent_type], params[:parent_id], current_user.id])
     @current_object.add_rating Rating.new(:rating => params[:rating],
       :user_id => current_user.id)
+      
+    if params[:mini] == 'true'
+      @partial = '/rating/mini_rating'
+    else
+      @partial = '/rating/rating'
+    end
   end
 
 

@@ -1,1 +1,1 @@
-page.replace_html "star-ratings-block", :partial => 'rating/rating', :locals => { :current_object => @current_object } 
+page.replace_html "star-ratings-block-#{@current_object.id}", :partial => @partial, :locals => { :current_object => @current_object } 
