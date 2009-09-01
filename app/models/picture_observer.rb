@@ -17,15 +17,15 @@ class PictureObserver < ActiveRecord::Observer
           PictureMailer.deliver_to_moderators_creation_moderate(user, picture, @controller) if user.receive_picture_notification# && user != @user_creator
         end
       else
-        puts "[picture-observer] picture moderation is off"
-        @list_moderators.each do |user|
-          puts "[picture-observer] deliver email to user (moderator) with id=#{user.id}"
-          PictureMailer.deliver_to_moderators_creation_notification(user, picture, @controller) if user.receive_picture_notification# && user != @user_creator
-        end
-        @list_sys_moderators.each do |user|
-          puts "[picture-observer] deliver email to user (system moderator) with id=#{user.id}"
-          PictureMailer.deliver_to_sys_moderators_creation_notification(user, picture, @controller) if user.receive_picture_notification# && user != @user_creator
-        end
+#        puts "[picture-observer] picture moderation is off"
+#        @list_moderators.each do |user|
+#          puts "[picture-observer] deliver email to user (moderator) with id=#{user.id}"
+#          PictureMailer.deliver_to_moderators_creation_notification(user, picture, @controller) if user.receive_picture_notification# && user != @user_creator
+#        end
+#        @list_sys_moderators.each do |user|
+#          puts "[picture-observer] deliver email to user (system moderator) with id=#{user.id}"
+#          PictureMailer.deliver_to_sys_moderators_creation_notification(user, picture, @controller) if user.receive_picture_notification# && user != @user_creator
+#        end
       end
     end
   end

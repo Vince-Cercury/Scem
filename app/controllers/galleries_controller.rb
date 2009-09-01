@@ -126,11 +126,23 @@ class GalleriesController < ApplicationController
 
     prepare_pictures_attributes(@gallery)
 
+
+    moderation_state=@gallery.add_picture_moderation
+    if @gallery.is_user_moderator?(current_user)
+      moderation_state = false
+    end
+
+
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
 
-        flash[:notice] = 'Pictures successfully added to gallery.'
-        format.html { redirect_to(edit_pics_gallery_path(@gallery)) }
+        if(moderation_state)
+          flash[:notice] = 'Pictures need aprobation of the moderators to be visible.'
+          format.html { redirect_to(@gallery) }
+        else
+          flash[:notice] = 'Pictures successfully added to gallery.'
+          format.html { redirect_to(edit_pics_gallery_path(@gallery)) }
+        end
         format.xml  { head :ok }
       else
         format.html { render :action => "add_pictures" }
