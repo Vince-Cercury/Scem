@@ -3,7 +3,6 @@
 </div>
 <div class="span-10">
   <h3><%=h @organism.name %></h3>
-  <%= display_organism_action %>
     <% if current_user && @organism.is_user_moderator?(current_user) %>
     (  <%= link_to 'Destroy', @organism, :confirm => 'Are you sure?', :method => :delete %> )
   <% end %>

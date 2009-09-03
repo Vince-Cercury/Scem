@@ -15,7 +15,7 @@
   <div class="box">
     <%=h @organism.description_short %>
   </div>
-    <div class="box">
+  <div class="box">
     <b>Manager name:</b>
     <%=h @organism.manager_name %>
     <br />
@@ -28,15 +28,14 @@
 </div>
 <hr />
 
-<hr />
 <div class="span-8 colborder">
-<div class="box">
-  <b>Activities:</b>
-  <% @organism.activities.each do |@activity| %>
-    <%= link_to(@activity.name, url_for(activity_path(@activity))) %>&nbsp;
-  <% end %>
+  <div class="box">
+    <b>Activities:</b>
+    <% @organism.activities.each do |@activity| %>
+      <%= link_to(@activity.name, url_for(activity_path(@activity))) %>&nbsp;
+    <% end %>
 
-</div>
+  </div>
 </div>
 <div class="span-8 last">
   <div class="box">

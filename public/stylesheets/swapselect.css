@@ -34,7 +34,7 @@ div.swap_select label:active {
 }
 
 div.swap_select select {
-    
+        width:100%;
 	border:1px solid #CBCBCB;
 }
 

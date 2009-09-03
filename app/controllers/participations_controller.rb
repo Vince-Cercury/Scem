@@ -5,7 +5,7 @@ class ParticipationsController < ApplicationController
 
   before_filter :is_logged?
 
-  before_filter :ensure_term_or_user_parameter?, :only => [:index]
+  before_filter :ensure_term_or_event_or_user_parameter?, :only => [:index]
   before_filter :ensure_term_parameter?, :except => [:index]
   before_filter :ensure_participation_role_parameter, :only  => [:create_or_update]
   before_filter :ensure_role_parameter, :only  => [:index]
@@ -15,12 +15,19 @@ class ParticipationsController < ApplicationController
   # GET /terms
   # GET /terms.xml
   def index
-    if(!params[:term_id].nil?)
+    if !params[:event_id].nil?
+      @event = Event.find(params[:event_id])
+      @partial_path = 'index_terms'
+    end
+
+    if !params[:term_id].nil?
       @term = Term.find(params[:term_id])
       @event = @term.event
       @users = @term.search_participants(params[:role],params[:search], params[:page])
       @partial_path = 'index_term_users'
-    else
+    end
+    
+    if params[:event_id].nil? && params[:term_id].nil?
       @user = User.find(params[:user_id])
       @terms = @user.search_participate(params[:role],params[:search], params[:page])
       @partial_path = 'index_user_terms'
@@ -88,8 +95,8 @@ class ParticipationsController < ApplicationController
     param_uncorrect_redirection unless !params[:user_id].nil? and User.exists?(params[:user_id])
   end
 
-  def ensure_term_or_user_parameter?
-    param_uncorrect_redirection unless (!params[:term_id].nil? and Term.exists?(params[:term_id])) or (!params[:user_id].nil? and User.exists?(params[:user_id]))
+  def ensure_term_or_event_or_user_parameter?
+    param_uncorrect_redirection unless (!params[:event_id].nil? and Event.exists?(params[:event_id])) or (!params[:term_id].nil? and Term.exists?(params[:term_id])) or (!params[:user_id].nil? and User.exists?(params[:user_id]))
   end
 
 

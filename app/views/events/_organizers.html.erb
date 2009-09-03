@@ -1,20 +1,23 @@
 <div class="box">
   <% if @event.publishers.size > 0 %>
-      <b>Publishers:</b>
-      <% @event.publishers.each do |@organism| %>
-        <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
-      <% end %>
+    <b>Publishers:</b>
+    <% @event.publishers.each do |@organism| %>
+      <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
+    <% end %>
+    <br />
   <% end %>
+
   <% if @event.organizers.size > 0 %>
-      <b>Organizers:</b>
-      <% @event.organizers.each do |@organism| %>
-        <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
-      <% end %>
+    <b>Organizers:</b>
+    <% @event.organizers.each do |@organism| %>
+      <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
+    <% end %>
+    <br />
   <% end %>
   <% if @event.partners.size > 0 %>
-      <b>Partners:</b>
-      <% @event.partners.each do |@organism| %>
-        <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
-      <% end %>
+    <b>Partners:</b>
+    <% @event.partners.each do |@organism| %>
+      <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
+    <% end %>
   <% end %>
 </div>

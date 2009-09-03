@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   validates_length_of :description_short, :maximum=>250
   
   has_many :terms
-  has_and_belongs_to_many :categories
+  has_and_belongs_to_many :categories, :conditions => "categories.to_display = true"
 
 
   has_many :contributions

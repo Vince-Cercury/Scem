@@ -3,15 +3,14 @@
   <div class="span-3">
     <%= display_organism_cover(@organism, :thumb) %>
   </div>
-  <div class="span-10">
+  <div class="span-12">
     <h3> <%= f.text_field :name, :class => 'title' %></h3>
-    <%= display_organism_action %>
-    <% if current_user && @organism.is_user_moderator?(current_user) %>
-    <% end %>
   </div>
-  <div class="span-4 last">
-    <%= render :partial => "rating/rating", :locals => { :current_object => @organism } %>
-
+  <div class="span-2 last">
+    <% if current_user && @organism.is_user_moderator?(current_user) %>
+    <br /><br />
+    (  <%= link_to 'Destroy', @organism, :confirm => 'Are you sure?', :method => :delete %> )
+    <% end %>
   </div>
   <hr />
   <%= render :partial => "/organisms/sub_header" %>
@@ -61,11 +60,11 @@
 
   <hr />
 
-  <div class="box">
-    <%= f.label :description_long %><br />
-    <%= fckeditor_textarea(:organism, :description_long, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
+    <div class="box">
+      <%= f.label :description_long %><br />
+      <%= fckeditor_textarea(:organism, :description_long, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
 
-  </div>
+    </div>
 
   <p>
     <%= f.submit 'Update' %>

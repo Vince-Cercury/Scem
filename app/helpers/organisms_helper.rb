@@ -9,6 +9,8 @@ module OrganismsHelper
 
   def display_organism_action
     case controller_name
+    when 'organisms'
+      result = 'profil'
     when 'galleries'
       result = 'galleries'
     when 'members'

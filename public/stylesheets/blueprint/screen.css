@@ -81,7 +81,7 @@ legend {font-weight:bold;font-size:1.2em;}
 input[type=text], input[type=password], input.text, input.title, textarea, select {background-color:#fff;border:1px solid #bbb;}
 input[type=text]:focus, input[type=password]:focus, input.text:focus, input.title:focus, textarea:focus, select:focus {border-color:#666;}
 input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0.5em 0;}
-input.text, input.title {width:300px;padding:5px;}
+input.text, input.title {width:450px;padding:5px;}
 input.title {font-size:1.5em;}
 textarea {padding:5px;}
 
@@ -256,3 +256,7 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 .clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
 .clearfix, .container {display:block;}
 .clear {clear:both;}
+
+
+/* CUSTOM */
+.whitebox {padding:0.5em;margin-bottom:0.5em;background:#FFFFFF;}

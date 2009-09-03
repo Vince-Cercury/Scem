@@ -1,14 +1,5 @@
-<div class="span-12">
-  <h2><%=h @event.name %></h2>
-</div>
-<div class="span-5 last">
-  <%= render :partial => "rating/rating", :locals => { :current_object => @current_object } %>
-  <% if current_user && @event.is_user_moderator?(current_user) %>
-    ( <%= link_to 'Edit', edit_event_path(@event) %> <%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %> )
-  <% end %>
-</div>
-<hr />
-<div class="span-7 colborder">
+<%= render :partial => "/events/header" %>
+<div class="span-8 colborder">
   <div class="box">
     <% if @event.picture.nil? %>
       <%= get_default_event_picture(:medium) %><br />
@@ -19,22 +10,11 @@
     <% end %>
   </div>
 </div>
-<div class="span-9 last">
+<div class="span-8 last">
   <div class="box">
     <%=h @event.description_short %>
   </div>
-  <% if @event.description_long && @event.description_long!='' %>
     <div class="box">
-      LONG: <%= @event.description_long %>
-    </div>
-  <% end %>
-</div>
-<hr />
-<div class="span-7 colborder">
-  <%= render :partial => "organizers" %>
-</div>
-<div class="span-9 last">
-  <div class="box">
     <b>Is charged:</b>
     <%=h boolean_to_literal(@event.is_charged) %><br />
     <b>Is private:</b>
@@ -45,6 +25,16 @@
     <% end %>
   </div>
 </div>
+<hr />
+  <% if @event.description_long && @event.description_long!='' %>
+    <div class="box">
+     <div class="whitebox">
+      <%= @event.description_long %>
+       </div>
+    </div>
+  <% end %>
+<hr />
+<%= render :partial => "organizers" %>
 <hr />
 <div class="span-13"><h4 class="caps">DATE(S)</h4></div>
 <div class="span-4 last"><%= link_to 'New term', new_term_path(:event_id => @event.id) %></div>

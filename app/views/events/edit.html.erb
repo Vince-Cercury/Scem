@@ -1,65 +1,90 @@
-<h1>Editing event</h1>
-
 <% form_for(@event) do |f| %>
   <%= f.error_messages %>
+  <div class="span-3">
+    <%= display_event_cover(@event, :thumb) %>
+  </div>
+  <div class="span-12">
+    <h3><%= f.text_field :name, :class => 'title' %></h3>
+  </div>
+  <div class="span-2 last">
+    <% if current_user && @event.is_user_moderator?(current_user) %>
+    <br /><br />
+      (  <%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %> )
+    <% end %>
+  </div>
+  <hr />
+  <%= render :partial => "/events/sub_header" %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description_short %><br />
-    <%= f.text_area :description_short %>
-  </p>
-  <p>
-    <%= f.label :description_long %><br />
-    <%= fckeditor_textarea(:event, :description_long, :toolbarSet => 'Simple', :width => '80%', :height => '400px') %>
-  </p>
-  <p>
-    <%= f.label :categories %>
-    <%=  swapselect :event,
+  <div class="span-8 colborder">
+    <div class="box">
+      <% if @event.picture.nil? %>
+        <%= get_default_event_picture(:medium) %><br />
+        <%= link_to("Attach a picture !", url_for(:controller => 'pictures', :action => 'new', :parent_id => @event.id, :parent_type => "Event")) %>
+      <% else %>
+        <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for(@event.picture)) %><br />
+        <%= link_to("Change the image", url_for(:controller => 'pictures', :action => 'new', :parent_id => @event.id, :parent_type => "Event")) %>
+      <% end %>
+    </div>
+  </div>
+  <div class="span-8 last">
+    <div class="box">
+      <%= f.text_area :description_short, :cols => 35, :rows => 5  %>
+    </div>
+    <div class="box">
+      <b>Is charged:</b>
+      <%= f.check_box :is_charged %><br />
+      <b>Is private:</b>
+      <%= f.check_box :is_private %><br />
+    </div>
+  </div>
+  <hr />
+
+  <%= f.label :categories %>
+  <%=  swapselect :event,
     @event,
     :categories,
     categories_to_display.map{ |category| [category.name, category.id] }
-    %>
-  </p>
-  <p>
-    <%= f.label :is_charged %><br />
-    <%= f.check_box :is_charged %>
-  </p>
-  <p>
-    <%= f.label :is_private %><br />
-    <%= f.check_box :is_private %>
-  </p>
+%>
 
-    <p>
+  <hr />
+  <div class="box">
+    <%= f.label :description_long %><br />
+    <%= fckeditor_textarea(:organism, :description_long, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
+
+  </div>
+  <hr />
+
+  <div class="box">
     <%= f.label :publishers %><br />
     <%= collection_select :contributions,
       :publisher_ids,
       get_list_organism_rights_user(current_user),
       :id, :name,{ :selected => @event.get_first_publisher },
       { :multiple => false } -%>
-  </p>
-  <p>
-    <%= f.label :organizers %><br />
-    <%= swapselect :contributions,
+  </div>
+  <hr />
+
+  <%= f.label :organizers %><br />
+  <%= swapselect :contributions,
     @event,
-    :organizers,
+    :organizer,
     get_list_organism_rights_user(current_user).map{ |organism| [organism.name, organism.id] }
-    %>
-  </p>
-  <p>
-    <%= f.label :partners %><br />
-    <%= swapselect :contributions,
+%>
+
+  <hr />
+
+
+  <%= f.label :partners %><br />
+  <%= swapselect :contributions,
     @event,
-    :partners,
+    :partner,
     get_list_organism_rights_user(current_user).map{ |organism| [organism.name, organism.id] }
-    %>
-  </p>
-  <p>
+%>
+
+  <hr />
+  <div class="box">
     <%= f.submit 'Update' %>
-  </p>
+  </div>
 <% end %>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Show', @event %>
