@@ -31,6 +31,12 @@ class Event < ActiveRecord::Base
       :order => 'name'
   end
 
+  def search_galleries(search, page)
+    galleries.paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :conditions => ['name like ?', "%#{search}%"],
+      :order => 'name'
+  end
+
 
   # in the future we can change the select to have many publisher per event
   #but now we want to restrict to just one

@@ -1,4 +1,4 @@
-class OrganismGalleriesController < ApplicationController
+class EventGalleriesController < ApplicationController
 
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:show, :index]
@@ -6,8 +6,8 @@ class OrganismGalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.xml
   def index
-    @organism = Organism.find(params[:organism_id])
-    @galleries = @organism.search_galleries(params[:search], params[:page])
+    @event = Event.find(params[:event_id])
+    @galleries = @event.search_galleries(params[:search], params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
