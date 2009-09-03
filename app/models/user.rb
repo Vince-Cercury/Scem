@@ -90,15 +90,15 @@ class User < ActiveRecord::Base
     
     if role=="admin"
       is_admin_of.paginate :per_page => ENV['PER_PAGE'], :page => page,
-        :conditions => ['name like ? and state = ?', "%#{search}%", "active"],
+        :conditions => ['organisms.name like ? and organisms.state = ?', "%#{search}%", "active"],
         :order => 'name'
     elsif role=="moderator"
       is_moderator_of.paginate :per_page => ENV['PER_PAGE'], :page => page,
-        :conditions => ['name like ? and state=?', "%#{search}%", "active"],
+        :conditions => ['organisms.name like ? and organisms.state=?', "%#{search}%", "active"],
         :order => 'name'
     else
       is_member_of.paginate :per_page => ENV['PER_PAGE'], :page => page,
-        :conditions => ['name like ? and state=?', "%#{search}%", "active"],
+        :conditions => ['organisms.name like ? and organisms.state=?', "%#{search}%", "active"],
         :order => 'name'
     end
 

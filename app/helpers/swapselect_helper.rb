@@ -2,10 +2,11 @@
 
 module SwapselectHelper
 	
-	def swapselect( object_name, object, method, choices, params = {:size => 8 } ) 
+	def swapselect( object_name, object, method, choices, params = {:size => 5 } )
 
 		param_name = "#{method.to_s.singularize}_ids"
-		size = params[:size] 
+		size = params[:size]
+
 		selected = object.send param_name
 		
 		buff = "<script type='text/javascript'>"

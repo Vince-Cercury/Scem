@@ -28,9 +28,9 @@
         <% end  %>
       <% end  %>
           Participation:
-      <%= link_to "sure", participations_path(:term_id => @term.id, :role =>:sure) %>: <%= @term.sure_participants.size %> |
-      <%= link_to "may be", participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %> |
-      <%= link_to "no", participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %>
+      <%= link_to "sure", term_participations_path(:term_id => @term.id, :role =>:sure) %>: <%= @term.sure_participants.size %> |
+      <%= link_to "may be", term_participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %> |
+      <%= link_to "no", term_participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %>
 
 
     </div>

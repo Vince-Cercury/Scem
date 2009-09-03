@@ -109,7 +109,7 @@ module ApplicationHelper
       result = 'organisms'
     when 'activities'
       result = 'organisms'
-     when 'categories'
+    when 'categories'
       result = 'events'
     when 'galleries'
       result = 'galleries'

@@ -12,14 +12,9 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.xml
   def index
-#    if params[:event_id]
-#      @event = Event.find(params[:event_id])
-#    end
-#    if @event.nil?
-      @galleries = Gallery.search(params[:search], params[:page])
-#    else
-#       @galleries = @event.galleries
-#    end
+
+   @galleries = Gallery.search(params[:search], params[:page])
+
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,15 +1,14 @@
-class OrganismsUsersController < ApplicationController
+class MemberOfOrganismsController < ApplicationController
 
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:index, :accept]
 
-  before_filter :is_logged?
+  before_filter :is_logged?, :except => [:index]
 
-  before_filter :ensure_organism_or_user_parameter?, :only => [:index]
   before_filter :ensure_organism_parameter?, :except => [:index]
   before_filter :ensure_role_s_parameter?, :only  => [:index]
   before_filter :ensure_a_role_parameter, :only  => [:create_or_update, :create_or_update_current_user, :accept]
-  before_filter :ensure_user_parameter?, :only => [:create_or_update, :destroy_relation, :accept, :refuse]
+  before_filter :ensure_user_parameter?, :only => [:index, :create_or_update, :destroy_relation, :accept, :refuse]
   #the current user cannot decide himself to become admin or moderator of the organism
   before_filter :cant_become_himself_admin_or_modo, :only  => [:create_or_update_current_user]
 
@@ -18,25 +17,16 @@ class OrganismsUsersController < ApplicationController
   before_filter :ensure_current_user_moderator_of_organism?, :only => [:create_or_update, :destroy_relation, :accept, :refuse]
 
 
-  # GET /terms
-  # GET /terms.xml
   def index
-    if(!params[:organism_id].nil?)
-      @organism = Organism.find(params[:organism_id])
-      @users = @organism.search_users(params[:role],params[:search], params[:page])
-      @partial_path = 'index_organism_users'
-    else
       @user = User.find(params[:user_id])
       @organisms = @user.search_organisms(params[:role],params[:search], params[:page])
-      @partial_path = 'index_user_organisms'
-    end
 
     respond_to do |format|
       format.html
       format.xml  { render :xml => @users }
       format.js {
         render :update do |page|
-          page.replace_html 'results', :partial => @partial_path
+          page.replace_html 'results', :partial => '/organisms/organisms_list'
         end
       }
     end
@@ -155,10 +145,6 @@ class OrganismsUsersController < ApplicationController
 
   def ensure_user_parameter?
     param_uncorrect_redirection unless !params[:user_id].nil? and User.exists?(params[:user_id])
-  end
-
-  def ensure_organism_or_user_parameter?
-    param_uncorrect_redirection unless (!params[:organism_id].nil? and Organism.exists?(params[:organism_id])) or (!params[:user_id].nil? and User.exists?(params[:user_id]))
   end
 
 

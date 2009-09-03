@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   acts_as_rateable
 
   validates_presence_of :name, :description_short
-  validates_length_of :description_short, :maximum=>200
+  validates_length_of :description_short, :maximum=>250
   
   has_many :terms
   has_and_belongs_to_many :categories

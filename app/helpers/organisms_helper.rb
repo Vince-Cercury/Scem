@@ -6,4 +6,14 @@ module OrganismsHelper
       link_to(image_tag(organism.picture.attached.url(style)), organism)
     end
   end
+
+  def display_organism_action
+    case controller_name
+    when 'galleries'
+      result = 'galleries'
+    when 'members'
+      result = 'members'
+    end
+    return result
+  end
 end

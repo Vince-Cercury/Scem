@@ -11,9 +11,8 @@
   <%=h @term.end %>
 </p>
 
-<% form_tag organisms_users_path, :method => 'get' do %>
+<% form_tag term_participations_path, :method => 'get' do %>
   <p>
-    <%=  hidden_field_tag 'term_id', @term.id %>
     <%=  hidden_field_tag 'role', params[:role] %>
 
     <%= text_field_tag :search, params[:search] %>
@@ -21,9 +20,9 @@
   </p>
 <% end %>
 
-<%= link_to "Show sure participants (#{@term.sure_participants.size})", participations_path(:term_id => @term.id, :role =>:sure) %> |
-<%= link_to "Show may be participants (#{@term.maybe_participants.size})", participations_path(:term_id => @term.id, :role =>:may_be) %> |
-<%= link_to "Show do not participants (#{@term.not_participants.size})", participations_path(:term_id => @term.id, :role =>:not) %>
+<%= link_to "Show sure participants (#{@term.sure_participants.size})", term_participations_path(:term_id => @term.id, :role =>:sure) %> |
+<%= link_to "Show may be participants (#{@term.maybe_participants.size})", term_participations_path(:term_id => @term.id, :role =>:may_be) %> |
+<%= link_to "Show do not participants (#{@term.not_participants.size})", term_participations_path(:term_id => @term.id, :role =>:not) %>
 <br />
 
 <%= render :partial => "/users/users_list" %>

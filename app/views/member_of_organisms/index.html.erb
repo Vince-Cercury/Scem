@@ -1,0 +1,21 @@
+<h1>Showing organisms associated to user</h1>
+<h2>"<%=h  @user.login %>"</h2>
+
+<% form_tag user_member_of_organisms_path, :method => 'get' do %>
+  <p>
+    <%#=  hidden_field_tag 'user_id', @user.id %>
+    <%=  hidden_field_tag 'role', params[:role] %>
+
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<%= link_to "Show member of (#{@user.is_member_of.size})", user_member_of_organisms_path %> |
+<%= link_to "Show moderator of (#{@user.is_moderator_of.size})", user_member_of_organisms_path(:role =>:moderator) %> |
+<%= link_to "Show admin of (#{@user.is_admin_of.size})", user_member_of_organisms_path(:role =>:admin) %>
+<br />
+
+<%= render :partial => "/organisms/organisms_list" %>
+
+<%= link_to 'Back', user_path(@user) %>

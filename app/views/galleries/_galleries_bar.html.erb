@@ -2,8 +2,8 @@
   <div class="span-4 colborder">
     <h4 class="caps">PICTURES GALLERIES</h4>
     <br />
-     <%#= link_to("All the galleries (#{@current_object.galleries.size})", url_for(:controller => 'galleries', :action => 'index', :event_id => @event.id)) %>
-    <br />
+     <%= link_to("All galleries  (#{@current_object.galleries.size})", organism_galleries_path(:organism_id => @organism.id)) %>
+    <br /> <br />
     <%= link_to("Attach a new gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
   </div>
   <div class="span-12 last">

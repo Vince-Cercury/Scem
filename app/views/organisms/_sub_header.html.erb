@@ -1,0 +1,5 @@
+<ul class='tabs'>
+<li><% if controller_name != 'organisms' || controller.action_name=='edit' %><%= link_to("Profil", @organism) %><% else %>Profil<% end %></li>
+<li><% if controller_name != 'members' %><%= link_to("Members", organism_members_path(:organism_id => @organism.id, :role =>:members)) %><% else %>Membres<% end %></li>
+<li><% if controller_name != 'organism_galleries' %><%= link_to("Pictures galleries", organism_galleries_path(:organism_id => @organism.id)) %><% else %>Pictures galleries<% end %></li>
+</ul>

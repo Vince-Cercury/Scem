@@ -1,10 +1,10 @@
-<%= link_to "is member of #{@user.is_member_of.size} organism(s)", organisms_users_path(:user_id => @user.id, :role =>:member) %> |
-<%= link_to "is moderator of #{@user.is_moderator_of.size} organism(s)", organisms_users_path(:user_id => @user.id, :role =>:moderator) %> |
-<%= link_to "is admin of #{@user.is_admin_of.size} organism(s)", organisms_users_path(:user_id => @user.id, :role =>:admin) %>
+<%= link_to "Show member of (#{@user.is_member_of.size})", user_member_of_organisms_path(:user_id => @user.id) %> |
+<%= link_to "is moderator of #{@user.is_moderator_of.size} organism(s)", user_member_of_organisms_path(:user_id => @user.id, :role =>:moderator) %> |
+<%= link_to "is admin of #{@user.is_admin_of.size} organism(s)", user_member_of_organisms_path(:user_id => @user.id, :role =>:admin) %>
 <br />
-<%= link_to "participate to #{@user.sure_participate.size} event(s)", participations_path(:user_id => @user.id, :role =>:sure) %> |
-<%= link_to "might participate to #{@user.maybe_participate.size} event(s)", participations_path(:user_id => @user.id, :role =>:maybe) %> |
-<%= link_to "do not participate to #{@user.not_participate.size} event(s)", participations_path(:user_id => @user.id, :role =>:not) %>
+<%= link_to "participate to #{@user.sure_participate.size} event(s)", user_participations_path(:user_id => @user.id, :role =>:sure) %> |
+<%= link_to "might participate to #{@user.maybe_participate.size} event(s)", user_participations_path(:user_id => @user.id, :role =>:maybe) %> |
+<%= link_to "do not participate to #{@user.not_participate.size} event(s)", user_participations_path(:user_id => @user.id, :role =>:not) %>
 <br />
 <% if @user.facebook_user? %>
 
