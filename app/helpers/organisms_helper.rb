@@ -16,4 +16,13 @@ module OrganismsHelper
     end
     return result
   end
+
+  def is_organism_admin?(organism)
+    if current_user && organism.is_user_admin?(current_user)
+      return true
+    else
+      return false
+    end
+  end
+
 end
