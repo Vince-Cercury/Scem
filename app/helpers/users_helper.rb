@@ -3,6 +3,11 @@ module UsersHelper
   def display_user_cover_by_id(id, style)
     display_user_cover(User.find(id), style)
   end
+
+  def get_default_user_cover(style)
+    image_tag("default/user/#{style}/1.jpg")
+  end
+
   def display_user_cover(user, style)
     mini_height = "36px"
 
