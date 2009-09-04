@@ -89,6 +89,12 @@ class Organism < ActiveRecord::Base
       :order => 'name'
   end
 
+  def search_events(search, page)
+    events.paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :conditions => ['name like ?', "%#{search}%"],
+      :order => 'name'
+  end
+
   aasm_event :register do
     transitions :from => :passive, :to => :pending , :guard => Proc.new {|g| !g.manager_name.blank? and !g.description_short.blank? }
   end

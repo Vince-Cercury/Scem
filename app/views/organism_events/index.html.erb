@@ -1,0 +1,10 @@
+<%= render :partial => "/organisms/header" %>
+<% form_tag organism_events_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
+
+<%= render :partial => "/events/events_list" %>
+
+<%= link_to 'Back', organism_path(@organism) %>

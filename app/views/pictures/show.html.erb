@@ -8,11 +8,9 @@
 </div>
 <div class="span-6 last">
   <%= render :partial => "rating/rating", :locals => { :current_object => @picture } %>
-  <% if  @parent_object.class == 'Gallery' %>
-    <br />
+  <% if  @parent_object.class.to_s.eql?("Gallery") %>
     <%= link_to("previous", @picture.previous_item) unless @picture.first_item? %>&nbsp;&nbsp;
     <%= link_to("next", @picture.next_item) unless @picture.last_item? %>
-  <% else %>PROUT BUG BUG ! <%= @parent_object.class %>
   <% end %>
 </div>
 <hr />

@@ -1,4 +1,7 @@
 <div id="star-ratings-block-<%= current_object.id %>">
+    <% if !logged_in? -%>
+    <%= link_to "log in to vote",  login_path,  { :title => "Log in" } %>
+  <% end -%>
   <%= number_with_precision(current_object.rating, 1) %>/5 Stars 
   <ul class='star-rating'>
     <li class='current-rating' style='width:<%= (current_object.rating * 30).to_i -%>px;'>
@@ -32,7 +35,4 @@
       </li>
     <% end -%>
   </ul>
-  <% if !logged_in? -%>
-    <%= link_to "log in to vote",  login_path,  { :title => "Log in" } %>
-  <% end -%>
 </div>
