@@ -11,13 +11,7 @@ module ApplicationHelper
     return buff
   end
 
-  def categories_to_display()
-    @categories = Category.find_all_by_to_display(true, :order => 'name DESC')
-  end
 
-  def categories_not_to_display()
-    @categories = Category.find_all_by_to_display(false, :order => 'name DESC')
-  end
 
   #display a calendar of a month
   #extract the month and year from a date parameter or use current month

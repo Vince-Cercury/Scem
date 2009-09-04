@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   validates_length_of :description_short, :maximum=>250
   
   has_many :terms
-  has_and_belongs_to_many :categories, :conditions => "categories.to_display = true"
+  has_and_belongs_to_many :categories#, :conditions => "categories.to_display = true"
 
 
   has_many :contributions
@@ -86,14 +86,17 @@ class Event < ActiveRecord::Base
 
   def is_user_moderator?(user)
     result = false
-
-
+  
+    if  user.has_system_role('moderator')
+	result = true
+    end
     self.publishers.each do |organism|
       if organism.is_user_moderator?(user)
         result = true
       end
     end
     return result
+	
   end
 
   def is_user_member?(user)

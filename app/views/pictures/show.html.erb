@@ -8,11 +8,12 @@
 </div>
 <div class="span-6 last">
   <%= render :partial => "rating/rating", :locals => { :current_object => @picture } %>
-  <% if  @parent_object.type == 'Gallery' %>
-  <br />
-  <%= link_to("previous", @picture.previous_item) unless @picture.first_item? %>&nbsp;&nbsp;
-  <%= link_to("next", @picture.next_item) unless @picture.last_item? %>
-<% end %>
+  <% if  @parent_object.class == 'Gallery' %>
+    <br />
+    <%= link_to("previous", @picture.previous_item) unless @picture.first_item? %>&nbsp;&nbsp;
+    <%= link_to("next", @picture.next_item) unless @picture.last_item? %>
+  <% else %>PROUT BUG BUG ! <%= @parent_object.class %>
+  <% end %>
 </div>
 <hr />
 <div class="span-15 last prepend-1 append-1">
@@ -20,14 +21,14 @@
 </div>
 
 <br />
-  <%= link_to 'Edit', edit_picture_path(@picture) %>
+<%= link_to 'Edit', edit_picture_path(@picture) %>
 
 
 <% if @picture.description %>
-<p>
-  <b>Description:</b>
-  <%=h @picture.description %>
-</p>
+  <p>
+    <b>Description:</b>
+    <%=h @picture.description %>
+  </p>
 <% end %>
 <p>
   <b>Creator:</b>

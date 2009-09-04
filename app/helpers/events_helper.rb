@@ -31,8 +31,8 @@ module EventsHelper
     return result
   end
 
-  def is_event_admin?(event)
-    if current_user && event.is_user_admin?(current_user)
+  def is_event_moderator?(event)
+    if current_user && event.is_user_moderator?(current_user)
       return true
     else
       return false
