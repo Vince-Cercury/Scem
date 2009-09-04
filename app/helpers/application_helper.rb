@@ -1,6 +1,14 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+ def get_url_past_or_futur_tab
+	if @category.nil?
+		return terms_path(:period => @period_link_param)
+	else
+		return category_path(:id => @category.id, :period => @period_link_param)
+	end
+ end
+
   def boolean_to_literal(the_boolean)
     buff=""
     if the_boolean==true

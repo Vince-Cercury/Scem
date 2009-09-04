@@ -4,7 +4,7 @@
   </div>
   <div class="span-7 last">
     <% if current_user.facebook_user? %>
-      Logged in as <%= link_to_current_user :content_method => :first_name %> <%= link_to_current_user :content_method => :last_name %>
+      Logged in as <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
       (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'>Log out</a>)
     <% else %>
       Logged in as <%= link_to_current_user :content_method => :login %>

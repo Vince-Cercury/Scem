@@ -16,7 +16,7 @@
 <br /><br /><br />
 <div class="span-17">
 <ul class='tabs'>
-  <li><%= link_to("All terms participations", event_participations_path(:event_id => @event.id, :role =>:members)) %></li>
+  <li><%= link_to("All terms participations", event_participations_path(:event_id => @event.id)) %></li>
   <li><% if params[:role]!='sure' %><%= link_to "attending (#{@term.sure_participants.size})", term_participations_path(:term_id => @term.id, :role =>:sure) %><% else %>attending (<%= @term.sure_participants.size %>)<% end %></li>
   <li><% if params[:role]!='maybe' %><%= link_to "may be attending (#{@term.maybe_participants.size})", term_participations_path(:term_id => @term.id, :role =>:may_be) %><% else %>may be attending (<%= @term.maybe_participants.size %>)<% end %></li>
   <li><% if params[:role]!='not' %><%= link_to "not attending (#{@term.not_participants.size})", term_participations_path(:term_id => @term.id, :role =>:not) %><% else %>not attending (<%= @term.not_participants.size %>)<% end %></li>

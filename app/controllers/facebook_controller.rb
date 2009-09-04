@@ -22,7 +22,7 @@ class FacebookController < ApplicationController
 
     current_user.save(false)
     
-    redirect_to '/'
+    redirect_back_or_default('/')
 
   end
 
