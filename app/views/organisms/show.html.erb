@@ -6,7 +6,7 @@
       <%= display_organism_cover(@organism, :medium) %><br />
       <%= link_to("Attach a picture !", url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
     <% else %>
-      <%= display_organism_cover(@organism, :medium) %><br />
+      <%= link_to(image_tag(@organism.picture.attached.url(:medium)), url_for(@organism.picture)) %><br />
       <%= link_to("Change the image", url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
     <% end %>
   </div>
