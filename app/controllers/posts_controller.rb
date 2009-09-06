@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 
+  # store the current location in case of an atempt to login, for redirecting back
+  before_filter :store_location, :only => [:show, :index]
+
   before_filter :ensure_moderator_create_rights?, :only => [:new, :create]
   before_filter :ensure_moderator_edit_rights?, :only => [:edit, :update, :destroy]
 
@@ -28,7 +31,7 @@ class PostsController < ApplicationController
     @current_object = @post = Post.find(params[:id])
     @parent_object = @post.get_parent_object
 
-    if(!@current_object.active?) or (current_user && @parent_object.is_user_moderator?(current_user))
+    if(@post.active?) or (current_user && @parent_object.is_user_moderator?(current_user))
       @comment = Comment.new
 
       prepare_parent_context_from_parent_object(@parent_object)
