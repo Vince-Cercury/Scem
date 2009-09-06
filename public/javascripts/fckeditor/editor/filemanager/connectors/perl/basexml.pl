@@ -55,12 +55,7 @@ _HTML_HEAD_
 	# Create the XML document header
 	print '<?xml version="1.0" encoding="utf-8" ?>' ;
 
-	if ($text) {
-		print '<Connector><Error number="' . $number . '" text="' . &specialchar_cnv( $text ) . '" /></Connector>' ;
-	}
-	else {
-		print '<Connector><Error number="' . $number . '" /></Connector>' ;
-	}
+	print '<Connector><Error number="' . $number . '" text="' . &specialchar_cnv( $text ) . '" /></Connector>' ;
 
 	exit ;
 }

@@ -93,7 +93,6 @@ _HTML_TAG_
 
 	foreach $key (keys %FORM) {
 		$postedValue = &specialchar_cnv($FORM{$key});
-		$key = &specialchar_cnv($key);
 		print <<"_HTML_TAG_";
 			<tr>
 				<th>$key</th>

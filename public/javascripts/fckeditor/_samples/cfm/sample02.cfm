@@ -82,7 +82,7 @@ This sample shows the editor in all its available languages.
 <cfset config = structNew()>
 <cfif isDefined( "URL.Lang" )>
 	<cfset config["AutoDetectLanguage"]		= false>
-	<cfset config["DefaultLanguage"]		= REReplaceNoCase( URL.Lang, "[^a-z\-]", "", "all" )>
+	<cfset config["DefaultLanguage"]		= HTMLEditFormat( URL.Lang )>
 <cfelse>
 	<cfset config["AutoDetectLanguage"]		= true>
 	<cfset config["DefaultLanguage"]		= 'en'>

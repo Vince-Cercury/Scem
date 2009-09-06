@@ -32,7 +32,7 @@ class GalleriesController < ApplicationController
   def show
     @current_object = @gallery = Gallery.find(params[:id])
 
-    @parent_object = Gallery.find_parent(@gallery.parent_type, @gallery.parent_id)
+    @parent_object = @gallery.get_parent_object
     
 
     #the object comment is needed for displaying the form of new comment
@@ -49,6 +49,8 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new
     @rights = {'Moderators' => 'moderators', 'Members' => 'members', 'Anybody' => 'all'}
 
+    set_session_parent_parameters(@gallery.get_parent_object)
+
     @new_pictures = Array.new
     1.upto(3) { @new_pictures << Picture.new }
 
@@ -61,8 +63,10 @@ class GalleriesController < ApplicationController
   # GET /galleries/1/edit
   def edit
     @gallery = Gallery.find(params[:id])
+
     @rights = {'Moderators' => 'moderators', 'Members' => 'members', 'Anybody' => 'all'}
-    @parent_object = Gallery.find_parent(@gallery.parent_type, @gallery.parent_id)
+    @parent_object = @gallery.get_parent_object
+    set_session_parent_parameters(@gallery.get_parent_object)
   end
 
   # GET /galleries/1/add_pics
@@ -184,7 +188,8 @@ class GalleriesController < ApplicationController
     @gallery.creator_id = self.current_user.id
     @gallery.parent_id = params[:parent_id]
     @gallery.parent_type = params[:parent_type]
-    #@parent_object = Gallery.find_parent(params[:parent_type], params[:parent_id])
+    @parent_object = Gallery.find_parent(params[:parent_type], params[:parent_id])
+    set_session_parent_parameters(@parent_object)
 
     #prepare_pictures_attributes(@gallery)
 
@@ -206,7 +211,8 @@ class GalleriesController < ApplicationController
   # PUT /galleries/1.xml
   def update
     @gallery = Gallery.find(params[:id])
-    @parent_object = Gallery.find_parent(@gallery.parent_type, @gallery.parent_id)
+    @parent_object = @gallery.get_parent_object
+    set_session_parent_parameters(@parent_object)
     @rights = {'Moderators' => 'moderators', 'Members' => 'members', 'Anybody' => 'all'}
 
     respond_to do |format|

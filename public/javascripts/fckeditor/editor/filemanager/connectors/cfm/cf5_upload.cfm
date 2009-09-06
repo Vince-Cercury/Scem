@@ -39,10 +39,6 @@
 <cfparam name="url.type" default="File">
 <cfparam name="url.currentFolder" default="/">
 
-<cfif url.command eq "QuickUpload">
-	<cfset url.currentFolder = "/">
-</cfif>
-
 <cfif not isDefined("config_included")>
 	<cfinclude template="config.cfm">
 </cfif>
@@ -78,12 +74,6 @@
 	<cfset SendUploadResults(102)>
 	<cfabort>
 </cfif>
-
-<cfif REFind('(/\.)|(//)|[[:cntrl:]]|([\\:\*\?\"<>])', url.currentFolder)>
-	<cfset SendUploadResults(102)>
-	<cfabort>
-</cfif>
-
 
 <cfscript>
 	userFilesPath = config.userFilesPath;
@@ -148,7 +138,7 @@
 		</cfcatch>
 		</cftry>
 	</cfif>
-<cfelseif url.command eq "FileUpload">
+<cfelse>
 	<cfset resourceTypeUrl = rereplace( replace( Config.FileTypesPath[url.type], fs, "/", "all"), "/$", "") >
 	<cfif isDefined( "Config.FileTypesAbsolutePath" )
 			and structkeyexists( Config.FileTypesAbsolutePath, url.type )
@@ -296,7 +286,7 @@
 
 <cfif errorNumber EQ 0>
 	<!--- file was uploaded succesfully --->
-	<cfset SendUploadResults(errorNumber, '#resourceTypeUrl##url.currentFolder##fileName#.#fileExt#', replace( fileName & "." & fileExt, "'", "\'", "ALL"), "")>
+	<cfset SendUploadResults(errorNumber, '#resourceTypeUrl##url.currentFolder##fileName#.#fileExt#', "", "")>
 	<cfabort>
 <cfelseif errorNumber EQ 201>
 	<!--- file was changed (201), submit the new filename --->

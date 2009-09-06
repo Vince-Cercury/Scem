@@ -132,8 +132,7 @@ _HTML_TAG_
 	$BasePath = $sBasePath ;
 
 	if($FORM{'Toolbar'} ne "") {
-		$ToolbarSet = $FORM{'Toolbar'};
-		$ToolbarSet =~ s/[^a-z]//ig;
+		$ToolbarSet = &specialchar_cnv( $FORM{'Toolbar'} );
 	}
 	$Value = '<p>This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.</p>' ;
 	&Create();

@@ -1,0 +1,13 @@
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => 'title' %>
+  </p>
+  
+  <p>
+    <%= f.label :text_short %><br />
+    <%= fckeditor_textarea(:post, :text_short, :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
+  </p>
+  <p>
+    <%= f.label :text_long %><br />
+    <%= fckeditor_textarea(:post, :text_long, :toolbarSet => 'Default', :width => '100%', :height => '700px') %>
+  </p>

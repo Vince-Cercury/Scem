@@ -81,8 +81,7 @@ function ChangeSkin( skinName )
 	);
 
 	if(action_param('Skin'));
-		var('skin') = (String_ReplaceRegExp: action_param('Skin'), -find='[^a-zA-Z0-9]', -replace='');
-		$myeditor->config = array('SkinPath' = $basepath + 'editor/skins/' + $skin + '/');
+		$myeditor->config = array('SkinPath' = $basepath + 'editor/skins/' + action_param('Skin') + '/');
 	/if;
 
 	$myeditor->create;

@@ -102,33 +102,8 @@
 
 	rootPath = left( serverPath, Len(serverPath) - Len(userFilesPath) ) ;
 	xmlContent = ""; // append to this string to build content
-	invalidName = false;
 </cfscript>
 
-
-<cfif not config.enabled>
-
-	<cfset xmlContent = "<Error number=""1"" text=""This connector is disabled. Please check the 'editor/filemanager/connectors/cfm/config.cfm' file"" />">
-
-<cfelseif find("..",url.currentFolder) or find("\",url.currentFolder) or REFind('(/\.)|(//)|[[:cntrl:]]|([\\:\*\?\"<>])', url.currentFolder)>
-
-	<cfset invalidName = true>
-	<cfset xmlContent = "<Error number=""102"" />">
-
-<cfelseif isDefined("Config.ConfigAllowedCommands") and not ListFind(Config.ConfigAllowedCommands, url.command)>
-
-	<cfset invalidName = true>
-	<cfset xmlContent = '<Error number="1" text="The &quot;' & HTMLEditFormat(url.command) & '&quot; command isn''t allowed" />'>
-
-<cfelseif isDefined("Config.ConfigAllowedTypes") and not ListFind(Config.ConfigAllowedTypes, url.type)>
-
-	<cfset invalidName = true>
-	<cfset xmlContent = '<Error number="1" text="Invalid type specified" />'>
-
-</cfif>
-
-<cfset resourceTypeUrl = "">
-<cfif not len(xmlContent)>
 <cfset resourceTypeUrl = rereplace( replace( Config.FileTypesPath[url.type], fs, "/", "all"), "/$", "") >
 
 <cfif isDefined( "Config.FileTypesAbsolutePath" )
@@ -150,8 +125,25 @@
 <!--- get rid of double directory separators --->
 <cfset userFilesServerPath = replace( userFilesServerPath, fs & fs, fs, "all") >
 
-<cfset resourceTypeDirectory = left( userFilesServerPath, Len(userFilesServerPath) - Len(url.currentFolder) )>
+<cfif not config.enabled>
+
+	<cfset xmlContent = "<Error number=""1"" text=""This connector is disabled. Please check the 'editor/filemanager/connectors/cfm/config.cfm' file"" />">
+
+<cfelseif find("..",url.currentFolder) or find("\",url.currentFolder)>
+
+	<cfset xmlContent = "<Error number=""102"" />">
+
+<cfelseif isDefined("Config.ConfigAllowedCommands") and not ListFind(Config.ConfigAllowedCommands, url.command)>
+
+	<cfset xmlContent = '<Error number="1" text="The &quot;' & url.command & '&quot; command isn''t allowed" />'>
+
+<cfelseif isDefined("Config.ConfigAllowedTypes") and not ListFind(Config.ConfigAllowedTypes, url.type)>
+
+	<cfset xmlContent = '<Error number="1" text="The &quot;' & url.type & '&quot; type isn''t allowed" />'>
+
 </cfif>
+
+<cfset resourceTypeDirectory = left( userFilesServerPath, Len(userFilesServerPath) - Len(url.currentFolder) )>
 
 <cfif not len(xmlContent) and not directoryexists(resourceTypeDirectory)>
 	<!--- create directories in physical path if they don't already exist --->
@@ -271,7 +263,6 @@
 					newFolderName = reReplace(newFolderName, "_{2,}", "_", "all");
 					newFolderName = reReplace(newFolderName, "([^_]+)_+$", "\1", "all");
 					newFolderName = reReplace(newFolderName, "$_([^_]+)$", "\1", "all");
-					newFolderName = reReplace(newFolderName, '\.+', "_", "all" );
 				}
 			</cfscript>
 
@@ -280,7 +271,7 @@
 			<cfelseif directoryExists(currentFolderPath & newFolderName)>
 				<cfset errorNumber = 101>
 			<cfelseif reFind("^\.\.",newFolderName)>
-				<cfset errorNumber = 102>
+				<cfset errorNumber = 103>
 			<cfelse>
 				<cfset errorNumber = 0>
 
@@ -312,14 +303,8 @@
 </cfif>
 
 <cfscript>
-	xmlHeader = '<?xml version="1.0" encoding="utf-8" ?>';
-	if (invalidName) {
-		xmlHeader = xmlHeader & '<Connector>';
-	}
-	else {
-		xmlHeader = xmlHeader & '<Connector command="#url.command#" resourceType="#url.type#">';
-		xmlHeader = xmlHeader & '<CurrentFolder path="#url.currentFolder#" url="#resourceTypeUrl##url.currentFolder#" />';
-	}
+	xmlHeader = '<?xml version="1.0" encoding="utf-8" ?><Connector command="#url.command#" resourceType="#url.type#">';
+	xmlHeader = xmlHeader & '<CurrentFolder path="#url.currentFolder#" url="#resourceTypeUrl##url.currentFolder#" />';
 	xmlFooter = '</Connector>';
 </cfscript>
 

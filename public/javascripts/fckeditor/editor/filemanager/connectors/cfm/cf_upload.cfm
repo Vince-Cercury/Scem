@@ -24,6 +24,7 @@
 --->
 
 <cfparam name="url.type" default="File">
+<cfparam name="url.currentFolder" default="/">
 
 <!--- note: no serverPath url parameter - see config.cfm if you need to set the serverPath manually --->
 
@@ -35,7 +36,7 @@
 <cffunction name="SendError" returntype="void" output="true">
 	<cfargument name="number" required="true" type="Numeric">
 	<cfargument name="text" required="true">
-	<cfreturn SendUploadResults( "#ARGUMENTS.number#", "", "", "#ARGUMENTS.text#" )>
+	<cfreturn SendUploadResults( "#ARGUMENTS.number#", "", "", "ARGUMENTS.text" )>
 </cffunction>
 
 <cfset REQUEST.Config = Config>
@@ -56,7 +57,7 @@
 	<cfset sType = URL.Type>
 </cfif>
 
-<cfset sCurrentFolder = "/">
+<cfset sCurrentFolder = GetCurrentFolder()>
 
 <!--- Is enabled the upload? --->
 <cfif not IsAllowedCommand( sCommand )>

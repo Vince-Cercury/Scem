@@ -21,8 +21,9 @@
     <b>Description:</b>
     <%= @gallery.description %>
   </div>
+  
   <% end %>
-  <div class="box">
+  <div class="box"><br />
     <b>Creator:</b>
     <%=h get_user_name_or_pseudo_by_id(@gallery.creator_id) %>
   </div>

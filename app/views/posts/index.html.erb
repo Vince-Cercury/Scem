@@ -1,0 +1,9 @@
+<%= render :partial => @header_partial %>
+<h4>Last posts</h4>
+<%= render :partial => "/posts/posts_list" %>
+
+
+<br />
+<% if @parent_object.is_user_moderator?(current_user) %>
+<%= link_to 'New post', new_polymorphic_path([@parent_object, :post].flatten) %>
+<% end %>

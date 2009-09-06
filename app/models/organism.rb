@@ -5,6 +5,8 @@ class Organism < ActiveRecord::Base
 
   has_many :galleries, :as => :parent, :dependent => :destroy
 
+  has_many :posts, :as => :parent, :dependent => :destroy
+
   has_one :picture, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'"
 
   acts_as_commentable
@@ -95,6 +97,18 @@ class Organism < ActiveRecord::Base
       :order => 'name'
   end
 
+  def search_posts(search, page)
+    posts.paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :conditions => ['name like ?',"%#{search}%"],
+      :order => 'created_at DESC'
+  end
+
+  def search_posts_by_state(search, page, state)
+    posts.paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :conditions => ['name like ? and state=?', "%#{search}%", state],
+      :order => 'created_at DESC'
+  end
+
   aasm_event :register do
     transitions :from => :passive, :to => :pending , :guard => Proc.new {|g| !g.manager_name.blank? and !g.description_short.blank? }
   end
@@ -146,7 +160,11 @@ class Organism < ActiveRecord::Base
   #	end
 
   def is_user_moderator?(user)
-    user && (self.moderators.include?(user) or self.admins.include?(user)) or user.has_system_role('moderator')
+    if user
+      user && (self.moderators.include?(user) or self.admins.include?(user)) or user.has_system_role('moderator')
+    else
+      return false
+    end
 	end
 
   def is_user_member?(user)

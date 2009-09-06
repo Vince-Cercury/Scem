@@ -30,17 +30,15 @@ function GetFolders( $resourceType, $currentFolder )
 	// Array that will hold the folders names.
 	$aFolders	= array() ;
 
-	$oCurrentFolder = @opendir( $sServerDir ) ;
+	$oCurrentFolder = opendir( $sServerDir ) ;
 
-	if ($oCurrentFolder !== false)
+	while ( $sFile = readdir( $oCurrentFolder ) )
 	{
-		while ( $sFile = readdir( $oCurrentFolder ) )
-		{
-			if ( $sFile != '.' && $sFile != '..' && is_dir( $sServerDir . $sFile ) )
-				$aFolders[] = '<Folder name="' . ConvertToXmlAttribute( $sFile ) . '" />' ;
-		}
-		closedir( $oCurrentFolder ) ;
+		if ( $sFile != '.' && $sFile != '..' && is_dir( $sServerDir . $sFile ) )
+			$aFolders[] = '<Folder name="' . ConvertToXmlAttribute( $sFile ) . '" />' ;
 	}
+
+	closedir( $oCurrentFolder ) ;
 
 	// Open the "Folders" node.
 	echo "<Folders>" ;
@@ -62,34 +60,29 @@ function GetFoldersAndFiles( $resourceType, $currentFolder )
 	$aFolders	= array() ;
 	$aFiles		= array() ;
 
-	$oCurrentFolder = @opendir( $sServerDir ) ;
+	$oCurrentFolder = opendir( $sServerDir ) ;
 
-	if ($oCurrentFolder !== false)
+	while ( $sFile = readdir( $oCurrentFolder ) )
 	{
-		while ( $sFile = readdir( $oCurrentFolder ) )
+		if ( $sFile != '.' && $sFile != '..' )
 		{
-			if ( $sFile != '.' && $sFile != '..' )
+			if ( is_dir( $sServerDir . $sFile ) )
+				$aFolders[] = '<Folder name="' . ConvertToXmlAttribute( $sFile ) . '" />' ;
+			else
 			{
-				if ( is_dir( $sServerDir . $sFile ) )
-					$aFolders[] = '<Folder name="' . ConvertToXmlAttribute( $sFile ) . '" />' ;
-				else
-				{
-					$iFileSize = @filesize( $sServerDir . $sFile ) ;
-					if ( !$iFileSize ) {
-						$iFileSize = 0 ;
-					}
-					if ( $iFileSize > 0 )
-					{
-						$iFileSize = round( $iFileSize / 1024 ) ;
-						if ( $iFileSize < 1 )
-							$iFileSize = 1 ;
-					}
-
-					$aFiles[] = '<File name="' . ConvertToXmlAttribute( $sFile ) . '" size="' . $iFileSize . '" />' ;
+				$iFileSize = @filesize( $sServerDir . $sFile ) ;
+				if ( !$iFileSize ) {
+					$iFileSize = 0 ;
 				}
+				if ( $iFileSize > 0 )
+				{
+					$iFileSize = round( $iFileSize / 1024 ) ;
+					if ( $iFileSize < 1 ) $iFileSize = 1 ;
+				}
+
+				$aFiles[] = '<File name="' . ConvertToXmlAttribute( $sFile ) . '" size="' . $iFileSize . '" />' ;
 			}
 		}
-		closedir( $oCurrentFolder ) ;
 	}
 
 	// Send the folders
@@ -159,7 +152,7 @@ function CreateFolder( $resourceType, $currentFolder )
 		$sErrorNumber = '102' ;
 
 	// Create the "Error" node.
-	echo '<Error number="' . $sErrorNumber . '" />' ;
+	echo '<Error number="' . $sErrorNumber . '" originalDescription="' . ConvertToXmlAttribute( $sErrorMsg ) . '" />' ;
 }
 
 function FileUpload( $resourceType, $currentFolder, $sCommand )

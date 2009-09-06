@@ -66,6 +66,15 @@ module UsersHelper
       return url_for login_path
     end
   end
+
+  def current_user_equal(user)
+    if logged_in? && user
+      if current_user.id == user.id
+        return true
+      end
+    end
+    return false
+  end
   
   #
   # Use this to wrap view elements that the user can't access.

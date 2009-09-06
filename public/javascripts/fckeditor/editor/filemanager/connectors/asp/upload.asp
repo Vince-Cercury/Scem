@@ -48,7 +48,7 @@ End If
 	sResourceType = Request.QueryString("Type")
 	If ( sResourceType = "" ) Then sResourceType = "File"
 
-	sCurrentFolder = "/"
+	sCurrentFolder = GetCurrentFolder()
 
 	' Is Upload enabled?
 	if ( Not IsAllowedCommand( sCommand ) ) then

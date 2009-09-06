@@ -130,7 +130,7 @@ Sub CreateFolder( resourceType, currentFolder )
 	End If
 
 	' Create the "Error" node.
-	Response.Write "<Error number=""" & sErrorNumber & """ />"
+	Response.Write "<Error number=""" & sErrorNumber & """ originalNumber=""" & iErrNumber & """ originalDescription=""" & ConvertToXmlAttribute( sErrDescription ) & """ />"
 End Sub
 
 Sub FileUpload( resourceType, currentFolder, sCommand )
@@ -192,11 +192,7 @@ Sub FileUpload( resourceType, currentFolder, sCommand )
 	sFileUrl = CombinePaths( GetResourceTypePath( resourceType, sCommand ) , currentFolder )
 	sFileUrl = CombinePaths( sFileUrl, sFileName )
 
-	If ( sErrorNumber = "0" or sErrorNumber = "201" ) then
-		SendUploadResults sErrorNumber, sFileUrl, sFileName, ""
-	Else
-		SendUploadResults sErrorNumber, "", "", ""
-	End If
+	SendUploadResults sErrorNumber, sFileUrl, sFileName, ""
 End Sub
 
 %>

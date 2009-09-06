@@ -56,10 +56,7 @@ class FCKeditorConnector(	FCKeditorConnectorBase,
 		currentFolder = getCurrentFolder(self.request.get("CurrentFolder"))
 		# Check for invalid paths
 		if currentFolder is None:
-			if (command == "FileUpload"):
-				return self.sendUploadResults( errorNo = 102, customMsg = "" )
-			else:
-				return self.sendError(102, "")
+			return self.sendError(102, "")
 
 		# Check if it is an allowed command
 		if ( not command in Config.ConfigAllowedCommands ):
@@ -82,7 +79,7 @@ class FCKeditorConnector(	FCKeditorConnectorBase,
 		# Ensure that the directory exists.
 		if not os.path.exists(self.userFilesFolder):
 			try:
-				self.createServerFolder( self.userFilesFolder )
+				self.createServerFoldercreateServerFolder( self.userFilesFolder )
 			except:
 				return self.sendError(1, "This connector couldn\'t access to local user\'s files directories.  Please check the UserFilesAbsolutePath in \"editor/filemanager/connectors/py/config.py\" and try again. ")
 

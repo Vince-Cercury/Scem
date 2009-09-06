@@ -50,6 +50,8 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
 
+    set_session_parent_parameters(@event)
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }
@@ -59,6 +61,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    set_session_parent_parameters(@event)
   end
 
   # POST /events
@@ -66,7 +69,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
 
-    #FIXME : put this in table structure instead
+    set_session_parent_parameters(@event)
+
+    #FIXME : put these default parameters in table structure instead
     @event.is_charged=false
     @event.is_private=false
 
@@ -89,6 +94,7 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
+    set_session_parent_parameters(@event)
 
     #deleting all contributions for this event, whatever the role of the organism
     Contribution.delete_all(["event_id = ?", @event.id])

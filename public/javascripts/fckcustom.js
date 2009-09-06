@@ -11,29 +11,42 @@ FCKConfig.ImageUploadURL = FCKRelativePath+'/fckeditor/upload?Type=Image';
 FCKConfig.FlashUploadURL = FCKRelativePath+'/fckeditor/upload?Type=Flash';
 FCKConfig.SpellerPagesServerScript = FCKRelativePath+'/fckeditor/check_spelling';
 FCKConfig.AllowQueryStringDebug = false;
-FCKConfig.SpellChecker = 'SpellerPages';
+FCKConfig.SpellChecker = 'WSC' ;	// 'WSC' | 'SpellerPages' | 'ieSpell'
+
+//FCKConfig.Plugins.Add( 'easyUpload', 'es' ) ;		// easyUpload translated to spanish
+FCKConfig.Plugins.Add( 'easyUpload', 'en' ) ;
+
+FCKConfig.ContextMenu = ['Generic','Anchor','Flash','Select','Textarea','Checkbox','Radio','TextField','HiddenField','ImageButton','Button','BulletedList','NumberedList','Table','Form'] ;
 
 // ONLY CHANGE BELOW HERE
 FCKConfig.SkinPath = FCKConfig.BasePath + 'skins/silver/';
 
+FCKConfig.ToolbarSets["Easy"] = [
+        ['Bold','Italic','Underline','StrikeThrough','-'],
+        ['OrderedList','UnorderedList','-'],
+        ['FontSize'], ['TextColor','BGColor'],
+        ['easyImage', 'easyLink', 'Unlink']
+] ;
+
 FCKConfig.ToolbarSets["Simple"] = [
-	['Source','-','-','Templates'],
-	['Cut','Copy','Paste','PasteWord','-','Print','SpellCheck'],
-	['Undo','Redo','-','Find','Replace','-','SelectAll'],
-	'/',
-	['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
-	['OrderedList','UnorderedList','-','Outdent','Indent'],
-	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
-	['Link','Unlink'],
-	'/',
-	['Image','Table','Rule','Smiley'],
-	['FontName','FontSize'],
-	['TextColor','BGColor'],
-	['-']
+        ['Source','-','-','Templates'],
+        ['Cut','Copy','Paste','PasteWord','-','Print','SpellCheck'],
+        ['Undo','Redo','-','Find','Replace','-','SelectAll'],
+        '/',
+        ['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
+        ['OrderedList','UnorderedList','-','Outdent','Indent'],
+        ['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
+        ['Link','Unlink'],
+        '/',
+        ['Image','Table','Rule','Smiley'],
+        ['FontName','FontSize'],
+        ['TextColor','BGColor'],
+        ['-','About']
 ] ;
 
 FCKConfig.ToolbarSets["Comment"] = [
-	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About', 'Smiley']
+        ['Bold','Italic','Underline','StrikeThrough','-'],
+        ['OrderedList','UnorderedList','-'],
+        ['TextColor','BGColor'],
+        ['Smiley', 'easyLink', 'Unlink']
 ] ;
-
-

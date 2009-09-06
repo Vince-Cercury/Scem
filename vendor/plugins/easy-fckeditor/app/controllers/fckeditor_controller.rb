@@ -186,7 +186,13 @@ class FckeditorController < ActionController::Base
   # Returns the filesystem folder with the current folder
   #
   def current_directory_path
-    base_dir = "#{UPLOADED_ROOT}/#{params[:Type]}"
+    base_dir = "#{UPLOADED_ROOT}/#{session[:parent_type]}/#{session[:parent_id]}/#{params[:Type]}"
+
+
+    #HACK: create automatically a dedicated folder for each object calling the editor
+    Dir.mkdir("#{UPLOADED_ROOT}/#{session[:parent_type]}",0775) unless File.exists?("#{UPLOADED_ROOT}/#{session[:parent_type]}")
+    Dir.mkdir("#{UPLOADED_ROOT}/#{session[:parent_type]}/#{session[:parent_id]}",0775) unless File.exists?("#{UPLOADED_ROOT}/#{session[:parent_type]}/#{session[:parent_id]}")
+
     Dir.mkdir(base_dir,0775) unless File.exists?(base_dir)
     check_path("#{base_dir}#{params[:CurrentFolder]}")
   end
@@ -196,7 +202,7 @@ class FckeditorController < ActionController::Base
   #
   def upload_directory_path
     url_root = ActionController::Base.relative_url_root.to_s
-    uploaded = url_root + "#{UPLOAD_FOLDER}/#{params[:Type]}"
+    uploaded = url_root + "#{UPLOAD_FOLDER}/#{session[:parent_type]}/#{session[:parent_id]}/#{params[:Type]}"
     "#{uploaded}#{params[:CurrentFolder]}"
   end
 

@@ -119,10 +119,6 @@ FCKConfig.ToolbarSets["Basic"] = [
 	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About']
 ] ;
 
-FCKConfig.ToolbarSets["Comment"] = [
-	['Bold','Italic','-','OrderedList','UnorderedList','-','Link','Unlink','-','About', 'Smiley']
-] ;
-
 FCKConfig.EnterMode = 'p' ;			// p | div | br
 FCKConfig.ShiftEnterMode = 'br' ;	// p | div | br
 

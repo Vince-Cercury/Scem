@@ -38,8 +38,9 @@ class CommentsController < ApplicationController
           comment.activate!
           flash[:notice] = 'Comment was successfully added.'
         end
-         
-        format.html { redirect_to(commentable_object) }
+
+
+        format.html { redirect_to(url_for_even_polymorphic(commentable_object)) }
         format.xml  { render :xml => commentable_object, :status => :created, :location => commentable_object }
       else
         format.html { render :action => "new" }

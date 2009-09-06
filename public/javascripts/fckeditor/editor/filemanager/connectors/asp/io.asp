@@ -175,8 +175,6 @@ End Function
 
 function GetCurrentFolder()
 	dim sCurrentFolder
-	dim oRegex
-
 	sCurrentFolder = Request.QueryString("CurrentFolder")
 	If ( sCurrentFolder = "" ) Then sCurrentFolder = "/"
 
@@ -186,14 +184,6 @@ function GetCurrentFolder()
 
 	' Check for invalid folder paths (..)
 	If ( InStr( 1, sCurrentFolder, ".." ) <> 0 OR InStr( 1, sCurrentFolder, "\" ) <> 0) Then
-		SendError 102, ""
-	End If
-
-	Set oRegex = New RegExp
-	oRegex.Global		= True
-	oRegex.Pattern = "(/\.)|(//)|([\\:\*\?\""\<\>\|]|[\u0000-\u001F]|\u007F)"
-
-	if (oRegex.Test(sCurrentFolder)) Then
 		SendError 102, ""
 	End If
 

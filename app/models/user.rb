@@ -29,6 +29,20 @@ class User < ActiveRecord::Base
   #  :after_message => ": too old, 130 is the max",
   #  :allow_nil => false
 
+  has_many :posts, :as => :parent, :dependent => :destroy
+
+  def search_posts(search, page)
+    posts.paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :conditions => ['name like ?',"%#{search}%"],
+      :order => 'created_at DESC'
+  end
+
+  def search_posts_by_state(search, page, state)
+    posts.paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :conditions => ['name like ? and state=?', "%#{search}%", state],
+      :order => 'created_at DESC'
+  end
+
   has_many :organisms_users
   has_many :organisms, :through => :organisms_users
   with_options :through => :organisms_users, :source => :organism do |obj|
@@ -121,6 +135,21 @@ class User < ActiveRecord::Base
     end
 
   end
+
+  def get_moderators_list
+    moderators_list = Array.new
+    moderators_list +=self
+  end
+
+  def is_user_moderator?(user)
+    if user
+      if id==user.id
+        return true
+      end
+    end
+    return false
+  end
+
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

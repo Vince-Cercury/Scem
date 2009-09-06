@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090831145715) do
+ActiveRecord::Schema.define(:version => 20090904133012) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -154,6 +154,24 @@ ActiveRecord::Schema.define(:version => 20090831145715) do
     t.integer  "activated_at"
     t.integer  "position",              :default => 1
     t.boolean  "cover",                 :default => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "name"
+    t.text     "text_short"
+    t.text     "text_long"
+    t.integer  "creator_id"
+    t.string   "state",        :default => "passive"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.integer  "activated_by"
+    t.datetime "activated_at"
+    t.integer  "suspended_by"
+    t.datetime "suspended_at"
+    t.integer  "edited_by"
+    t.datetime "edited_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ratings", :force => true do |t|

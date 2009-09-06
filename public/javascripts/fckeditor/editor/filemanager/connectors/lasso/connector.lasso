@@ -38,8 +38,8 @@
     Convert query string parameters to variables and initialize output.
     */
 	var(
-		'Command'		=	(Encode_HTML: action_param('Command')),
-		'Type'			=	(Encode_HTML: action_param('Type')),
+		'Command'		=	action_param('Command'),
+		'Type'			=	action_param('Type'),
 		'CurrentFolder'	=	action_param('CurrentFolder'),
 		'ServerPath'	=	action_param('ServerPath'),
 		'NewFolderName'	=	action_param('NewFolderName'),
@@ -70,16 +70,45 @@
 	);
 		$__html_reply__ = '\
 <script type="text/javascript">
-(function(){var d=document.domain;while (true){try{var A=window.parent.document.domain;break;}catch(e) {};d=d.replace(/.*?(?:\\.|$)/,\'\');if (d.length==0) break;try{document.domain=d;}catch (e){break;}}})();
+(function()
+{
+	var d = document.domain ;
+
+	while ( true )
+	{
+		// Test if we can access a parent property.
+		try
+		{
+			var test = window.top.opener.document.domain ;
+			break ;
+		}
+		catch( e ) {}
+
+		// Remove a domain part: www.mytest.example.com => mytest.example.com => example.com ...
+		d = d.replace( /.*?(?:\\.|$)/, "" ) ;
+
+		if ( d.length == 0 )
+			break ;		// It was not able to detect the domain.
+
+		try
+		{
+			document.domain = d ;
+		}
+		catch (e)
+		{
+			break ;
+		}
+	}
+})() ;
 ';
 			if($uploadResult == '0' || $uploadResult == '201');
 			$__html_reply__ = $__html_reply__ + '\
-	window.parent.OnUploadCompleted(' + $uploadResult + ',"' + $NewFilePath + '","' + $NewFilePath->split('/')->last + '");
+	window.parent.OnUploadCompleted(' + $uploadResult + ',\'' + $NewFilePath + '\',\'' + $NewFilePath->split('/')->last + '\');
 </script>
 			';
 			else;
 			$__html_reply__ = $__html_reply__ + '\
-	window.parent.OnUploadCompleted(' + $uploadResult + ',"","");
+	window.parent.OnUploadCompleted(' + $uploadResult + ');
 </script>
 			';
 			/if;
@@ -96,20 +125,7 @@
 		+ $CurrentFolder
 	);
 
-	$currentFolderURL = string_replace($currentFolderURL, -find='//', -replace='/');
-
-	if (!$config->find('Subdirectories')->find(action_param('Type')));
-		if($Command == 'FileUpload');
-			$responseType = 'html';
-			$uploadResult = '1';
-			fck_htmlreply(
-				-uploadResult=$uploadResult
-			);
-		else;
-			$errorNumber = 1;
-			$commandData += '<Error number="' + $errorNumber + '" text="Invalid type specified" />\n';
-		/if;
-	else if($CurrentFolder->(Find: '..') || (String_FindRegExp: $CurrentFolder, -Find='(/\\.)|(//)|[\\\\:\\*\\?\\""\\<\\>\\|]|\\000|[\u007F]|[\u0001-\u001F]'));
+	if($CurrentFolder->(Find: '..') || $CurrentFolder->(Find: '\\'));
 		if($Command == 'FileUpload');
 			$responseType = 'html';
 			$uploadResult = '102';
@@ -126,8 +142,7 @@
     Build the appropriate response per the 'Command' parameter. Wrap the
     entire process in an inline for file tag permissions.
     */
-		if($config->find('Enabled'));
-		inline($connection);
+	inline($connection);
 		select($Command);
             /*.............................................................
             List all subdirectories in the 'Current Folder' directory.
@@ -151,13 +166,7 @@
 					if(#this->endswith('/'));
 						$folders += '\t\t<Folder name="' + #this->removetrailing('/')& + '" />\n';
 					else;
-						local('size') = file_getsize($currentFolderURL + #this);
-						if($size>0);
-							$size = $size/1024;
-							if ($size==0);
-								$size = 1;
-							/if;
-						/if;
+						local('size') = file_getsize($currentFolderURL + #this) / 1024;
 						$files += '\t\t<File name="' + #this + '" size="' + #size + '" />\n';
 					/if;
 				/iterate;
@@ -172,7 +181,7 @@
             Create a directory 'NewFolderName' within the 'Current Folder.'
             */
 			case('CreateFolder');
-				$NewFolderName = (String_ReplaceRegExp: $NewFolderName, -find='\\.|\\\\|\\/|\\||\\:|\\?|\\*|"|<|>|\\000|[\u007F]|[\u0001-\u001F]', -replace='_');
+				$NewFolderName = (String_ReplaceRegExp: $NewFolderName, -find='\\.|\\\\|\\/|\\||\\:|\\?|\\*|"|<|>', -replace='_');
 				var('newFolder' = $currentFolderURL + $NewFolderName + '/');
 				file_create($newFolder);
 
@@ -224,23 +233,18 @@
                     files. (Test.txt, Test(1).txt, Test(2).txt, etc.)
                     */
 					$NewFileName = $NewFile->find('OrigName');
-					$NewFileName = (String_ReplaceRegExp: $NewFileName, -find='\\\\|\\/|\\||\\:|\\?|\\*|"|<|>|\\000|[\u007F]|[\u0001-\u001F]', -replace='_');
-					$NewFileName = (String_ReplaceRegExp: $NewFileName, -find='\\.(?![^.]*$)', -replace='_');
+					$NewFileName = (String_ReplaceRegExp: $NewFileName, -find='\\\\|\\/|\\||\\:|\\?|\\*|"|<|>', -replace='_');
 					$OrigFilePath = $currentFolderURL + $NewFileName;
 					$NewFilePath = $OrigFilePath;
 					local('fileExtension') = '.' + $NewFile->find('OrigExtension');
-					#fileExtension = (String_ReplaceRegExp: #fileExtension, -find='\\\\|\\/|\\||\\:|\\?|\\*|"|<|>|\\000|[\u007F]|[\u0001-\u001F]', -replace='_');
+					#fileExtension = (String_ReplaceRegExp: #fileExtension, -find='\\\\|\\/|\\||\\:|\\?|\\*|"|<|>', -replace='_');
 					local('shortFileName') = $NewFileName->removetrailing(#fileExtension)&;
 
 
                     /*.....................................................
                     Make sure the file extension is allowed.
                     */
-					local('allowedExt') = $config->find('AllowedExtensions')->find($Type);
-					local('deniedExt') = $config->find('DeniedExtensions')->find($Type);
-					if($allowedExt->Size > 0 && $allowedExt !>> $NewFile->find('OrigExtension'));
-						$uploadResult = '202';
-					else($deniedExt->Size > 0 && $deniedExt >> $NewFile->find('OrigExtension'));
+					if($config->find('DeniedExtensions')->find($Type) >> $NewFile->find('OrigExtension'));
 						$uploadResult = '202';
 					else;
                         /*.................................................
@@ -273,15 +277,8 @@
 					-uploadResult=$uploadResult,
 					-NewFilePath=$NewFilePath
 				);
-			case;
-				$errorNumber = 1;
-				$commandData += '<Error number="' + $errorNumber + '" text="Command isn\'t allowed" />\n';
 		/select;
-		/inline;
-		else;
-			$errorNumber = 1;
-			$commandData += '<Error number="' + $errorNumber + '" text="This file uploader is disabled. Please check the editor/filemanager/upload/lasso/config.lasso file." />\n';
-		/if;
+	/inline;
 	/if;
 
     /*.....................................................................
@@ -312,16 +309,11 @@ Content-Type: text/xml; charset=utf-8
 			Wrap the response as XML and output.
 		*/
 		$__html_reply__ = '\
-<?xml version="1.0" encoding="utf-8" ?>';
+<?xml version="1.0" encoding="utf-8" ?>
+<Connector command="' + $Command + '" resourceType="' + $Type + '">';
 
 		if($errorNumber != '102');
-			$__html_reply__ += '<Connector command="' + (Encode_HTML: $Command) + '" resourceType="' + (Encode_HTML: $Type) + '">';
-		else;
-			$__html_reply__ += '<Connector>';
-		/if;
-
-		if($errorNumber != '102');
-			$__html_reply__ += '<CurrentFolder path="' + (Encode_HTML: $CurrentFolder) + '" url="' + (Encode_HTML: $currentFolderURL) + '" />';
+			$__html_reply__ += '<CurrentFolder path="' + $CurrentFolder + '" url="' + $currentFolderURL + '" />';
 		/if;
 
 		$__html_reply__ += $commandData + '

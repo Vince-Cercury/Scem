@@ -71,13 +71,9 @@ class GetFoldersAndFilesCommandMixin (object):
 						)
 			elif os.path.isfile(someObjectPath):
 				size = os.path.getsize(someObjectPath)
-				if size > 0:
-					size = round(size/1024)
-					if size < 1:
-						size = 1
-				files += """<File name="%s" size="%d" />""" % (
+				files += """<File name="%s" size="%s" />""" % (
 						convertToXmlAttribute(someObject),
-						size
+						os.path.getsize(someObjectPath)
 						)
 		# Close the folders / files node
 		folders += """</Folders>"""
@@ -167,7 +163,7 @@ class UploadFileCommandMixin (object):
 					newFilePath = os.path.join (currentFolderPath,newFileName)
 					if os.path.exists(newFilePath):
 						i += 1
-						newFileName = "%s(%d).%s" % (
+						newFileName = "%s(%04d).%s" % (
 								newFileNameOnly, i, newFileExtension
 								)
 						errorNo= 201 # file renamed
@@ -193,10 +189,10 @@ class UploadFileCommandMixin (object):
 								os.chmod( newFilePath, permissions )
 								os.umask( oldumask )
 
-						newFileUrl = combinePaths(self.webUserFilesFolder, currentFolder) + newFileName
+						newFileUrl = self.webUserFilesFolder + currentFolder + newFileName
 
 						return self.sendUploadResults( errorNo , newFileUrl, newFileName )
 			else:
-				return self.sendUploadResults( errorNo = 202, customMsg = "" )
+				return self.sendUploadResults( errorNo = 203, customMsg = "Extension not allowed" )
 		else:
 			return self.sendUploadResults( errorNo = 202, customMsg = "No File" )

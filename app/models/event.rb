@@ -4,6 +4,20 @@ class Event < ActiveRecord::Base
 
   has_one :picture, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'"
 
+  has_many :posts, :as => :parent, :dependent => :destroy
+
+  def search_posts(search, page)
+    posts.paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :conditions => ['name like ?',"%#{search}%"],
+      :order => 'created_at DESC'
+  end
+
+  def search_posts_by_state(search, page, state)
+    posts.paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :conditions => ['name like ? and state=?', "%#{search}%", state],
+      :order => 'created_at DESC'
+  end
+
   acts_as_commentable
 
   acts_as_rateable
@@ -86,13 +100,14 @@ class Event < ActiveRecord::Base
 
   def is_user_moderator?(user)
     result = false
-  
-    if  user.has_system_role('moderator')
-	result = true
-    end
-    self.publishers.each do |organism|
-      if organism.is_user_moderator?(user)
+    if(user)
+      if  user.has_system_role('moderator')
         result = true
+      end
+      self.publishers.each do |organism|
+        if organism.is_user_moderator?(user)
+          result = true
+        end
       end
     end
     return result
@@ -122,6 +137,7 @@ class Event < ActiveRecord::Base
   def get_parent_object
     nil
   end
+
 
 end
 

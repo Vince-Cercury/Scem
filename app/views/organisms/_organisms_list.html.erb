@@ -5,19 +5,24 @@
       <%= display_organism_cover(organism, "small") %>
     </div>
     <div class="span-12 last">
-       <div class="box">
-      <h4 class="prepend-5"><%= link_to(organism.name, organism) %></h4>
+      <div class="box">
+        <h4 class="prepend-5"><%= link_to(organism.name, organism) %></h4>
 
         <%=h organism.description_short %>
-      <div class="quiet">
-        <%= render :partial => "rating/mini_rating", :locals => { :current_object => organism } if organism.rating > 0 %>
-        <br />
-       ( <%= link_to 'Edit', edit_organism_path(organism) %> |
+        <div class="quiet">
+          <%= render :partial => "rating/mini_rating", :locals => { :current_object => organism } if organism.rating > 0 %>
+          <br />
+          ( <%= link_to 'Edit', edit_organism_path(organism) %> |
           <%= link_to 'Destroy', organism, :confirm => 'Are you sure?', :method => :delete %> )
-      </div>
+        </div>
       </div>
     </div>
     <hr />
   <% end %>
   <%= will_paginate @organisms %>
+  <% if @organisms.size == 0 %>
+    <div class="box">
+      Sorry, no result
+    </div>
+  <% end %>
 </div>

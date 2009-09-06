@@ -1,6 +1,7 @@
 <ul class='tabs'>
 <li><% if controller_name != 'events' || controller.action_name=='edit' %><%= link_to("Profil", @event) %><% else %>Profil<% end %></li>
-<li><% if controller_name != "participations" %><%= link_to("Participants", event_participations_path(:event_id => @event.id, :role =>:members)) %><% else %>Participants<% end %></li>
+<% if @event.posts.size > 0 || is_event_moderator?(@event) %><li><% if controller_name != 'posts' %><%= link_to("Blog", event_posts_path(:event_id => @event.id)) %><% else %>Blog<% end %></li><% end %>
+<li><% if controller_name != "participations" %><%= link_to("Participants", event_participations_path(:event_id => @event.id, :role =>:sure)) %><% else %>Participants<% end %></li>
 <li><% if controller_name != 'event_galleries' %><%= link_to("Pictures galleries", event_galleries_path(:event_id => @event.id)) %><% else %>Pictures galleries<% end %></li>
 <% if is_event_moderator?(@event) %><li><% if (controller_name != 'events' || controller.action_name!='edit') %><%= link_to("Edit", edit_event_path(@event)) %><% else %>Edit<% end %></li><% end %>
 </ul>

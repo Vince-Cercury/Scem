@@ -29,6 +29,7 @@ global $Config ;
 //		authenticated users can access this file or use some kind of session checking.
 $Config['Enabled'] = false ;
 
+
 // Path to user files relative to the document root.
 $Config['UserFilesPath'] = '/userfiles/' ;
 

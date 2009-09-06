@@ -13,17 +13,17 @@ class CommentObserver < ActiveRecord::Observer
       if @moderation_state
         puts "comment moderation is ON"
         @list_moderators.each do |user|
-          CommentMailer.deliver_to_moderators_creation_moderate(user, comment, @controller) if user.receive_comment_notification
+          CommentMailer.deliver_to_moderators_creation_moderate(user, comment, @commentable_object) if user.receive_comment_notification
         end
       else
         puts "comment moderation is off"
         @list_moderators.each do |user|
           puts "deliver email to user (moderator) with id=#{user.id}"
-          CommentMailer.deliver_to_moderators_creation_notification(user, comment, @controller) if user.receive_comment_notification
+          CommentMailer.deliver_to_moderators_creation_notification(user, comment, @commentable_object) if user.receive_comment_notification
         end
         @list_sys_moderators.each do |user|
           puts "deliver email to user (system moderator) with id=#{user.id}"
-          CommentMailer.deliver_to_sys_moderators_creation_notification(user, comment, @controller) if user.receive_comment_notification
+          CommentMailer.deliver_to_sys_moderators_creation_notification(user, comment, @commentable_object) if user.receive_comment_notification
         end
       end
 
@@ -42,11 +42,11 @@ class CommentObserver < ActiveRecord::Observer
       if comment.recently_activated?
         puts "comment recently activated"
         #send a notification that the comment has been accepted to the author of the comment
-        CommentMailer.deliver_to_author_accepted_notification(@user_creator, comment, @controller)
+        CommentMailer.deliver_to_author_accepted_notification(@user_creator, comment, @commentable_object)
         
         @list_sys_moderators.each do |user|
           puts "deliver email to user (system moderator) with id=#{user.id}"
-          CommentMailer.deliver_to_sys_moderators_accepted_notification(user, comment, @controller) if user.receive_comment_notification
+          CommentMailer.deliver_to_sys_moderators_accepted_notification(user, comment, @commentable_object) if user.receive_comment_notification
         end
       end
     end
@@ -56,7 +56,7 @@ class CommentObserver < ActiveRecord::Observer
       puts "comment recently suspended"
       @list_sys_moderators.each do |user|
         puts "deliver email to user (system moderator) with id=#{user.id}"
-        CommentMailer.deliver_to_sys_moderators_suspended_notification(user, comment, @controller) if user.receive_comment_notification
+        CommentMailer.deliver_to_sys_moderators_suspended_notification(user, comment, @commentable_object) if user.receive_comment_notification
       end
     end
 
@@ -79,20 +79,6 @@ class CommentObserver < ActiveRecord::Observer
     @commentable_object = Comment.find_commentable(comment.commentable_type, comment.commentable_id)
 
     prep_list_sys_admins_or_modo
-
-    #for every type of commentable, find moderators for notifiying
-    case comment.commentable_type
-    when "Event"
-      @controller = "events"
-    when "Organism"
-      @controller = "organisms"
-    when "Picture"
-      @controller = "pictures"
-    when "Gallery"
-      @controller = "galleries"
-    else
-      @controller = "unknow"
-    end
 
     @list_moderators = @commentable_object.get_moderators_list
 

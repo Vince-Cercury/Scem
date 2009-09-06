@@ -112,7 +112,7 @@ sub CreateFolder
 	}
 	# Create the "Error" node.
 	$cnv_errmsg = &ConvertToXmlAttribute($sErrorMsg);
-	print '<Error number="' . $sErrorNumber . '" />';
+	print '<Error number="' . $sErrorNumber . '" originalDescription="' . $cnv_errmsg . '" />';
 }
 
 sub FileUpload
@@ -120,7 +120,6 @@ sub FileUpload
 eval("use File::Copy;");
 
 	local($resourceType, $currentFolder) = @_;
-	$allowedExtensions = $allowedExtensions{$resourceType};
 
 	$sErrorNumber = '0' ;
 	$sFileName = '' ;
@@ -131,18 +130,6 @@ eval("use File::Copy;");
 		# Get the uploaded file name.
 		$sFileName = $new_fname;
 		$sFileName =~ s/\\|\/|\||\:|\?|\*|\"|<|>|[[:cntrl:]]/_/g;
-		$sFileName =~ s/\.(?![^.]*$)/_/g;
-
-		$ext = '';
-		if($sFileName =~ /([^\\\/]*)\.(.*)$/) {
-			$ext  = $2;
-		}
-
-		$allowedRegex = qr/^($allowedExtensions)$/i;
-		if (!($ext =~ $allowedRegex)) {
-			SendUploadResults('202', '', '', '');
-		}
-
 		$sOriginalFileName = $sFileName;
 
 		$iCounter = 0;
@@ -174,7 +161,7 @@ eval("use File::Copy;");
 	}
 	$sFileName	=~ s/"/\\"/g;
 
-	SendUploadResults($sErrorNumber, $GLOBALS{'UserFilesPath'}.$resourceType.$currentFolder.$sFileName, $sFileName, '');
+	SendUploadResults($sErrorNumber, $resourceType.$currentFolder.$sFileName, $sFileName, '');
 }
 
 sub SendUploadResults

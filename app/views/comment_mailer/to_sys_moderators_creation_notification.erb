@@ -5,7 +5,7 @@ A comment has been created. Moderation is not activated.
 By so, the comment is already published and visible.
 
 Comment's text:
-  <%=h @comment.text %>
+  <%= @comment.text %>
 
 You can eventually:
 
@@ -16,6 +16,6 @@ Suspend the comment:
   <%=h @url_suspend %>
 
 You can see the comment in its context:
- <%=h @url_context %>
+  <%= @parent_object_url %>
 
 Regards.

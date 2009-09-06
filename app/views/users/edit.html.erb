@@ -1,6 +1,23 @@
-<h1>Editing user</h1>
+<%= render :partial => "/users/header" %>
+<h4>Editing user</h4>
 <% if current_user.facebook_user? %>
-  Not Available. You've connected with Facebook, please go on facebook to edit your information
+  You've connected with Facebook, please go on facebook to edit all your information.
+  Nevertheless you can edit some specific parameters here
+    <% form_for(@user) do |f| %>
+    <%= f.error_messages %>
+
+    <p>
+      <%= f.label :receive_comment_notification %><br />
+      <%= f.check_box :receive_comment_notification %>
+    </p>
+    <p>
+      <%= f.label :receive_picture_notification %><br />
+      <%= f.check_box :receive_picture_notification %>
+    </p>
+    <p>
+      <%= f.submit 'Update' %>
+    </p>
+  <% end %>
 <% else %>
   <% form_for(@user) do |f| %>
     <%= f.error_messages %>

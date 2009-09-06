@@ -58,7 +58,9 @@
 <% if @organism.description_long && @organism.description_long!='' %>
 
   <div class="box">
-    <%= @organism.description_long %>
+    <div class="whitebox">
+      <%= @organism.description_long %>
+    </div>
   </div>
   <hr />
 <% end %>

@@ -139,9 +139,7 @@ _HTML_TAG_
 	$BasePath = $sBasePath;
 
 	if($FORM{'Skin'} ne "") {
-		$skin = $FORM{'Skin'};
-		$skin =~ s/[^a-z0-9]//ig;
-		$Config{'SkinPath'} = $sBasePath . 'editor/skins/' . $skin . '/' ;
+		$Config{'SkinPath'} = $sBasePath . 'editor/skins/' . &specialchar_cnv( $FORM{'Skin'} ) . '/' ;
 	}
 	$Value = '<p>This is some <strong>sample text</strong>. You are using <a href="http://www.fckeditor.net/">FCKeditor</a>.</p>' ;
 	&Create() ;

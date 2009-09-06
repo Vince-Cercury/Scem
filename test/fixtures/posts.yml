@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  text_short: MyText
+  text_long: MyText
+  creator_id: 1
+  state: MyString
+  parent_id: 1
+  parent_type: MyString
+  activated_by: 1
+  activated_at: 2009-09-04 15:30:12
+  suspended_by: 1
+  suspended_at: 2009-09-04 15:30:12
+  edited_by: 1
+  edited_at: 2009-09-04 15:30:12
+
+two:
+  name: MyString
+  text_short: MyText
+  text_long: MyText
+  creator_id: 1
+  state: MyString
+  parent_id: 1
+  parent_type: MyString
+  activated_by: 1
+  activated_at: 2009-09-04 15:30:12
+  suspended_by: 1
+  suspended_at: 2009-09-04 15:30:12
+  edited_by: 1
+  edited_at: 2009-09-04 15:30:12

@@ -70,16 +70,16 @@ for key in form.keys():
 					<th>%s</th>
 					<td><pre>%s</pre></td>
 				</tr>
-			""" % (cgi.escape(key), cgi.escape(value))
+			""" % (key, value)
 	except Exception, e:
 		print e
 print "</table>"
 
 # For testing your environments
-#print "<hr>"
-#for key in os.environ.keys():
-#	print "%s: %s<br>" % (key, os.environ.get(key, ""))
-#print "<hr>"
+print "<hr>"
+for key in os.environ.keys():
+	print "%s: %s<br>" % (key, os.environ.get(key, ""))
+print "<hr>"
 
 # Document footer
 print """
