@@ -1,3 +1,10 @@
-log/*
-config/*
+log/*.log
+config/deploy*
+config/environment.rb
+config/database.yml
+config/facebooker.yml
+config/environments/development.rb
+config/environments/production.rb
+config/environments/test.rb
 public/system/attacheds/*
+public/uploads/*
