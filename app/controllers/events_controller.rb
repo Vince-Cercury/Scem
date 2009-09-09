@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   # Protect these actions behind a moderator login
   # TODO: implement aasm for events
-  before_filter :is_granted_to_edit?, :except => [:show, :index, :create] 
+  before_filter :is_granted_to_edit?, :except => [:show, :index, :create, :new]
   
 
   #Protect this action by cheking of logged in AND if owner of the account or admin or moderator for editing
