@@ -3,6 +3,8 @@
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
+  include ExceptionNotifiable
+  
 
 
   helper :all # include all helpers, all the time
