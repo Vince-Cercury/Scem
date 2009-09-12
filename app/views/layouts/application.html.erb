@@ -24,40 +24,43 @@
     <%= fb_connect_javascript_tag %>
     <%= init_fb_connect "XFBML"%>
     <div class="container">
-      <div class="span-10 prepend-13 append-1">
+      <div class="span-11 prepend-11 append-2">
 
         <%= render :partial => "users/user_bar" %>
 
       </div>
       <!--Header of the web site containing menus -->
       <div id="header" class="span-24">
-        <div class="span-8">
-
-          <%= link_to(image_tag("logo108.jpg"), url_for(root_path)) %>
+        <div class="span-11">
+          
+          <%= link_to(image_tag("logo_long_lebounce.jpg"), url_for(root_path)) %>
 
         </div>
-        <div class="span-16 last prepend-top">
-          <div class="box">
-
-            <%= link_to("Events by dates", url_for(terms_path)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= link_to("Yellow pages", url_for(activities_path)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= link_to("Pictures Galleries", url_for(galleries_path)) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <%= link_to("Users", url_for(users_path)) %>
-            <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="span-13 last">
+          <div class="mainmenubox">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             (<%= link_to("events", url_for(events_path)) %> -
             <%= link_to("organisms", url_for(organisms_path)) %> -
             <%= link_to("categories", url_for(categories_path)) %> -
             <%= link_to("pictures", url_for(pictures_path)) %>)
+            <br /><br />
+          <ul class='tabs'>
+            <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to("Events by dates", url_for(terms_path)) %><% else %>Events by dates<% end %></li>
+            <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to("Yellow pages", url_for(activities_path)) %><% else %>Yellow pages<% end %></li>
+            <li><% if controller_name != 'galleries' %><%= link_to("Pictures Galleries", url_for(galleries_path)) %><% else %>Pictures Galleries<% end %></li>
+            <li><% if controller_name != 'users' %><%= link_to("Users", url_for(users_path)) %><% else %>Users<% end %></li>
+          </ul>
+            
 
           </div>
         </div>
 
         <hr />
         <ul class='tabs'>
-          <li><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first))) %></li>
+          <li><% if (controller_name == 'categories' && params[:id].to_i==categories_not_to_display.first.id) or controller_name == 'terms' %><%= categories_not_to_display.first.name %><% else %><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first))) %><% end %></li>
 
-          <% categories_to_display.each do |@category| %>
-            <li><%= link_to(@category.name, url_for(category_path(@category))) %></li>
+          <% categories_to_display.each do |category| %>
+            <li><% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= category.name %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %></li>
           <% end %>
         </ul>
 
@@ -70,7 +73,12 @@
       <div id="subheader" class="span-24 last">
         <!-- Main big left column -->
         <div class="span-17 colborder" id="content">
-
+          <p>
+            This site is a prototype. If you want to report feedbacks or contribute, please visit <a href="http://github.com/VinceMD/Scem/tree/master">GitHub</a><br />
+            Ce site est un prototype.
+            Si vous voulez contribuer ou reporter un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a>
+          </p>
+          <hr />
           <% flash.each do |key, msg| %>
             <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
           <% end %>
