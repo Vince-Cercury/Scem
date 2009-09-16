@@ -3,9 +3,9 @@ module ApplicationHelper
 
  def get_url_past_or_futur_tab
 	if @category.nil?
-		return terms_path(:period => @period_link_param)
+		return terms_path(:period => @period_link_param, :date => params[:date])
 	else
-		return category_path(:id => @category.id, :period => @period_link_param)
+		return category_path(:id => @category.id, :period => @period_link_param, :date => params[:date])
 	end
  end
 

@@ -30,8 +30,6 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
 
-
-
     if params[:date].nil?
       if params[:period] == "past"
         @period_link_param = "futur"
@@ -41,8 +39,21 @@ class CategoriesController < ApplicationController
         @terms = Term.search_futur_by_category(params[:search], params[:page], params[:id])
       end
     else
-      the_date = Time.parse(params[:date])
-      @terms = Term.search_by_date_and_category(params[:search], params[:page], params[:id], the_date)
+      @the_selected_date = Time.parse(params[:date])
+      today = Time.now
+      
+      #if date selected is the same as today
+      if @the_selected_date.strftime("%y") == today.strftime("%y") && @the_selected_date.strftime("%m") == today.strftime("%m") && @the_selected_date.strftime("%d") == today.strftime("%d")
+        if params[:period] == "past"
+          @period_link_param = "futur"
+          @terms = Term.search_ended_by_category(params[:search], params[:page], params[:id])
+        else
+          @period_link_param = "past" 
+          @terms = Term.search_by_date_and_category(params[:search], params[:page], params[:id], @the_selected_date)
+        end
+      else
+        @terms = Term.search_by_date_and_category(params[:search], params[:page], params[:id], @the_selected_date)
+      end
     end
     respond_to do |format|
       format.html

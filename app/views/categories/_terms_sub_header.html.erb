@@ -1,0 +1,14 @@
+<% if @category.nil? %> <h3 class="caps">LISTING EVENTS</h3><% end %>
+
+<% if @period_link_param %>
+  <ul class="tabs">
+    <li><% if params[:period]=='past'%><%= link_to "Events occuring today", get_url_past_or_futur_tab %><% else %>Events occuring today<% end %></li>
+    <li><% if params[:period]!='past'%><%= link_to "Events finished today", get_url_past_or_futur_tab %><% else %>Events finished today<% end %></li>
+  </ul>
+<% else %>
+  <ul class="tabs">
+    <li><%= link_to "Events occuring #{display_simpliest_date(@the_selected_date)} ", get_url_past_or_futur_tab %></li>
+  </ul>
+<% end %>
+
+

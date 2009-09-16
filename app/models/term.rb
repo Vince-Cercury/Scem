@@ -72,6 +72,13 @@ class Term < ActiveRecord::Base
       :conditions => ['events.name LIKE ? and start <= NOW() and categories.id = ?', "%#{search}%",  category_id],
       :order => 'start DESC'
   end
+  def self.search_ended_by_category(search, page, category_id)
+    paginate  :per_page => ENV['PER_PAGE'],
+      :page => page,
+      :include => [ {:event => :categories}],
+      :conditions => ['events.name LIKE ? and end <= NOW() and categories.id = ?', "%#{search}%",  category_id],
+      :order => 'end DESC'
+  end
 
   def self.search_by_date_and_category(search, page, category_id, the_date)
     #preparing 2 datetime dates from year, month, day
@@ -87,6 +94,8 @@ class Term < ActiveRecord::Base
       :conditions => ['events.name LIKE ? and categories.id = ? and start < ? and end > ?', "%#{search}%", category_id, end_of_day, start_of_day],
       :order => 'start ASC'
   end
+
+
 
 
   def self.count_occuring_in_the_day(category_id, the_date)
