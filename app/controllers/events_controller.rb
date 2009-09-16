@@ -7,6 +7,8 @@ class EventsController < ApplicationController
   # Protect these actions behind an admin login
   before_filter :is_admin?, :only => [:destroy]#, :purge]
 
+  before_filter :is_granted_to_create?, :only => [:create, :new]
+
   # Protect these actions behind a moderator login
   # TODO: implement aasm for events
   before_filter :is_granted_to_edit?, :except => [:show, :index, :create, :new]
@@ -163,9 +165,25 @@ class EventsController < ApplicationController
     not_granted_redirection unless current_user && event.is_granted_to_edit?(current_user)
   end
 
+  def is_granted_to_create?
+    not_moderator_of_any_organism unless current_user && (current_user.has_system_role("moderator") or current_user.is_admin_of.size > 0 or current_user.is_moderator_of.size > 0)
+  end
+  
+
   def not_granted_redirection
     if current_user
       flash[:error] = "Not allowed to do this."
+      redirect_back_or_default('/')
+    else
+      flash[:error] = "Not allowed to do this. May be log in could help."
+      redirect_to login_path
+    end
+
+  end
+
+  def not_moderator_of_any_organism
+    if current_user
+      flash[:error] = "To create an event, you must be at least a moderator or an admin. You can try to create an organism first."
       redirect_back_or_default('/')
     else
       flash[:error] = "Not allowed to do this. May be log in could help."
