@@ -22,7 +22,7 @@ class OrganismsUserMailer < ActionMailer::Base
   protected
   def setup_email(receiver, user, organism, role)
     @recipients  = "#{receiver.email}"
-    @from        = "ADMINEMAIL"
+    @from        = "#{ENV['ADMINEMAIL']}"
     @subject     = "[SCEM] "
     @sent_on     = Time.now
     @body[:user] = user
