@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090904133012) do
+ActiveRecord::Schema.define(:version => 20090916092711) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -111,6 +111,8 @@ ActiveRecord::Schema.define(:version => 20090904133012) do
     t.datetime "activated_at"
     t.string   "state",                            :default => "passive"
     t.string   "members_password"
+    t.integer  "created_by"
+    t.integer  "edited_by"
   end
 
   create_table "organisms_users", :force => true do |t|

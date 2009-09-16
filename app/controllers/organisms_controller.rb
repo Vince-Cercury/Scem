@@ -1,5 +1,8 @@
 class OrganismsController < ApplicationController
 
+  # logged in mandatory to create an organism
+  before_filter :is_logged?, :only => [:new, :create]
+  
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:show, :index]
 
@@ -58,6 +61,17 @@ class OrganismsController < ApplicationController
   # POST /organisms.xml
   def create
     @organism = Organism.new(params[:organism])
+    @organism.created_by = current_user.id
+    
+    
+    #set the creator as an admin
+    organism_user = OrganismsUser.new
+    organism_user.user_id = current_user.id
+    organism_user.role = 'admin'
+    organism_user.activated_at = Time.now
+    organism_user.state = 'active'
+
+    
     set_session_parent_parameters(@organism)
 
     respond_to do |format|
@@ -65,6 +79,13 @@ class OrganismsController < ApplicationController
       success = @organism && @organism.valid?
       
       if success && @organism.errors.empty?
+
+        # save the current user as an admin of the organism
+        if organism_user.valid?
+          organism_user.organism_id = @organism.id
+          organism_user.save 
+        end
+
         flash[:notice] = 'Organism was successfully created. A moderator will look at it for activation ASAP'
         format.html { redirect_to(@organism) }
         format.xml  { render :xml => @organism, :status => :created, :location => @organism }
@@ -79,6 +100,8 @@ class OrganismsController < ApplicationController
   # PUT /organisms/1.xml
   def update
     @organism = Organism.find(params[:id])
+    @organism.edited_by = current_user.id
+
     set_session_parent_parameters(@organism)
     
     respond_to do |format|
@@ -111,7 +134,7 @@ class OrganismsController < ApplicationController
     when (!params[:activation_code].blank?) && organism && !organism.active?
       organism.activate!
       flash[:notice] = "Organism activated! You can start to use it."
-       redirect_to(organism)
+      redirect_to(organism)
     when params[:activation_code].blank?
       flash[:error] = "The activation code was missing.  Please follow the URL from your email."
       redirect_back_or_default('/')

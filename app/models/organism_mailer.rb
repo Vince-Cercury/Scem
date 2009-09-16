@@ -28,7 +28,7 @@ class OrganismMailer < ActionMailer::Base
     #organism_admin and organism_modo, send this emails
     setup_email(user,organism)
     @subject    += "Your organism #{organism.name} has been activated!"
-    @body[:url]  = "http://YOURSITE/#{organisms_path}/#{organism.id}"
+    @body[:url]  = "#{ENV['SITE_URL']}/#{organisms_path}/#{organism.id}"
   end
 
   protected
