@@ -167,7 +167,7 @@ class PicturesController < ApplicationController
   end
 
   def ensure_create_rights?
-    parent_object = Picture.find_parent(params[:parent_type], params[:parent_id])
+    parent_object = Picture.find_parent(params[:parent_type], params[:parent_id]) if params[:parent_type] && params[:parent_id]
     not_enough_rights unless self.current_user && ((parent_object && parent_object.is_user_moderator?(self.current_user)) or self.current_user.has_system_role('moderator') or (parent_object.type=="Gallery" && parent_object.is_user_allowed_add_picture(self.current_user)))
   end
 
