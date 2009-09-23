@@ -2,6 +2,10 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 
+function remove_field(element, item) {
+    element.up(item).remove();
+}
+
     document.observe("dom:loaded", function() { 
 
         // the element in which we will observe all clicks and capture
@@ -25,6 +29,4 @@
     })
 
 
-function remove_field(element, item) {
-    element.up(item).remove();
-}
+

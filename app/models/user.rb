@@ -48,10 +48,10 @@ class User < ActiveRecord::Base
   has_many :organisms_users
   has_many :organisms, :through => :organisms_users
   with_options :through => :organisms_users, :source => :organism do |obj|
-    obj.has_many :is_member_of, :conditions => "organisms_users.role = 'member' and organisms_users.state='active'"
-    obj.has_many :is_moderator_of, :conditions => "organisms_users.role = 'moderator' and organisms_users.state='active'"
-    obj.has_many :is_admin_or_moderator_of, :conditions => "(organisms_users.role = 'moderator' or organisms_users.role = 'admin') and organisms_users.state='active'"
-    obj.has_many :is_admin_of, :conditions => "organisms_users.role = 'admin' and organisms_users.state='active'"
+    obj.has_many :is_member_of, :conditions => "organisms_users.role = 'member' and organisms_users.state='active' and organisms.state='active'"
+    obj.has_many :is_moderator_of, :conditions => "organisms_users.role = 'moderator' and organisms_users.state='active' and organisms.state='active'"
+    obj.has_many :is_admin_or_moderator_of, :conditions => "(organisms_users.role = 'moderator' or organisms_users.role = 'admin') and organisms_users.state='active' and organisms.state='active'"
+    obj.has_many :is_admin_of, :conditions => "organisms_users.role = 'admin' and organisms_users.state='active' and organisms.state='active'"
 
     obj.has_many :is_member_of_pending, :conditions => "organisms_users.role = 'member' and organisms_users.state='pending"
     obj.has_many :is_moderator_of_pending, :conditions => "organisms_users.role = 'moderator' and organisms_users.state='pending"
@@ -236,6 +236,10 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def get_picture_root_path
+    return 'users/'+id.to_s
   end
 
   protected

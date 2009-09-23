@@ -1,0 +1,9 @@
+<div id="results">
+  <% @terms.each do |term| %>
+    <% event=term.event %>
+
+      <%=  display_term_box(term.start, term.end) %><br />
+      <%= display_event_cover(event, :thumb) %>
+    <%= link_to(event.name, event) %>
+  <% end %>
+</div>

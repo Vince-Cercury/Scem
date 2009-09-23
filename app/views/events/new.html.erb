@@ -11,6 +11,18 @@
     <%= f.label :description_short %><br />
     <%= f.text_area :description_short, :cols => 35, :rows => 5 %>
   </p>
+  <% if params[:type] != 'user_event' %>
+  <div class="box">
+    Publisher: <br />
+    <%= collection_select :contributions,
+      :publisher_ids,
+      get_list_organism_rights_user(current_user),
+      :id, :name,{ :selected => @event.get_first_publisher },
+      { :multiple => false } -%>
+  </div>
+  <% end %>
+  <%= hidden_field_tag('type', params[:type]) %>
+
   <p>
     <%= f.submit 'Create' %>
   </p>

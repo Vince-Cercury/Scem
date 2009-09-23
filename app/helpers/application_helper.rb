@@ -9,6 +9,19 @@ module ApplicationHelper
 	end
  end
 
+
+  def get_next_user_terms
+     #get the current category or use the general category
+    if(controller_name == "categories" && params[:id])
+      category_id = params[:id]
+    else
+      category_id = categories_not_to_display.first.id
+    end
+
+    #the_date = parse_params_date_or_now_date
+    Term.search_has_no_publisher_futur_by_category('',1,ENV['USER_EVENTS_MAX_RESULTS'], category_id)
+  end
+
   def boolean_to_literal(the_boolean)
     buff=""
     if the_boolean==true
@@ -123,6 +136,16 @@ module ApplicationHelper
     return result
   end
 
+  def is_moderator?
+    self.current_user && self.current_user.has_system_role('moderator')
+	end
 
+    def is_current_object_moderator?(current_object)
+    if current_user && current_object.is_user_moderator?(current_user)
+      return true
+    else
+      return false
+    end
+  end
 
 end

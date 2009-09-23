@@ -7,16 +7,16 @@ module TermsHelper
     this_year = Date.today.strftime("%y")
     this_month = Date.today.strftime("%m")
     if date.strftime("%y") == this_year && date.strftime("%m") == this_month
-      clever_date = date.strftime("the %A %d")
+      clever_date = date.strftime("%A %d")
     end
     if date.strftime("%y") == this_year && date.strftime("%m") != this_month
-      clever_date = date.strftime("the %d %B")
+      clever_date = date.strftime("%d %B")
     end
     if date.strftime("%y") != this_year && date.strftime("%m") == this_month
-      clever_date = date.strftime("the %d %B %Y")
+      clever_date = date.strftime("%d %B %Y")
     end
     if date.strftime("%y") != this_year && date.strftime("%m") != this_month
-      clever_date = date.strftime("the %d %B %Y")
+      clever_date = date.strftime("%d %B %Y")
     end
     return clever_date
   end
@@ -61,7 +61,7 @@ module TermsHelper
     end
 
     if (start_at.to_date != today and start_at.to_date != tomorrow and start_at.to_date != yesterday)  && end_at.to_date == start_at.to_date
-      result = display_simpliest_date(start_at)
+      result = "the "+ display_simpliest_date(start_at)
       result += ' from '
       result += start_at.strftime("%H:%M")
       result += ' until '

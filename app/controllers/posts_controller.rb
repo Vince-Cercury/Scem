@@ -50,11 +50,10 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
+    @post = Post.new
+
     prepare_parent_context_from_params
 
-
-
-    @post = Post.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -69,6 +68,7 @@ class PostsController < ApplicationController
     @parent_object = @post.get_parent_object
 
     prepare_parent_context_from_parent_object(@parent_object)
+
   end
 
   # POST /posts
@@ -100,6 +100,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     parent_object = @post.get_parent_object
+    prepare_parent_context_from_parent_object(parent_object)
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -195,7 +196,7 @@ class PostsController < ApplicationController
       @header_partial = 'events/header'
     end
     if parent_object
-      set_session_parent_parameters(parent_object)
+      set_session_parent_pictures_root_path(parent_object)
     end
   end
 
@@ -215,9 +216,8 @@ class PostsController < ApplicationController
       @event = @parent_object = Event.find(params[:event_id])
       @header_partial = 'events/header'
     end
-
     if @parent_object
-      set_session_parent_parameters(@parent_object)
+      set_session_parent_pictures_root_path(@parent_object)
     end
       
   end

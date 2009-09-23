@@ -25,22 +25,24 @@
     <% end %>
   </div>
 </div>
-<hr />
+
   <% if @event.description_long && @event.description_long!='' %>
+<hr />
     <div class="box">
      <div class="whitebox">
       <%= @event.description_long %>
        </div>
     </div>
   <% end %>
-<hr />
-<%= render :partial => "organizers" %>
+
+<%= render :partial => "contributions" %>
 <hr />
 <div class="span-13"><h4 class="caps">DATE(S)</h4></div>
 <div class="span-4 last"><%= link_to 'New term', new_term_path(:event_id => @event.id) %></div>
 <hr />
 <%= render :partial => "terms" %>
 
+<% if @event.list_participants.size>0 %>
 <div class="span-4 colborder">
   <h4 class="caps">LAST PARTICIPANTS</h4>
 
@@ -55,9 +57,10 @@
     </div>
   <% end %>
 </div>
-<hr />
+
+<% end %>
 <%= render :partial => "/galleries/galleries_bar" %>
-<hr />
+
 
 <h4 class="caps">COMMENTS</h4>
 <%= render :partial => "/comments/list" %>

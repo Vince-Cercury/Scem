@@ -49,18 +49,31 @@
   <hr />
   <div class="box">
     <%= f.label :description_long %><br />
-    <%= fckeditor_textarea(:organism, :description_long, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
+    <%= fckeditor_textarea(:event, :description_long, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
 
   </div>
   <hr />
-
+  <div class="box">
+    <%= f.label :places %><br />
+    <%= collection_select :contributions,
+      :place_ids,
+      Organism.find(:all),
+      :id, :name,{ :selected => @event.get_first_publisher },
+      { :multiple => false } -%>
+  </div>
+  <hr />
+  <% if current_user.is_admin_or_moderator_of.size>0 %>
   <div class="box">
     <%= f.label :publishers %><br />
+    <% if get_list_organism_rights_user(current_user).size > 1 %>
     <%= collection_select :contributions,
       :publisher_ids,
       get_list_organism_rights_user(current_user),
       :id, :name,{ :selected => @event.get_first_publisher },
       { :multiple => false } -%>
+    <% elsif get_list_organism_rights_user(current_user).size == 1 %>
+      get_list_organism_rights_user(current_user).fist.name
+      <% end %>
   </div>
   <hr />
 
@@ -80,8 +93,9 @@
     :partner,
     get_list_organism_rights_user(current_user).map{ |organism| [organism.name, organism.id] }
 %>
-
-  <hr />
+   <hr />
+<% end %>
+ 
   <div class="box">
     <%= f.submit 'Update' %>
   </div>

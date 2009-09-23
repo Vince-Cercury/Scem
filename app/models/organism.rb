@@ -187,8 +187,13 @@ class Organism < ActiveRecord::Base
     admins + moderators
   end
 
+  #very very bad method
   def get_parent_object
     nil
+  end
+
+  def get_picture_root_path
+    return 'organisms/'+id.to_s
   end
 
   protected

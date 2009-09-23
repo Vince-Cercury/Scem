@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090916092711) do
+ActiveRecord::Schema.define(:version => 20090921101922) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20090916092711) do
     t.boolean  "is_private"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "created_by"
+    t.integer  "edited_by"
   end
 
   create_table "galleries", :force => true do |t|

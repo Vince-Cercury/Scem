@@ -4,5 +4,5 @@ class Contribution < ActiveRecord::Base
   belongs_to :publisher,   :class_name => "Organism", :conditions => "contributions.role = 'publisher'"
   belongs_to :organizer,   :class_name => "Organism", :conditions => "contributions.role = 'organizer'"
   belongs_to :partner,   :class_name => "Organism", :conditions => "contributions.role = 'partner'"
-
+  belongs_to :place,   :class_name => "Organism", :conditions => "contributions.role = 'place'"
 end

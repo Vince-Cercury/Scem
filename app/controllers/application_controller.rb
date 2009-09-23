@@ -74,9 +74,8 @@ class ApplicationController < ActionController::Base
   #this method is used to set some session parameters about the current object
   #this is necesary for the plugin fckeditor which use different
   # upload folder based on these parameters
-  def set_session_parent_parameters(current_object)
-    session[:parent_type] = current_object.class
-    session[:parent_id] = current_object.id
+  def set_session_parent_pictures_root_path(parent_object)
+    session[:parent_pictures_root_path] = parent_object.get_picture_root_path
   end
 
   #polymorphic url to manage or not ?
@@ -87,5 +86,6 @@ class ApplicationController < ActionController::Base
       return url_for(object)
     end
   end
+
 
 end

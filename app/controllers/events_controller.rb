@@ -2,12 +2,12 @@ class EventsController < ApplicationController
   
 
   # store the current location in case of an atempt to login, for redirecting back
-  before_filter :store_location, :only => [:show, :index]
+  before_filter :store_location, :only => [:show, :index, :new, :edit]
 
   # Protect these actions behind an admin login
   before_filter :is_admin?, :only => [:destroy]#, :purge]
 
-  before_filter :is_granted_to_create?, :only => [:create, :new]
+  before_filter :is_logged?, :only => [:new, :create, :edit, :update]
 
   # Protect these actions behind a moderator login
   # TODO: implement aasm for events
@@ -20,7 +20,12 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.search(params[:search], params[:page])
+
+    if params[:type] == 'event_user'
+      @events = Event.search_not_have_publisher(params[:search], params[:page])
+    else
+      @events = Event.search_has_publisher(params[:search], params[:page])
+    end
 
     respond_to do |format|
       format.html
@@ -52,7 +57,8 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
 
-    set_session_parent_parameters(@event)
+
+    set_session_parent_pictures_root_path(@event)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -63,15 +69,29 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
-    set_session_parent_parameters(@event)
+    set_session_parent_pictures_root_path(@event)
   end
 
   # POST /events
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
+    @event.created_by = current_user.id
 
-    set_session_parent_parameters(@event)
+    
+    if params[:type] != 'user_event'
+    #associate event to eventual publishers
+      contributors = Organism.find(params[:contributions][:publisher_ids])
+      contributors.each do |contributor|
+        contribution = Contribution.new
+        contribution.event_id=@event.id
+        contribution.organism_id=contributor.id
+        contribution.role="publisher"
+        @event.contributions << contribution
+      end
+    end
+
+    set_session_parent_pictures_root_path(@event)
 
     #FIXME : put these default parameters in table structure instead
     @event.is_charged=false
@@ -79,6 +99,8 @@ class EventsController < ApplicationController
 
     #add the categories not to display in the list of categories of the event
     add_categories_not_to_display(@event)
+
+
 
     respond_to do |format|
       if @event.save
@@ -96,14 +118,17 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
-    set_session_parent_parameters(@event)
+    @event.edited_by = current_user.id
+    set_session_parent_pictures_root_path(@event)
 
     #deleting all contributions for this event, whatever the role of the organism
     Contribution.delete_all(["event_id = ?", @event.id])
 
+
     create_contribution(:contributions, :publisher_ids, "publisher")
     create_contribution(:contributions, :partner_ids, "partner")
     create_contribution(:contributions, :organizer_ids, "organizer")
+    create_contribution(:contributions, :place_ids, "place")
     
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -163,10 +188,6 @@ class EventsController < ApplicationController
   def is_granted_to_edit?
     event = Event.find(params[:id])
     not_granted_redirection unless current_user && event.is_granted_to_edit?(current_user)
-  end
-
-  def is_granted_to_create?
-    not_moderator_of_any_organism unless current_user && (current_user.has_system_role("moderator") or current_user.is_admin_of.size > 0 or current_user.is_moderator_of.size > 0)
   end
   
 

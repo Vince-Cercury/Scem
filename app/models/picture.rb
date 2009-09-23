@@ -7,10 +7,13 @@ class Picture < ActiveRecord::Base
     :large => "504x504>",  #has to be multiple of 18
     :medium => "252x252>",
     :small => "126x126>",
-    :thumb => "72x72>"}
+    :thumb => "72x72>"},
+    :url => "/uploads/:parent_root_path/Image/:id/:style.:extension",
+    :path => ":rails_root/public/uploads/:parent_root_path/Image/:id/:style.:extension"
 
   validates_attachment_presence :attached
   validates_attachment_content_type :attached, :content_type => 'image/jpeg'
+  validates_attachment_size :attached, :less_than => 6.megabytes
 
   #validates_presence_of :parent_id
   #validates_presence_of :parent_type
@@ -67,6 +70,11 @@ class Picture < ActiveRecord::Base
 
   def self.find_parent(parent_str, parent_id)
     parent_str.constantize.find(parent_id)
+  end
+
+  def self.get_picture_root_path(parent_str, parent_id)
+    parent_object = parent_str.constantize.find(parent_id)
+    return parent_object.get_picture_root_path
   end
 
   def get_parent_object

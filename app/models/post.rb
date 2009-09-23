@@ -18,6 +18,10 @@ class Post < ActiveRecord::Base
     parent_type.constantize.find(parent_id)
   end
 
+  def get_picture_root_path
+    get_parent_object.get_picture_root_path + '/blog_posts/'+id.to_s
+  end
+
   def is_user_moderator?(user)
     if user
       get_parent_object.is_user_moderator?(user)

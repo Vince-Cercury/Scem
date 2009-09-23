@@ -52,6 +52,11 @@ class Gallery < ActiveRecord::Base
     parent_type.constantize.find(parent_id)
   end
 
+  def get_picture_root_path
+    get_parent_object.get_picture_root_path + '/galleries/'+id.to_s
+  end
+  
+
   def is_user_moderator?(user)
     get_parent_object.is_user_moderator?(user)
 	end

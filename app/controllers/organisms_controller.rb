@@ -43,7 +43,7 @@ class OrganismsController < ApplicationController
   # GET /organisms/new.xml
   def new
     @organism = Organism.new
-    set_session_parent_parameters(@organism)
+    set_session_parent_pictures_root_path(@organism)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,7 +54,7 @@ class OrganismsController < ApplicationController
   # GET /organisms/1/edit
   def edit
     @organism = Organism.find(params[:id])
-    set_session_parent_parameters(@organism)
+    set_session_parent_pictures_root_path(@organism)
   end
 
   # POST /organisms
@@ -72,7 +72,7 @@ class OrganismsController < ApplicationController
     organism_user.state = 'active'
 
     
-    set_session_parent_parameters(@organism)
+    set_session_parent_pictures_root_path(@organism)
 
     respond_to do |format|
       @organism.register! if @organism && @organism.valid?
@@ -102,7 +102,7 @@ class OrganismsController < ApplicationController
     @organism = Organism.find(params[:id])
     @organism.edited_by = current_user.id
 
-    set_session_parent_parameters(@organism)
+    set_session_parent_pictures_root_path(@organism)
     
     respond_to do |format|
       if @organism.update_attributes(params[:organism])

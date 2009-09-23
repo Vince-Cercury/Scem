@@ -24,6 +24,7 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :name, :description_short
   validates_length_of :description_short, :maximum=>250
+
   
   has_many :terms
   has_and_belongs_to_many :categories#, :conditions => "categories.to_display = true"
@@ -36,9 +37,24 @@ class Event < ActiveRecord::Base
     obj.has_many :publishers, :conditions => "contributions.role = 'publisher'"
     obj.has_many :organizers, :conditions => "contributions.role = 'organizer'"
     obj.has_many :partners, :conditions => "contributions.role = 'partner'"
+    obj.has_many :places, :conditions => "contributions.role = 'place'"
   end
 
   
+  def self.search_has_publisher(search, page)
+    paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :joins => "inner join contributions on contributions.event_id = events.id and contributions.role='publisher'",
+      :conditions => ["events.name like ?", "%#{search}%"],
+      :order => 'events.name',
+      :group => 'events.id'
+  end
+
+  def self.search_not_have_publisher(search, page)
+    paginate :per_page => ENV['PER_PAGE'], :page => page,
+      :conditions => ["events.name like ? and events.id not in (select event_id from contributions where role='publisher' and event_id is not null)", "%#{search}%"],
+      :order => 'events.name'
+  end
+
   def self.search(search, page)
     paginate :per_page => ENV['PER_PAGE'], :page => page,
       :conditions => ['name like ?', "%#{search}%"],
@@ -62,6 +78,10 @@ class Event < ActiveRecord::Base
     result = false
 
     if(user.has_system_role("moderator"))
+      result = true
+    end
+
+    if(created_by==user.id)
       result = true
     end
 
@@ -97,13 +117,19 @@ class Event < ActiveRecord::Base
     moderators_list
   end
 
-
+#Note: method exactly equal to is_granted_to_edit?, the is something to improve ....
   def is_user_moderator?(user)
     result = false
     if(user)
       if  user.has_system_role('moderator')
         result = true
       end
+
+
+      if(created_by==user.id)
+        result = true
+      end
+
       self.publishers.each do |organism|
         if organism.is_user_moderator?(user)
           result = true
@@ -134,8 +160,13 @@ class Event < ActiveRecord::Base
     return list
   end
 
+  # very very bad method
   def get_parent_object
     nil
+  end
+
+  def get_picture_root_path
+    return 'events/'+id.to_s
   end
 
 

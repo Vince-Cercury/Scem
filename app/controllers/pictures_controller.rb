@@ -71,6 +71,8 @@ class PicturesController < ApplicationController
 
     parent_object = Picture.find_parent(params[:parent_type], params[:parent_id])
 
+   # raise Picture.get_picture_root_path(params[:parent_type], params[:parent_id]).inspect
+
     if !parent_object.picture.nil? 
       if !parent_object.picture.suspended?
         parent_object.picture.suspend!

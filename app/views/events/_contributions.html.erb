@@ -1,3 +1,5 @@
+<% if @event.contributions.size > 0 %>
+<hr />
 <div class="box">
   <% if @event.publishers.size > 0 %>
     <b>Publishers:</b>
@@ -20,4 +22,11 @@
       <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
     <% end %>
   <% end %>
+  <% if @event.places.size > 0 %>
+    <b>Place:</b>
+    <% @event.places.each do |@organism| %>
+      <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
+    <% end %>
+  <% end %>
 </div>
+<%  end %>

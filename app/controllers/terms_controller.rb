@@ -16,10 +16,10 @@ class TermsController < ApplicationController
 
     if params[:period] == "past"
       @period_link_param = "futur"
-      @terms = Term.search_past(params[:search], params[:page])
+      @terms = Term.search_has_publisher_past(params[:search], params[:page])
     else
       @period_link_param = "past"
-      @terms = Term.search_futur(params[:search], params[:page])
+      @terms = Term.search_has_publisher_futur(params[:search], params[:page])
     end
 
     respond_to do |format|
@@ -72,9 +72,7 @@ class TermsController < ApplicationController
 
     #create associations between terms and categories via categories_terms table
     @event = Event.find(params[:event_id])
-    @event.categories.each do |category|
-      category.terms << @term
-    end
+    @event.terms << @term
     
     respond_to do |format|
       if @term.save

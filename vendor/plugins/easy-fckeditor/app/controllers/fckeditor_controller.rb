@@ -3,7 +3,7 @@ require 'tmpdir'
 
 class FckeditorController < ActionController::Base
 
-  UPLOAD_FOLDER = "/uploads"
+  UPLOAD_FOLDER = '/uploads'
 
   UPLOADED_ROOT = RAILS_ROOT + "/public" + UPLOAD_FOLDER
 
@@ -181,19 +181,24 @@ class FckeditorController < ActionController::Base
     log "FCKEDITOR - #{File.expand_path(RAILS_ROOT)}/public#{UPLOAD_FOLDER}/" +
         "#{@new_file.original_filename}"
   end
+  
 
   ##############################################################################
   # Returns the filesystem folder with the current folder
   #
   def current_directory_path
-    base_dir = "#{UPLOADED_ROOT}/#{session[:parent_type]}/#{session[:parent_id]}/#{params[:Type]}"
+
+    base_dir = "#{UPLOADED_ROOT}/#{ session[:parent_pictures_root_path]}"
 
 
     #HACK: create automatically a dedicated folder for each object calling the editor
-    Dir.mkdir("#{UPLOADED_ROOT}/#{session[:parent_type]}",0775) unless File.exists?("#{UPLOADED_ROOT}/#{session[:parent_type]}")
-    Dir.mkdir("#{UPLOADED_ROOT}/#{session[:parent_type]}/#{session[:parent_id]}",0775) unless File.exists?("#{UPLOADED_ROOT}/#{session[:parent_type]}/#{session[:parent_id]}")
+    #Dir.mkdir("#{UPLOADED_ROOT}/#{session[:parent_type]}",0775) unless File.exists?("#{UPLOADED_ROOT}/#{session[:parent_type]}")
+    #Dir.mkdir("#{UPLOADED_ROOT}/#{session[:parent_type]}/#{session[:parent_id]}",0775) unless File.exists?("#{UPLOADED_ROOT}/#{session[:parent_type]}/#{session[:parent_id]}")
+   
+    #recursively create the directories
+    FileUtils.mkdir_p(base_dir, :mode => 0775) unless File.exists?(base_dir)
+    
 
-    Dir.mkdir(base_dir,0775) unless File.exists?(base_dir)
     check_path("#{base_dir}#{params[:CurrentFolder]}")
   end
 
@@ -201,8 +206,9 @@ class FckeditorController < ActionController::Base
   # Returns the upload url folder with the current folder
   #
   def upload_directory_path
+    
     url_root = ActionController::Base.relative_url_root.to_s
-    uploaded = url_root + "#{UPLOAD_FOLDER}/#{session[:parent_type]}/#{session[:parent_id]}/#{params[:Type]}"
+    uploaded = url_root + "#{UPLOAD_FOLDER}/#{ session[:parent_pictures_root_path]}"
     "#{uploaded}#{params[:CurrentFolder]}"
   end
 
@@ -234,4 +240,6 @@ class FckeditorController < ActionController::Base
     end
     path
   end
+
+
 end

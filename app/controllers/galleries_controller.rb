@@ -49,7 +49,9 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new
     @rights = {'Moderators' => 'moderators', 'Members' => 'members', 'Anybody' => 'all'}
 
-    set_session_parent_parameters(@gallery.get_parent_object)
+    @gallery.parent_type = params[:parent_type]
+    @gallery.parent_id = params[:parent_id]
+    set_session_parent_pictures_root_path(@gallery.get_parent_object)
 
     @new_pictures = Array.new
     1.upto(3) { @new_pictures << Picture.new }
@@ -66,7 +68,8 @@ class GalleriesController < ApplicationController
 
     @rights = {'Moderators' => 'moderators', 'Members' => 'members', 'Anybody' => 'all'}
     @parent_object = @gallery.get_parent_object
-    set_session_parent_parameters(@gallery.get_parent_object)
+    set_session_parent_pictures_root_path(@gallery.get_parent_object)
+
   end
 
   # GET /galleries/1/add_pics
@@ -189,7 +192,7 @@ class GalleriesController < ApplicationController
     @gallery.parent_id = params[:parent_id]
     @gallery.parent_type = params[:parent_type]
     @parent_object = Gallery.find_parent(params[:parent_type], params[:parent_id])
-    set_session_parent_parameters(@parent_object)
+    set_session_parent_pictures_root_path(@gallery.get_parent_object)
 
     #prepare_pictures_attributes(@gallery)
 
@@ -212,7 +215,7 @@ class GalleriesController < ApplicationController
   def update
     @gallery = Gallery.find(params[:id])
     @parent_object = @gallery.get_parent_object
-    set_session_parent_parameters(@parent_object)
+    set_session_parent_pictures_root_path(@gallery.get_parent_object)
     @rights = {'Moderators' => 'moderators', 'Members' => 'members', 'Anybody' => 'all'}
 
     respond_to do |format|
