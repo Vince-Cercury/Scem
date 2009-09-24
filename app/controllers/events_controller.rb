@@ -175,9 +175,11 @@ class EventsController < ApplicationController
 
 
   def create_contribution(key, subkey, role)
-    unless(params[key][subkey].nil?)
-      contributors = Organism.find(params[key][subkey])
-      contributors.each do |contributor|
+    if(params[key][subkey])
+     params[key][subkey].each do |id|
+      if id && id!=""
+
+        contributor = Organism.find(id)
         contribution = Contribution.new
         contribution.event_id=@event.id
         contribution.organism_id=contributor.id
@@ -185,6 +187,7 @@ class EventsController < ApplicationController
         contribution.save
       end
     end
+   end
   end
 
   def is_granted_to_edit?
