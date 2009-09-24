@@ -21,14 +21,14 @@ class OrganismMailer < ActionMailer::Base
     #system_admin and system_modo, send this emails
     setup_email(user,organism)
     @subject    += "The organism #{organism.name} has been activated!"
-    @body[:url]  = "#{ENV['SITE_URL']}/#{organisms_path}/#{organism.id}"
+    @body[:url]  = "#{ENV['SITE_URL']}#{organisms_path}/#{organism.id}"
   end
 
   def activation_to_organism_admin_or_modo(user, organism)
     #organism_admin and organism_modo, send this emails
     setup_email(user,organism)
     @subject    += "Your organism #{organism.name} has been activated!"
-    @body[:url]  = "#{ENV['SITE_URL']}/#{organisms_path}/#{organism.id}"
+    @body[:url]  = "#{ENV['SITE_URL']}#{organisms_path}/#{organism.id}"
   end
 
   protected
