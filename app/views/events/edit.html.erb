@@ -43,7 +43,7 @@
   <%=  swapselect :event,
     @event,
     :categories,
-    categories_to_display.map{ |category| [category.name, category.id] }
+    categories_to_display.map{ |category| [category.name.gsub("'",'\\\''), category.id] }
 %>
 
   <hr />
@@ -81,7 +81,7 @@
   <%= swapselect :contributions,
     @event,
     :organizer,
-    get_list_organism_rights_user(current_user).map{ |organism| [organism.name, organism.id] }
+    get_list_organism_rights_user(current_user).map{ |organism| [organism.name.gsub("'",'\\\''), organism.id] }
 %>
 
   <hr />
@@ -91,7 +91,7 @@
   <%= swapselect :contributions,
     @event,
     :partner,
-    Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name, organism.id] }
+    Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub("'",'\\\''), organism.id] }
 %>
    <hr />
 <% end %>

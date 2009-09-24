@@ -53,7 +53,7 @@
     <%=  swapselect :organism,
       @organism,
       :activities,
-      Activity.all.map{ |activity| [activity.name, activity.id] }
+      Activity.all.map{ |activity| [activity.name.gsub("'",'\\\''), activity.id] }
   %>
 
   </div>
