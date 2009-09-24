@@ -8,7 +8,6 @@ class PicturesController < ApplicationController
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:show, :index]
 
-  before_filter :ensure_parameters, :only=>[:new, :create]
 
 
 
@@ -50,25 +49,9 @@ class PicturesController < ApplicationController
   def new
     @picture = Picture.new
 
-    if(params[:organism_id])
-      @parent_object = Organism.find(params[:organism_id])
-      @picture.parent_id = params[:organism_id]
-      @picture.parent_type = 'Organism'
-    end
 
-    if(params[:event_id])
-      @parent_object = Event.find(params[:event_id])
-      @picture.parent_id = params[:event_id]
-      @picture.parent_type = 'Event'
-    end
+    ensure_parent_parameters
     
-    if(params[:user_id])
-      @parent_object = User.find(params[:user_id])
-      @picture.parent_id = params[:user_id]
-      @picture.parent_type = 'User'
-    end
-    
-    wrong_parameters_redirection unless @parent_object
 
     respond_to do |format|
       format.html # new.html.erb
@@ -86,16 +69,14 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(params[:picture])
     @picture.creator_id = current_user.id
-    @picture.parent_type = params[:parent_type]
-    @picture.parent_id = params[:parent_id]
 
-    parent_object = Picture.find_parent(params[:parent_type], params[:parent_id])
+    ensure_parent_parameters
 
    # raise Picture.get_picture_root_path(params[:parent_type], params[:parent_id]).inspect
 
-    if !parent_object.picture.nil? 
-      if !parent_object.picture.suspended?
-        parent_object.picture.suspend!
+    if !@parent_object.picture.nil?
+      if !@parent_object.picture.suspended?
+        @parent_object.picture.suspend!
       end
     end
 
@@ -103,12 +84,12 @@ class PicturesController < ApplicationController
     respond_to do |format|
       if @picture.save
         
-        @picture.activate! unless @picture.parent_type=="Gallery" && parent_object.add_picture_moderation
+        @picture.activate! unless @picture.parent_type=="Gallery" && @parent_object.add_picture_moderation
 
 
         flash[:notice] = 'Picture has been successfully created.'
         format.html { redirect_to(url_for_even_polymorphic(@picture)) }
-        format.xml  { render :xml => parent_object }
+        format.xml  { render :xml => @parent_object }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @picture.errors, :status => :unprocessable_entity }
@@ -171,6 +152,31 @@ class PicturesController < ApplicationController
 
   private
 
+  def ensure_parent_parameters
+
+    wrong_parameters_redirection unless (params[:organism_id] or params[:event_id] or params[:user_id])
+
+    if(params[:organism_id])
+      @parent_object = Organism.find(params[:organism_id])
+      @picture.parent_id = params[:organism_id]
+      @picture.parent_type = 'Organism'
+    end
+
+    if(params[:event_id])
+      @parent_object = Event.find(params[:event_id])
+      @picture.parent_id = params[:event_id]
+      @picture.parent_type = 'Event'
+    end
+
+    if(params[:user_id])
+      @parent_object = User.find(params[:user_id])
+      @picture.parent_id = params[:user_id]
+      @picture.parent_type = 'User'
+    end
+
+    wrong_parameters_redirection unless @parent_object
+  end
+
   def ensure_activated
     picture = Picture.find(params[:id])
     not_visible unless (picture && picture.active?) or has_current_user_moderation_rights
@@ -190,10 +196,6 @@ class PicturesController < ApplicationController
   def ensure_create_rights?
     parent_object = Picture.find_parent(params[:parent_type], params[:parent_id]) if params[:parent_type] && params[:parent_id]
     not_enough_rights unless self.current_user && ((parent_object && parent_object.is_user_moderator?(self.current_user)) or self.current_user.has_system_role('moderator') or (parent_object.type=="Gallery" && parent_object.is_user_allowed_add_picture(self.current_user)))
-  end
-
-  def ensure_parameters
-    wrong_parameters_redirection unless (params[:organism_id] or params[:event_id] or params[:user_id])
   end
 
   def ensure_has_current_user_moderation_rights
