@@ -8,5 +8,4 @@ config/environments/development.rb
 config/environments/production.rb
 config/environments/test.rb
 config/environments/staging.rb
-public/system/attacheds/*
 public/uploads/*
