@@ -57,23 +57,23 @@
     <%= f.label :places %><br />
     <%= collection_select :contributions,
       :place_ids,
-      Organism.find(:all),
-      :id, :name,{ :selected => @event.get_first_publisher },
+      Organism.find_all_by_state('active', :order =>'name'),
+      :id, :name,{ :selected => @event.get_first_place, :include_blank => true},
       { :multiple => false } -%>
   </div>
   <hr />
   <% if current_user.is_admin_or_moderator_of.size>0 or current_user.has_system_role("moderator") %>
   <div class="box">
-    <%= f.label :publishers %><br />
-    <% if get_list_organism_rights_user(current_user).size > 1 %>
+    <b>Publisher: </b><br />
+    <%# if get_list_organism_rights_user(current_user).size > 1 %>
     <%= collection_select :contributions,
       :publisher_ids,
       get_list_organism_rights_user(current_user),
-      :id, :name,{ :selected => @event.get_first_publisher },
+      :id, :name,{ :selected => @event.get_first_publisher, :include_blank => true },
       { :multiple => false } -%>
-    <% elsif get_list_organism_rights_user(current_user).size == 1 %>
-      get_list_organism_rights_user(current_user).fist.name
-      <% end %>
+    <%# elsif get_list_organism_rights_user(current_user).size == 1 %>
+      <%#= get_list_organism_rights_user(current_user).first.name %>
+      <%# end %>
   </div>
   <hr />
 
@@ -91,7 +91,7 @@
   <%= swapselect :contributions,
     @event,
     :partner,
-    get_list_organism_rights_user(current_user).map{ |organism| [organism.name, organism.id] }
+    Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name, organism.id] }
 %>
    <hr />
 <% end %>

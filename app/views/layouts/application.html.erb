@@ -111,7 +111,7 @@
             ...<br />
             ...<br />
           </div>
-
+          <% if get_next_user_terms.size>0 %>
           <h3 class="caps">User meetings (next <%= ENV['USER_EVENTS_MAX_RESULTS'] %>)</h3>
 
             <% get_next_user_terms.each do |term| %>
@@ -124,7 +124,7 @@
            </div>
              <hr />
             <% end %>
-          
+            <% end %>
         </div>
       </div>
     </div>

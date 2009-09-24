@@ -73,6 +73,10 @@ class Event < ActiveRecord::Base
   def get_first_publisher
     self.publishers.all.first.id unless self.publishers.all.first.nil?
   end
+
+  def get_first_place
+    self.places.all.first.id unless self.places.all.first.nil?
+  end
   
 
 

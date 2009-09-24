@@ -194,7 +194,9 @@ class EventsController < ApplicationController
 
   def is_granted_to_view?
     event = Event.find(params[:id])
-    not_member_redirection unless current_user && event.is_granted_to_view?(current_user)
+    if event.is_private
+      not_member_redirection unless current_user && event.is_granted_to_view?(current_user)
+    end
   end
 
   def not_member_redirection

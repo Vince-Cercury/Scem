@@ -21,6 +21,7 @@
     <% @event.partners.each do |@organism| %>
       <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
     <% end %>
+    <br />
   <% end %>
   <% if @event.places.size > 0 %>
     <b>Place:</b>
