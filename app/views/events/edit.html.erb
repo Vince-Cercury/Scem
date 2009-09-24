@@ -62,7 +62,7 @@
       { :multiple => false } -%>
   </div>
   <hr />
-  <% if current_user.is_admin_or_moderator_of.size>0 %>
+  <% if current_user.is_admin_or_moderator_of.size>0 or current_user.has_system_role("moderator") %>
   <div class="box">
     <%= f.label :publishers %><br />
     <% if get_list_organism_rights_user(current_user).size > 1 %>

@@ -73,6 +73,41 @@ class Event < ActiveRecord::Base
   def get_first_publisher
     self.publishers.all.first.id unless self.publishers.all.first.nil?
   end
+  
+
+
+  def is_granted_to_view?(user)
+    result = false
+
+    if(user.has_system_role("moderator"))
+      result = true
+    end
+
+    if(created_by==user.id)
+      result = true
+    end
+
+    self.publishers.each do |organism|
+      if organism.is_user_member?(user)
+        result = true
+      end
+    end
+
+    self.organizers.each do |organism|
+      if organism.is_user_member?(user)
+        result = true
+      end
+    end
+
+
+    self.partners.each do |organism|
+      if organism.is_user_member?(user)
+        result = true
+      end
+    end
+   
+    return result
+  end
 
   def is_granted_to_edit?(user)
     result = false
@@ -117,7 +152,7 @@ class Event < ActiveRecord::Base
     moderators_list
   end
 
-#Note: method exactly equal to is_granted_to_edit?, the is something to improve ....
+  #Note: method exactly equal to is_granted_to_edit?, the is something to improve ....
   def is_user_moderator?(user)
     result = false
     if(user)

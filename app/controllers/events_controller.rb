@@ -10,8 +10,9 @@ class EventsController < ApplicationController
   before_filter :is_logged?, :only => [:new, :create, :edit, :update]
 
   # Protect these actions behind a moderator login
-  # TODO: implement aasm for events
   before_filter :is_granted_to_edit?, :except => [:show, :index, :create, :new]
+
+  before_filter :is_granted_to_view?, :only => [:show]
   
 
   #Protect this action by cheking of logged in AND if owner of the account or admin or moderator for editing
@@ -41,6 +42,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.xml
   def show
+
     #current_object is used for comment form
     @current_object = @event = Event.find(params[:id])
     #the object comment is needed for displaying the form of new comment
@@ -80,7 +82,7 @@ class EventsController < ApplicationController
 
     
     if params[:type] != 'user_event'
-    #associate event to eventual publishers
+      #associate event to eventual publishers
       contributors = Organism.find(params[:contributions][:publisher_ids])
       contributors.each do |contributor|
         contribution = Contribution.new
@@ -189,7 +191,16 @@ class EventsController < ApplicationController
     event = Event.find(params[:id])
     not_granted_redirection unless current_user && event.is_granted_to_edit?(current_user)
   end
-  
+
+  def is_granted_to_view?
+    event = Event.find(params[:id])
+    not_member_redirection unless current_user && event.is_granted_to_view?(current_user)
+  end
+
+  def not_member_redirection
+    flash[:error] = "This is a private event. You must be a member of one of the organizators in order to see it."
+    redirect_to('/')
+  end
 
   def not_granted_redirection
     if current_user
