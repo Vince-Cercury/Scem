@@ -80,5 +80,8 @@ class Comment < ActiveRecord::Base
     commentable_str.constantize.find(commentable_id)
   end
 
+  def get_parent_object
+    commentable_type.constantize.find(commentable_id)
+  end
 
 end

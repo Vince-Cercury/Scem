@@ -1,8 +1,10 @@
-<h1>Editing picture</h1>
+<%= render :partial => "header" %>
+<hr />
+<h3>Editing picture</h3>
 
 <%=  image_tag(@picture.attached.url(:medium)) %>
 
-<% form_for @picture, :html => { :multipart => true } do |f| %>
+<% form_for(@picture, :url => url_for_even_polymorphic(@picture), :html => { :multipart => true }) do |f| %>
 
  <%= f.error_messages %>
   <p>
@@ -15,6 +17,3 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @picture %> |
-<%= link_to 'Back', pictures_path %>

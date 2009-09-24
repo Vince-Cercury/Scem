@@ -9,7 +9,7 @@
     </div>
     <div class="span-12 last" id="gallery-right">
       <div class="box">
-        <h4 class="prepend-5"><%= link_to(gallery.name, gallery) %></h4>
+        <h4 class="prepend-5"><%= link_to(gallery.name, url_for_even_polymorphic(gallery)) %></h4>
         <%= gallery.description %>
         <br />
         <%= render :partial => "rating/mini_rating", :locals => { :current_object => gallery } if gallery.rating > 0 %>
@@ -18,8 +18,8 @@
         
 
         <div class="quiet">
-          <%= link_to 'Show', gallery %>
-          <%= link_to 'Edit', edit_gallery_path(gallery) %>
+          <%= link_to 'Show', url_for_even_polymorphic(gallery) %>
+          <%= link_to 'Edit', edit_polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
           <%= link_to 'Destroy', gallery, :confirm => 'Are you sure?', :method => :delete %>
         </div>
       </div>

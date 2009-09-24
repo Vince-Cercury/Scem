@@ -1,17 +1,17 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
- def get_url_past_or_futur_tab
-	if @category.nil?
-		return terms_path(:period => @period_link_param, :date => params[:date])
-	else
-		return category_path(:id => @category.id, :period => @period_link_param, :date => params[:date])
-	end
- end
+  def get_url_past_or_futur_tab
+    if @category.nil?
+      return terms_path(:period => @period_link_param, :date => params[:date])
+    else
+      return category_path(:id => @category.id, :period => @period_link_param, :date => params[:date])
+    end
+  end
 
 
   def get_next_user_terms
-     #get the current category or use the general category
+    #get the current category or use the general category
     if(controller_name == "categories" && params[:id])
       category_id = params[:id]
     else
@@ -140,12 +140,60 @@ module ApplicationHelper
     self.current_user && self.current_user.has_system_role('moderator')
 	end
 
-    def is_current_object_moderator?(current_object)
+  def is_current_object_moderator?(current_object)
     if current_user && current_object.is_user_moderator?(current_user)
       return true
     else
       return false
     end
   end
+
+
+  def url_for_even_polymorphic(object, options = {})
+    if(object.get_parent_object)
+      if object.get_parent_object.get_parent_object
+        if object.get_parent_object.get_parent_object
+          return polymorphic_path([object.get_parent_object.get_parent_object.get_parent_object, object.get_parent_object.get_parent_object, object.get_parent_object, object].flatten, options)
+        else
+          return polymorphic_path([object.get_parent_object.get_parent_object, object.get_parent_object, object].flatten, options)
+        end
+      else
+        return polymorphic_path([object.get_parent_object, object].flatten, options)
+      end
+    else
+      return polymorphic_path([object].flatten, options)
+    end
+  end
+
+  def edit_url_for_even_polymorphic(object)
+    if(object.get_parent_object)
+      if object.get_parent_object.get_parent_object
+        if object.get_parent_object.get_parent_object
+          return edit_polymorphic_path([object.get_parent_object.get_parent_object.get_parent_object, object.get_parent_object.get_parent_object, object.get_parent_object, object].flatten)
+        else
+          return edit_polymorphic_path([object.get_parent_object.get_parent_object, object.get_parent_object, object].flatten)
+        end
+      else
+        return edit_polymorphic_path([object.get_parent_object, object].flatten)
+      end
+    else
+      return edit_path object
+    end
+  end
+
+  def new_url_for_even_polymorphic(parent_object, symbol)
+    if(parent_object.get_parent_object)
+      if parent_object.get_parent_object.get_parent_object
+        return new_polymorphic_path([parent_object.get_parent_object.get_parent_object, parent_object.get_parent_object, parent_object, symbol].flatten)
+      else
+        return new_polymorphic_path([parent_object, symbol].flatten)
+      end
+    else
+      return new_polymorphic_path([parent_object, symbol].flatten)
+    end
+  end
+
+
+
 
 end

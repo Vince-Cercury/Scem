@@ -78,14 +78,26 @@ class ApplicationController < ActionController::Base
     session[:parent_pictures_root_path] = parent_object.get_picture_root_path
   end
 
-  #polymorphic url to manage or not ?
-  def url_for_even_polymorphic(object)
-    if(object.class.to_s.eql?('Post'))
-      return url_for polymorphic_path([object.get_parent_object, object].flatten)
+  def url_for_even_polymorphic(object, options = {})
+    if(object.get_parent_object)
+      if object.get_parent_object.get_parent_object
+        if object.get_parent_object.get_parent_object
+          return polymorphic_path([object.get_parent_object.get_parent_object.get_parent_object, object.get_parent_object.get_parent_object, object.get_parent_object, object].flatten, options)
+        else
+          return polymorphic_path([object.get_parent_object.get_parent_object, object.get_parent_object, object].flatten, options)
+        end
+      else
+        return polymorphic_path([object.get_parent_object, object].flatten, options)
+      end
     else
-      return url_for(object)
+      return polymorphic_path([object].flatten, options)
     end
   end
 
+  def initialize_new_comment(parent_object)
+    @comment = Comment.new
+    @comment.commentable_type = parent_object.class.to_s
+    @comment.commentable_id = parent_object.id
+  end
 
 end

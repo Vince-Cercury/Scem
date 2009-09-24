@@ -1,25 +1,18 @@
-<div class="span-11">
-  <h3>Pictures - <%= @parent_object.name %></h3>
-  Picture <%= @picture.position %> of <%= @picture.last_position %> |
-  <%= link_to "Back to #{@parent_object.type}", url_for(@parent_object) %>
-  <% if !@parent_object.get_parent_object.nil? %>
-    | <%= link_to "Back to #{@parent_object.get_parent_object.type}", url_for(@parent_object.get_parent_object) %>
-  <% end %>
-</div>
+<%= render :partial => "header" %>
 <div class="span-6 last">
   <%= render :partial => "rating/rating", :locals => { :current_object => @picture } %>
   <% if  @parent_object.class.to_s.eql?("Gallery") %>
-    <%= link_to("previous", @picture.previous_item) unless @picture.first_item? %>&nbsp;&nbsp;
-    <%= link_to("next", @picture.next_item) unless @picture.last_item? %>
+    <%= link_to("previous", url_for_even_polymorphic(@picture.previous_item)) unless @picture.first_item? %>&nbsp;&nbsp;
+    <%= link_to("next", url_for_even_polymorphic(@picture.next_item)) unless @picture.last_item? %>
   <% end %>
 </div>
 <hr />
 <div class="span-15 last prepend-1 append-1">
-  <%= link_to(image_tag(@picture.attached.url(:large)), url_for(@parent_object)) %>
+  <%= link_to(image_tag(@picture.attached.url(:large)),get_picture_polymorphic_parent_url(@picture)) %>
 </div>
 
 <br />
-<%= link_to 'Edit', edit_picture_path(@picture) %>
+<%= link_to 'Edit', get_edit_picture_polymorphic_parent_url(@picture) %>
 
 
 <% if @picture.description %>
@@ -33,7 +26,7 @@
   <%= get_user_name_or_pseudo_link_by_id(@picture.creator_id) %>
 </p>
 
-<h2>Comments</h2
+<h2>Comments</h2>
 <%= render :partial => "/comments/list" %>
 <%= render :partial => "/comments/form" %>
 

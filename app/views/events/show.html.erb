@@ -5,7 +5,7 @@
       <%= get_default_event_picture(:medium) %><br />
       <%= link_to("Attach a picture !", url_for(:controller => 'pictures', :action => 'new', :parent_id => @event.id, :parent_type => "Event")) %>
     <% else %>
-      <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for(@event.picture)) %><br />
+      <%= link_to(image_tag(@event.picture.attached.url(:medium)), polymorphic_path([@event, @event.picture].flatten))  %><br />
       <%= link_to("Change the image", url_for(:controller => 'pictures', :action => 'new', :parent_id => @event.id, :parent_type => "Event")) %>
     <% end %>
   </div>

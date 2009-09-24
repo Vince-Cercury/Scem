@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
+  #deprecated
   map.resources :galleries, :member => {:set_cover => :get, :move_a_pic => :get, :add_pics => :get,  :edit_pics => :get,  :do_add_pics => :put   }
 
+  #deprecated
   map.resources :pictures, :member => { :suspend   => :get,
     :unsuspend => :get, :activate => :get  }
 
@@ -18,9 +20,32 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :organisms do |organism|
     organism.resources :events, :controller => 'organism_events'
     organism.resources :posts, :member => { :suspend   => :get,
-    :unsuspend => :get, :activate => :get  }
-    organism.resources :galleries, :controller => 'organism_galleries'
+      :unsuspend => :get, :activate => :get  }do |post|
+        post.resources :comments, :collection => { :suspend   => :get,
+          :unsuspend => :get,
+          :activate     => :get }
+      end
+    organism.resources :galleries, :member => {:set_cover => :get, :move_a_pic => :get, :add_pics => :get,  :edit_pics => :get,  :do_add_pics => :put   } do |gallery|
+      gallery.resources :pictures, :member => { :suspend   => :get,
+        :unsuspend => :get, :activate => :get  } do |picture|
+        picture.resources :comments, :collection => { :suspend   => :get,
+          :unsuspend => :get,
+          :activate     => :get }
+      end
+      gallery.resources :comments, :collection => { :suspend   => :get,
+        :unsuspend => :get,
+        :activate     => :get }
+    end
+    organism.resources :comments, :collection => { :suspend   => :get,
+      :unsuspend => :get,
+      :activate     => :get }
     organism.resources :members
+    organism.resources :pictures, :member => { :suspend   => :get,
+      :unsuspend => :get, :activate => :get  }do |picture|
+      picture.resources :comments, :collection => { :suspend   => :get,
+        :unsuspend => :get,
+        :activate     => :get }
+    end
   end
 
 
@@ -28,15 +53,42 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :member_of_organisms
     user.resources :participations
     user.resources :posts, :member => { :suspend   => :get,
-    :unsuspend => :get, :activate => :get  }
+      :unsuspend => :get, :activate => :get  }do |post|
+        post.resources :comments, :collection => { :suspend   => :get,
+          :unsuspend => :get,
+          :activate     => :get }
+      end
   end
 
 
   map.resources :events do |event|
     event.resources :participations
-    event.resources :galleries, :controller => 'event_galleries'
+    event.resources :galleries, :member => {:set_cover => :get, :move_a_pic => :get, :add_pics => :get,  :edit_pics => :get,  :do_add_pics => :put   } do |gallery|
+      gallery.resources :pictures, :member => { :suspend   => :get,
+        :unsuspend => :get, :activate => :get  }do |picture|
+        picture.resources :comments, :collection => { :suspend   => :get,
+          :unsuspend => :get,
+          :activate     => :get }
+      end
+      gallery.resources :comments, :collection => { :suspend   => :get,
+        :unsuspend => :get,
+        :activate     => :get }
+    end
+    event.resources :comments, :collection => { :suspend   => :get,
+      :unsuspend => :get,
+      :activate     => :get }
     event.resources :posts, :member => { :suspend   => :get,
-    :unsuspend => :get, :activate => :get  }
+      :unsuspend => :get, :activate => :get  } do |post|
+        post.resources :comments, :collection => { :suspend   => :get,
+          :unsuspend => :get,
+          :activate     => :get }
+      end
+    event.resources :pictures, :member => { :suspend   => :get,
+      :unsuspend => :get, :activate => :get  }do |picture|
+      picture.resources :comments, :collection => { :suspend   => :get,
+        :unsuspend => :get,
+        :activate     => :get }
+    end
   end
 
   map.resources :terms do |term|
@@ -71,7 +123,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :rating, :collection =>{
     :rate => :get }
-   
+
+  #deprecated
   map.resources :comments, :collection => { :suspend   => :get,
     :unsuspend => :get,
     :activate     => :get }

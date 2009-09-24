@@ -1,0 +1,9 @@
+<div class="span-11">
+  <h3>Pictures - <%= @picture.get_parent_object.name %></h3>
+  <% if @picture.last_position != 0 %>Picture <%= @picture.position %> of <%= @picture.last_position %> |<% end %>
+  <%= link_to "Back to #{@picture.get_parent_object.type}", url_for_even_polymorphic(@picture.get_parent_object) %>
+  <% if !@picture.get_parent_object.get_parent_object.nil? %>
+    | <%= link_to "Back to #{@picture.get_parent_object.get_parent_object.type}", url_for(@picture.get_parent_object.get_parent_object) %>
+  <% end %>
+</div>
+<hr />

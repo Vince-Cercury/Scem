@@ -4,10 +4,10 @@
   <div class="box">
     <% if @organism.picture.nil? %>
       <%= display_organism_cover(@organism, :medium) %><br />
-      <%= link_to("Attach a picture !", url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+      <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@organism, :picture)) %>
     <% else %>
-      <%= link_to(image_tag(@organism.picture.attached.url(:medium)), url_for(@organism.picture)) %><br />
-      <%= link_to("Change the image", url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+      <%= link_to(image_tag(@organism.picture.attached.url(:medium)), url_for_even_polymorphic(@organism.picture)) %><br />
+      <%= link_to("Change the image",new_url_for_even_polymorphic(@organism, :picture)) %>
     <% end %>
   </div>
 </div>
@@ -89,7 +89,8 @@
   <hr />
 <% end  %>
 <%= render :partial => "/galleries/galleries_bar" %>
-<hr />
+<% if @organism.members.size>0 %>
+ 
 <div class="span-4 colborder">
   <h4 class="caps">LAST MEMBERS</h4>
   <br />
@@ -105,10 +106,12 @@
     </div>
   <% end %>
 </div>
-<hr />
+  <hr />
+  <% end %>
 
 
-<h2>Comments</h2
+
+<h2>Comments</h2>
 <%= render :partial => "/comments/list" %>
 <%= render :partial => "/comments/form" %>
 

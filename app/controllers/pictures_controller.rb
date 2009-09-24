@@ -35,9 +35,9 @@ class PicturesController < ApplicationController
     @current_object = @picture = Picture.find(params[:id])
 
     #the object comment is needed for displaying the form of new comment
-    @comment = Comment.new
+    initialize_new_comment(@picture)
 
-    @parent_object = Picture.find_parent(@picture.parent_type, @picture.parent_id)
+    @parent_object = @picture.get_parent_object
 
     respond_to do |format|
       format.html # show.html.erb
@@ -49,6 +49,26 @@ class PicturesController < ApplicationController
   # GET /pictures/new.xml
   def new
     @picture = Picture.new
+
+    if(params[:organism_id])
+      @parent_object = Organism.find(params[:organism_id])
+      @picture.parent_id = params[:organism_id]
+      @picture.parent_type = 'Organism'
+    end
+
+    if(params[:event_id])
+      @parent_object = Event.find(params[:event_id])
+      @picture.parent_id = params[:event_id]
+      @picture.parent_type = 'Event'
+    end
+    
+    if(params[:user_id])
+      @parent_object = User.find(params[:user_id])
+      @picture.parent_id = params[:user_id]
+      @picture.parent_type = 'User'
+    end
+    
+    wrong_parameters_redirection unless @parent_object
 
     respond_to do |format|
       format.html # new.html.erb
@@ -87,7 +107,7 @@ class PicturesController < ApplicationController
 
 
         flash[:notice] = 'Picture has been successfully created.'
-        format.html { redirect_to(parent_object) }
+        format.html { redirect_to(url_for_even_polymorphic(@picture)) }
         format.xml  { render :xml => parent_object }
       else
         format.html { render :action => "new" }
@@ -101,14 +121,13 @@ class PicturesController < ApplicationController
   def update
     
     @picture = Picture.find(params[:id])
-    parent_object = Picture.find_parent(@picture.parent_type, @picture.parent_id)
 
 
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
 
         flash[:notice] = 'Picture has been successfully updated.'
-        format.html { redirect_to(parent_object) }
+        format.html { redirect_to(url_for_even_polymorphic(@picture)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -138,7 +157,7 @@ class PicturesController < ApplicationController
     picture.suspended_by = self.current_user.id
     picture.suspend!
     flash[:notice] = 'Picture has been suspended.'
-    redirect_to(picturable_object)
+    redirect_to(url_for_even_polymorphic(picturable_object))
   end
 
   # PUT /users/1/unsuspend
@@ -174,7 +193,7 @@ class PicturesController < ApplicationController
   end
 
   def ensure_parameters
-    wrong_parameters_redirection unless params[:parent_type] && params[:parent_id] && Picture.find_parent(params[:parent_type], params[:parent_id])
+    wrong_parameters_redirection unless (params[:organism_id] or params[:event_id] or params[:user_id])
   end
 
   def ensure_has_current_user_moderation_rights

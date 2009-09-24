@@ -44,7 +44,7 @@ class EventsController < ApplicationController
     #current_object is used for comment form
     @current_object = @event = Event.find(params[:id])
     #the object comment is needed for displaying the form of new comment
-    @comment = Comment.new
+    initialize_new_comment(@event)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,7 +1,6 @@
-<h3>Add pictures for <%= @gallery.name %></h3>
-<h3>gallery of <%= @parent_object.name %></h3>
+<%= render :partial => "header" %>
 
-<% form_for @gallery, :url => { :action => "do_add_pics" }, :html => { :multipart => true }  do |f| %>
+<% form_for(@gallery, :url => url_for_even_polymorphic(@gallery, :action => 'do_add_pics'), :html => { :multipart => true })  do |f| %>
 
   <%= f.error_messages %>
 

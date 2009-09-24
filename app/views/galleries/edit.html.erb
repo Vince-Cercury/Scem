@@ -1,15 +1,14 @@
-<h1>Editing <%= @gallery.name %></h1>
-<h3>gallery of <%= @parent_object.name %></h3>
-
-
-
 <% form_for @gallery, :html => { :multipart => true }  do |f| %>
-
   <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :class => 'title' %>
-  </p>
+<div class="span-17 last">
+  <h3>Gallery - <%= f.text_field :name, :class => 'title' %></h3>
+  <%= link_to("Back to Gallery", polymorphic_path([@gallery.get_parent_object, @gallery].flatten)) %>
+  <% if !@parent_object.nil? %>
+    <%= link_to "Back to #{@parent_object.type}", url_for(@parent_object) %>
+  <% end %>
+</div>
+<hr />
+
   <p>
     <%= f.label :description %><br />
     <%= fckeditor_textarea(:gallery, :description, :toolbarSet => 'Simple', :width => '80%', :height => '400px') %>
@@ -28,7 +27,3 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-
-<%= link_to 'Show', @gallery %> |
-<%= link_to 'Back', galleries_path %>

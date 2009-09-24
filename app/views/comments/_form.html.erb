@@ -1,5 +1,5 @@
 <% if logged_in? -%>
-  <% form_for @comment do |f| %>
+  <% form_for(@comment, :url => url_for_even_polymorphic(@comment)) do |f| %>
 
     <%=  hidden_field_tag 'commentable_type', @current_object.class %>
     <%=  hidden_field_tag 'commentable_id', @current_object.id %>

@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     @parent_object = @post.get_parent_object
 
     if(@post.active?) or (current_user && @parent_object.is_user_moderator?(current_user))
-      @comment = Comment.new
+      initialize_new_comment(@post)
 
       prepare_parent_context_from_parent_object(@parent_object)
 

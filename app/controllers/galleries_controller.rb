@@ -13,7 +13,21 @@ class GalleriesController < ApplicationController
   # GET /galleries.xml
   def index
 
-   @galleries = Gallery.search(params[:search], params[:page])
+    if params[:organism_id]
+      @parent_object = @organism = Organism.find(params[:organism_id])
+      @galleries = @organism.search_galleries(params[:search], params[:page])
+      @search_galleries_header = 'galleries_event_search'
+    end
+
+    if params[:event_id]
+      @parent_object = @event = Event.find(params[:event_id])
+      @galleries = @event.search_galleries(params[:search], params[:page])
+      @search_galleries_header = 'galleries_organism_search'
+    end
+
+    if !params[:organism_id] && ! params[:event_id]
+      @galleries = Gallery.search(params[:search], params[:page])
+    end
 
 
     respond_to do |format|
@@ -36,7 +50,7 @@ class GalleriesController < ApplicationController
     
 
     #the object comment is needed for displaying the form of new comment
-    @comment = Comment.new
+    initialize_new_comment(@gallery)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @gallery }
@@ -102,7 +116,7 @@ class GalleriesController < ApplicationController
       else
         flash[:error] = 'Picture set cover failed.'
       end
-      format.html { redirect_to(:action => "edit_pics", :id => @gallery.id) }
+      format.html { redirect_to(url_for_even_polymorphic(@gallery, :action => 'edit_pics')) }
       format.xml  { render :xml => @gallery }
     end
   end
@@ -137,13 +151,12 @@ class GalleriesController < ApplicationController
 
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
-
         if(moderation_state)
           flash[:notice] = 'Pictures need aprobation of the moderators to be visible.'
-          format.html { redirect_to(@gallery) }
+          format.html { redirect_to(url_for_even_polymorphic(@gallery)) }
         else
           flash[:notice] = 'Pictures successfully added to gallery.'
-          format.html { redirect_to(edit_pics_gallery_path(@gallery)) }
+          format.html { redirect_to(url_for_even_polymorphic(@gallery, :action => 'edit_pics')) }
         end
         format.xml  { head :ok }
       else
@@ -175,7 +188,7 @@ class GalleriesController < ApplicationController
       else
         flash[:error] = 'Pictures moved failed.'
       end
-      format.html { redirect_to(:action => "edit_pics", :id => @gallery.id) }
+      format.html { redirect_to(url_for_even_polymorphic(@gallery, :action => 'edit_pics')) }
       format.xml  { render :xml => @gallery }
     end
   end
@@ -201,7 +214,7 @@ class GalleriesController < ApplicationController
 
         flash[:notice] = 'Gallery was successfully created.'
         #format.html { redirect_to(@gallery) }
-        format.html { redirect_to(url_for(:controller => 'galleries', :action => 'add_pics', :id => @gallery.id)) }
+        format.html { redirect_to(url_for_even_polymorphic(@gallery, :action => 'add_pics')) }
         format.xml  { render :xml => @gallery}
       else
         format.html { render :action => "new" }
@@ -222,7 +235,7 @@ class GalleriesController < ApplicationController
       if @gallery.update_attributes(params[:gallery])
 
         flash[:notice] = 'Gallery was successfully updated.'
-        format.html { redirect_to(@gallery) }
+        format.html { redirect_to(url_for_even_polymorphic(@gallery)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -236,10 +249,11 @@ class GalleriesController < ApplicationController
   # DELETE /galleries/1.xml
   def destroy
     @gallery = Gallery.find(params[:id])
+    @parent_object = @gallery.get_parent_objet
     @gallery.destroy
 
     respond_to do |format|
-      format.html { redirect_to(galleries_url) }
+      format.html { redirect_to(url_for_even_polymorphic(@parent_object)) }
       format.xml  { head :ok }
     end
   end
@@ -280,58 +294,58 @@ class GalleriesController < ApplicationController
     else
       raise pictures_attributes.inspect
     end
-end
-
-def has_current_user_moderation_rights
-  gallery = Gallery.find(params[:id])
-  gallery && self.current_user && (gallery.is_user_moderator?(self.current_user) or self.current_user.has_system_role('moderator'))
-end
-
-def ensure_create_rights?
-  parent_object = Gallery.find_parent(params[:parent_type], params[:parent_id])
-  not_enough_rights unless self.current_user && ((parent_object && parent_object.is_user_moderator?(self.current_user)) or self.current_user.has_system_role('moderator'))
-end
-
-def ensure_moderator_edit_rights?
-  puts "ensure current user is owner or has moderation rights (picture)"
-  gallery = Gallery.find(params[:id])
-  not_enough_rights unless self.current_user && gallery && gallery.creator_id==self.current_user.id or has_current_user_moderation_rights
-end
-
-def ensure_parameters
-  wrong_parameters_redirection unless params[:parent_type] && params[:parent_id] && Picture.find_parent(params[:parent_type], params[:parent_id])
-end
-
-def ensure_add_pics_rights
-  right_ok=false
-  gallery = Gallery.find(params[:id])
-  case gallery.add_picture_right
-  when 'members'
-    if self.current_user && gallery.is_user_parents_member?(self.current_user)
-      right_ok=true
-    end
-  when 'all'
-    if self.current_user
-      right_ok=true
-    end
-  else
-    if has_current_user_moderation_rights
-      right_ok=true
-    end
   end
-  not_enough_rights unless right_ok
-end
 
-def wrong_parameters_redirection
-  flash[:error] = "Some parameters are missing or wrong"
-  redirect_to root_path
-end
+  def has_current_user_moderation_rights
+    gallery = Gallery.find(params[:id])
+    gallery && self.current_user && (gallery.is_user_moderator?(self.current_user) or self.current_user.has_system_role('moderator'))
+  end
+
+  def ensure_create_rights?
+    parent_object = Gallery.find_parent(params[:parent_type], params[:parent_id])
+    not_enough_rights unless self.current_user && ((parent_object && parent_object.is_user_moderator?(self.current_user)) or self.current_user.has_system_role('moderator'))
+  end
+
+  def ensure_moderator_edit_rights?
+    puts "ensure current user is owner or has moderation rights (picture)"
+    gallery = Gallery.find(params[:id])
+    not_enough_rights unless self.current_user && gallery && gallery.creator_id==self.current_user.id or has_current_user_moderation_rights
+  end
+
+  def ensure_parameters
+    wrong_parameters_redirection unless params[:parent_type] && params[:parent_id] && Picture.find_parent(params[:parent_type], params[:parent_id])
+  end
+
+  def ensure_add_pics_rights
+    right_ok=false
+    gallery = Gallery.find(params[:id])
+    case gallery.add_picture_right
+    when 'members'
+      if self.current_user && gallery.is_user_parents_member?(self.current_user)
+        right_ok=true
+      end
+    when 'all'
+      if self.current_user
+        right_ok=true
+      end
+    else
+      if has_current_user_moderation_rights
+        right_ok=true
+      end
+    end
+    not_enough_rights unless right_ok
+  end
+
+  def wrong_parameters_redirection
+    flash[:error] = "Some parameters are missing or wrong"
+    redirect_to root_path
+  end
 
 
-def not_enough_rights
-  flash[:error] = "Not allowed to do this. Not owner or enough rights."
-  redirect_to root_path
-end
+  def not_enough_rights
+    flash[:error] = "Not allowed to do this. Not owner or enough rights."
+    redirect_to root_path
+  end
 
 
 end

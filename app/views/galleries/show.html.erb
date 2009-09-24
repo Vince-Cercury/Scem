@@ -1,17 +1,4 @@
-<div class="span-11">
-  <h3>Gallery - <%= @gallery.name %></h3>
-  <% if !@parent_object.nil? %>
-    <%= link_to "Back to #{@parent_object.type}", url_for(@parent_object) %>
-  <% end %>
-</div>
-<div class="span-6 last">
-  <%= render :partial => "rating/rating", :locals => { :current_object => @gallery } %>
-  <br />
-  <%= link_to("Edit pictures", url_for(:controller => 'galleries', :action => 'edit_pics', :id => @gallery.id)) %>
-  <%= link_to("Add pictures", url_for(:controller => 'galleries', :action => 'add_pics', :id => @gallery.id)) %>
-  <%= link_to 'Edit the gallery', edit_gallery_path(@gallery) %>
-</div>
-<hr />
+<%= render :partial => "header" %>
 <div class="span-8">
   <%= display_gallery_cover(@gallery, :medium) %>
 </div>
@@ -33,7 +20,7 @@
 <% for picture in @gallery.pictures %>
   <div class="span-5">
     <div class="box">
-      <%= link_to(image_tag(picture.attached.url(:small)), url_for(picture)) %>
+      <%= link_to(image_tag(picture.attached.url(:small)), polymorphic_path([@gallery.get_parent_object, @gallery, picture].flatten)) %>
       <%= render :partial => "rating/mini_rating", :locals => { :current_object => picture } if picture.rating > 0 %>
     </div>
   </div>
@@ -46,7 +33,7 @@
 
 
 
-<h2>Comments</h2
+<h2>Comments</h2>
 <%= render :partial => "/comments/list" %>
 <%= render :partial => "/comments/form" %>
 

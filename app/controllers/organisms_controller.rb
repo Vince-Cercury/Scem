@@ -31,7 +31,7 @@ class OrganismsController < ApplicationController
     @current_object = @organism = Organism.find(params[:id])
 
     #the object comment is needed for displaying the form of new comment
-    @comment = Comment.new
+    initialize_new_comment(@organism)
 
     respond_to do |format|
       format.html # show.html.erb
