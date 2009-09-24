@@ -41,11 +41,11 @@ class Term < ActiveRecord::Base
     end
   end
 
-  def self.search_futur(search, page)
+  def self.search_futur(search, page, is_private=false)
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
       :include => [ :event],
-      :conditions => ['events.name LIKE ? and terms.start > NOW()', "%#{search}%"],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and terms.start > NOW()', "%#{search}%", is_private],
       :order => 'start ASC'
   end
 

@@ -8,8 +8,8 @@ class Picture < ActiveRecord::Base
     :medium => "252x252>",
     :small => "126x126>",
     :thumb => "72x72>"},
-    :url => "/uploads/:parent_root_path/Image/:id/:style.:extension",
-    :path => ":rails_root/public/uploads/:parent_root_path/Image/:id/:style.:extension"
+    :url => "/system/uploads/:parent_root_path/Image/:id/:style.:extension",
+    :path => ":rails_root/public/system/uploads/:parent_root_path/Image/:id/:style.:extension"
 
   validates_attachment_presence :attached
   validates_attachment_content_type :attached, :content_type => 'image/jpeg'

@@ -41,23 +41,23 @@ class Event < ActiveRecord::Base
   end
 
   
-  def self.search_has_publisher(search, page)
+  def self.search_has_publisher(search, page, is_private=false)
     paginate :per_page => ENV['PER_PAGE'], :page => page,
       :joins => "inner join contributions on contributions.event_id = events.id and contributions.role='publisher'",
-      :conditions => ["events.name like ?", "%#{search}%"],
+      :conditions => ["events.name like ? and events.is_private = ?", "%#{search}%", is_private],
       :order => 'events.name',
       :group => 'events.id'
   end
 
-  def self.search_not_have_publisher(search, page)
+  def self.search_not_have_publisher(search, page, is_private=false)
     paginate :per_page => ENV['PER_PAGE'], :page => page,
-      :conditions => ["events.name like ? and events.id not in (select event_id from contributions where role='publisher' and event_id is not null)", "%#{search}%"],
+      :conditions => ["events.name like ? and events.is_private = ? and events.id not in (select event_id from contributions where role='publisher' and event_id is not null)", "%#{search}%", is_private],
       :order => 'events.name'
   end
 
-  def self.search(search, page)
+  def self.search(search, page, is_private=false)
     paginate :per_page => ENV['PER_PAGE'], :page => page,
-      :conditions => ['name like ?', "%#{search}%"],
+      :conditions => ['name like ? and events.is_private = ?', "%#{search}%", is_private],
       :order => 'name'
   end
 

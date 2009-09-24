@@ -3,7 +3,7 @@ require 'tmpdir'
 
 class FckeditorController < ActionController::Base
 
-  UPLOAD_FOLDER = '/uploads'
+  UPLOAD_FOLDER = '/system/uploads'
 
   UPLOADED_ROOT = RAILS_ROOT + "/public" + UPLOAD_FOLDER
 
