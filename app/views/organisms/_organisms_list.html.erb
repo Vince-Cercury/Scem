@@ -11,9 +11,6 @@
         <%=h organism.description_short %>
         <div class="quiet">
           <%= render :partial => "rating/mini_rating", :locals => { :current_object => organism } if organism.rating > 0 %>
-          <br />
-          ( <%= link_to 'Edit', edit_organism_path(organism) %> |
-          <%= link_to 'Destroy', organism, :confirm => 'Are you sure?', :method => :delete %> )
         </div>
       </div>
     </div>
