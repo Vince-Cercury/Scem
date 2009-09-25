@@ -4,15 +4,15 @@ class Picture < ActiveRecord::Base
 
   has_attached_file :attached, :styles => {
     #:original => "1024x768>",
-    :large => "504x504>",  #has to be multiple of 18
-    :medium => "252x252>",
-    :small => "126x126>",
-    :thumb => "72x72>"},
+    :large => ["504x504>", :jpg],  #has to be multiple of 18
+    :medium => ["252x252>", :jpg],
+    :small => ["126x126>", :jpg],
+    :thumb => ["72x72>", :jpg],},
     :url => "/system/uploads/:parent_root_path/Image/:id/:style.:extension",
     :path => ":rails_root/public/system/uploads/:parent_root_path/Image/:id/:style.:extension"
 
   validates_attachment_presence :attached
-  validates_attachment_content_type :attached, :content_type => 'image/jpeg'
+  validates_attachment_content_type :attached, :content_type => ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'] 
   validates_attachment_size :attached, :less_than => 6.megabytes
 
   #validates_presence_of :parent_id
