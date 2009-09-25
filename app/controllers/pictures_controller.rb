@@ -88,7 +88,7 @@ class PicturesController < ApplicationController
 
 
         flash[:notice] = 'Picture has been successfully created.'
-        format.html { redirect_to(url_for_even_polymorphic(@picture)) }
+        format.html { redirect_to(url_for_even_polymorphic(@parent_object)) }
         format.xml  { render :xml => @parent_object }
       else
         format.html { render :action => "new" }

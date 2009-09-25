@@ -1,6 +1,6 @@
  <%= render :partial => "/events/header" %>
 
-<% form_for(@term) do |f| %>
+<% form_for(@term, :url => url_for_even_polymorphic(@term)) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -16,6 +16,3 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<%= link_to 'Show', term_path(@term,:event_id=>@event.id) %> |
-<%= link_to 'Back', terms_path(:event_id=>@event.id) %>

@@ -89,8 +89,12 @@ ActionController::Routing::Routes.draw do |map|
         :unsuspend => :get,
         :activate     => :get }
     end
+    event.resources :terms do |term|
+      term.resources :participations
+    end
   end
 
+  #deprecated
   map.resources :terms do |term|
     term.resources :participations
   end
@@ -99,6 +103,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :participations, :collection =>{
     :create_or_update => :get }
 
+  #deprecated
   map.resources :terms
 
   map.resources :activities

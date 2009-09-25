@@ -221,4 +221,8 @@ class Term < ActiveRecord::Base
     return result
   end
 
+  def get_parent_object
+    return event
+  end
+
 end

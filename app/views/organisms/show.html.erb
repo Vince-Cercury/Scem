@@ -15,6 +15,7 @@
   <div class="box">
     <%=h @organism.description_short %>
   </div>
+  <% if current_user && @organism.is_user_moderator?(current_user)%>
   <div class="box">
     <b>Manager name:</b>
     <%=h @organism.manager_name %>
@@ -25,6 +26,7 @@
     <b>In directory:</b>
     <%=h boolean_to_literal(@organism.in_directory) %>
   </div>
+  <% end %>
 </div>
 <hr />
 

@@ -4,7 +4,7 @@
 
       <% if current_user && @event.is_user_moderator?(current_user) %>
         <br />
-        <%= link_to 'Edit', edit_term_path(@term, :event_id=>@event.id) %> | 
+        <%= link_to 'Edit', edit_url_for_even_polymorphic(@term) %> |
         <%= link_to 'Destroy', @term, :confirm => 'Are you sure?', :method => :delete %>
       <% end  %>
         </div>
