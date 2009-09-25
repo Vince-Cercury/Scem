@@ -30,7 +30,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
 
-    if params[:date].nil?
+    if !params[:date]
       if params[:period] == "past"
         @period_link_param = "futur"
         @terms = Term.search_has_publisher_past_by_category(params[:search], params[:page], params[:id])
