@@ -1,7 +1,7 @@
 class Organism < ActiveRecord::Base
   validates_presence_of     :name, :description_short, :manager_name
   validates_uniqueness_of   :name
-  validates_length_of :description_short, :maximum=>250
+  validates_length_of :description_short, :maximum=>400
 
   has_many :galleries, :as => :parent, :dependent => :destroy
 

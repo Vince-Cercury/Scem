@@ -22,7 +22,7 @@
 <% elsif is_current_object_moderator?(@current_object) %>
   <h4 class="caps">PICTURES GALLERIES</h4>
   <div class="box">
-    <%= link_to("Attache a new gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
+    <%= link_to("Attach a new gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
   </div>
   <hr />
 <% end %>

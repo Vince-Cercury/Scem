@@ -17,13 +17,13 @@
 
   <div class="span-8 colborder">
     <div class="box">
-      <% if @event.picture.nil? %>
-        <%= get_default_event_picture(:medium) %><br />
-        <%= link_to("Attach a picture !", url_for(:controller => 'pictures', :action => 'new', :parent_id => @event.id, :parent_type => "Event")) %>
-      <% else %>
-        <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for(@event.picture)) %><br />
-        <%= link_to("Change the image", url_for(:controller => 'pictures', :action => 'new', :parent_id => @event.id, :parent_type => "Event")) %>
-      <% end %>
+    <% if @event.picture.nil? %>
+      <%= get_default_event_picture(:medium) %><br />
+      <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@event, :picture)) %>
+    <% else %>
+      <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %><br />
+      <%= link_to("Change the image", new_url_for_even_polymorphic(@event, :picture)) %>
+    <% end %>
     </div>
   </div>
   <div class="span-8 last">
