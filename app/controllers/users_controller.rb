@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.facebook_user?
-      @current_fb_user = facebook_session.user
+      @current_fb_user = Facebooker::User.new(@user.fb_user_id)
     end
 
     respond_to do |format|

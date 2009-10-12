@@ -78,7 +78,7 @@
     <% elsif @organism.is_user_pending?(current_user) %>
       <%= link_to 'Membership pending for activation. Cancel ?', { :controller => "members", :action => "destroy_current_user_relation", :organism_id => @organism.id }%>
     <% else %>
-      <% form_tag  :controller => "m", :action => "create_or_update_current_user", :organism_id => @organism.id , :method => 'get' do %>
+      <% form_tag  :controller => "members", :action => "create_or_update_current_user", :organism_id => @organism.id , :method => 'get' do %>
         <p>
           Optionnal password: <%= text_field_tag :members_password, params[:members_password] %> (only if you know it, not mandatory)
           <%= submit_tag "GO", :name => nil %>

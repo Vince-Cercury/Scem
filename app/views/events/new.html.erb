@@ -14,10 +14,10 @@
   <% if params[:type] != 'user_event' %>
   <div class="box">
     Publisher: <br />
-    <%= collection_select :contributions,
+  <%= collection_select :contributions,
       :publisher_ids,
       get_list_organism_rights_user(current_user),
-      :id, :name,{ :selected => @event.get_first_publisher },
+      :id, :name,{ :selected => get_list_organism_rights_user(current_user).first, :include_blank => false },
       { :multiple => false } -%>
   </div>
   <% end %>
