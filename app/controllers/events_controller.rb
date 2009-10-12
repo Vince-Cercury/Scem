@@ -2,12 +2,14 @@ class EventsController < ApplicationController
   
 
   # store the current location in case of an atempt to login, for redirecting back
-  before_filter :store_location, :only => [:show, :index, :new, :edit]
+  before_filter :store_location, :only => [:show, :index]
 
   # Protect these actions behind an admin login
   before_filter :is_admin?, :only => [:destroy]#, :purge]
 
-  before_filter :is_logged?, :only => [:new, :create, :edit, :update]
+ # before_filter :is_logged?, :only => [:new, :create, :edit, :update]
+
+  before_filter :is_granted_to_create, :only => [:new, :create]
 
   # Protect these actions behind a moderator login
   before_filter :is_granted_to_edit?, :except => [:show, :index, :create, :new]
@@ -190,10 +192,15 @@ class EventsController < ApplicationController
    end
   end
 
+  def is_granted_to_create
+    not_moderator_of_any_organism unless current_user && (current_user.is_admin_or_moderator_of.size>0 or params[:type] == 'user_event')
+  end
+
   def is_granted_to_edit?
     event = Event.find(params[:id])
     not_granted_redirection unless current_user && event.is_granted_to_edit?(current_user)
   end
+
 
   def is_granted_to_view?
     event = Event.find(params[:id])

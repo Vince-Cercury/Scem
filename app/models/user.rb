@@ -143,6 +143,7 @@ class User < ActiveRecord::Base
     moderators_list +=self
   end
 
+  #Huuuu ?? wtf ? will never work, where does the variable id comes from ?
   def is_user_moderator?(user)
     if user
       if id==user.id

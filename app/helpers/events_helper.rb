@@ -25,11 +25,11 @@ module EventsHelper
   end
 
   def get_list_organism_rights_user(user)
-    if user.has_system_role('moderator')
-      Organism.find_all_by_state('active', :order =>'name')
-    else
+    #if user.has_system_role('moderator')
+     # Organism.find_all_by_state('active', :order =>'name')
+    #else
       user.is_admin_or_moderator_of
-    end
+    #end
   end
 
   def display_event_action
