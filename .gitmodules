@@ -13,3 +13,7 @@
 [submodule "vendor/plugins/blueprint-plugin---tabs"]
         path = vendor/plugins/blueprint-plugin---tabs
         url = git://github.com/Montoya/blueprint-plugin---tabs.git
+[submodule "vendor/plugins/http_accept_language"]
+        path = vendor/plugins/http_accept_language
+        url = git://github.com/iain/http_accept_language.git
+
