@@ -21,16 +21,6 @@ class ApplicationController < ActionController::Base
   def set_locale
     available = %w{fr-FR en-US}
 
-    #hack : IE seems to provide fr instead of fr-Fr
-#    prefered =  request.user_preferred_languages
-#    i=0
-#    prefered.each do |language|
-#      if language == 'fr'
-#        prefered[i] = 'fr-FR'
-#      end
-#      i = i+1
-#    end
-
     locale = params[:locale] || request.compatible_language_from(available) #'en-US'
     I18n.locale = locale
     I18n.load_path += Dir[ File.join(RAILS_ROOT, 'lib', 'locale', '*.{rb,yml}') ]
