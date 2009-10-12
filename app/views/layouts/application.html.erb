@@ -39,17 +39,12 @@
         </div>
         <div class="span-13 last">
           <div class="mainmenubox">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            (<%= link_to("events", url_for(events_path)) %> -
-            <%= link_to("organisms", url_for(organisms_path)) %> -
-            <%= link_to("categories", url_for(categories_path)) %> -
-            <%= link_to("pictures", url_for(pictures_path)) %>)
             <br /><br />
           <ul class='tabs'>
-            <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to("Events by dates", url_for(terms_path)) %><% else %>Events by dates<% end %></li>
-            <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to("Yellow pages", url_for(activities_path)) %><% else %>Yellow pages<% end %></li>
-            <li><% if controller_name != 'galleries' %><%= link_to("Pictures Galleries", url_for(galleries_path)) %><% else %>Pictures Galleries<% end %></li>
-            <li><% if controller_name != 'users' %><%= link_to("Users", url_for(users_path)) %><% else %>Users<% end %></li>
+            <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to(t('main_menu.events_by_date'), url_for(terms_path)) %><% else %><%=t 'main_menu.events_by_date' %><% end %></li>
+            <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><%= t('main_menu.directory')%><% end %></li>
+            <li><% if controller_name != 'galleries' %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path)) %><% else %><%= t('main_menu.pictures_galleries')%><% end %></li>
+            <li><% if controller_name != 'users' %><%= link_to(t('main_menu.users'), url_for(users_path)) %><% else %><%= t('main_menu.users') %><% end %></li>
           </ul>
             
 
@@ -89,7 +84,7 @@
 
         <!-- Right column -->
         <div class="span-6 last" id="sidebar">
-          <h3 class="caps">Search into <%= get_current_search_controller %></h3>
+          <h3 class="caps"><%= t("side_bar.search_into") %> <%=  get_current_search_model_type %></h3>
           <div class="box">
             <% form_tag url_for(get_current_search_controller), :method => 'get' do %>
               <p>
@@ -98,7 +93,7 @@
               </p>
             <% end %>
           </div>
-          <h3 class="caps">Calendar</h3>
+          <h3 class="caps"><%= t("side_bar.calendar") %></h3>
 
           <%= events_calendar_display %>
           <br />
@@ -112,7 +107,7 @@
             ...<br />
           </div>
           <% if get_next_user_terms.size>0 %>
-          <h3 class="caps">User meetings (next <%= ENV['USER_EVENTS_MAX_RESULTS'] %>)</h3>
+            <h3 class="caps"><%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)</h3>
 
             <% get_next_user_terms.each do |term| %>
           <div class="span-2">

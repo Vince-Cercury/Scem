@@ -1,9 +1,9 @@
-<% if @category.nil? %> <h3 class="caps">LISTING EVENTS</h3><% end %>
+<% if @category.nil? %> <h3 class="caps"><%= t("events.listing_events") %></h3><% end %>
 
 
 <ul class="tabs">
-<li><% if params[:period]=='past'%><%= link_to "Next events coming", get_url_past_or_futur_tab %><% else %>Next events coming<% end %></li>
-<li><% if params[:period]!='past'%><%= link_to "Already started or past events", get_url_past_or_futur_tab %><% else %>Already started or past events<% end %></li>
+  <li><% if params[:period]=='past'%><%= link_to t('terms.next_events_coming'), get_url_past_or_futur_tab %><% else %><%= t('terms.next_events_coming') %><% end %></li>
+  <li><% if params[:period]!='past'%><%= link_to t('terms.already_started_or_past'), get_url_past_or_futur_tab %><% else %><%= t('terms.already_started_or_past') %><% end %></li>
 </ul>
 
 

@@ -49,8 +49,8 @@ module ApplicationHelper
 
     the_date = parse_params_date_or_now_date
 
-    prev_month_link = link_to( "#{the_date.last_month.strftime("%B")}", :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" )
-    next_month_link = link_to( "#{the_date.next_month.strftime("%B")}", :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.next_month.month}-#{the_date.next_month.year}" )
+    prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" )
+    next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.next_month.month}-#{the_date.next_month.year}" )
 
     calendar(:year => the_date.year, :month => the_date.month, :first_day_of_week => 1, :previous_month_text => prev_month_link, :next_month_text => next_month_link) do |d|
       cell_attrs = {:class => 'day'}
@@ -132,6 +132,27 @@ module ApplicationHelper
       result = 'users'
     else
       result = 'events'
+    end
+    return result
+  end
+
+  def get_current_search_model_type
+
+  case controller_name
+    when 'events'
+      result = t('search.model_type.events')
+    when 'organisms'
+      result = t('search.model_type.organisms')
+    when 'activities'
+      result = t('search.model_type.organisms')
+    when 'categories'
+      result = t('search.model_type.events')
+    when 'galleries'
+      result = t('search.model_type.galleries')
+    when 'users'
+      result = t('search.model_type.users')
+    else
+      result = t('search.model_type.events')
     end
     return result
   end

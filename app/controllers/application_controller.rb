@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
   before_filter :set_facebook_session
   helper_method :facebook_session
 
+  before_filter :set_locale
+
+  def set_locale
+    locale = params[:locale] || 'en-US'
+    I18n.locale = locale
+    I18n.load_path += Dir[ File.join(RAILS_ROOT, 'lib', 'locale', '*.{rb,yml}') ]
+  end
+
 
   # Check for Logged in User
   #

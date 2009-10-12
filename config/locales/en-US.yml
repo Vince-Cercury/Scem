@@ -1,0 +1,108 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en-US:
+  next_number: "next {{number}}"
+  main_menu:
+    events_by_date: Events by dates
+    directory: Yellow pages
+    pictures_galleries: Pictures galleries
+    users: Utilisateurs
+  side_bar:
+    calendar: Calendar
+    search_into: "Search into"
+  terms:
+    next_events_coming: "Next events coming"
+    already_started_or_past: "Already started or past events"
+  events:
+    listing_events: "LISTING EVENTS"
+  users:
+    meetings: "Users meetings"
+    session:
+      logged_in_success: Logged in successfully
+      logged_out: "You have been logged out."
+      login_error: "Couldn't log you in as "
+    sign_up: "Sign up"
+    login: "login"
+    log_out: "Log out"
+    bar:
+      classic_account: "classic account"
+      logged_in_as: "Logged in as "
+  search:
+    model_type:
+      events: events
+      organisms: organisms
+      activities: activities
+      categories: categories
+      galleries: galleries
+      users: users
+  time:
+    am: am
+    formats:
+      default: "%a %b %d %H:%M:%S %Z %Y"
+      time: "%H:%M"
+      verb: "%B %d %Y"
+      short1: "%d %B %Y"
+      only_second: "%S"
+      only_month: "%B"
+      datetime:
+        formats:
+          default: "%Y-%m-%dT%H:%M:%S%Z"
+      short: time"%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+      long1: "%d %B %Y at %H:%M:%S"
+    pm: pm
+  date:
+    order:
+    - :year
+    - :month
+    - :day
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    formats:
+      default: "%Y-%m-%d"
+      only_day: "%e"
+      short: "%e %b"
+      long: "%B %e, %Y"
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec

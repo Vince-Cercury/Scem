@@ -5,17 +5,17 @@
     <%= display_user_cover(current_user, "mini") %>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <% if current_user.facebook_user? %>
-      Logged in as <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
-      (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'>Log out</a>)
+      <%= t("users.bar.logged_in_as") %> <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
+      (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'><%= t("users.log_out") %></a>)
     <% else %>
-      Logged in as <%= link_to_current_user :content_method => :login %>
-      (<%= link_to "Log out", logout_path, { :title => "Log out" }    %>)
+      <%= t("users.bar.logged_in_as") %> <%= link_to_current_user :content_method => :login %>
+      (<%= link_to t("users.log_out"), logout_path   %>)
     <% end %>
   <% else -%>
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    classic account: <%= link_to "login",  login_path,  { :title => "Log in" } %> /
-    <%= link_to "Sign up", signup_path, { :title => "Create an account" } %>
+    <%= t('users.bar.classic_account') %>: <%= link_to t("users.login"),  login_path %> /
+    <%= link_to t("users.sign_up"), signup_path %>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <%= fb_login_button('window.location = "/facebook";')%>
 
