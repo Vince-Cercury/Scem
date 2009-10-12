@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     available = %w{fr-FR en-US}
-
+    raise request.preferred_language_from(available).inspect
     locale = params[:locale] || request.preferred_language_from(available) #'en-US'
     I18n.locale = locale
     I18n.load_path += Dir[ File.join(RAILS_ROOT, 'lib', 'locale', '*.{rb,yml}') ]
