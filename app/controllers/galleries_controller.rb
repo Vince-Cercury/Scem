@@ -16,13 +16,13 @@ class GalleriesController < ApplicationController
     if params[:organism_id]
       @parent_object = @organism = Organism.find(params[:organism_id])
       @galleries = @organism.search_galleries(params[:search], params[:page])
-      @search_galleries_header = 'galleries_event_search'
+      @search_galleries_header = 'galleries_organism_search'
     end
 
     if params[:event_id]
       @parent_object = @event = Event.find(params[:event_id])
       @galleries = @event.search_galleries(params[:search], params[:page])
-      @search_galleries_header = 'galleries_organism_search'
+      @search_galleries_header = 'galleries_event_search'
     end
 
     if !params[:organism_id] && ! params[:event_id]
