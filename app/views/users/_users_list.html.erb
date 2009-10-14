@@ -28,11 +28,12 @@
       </div>
     </div>
     <hr />
-  <% end %>
-  <%= will_paginate @users %>
+  <% end %> 
   <% if @users.size == 0 %>
     <div class="box">
       Sorry, no result
     </div>
-  <% end %>
+  <% else %>
+    <%= will_paginate @users %>
+   <% end %>
 </div>

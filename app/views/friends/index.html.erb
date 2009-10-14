@@ -1,0 +1,12 @@
+<%= render :partial => "/users/header" %>
+
+<% form_tag user_friends_path, :method => 'get' do %>
+  <p>
+    <%#=  hidden_field_tag 'role', params[:role] %>
+
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<%= render :partial => "/users/users_list" %>

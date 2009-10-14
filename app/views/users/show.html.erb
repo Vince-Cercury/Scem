@@ -1,10 +1,6 @@
 <%= render :partial => "/users/header" %>
-<%= link_to "Show member of (#{@user.is_member_of.size})", user_member_of_organisms_path(:user_id => @user.id) %> |
-<%= link_to "is moderator of #{@user.is_moderator_of.size} organism(s)", user_member_of_organisms_path(:user_id => @user.id, :role =>:moderator) %> |
-<%= link_to "is admin of #{@user.is_admin_of.size} organism(s)", user_member_of_organisms_path(:user_id => @user.id, :role =>:admin) %>
-<br />
-<% if @user.facebook_user? %>
 
+<% if @user.facebook_user? %>
 
   <h2> <%= @user.first_name %> <%= @user.last_name %></h2>
   <%= display_user_cover(@user, "large") %>
@@ -13,22 +9,6 @@
     <%= @to_display_fb_user.status.message %> <fb:time t='<%= @to_display_fb_user.status.time %>' preposition="true" ></fb:time>
   </div>
 
-  <% if @user == current_user %>
-    <hr />
-    <h4 class="caps">INVITE YOUR FRIENDS</h4>
-    <% @to_display_fb_user.friends[0,30].each do |friend| %>
-      <% if !User.facebook_user_accepted_this_app?(friend.uid)  %>
-        <div class="span-4">
-          <div class ="box">
-
-            <fb:profile-pic uid=<%= friend.uid %> linked="true" ></fb:profile-pic>
-            <br /><%= friend.first_name %> <%= friend.last_name %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-
-  <% end %>
 <% else %>
 
   <h2><%= @user.login %></h2>

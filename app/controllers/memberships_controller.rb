@@ -1,4 +1,4 @@
-class MemberOfOrganismsController < ApplicationController
+class MembershipsController < ApplicationController
 
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:index, :accept]
