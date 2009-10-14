@@ -130,6 +130,8 @@ module ApplicationHelper
       result = 'galleries'
     when 'users'
       result = 'users'
+    when 'friends'
+      result = 'friends'
     else
       result = 'events'
     end
