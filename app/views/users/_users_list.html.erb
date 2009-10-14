@@ -7,8 +7,6 @@
     <div class="span-12 last">
       <div class="box">
         <h4 class="prepend-5"><%= link_to(get_user_name_or_pseudo(user), user) %></h4>
-
-        TODO: Add as a friend link <br />(if logged in, else redirect to login page)
         <% if logged_in? && @organism -%>
           <% if @organism.is_user_moderator?(current_user) %>
 
@@ -27,10 +25,6 @@
             <br />
           <% end %>
         <% end -%>
-        <div class="quiet">
-          <%= link_to 'Edit', edit_user_path(user) %>
-          <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
-        </div>
       </div>
     </div>
     <hr />

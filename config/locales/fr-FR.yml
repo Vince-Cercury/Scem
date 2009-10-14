@@ -24,7 +24,9 @@ fr-FR:
     activate_success: "Inscription complète! Authentifiez-vous pour continuer."
     activate_code_missing: "Le code d'activation est absent. Merci de suivre le lien qui se trouve dans l'email."
     activate_not_found: "Nous n'avons pas trouvé d'utilisateur avec ce code d'activation -- vérifier l'email? Ou peut-être que vous l'avez déjà activé -- essayez de vous authentifier."
-  session:
+    index:
+      listing_users: "LISTE DES UTILISATEURS"
+  sessions:
     logged_in_success: Connecté avec succès
     logged_out: "Vous avez été déconnecté"
     login_error: "Impossible de vous connecter en tant que "

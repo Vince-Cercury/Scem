@@ -24,6 +24,8 @@ en-US:
     activate_success: "Signup complete! Please sign in to continue."
     activate_code_missing: "The activation code was missing.  Please follow the URL from your email."
     activate_not_found: "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
+    index:
+      listing_users: "LISTING USERS"
   sessions:
     logged_in_success: Logged in successfully
     logged_out: "You have been logged out."

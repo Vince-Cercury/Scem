@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id_and_state(params[:id], 'active')
+    find_user
 
     if @user.facebook_user?
       @current_fb_user = Facebooker::User.new(@user.fb_user_id)
@@ -128,7 +128,7 @@ class UsersController < ApplicationController
   protected
 
   def find_user
-    @user = User.find(params[:id])
+    @user = User.find_by_id_and_state(params[:id], 'active')
   end
 
 
@@ -142,8 +142,34 @@ class UsersController < ApplicationController
 
   #check if the logged in user is an acquaintance of the user to controll
   def acquaintance_rights?
-    #TODO: implement is_friend
-    no_permission_redirection  unless self.current_user && (self.current_user.id==find_user.id || self.current_user.has_system_role('moderator')) # || (self.current_user && self.current_user.is_friend?(find_user))
+    allowed_to_view_profile = false
+    
+    user_to_display = find_user
+    if current_user
+      if current_user.id==user_to_display.id || current_user.has_system_role('moderator')
+        allowed_to_view_profile = true
+      else
+        #check if both current user and user to display are facebook users in order to use the friends system
+        if current_user.facebook_user? && user_to_display.facebook_user?
+          if current_user.friends_with?(user_to_display)
+            allowed_to_view_profile = true
+          end
+        end
+      end
+    end
+
+    not_allowed_to_view_redirection  unless allowed_to_view_profile
+  end
+
+  def not_allowed_to_view_redirection
+    if current_user
+      flash[:error] = "You are not a friend of this user, you cannot see his profile..."
+      redirect_to users_path
+    else
+      flash[:error] = "Not allowed to do this. May be log in could help."
+      redirect_to login_path
+    end
+
   end
 
 end
