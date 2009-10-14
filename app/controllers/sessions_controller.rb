@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
       redirect_back_or_default('/')
-      flash[:notice] = I18n.t("user.session.logged_in_success")
+      flash[:notice] = I18n.t("sessions.logged_in_success")
     else
       note_failed_signin
       @login       = params[:login]
@@ -30,14 +30,14 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    flash[:notice] = I18n.t("user.session.logged_out")
+    flash[:notice] = I18n.t("sessions.logged_out")
     redirect_back_or_default('/')
   end
 
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash[:error] = I18n.t('user.session.login_error')+ ' '+ params[:login]
+    flash[:error] = I18n.t('sessions.login_error')+ ' '+ params[:login]
     logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
   end
 end

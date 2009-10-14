@@ -18,16 +18,30 @@ fr-FR:
     listing_events: "LISTE DES EVENEMENTS"
   users:
     meetings: "Les rendez-vous"
-    session:
-      logged_in_success: Connecté avec succès
-      logged_out: "Vous avez été déconnecté"
-      login_error: "Impossible de vous connecter en tant que "
+    update_success: "Utilisateur mis à jour avec succès."
+    create_success: "Merci de vous être inscris! Nous vous envoyons un email avec votre code d'activation."
+    create_error: "Nous n'avons pas pu créer ce compte, désolé.  merci de réessayer, ou contacter un administrateur."
+    activate_success: "Inscription complète! Authentifiez-vous pour continuer."
+    activate_code_missing: "Le code d'activation est absent. Merci de suivre le lien qui se trouve dans l'email."
+    activate_not_found: "Nous n'avons pas trouvé d'utilisateur avec ce code d'activation -- vérifier l'email? Ou peut-être que vous l'avez déjà activé -- essayez de vous authentifier."
+  session:
+    logged_in_success: Connecté avec succès
+    logged_out: "Vous avez été déconnecté"
+    login_error: "Impossible de vous connecter en tant que "
     sign_up: "Inscription"
     login: "connexion"
     log_out: "déconnexion"
     bar:
       classic_account: "compte classique"
       logged_in_as: "Connecté en tant que "
+  activities:
+    index:
+      listing_activities: "LISTE DES ACTIVITES"
+    show:
+      listing_organisms: "LISTE DES ORGANISMES"
+  organisms:
+    index:
+      listing_activities: "LISTE DES ORGANISMES"
   search:
     model_type:
       events: événements

@@ -7,7 +7,7 @@ en-US:
     events_by_date: Events by dates
     directory: Yellow pages
     pictures_galleries: Pictures galleries
-    users: Utilisateurs
+    users: Users
   side_bar:
     calendar: Calendar
     search_into: "Search into"
@@ -18,16 +18,30 @@ en-US:
     listing_events: "LISTING EVENTS"
   users:
     meetings: "Users meetings"
-    session:
-      logged_in_success: Logged in successfully
-      logged_out: "You have been logged out."
-      login_error: "Couldn't log you in as "
+    update_success: "User was successfully updated."
+    create_success: "Thanks for signing up!  We're sending you an email with your activation code."
+    create_error: "We couldn't set up that account, sorry.  Please try again, or contact an admin."
+    activate_success: "Signup complete! Please sign in to continue."
+    activate_code_missing: "The activation code was missing.  Please follow the URL from your email."
+    activate_not_found: "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
+  sessions:
+    logged_in_success: Logged in successfully
+    logged_out: "You have been logged out."
+    login_error: "Couldn't log you in as "
     sign_up: "Sign up"
     login: "login"
     log_out: "Log out"
     bar:
       classic_account: "classic account"
       logged_in_as: "Logged in as "
+  activities:
+    index:
+      listing_activities: "LISTING ACTIVITIES"
+    show:
+      listing_organisms: "LISTING ORGANISMS"
+  organisms:
+    index:
+      listing_organisms: "LISTING ORGANISMS"
   search:
     model_type:
       events: events

@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
   #search method for user
   def self.search(search, page)
     paginate :per_page => ENV['PER_PAGE'], :page => page,
-      :conditions => ['login like ? or first_name like ? or last_name like ? and state=?', "%#{search}%","%#{search}%","%#{search}%",:active],
+      :conditions => ['(login like ? or first_name like ? or last_name like ?) and state=?', "%#{search}%","%#{search}%","%#{search}%",'active'],
       :order => 'login, first_name, last_name'
   end
 

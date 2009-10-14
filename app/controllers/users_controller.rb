@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_id_and_state(params[:id], 'active')
 
     if @user.facebook_user?
       @current_fb_user = Facebooker::User.new(@user.fb_user_id)
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        flash[:notice] = 'User was successfully updated.'
+        flash[:notice] = I18n.t("users.update_success")
         format.html { redirect_to(@user) }
         format.xml  { head :ok }
       else
@@ -77,9 +77,9 @@ class UsersController < ApplicationController
     success = @user && @user.valid?
     if success && @user.errors.empty?
       redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      flash[:notice] = I18n.t("users.create_success")
     else
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash[:error]  = I18n.t("users.create_error")
       render :action => 'new'
     end
   end
@@ -90,13 +90,13 @@ class UsersController < ApplicationController
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
-      flash[:notice] = "Signup complete! Please sign in to continue."
+      flash[:notice] = I18n.t("users.activate_success")
       redirect_to '/login'
     when params[:activation_code].blank?
-      flash[:error] = "The activation code was missing.  Please follow the URL from your email."
+      flash[:error] = I18n.t("activate_code_missing")
       redirect_back_or_default('/')
     else 
-      flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
+      flash[:error]  = I18n.t("activate_not_found")
       redirect_back_or_default('/')
     end
   end
