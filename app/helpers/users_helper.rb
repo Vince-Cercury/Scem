@@ -11,26 +11,37 @@ module UsersHelper
   def display_user_cover(user, style)
     mini_height = "36px"
 
+
     if user.facebook_user?
       case style
       when "mini"
-        link_to(image_tag(user.fb_image_small, :height => mini_height), user)
+        image = image_tag(user.fb_image_small, :height => mini_height)
       when "thumb"
-        link_to(image_tag(user.fb_image_small), user)
+        image = image_tag(user.fb_image_small)
       when "small"
-        link_to(image_tag(user.fb_image_small), user)
+        image = image_tag(user.fb_image_small)
       when "medium"
-        link_to(image_tag(user.fb_image), user)
+        image = image_tag(user.fb_image)
       when "large"
-        link_to(image_tag(user.fb_image_big), user)
+        image = image_tag(user.fb_image_big)
       else
-        link_to(image_tag(user.fb_image), user)
+        image = image_tag(user.fb_image)
       end
     else
       if style == "mini"
-        link_to(image_tag("default/user/thumb/1.jpg", :height => mini_height), user)
+        image = image_tag("default/user/thumb/1.jpg", :height => mini_height)
+        
       else
-        link_to(image_tag("default/user/#{style}/1.jpg"), user)
+        image = image_tag("default/user/#{style}/1.jpg")
+      end
+    end
+    if acquaintance_rights?(user)
+      link_to(image, user)
+    else
+      if user.facebook_user?
+        link_to(image, "http://www.facebook.com/people/#{user.first_name}-#{user.last_name}/#{user.fb_user_id}", :target => 'blank')
+      else
+        image
       end
     end
   end
@@ -166,4 +177,36 @@ module UsersHelper
     end
   end
 
+  #check if the logged in user is an acquaintance of the user to controll
+  def acquaintance_rights?(user_to_display)
+    allowed_to_view_profile = false
+
+    if current_user
+      if current_user.id==user_to_display.id || current_user.has_system_role('moderator')
+        allowed_to_view_profile = true
+      else
+        #check if both current user and user to display are facebook users in order to use the friends system
+        if current_user.facebook_user? && user_to_display.facebook_user?
+          current_fb_user = Facebooker::User.new(current_user.fb_user_id)
+          if current_fb_user.friends_with?(user_to_display.fb_user_id)
+            allowed_to_view_profile = true
+          end
+        end
+      end
+    end
+
+    return allowed_to_view_profile
+  end
+
+  def user_profile_link(user)
+    if acquaintance_rights?(user)
+      link_to(get_user_name_or_pseudo(user), user)
+    else
+      if user.facebook_user?
+        link_to(get_user_name_or_pseudo(user), "http://www.facebook.com/people/#{user.first_name}-#{user.last_name}/#{user.fb_user_id}", :target => 'blank')
+      else
+        get_user_name_or_pseudo(user)
+      end
+    end
+  end
 end

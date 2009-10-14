@@ -6,7 +6,7 @@
     </div>
     <div class="span-12 last">
       <div class="box">
-        <h4 class="prepend-5"><%= link_to(get_user_name_or_pseudo(user), user) %></h4>
+        <h4 class="prepend-5"><%= user_profile_link(user) %></h4>
         <% if logged_in? && @organism -%>
           <% if @organism.is_user_moderator?(current_user) %>
 

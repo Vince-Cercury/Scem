@@ -5,7 +5,7 @@
     <%= display_user_cover(current_user, "mini") %>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <% if current_user.facebook_user? %>
-      <%= t("sessiosn.bar.logged_in_as") %> <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
+      <%= t("sessions.bar.logged_in_as") %> <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
       (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'><%= t("sessions.log_out") %></a>)
     <% else %>
       <%= t("sessions.bar.logged_in_as") %> <%= link_to_current_user :content_method => :login %>

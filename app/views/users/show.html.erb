@@ -8,10 +8,11 @@
 
   <h2> <%= @user.first_name %> <%= @user.last_name %></h2>
   <%= display_user_cover(@user, "large") %>
-  <%#*<h4 class="caps">LAST STATUS:</h4>%>
-  <%#*<div class ="box">%>
-    <%#= @current_fb_user.status.message %> <fb:time t='<%#= @current_fb_user.status.time %>' preposition="true" ></fb:time>
-  <%#*</div>%>
+  <h4 class="caps">LAST STATUS:</h4>
+  <div class ="box">
+    <%= raise @to_display_fb_user.inspect %>
+    <%= @to_display_fb_user.status.message %> <fb:time t='<%= @to_display_fb_user.status.time %>' preposition="true" ></fb:time>
+  </div>
 
   <% if @user == current_user %>
     <hr />

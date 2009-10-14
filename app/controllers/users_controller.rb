@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     find_user
 
     if @user.facebook_user?
-      @current_fb_user = Facebooker::User.new(@user.fb_user_id)
+      @to_display_fb_user = Facebooker::User.new(@user.fb_user_id)
     end
 
     respond_to do |format|
@@ -151,13 +151,14 @@ class UsersController < ApplicationController
       else
         #check if both current user and user to display are facebook users in order to use the friends system
         if current_user.facebook_user? && user_to_display.facebook_user?
-          if current_user.friends_with?(user_to_display)
+          current_fb_user = Facebooker::User.new(current_user.fb_user_id)
+          if current_fb_user.friends_with?(user_to_display.fb_user_id)
             allowed_to_view_profile = true
           end
         end
       end
     end
-
+    
     not_allowed_to_view_redirection  unless allowed_to_view_profile
   end
 

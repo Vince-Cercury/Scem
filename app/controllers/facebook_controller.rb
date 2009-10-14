@@ -19,7 +19,8 @@ class FacebookController < ApplicationController
 
     current_user.first_name=facebook_session.user.first_name
     current_user.last_name=facebook_session.user.last_name
-
+    current_user.state='active'
+    current_user.activated_at = Time.now.utc
     current_user.save(false)
     
     redirect_back_or_default('/')
