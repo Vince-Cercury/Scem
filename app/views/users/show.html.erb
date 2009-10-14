@@ -10,7 +10,6 @@
   <%= display_user_cover(@user, "large") %>
   <h4 class="caps">LAST STATUS:</h4>
   <div class ="box">
-    <%= raise @to_display_fb_user.inspect %>
     <%= @to_display_fb_user.status.message %> <fb:time t='<%= @to_display_fb_user.status.time %>' preposition="true" ></fb:time>
   </div>
 
