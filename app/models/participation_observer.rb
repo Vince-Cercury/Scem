@@ -7,13 +7,13 @@ class ParticipationObserver < ActiveRecord::Observer
 
     #for each _organism_moderator and organism_admin, send signup notification email
     @list_moderators.each  do |admin_or_modo|
-      ParticipationMailer.deliver_creation_notification(admin_or_modo, user, event, participation.term, participation.role) unless user.email.nil?
+      ParticipationMailer.deliver_creation_notification(admin_or_modo, user, event, participation.term, participation.role) unless user.email==""
     end
 
     #for each sys_moderator and sys_admin, send signup notification email
     @list_sys_moderators = get_list_sys_admins_or_modo
     @list_sys_moderators.each  do |admin_or_modo|
-      ParticipationMailer.deliver_creation_notification_to_sys(admin_or_modo, user, event, participation.term, participation.role) unless user.email.nil?
+      ParticipationMailer.deliver_creation_notification_to_sys(admin_or_modo, user, event, participation.term, participation.role) unless user.email==""
     end
   end
 

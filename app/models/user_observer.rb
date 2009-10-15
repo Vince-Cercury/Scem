@@ -6,6 +6,6 @@ class UserObserver < ActiveRecord::Observer
 
   def after_save(user)
     user.reload
-    UserMailer.deliver_activation(user) if user.recently_activated?  unless user.email==""  unless user.email.nil?
+    UserMailer.deliver_activation(user) if user.recently_activated?  unless user.email==""
   end
 end

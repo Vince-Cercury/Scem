@@ -14,7 +14,7 @@ class PictureObserver < ActiveRecord::Observer
         puts "[picture-observer] will send email to #{@list_moderators.size} users"
         @list_moderators.each do |user|
           puts "[picture-observer] delivering email to #{user.id}"
-          PictureMailer.deliver_to_moderators_creation_moderate(user, picture, @controller) if user.receive_picture_notification unless user.email.nil?# && user != @user_creator
+          PictureMailer.deliver_to_moderators_creation_moderate(user, picture, @controller) if user.receive_picture_notification unless user.email==""# && user != @user_creator
         end
       else
 #        puts "[picture-observer] picture moderation is off"
@@ -42,11 +42,11 @@ class PictureObserver < ActiveRecord::Observer
       if picture.recently_activated? 
         puts "[picture-observer] picture recently activated"
         #send a notification that the picture has been accepted to the author of the picture
-        PictureMailer.deliver_to_author_accepted_notification(@user_creator, picture, @controller) unless user.email.nil?
+        PictureMailer.deliver_to_author_accepted_notification(@user_creator, picture, @controller)  unless @user_creator.email==""
         
         @list_sys_moderators.each do |user|
           puts "[picture-observer] deliver email to user (system moderator) with id=#{user.id}"
-          PictureMailer.deliver_to_sys_moderators_accepted_notification(user, picture, @controller) if user.receive_picture_notification && user != @user_creator  unless user.email.nil?
+          PictureMailer.deliver_to_sys_moderators_accepted_notification(user, picture, @controller) if user.receive_picture_notification && user != @user_creator unless user.email==""
         end
       end
     else
@@ -55,11 +55,11 @@ class PictureObserver < ActiveRecord::Observer
         puts "[picture-observer] recently activated"
         @list_moderators.each do |user|
           puts "[picture-observer] delivering email to #{user.id}"
-          PictureMailer.deliver_to_moderators_creation_notification(user, picture, @controller) if user.receive_picture_notification unless user.email.nil?# && user != @user_creator
+          PictureMailer.deliver_to_moderators_creation_notification(user, picture, @controller) if user.receive_picture_notification unless user.email==""# && user != @user_creator
         end
         @list_sys_moderators.each do |user|
           puts "[picture-observer] deliver email to user (system moderator) with id=#{user.id}"
-          PictureMailer.deliver_to_sys_moderators_creation_notification(user, picture, @controller) if user.receive_picture_notification unless user.email.nil?# && user != @user_creator
+          PictureMailer.deliver_to_sys_moderators_creation_notification(user, picture, @controller) if user.receive_picture_notification unless user.email==""# && user != @user_creator
         end
       end
 
@@ -70,7 +70,7 @@ class PictureObserver < ActiveRecord::Observer
       puts "[picture-observer] picture recently suspended"
       @list_sys_moderators.each do |user|
         puts "[picture-observer] deliver email to user (system moderator) with id=#{user.id}"
-        PictureMailer.deliver_to_sys_moderators_suspended_notification(user, picture, @controller) if user.receive_picture_notification && user != @user_creator unless user.email.nil?
+        PictureMailer.deliver_to_sys_moderators_suspended_notification(user, picture, @controller) if user.receive_picture_notification && user != @user_creator unless user.email==""
       end
     end
 
