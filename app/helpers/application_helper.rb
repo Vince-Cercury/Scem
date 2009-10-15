@@ -151,6 +151,8 @@ module ApplicationHelper
       result = t('search.model_type.events')
     when 'galleries'
       result = t('search.model_type.galleries')
+    when 'friends'
+      result = t('search.model_type.friends')
     when 'users'
       result = t('search.model_type.users')
     else

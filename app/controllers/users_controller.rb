@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   #before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
 
   #Protect this action by cheking of logged in AND if owner of the account or admin or moderator for editing
-  before_filter :owner_rights?, :only => [:edit, :update]
+  before_filter :owner_rights?, :only => [:edit, :update, :ask_email, :save_email]
 
   #Protect this action by cheking if connected user is admin or moderator or owner or acquaintance
   # TODO: documentation from facebook to see different levels of rights
@@ -81,6 +81,34 @@ class UsersController < ApplicationController
     else
       flash[:error]  = I18n.t("users.create_error")
       render :action => 'new'
+    end
+  end
+
+  def ask_email
+      @user = User.find(params[:id])
+      respond_to do |format|
+        format.html { render :action => "ask_email" }
+        format.xml  { render :xml => current_user }
+      end
+
+  end
+
+  def save_email
+    @user = User.find(params[:id])
+    
+    #we don't want to validate the password
+    @user.set_validate_password(false)
+
+    #raise @user.do_we_validate_password?.inspect
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        flash[:notice] = I18n.t("users.update_success")
+        format.html { redirect_back_or_default('/') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "ask_email" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
     end
   end
 

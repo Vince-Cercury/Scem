@@ -1,5 +1,7 @@
 class OrganismsUserMailer < ActionMailer::Base
 
+  helper :users
+
   def creation_notification(admin_or_modo, user, organism, role)
     
     #organism_admin and organism_modo, send this emails

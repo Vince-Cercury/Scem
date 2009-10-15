@@ -1,6 +1,7 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
@@ -23,6 +24,16 @@ class User < ActiveRecord::Base
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
+
+
+  def set_validate_password(value)
+    @validate_password = value
+  end
+
+  def validate_password?
+    return @validate_password unless @validate_password.nil?
+    return true
+  end
 
   #validates_date :date_of_birth,
   #  :before => Proc.new { 3.years.ago },

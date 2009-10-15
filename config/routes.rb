@@ -139,7 +139,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users, :member => { :suspend   => :put,
     :unsuspend => :put,
-    :purge     => :delete }
+    :purge     => :delete }, :collection => {:ask_email => :get }
 
   map.root :controller => "terms", :action => "index"
 

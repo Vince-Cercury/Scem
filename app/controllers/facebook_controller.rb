@@ -22,8 +22,13 @@ class FacebookController < ApplicationController
     current_user.state='active'
     current_user.activated_at = Time.now.utc
     current_user.save(false)
-    
-    redirect_back_or_default('/')
+
+    if(current_user.email.nil? or current_user.email=="")
+      redirect_to url_for(:controller => 'users', :id => current_user.id, :action => 'ask_email')
+    else
+      redirect_back_or_default('/')
+    end
+
 
   end
 

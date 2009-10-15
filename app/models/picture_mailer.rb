@@ -1,5 +1,7 @@
 class PictureMailer < ActionMailer::Base
 
+  helper :users
+
   def to_author_accepted_notification(user, picture, controller)
     setup_email(user, picture)
     @subject    += "Picture accepted"

@@ -1,5 +1,7 @@
 class CommentMailer < ActionMailer::Base
 
+    helper :users
+
   def to_author_accepted_notification(user, comment, parent_object)
     setup_email(user, comment,parent_object)
     @subject    += "Comment accepted"

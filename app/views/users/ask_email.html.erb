@@ -1,0 +1,11 @@
+<p>Please, confirm your email address. <br />
+  Then you will be able to use all the features of the website. (asked just one time)</p>
+<% form_for(@user, :url => url_for(:id => @user.id, :action => 'save_email')) do |f| %>
+    <%= f.error_messages %>
+
+    <p><%= label_tag 'email' %><br/>
+    <%= f.text_field :email %></p>
+    <p>
+      <%= f.submit 'Update' %>
+    </p>
+  <% end %>

@@ -1,5 +1,8 @@
 
 class OrganismMailer < ActionMailer::Base
+  
+  helper :users
+  
   def signup_notification_to_system_admin_or_modo(admin_or_modo, organism)
 
     #system_admin and system_modo, send this emails
