@@ -3,23 +3,30 @@
   <div class="box">
     <% if @event.picture.nil? %>
       <%= get_default_event_picture(:medium) %><br />
-      <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@event, :picture)) %>
+      <% if current_user && @event.is_user_moderator?(current_user) %>
+        <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@event, :picture)) %>
+      <% end %>
     <% else %>
       <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %><br />
-      <%= link_to("Change the image", new_url_for_even_polymorphic(@event, :picture)) %>
+      <% if current_user && @event.is_user_moderator?(current_user) %>
+        <%= link_to("Change the image", new_url_for_even_polymorphic(@event, :picture)) %>
+      <% end %>
     <% end %>
   </div>
 </div>
 <div class="span-8 last">
   <div class="box">
     <%=h @event.description_short %>
+    <% if facebook_session %>
+      <br /><br /><%= link_to 'Publish the event on my Facebook Wall', url_for(:controller => 'facebook', :id =>@event.id, :user_id => current_user.id, :action => 'publish_event_on_wall') %>
+    <% end %>
   </div>
   <div class="box">
     <% if current_user && @event.is_granted_to_edit?(current_user) %>
-    <b>Is charged:</b>
-    <%=h boolean_to_literal(@event.is_charged) %><br />
-    <b>Is private:</b>
-    <%=h boolean_to_literal(@event.is_private) %><br />
+      <b>Is charged:</b>
+      <%=h boolean_to_literal(@event.is_charged) %><br />
+      <b>Is private:</b>
+      <%=h boolean_to_literal(@event.is_private) %><br />
     <% end %>
     <b>Categories:</b>
     <% @event.categories.each do |@category| %>
@@ -41,7 +48,7 @@
 <hr />
 <div class="span-13"><h4 class="caps">DATE(S)</h4></div>
 <% if current_user && @event.is_granted_to_edit?(current_user) %>
-<div class="span-4 last"><%= link_to('New term', new_url_for_even_polymorphic(@event, :term)) %></div>
+  <div class="span-4 last"><%= link_to('New term', new_url_for_even_polymorphic(@event, :term)) %></div>
 <% end %>
 <hr />
 <%= render :partial => "terms" %>

@@ -130,6 +130,14 @@ class Facebooker::UserTest < Test::Unit::TestCase
     assert_equal "2357384227378429949", photos.first.aid
   end
 
+  def test_prepare_publish_to_options_pass_only_neccessary_parameters
+    options = @user.prepare_publish_to_options(@user, {:message => 'Hey there', :action_links => [:text => 'Link', :href => 'http://example.com']})
+    assert_equal(options[:uid], @user.uid)
+    assert_equal(options[:target_id], @user.id)
+    assert_equal(options[:message], 'Hey there')
+    assert_nil(options[:attachment])
+    assert_equal(options[:action_links], [:text => 'Link', :href => 'http://example.com'].to_json )
+  end
   def test_publish_to
     @user = Facebooker::User.new(548871286, @session)
     expect_http_posts_with_responses(example_profile_publish_to_get_xml)
@@ -137,7 +145,7 @@ class Facebooker::UserTest < Test::Unit::TestCase
   end
   def test_publish_to_converts_attachment_to_json
     @user = Facebooker::User.new(548871286, @session)
-    @user.session.expects(:post).with("facebook.stream.publish",has_entry(:attachment=>instance_of(String)))
+    @user.session.expects(:post).with("facebook.stream.publish",has_entry(:attachment=>instance_of(String)),false)
     @user.publish_to(@other_user, :message => 'i love you man',:attachment=>{:a=>"b"})
   end
 
@@ -254,6 +262,12 @@ class Facebooker::UserTest < Test::Unit::TestCase
     assert_equal "http://www.facebook.com/profile.php?id=8055", @user.profile_url
   end
 
+  def test_can_rsvp_to_event
+    expect_http_posts_with_responses(example_events_rsvp_xml)
+    result = @user.rsvp_event(1000, 'attending')
+    assert result
+  end
+
   private
   def example_profile_photos_get_xml
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
@@ -363,4 +377,13 @@ class Facebooker::UserTest < Test::Unit::TestCase
 <stream_addComment_response xmlns="http://api.facebook.com/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://api.facebook.com/1.0/ http://api.facebook.com/1.0/facebook.xsd">703826862_78463536863</stream_addComment_response>
     eoxml
   end  
+  
+  def example_events_rsvp_xml
+      <<-E
+      <?xml version="1.0" encoding="UTF-8"?>
+      <events_rsvp_response xmlns="http://api.facebook.com/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://api.facebook.com/1.0/ http://api.facebook.com/1.0/facebook.xsd">1
+      </events_rsvp_response>
+    E
+  end
 end

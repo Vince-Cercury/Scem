@@ -1,0 +1,7 @@
+<p>In order to cancel events on Facebook, you must allow some extended permission from the current website<br />
+  You can change your mind at any time.<br />
+  <%= fb_prompt_permissions(['create_event'], 'Please, click on this link to proceed') %>...
+</p>
+
+<p>Then you can try again to publish the event on Facebook, by clicking on this link: <br /><%= link_to 'Delete on Facebook', url_for(:controller => 'facebook', :id =>@term.id, :action => 'cancel_event') %></p>
+

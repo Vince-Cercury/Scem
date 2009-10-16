@@ -1,6 +1,6 @@
 <%= render :partial => "/users/header" %>
 
-<% if @user.facebook_user? %>
+<% if facebook_session %>
 
   <h2> <%= @user.first_name %> <%= @user.last_name %></h2>
   <%= display_user_cover(@user, "large") %>
@@ -8,7 +8,9 @@
   <div class ="box">
     <%= @to_display_fb_user.status.message %> <fb:time t='<%= @to_display_fb_user.status.time %>' preposition="true" ></fb:time>
   </div>
+
 <% else %>
+
 
   <h2><%= @user.login %></h2>
   <%= display_user_cover(@user, "medium") %>

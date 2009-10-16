@@ -117,7 +117,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
-  map.connect '', :controller=>'facebook', :conditions=> { :canvas => true }
+  map.connect '', :controller=>'facebook', :conditions=> { :canvas => true }, :member => { :ask_facebook_event_categories => :get }
 
   map.resources :organisms, :member => { :suspend   => :put,
     :unsuspend => :put,

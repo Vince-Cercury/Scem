@@ -84,10 +84,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def ask_email
+  def ask_facebook_info
       @user = User.find(params[:id])
       respond_to do |format|
-        format.html { render :action => "ask_email" }
+        format.html
         format.xml  { render :xml => current_user }
       end
 

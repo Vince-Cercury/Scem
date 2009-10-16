@@ -3,13 +3,13 @@ class ParticipationsController < ApplicationController
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:index, :accept]
 
-  before_filter :is_logged?
+  before_filter :is_logged?, :except => [:index]
 
   before_filter :ensure_term_or_event_or_user_parameter?, :only => [:index]
   before_filter :ensure_term_parameter?, :except => [:index]
   before_filter :ensure_participation_role_parameter, :only  => [:create_or_update]
   before_filter :ensure_role_parameter, :only  => [:index]
- # before_filter :ensure_user_parameter?, :only => [:destroy_relation]
+  # before_filter :ensure_user_parameter?, :only => [:destroy_relation]
 
 
   # GET /terms
@@ -45,7 +45,9 @@ class ParticipationsController < ApplicationController
   end
 
   def create_or_update
-    
+
+    proceed_rendering = true
+
     term = Term.find(params[:term_id])
     participation = term.participations.find_by_user_id(self.current_user.id)
 
@@ -56,32 +58,58 @@ class ParticipationsController < ApplicationController
     end
 
     participation.role=params[:participation][:role]
-    
-    respond_to do |format|
-      if participation.save
-        flash[:notice] = 'Relation work is done.'
-        format.html { redirect_to(term.event) }
-        format.xml  { head :ok }
+
+    #update the participation on Facebook
+    begin
+    if facebook_session && term.facebook_eid
+      if facebook_session.user.has_permission?('rsvp_event')
+        if params[:participation][:role] == 'sure'
+          status = 'attending'
+        elsif params[:participation][:role] == 'maybe'
+          status = 'unsure'
+        elsif params[:participation][:role] == 'not'
+          status = 'declined'
+        end
+        
+        if status
+          facebook_session.user.rsvp_event(term.facebook_eid, status)
+        end
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => participation.errors, :status => :unprocessable_entity }
+        proceed_rendering = false
+        redirect_to url_for(:controller => 'facebook', :action => 'ask_events_permissions_rsvp', :id => term.id)
+      end
+    end
+    rescue
+      flash[:error] = "Your status for this event couldn't be updated on Facebook. Sorry"
+    end
+
+    if proceed_rendering
+      respond_to do |format|
+        if participation.save
+          flash[:notice] = 'Relation work is done.'
+          format.html { redirect_to(term.event) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => participation.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
 
 
-#  def destroy
-#
-#    term = Term.find(params[:term_id])
-#    participation = term.participations.find_by_user_id(self.current_user.id)
-#
-#    participation.destroy unless(participation.nil?)
-#
-#    respond_to do |format|
-#      format.html { redirect_back_or_default('/') }
-#      format.xml  { head :ok }
-#    end
-#  end
+  #  def destroy
+  #
+  #    term = Term.find(params[:term_id])
+  #    participation = term.participations.find_by_user_id(self.current_user.id)
+  #
+  #    participation.destroy unless(participation.nil?)
+  #
+  #    respond_to do |format|
+  #      format.html { redirect_back_or_default('/') }
+  #      format.xml  { head :ok }
+  #    end
+  #  end
 
 
   protected

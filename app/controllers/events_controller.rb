@@ -49,7 +49,7 @@ class EventsController < ApplicationController
     @current_object = @event = Event.find(params[:id])
     #the object comment is needed for displaying the form of new comment
     initialize_new_comment(@event)
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }

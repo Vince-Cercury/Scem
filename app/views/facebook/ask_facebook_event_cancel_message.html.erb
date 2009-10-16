@@ -1,0 +1,22 @@
+<%= render :partial => "/events/header" %>
+<p>
+  This will definitely cancel the event <b>on Facebook</b> with this specified date.<br />
+  Keep in mind that this is not cancelling the event on this site! (only on Facebook)<br />
+</p>
+
+<div>
+  <%=  display_term_box(@term.start, @term.end) %>
+</div>
+
+<% form_for(@term, :url => url_for(:controller => 'facebook', :action => 'cancel_event', :id => @term.id)) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <b>Optional message (for facebook users attending)...</b><br />
+    <textarea  id="cancel_message" name="cancel_message" cols="60" rows="10"></textarea>
+  </p>
+  <%=  hidden_field_tag 'event_id', @event.id %>
+  <p>
+    <%= f.submit 'Cancel on Facebook !' %>
+  </p>
+<% end %>

@@ -1,6 +1,9 @@
 class FacebookController < ApplicationController
   before_filter :ensure_authenticated_to_facebook
 
+  # Protect these actions behind a moderator login
+  before_filter :is_granted_to_edit_term?, :only => [:cancel_event, :ask_facebook_event_categories, :create_event, :ask_facebook_event_cancel_message]
+
   def index
     if self.current_user.nil?
       #register with fb
@@ -24,12 +27,301 @@ class FacebookController < ApplicationController
     current_user.save(false)
 
     if(current_user.email.nil? or current_user.email=="")
-      redirect_to url_for(:controller => 'users', :id => current_user.id, :action => 'ask_email')
+      redirect_to url_for(:controller => 'users', :id => current_user.id, :action => 'ask_facebook_info')
     else
       redirect_back_or_default('/')
     end
 
 
+  end
+
+  #Publish an event link on the wall of an user
+  def publish_event_on_wall
+    @current_object = @event = Event.find(params[:id])
+    @user_recipient = User.find(params[:user_id])
+
+
+    if facebook_session && @event && @user_recipient
+      if facebook_session.user.has_permissions?('publish_stream')
+
+        fb_recipient = Facebooker::User.new(@user_recipient.fb_user_id)
+
+        if fb_recipient
+          message = ""
+          message +=  "#{@event.name}\n\n"
+          message += event_process_description(@event.description_short) + "\n\n"
+          message += "#{url_for(@event)}\n"
+          
+
+          facebook_session.user.publish_to(fb_recipient,  :message => message, :action_links => [
+              :text => @event.name,
+              :href => url_for(@event)
+            ])
+
+          flash[:notice] = "The event has been published on your wall with success!"
+          redirect_to @event
+        else
+          flash[:error] = "You wanted to post a message on the wall of an user (#{@user_recipient.first_name} #{@user_recipient.last_name}). But couldn't find his facebook account ..."
+          redirect_to root_path
+        end
+      else
+        #prompt for extended Facebook permissions
+        respond_to do |format|
+          format.html { render :action => "ask_publish_stream_permission_for_event_wall" }
+          format.xml  { render :xml => current_user }
+        end
+      end
+    else
+      flash[:error] = "You must be logged in with Facebook in order to publish anything on your Wall."
+      redirect_to root_path
+    end
+  end
+
+
+  #following methods are about creation of events
+
+  def ask_facebook_event_cancel_message
+
+    @term = Term.find(params[:id])
+    @current_object = @event = @term.event unless @term.nil?
+
+    if facebook_session
+      if facebook_session.user.has_permissions?('create_event')
+        respond_to do |format|
+          format.html # show.html.erb
+          format.xml  { render :xml => @term }
+        end
+      else
+        #prompt for extended Facebook permissions
+        respond_to do |format|
+          format.html { render :action => "ask_events_permissions_for_cancelling" }
+          format.xml  { render :xml => current_user }
+        end
+      end
+    else
+      flash[:error] = "You must be logged in with Facebook in order to cancel an event."
+      redirect_to root_path
+    end
+
+  end
+
+
+  def cancel_event
+    #check if the app has the extended event permission granted by the current user
+    if facebook_session
+      if facebook_session.user.has_permission?('create_event')
+
+        @term = Term.find(params[:id])
+        if @term
+          #raise params[:cancel_message].inspect
+          facebook_session.cancel_event(@term.facebook_eid, :cancel_message => params[:cancel_message])
+          @term.facebook_eid = ""
+          @term.updated_at = Time.now
+
+          if @term.save!
+            #redirect to the Facebook event page
+            flash[:notice] = "The event has been successfully cancelled on Facebook. The page no longer exists."
+            redirect_to @term.event
+          else
+            flash[:error] = "Something went wrong while cancelling the facebook event. Sorry for that..."
+            redirect_to @term.event
+          end
+        else
+          flash[:error] = "The event has not been found. Are you sure about the link? If the problem persist, contact an admin"
+          redirect_to root_path
+        end
+
+      else
+        @term = Term.find(params[:id])
+        #prompt for extended Facebook permissions
+        respond_to do |format|
+          format.html { render :action => "ask_events_permissions" }
+          format.xml  { render :xml => current_user }
+        end
+      end
+    else
+      flash[:error] = "You must be logged in with Facebook in order to cancel an event."
+      redirect_to root_path
+    end
+
+  end
+
+  def ask_facebook_event_categories
+
+    @term = Term.find(params[:id])
+    @current_object = @event = @term.event unless @term.nil?
+
+    if facebook_session
+      if facebook_session.user.has_permission?('create_event')
+        respond_to do |format|
+          format.html # show.html.erb
+          format.xml  { render :xml => @term }
+        end
+      else
+        #prompt for extended Facebook permissions
+        respond_to do |format|
+          format.html { render :action => "ask_events_permissions_for_creation" }
+          format.xml  { render :xml => current_user }
+        end
+      end
+    else
+      flash[:error] = "You must be logged in with Facebook in order to create an event."
+      redirect_to root_path
+    end
+
+  end
+
+  #Note: create events take a term !
+  def create_event
+    #check if the app has the extended event permission granted by the current user
+    if facebook_session
+      if facebook_session.user.has_permissions?(['create_event','rsvp_event'])
+
+        @term = Term.find(params[:id])
+        if @term
+
+          #Prepare picture for event
+          if @term.event.picture.nil?
+            fullpath = RAILS_ROOT  + "/public" + '/system/uploads' + "/default/event/medium/1.jpg"
+          else
+            fullpath = @term.event.picture.attached.path(:medium)
+          end
+          
+          file = File.open(fullpath,"rb")
+          data = data = file.read
+          mpf = Net::HTTP::MultipartPostFile.new(@term.event.picture.attached_file_name,nil,data)
+
+          event_eid = facebook_session.create_event(facebook_event_info(@term), mpf)
+          file.close
+          @term.facebook_eid = event_eid
+          @term.updated_at = Time.now
+
+          if @term.save!
+            #redirect to the Facebook event page
+            flash[:notice] = "The event has been successfully published on Facebook. You can visit their pages to modify or check the content."
+            redirect_to @term.event
+          else
+            flash[:error] = "Something went wrong while creating the facebook event or updated the event on this site. Sorry for that..."
+            redirect_to @term.event
+          end
+        else
+          flash[:error] = "The event has not been found. Are you sure about the link? If the problem persist, contact an admin"
+          redirect_to root_path
+        end
+
+      else
+        @term = Term.find(params[:id])
+        #prompt for extended Facebook permissions
+        respond_to do |format|
+          format.html { render :action => "ask_events_permissions" }
+          format.xml  { render :xml => current_user }
+        end
+      end
+    else
+      flash[:error] = "You must be logged in with Facebook in order to create an event."
+      redirect_to root_path
+    end
+
+  end
+
+  def ask_events_permissions_rsvp
+    @term = Term.find(params[:id])
+    @current_object = @event = @term.event unless @term.nil?
+
+    if facebook_session
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @term }
+      end
+    else
+      flash[:error] = "You must be logged in with Facebook in order to update your status for a Facebook event."
+      redirect_to root_path
+    end
+
+  end
+
+  protected
+
+  def facebook_event_info(term)
+    event = term.event
+
+    if term.event.is_private
+      privacy_type = 'SECRET'
+    else
+      privacy_type = 'OPEN'
+    end
+
+    if term.event.publishers.size > 0
+      location = term.event.publishers.first.name + ' (' + url_for(term.event.publishers.first) + ')'
+      # city = 'Angers, France'
+      # street = 'not precised'
+    else
+      location = 'not precised'
+      #city = 'Angers, France'
+      #street = 'not precised'
+    end
+
+    # Note: The start_time and end_time are the times that were input by the event creator,
+    # converted to UTC after assuming that they were in Pacific time (Daylight Savings or
+    # Standard, depending on the date of the event), then converted into Unix epoch time.
+    # Basically this means for some reason facebook does not want to get epoch timestamps
+    # here, but rather something like epoch timestamp minus 7 or 8 hours, depeding on the
+    # date. have fun!
+    #
+    # http://wiki.developers.facebook.com/index.php/Events.create
+    start_time = (term.start + 8.hours).to_i
+    end_time = term.end ? (term.end + 8.hours).to_i : start_time
+
+    {
+      'name' => event.name,
+      'category' => params[:category], #event.facebook_category.to_s,
+      'subcategory' => params[:subcategory], #event.facebook_subcategory.to_s,
+      'host' => url_for(term.event),
+      'location' => location,#[event.place.title, event.place.classification].compact.join(', '),
+      #'street' => street,
+      #'city' => city, #event.city.to_s,
+      'description' => facebook_description(event),
+      'privacy_type' => privacy_type,
+      'start_time' => start_time,
+      'end_time' => end_time
+    }
+  end
+
+  def facebook_description(event)
+    text = ""
+
+    text +=
+      "Publicated by SCEM application - http://www.lebounce.com\n" +
+      "Event also visible on: #{url_for(event)}" +
+      "\n\n---------------------------------------------------------------------\n\n"
+
+
+    text += event_process_description(event.description_short)
+
+    #TODO: price, contributors, etc
+
+    text += "\n\n---------------------------------------------------------------------\n" +
+      "Publicated by SCEM application - http://www.lebounce.com\n"+
+      "Event also visible on: #{url_for(event)}"
+  end
+
+  def event_process_description(original_description)
+    text = ""
+    unless original_description.blank?
+      description = original_description.gsub(/\[(.+?)\|(.+?)\]/, '\2 (\1)') # Replace named links
+      description.gsub!(%r{(http://)?www.}, 'http://www.') # FB only supports http:// links
+      text += "#{description}"
+    end
+  end
+
+  def is_granted_to_edit_term?
+    term = Term.find(params[:id])
+    not_granted_redirection unless current_user && term.event.is_granted_to_edit?(current_user)
+  end
+
+  def not_granted_redirection
+    flash[:error] = "Not allowed to do this"
+    redirect_to root_path
   end
 
 end

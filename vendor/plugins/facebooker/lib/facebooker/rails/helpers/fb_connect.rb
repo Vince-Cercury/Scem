@@ -3,11 +3,14 @@ module Facebooker
     module Helpers
       module FbConnect
         
-        def fb_connect_javascript_tag
+        def fb_connect_javascript_tag(options = {})
+          # accept both Rails and Facebook locale formatting, i.e. "en-US" and "en_US".
+          lang = "/#{options[:lang].to_s.gsub('-', '_')}" if options[:lang]
+          # dont use the javascript_include_tag helper since it adds a .js at the end
           if request.ssl?
-            javascript_include_tag "https://www.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"
+            "<script src=\"https://www.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php#{lang}\" type=\"text/javascript\"></script>"
           else
-            javascript_include_tag "http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php"
+            "<script src=\"http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php#{lang}\" type=\"text/javascript\"></script>"
           end
         end
         
@@ -31,9 +34,9 @@ module Facebooker
           end
 
           if request.ssl?
-            init_string = "FB.Facebook.init('#{Facebooker.api_key}','/xd_receiver_ssl.html', #{options[:app_settings]});"
+            init_string = "FB.init('#{Facebooker.api_key}','/xd_receiver_ssl.html', #{options[:app_settings]});"
           else
-            init_string = "FB.Facebook.init('#{Facebooker.api_key}','/xd_receiver.html', #{options[:app_settings]});"
+            init_string = "FB.init('#{Facebooker.api_key}','/xd_receiver.html', #{options[:app_settings]});"
           end
           unless required_features.blank?
              init_string = <<-FBML

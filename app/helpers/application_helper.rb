@@ -175,6 +175,7 @@ module ApplicationHelper
 
 
   def url_for_even_polymorphic(object, options = {})
+    
     if(object.get_parent_object)
       if object.get_parent_object.get_parent_object
         if object.get_parent_object.get_parent_object

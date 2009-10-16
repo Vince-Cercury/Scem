@@ -116,6 +116,8 @@ class TermsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
   
   protected
 

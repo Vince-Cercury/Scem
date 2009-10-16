@@ -1,0 +1,94 @@
+<%= render :partial => "/events/header" %>
+<p>
+  This page allows you publishing the event (with these specific dates) on Facebook.<br />
+  You will be the administrator of the page on Facebook.<br />
+  You can, at any time, access to it for managing, editing or cancelling.
+</p>
+
+<div>
+  <%=  display_term_box(@term.start, @term.end) %>
+</div>
+
+<% form_for(@term, :url => url_for(:controller => 'facebook', :action => 'create_event', :id => @term.id)) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <b>Category</b><br />
+    <%= select_tag "category", "
+      <option value='1'>Party</option>
+      <option value='2'>Causes</option>
+      <option value='3'>Education</option>
+      <option value='4'>Meetings</option>
+      <option value='5'>Music/Arts</option>
+      <option value='6'>Sports</option>
+      <option value='7'>Trips</option>
+      <option value='8'>Other</option>" %>
+  </p>
+
+    <p>
+    <b>Sub-category</b><br />
+    <%= select_tag "subcategory",
+      "<option value='1'>Birthday Party</option>
+      <option value='2'>Cocktail Party </option>
+      <option value='3'>Club Party</option>
+      <option value='4'>Potluck</option>
+      <option value='5'>Fraternity/Sorority Party</option>
+      <option value='6'>Business Meeting</option>
+      <option value='7'>Barbecue</option>
+      <option value='8'>Card Night</option>
+      <option value='9'>Dinner Party</option>
+      <option value='10'>Holiday Party</option>
+      <option value='11'>Night of Mayhem</option>
+      <option value='12'>Movie/TV Night</option>
+      <option value='13'>Drinking Games</option>
+      <option value='14'>Bar Night</option>
+      <option value='15'>LAN Party</option>
+      <option value='16'>Brunch</option>
+      <option value='17'>Mixer</option>
+      <option value='18'>Slumber Party</option>
+      <option value='19'>Erotic Party</option>
+      <option value='20'>Benefit</option>
+      <option value='21'>Goodbye Party</option>
+      <option value='22'>House Party</option>
+      <option value='23'>Reunion</option>
+      <option value='24'>Fundraiser</option>
+      <option value='25'>Protest</option>
+      <option value='26'>Rally</option>
+      <option value='27'>Class</option>
+      <option value='28'>Lecture</option>
+      <option value='29'>Office Hours</option>
+      <option value='30'>Workshop</option>
+      <option value='31'>Club/Group Meeting</option>
+      <option value='32'>Convention</option>
+      <option value='33'>Dorm/House Meeting</option>
+      <option value='34'>Informational Meeting</option>
+    <option value='35'>Audition</option>
+    <option value='36'>Exhibit</option>
+    <option value='37'>Jam Session </option>
+    <option value='38'>Listening Party</option>
+    <option value='39'>Opening</option>
+    <option value='40'>Performance</option>
+    <option value='41'>Preview</option>
+    <option value='42'>Recital</option>
+    <option value='43'>Rehearsal</option>
+    <option value='44'>Pep Rally</option>
+    <option value='45'>Pick-Up</option>
+    <option value='46'>Sporting Event</option>
+    <option value='47'>Sports Practice</option>
+    <option value='48'>Tournament</option>
+    <option value='49'>Camping Trip</option>
+    <option value='50'>Daytrip</option>
+    <option value='51'>Group Trip</option>
+    <option value='52'>Roadtrip</option>
+    <option value='53'>Carnival</option>
+    <option value='54'>Ceremony</option>
+    <option value='55'>Festival</option>
+    <option value='56'>Flea Market</option>
+    <option value='57'>Retail</option>
+    <option value='58'>Wedding</option>" %>
+  </p>
+  <%=  hidden_field_tag 'event_id', @event.id %>
+  <p>
+    <%= f.submit 'Publish on Facebook' %>
+  </p>
+<% end %>
