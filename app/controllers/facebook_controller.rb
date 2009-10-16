@@ -42,17 +42,17 @@ class FacebookController < ApplicationController
     if params[:event_id]
       @current_object = @event = Event.find(params[:event_id])
       @header = '/events/header'
-      picture_url = ENV['SITE_URL'] + '/public' + url_for(@event.picture.attached.url(:thumb))
+      picture_url = ENV['SITE_URL'] + url_for(@event.picture.attached.url(:thumb))
     end
     if params[:organism_id]
       @current_object = @organism = Organism.find(params[:organism_id])
       @header = '/organisms/header'
-      picture_url = ENV['SITE_URL'] + '/public' + url_for(@organism.picture.attached.url(:thumb))
+      picture_url = ENV['SITE_URL'] + url_for(@organism.picture.attached.url(:thumb))
     end
     if params[:gallery_id]
       @current_object = @gallery = Gallery.find(params[:gallery_id])
       @header = '/galleries/header'
-      picture_url = ENV['SITE_URL'] + '/public' + url_for(@gallery.cover.attached.url(:thumb))
+      picture_url = ENV['SITE_URL'] + url_for(@gallery.cover.attached.url(:thumb))
     end
 
     @user_recipient = User.find(params[:user_id])
