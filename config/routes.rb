@@ -52,6 +52,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :memberships
     user.resources :friends
+    user.resources :other_friends
     user.resources :participations
     user.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |post|
@@ -139,7 +140,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users, :member => { :suspend   => :put,
     :unsuspend => :put,
-    :purge     => :delete }, :collection => {:ask_email => :get }
+    :purge     => :delete }, :collection => {:ask_facebook_info => :get}
 
   map.root :controller => "terms", :action => "index"
 

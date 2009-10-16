@@ -132,6 +132,8 @@ module ApplicationHelper
       result = 'users'
     when 'friends'
       result = 'friends'
+    when 'other_friends'
+      result = 'other_friends'
     else
       result = 'events'
     end
@@ -140,7 +142,7 @@ module ApplicationHelper
 
   def get_current_search_model_type
 
-  case controller_name
+    case controller_name
     when 'events'
       result = t('search.model_type.events')
     when 'organisms'
@@ -153,6 +155,8 @@ module ApplicationHelper
       result = t('search.model_type.galleries')
     when 'friends'
       result = t('search.model_type.friends')
+    when 'other_friends'
+      result = t('search.model_type.other_friends')
     when 'users'
       result = t('search.model_type.users')
     else

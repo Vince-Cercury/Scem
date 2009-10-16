@@ -13,7 +13,9 @@ class UsersController < ApplicationController
   #before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
 
   #Protect this action by cheking of logged in AND if owner of the account or admin or moderator for editing
-  before_filter :owner_rights?, :only => [:edit, :update, :ask_email, :save_email]
+  before_filter :owner_rights?, :only => [:edit, :update, :ask_facebook_info, :other_friends, :save_email]
+
+  before_filter :ensure_authenticated_to_facebook, :only => [:ask_facebook_info, :other_friends]
 
   #Protect this action by cheking if connected user is admin or moderator or owner or acquaintance
   # TODO: documentation from facebook to see different levels of rights
@@ -91,6 +93,14 @@ class UsersController < ApplicationController
         format.xml  { render :xml => current_user }
       end
 
+  end
+
+  def other_friends
+      @user = User.find(params[:id])
+      respond_to do |format|
+        format.html
+        format.xml  { render :xml => current_user }
+      end
   end
 
   def save_email
