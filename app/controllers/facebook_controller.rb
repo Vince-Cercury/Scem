@@ -73,8 +73,9 @@ class FacebookController < ApplicationController
           end
           message += "#{url_for(@current_object)}\n"
 
+          #preparing the attachment : the image of the object
           attachment = {
-            :name => "#{@current_object}",
+            :name => "#{@current_object.name}",
             :href => "#{url_for(@current_object)}",
             :media => [ {
                 :type => "image",
@@ -87,10 +88,10 @@ class FacebookController < ApplicationController
           begin
             
             stream_id = facebook_session.user.publish_to(fb_recipient,  :message => message,
-              #:action_links => [
-              #  :text => @current_object.name,
-              #  :href => url_for(@current_object)
-              #],
+              :action_links => [
+                :text => @current_object.name,
+                :href => url_for(@current_object)
+              ],
               :attachment => attachment
             )
           rescue
