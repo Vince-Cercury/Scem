@@ -42,17 +42,17 @@ class FacebookController < ApplicationController
     if params[:event_id]
       @current_object = @event = Event.find(params[:event_id])
       @header = '/events/header'
-      picture_url = @event.picture.attached.url(:thumb)
+      picture_url = ENV['SITE_URL'] + '/public' + url_for(@event.picture.attached.url(:thumb))
     end
     if params[:organism_id]
       @current_object = @organism = Organism.find(params[:organism_id])
       @header = '/organisms/header'
-      picture_url = @organism.picture.attached.url(:thumb)
+      picture_url = RAILS_ROOT + "/public" + @organism.picture.attached.url(:thumb)
     end
     if params[:gallery_id]
       @current_object = @gallery = Gallery.find(params[:gallery_id])
       @header = '/galleries/header'
-      picture_url = @gallery.cover.attached.url(:thumb)
+      picture_url = RAILS_ROOT + "/public" + @gallery.cover.attached.url(:thumb)
     end
 
     @user_recipient = User.find(params[:user_id])
@@ -73,21 +73,25 @@ class FacebookController < ApplicationController
           end
           message += "#{url_for(@current_object)}\n"
 
-          begin
-          stream_id = facebook_session.user.publish_to(fb_recipient,  :message => message,
-            #:action_links => [
-            #  :text => @current_object.name,
-            #  :href => url_for(@current_object)
-            #],
-          :attachment => { :media => [ {
+          attachment = { :media => [ {
                 :type => "image",
                 :src => picture_url,#'http://www.lebounce.com/system/uploads/events/8/Image/132/small.jpg?1253871376',#
                 :href => url_for(@current_object)
-                                      }]
-                         } 
-          )
+              }]
+          }
+          raise attachment.inspect
+
+          begin
+            
+            stream_id = facebook_session.user.publish_to(fb_recipient,  :message => message,
+              #:action_links => [
+              #  :text => @current_object.name,
+              #  :href => url_for(@current_object)
+              #],
+              :attachment => attachment
+            )
           rescue
-            flash[:notice] = "A problem occured when trying to publish the object on Facebook. Sorry..."
+            flash[:notice] = "A problem occured when trying to publish the object on Facebook. You can try again later. Sorry..."
             redirect_to @current_object
           end
 
