@@ -81,7 +81,7 @@ class FacebookController < ApplicationController
             #],
           :attachment => { :media => [ {
                 :type => "image",
-                :src => picture_url,
+                :src => picture_url,#'http://www.lebounce.com/system/uploads/events/8/Image/132/small.jpg?1253871376',#
                 :href => url_for(@current_object)
                                       }]
                          } 
