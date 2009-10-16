@@ -79,7 +79,7 @@ class FacebookController < ApplicationController
                 :href => url_for(@current_object)
               }]
           }
-          raise attachment.inspect
+          #raise attachment.inspect
 
           begin
             
