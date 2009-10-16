@@ -12,13 +12,11 @@ class OtherFriendsController < ApplicationController
   # GET /terms.xml
   def index
     @user = User.find(params[:user_id])
-
-    @to_display_fb_user = Facebooker::User.new(@user.fb_user_id)
     
     
     #build a list of SCEM users from the list of Facebook users (if registered on this app)
     #friends = Array.new
-    @facebook_friends = @to_display_fb_user.friends
+    @facebook_friends = facebook_session.user.friends
 
     #raise facebook_friends.inspect
 #    facebook_friends.each do |facebook_friend|
