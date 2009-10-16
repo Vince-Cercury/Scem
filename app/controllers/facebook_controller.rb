@@ -73,13 +73,16 @@ class FacebookController < ApplicationController
           end
           message += "#{url_for(@current_object)}\n"
 
-          attachment = { :media => [ {
+          attachment = {
+            :name => "#{@current_object}",
+            :href => "#{url_for(@current_object)}",
+            :media => [ {
                 :type => "image",
-                :src => picture_url,#'http://www.lebounce.com/system/uploads/events/8/Image/132/small.jpg?1253871376',#
-                :href => url_for(@current_object)
+                :src => "#{picture_url}",#'http://www.lebounce.com/system/uploads/events/8/Image/132/small.jpg?1253871376',#
+                :href => "#{url_for(@current_object)}"
               }]
           }
-          #raise attachment.inspect
+          raise attachment.inspect
 
           begin
             
