@@ -14,18 +14,21 @@
 <div class="span-8 last">
   <div class="box">
     <%=h @organism.description_short %>
+    <% if facebook_session %>
+      <br /><br /><%= link_to 'Publish the organism on my Facebook Wall', url_for(:controller => 'facebook', :organism_id =>@organism.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
+    <% end %>
   </div>
   <% if current_user && @organism.is_user_moderator?(current_user)%>
-  <div class="box">
-    <b>Manager name:</b>
-    <%=h @organism.manager_name %>
-    <br />
-    <b>Phone:</b>
-    <%=h @organism.phone %>
-    <br />
-    <b>In directory:</b>
-    <%=h boolean_to_literal(@organism.in_directory) %>
-  </div>
+    <div class="box">
+      <b>Manager name:</b>
+      <%=h @organism.manager_name %>
+      <br />
+      <b>Phone:</b>
+      <%=h @organism.phone %>
+      <br />
+      <b>In directory:</b>
+      <%=h boolean_to_literal(@organism.in_directory) %>
+    </div>
   <% end %>
 </div>
 <hr />
@@ -92,24 +95,24 @@
 <% end  %>
 <%= render :partial => "/galleries/galleries_bar" %>
 <% if @organism.members.size>0 %>
- 
-<div class="span-4 colborder">
-  <h4 class="caps">LAST MEMBERS</h4>
-  <br />
-  <%= link_to "All members (#{@organism.members.size})", organism_members_path(:organism_id => @organism.id, :role =>:members) %>
-</div>
-<div class="span-12 last">
-  <% @organism.members[0,4].each do |user| %>
-    <div class="span-3">
-      <div class="box">
-        <%= display_user_cover(user, :thumb) %><br />
-        <%= get_user_name_or_pseudo_link(user) %>
+
+  <div class="span-4 colborder">
+    <h4 class="caps">LAST MEMBERS</h4>
+    <br />
+    <%= link_to "All members (#{@organism.members.size})", organism_members_path(:organism_id => @organism.id, :role =>:members) %>
+  </div>
+  <div class="span-12 last">
+    <% @organism.members[0,4].each do |user| %>
+      <div class="span-3">
+        <div class="box">
+          <%= display_user_cover(user, :thumb) %><br />
+          <%= get_user_name_or_pseudo_link(user) %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
   <hr />
-  <% end %>
+<% end %>
 
 
 

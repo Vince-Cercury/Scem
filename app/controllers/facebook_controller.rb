@@ -35,31 +35,66 @@ class FacebookController < ApplicationController
 
   end
 
-  #Publish an event link on the wall of an user
-  def publish_event_on_wall
-    @current_object = @event = Event.find(params[:id])
+  #Publish object link on the wall of an user
+  def publish_object_on_wall
+
+    #which objet do we proceed ?
+    if params[:event_id]
+      @current_object = @event = Event.find(params[:event_id])
+      @header = '/events/header'
+      picture_url = @event.picture.attached.url(:thumb)
+    end
+    if params[:organism_id]
+      @current_object = @organism = Organism.find(params[:organism_id])
+      @header = '/organisms/header'
+      picture_url = @organism.picture.attached.url(:thumb)
+    end
+    if params[:gallery_id]
+      @current_object = @gallery = Gallery.find(params[:gallery_id])
+      @header = '/galleries/header'
+      picture_url = @gallery.cover.attached.url(:thumb)
+    end
+
     @user_recipient = User.find(params[:user_id])
 
 
-    if facebook_session && @event && @user_recipient
+    if facebook_session && @current_object && @user_recipient
       if facebook_session.user.has_permissions?('publish_stream')
 
         fb_recipient = Facebooker::User.new(@user_recipient.fb_user_id)
 
         if fb_recipient
           message = ""
-          message +=  "#{@event.name}\n\n"
-          message += event_process_description(@event.description_short) + "\n\n"
-          message += "#{url_for(@event)}\n"
-          
+          message +=  "#{@current_object.name}\n\n"
+          if @gallery
+            message += process_description(@current_object.description) + "\n\n"
+          else
+            message += process_description(@current_object.description_short) + "\n\n"
+          end
+          message += "#{url_for(@current_object)}\n"
 
-          facebook_session.user.publish_to(fb_recipient,  :message => message, :action_links => [
-              :text => @event.name,
-              :href => url_for(@event)
-            ])
+          begin
+          stream_id = facebook_session.user.publish_to(fb_recipient,  :message => message,
+            #:action_links => [
+            #  :text => @current_object.name,
+            #  :href => url_for(@current_object)
+            #],
+          :attachment => { :media => [ {
+                :type => "image",
+                :src => picture_url,
+                :href => url_for(@current_object)
+                                      }]
+                         } 
+          )
+          rescue
+            flash[:notice] = "A problem occured when trying to publish the object on Facebook. Sorry..."
+            redirect_to @current_object
+          end
 
-          flash[:notice] = "The event has been published on your wall with success!"
-          redirect_to @event
+          if stream_id
+            flash[:notice] = "The object has been published on the wall with success!"
+            redirect_to @current_object
+          end
         else
           flash[:error] = "You wanted to post a message on the wall of an user (#{@user_recipient.first_name} #{@user_recipient.last_name}). But couldn't find his facebook account ..."
           redirect_to root_path
@@ -67,15 +102,16 @@ class FacebookController < ApplicationController
       else
         #prompt for extended Facebook permissions
         respond_to do |format|
-          format.html { render :action => "ask_publish_stream_permission_for_event_wall" }
-          format.xml  { render :xml => current_user }
+          format.html { render :action => "ask_publish_stream_permission_for_wall" }
+          format.xml  { render :xml => @current_object }
         end
       end
     else
-      flash[:error] = "You must be logged in with Facebook in order to publish anything on your Wall."
+      flash[:error] = "You must be logged in with Facebook in order to publish anything on a Wall."
       redirect_to root_path
     end
   end
+
 
 
   #following methods are about creation of events
@@ -296,7 +332,7 @@ class FacebookController < ApplicationController
       "\n\n---------------------------------------------------------------------\n\n"
 
 
-    text += event_process_description(event.description_short)
+    text += process_description(event.description_short)
 
     #TODO: price, contributors, etc
 
@@ -305,7 +341,8 @@ class FacebookController < ApplicationController
       "Event also visible on: #{url_for(event)}"
   end
 
-  def event_process_description(original_description)
+  def process_description(original_description)
+    original_description = original_description.gsub(/<\/?[^>]*>/, "")
     text = ""
     unless original_description.blank?
       description = original_description.gsub(/\[(.+?)\|(.+?)\]/, '\2 (\1)') # Replace named links
