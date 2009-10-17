@@ -1,6 +1,6 @@
 <%= render :partial => "/users/header" %>
 
-<% if facebook_session %>
+<% if @user.facebook_user? && fafacebook_session %>
 
   <h2> <%= @user.first_name %> <%= @user.last_name %></h2>
   <%= display_user_cover(@user, "large") %>

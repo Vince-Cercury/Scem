@@ -7,7 +7,7 @@
         <br />
         <% if @term.facebook_eid %>
           <%= link_to 'See on Facebook', "http://www.facebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank' %>
-          <% if current_user && @event.is_user_moderator?(current_user) %>
+          <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
             (<%= link_to 'Delete the Facebook page', url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_cancel_message') %> )
           <% end  %>
         <% else %>

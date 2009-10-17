@@ -35,8 +35,8 @@ class OtherFriendsController < ApplicationController
 #        end
 #      end
 #    end
-    
-    @facebook_friends = @facebook_friends.paginate :per_page => ENV['PER_PAGE'], :page => params[:page]
+    @total_number = @facebook_friends.size
+    @facebook_friends = @facebook_friends.paginate :per_page => ENV['PER_PAGE_OTHER_FRIENDS'], :page => params[:page]
     
 
     respond_to do |format|
@@ -44,7 +44,7 @@ class OtherFriendsController < ApplicationController
       format.xml  { render :xml => @users }
       format.js {
         render :update do |page|
-          page.replace_html 'results', :partial => 'users_list'
+          page.replace_html 'results', :partial => 'facebook_users_list'
         end
       }
     end

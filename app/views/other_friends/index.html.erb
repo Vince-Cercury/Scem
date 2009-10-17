@@ -12,20 +12,13 @@
 
  <% if @user == current_user %>
     <hr />
-    <h4 class="caps">INVITE YOUR FRIENDS (<%= @facebook_friends.size %>)</h4>
+    <h4 class="caps">INVITE YOUR FRIENDS (<%= @facebook_friends.size %>/<%= @total_number %>)</h4>
     <p>These people are your friends on Facebook, but have never connected here<br />
     Help them join you by inviting them</p>
     <div>
-    <% @facebook_friends.each do |friend| %>
-      <% if !User.facebook_user_accepted_this_app?(friend.uid)  %>
-          <div class ="box">
-
-            <fb:profile-pic uid=<%= friend.uid %> linked="true" ></fb:profile-pic>
-            <br /><%= friend.first_name %> <%= friend.last_name %>
-          </div>
-      <hr />
-      <% end %>
-    <% end %>
-
+    <%= render :partial => "facebook_users_list" %>
   <% end %>
   </div>
+
+    
+

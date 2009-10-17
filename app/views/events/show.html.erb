@@ -17,7 +17,7 @@
 <div class="span-8 last">
   <div class="box">
     <%=h @event.description_short %>
-    <% if facebook_session %>
+    <% if current_user && current_user.facebook_user? && facebook_session %>
       <br /><br /><%= link_to 'Publish the event on my Facebook Wall', url_for(:controller => 'facebook', :event_id =>@event.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
     <% end %>
   </div>
