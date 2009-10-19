@@ -15,29 +15,27 @@ class OtherFriendsController < ApplicationController
     
     
     #build a list of SCEM users from the list of Facebook users (if registered on this app)
-    #friends = Array.new
-    @facebook_friends = facebook_session.user.friends
-
-    #raise facebook_friends.inspect
-#    facebook_friends.each do |facebook_friend|
-#      #if User.facebook_user_accepted_this_app?(facebook_friend.uid)
-#      a_friend = User.find_by_fb_user_id(facebook_friend.uid)
-#      if !a_friend.nil?
-#        #raise a_friend.login.inspect
-#        #this allows us simulate a search on an array (usualy down at the model level with active record)
-#        #because we are not dealing with database, but data from facebooker api
-#        if !params[:search].nil?
-#          if a_friend.login.downcase.include?(params[:search].downcase) or a_friend.first_name.downcase.include?(params[:search].downcase) or a_friend.last_name.downcase.include?(params[:search].downcase)
-#            friends << a_friend
-#          end
-#        else
-#          friends << a_friend
-#        end
-#      end
-#    end
+    #friends = 
+    
+    if  @user.facebook_friends_info.nil?
+      @facebook_friends = Array.new
+    else
+      if !params[:search].nil?
+        @facebook_friends = Array.new
+        @user.facebook_friends_info.each do |a_friend|
+          if a_friend['first_name'].downcase.include?(params[:search].downcase) or a_friend['last_name'].downcase.include?(params[:search].downcase)
+            @facebook_friends << a_friend
+          end
+        end
+      else
+        @facebook_friends = @user.facebook_friends_info
+      end
+    end
+    
     @total_number = @facebook_friends.size
     @facebook_friends = @facebook_friends.paginate :per_page => ENV['PER_PAGE_OTHER_FRIENDS'], :page => params[:page]
-    
+
+   
 
     respond_to do |format|
       format.html

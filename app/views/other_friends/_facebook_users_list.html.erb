@@ -1,0 +1,30 @@
+<div id="results">
+<%= page_entries_info @facebook_friends %>
+
+  <% if @user == current_user %>
+    <% @facebook_friends.each do |friend| %>
+    <%#= raise friend.inspect %>
+    <%# if !User.facebook_user_accepted_this_app?(friend.uid)  %>
+      <div class ="inline-squarebox">
+    <%#*<div class ="squarebox-2">%>
+    <%#= friend %>
+        <div style="display:block;">
+          <% if friend['pic_square']  %>
+            <%= link_to(image_tag(friend['pic_square']),friend['profile_url'], :target => 'blank') %>
+          <% else %>
+            (problem pic_small)
+          <% end %>
+    <%#*<fb:profile-pic uid=<%= friend.uid %><%#* linked="true" ></fb:profile-pic>%>
+        </div>
+        <div style="display:block;">
+          <input type="checkbox" name="facebook_friends_uids[]" value ="<%= friend['uid'] %>" />
+          <%= link_to("#{friend['first_name']} #{friend['last_name']}",friend['profile_url'], :target => 'blank') %>
+        </div>
+      </div>
+    <%# end %>
+    <% end %>
+  <hr />
+    <%= will_paginate @facebook_friends %>
+  <% end %>
+</div>
+

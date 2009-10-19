@@ -26,7 +26,14 @@ class FacebookController < ApplicationController
     current_user.activated_at = Time.now.utc
     current_user.save(false)
 
-    if(current_user.email.nil? or current_user.email=="")
+
+
+    #we want to retrieve a fresh list of users friends info (first and last name, small pic)
+    #from Facebook. This job is delayed as it takes a lot of time (many calls via Facebook API)
+    #Delayed::Job.enqueue(FacebookRetrieveFriendsJob.new(current_user.id, facebook_session.user), 3)
+
+
+    if(current_user.email.nil? or current_user.email=="" or !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event']))
       redirect_to url_for(:controller => 'users', :id => current_user.id, :action => 'ask_facebook_info')
     else
       redirect_back_or_default('/')
@@ -34,6 +41,27 @@ class FacebookController < ApplicationController
 
 
   end
+
+  #Send a message to friends selected users for inviting them to use this app
+#  def send_invitations
+#
+#    @user = User.find(params[:id])
+#
+#    if facebook_session && @user
+#
+#      subject = "Everything happening in your city !"
+#
+#      if facebook_session.send_email(params[:facebook_friends_uids], subject, params[:message])
+#        flash[:notice] = "The message has been sent to the selected users !"
+#      else
+#        flash[:eror] = "A problem occured when trying to send the message. You can try again later. Sorry..."
+#      end
+#      redirect_to user_other_friends_path(:user_id => @user.id, :page => params[:page])
+#    else
+#      flash[:eror] = "A problem occured when trying to send the message. You can try again later. Sorry..."
+#      redirect_to root_path
+#    end
+#  end
 
   #Publish object link on the wall of an user
   def publish_object_on_wall
@@ -83,7 +111,7 @@ class FacebookController < ApplicationController
                 :href => "#{url_for(@current_object)}"
               }]
           }
-         # raise attachment.inspect
+          # raise attachment.inspect
 
           begin
             
@@ -95,7 +123,7 @@ class FacebookController < ApplicationController
               :attachment => attachment
             )
           rescue
-            flash[:notice] = "A problem occured when trying to publish the object on Facebook. You can try again later. Sorry..."
+            flash[:error] = "A problem occured when trying to publish the object on Facebook. You can try again later. Sorry..."
             redirect_to @current_object
           end
 

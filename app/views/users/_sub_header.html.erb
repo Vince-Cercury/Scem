@@ -4,6 +4,5 @@
 <% if @user.participations.size > 0 || current_user_equal(@user) %><li><% if controller_name != "participations" %><%= link_to("Participations", user_participations_path(:user_id => @user.id, :role =>:sure)) %><% else %>Participations<% end %></li><% end %>
 <% if @user.organisms_users.size > 0 || current_user_equal(@user) %><li><% if controller_name != "memberships" %><%= link_to("Memberships", user_memberships_path(:user_id => @user.id, :role =>:member)) %><% else %>Memberships<% end %></li><% end %>
 <% if @user.facebook_user? %><li><% if controller_name != "friends" %><%= link_to("Scem friends", user_friends_path(:user_id => @user.id)) %><% else %>Scem Friends<% end %></li><% end %>
-<% if current_user_equal(@user) %><li><% if controller_name != 'other_friends' %><%= link_to("Other friends", user_other_friends_path(:user_id => @user.id)) %><% else %>Other friends<% end %></li><% end %>
 <% if current_user_equal(@user) %><li><% if (controller_name != 'users' || controller.action_name!='edit') %><%= link_to("Edit", edit_user_path(@user)) %><% else %>Edit<% end %></li><% end %>
 </ul>

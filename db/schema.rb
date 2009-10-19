@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091015185622) do
+ActiveRecord::Schema.define(:version => 20091017175048) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(:version => 20091015185622) do
     t.integer "event_id"
     t.integer "organism_id"
     t.string  "role"
+  end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "events", :force => true do |t|
@@ -221,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20091015185622) do
     t.string   "fb_image_small"
     t.boolean  "receive_comment_notification",                :default => true
     t.boolean  "receive_picture_notification",                :default => true
+    t.text     "facebook_friends_info"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

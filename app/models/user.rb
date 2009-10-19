@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   include Authorization::AasmRoles
 
+  serialize   :facebook_friends_info, Array
+
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
   validates_uniqueness_of   :login
@@ -20,10 +22,10 @@ class User < ActiveRecord::Base
   validates_length_of       :last_name,     :maximum => 100
   validates_presence_of     :last_name
 
-  validates_presence_of     :email
-  validates_length_of       :email,    :within => 6..100 #r@a.wk
-  validates_uniqueness_of   :email
-  validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
+  validates_presence_of     :email, :if =>  :validate_email?
+  validates_length_of       :email,    :within => 6..100, :if =>  :validate_email? #r@a.wk
+  validates_uniqueness_of   :email, :if =>  :validate_email?
+  validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message, :if =>  :validate_email?
 
 
   def set_validate_password(value)
@@ -32,6 +34,15 @@ class User < ActiveRecord::Base
 
   def validate_password?
     return @validate_password unless @validate_password.nil?
+    return true
+  end
+
+    def set_validate_email(value)
+    @validate_email = value
+  end
+
+  def validate_email?
+    return @validate_email unless @validate_email.nil?
     return true
   end
 

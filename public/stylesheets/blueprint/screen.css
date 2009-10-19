@@ -262,4 +262,11 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 .whitebox {padding:0.5em;margin-bottom:0.5em;background:#FFFFFF;}
 .userbarbox {padding:0.5em;margin-bottom:3.5em;background:#E5ECF9;}
 .mainmenubox {margin-top:3.5em;background:#E5ECF9;}
-.squarebox-2 {background:#E5ECF9; width:110px; height:110px;}
+.inline-squarebox {
+    float: left;
+    padding:0.5em;
+    margin:1em;
+    display:inline-block;
+    background:#E5ECF9;
+    width:70px;
+    height:110px;}
