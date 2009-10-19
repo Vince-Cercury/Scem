@@ -207,7 +207,7 @@ class FacebookController < ApplicationController
         @term = Term.find(params[:id])
         #prompt for extended Facebook permissions
         respond_to do |format|
-          format.html { render :action => "ask_events_permissions" }
+          format.html { render :action => "ask_events_permissions_for_cancelling" }
           format.xml  { render :xml => current_user }
         end
       end
@@ -285,7 +285,7 @@ class FacebookController < ApplicationController
         @term = Term.find(params[:id])
         #prompt for extended Facebook permissions
         respond_to do |format|
-          format.html { render :action => "ask_events_permissions" }
+          format.html { render :action => "ask_events_permissions_for_creation" }
           format.xml  { render :xml => current_user }
         end
       end
