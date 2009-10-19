@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091017175048) do
+ActiveRecord::Schema.define(:version => 20091017172903) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -234,7 +234,6 @@ ActiveRecord::Schema.define(:version => 20091017175048) do
     t.string   "fb_image_small"
     t.boolean  "receive_comment_notification",                :default => true
     t.boolean  "receive_picture_notification",                :default => true
-    t.text     "facebook_friends_info"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
