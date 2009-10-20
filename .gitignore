@@ -9,4 +9,4 @@ config/environments/production.rb
 config/environments/test.rb
 config/environments/staging.rb
 public/system/uploads/*
-nbproject/
+nbproject
