@@ -15,8 +15,19 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_facebook_session
   helper_method :facebook_session
+  rescue_from Facebooker::Session::SessionExpired, :with => :facebook_session_expired
 
   before_filter :set_locale
+
+
+  def facebook_session_expired
+    clear_fb_cookies!
+    clear_facebook_session_information
+    reset_session # remove your cookies!
+    flash[:error] = "Your facebook session has expired."
+    redirect_to root_url
+  end
+
 
   def set_locale
     available = %w{fr-FR en-US}
