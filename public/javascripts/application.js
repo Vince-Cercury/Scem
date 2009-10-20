@@ -7,7 +7,6 @@ function remove_field(element, item) {
 }
 
     document.observe("dom:loaded", function() { 
-
         // the element in which we will observe all clicks and capture
         // ones originating from pagination links
         var container = $(document.body)

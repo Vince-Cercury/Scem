@@ -11,8 +11,10 @@
             (<%= link_to 'Delete the Facebook page', url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_cancel_message') %> )
           <% end  %>
         <% else %>
+          <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
           <%= link_to 'Publish on Facebook', url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_categories') %>
-        <% end %>
+          <% end %>
+      <% end %>
       <% else %>
         <% if @term.facebook_eid %>
           <br />
