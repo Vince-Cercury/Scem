@@ -7,7 +7,7 @@
     <%# if current_user.facebook_user? %>
     <% if !facebook_session.nil? %>
       <%= t("sessions.bar.logged_in_as") %> <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
-      (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'><%= t("sessions.log_out") %></a>)
+      (<%= fb_logout_link(t("sessions.log_out"),logout_path) %>)
     <% else %>
       <%= t("sessions.bar.logged_in_as") %> <%= link_to_current_user :content_method => :login %>
       (<%= link_to t("sessions.log_out"), logout_path   %>)

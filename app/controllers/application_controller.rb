@@ -3,11 +3,10 @@
 
 class ApplicationController < ActionController::Base
 
-  rescue_from Facebooker::Session::SessionExpired, :with => :facebook_session_expired
-
   include AuthenticatedSystem
   include ExceptionNotifiable
   
+  rescue_from Facebooker::Session::SessionExpired, :with => :facebook_session_expired
 
 
   helper :all # include all helpers, all the time
