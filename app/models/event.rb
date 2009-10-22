@@ -194,7 +194,7 @@ class Event < ActiveRecord::Base
   def list_participants
     list = Array.new
     terms.each do |term|
-      list += term.sure_participants
+      list += term.sure_participants + term.maybe_participants
     end
     return list
   end

@@ -37,8 +37,11 @@ class UsersController < ApplicationController
   def show
     find_user
 
+
     if @user.facebook_user?
       @to_display_fb_user = Facebooker::User.new(@user.fb_user_id)
+      @status_message = @to_display_fb_user.status.message
+      @status_time = @to_display_fb_user.status.time
     end
 
     respond_to do |format|
