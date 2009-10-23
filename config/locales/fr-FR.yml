@@ -16,6 +16,7 @@ fr-FR:
     already_started_or_past: "Evénements déjà commencés ou finis"
   events:
     listing_events: "LISTE DES EVENEMENTS"
+    no_categories: "aucune"
   users:
     meetings: "Les rendez-vous"
     update_success: "Utilisateur mis à jour avec succès."

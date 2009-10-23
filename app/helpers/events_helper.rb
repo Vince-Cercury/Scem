@@ -51,5 +51,18 @@ module EventsHelper
       return false
     end
   end
+
+  def displayable_categories_links(event)
+    result = ""
+    event.categories.each do |category|
+      if category.to_display
+        result += link_to(category.name, url_for(category_path(category))) + "&nbsp";
+      end
+    end
+    if result == ""
+      result = t("events.no_categories")
+    end
+    return result
+  end
   
 end

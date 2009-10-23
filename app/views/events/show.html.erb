@@ -29,9 +29,7 @@
       <%=h boolean_to_literal(@event.is_private) %><br />
     <% end %>
     <b>Categories:</b>
-    <% @event.categories.each do |@category| %>
-      <%= link_to(@category.name, url_for(category_path(@category))) %>&nbsp;
-    <% end %>
+      <%= displayable_categories_links(@event) %>
   </div>
 </div>
 

@@ -16,6 +16,7 @@ en-US:
     already_started_or_past: "Already started or past events"
   events:
     listing_events: "LISTING EVENTS"
+    no_categories: "not specified"
   users:
     meetings: "Users meetings"
     update_success: "User was successfully updated."
