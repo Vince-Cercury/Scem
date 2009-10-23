@@ -46,10 +46,10 @@ class CategoriesController < ApplicationController
       if @the_selected_date.strftime("%y") == today.strftime("%y") && @the_selected_date.strftime("%m") == today.strftime("%m") && @the_selected_date.strftime("%d") == today.strftime("%d")
         if params[:period] == "past"
           @period_link_param = "futur"
-          @terms = Term.search_has_publisher_ended_by_category(params[:search], params[:page], params[:id])
+          @terms = Term.search_has_publisher_past_by_date_and_category(params[:search], params[:page], params[:id])
         else
           @period_link_param = "past" 
-          @terms = Term.search_has_publisher_by_date_and_category(params[:search], params[:page], params[:id], @the_selected_date)
+          @terms = Term.search_has_publisher_futur_by_date_and_category(params[:search], params[:page], params[:id], @the_selected_date)
         end
       else
         @terms = Term.search_has_publisher_by_date_and_category(params[:search], params[:page], params[:id], @the_selected_date)
