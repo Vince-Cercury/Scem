@@ -15,6 +15,13 @@ class UserMailer < ActionMailer::Base
     @subject    += 'Your account has been activated!'
     @body[:url]  = "#{ENV['SITE_URL']}/"
   end
+
+  def activation_notification_to_moderators(admin_or_moderator, new_user)
+    setup_email(admin_or_moderator)
+    @subject    += 'A new user account has been activated!'
+    @body[:new_user]  = new_user
+    @body[:url]  = "#{ENV['SITE_URL']}/"
+  end
   
   protected
     def setup_email(user)

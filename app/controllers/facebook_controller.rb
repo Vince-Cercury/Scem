@@ -8,6 +8,13 @@ class FacebookController < ApplicationController
     if self.current_user.nil?
       #register with fb
       User.create_from_fb_connect(facebook_session.user)
+
+      # activate! method is not working properly, maybe because some user fiels are not valid ?
+      current_user.set_activate(true)
+      current_user.state = 'active'
+      current_user.activated_at = Time.now
+
+      
     else
       #connect accounts
       self.current_user.link_fb_connect(facebook_session.user.id) unless self.current_user.fb_user_id == facebook_session.user.id
@@ -22,8 +29,7 @@ class FacebookController < ApplicationController
 
     current_user.first_name=facebook_session.user.first_name
     current_user.last_name=facebook_session.user.last_name
-    current_user.state='active'
-    current_user.activated_at = Time.now.utc
+
     current_user.save(false)
 
 
@@ -43,25 +49,25 @@ class FacebookController < ApplicationController
   end
 
   #Send a message to friends selected users for inviting them to use this app
-#  def send_invitations
-#
-#    @user = User.find(params[:id])
-#
-#    if facebook_session && @user
-#
-#      subject = "Everything happening in your city !"
-#
-#      if facebook_session.send_email(params[:facebook_friends_uids], subject, params[:message])
-#        flash[:notice] = "The message has been sent to the selected users !"
-#      else
-#        flash[:eror] = "A problem occured when trying to send the message. You can try again later. Sorry..."
-#      end
-#      redirect_to user_other_friends_path(:user_id => @user.id, :page => params[:page])
-#    else
-#      flash[:eror] = "A problem occured when trying to send the message. You can try again later. Sorry..."
-#      redirect_to root_path
-#    end
-#  end
+  #  def send_invitations
+  #
+  #    @user = User.find(params[:id])
+  #
+  #    if facebook_session && @user
+  #
+  #      subject = "Everything happening in your city !"
+  #
+  #      if facebook_session.send_email(params[:facebook_friends_uids], subject, params[:message])
+  #        flash[:notice] = "The message has been sent to the selected users !"
+  #      else
+  #        flash[:eror] = "A problem occured when trying to send the message. You can try again later. Sorry..."
+  #      end
+  #      redirect_to user_other_friends_path(:user_id => @user.id, :page => params[:page])
+  #    else
+  #      flash[:eror] = "A problem occured when trying to send the message. You can try again later. Sorry..."
+  #      redirect_to root_path
+  #    end
+  #  end
 
   #Publish object link on the wall of an user
   def publish_object_on_wall

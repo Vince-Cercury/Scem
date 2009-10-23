@@ -177,7 +177,7 @@ class UsersController < ApplicationController
   #
   # will return true if the logged in user is equal as the controlled user (or admin or moderator)
 	def owner_rights?
-    no_permission_redirection unless self.current_user && (self.current_user.id==find_user.id || self.current_user.has_system_role('moderator'))
+    no_permission_redirection unless current_user && (current_user.id==find_user.id || current_user.has_system_role('moderator'))
   end
 
 

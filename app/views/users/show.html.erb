@@ -4,11 +4,12 @@
 
   <h2> <%= @user.first_name %> <%= @user.last_name %></h2>
   <%= display_user_cover(@user, "large") %>
-  <h4 class="caps">LAST STATUS:</h4>
-  <div class ="box">
-    <%= @status_status.message %> <fb:time t='<%= @status_status.time %>' preposition="true" ></fb:time>
-  </div>
-
+  <% if @status_message!="" %>
+    <h4 class="caps">LAST STATUS:</h4>
+    <div class ="box">
+      <%= @status_message %> <fb:time t='<%= @status_time %>' preposition="true" ></fb:time>
+    </div>
+  <% end %>
 <% else %>
 
 

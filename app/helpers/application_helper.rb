@@ -49,10 +49,14 @@ module ApplicationHelper
 
     the_date = parse_params_date_or_now_date
 
-    prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" )
-    next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.next_month.month}-#{the_date.next_month.year}" )
-
-    calendar(:year => the_date.year, :month => the_date.month, :first_day_of_week => 1, :previous_month_text => prev_month_link, :next_month_text => next_month_link) do |d|
+    if the_date.year > 2008
+      prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" )
+    end
+    if the_date.year < 2020
+      next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.next_month.month}-#{the_date.next_month.year}" )
+    end
+    
+    calendar(:year => the_date.year, :month => the_date.month, :first_day_of_week => 1, :previous_month_text => prev_month_link, :next_month_text => next_month_link, :the_date => the_date) do |d|
       cell_attrs = {:class => 'day'}
 
       number_of_events = Term.count_occuring_in_the_day(category_id, d)
