@@ -163,7 +163,16 @@ class EventsController < ApplicationController
   #  end
 
 
-  
+  def share
+    
+    @user = User.find(params[:user_id])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @friends }
+    end
+  end
+
   private
   
   def add_categories_not_to_display(event)
