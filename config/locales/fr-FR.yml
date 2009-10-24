@@ -54,6 +54,7 @@ fr-FR:
       galleries: galleries
       users: utilisateurs
       friends: amis
+      participations: participations
   time:
     am: am
     formats:

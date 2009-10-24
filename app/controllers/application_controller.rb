@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     clear_facebook_session_information
     reset_session # remove your cookies!
     flash[:error] = "Your facebook session has expired. Please log in again ..."
-    redirect_to root_url
+    redirect_to login_path
   end
 
 

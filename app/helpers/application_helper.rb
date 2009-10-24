@@ -122,6 +122,8 @@ module ApplicationHelper
   def get_current_search_controller
 
     case controller_name
+    when 'participations'
+      result = 'participations'
     when 'events'
       result = 'events'
     when 'organisms'
@@ -147,6 +149,8 @@ module ApplicationHelper
   def get_current_search_model_type
 
     case controller_name
+    when 'participations'
+      result = t('search.model_type.participations')
     when 'events'
       result = t('search.model_type.events')
     when 'organisms'

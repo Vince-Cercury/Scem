@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection">
 <![endif]-->
 
-    <%#= javascript_include_tag 'prototype', 'effects', 'dragdrop', 'controls', 'swapselect', 'application' %>
+<%#= javascript_include_tag 'prototype', 'effects', 'dragdrop', 'controls', 'swapselect', 'application' %>
     <%= javascript_include_tag :fckeditor %>
 
     <%= javascript_include_tag :defaults%>
@@ -33,20 +33,20 @@
       <!--Header of the web site containing menus -->
       <div id="header" class="span-24">
         <div class="span-11">
-          
+
           <%= link_to(image_tag("logo108.jpg"), url_for(root_path)) %>
 
         </div>
         <div class="span-13 last">
           <div class="mainmenubox">
             <br /><br />
-          <ul class='tabs'>
-            <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to(t('main_menu.events_by_date'), url_for(terms_path)) %><% else %><%=t 'main_menu.events_by_date' %><% end %></li>
-            <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><%= t('main_menu.directory')%><% end %></li>
-            <li><% if controller_name != 'galleries' %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path)) %><% else %><%= t('main_menu.pictures_galleries')%><% end %></li>
-            <li><% if controller_name != 'users' %><%= link_to(t('main_menu.users'), url_for(users_path)) %><% else %><%= t('main_menu.users') %><% end %></li>
-          </ul>
-            
+            <ul class='tabs'>
+              <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to(t('main_menu.events_by_date'), url_for(terms_path)) %><% else %><%=t 'main_menu.events_by_date' %><% end %></li>
+              <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><%= t('main_menu.directory')%><% end %></li>
+              <li><% if controller_name != 'galleries' %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path)) %><% else %><%= t('main_menu.pictures_galleries')%><% end %></li>
+              <li><% if controller_name != 'users' %><%= link_to(t('main_menu.users'), url_for(users_path)) %><% else %><%= t('main_menu.users') %><% end %></li>
+            </ul>
+
 
           </div>
         </div>
@@ -54,7 +54,7 @@
         <hr />
         <ul class='tabs'>
           <% if categories_not_to_display.first %>
-          <li><% if (controller_name == 'categories' && params[:id].to_i==categories_not_to_display.first.id) or controller_name == 'terms' %><%= categories_not_to_display.first.name %><% else %><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first))) %><% end %></li>
+            <li><% if (controller_name == 'categories' && params[:id].to_i==categories_not_to_display.first.id) or controller_name == 'terms' %><%= categories_not_to_display.first.name %><% else %><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first))) %><% end %></li>
           <% end  %>
           <% categories_to_display.each do |category| %>
             <li><% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= category.name %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %></li>
@@ -64,7 +64,7 @@
 
 
       </div>
-     
+
 
       <!-- Content of the web site -->
       <div id="subheader" class="span-24 last">
@@ -84,6 +84,11 @@
 
         <!-- Right column -->
         <div class="span-6 last" id="sidebar">
+          <h4 class="caps">CREATE A PAGE</h4>
+          <%= link_to("band, association, pub, business", new_organism_path) %>
+          <br /><br /><br />
+          <hr />
+
           <h3 class="caps"><%= t("side_bar.search_into") %> <%=  get_current_search_model_type %></h3>
           <div class="box">
             <% form_tag url_for(get_current_search_controller), :method => 'get' do %>
@@ -110,16 +115,21 @@
             <h3 class="caps"><%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)</h3>
 
             <% get_next_user_terms.each do |term| %>
-          <div class="span-2">
-             <%= display_event_cover(term.event, "mini") %>
-          </div>
-          <div class="span-4 last">
-             <%= link_to(term.event.name, term.event) %><br />
-             <%= display_simpliest_date(term.start) %> at <%= display_nice_time(term.start) %>  
-           </div>
-             <hr />
+              <div class="span-2">
+                <%= display_event_cover(term.event, "mini") %>
+              </div>
+              <div class="span-4 last">
+                <%= link_to(term.event.name, term.event) %><br />
+                <%= display_simpliest_date(term.start) %> at <%= display_nice_time(term.start) %>
+              </div>
+              <hr />
             <% end %>
-            <% end %>
+          <% end %>
+                    <h4 class="caps">CREATE A MEETING NOW!</h4>
+              <%= link_to("meet people, meet your friends", new_event_path(:type => 'user_event')) %>
+          <br /><br /><br />
+          <hr />
+
         </div>
       </div>
     </div>

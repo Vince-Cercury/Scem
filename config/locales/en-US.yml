@@ -54,6 +54,7 @@ en-US:
       friends: friends
       galleries: galleries
       users: users
+      participations: participations
   time:
     am: am
     formats:

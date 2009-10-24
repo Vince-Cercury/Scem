@@ -1,7 +1,14 @@
 <%= render :partial => "/organisms/header" %>
+<% if is_organism_admin?(@organism) %>
+  <h4 class="caps">CREATE A NEW EVENT NOW!</h4>
+  <%= link_to("Let people know about your actions", new_event_path) %>
+  <br /><br /><hr />
+
+<% end %>
+
 <% form_tag organism_events_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", :name => nil %>
 <% end %>
 
 

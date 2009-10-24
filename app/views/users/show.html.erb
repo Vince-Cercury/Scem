@@ -1,22 +1,35 @@
 <%= render :partial => "/users/header" %>
 
 <% if @user.facebook_user? %>
-
-  <h2> <%= @user.first_name %> <%= @user.last_name %></h2>
+<div class="span-6">
   <%= display_user_cover(@user, "large") %>
-  <% if @status_message!="" %>
+</div>
+<div class="span-11 last">
+  <% if @status_message!=" " %>
     <h4 class="caps">LAST STATUS:</h4>
     <div class ="box">
       <%= @status_message %> <fb:time t='<%= @status_time %>' preposition="true" ></fb:time>
     </div>
+</div>
   <% end %>
+    <hr />
 <% else %>
 
 
   <h2><%= @user.login %></h2>
   <%= display_user_cover(@user, "medium") %>
-
+<hr />
 
   <br />(This user has a limited profile because he didn't connect through Facebook)
 <% end %>
+<% if current_user_equal(@user) %>
+  <h4 class="caps">CREATE A MEETING NOW!</h4>
+  <%= link_to("meet people, meet your friends", new_event_path(:type => 'user_event')) %>
+  <br /><br /><br />
+  <hr />
 
+  <h4 class="caps">CREATE A PAGE</h4>
+  <%= link_to("band, association, pub, business?", new_organism_path) %>
+  <br /><br /><br />
+  <hr />
+<% end %>
