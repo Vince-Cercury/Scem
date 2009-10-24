@@ -10,13 +10,13 @@ module TermsHelper
       clever_date = date.strftime("%A %d")
     end
     if date.strftime("%y") == this_year && date.strftime("%m") != this_month
-      clever_date = date.strftime("%d %B")
+      clever_date = date.strftime("%A %d %B")
     end
     if date.strftime("%y") != this_year && date.strftime("%m") == this_month
-      clever_date = date.strftime("%d %B %Y")
+      clever_date = date.strftime("%A  %d %B %Y")
     end
     if date.strftime("%y") != this_year && date.strftime("%m") != this_month
-      clever_date = date.strftime("%d %B %Y")
+      clever_date = date.strftime("%A %d %B %Y")
     end
     return clever_date
   end
