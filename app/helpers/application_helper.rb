@@ -58,10 +58,7 @@ module ApplicationHelper
     
     calendar(:year => the_date.year, :month => the_date.month, :first_day_of_week => 1, :previous_month_text => prev_month_link, :next_month_text => next_month_link, :the_date => the_date) do |d|
       cell_attrs = {:class => 'day'}
-
-      puts "??????????????????????????????????????"
-      puts d
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      
       number_of_events = Term.count_occuring_in_the_day(category_id, d)
       if number_of_events > 0
         cell_text = link_to( "#{d.mday}", :controller =>"categories", :action => 'show', :id => category_id, :date => "#{d.day}-#{d.month}-#{d.year}" )
