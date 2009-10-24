@@ -16,4 +16,7 @@
 [submodule "vendor/plugins/http_accept_language"]
         path = vendor/plugins/http_accept_language
         url = git://github.com/iain/http_accept_language.git
+[submodule "vendor/plugins/live-validations"]
+        path = vendor/plugins/live-validations
+        url = git://github.com/augustl/live-validations.git
 

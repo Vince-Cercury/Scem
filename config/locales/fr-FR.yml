@@ -230,6 +230,8 @@ fr-FR:
 
   activerecord:
     errors:
+      messages:
+        blank: "Ceci ne peut être vide"
       template:
         header:
           one: "1 error prohibited this {{model}} from being saved"

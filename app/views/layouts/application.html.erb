@@ -3,6 +3,7 @@
   <head>
     <title>SCEM - Events Manager [ <%= controller_name %> => <%= controller.action_name %> ]</title>
 <%#= stylesheet_link_tag 'scaffold' %>
+    <%= stylesheet_link_tag 'livevalidation' %>
     <%= stylesheet_link_tag 'swapselect' %>
     <%= stylesheet_link_tag 'calendar/grey/style' %>
     <%= stylesheet_link_tag 'mini-rating' %>
@@ -15,10 +16,15 @@
 <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection">
 <![endif]-->
 
-<%#= javascript_include_tag 'prototype', 'effects', 'dragdrop', 'controls', 'swapselect', 'application' %>
+    <%= javascript_include_tag 'prototype', 'effects', 'dragdrop', 'controls', 'application' %>
+
+    <%= javascript_include_tag "livevalidation" %>
+
+    <%= javascript_include_tag "swapselect" %>
+
     <%= javascript_include_tag :fckeditor %>
 
-    <%= javascript_include_tag :defaults%>
+    <%#= javascript_include_tag :defaults%>
   </head>
   <body>
 
