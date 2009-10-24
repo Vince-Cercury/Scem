@@ -2,23 +2,27 @@ class OrganismsUserMailer < ActionMailer::Base
 
   helper :users
 
-  def creation_notification(admin_or_modo, user, organism, role)
+  def creation_notification(admin_or_modo, user, organism, role, state)
     
     #organism_admin and organism_modo, send this emails
     setup_email(admin_or_modo,user, organism, role)
     @subject    += "Membership request for #{organism.name}"
-    @body[:url_member]  = "#{ENV['SITE_URL']}#{organisms_users_path}/accept?organism_id=#{organism.id}&user_id=#{user.id}&role=member"
-    @body[:url_moderator]  = "#{ENV['SITE_URL']}#{organisms_users_path}/accept?organism_id=#{organism.id}&user_id=#{user.id}&role=moderator"
-    @body[:url_admin]  = "#{ENV['SITE_URL']}#{organisms_users_path}/accept?organism_id=#{organism.id}&user_id=#{user.id}&role=admin"
-    @body[:url_refuse]  = "#{ENV['SITE_URL']}#{organisms_users_path}/refuse?organism_id=#{organism.id}&user_id=#{user.id}"
 
+    @body[:state] = state
+    @body[:role] = role
+    @body[:url_member]  = url_for(:host => ENV['HOST'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :role => 'member', :action => 'accept')
+    @body[:url_moderator]  = url_for(:host => ENV['HOST'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :role => 'moderator', :action => 'accept')
+    @body[:url_admin]  = url_for(:host => ENV['HOST'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :role => 'admin', :action => 'accept')
+    @body[:url_refuse]  = url_for(:host => ENV['HOST'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :action => 'refuse')
+    
   end
 
   def activation_notification(user, organism, role)
     #organism_admin and organism_modo, send this emails
     setup_email(user, user, organism, role)
-    @subject    += "Membership accepted has a #{role} by #{organism.name}"
-    @body[:url]  = "#{ENV['SITE_URL']}#{organisms_path}/#{organism.id}"
+    @subject    += "You are now a #{role} of #{organism.name}"
+    @body[:role] = role
+    @body[:url]  = "#{ENV['SITE_URL']}#{organism_path(:id => organism.id)}"
   end
 
   protected

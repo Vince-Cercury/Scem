@@ -36,6 +36,7 @@ class Organism < ActiveRecord::Base
     obj.has_many :moderators, :conditions => "organisms_users.role = 'moderator' and organisms_users.state='active'"
     obj.has_many :admins, :conditions => "organisms_users.role = 'admin' and organisms_users.state='active'"
 
+
     obj.has_many :members_pending, :conditions => "organisms_users.role = 'member' and organisms_users.state='pending'"
     obj.has_many :moderators_pending, :conditions => "organisms_users.role = 'moderator' and organisms_users.state='pending'"
     obj.has_many :admins_pending, :conditions => "organisms_users.role = 'admin' and organisms_users.state='pending'"

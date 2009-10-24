@@ -7,14 +7,14 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pictures, :member => { :suspend   => :get,
     :unsuspend => :get, :activate => :get  }
 
-  map.resources :organisms_users, :collection =>{ #:create_relation => :get,
-    #:update_relation => :get,
-    :create_or_update => :get,
-    :create_or_update_current_user => :get,
-    :destroy_relation => :get,
-    :destroy_current_user_relation => :get,
-    :accept => :get,
-    :refuse => :get}
+#  map.resources :members, :member =>{ #:create_relation => :get,
+#    #:update_relation => :get,
+#    :create_or_update => :get,
+#    :create_or_update_current_user => :get,
+#    :destroy_relation => :get,
+#    :destroy_current_user_relation => :get,
+#    :accept => :get,
+#    :refuse => :get}
 
 
   map.resources :organisms do |organism|
@@ -39,7 +39,14 @@ ActionController::Routing::Routes.draw do |map|
     organism.resources :comments, :collection => { :suspend   => :get,
       :unsuspend => :get,
       :activate     => :get }
-    organism.resources :members
+    organism.resources :members, :collection =>{ #:create_relation => :get,
+    #:update_relation => :get,
+    :create_or_update => :get,
+    :create_or_update_current_user => :get,
+    :destroy_relation => :get,
+    :destroy_current_user_relation => :get,
+    :accept => :get,
+    :refuse => :get}
     organism.resources :pictures, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |picture|
       picture.resources :comments, :collection => { :suspend   => :get,

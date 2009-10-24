@@ -68,21 +68,29 @@ class MembersController < ApplicationController
     organism = Organism.find(params[:organism_id])
     organism_user = organism.organisms_users.find(:first, :conditions => ["user_id=? ", self.current_user.id])
 
+    
+
     if(organism_user.nil?)
       organism_user = OrganismsUser.new
       organism_user.organism_id=params[:organism_id]
       organism_user.user_id=current_user.id
-      organism_user.register! unless params[:members_password] && params[:members_password] == organism.members_password
+      organism_user.role=params[:role]
+      organism_user.register! #unless params[:members_password] && params[:members_password] == organism.members_password
+    else
+      organism_user.role=params[:role]
     end
+    
 
-    organism_user.role=params[:role]
-
-    organism_user.activate! if params[:members_password] && params[:members_password] == organism.members_password
+    if (params[:members_password] && params[:members_password] == organism.members_password) or organism.members_password.blank? 
+      organism_user.activate!
+      flash[:notice] = 'You are now a member of this organism.'
+    else
+      flash[:notice] = 'Your membership is pending until a moderator accept it.'
+    end
 
     
     respond_to do |format|
-      if organism_user
-        flash[:notice] = 'Relation work is done.'
+      if organism_user      
         format.html { redirect_back_or_default('/') }
         format.xml  { head :ok }
       else
@@ -120,7 +128,7 @@ class MembersController < ApplicationController
 
   def accept
     organism = Organism.find(params[:organism_id])
-    organism_user = organism.organisms_users.find(:first, :conditions => ["user_id=? ", params[:user_id]])
+    organism_user = OrganismsUser.find_by_organism_id_and_user_id(params[:organism_id],params[:user_id])
 
     organism_user.role = params[:role]
 
@@ -128,11 +136,16 @@ class MembersController < ApplicationController
       organism_user.activate!
       flash[:notice] = "Membership done"
       redirect_to(organism)
+    elsif organism_user && organism_user.active?
+      if organism_user.role != params[:role]
+        organism_user.save!
+      end
+      flash[:notice] = "Membership work is done"
+      redirect_to(organism)
     else
       flash[:error]  = "Something went wrong when updating the membership..."
-      redirect_back_or_default('/')
+      redirect_to root_path
     end
-
   end
 
   def refuse
