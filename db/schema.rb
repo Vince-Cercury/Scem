@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091017172903) do
+ActiveRecord::Schema.define(:version => 20091025154241) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -112,6 +112,16 @@ ActiveRecord::Schema.define(:version => 20091017172903) do
     t.datetime "updated_at"
   end
 
+  create_table "mails", :force => true do |t|
+    t.integer  "sender_id"
+    t.string   "subject"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "mails", ["sender_id"], :name => "index_mails_on_sender_id"
+
   create_table "organisms", :force => true do |t|
     t.string   "name"
     t.string   "description_short", :limit => 500
@@ -200,6 +210,12 @@ ActiveRecord::Schema.define(:version => 20091017172903) do
   end
 
   add_index "ratings", ["user_id"], :name => "fk_ratings_user"
+
+  create_table "recipients", :force => true do |t|
+    t.integer "user_id"
+    t.integer "mail_id"
+    t.boolean "sent",    :default => false
+  end
 
   create_table "terms", :force => true do |t|
     t.datetime "start"

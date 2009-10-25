@@ -1,6 +1,15 @@
 class UserMailer < ActionMailer::Base
 
-  helper :users
+  helper :users, ActionView::Helpers::TextHelper
+
+  def simple_email(recipient_email, sender_email, subject, body)
+    @recipients =  recipient_email
+    @subject    =  subject
+    @from       =  sender_email
+    @body[:content] =  body
+    @sent_on     = Time.now
+    @content_type = "text/html"
+  end
 
   def signup_notification(user)
     setup_email(user)
@@ -24,11 +33,11 @@ class UserMailer < ActionMailer::Base
   end
   
   protected
-    def setup_email(user)
-      @recipients  = "#{user.email}"
-      @from        = "#{ENV['ADMINEMAIL']}"
-      @subject     = "[SCEM] "
-      @sent_on     = Time.now
-      @body[:user] = user
-    end
+  def setup_email(user)
+    @recipients  = "#{user.email}"
+    @from        = "#{ENV['ADMINEMAIL']}"
+    @subject     = "[SCEM] "
+    @sent_on     = Time.now
+    @body[:user] = user
+  end
 end

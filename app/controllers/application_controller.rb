@@ -123,4 +123,12 @@ class ApplicationController < ActionController::Base
     @comment.commentable_id = parent_object.id
   end
 
+  def get_user_name_or_pseudo(user)
+    if user.facebook_user?
+      return user.first_name + " " + user.last_name
+    else
+      return user.login
+    end
+  end
+  
 end

@@ -1,0 +1,23 @@
+
+<div id="results">
+  <% @users.each do |user| %>
+    <div class="span-1 colborder">
+      <%=   check_box_tag 'friends_ids[]', user.id %>
+    </div>
+    <div class="span-4 colborder">
+      <%= display_user_cover(user, "thumb") %>
+    </div>
+    <div class="span-10 last">
+      <div class="box">
+        <%= user_profile_link(user) %>
+      </div>
+    </div>
+    <hr />
+  <% end %>
+  <%#= will_paginate @users %>
+  <% if @users.size == 0 %>
+    <div class="box">
+      Sorry, no result
+    </div>
+   <% end %>
+</div>

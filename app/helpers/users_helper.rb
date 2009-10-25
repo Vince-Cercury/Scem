@@ -10,16 +10,17 @@ module UsersHelper
 
   def display_user_cover(user, style)
     mini_height = "36px"
-
+    thumb_width = "72px"
+    small_width = "126px"
 
     if user.facebook_user?
       case style
       when "mini"
         image = image_tag(user.fb_image_small, :height => mini_height)
       when "thumb"
-        image = image_tag(user.fb_image_small)
+        image = image_tag(user.fb_image, :width => thumb_width)
       when "small"
-        image = image_tag(user.fb_image_small)
+        image = image_tag(user.fb_image, :width => small_width)
       when "medium"
         image = image_tag(user.fb_image)
       when "large"

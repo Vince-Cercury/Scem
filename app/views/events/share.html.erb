@@ -1,0 +1,29 @@
+<%= render :partial => "/events/header" %>
+
+<% form_tag share_event_path(:event_id => @event.id), :method => 'get' do %>
+  <p>
+  <%#=  hidden_field_tag 'role', params[:role] %>
+
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<hr />
+<p>Tick the box of the users you want to share the event with</p>
+
+<% form_tag(url_for(:controller => 'events', :action => 'do_share', :id => @event.id), :method => :put) do %>
+  <%#= f.error_messages %>
+
+  <%= render :partial => "/users/mini_users_list" %>
+
+  <div>
+     <div class="label">Subject:</div>
+    <%= text_field_tag :subject, @event.name, :class => 'title' %>
+  </div>
+  <div>
+    <div class="label">Body:</div>
+    <%= text_area_tag :body, @message_body, :cols => 70, :rows => 10 %>
+  </div>
+
+  <%= submit_tag 'Send event' %>
+  <% end %>
