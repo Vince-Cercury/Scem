@@ -21,7 +21,7 @@
       <br /><br /><%= link_to 'Publish the event on my Facebook', url_for(:controller => 'facebook', :event_id =>@event.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
     <% end %>
     <% if current_user %>
-    <br /><br /><%= link_to 'Let your friends know', share_event_path %>
+    <br /><br /><%= link_to 'Tell your friends', share_event_path %>
     <% end %>
   </div>
   <div class="box">

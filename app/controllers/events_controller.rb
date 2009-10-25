@@ -208,8 +208,7 @@ class EventsController < ApplicationController
         recipient.user = User.find(friend_id)
         mail.recipients << recipient
       end
-
-
+      
 
       if(mail.save!)
         Delayed::Job.enqueue(EmailsSenderJob.new(mail.id),2)
