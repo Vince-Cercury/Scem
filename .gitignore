@@ -10,3 +10,4 @@ config/environments/test.rb
 config/environments/staging.rb
 public/system/uploads/*
 nbproject
+tmp/*
