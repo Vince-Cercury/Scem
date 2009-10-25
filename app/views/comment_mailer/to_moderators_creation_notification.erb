@@ -1,18 +1,20 @@
-Dear <%=h get_user_name_or_pseudo(@user) %>,
+<%= render :partial => "/shared_templates/email_header" %>
+<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-You receive this email because you are a moderator or admin of an organism.
+<p>You receive this email because you are a moderator or admin of an organism.</p>
 
-A comment has been posted
+<p>A comment has been posted</p>
 
-Comment's text:
-  <%= h @comment.text %>
+<p>Comment's text:<br />
+  <%= h @comment.text %></p>
 
-You can eventually:
+<p>You can eventually:</p>
 
-Suspend the comment (in case it's not respecting the rules):
-  <%=h @url_suspend %>
+<p>Suspend the comment (in case it's not respecting the rules):<br />
+  <%=h @url_suspend %></p>
 
-You can see the comment in its context:
-  <%= @parent_object_url %>
+<p>You can see the comment in its context:<br />
+  <%= @parent_object_url %></p>
 
-Regards.
+<p>Regards.</p>
+<%= render :partial => "/shared_templates/email_footer" %>

@@ -1,11 +1,12 @@
-This user wants to become a member: <%= get_user_name_or_pseudo(@user) %>
+<%= render :partial => "/shared_templates/email_header" %>
+<p>This user wants to become a member: <%= get_user_name_or_pseudo(@user) %></p>
 
+<p>You can:</p>
 
-You can:
+<p>- accept as a member <%= @url_member %></p>
 
-- accept as a member <%= @url_member %>
+<p>- accept as a moderator <%= @url_moderator %><br />
+- accept as an admin <%= @url_admin %></p>
 
-- accept as a moderator <%= @url_moderator %>
-- accept as an admin <%= @url_admin %>
-
-- refuse <%= @url_refuse %>
+<p>- refuse <%= @url_refuse %></p>
+<%= render :partial => "/shared_templates/email_footer" %>

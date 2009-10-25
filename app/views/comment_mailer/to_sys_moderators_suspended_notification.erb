@@ -1,12 +1,14 @@
-Dear <%=h get_user_name_or_pseudo(@user) %>,
+<%= render :partial => "/shared_templates/email_header" %>
+<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-You receive this email because you are a system moderator or admin.
-A comment has been suspended by an organism admin.
+<p>You receive this email because you are a system moderator or admin.<br />
+A comment has been suspended by an organism admin.</p>
 
-Comment's text:
-  <%= h @comment.text %>
+<p>Comment's text:<br />
+  <%= h @comment.text %></p>
 
-You can see what was the context of the comment:
-  <%= @parent_object_url %>
+<p>You can see what was the context of the comment:<br />
+  <%= @parent_object_url %></p>
 
-Regards.
+<p>Regards.</p>
+<%= render :partial => "/shared_templates/email_footer" %>

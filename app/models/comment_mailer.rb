@@ -58,6 +58,7 @@ class CommentMailer < ActionMailer::Base
     @body[:user] = user
     @body[:comment] = comment
     @body[:parent_object] = parent_object
+    @content_type = "text/html"
   end
 
   private

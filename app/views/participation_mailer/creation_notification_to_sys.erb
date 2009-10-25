@@ -1,14 +1,16 @@
-Dear <%=h @receiver.login %>,
+<%= render :partial => "/shared_templates/email_header" %>
+<p>Dear <%=h @receiver.login %>,</p>
 
-You receive this email because you are a system moderator or administrator
+<p>You receive this email because you are a system moderator or administrator</p>
 
-A user has notified his participation status to the event <%=h @event.name %>:
-<%= @url_event %>
+<p>A user has notified his participation status to the event <%=h @event.name %>:<br />
+<%= @url_event %></p>
 
-The user is profil is visible here:
-<%= @url_user %>
+<p>The user is profil is visible here:<br />
+<%= @url_user %></p>
 
-You can get all information about participants of the event at this address:
-<%= @url_participants %>
+<p>You can get all information about participants of the event at this address:<br />
+<%= @url_participants %></p>
 
-Regards.
+<p>Regards.</p>
+<%= render :partial => "/shared_templates/email_footer" %>

@@ -42,5 +42,6 @@ class OrganismMailer < ActionMailer::Base
     @sent_on     = Time.now
     @body[:user] = user
     @body[:organism] = organism
+    @content_type = "text/html"
   end
 end

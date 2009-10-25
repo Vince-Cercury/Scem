@@ -1,5 +1,7 @@
-Dear <%=h get_user_name_or_pseudo(@user) %>
+<%= render :partial => "/shared_templates/email_header" %>
+<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-You are now a <%= @role %> of <%=h @organism.name %>
+<p>You are now a <%= @role %> of <%=h @organism.name %></p>
 
-  <%=h @url %>
+<p><%=h @url %></p>
+<%= render :partial => "/shared_templates/email_footer" %>

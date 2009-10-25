@@ -33,5 +33,6 @@ class ParticipationMailer < ActionMailer::Base
     @body[:receiver] = receiver
     @body[:role] = role
     @body[:event] = event
+    @content_type = "text/html"
   end
 end

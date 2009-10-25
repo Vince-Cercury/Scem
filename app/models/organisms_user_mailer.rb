@@ -34,5 +34,6 @@ class OrganismsUserMailer < ActionMailer::Base
     @body[:user] = user
     @body[:role] = role
     @body[:organism] = organism
+    @content_type = "text/html"
   end
 end

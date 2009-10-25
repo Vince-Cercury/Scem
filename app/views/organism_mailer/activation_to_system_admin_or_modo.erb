@@ -1,5 +1,7 @@
-Dear <%=h get_user_name_or_pseudo(@user) %>,
+<%= render :partial => "/shared_templates/email_header" %>
+<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-The organism, <%=h @organism.name %>, has been activated. 
+<p>The organism, <%=h @organism.name %>, has been activated. </p>
 
-  <%=h @url %>
+<p><%=h @url %></p>
+<%= render :partial => "/shared_templates/email_footer" %>

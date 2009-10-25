@@ -1,12 +1,15 @@
-Dear <%=h get_user_name_or_pseudo(@user) %>,
+<%= render :partial => "/shared_templates/email_header" %>
+<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-Your organism has been created.
+<p>Your organism has been created.</p>
 
-  Name: <%=h @organism.name %>
-  Manager name: <%=h @organism.manager_name %>
-  Short description:
-  <%=h @organism.description_short %>
+<p>
+  Name: <%=h @organism.name %><br />
+  Manager name: <%=h @organism.manager_name %><br />
+  Short description:<br />
+  <%=h @organism.description_short %></p>
 
-You now have to wait until a moderator activate it.
+<p>You now have to wait until a moderator activate it.</p>
 
-Thanks
+<p>Thanks</p>
+<%= render :partial => "/shared_templates/email_footer" %>

@@ -1,13 +1,14 @@
-Dear <%=h get_user_name_or_pseudo(@user) %>,
+<%= render :partial => "/shared_templates/email_header" %>
+<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-You receive this email because you have posted a picture.
+<p>You receive this email because you have posted a picture.</p>
 
-Your picture has been accepted.
+<p>Your picture has been accepted.<br />
+  <%=h @url %></p>
 
-  <%=h @url %>
 
+<p>The context of this picture is:<br />
+ <%=h @url_context %></p>
 
-The context of this picture is:
- <%=h @url_context %>
-
-Regards.
+<p>Regards.</p>
+<%= render :partial => "/shared_templates/email_footer" %>

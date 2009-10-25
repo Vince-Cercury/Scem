@@ -1,12 +1,14 @@
-Dear <%=h get_user_name_or_pseudo(@user) %>,
+<%= render :partial => "/shared_templates/email_header" %>
+<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-An organism has been created.
+<p>An organism has been created.</p>
 
-  Name: <%=h @organism.name %>
-  Manager name: <%=h @organism.manager_name %>
-  Short description:
-  <%=h @organism.description_short %>
+<p>
+  Name: <%=h @organism.name %><br />
+  Manager name: <%=h @organism.manager_name %><br />
+  Short description:<br />
+  <%=h @organism.description_short %></p>
 
-Visit this url to activate the organism:
-
-  <%=h @url %>
+<p>Visit this url to activate the organism:<br />
+<%=h @url %></p>
+<%= render :partial => "/shared_templates/email_footer" %>
