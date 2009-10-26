@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   before_filter :is_granted_to_create, :only => [:new, :create]
 
   # Protect these actions behind a moderator login
-  before_filter :is_granted_to_edit?, :except => [:show, :index, :create, :new]
+  before_filter :is_granted_to_edit?, :except => [:show, :index, :create, :new, :share, :do_share]
 
   before_filter :is_granted_to_view?, :only => [:show]
 
