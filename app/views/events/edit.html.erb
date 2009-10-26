@@ -81,7 +81,8 @@
   <%= swapselect :contributions,
     @event,
     :organizer,
-    get_list_organism_rights_user(current_user).map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
+    Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
+    #get_list_organism_rights_user(current_user).map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
 %>
 
   <hr />
