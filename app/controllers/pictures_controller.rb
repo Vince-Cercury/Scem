@@ -177,6 +177,26 @@ class PicturesController < ApplicationController
     wrong_parameters_redirection unless @parent_object
   end
 
+    def get_parent_object_from_params
+      wrong_parameters_redirection unless (params[:organism_id] or params[:event_id] or params[:user_id])
+
+    if(params[:organism_id])
+      parent_object = Organism.find(params[:organism_id])
+    end
+
+    if(params[:event_id])
+      parent_object = Event.find(params[:event_id])
+    end
+
+    if(params[:user_id])
+      parent_object = User.find(params[:user_id])
+    end
+
+    wrong_parameters_redirection unless parent_object
+
+    return parent_object
+  end
+
   def ensure_activated
     picture = Picture.find(params[:id])
     not_visible unless (picture && picture.active?) or has_current_user_moderation_rights
@@ -194,8 +214,8 @@ class PicturesController < ApplicationController
   end
 
   def ensure_create_rights?
-    parent_object = Picture.find_parent(params[:parent_type], params[:parent_id]) if params[:parent_type] && params[:parent_id]
-    not_enough_rights unless self.current_user && ((parent_object && parent_object.is_user_moderator?(self.current_user)) or self.current_user.has_system_role('moderator') or (parent_object.type=="Gallery" && parent_object.is_user_allowed_add_picture(self.current_user)))
+    parent_object = get_parent_object_from_params
+    not_enough_rights unless current_user && ((parent_object && (parent_object.is_user_moderator?(current_user)) or current_user.has_system_role('moderator') or (parent_object.type=="Gallery" && parent_object.is_user_allowed_add_picture(current_user))))
   end
 
   def ensure_has_current_user_moderation_rights
