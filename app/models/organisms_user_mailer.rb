@@ -10,10 +10,10 @@ class OrganismsUserMailer < ActionMailer::Base
 
     @body[:state] = state
     @body[:role] = role
-    @body[:url_member]  = url_for(:host => ENV['HOST'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :role => 'member', :action => 'accept')
-    @body[:url_moderator]  = url_for(:host => ENV['HOST'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :role => 'moderator', :action => 'accept')
-    @body[:url_admin]  = url_for(:host => ENV['HOST'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :role => 'admin', :action => 'accept')
-    @body[:url_refuse]  = url_for(:host => ENV['HOST'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :action => 'refuse')
+    @body[:url_member]  = url_for(:host => ENV['HOST_FOR_LINK'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :role => 'member', :action => 'accept')
+    @body[:url_moderator]  = url_for(:host => ENV['HOST_FOR_LINK'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :role => 'moderator', :action => 'accept')
+    @body[:url_admin]  = url_for(:host => ENV['HOST_FOR_LINK'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :role => 'admin', :action => 'accept')
+    @body[:url_refuse]  = url_for(:host => ENV['HOST_FOR_LINK'], :controller => 'members', :organism_id => organism.id, :user_id => user.id, :action => 'refuse')
     
   end
 
