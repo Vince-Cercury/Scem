@@ -12,7 +12,7 @@ fr-FR:
     calendar: Calendrier
     search_into: "Rechercher dans les"
   terms:
-    next_evensts_coming: "Prochain événements"
+    next_events_coming: "Prochain événements"
     already_started_or_past: "Evénements déjà commencés ou finis"
   events:
     listing_events: "LISTE DES EVENEMENTS"
