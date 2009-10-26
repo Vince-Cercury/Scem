@@ -9,9 +9,9 @@
   </p>
 <% end %>
 <ul class='tabs'>
-  <li><% if params[:role]!='sure' %><%= link_to "participate to #{@user.sure_participate.size} event(s) term", user_participations_path(:user_id => @user.id, :role =>:sure) %><% else %>participate to <%= @user.sure_participate.size %> event(s) term<% end %></li>
-  <li><% if params[:role]!='maybe' %><%= link_to "might participate to #{@user.maybe_participate.size} event(s) term", user_participations_path(:user_id => @user.id, :role =>:maybe) %><% else %>might participate to <%= @user.maybe_participate.size %> event(s) term<% end %></li>
-  <li><% if params[:role]!='not' %><%= link_to "do not participate to #{@user.not_participate.size} event(s) term", user_participations_path(:user_id => @user.id, :role =>:not) %><% else %>do not participate to <%= @user.not_participate.size %> event(s) term<% end %></li>
+  <li><% if params[:role]!='sure' %><%= link_to "participate to #{@user.sure_participate.size} event(s) term", user_participations_path(:user_id => @user.id, :role =>:sure) %><% else %><%= link_to "participate to #{@user.sure_participate.size} event(s) term", user_participations_path(:user_id => @user.id, :role =>:sure) %><% end %></li>
+  <li><% if params[:role]!='maybe' %><%= link_to "might participate to #{@user.maybe_participate.size} event(s) term", user_participations_path(:user_id => @user.id, :role =>:maybe) %><% else %><%= link_to "might participate to #{@user.maybe_participate.size} event(s) term", user_participations_path(:user_id => @user.id, :role =>:maybe), :class => 'selected' %><% end %></li>
+  <li><% if params[:role]!='not' %><%= link_to "do not participate to #{@user.not_participate.size} event(s) term", user_participations_path(:user_id => @user.id, :role =>:not) %><% else %><%= link_to "do not participate to #{@user.not_participate.size} event(s) term", user_participations_path(:user_id => @user.id, :role =>:not), :class => 'selected' %><% end %></li>
 </ul>
 
 <%= render :partial => "/terms/terms_list" %>

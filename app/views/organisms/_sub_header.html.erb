@@ -1,7 +1,7 @@
 <ul class='tabs'>
-<li><% if controller_name != 'organisms' || controller.action_name=='edit' %><%= link_to("Profil", @organism) %><% else %>Profil<% end %></li>
-<% if @organism.posts.size > 0 || is_organism_admin?(@organism) %><li><% if controller_name != 'posts' %><%= link_to("Blog", organism_posts_path(:organism_id => @organism.id)) %><% else %>Blog<% end %></li><% end %>
-<% if @organism.events.size > 0 || is_organism_admin?(@organism) %><li><% if controller_name != 'organism_events' %><%= link_to("Events", organism_events_path(:organism_id => @organism.id)) %><% else %>Events<% end %></li><% end %>
-<% if @organism.galleries.size > 0 %><li><% if controller_name != 'galleries' %><%= link_to("Pictures galleries", organism_galleries_path(:organism_id => @organism.id)) %><% else %>Pictures galleries<% end %></li><% end %>
-<% if is_organism_admin?(@organism) %><li><% if (controller_name != 'organisms' || controller.action_name!='edit') %><%= link_to("Edit", edit_organism_path(@organism)) %><% else %>Edit<% end %></li><% end %>
+<li><% if controller_name != 'organisms' || controller.action_name=='edit' %><%= link_to("Profil", @organism) %><% else %><%= link_to("Profil", @organism, :class => 'selected') %><% end %></li>
+<% if @organism.posts.size > 0 || is_organism_admin?(@organism) %><li><% if controller_name != 'posts' %><%= link_to("Blog", organism_posts_path(:organism_id => @organism.id)) %><% else %><%= link_to("Blog", organism_posts_path(:organism_id => @organism.id), :class => 'selected') %><% end %></li><% end %>
+<% if @organism.events.size > 0 || is_organism_admin?(@organism) %><li><% if controller_name != 'organism_events' %><%= link_to("Events", organism_events_path(:organism_id => @organism.id)) %><% else %><%= link_to("Events", organism_events_path(:organism_id => @organism.id), :class => 'selected') %><% end %></li><% end %>
+<% if @organism.galleries.size > 0 %><li><% if controller_name != 'galleries' %><%= link_to("Pictures galleries", organism_galleries_path(:organism_id => @organism.id)) %><% else %><%= link_to("Pictures galleries", organism_galleries_path(:organism_id => @organism.id), :class => 'selected') %><% end %></li><% end %>
+<% if is_organism_admin?(@organism) %><li><% if (controller_name != 'organisms' || controller.action_name!='edit') %><%= link_to("Edit", edit_organism_path(@organism)) %><% else %><%= link_to("Edit", edit_organism_path(@organism), :class => 'selected') %><% end %></li><% end %>
 </ul>

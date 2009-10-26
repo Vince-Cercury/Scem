@@ -11,9 +11,9 @@
 <% end %>
 
 <ul class='tabs'>
-  <li><% if params[:role]!='member' %><%= link_to "member of #{@user.is_member_of.size} organisms", user_memberships_path %><% else %>member of <%= @user.is_member_of.size %> organisms<% end %></li>
-  <li><% if params[:role]!='moderator' %><%= link_to "moderator of #{@user.is_moderator_of.size} organisms", user_memberships_path(:role =>:moderator) %><% else %>moderator of <%= @user.is_moderator_of.size %> organisms<% end %></li>
-  <li><% if params[:role]!='admin' %><%= link_to "administrator of #{@user.is_admin_of.size} organisms", user_memberships_path(:role =>:admin) %><% else %>administrator of <%= @user.is_admin_of.size %> organisms<% end %></li>
+  <li><% if params[:role]!='member' %><%= link_to "member of #{@user.is_member_of.size} organisms", user_memberships_path %><% else %><%= link_to "member of #{@user.is_member_of.size} organisms", user_memberships_path, :class => 'selected' %><% end %></li>
+  <li><% if params[:role]!='moderator' %><%= link_to "moderator of #{@user.is_moderator_of.size} organisms", user_memberships_path(:role =>:moderator) %><% else %><%= link_to "moderator of #{@user.is_moderator_of.size} organisms", user_memberships_path(:role =>:moderator), :class => 'selected' %><% end %></li>
+  <li><% if params[:role]!='admin' %><%= link_to "administrator of #{@user.is_admin_of.size} organisms", user_memberships_path(:role =>:admin) %><% else %><%= link_to "administrator of #{@user.is_admin_of.size} organisms", user_memberships_path(:role =>:admin), :class => 'selected' %><% end %></li>
 </ul>
 
 <%= render :partial => "/organisms/organisms_list" %>

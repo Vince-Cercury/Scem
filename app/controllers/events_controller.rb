@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  
+
+  TermsHelper
 
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:show, :index]
@@ -181,8 +182,13 @@ class EventsController < ApplicationController
 
     #build the pre-defined messager to send
     @message_body = "#{get_user_name_or_pseudo(current_user)} would like to inform you about an event.\n\n"
+    @message_body += '-------------------------'
     @message_body += @event.name + "\n\n"
     @message_body += @event.description_short + "\n\n"
+    @message_body += "Date(s):\n"
+    @event.terms.each do |term|
+      @message_body += display_term_box(term.start_at, term.end_at) + "\n"
+    end
     @message_body += "You can find some more information on the following link:\n"
     @message_body += url_for(@event)
 
