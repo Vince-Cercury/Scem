@@ -21,7 +21,7 @@ class PictureMailer < ActionMailer::Base
   def to_moderators_creation_notification(user, picture, controller)
     setup_email(user, picture)
     @subject    += "Picture posted for (#{picture.parent_type})"
-    @body[:url_suspend]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}suspend"
+    @body[:url_suspend]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}/suspend"
     @body[:url_picture]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}"
     @body[:url_context]  = "#{ENV['SITE_URL']}/#{controller}/#{picture.parent_id}"
   end

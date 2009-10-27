@@ -265,14 +265,17 @@ class EventsController < ApplicationController
         if id && id!=""
           #this is a bug. We souldn't obtain an id='_all' from swap_select
           #happen when we didn't select any contributor in the list. Organizer or Partner ?
-          if (id!= '_all')
+          begin
             contributor = Organism.find(id)
             contribution = Contribution.new
             contribution.event_id=@event.id
             contribution.organism_id=contributor.id
             contribution.role=role
             contribution.save
+          rescue
+            throw Exception.new "Unable to retrieve an organism with id '#{id}' to create a contribution"
           end
+
         end
       end
     end

@@ -3,3 +3,7 @@
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
 <% end %>
+<% if is_organism_admin?(@organism) %>
+<%= link_to("Attach a new gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@parent_object.id, :parent_type => @parent_object.type)) %>
+<br /><br />
+<% end %>
