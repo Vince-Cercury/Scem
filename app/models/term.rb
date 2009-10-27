@@ -1,5 +1,8 @@
 class Term < ActiveRecord::Base
 
+  validates_presence_of :start, :end
+  validates_length_of :description, :maximum=>600
+
   validates_datetime :start, :after => Proc.new { Time.now },
     :after_message => "date must be in the future"
 

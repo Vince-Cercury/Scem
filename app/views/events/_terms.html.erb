@@ -12,9 +12,9 @@
           <% end  %>
         <% else %>
           <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
-          <%= link_to 'Publish on Facebook', url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_categories') %>
+            <%= link_to 'Publish on Facebook', url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_categories') %>
           <% end %>
-      <% end %>
+        <% end %>
       <% else %>
         <% if @term.facebook_eid %>
           <br />
@@ -26,10 +26,8 @@
         <%= link_to 'Edit', edit_url_for_even_polymorphic(@term) %> |
         <%= link_to 'Destroy', @term, :confirm => 'Are you sure?', :method => :delete %>
       <% end  %>
-    </div>
-  </div>
-  <div class="span-9 last">
-    <div class="box">
+
+
 
       <% if logged_in? -%>
         <% form_tag :controller => 'participations', :action => 'create_or_update' do %>
@@ -51,7 +49,12 @@
       <% if @term.maybe_participants.size> 0 %><%= link_to "may be", term_participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %><% else %>maybe: 0<% end %> |
       <% if @term.not_participants.size> 0 %><%= link_to "no", term_participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %><% else %>no: 0<% end %>
 
+    </div>
+  </div>
 
+  <div class="span-9 last">
+    <div class="box">
+      <%= @term.description %>
     </div>
   </div>
 

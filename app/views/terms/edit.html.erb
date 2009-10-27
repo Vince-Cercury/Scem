@@ -11,6 +11,10 @@
     <%= f.label :end %><br />
     <%= f.datetime_select :end %>
   </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :cols => 50, :rows => 7 %>
+  </p>
   <%=  hidden_field_tag 'event_id', @event.id %>
   <p>
     <%= f.submit 'Update' %>
