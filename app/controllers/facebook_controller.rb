@@ -4,10 +4,17 @@ class FacebookController < ApplicationController
   # Protect these actions behind a moderator login
   before_filter :is_granted_to_edit_term?, :only => [:cancel_event, :ask_facebook_event_categories, :create_event, :ask_facebook_event_cancel_message]
 
-  def index
+   def index
     if self.current_user.nil?
       #register with fb
       User.create_from_fb_connect(facebook_session.user)
+
+      # activate! method is not working properly, maybe because some user fiels are not valid ?
+      #current_user.set_activate(true)
+      current_user.state = 'active'
+      current_user.activated_at = Time.now
+
+
     else
       #connect accounts
       self.current_user.link_fb_connect(facebook_session.user.id) unless self.current_user.fb_user_id == facebook_session.user.id
@@ -22,8 +29,9 @@ class FacebookController < ApplicationController
 
     current_user.first_name=facebook_session.user.first_name
     current_user.last_name=facebook_session.user.last_name
-    current_user.state='active'
-    current_user.activated_at = Time.now.utc
+
+    current_user.email = facebook_session.user.proxied_email
+
     current_user.save(false)
 
 
