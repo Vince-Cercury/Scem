@@ -2,6 +2,8 @@ class Gallery < ActiveRecord::Base
   include SharedMethods
   before_validation :remove_whitespace_from_name
 
+  has_friendly_id :name, :use_slug => true, :reserved => ["new","edit", "edit_pics", "add_pics"]
+
   has_many :pictures, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'", :order => "pictures.position"
 
   #has_many :galleries_pictures

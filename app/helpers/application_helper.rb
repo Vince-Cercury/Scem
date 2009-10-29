@@ -5,7 +5,7 @@ module ApplicationHelper
     if @category.nil?
       return terms_path(:period => @period_link_param, :date => params[:date])
     else
-      return category_path(:id => @category.id, :period => @period_link_param, :date => params[:date])
+      return category_path(@category, :period => @period_link_param, :date => params[:date])
     end
   end
 
@@ -42,26 +42,26 @@ module ApplicationHelper
 
     #get the current category or use the general category
     if(controller_name == "categories" && params[:id])
-      category_id = params[:id]
+      current_category = Category.find(params[:id])
     else
-      category_id = categories_not_to_display.first.id
+      current_category = categories_not_to_display.first
     end
 
     the_date = parse_params_date_or_now_date
 
     if the_date.year > 2008
-      prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" )
+      prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), category_path(current_category, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" ))
     end
     if the_date.year < 2020
-      next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), :controller =>"categories", :action => 'show', :id => category_id, :date => "01-#{the_date.next_month.month}-#{the_date.next_month.year}" )
+      next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), category_path(current_category, :date =>  "01-#{the_date.next_month.month}-#{the_date.next_month.year}" ))
     end
     
     calendar(:year => the_date.year, :month => the_date.month, :first_day_of_week => 1, :previous_month_text => prev_month_link, :next_month_text => next_month_link, :the_date => the_date) do |d|
       cell_attrs = {:class => 'day'}
       
-      number_of_events = Term.count_occuring_in_the_day(category_id, d)
+      number_of_events = Term.count_occuring_in_the_day(current_category.id, d)
       if number_of_events > 0
-        cell_text = link_to( "#{d.mday}", :controller =>"categories", :action => 'show', :id => category_id, :date => "#{d.day}-#{d.month}-#{d.year}" )
+        cell_text = link_to( "#{d.mday}", category_path(current_category, :date => "#{d.day}-#{d.month}-#{d.year}" ))
         cell_text += "<div class='numberEvent'>#{number_of_events}</div>"
         cell_attrs[:class] = 'specialDay'
       else

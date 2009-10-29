@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
   include SharedMethods
   before_validation :remove_whitespace_from_name
 
+  has_friendly_id :name, :use_slug => true, :reserved => ["new","edit"]
+
   has_many :galleries, :as => :parent, :dependent => :destroy
 
   has_one :picture, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'"
@@ -44,7 +46,7 @@ class Event < ActiveRecord::Base
 
 
   #MANAGE TERMS
-  validates_associated :terms
+  #validates_associated :terms
 
   after_update :save_terms
 
