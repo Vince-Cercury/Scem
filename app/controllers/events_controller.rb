@@ -276,15 +276,15 @@ class EventsController < ApplicationController
           #this is a bug. We souldn't obtain an id='_all' from swap_select
           #happen when we didn't select any contributor in the list. Organizer or Partner ?
           begin
-            if id.include?('_all')
-              id.each do |value_hash|
-                if !value_hash.blank?
-                  save_contribution(value_hash, role)
-                end
-              end
-            else
+#            if id.include?('_all')
+#              id.each do |value_hash|
+#                if !value_hash.blank?
+#                  save_contribution(value_hash, role)
+#                end
+#              end
+#            else
                 save_contribution(id, role)
-            end
+#            end
           rescue
             throw Exception.new "Unable to retrieve an organism with id '#{id}' to create a contribution with this role: #{role}"
           end
