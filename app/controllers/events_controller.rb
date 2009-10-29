@@ -276,8 +276,8 @@ class EventsController < ApplicationController
           #this is a bug. We souldn't obtain an id='_all' from swap_select
           #happen when we didn't select any contributor in the list. Organizer or Partner ?
           begin
-            if id.is_a?(Hash)
-              id.each do |key_hash,value_hash|
+            if id.include?('_all')
+              id.each do |value_hash|
                 if !value_hash.blank?
                   save_contribution(value_hash, role)
                 end
