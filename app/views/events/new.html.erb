@@ -12,16 +12,23 @@
     <%= f.text_area :description_short, :cols => 35, :rows => 5 %>
   </p>
   <% if params[:type] != 'user_event' %>
-  <div class="box">
-    Publisher: <br />
-  <%= collection_select :contributions,
-      :publisher_ids,
-      get_list_organism_rights_user(current_user),
-      :id, :name,{ :selected => get_list_organism_rights_user(current_user).first, :include_blank => false },
-      { :multiple => false } -%>
-  </div>
+    <div class="box">
+      Publisher: <br />
+      <%= collection_select :contributions,
+        :publisher_ids,
+        get_list_organism_rights_user(current_user),
+        :id, :name,{ :selected => get_list_organism_rights_user(current_user).first, :include_blank => false },
+        { :multiple => false } -%>
+    </div>
   <% end %>
   <%= hidden_field_tag('type', params[:type]) %>
+
+  
+  <div id="terms">
+    <%= render :partial => 'term', :collection => @event.terms %>
+  </div>
+  <p><%= add_term_link "Add a term" %></p>
+
 
   <p>
     <%= f.submit 'Create' %>

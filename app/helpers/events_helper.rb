@@ -26,9 +26,9 @@ module EventsHelper
 
   def get_list_organism_rights_user(user)
     #if user.has_system_role('moderator')
-     # Organism.find_all_by_state('active', :order =>'name')
+    # Organism.find_all_by_state('active', :order =>'name')
     #else
-      user.is_admin_or_moderator_of
+    user.is_admin_or_moderator_of
     #end
   end
 
@@ -63,6 +63,17 @@ module EventsHelper
       result = t("events.no_categories")
     end
     return result
+  end
+
+  def fields_for_term(term, &block)
+    prefix = term.new_record? ? 'new' : 'existing'
+    fields_for("event[#{prefix}_term_attributes][]", term, &block)
+  end
+
+  def add_term_link(name)
+    link_to_function name do |page|
+      page.insert_html :bottom, :terms, :partial => 'term', :object => Term.new
+    end
   end
   
 end

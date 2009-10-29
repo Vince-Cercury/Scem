@@ -38,7 +38,7 @@ FCKConfig.ToolbarSets["Simple"] = [
         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
         ['Link','Unlink'],
         '/',
-        ['Image','Table','Rule','Smiley'],
+        ['Image','Flash', 'Table','Rule','Smiley'],
         ['FontName','FontSize'],
         ['TextColor','BGColor'],
         ['-','About']

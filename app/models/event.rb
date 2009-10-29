@@ -40,6 +40,38 @@ class Event < ActiveRecord::Base
     obj.has_many :places, :conditions => "contributions.role = 'place'"
   end
 
+  validates_associated :terms
+
+  after_update :save_terms
+
+
+  def new_term_attributes=(term_attributes)
+    term_attributes.each do |attributes|
+ 
+      attributes = parse_my_date(attributes)
+      #raise attributes.inspect
+      terms.build(attributes)
+    end
+  end
+
+  def existing_term_attributes=(term_attributes)
+    terms.reject(&:new_record?).each do |term|
+      attributes = term_attributes[term.id.to_s]
+      if attributes
+        term.attributes = parse_my_date(attributes)
+      else
+        terms.delete(term)
+      end
+    end
+  end
+
+  def save_terms
+    terms.each do |term|
+      term.save(false)
+    end
+  end
+
+
   
   def self.search_has_publisher(search, page, is_private=false)
     paginate :per_page => ENV['PER_PAGE'], :page => page,
@@ -208,6 +240,11 @@ class Event < ActiveRecord::Base
     return 'events/'+id.to_s
   end
 
-
+  private
+  def parse_my_date(attributes)
+    attributes[:end] = Time.parse(attributes[:end])
+    attributes[:start] = Time.parse(attributes[:start])
+    return attributes
+  end
 end
 

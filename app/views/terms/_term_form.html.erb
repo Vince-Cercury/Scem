@@ -1,0 +1,30 @@
+<div class="term box">
+<% form_for(@term, :url => url_for_even_polymorphic(@term)) do |f| %>
+    <%  if !error_messages_for(:term).blank? %>
+  <p>
+  <b>The dates aren't valid. Check:</b><br />
+      - the format.<br />
+      - that they are defined in the future<br />
+      - that the start date is before the end date
+  </p>
+      <% end %>
+  <p>
+    <%= f.label :start %><br />
+    <%#= f.datetime_select :start %>
+    <%= f.calendar_date_select :start, :embedded => false,:year_range => [0.years.ago, 2.years.from_now] %>
+  </p>
+  <p>
+    <%= f.label :end %><br />
+    <%#= f.datetime_select :end %>
+    <%= f.calendar_date_select :end, :embedded => false,:year_range => [0.years.ago, 2.years.from_now] %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :cols => 50, :rows => 7 %>
+  </p>
+  <%=  hidden_field_tag 'event_id', @event.id %>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+</div>

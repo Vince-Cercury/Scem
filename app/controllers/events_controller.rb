@@ -68,6 +68,8 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
 
+    @event.terms.build
+
 
     set_session_parent_pictures_root_path(@event)
 
@@ -86,7 +88,13 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
+   # raise Time.zone.now.inspect
+
     @event = Event.new(params[:event])
+#    params[:event][:new_term_attributes].each do ||
+#
+#    end
+
     @event.created_by = current_user.id
 
     
@@ -131,6 +139,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.edited_by = current_user.id
     set_session_parent_pictures_root_path(@event)
+
+    params[:event][:existing_term_attributes] ||= {}
 
     #deleting all contributions for this event, whatever the role of the organism
     Contribution.delete_all(["event_id = ?", @event.id])

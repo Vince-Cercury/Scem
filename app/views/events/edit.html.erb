@@ -96,7 +96,12 @@
 %>
    <hr />
 <% end %>
- 
+
+     <div id="terms">
+    <%= render :partial => 'term', :collection => @event.terms %>
+  </div>
+  <p><%= add_term_link "Add a term" %></p>
+
   <div class="box">
     <%= f.submit 'Update' %>
   </div>

@@ -1,0 +1,33 @@
+<div class="term box">
+  <% fields_for_term(term) do |term_form| %>
+    <% @term = term %>
+    <%  if !error_messages_for(:term).blank? %>
+      <p>
+        <b>The dates aren't valid. Check:</b><br />
+        - the format.<br />
+        - that they are defined in the future<br />
+        - that the start date is before the end date
+      </p>
+    <% end %>
+    <p>
+      <%= term_form.label :start %><br />
+  <%#= term_form.datetime_select :start %>
+      <%= term_form.calendar_date_select :start, :embedded => false,:year_range => [0.years.ago, 2.years.from_now] %>
+
+    </p>
+    <p>
+      <%= term_form.label :end %><br />
+  <%#= term_form.datetime_select :end %>
+      <%= term_form.calendar_date_select :end, :embedded => false,:year_range => [0.years.ago, 2.years.from_now] %>
+    </p>
+    <p>
+  <%#= term_form.label :description %><br />
+      <%= term_form.text_area :description, :cols => 50, :rows => 7 %>
+    </p>
+
+    <p>
+      <%= link_to_function "remove", "$(this).up('.term').remove()" %>
+    </p>
+
+  <% end %>
+</div>

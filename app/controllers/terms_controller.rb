@@ -67,7 +67,14 @@ class TermsController < ApplicationController
   # POST /terms
   # POST /terms.xml
   def create
+    
     @term = Term.new(params[:term])
+
+    @term.start = Time.parse(params[:term][:start])
+    @term.end = Time.parse(params[:term][:end])
+    #@term.start = Date.strptime(params[:term][:start], "%d/%m/%Y %H:%M")
+    
+
     @term.event_id = params[:event_id]
 
     #create associations between terms and categories via categories_terms table
@@ -91,6 +98,9 @@ class TermsController < ApplicationController
   def update
     @term = Term.find(params[:id])
     @event = Event.find(params[:event_id])
+
+    params[:term][:start] = Time.parse(params[:term][:start])
+    params[:term][:end] = Time.parse(params[:term][:end])
 
     respond_to do |format|
       if @term.update_attributes(params[:term])

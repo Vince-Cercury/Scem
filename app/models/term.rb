@@ -1,13 +1,19 @@
 class Term < ActiveRecord::Base
 
+
   validates_presence_of :start, :end
   validates_length_of :description, :maximum=>600
 
-  validates_datetime :start, :after => Proc.new { Time.now },
+  #validates_datetime :start, :allow_nil => false
+
+  #validates_datetime :end, :allow_nil => false
+
+
+  validates_datetime :start, :after => Proc.new { Time.zone.now },
     :after_message => "date must be in the future"
 
 
-  validates_datetime :end, :after => Proc.new { Time.now },
+  validates_datetime :end, :after => Proc.new { Time.zone.now },
     :after_message => "date must be in the future"
 
 
