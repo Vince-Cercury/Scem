@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include SharedMethods
+  before_validation :remove_whitespace_from_name
 
   belongs_to :parent, :polymorphic => true
 

@@ -88,12 +88,12 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-   # raise Time.zone.now.inspect
+    # raise Time.zone.now.inspect
 
     @event = Event.new(params[:event])
-#    params[:event][:new_term_attributes].each do ||
-#
-#    end
+    #    params[:event][:new_term_attributes].each do ||
+    #
+    #    end
 
     @event.created_by = current_user.id
 
@@ -143,13 +143,13 @@ class EventsController < ApplicationController
     params[:event][:existing_term_attributes] ||= {}
 
     #deleting all contributions for this event, whatever the role of the organism
-    Contribution.delete_all(["event_id = ?", @event.id])
-
-
-    create_contribution(:contributions, :publisher_ids, "publisher")
-    create_contribution(:contributions, :partner_ids, "partner")
-    create_contribution(:contributions, :organizer_ids, "organizer")
-    create_contribution(:contributions, :place_ids, "place")
+    #    Contribution.delete_all(["event_id = ?", @event.id])
+    #
+    #
+    #    create_contribution(:contributions, :publisher_ids, "publisher")
+    #    create_contribution(:contributions, :partner_ids, "partner")
+    #    create_contribution(:contributions, :organizer_ids, "organizer")
+    #    create_contribution(:contributions, :place_ids, "place")
     
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -272,23 +272,35 @@ class EventsController < ApplicationController
   def create_contribution(key, subkey, role)
     if(params[key][subkey])
       params[key][subkey].each do |id|
-        if id && id!=""
+        if !id.blank?
           #this is a bug. We souldn't obtain an id='_all' from swap_select
           #happen when we didn't select any contributor in the list. Organizer or Partner ?
           begin
-            contributor = Organism.find(id)
-            contribution = Contribution.new
-            contribution.event_id=@event.id
-            contribution.organism_id=contributor.id
-            contribution.role=role
-            contribution.save
+            if id.is_a?(Hash)
+              id.each do |key_hash,value_hash|
+                if !value_hash.blank?
+                  save_contribution(value_hash, role)
+                end
+              end
+            else
+                save_contribution(id, role)
+            end
           rescue
-            throw Exception.new "Unable to retrieve an organism with id '#{id}' to create a contribution"
+            throw Exception.new "Unable to retrieve an organism with id '#{id}' to create a contribution with this role: #{role}"
           end
 
         end
       end
     end
+  end
+
+  def save_contribution(id, role)
+    contributor = Organism.find(id)
+    contribution = Contribution.new
+    contribution.event_id=@event.id
+    contribution.organism_id=contributor.id
+    contribution.role=role
+    contribution.save
   end
 
   def is_granted_to_create

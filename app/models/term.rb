@@ -2,7 +2,7 @@ class Term < ActiveRecord::Base
 
 
   validates_presence_of :start, :end
-  validates_length_of :description, :maximum=>600
+  validates_length_of :description, :maximum=>800
 
   #validates_datetime :start, :allow_nil => false
 

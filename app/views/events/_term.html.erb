@@ -1,26 +1,19 @@
 <div class="term box">
   <% fields_for_term(term) do |term_form| %>
     <% @term = term %>
-    <%  if !error_messages_for(:term).blank? %>
-      <p>
-        <b>The dates aren't valid. Check:</b><br />
-        - the format.<br />
-        - that they are defined in the future<br />
-        - that the start date is before the end date
-      </p>
-    <% end %>
     <p>
-      <%= term_form.label :start %><br />
+      <%= term_form.label :start %> <% if !error_message_on(:term, :start).blank? %>(Please check the format of the date and that it's not already past)<% end %><br />
   <%#= term_form.datetime_select :start %>
+      
       <%= term_form.calendar_date_select :start, :embedded => false,:year_range => [0.years.ago, 2.years.from_now] %>
-
     </p>
     <p>
-      <%= term_form.label :end %><br />
+      <%= term_form.label :end %> <% if !error_message_on(:term, :end).blank? %>(Please check the format of the date and that it's not already past)<% end %><br />
   <%#= term_form.datetime_select :end %>
       <%= term_form.calendar_date_select :end, :embedded => false,:year_range => [0.years.ago, 2.years.from_now] %>
     </p>
     <p>
+        <%= error_message_on :term, :description %>
   <%#= term_form.label :description %><br />
       <%= term_form.text_area :description, :cols => 50, :rows => 7 %>
     </p>

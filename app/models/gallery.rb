@@ -1,4 +1,6 @@
 class Gallery < ActiveRecord::Base
+  include SharedMethods
+  before_validation :remove_whitespace_from_name
 
   has_many :pictures, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'", :order => "pictures.position"
 

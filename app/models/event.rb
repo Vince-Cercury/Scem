@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  include SharedMethods
+  before_validation :remove_whitespace_from_name
 
   has_many :galleries, :as => :parent, :dependent => :destroy
 
@@ -23,7 +25,7 @@ class Event < ActiveRecord::Base
   acts_as_rateable
 
   validates_presence_of :name, :description_short
-  validates_length_of :description_short, :maximum=>400
+  validates_length_of :description_short, :maximum=>800
 
   
   has_many :terms
@@ -40,6 +42,8 @@ class Event < ActiveRecord::Base
     obj.has_many :places, :conditions => "contributions.role = 'place'"
   end
 
+
+  #MANAGE TERMS
   validates_associated :terms
 
   after_update :save_terms
@@ -71,6 +75,8 @@ class Event < ActiveRecord::Base
     end
   end
 
+  #MANAGE CONTRIBUTIONS
+  validates_associated :contributions
 
   
   def self.search_has_publisher(search, page, is_private=false)
