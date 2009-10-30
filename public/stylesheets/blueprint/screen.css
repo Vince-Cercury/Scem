@@ -27,7 +27,7 @@ body {font-size:75%;
       color:#222;
       background:#ffb500;
       font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
-      background-image:url('/images/body/french/fond.png');
+      /*background-image:url('/images/body/french/fond.png');*/
       background-repeat: no-repeat;
       background-position: top center;
       width: 988px;
