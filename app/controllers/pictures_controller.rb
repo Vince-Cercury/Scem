@@ -178,8 +178,7 @@ class PicturesController < ApplicationController
   end
 
     def get_parent_object_from_params
-      wrong_parameters_redirection unless (params[:organism_id] or params[:event_id] or params[:user_id])
-
+    
     if(params[:organism_id])
       parent_object = Organism.find(params[:organism_id])
     end
