@@ -158,19 +158,19 @@ class PicturesController < ApplicationController
 
     if(params[:organism_id])
       @parent_object = Organism.find(params[:organism_id])
-      @picture.parent_id = params[:organism_id]
+      @picture.parent_id = @parent_object.id
       @picture.parent_type = 'Organism'
     end
 
     if(params[:event_id])
       @parent_object = Event.find(params[:event_id])
-      @picture.parent_id = params[:event_id]
+      @picture.parent_id = @parent_object.id
       @picture.parent_type = 'Event'
     end
 
     if(params[:user_id])
       @parent_object = User.find(params[:user_id])
-      @picture.parent_id = params[:user_id]
+      @picture.parent_id = @parent_object.id
       @picture.parent_type = 'User'
     end
 

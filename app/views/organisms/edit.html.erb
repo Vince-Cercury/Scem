@@ -25,6 +25,16 @@
         <%= link_to("Change the image", url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
       <% end %>
     </div>
+      <div class="box">
+      <p>
+        <%= f.label :street %>:<br />
+        <%= f.text_field :street %>
+      </p>
+      <p>
+        <%= f.label :city %>:<br />
+        <%= f.text_field :city %>
+      </p>
+  </div>
   </div>
   <div class="span-8 last">
     <div class="box">

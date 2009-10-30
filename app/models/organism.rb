@@ -50,7 +50,7 @@ class Organism < ActiveRecord::Base
   has_and_belongs_to_many :activities
 
   
-  attr_accessible :name, :activity_ids, :description_short, :description_long, :manager_name, :phone
+  attr_accessible :name, :activity_ids, :description_short, :description_long, :manager_name, :phone, :street, :city
 
   def self.search(search, page)
     paginate :per_page => ENV['PER_PAGE'], :page => page,

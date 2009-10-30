@@ -10,6 +10,16 @@
       <%= link_to("Change the image",new_url_for_even_polymorphic(@organism, :picture)) %>
     <% end %>
   </div>
+    <div class="box">
+      <p>
+        <b>number, street/road</b>:<br />
+        <%= @organism.street %>
+      </p>
+      <p>
+        <b>Town/city</b>:<br />
+        <%= @organism.city %>
+      </p>
+  </div>
 </div>
 <div class="span-8 last">
   <div class="box">

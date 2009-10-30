@@ -102,6 +102,7 @@ class OrganismsController < ApplicationController
     @organism = Organism.find(params[:id])
     @organism.edited_by = current_user.id
 
+
     set_session_parent_pictures_root_path(@organism)
     
     respond_to do |format|
