@@ -132,11 +132,11 @@ class TermsController < ApplicationController
   protected
 
   def ensure_event_parameter?
-    no_event_param_redirection unless !params[:event_id].nil? and Event.exists?(params[:event_id])
+    no_event_param_redirection unless !params[:event_id].nil? && !Event.find(params[:event_id]).nil?
   end
 
   def no_event_param_redirection
-		flash[:error] = "Event parameter is missing or not correct"
+		flash[:error] = "Event parameter is missing or not correct."
 		redirect_to root_path
 	end
 

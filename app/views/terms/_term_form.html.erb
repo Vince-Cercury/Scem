@@ -13,7 +13,7 @@
     <p>
         <%= error_message_on :term, :description %>
   <%#= term_form.label :description %><br />
-      <%= f.text_area :description, :cols => 50, :rows => 7 %>
+      <%= fckeditor_textarea(:term, :description, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
     </p>
   <%=  hidden_field_tag 'event_id', @event.id %>
   <p>
