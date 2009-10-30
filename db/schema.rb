@@ -88,6 +88,9 @@ ActiveRecord::Schema.define(:version => 20091030132633) do
     t.datetime "updated_at"
     t.integer  "created_by"
     t.integer  "edited_by"
+    t.string   "location"
+    t.string   "street"
+    t.string   "city"
   end
 
   create_table "galleries", :force => true do |t|

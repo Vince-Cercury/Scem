@@ -6,7 +6,7 @@ class AddEventAddress < ActiveRecord::Migration
   end
 
   def self.down
-    add_column  :events, :street, :string
+    remove_column  :organisms, :location
     remove_column  :events, :street
     remove_column  :events, :city
   end

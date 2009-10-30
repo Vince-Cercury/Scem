@@ -9,7 +9,11 @@
     <div class="span-12 last" id="event-right">
       <div class="box">
         <h4 class="prepend-5"><%= link_to(event.name, event) %></h4>
-        <%=h event.description_short %>
+        <% if h(term.event) %>
+          <%= term.description %>
+        <% else %>
+          <%=h event.description_short %>
+        <% end %>
 
         <div class="quiet">
           <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
