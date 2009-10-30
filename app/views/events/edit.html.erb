@@ -8,7 +8,7 @@
   </div>
   <div class="span-2 last">
     <% if current_user && @event.is_user_moderator?(current_user) %>
-    <br /><br />
+      <br /><br />
       (  <%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %> )
     <% end %>
   </div>
@@ -17,13 +17,13 @@
 
   <div class="span-8 colborder">
     <div class="box">
-    <% if @event.picture.nil? %>
-      <%= get_default_event_picture(:medium) %><br />
-      <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@event, :picture)) %>
-    <% else %>
-      <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %><br />
-      <%= link_to("Change the image", new_url_for_even_polymorphic(@event, :picture)) %>
-    <% end %>
+      <% if @event.picture.nil? %>
+        <%= get_default_event_picture(:medium) %><br />
+        <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@event, :picture)) %>
+      <% else %>
+        <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %><br />
+        <%= link_to("Change the image", new_url_for_even_polymorphic(@event, :picture)) %>
+      <% end %>
     </div>
   </div>
   <div class="span-8 last">
@@ -53,51 +53,69 @@
 
   </div>
   <hr />
-  <div class="box">
-    <%= f.label :places %><br />
-    <%= collection_select :contributions,
-      :place_ids,
-      Organism.find_all_by_state('active', :order =>'name'),
-      :id, :name,{ :selected => @event.get_first_place, :include_blank => true},
-      { :multiple => false } -%>
+  <div class="span-8 colborder">
+    <div class="box">
+      <%= f.label :places %><br />
+      <%= collection_select :contributions,
+        :place_ids,
+        Organism.find_all_by_state('active', :order =>'name'),
+        :id, :name,{ :selected => @event.get_first_place, :include_blank => true},
+        { :multiple => false } -%>
+    </div>
+    <div class="span-8 colborder">
+    </div>
+    <div class="box">
+      <p>
+        <%= f.label :location %>:<br />
+        <%= f.text_field :location %>
+      </p>
+      <p>
+        <%= f.label :street %>:<br />
+        <%= f.text_field :street %>
+      </p>
+      <p>
+        <%= f.label :city %>:<br />
+        <%= f.text_field :city %>
+      </p>
+    </div>
   </div>
   <hr />
   <% if current_user.is_admin_or_moderator_of.size>0 or current_user.has_system_role("moderator") %>
-  <div class="box">
-    <b>Publisher: </b><br />
+    <div class="box">
+      <b>Publisher: </b><br />
     <%# if get_list_organism_rights_user(current_user).size > 1 %>
-    <%= collection_select :contributions,
-      :publisher_ids,
-      get_list_organism_rights_user(current_user),
-      :id, :name,{ :selected => @event.get_first_publisher, :include_blank => true },
-      { :multiple => false } -%>
+      <%= collection_select :contributions,
+        :publisher_ids,
+        get_list_organism_rights_user(current_user),
+        :id, :name,{ :selected => @event.get_first_publisher, :include_blank => true },
+        { :multiple => false } -%>
     <%# elsif get_list_organism_rights_user(current_user).size == 1 %>
-      <%#= get_list_organism_rights_user(current_user).first.name %>
-      <%# end %>
-  </div>
-  <hr />
+    <%#= get_list_organism_rights_user(current_user).first.name %>
+    <%# end %>
+    </div>
+    <hr />
 
-  <%= f.label :organizers %><br />
-  <%= swapselect :contributions,
-    @event,
-    :organizer,
-    Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
+    <%= f.label :organizers %><br />
+    <%= swapselect :contributions,
+      @event,
+      :organizer,
+      Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
     #get_list_organism_rights_user(current_user).map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
-%>
+    %>
 
-  <hr />
+    <hr />
 
 
-  <%= f.label :partners %><br />
-  <%= swapselect :contributions,
-    @event,
-    :partner,
-    Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
-%>
-   <hr />
-<% end %>
+    <%= f.label :partners %><br />
+    <%= swapselect :contributions,
+      @event,
+      :partner,
+      Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
+  %>
+    <hr />
+  <% end %>
 
-     <div id="terms">
+  <div id="terms">
     <%= render :partial => 'term', :collection => @event.terms %>
   </div>
   <p><%= add_term_link "Add a term" %></p>
