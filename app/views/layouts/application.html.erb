@@ -99,7 +99,7 @@
 
           <h3 class="caps"><%= t("side_bar.search_into") %> <%=  get_current_search_model_type %></h3>
           <div class="box">
-            <% form_tag url_for(get_current_search_controller), :method => 'get' do %>
+            <% form_tag url_for(:controller => get_current_search_controller), :method => 'get' do %>
               <p>
                 <%= text_field_tag :search, params[:search] %>
                 <%= submit_tag "Go", :name => nil %>

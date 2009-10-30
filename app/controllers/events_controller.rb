@@ -88,12 +88,10 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-   # raise Time.zone.now.inspect
+    
 
     @event = Event.new(params[:event])
-#    params[:event][:new_term_attributes].each do ||
-#
-#    end
+    
 
     @event.created_by = current_user.id
 

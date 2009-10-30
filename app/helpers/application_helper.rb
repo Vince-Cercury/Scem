@@ -129,7 +129,7 @@ module ApplicationHelper
     when 'organisms'
       result = 'organisms'
     when 'activities'
-      result = 'organisms'
+      result = 'activities'
     when 'categories'
       result = 'events'
     when 'galleries'
@@ -170,6 +170,7 @@ module ApplicationHelper
     else
       result = t('search.model_type.events')
     end
+    
     return result
   end
 

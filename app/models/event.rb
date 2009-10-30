@@ -53,7 +53,10 @@ class Event < ActiveRecord::Base
 
   def new_term_attributes=(term_attributes)
     term_attributes.each do |attributes|
- 
+      if attributes['description'].blank?
+        attributes['description'] = ''
+      end
+      #raise attributes.inspect
       attributes = parse_my_date(attributes)
       #raise attributes.inspect
       terms.build(attributes)
