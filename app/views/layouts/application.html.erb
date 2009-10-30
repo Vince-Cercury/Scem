@@ -12,6 +12,18 @@
     <%= stylesheet_link_tag 'blueprint/print', :media => "print" %>
     <%= stylesheet_link_tag 'tabsplugin/screen', :media => "all" %>
     <%= stylesheet_link_tag 'application', :media => "print" %>
+     <script type="text/javascript">
+
+function setBorder(SelectedId, TopId)
+{
+	var SelectedDiv=document.getElementById(SelectedId);
+	var TopDiv=document.getElementById(TopId);
+
+	TopDiv.style.borderRight = SelectedDiv.offsetWidth-3+"px solid black";
+	return;
+}
+ 
+ </script>
     <!--[if lt IE 8]>
 <link rel="stylesheet" href="/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection">
 <![endif]-->
@@ -28,39 +40,35 @@
   </head>
   <body>
 
+    <!--Appel fonctions facebook pour le Login-->
     <%= fb_connect_javascript_tag %>
     <%= init_fb_connect "XFBML"%>
 
     <%= calendar_date_select_includes "red" %> <%# or "blue", or "silver" %>
     <div class="container">
-      <div class="span-11 prepend-11 append-2">
-
+      <!--Login Box-->
+      <div class="loginbox">
         <%= render :partial => "users/user_bar" %>
-
       </div>
       <!--Header of the web site containing menus -->
-      <div id="header" class="span-24">
-        <div class="span-11">
-
-          <%= link_to(image_tag("logo108.jpg"), url_for(root_path)) %>
-
+      <div class="header">
+        <div class="headerleft" onclick="location.href='<%= root_path  %> ';" style="cursor:pointer;" title="Accueil Le Bounce" alt="Accueil Le Bounce">
         </div>
-        <div class="span-13 last">
-          <div class="mainmenubox">
-            <br /><br />
-            <ul class='tabs'>
-              <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to(t('main_menu.events_by_date'), url_for(terms_path)) %><% else %><%= link_to(t('main_menu.events_by_date'), url_for(terms_path), :class => 'selected') %><% end %></li>
-              <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><%= link_to(t('main_menu.directory'), url_for(activities_path), :class => 'selected') %><% end %></li>
-              <li><% if controller_name != 'galleries' %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path)) %><% else %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path), :class => 'selected') %><% end %></li>
-              <li><% if controller_name != 'users' %><%= link_to(t('main_menu.users'), url_for(users_path)) %><% else %><%= link_to(t('main_menu.users'), url_for(users_path), :class => 'selected') %><% end %></li>
-            </ul>
-
-
-          </div>
+        <div class="headerright" text-align="right">
+          <ul class='tabs'>
+            <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to(t('main_menu.events_by_date'), url_for(terms_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.events_by_date'), url_for(terms_path), :class => 'selected') %></div><% end %></li>
+            <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.directory'), url_for(activities_path), :class => 'selected') %></div><% end %></li>
+            <li><% if controller_name != 'galleries' %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path), :class => 'selected') %></div><% end %></li>
+            <li><% if controller_name != 'users' %><%= link_to(t('main_menu.users'), url_for(users_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.users'), url_for(users_path), :class => 'selected') %></div><% end %></li>
+          </ul>
+          <script type="text/javascript">
+            setBorder("SelectedId", "TopId");
+          </script>
         </div>
-
-        <hr />
-        <ul class='tabs'>
+      </div>
+      
+      <div class="menu">
+        <ul class='categories'>
           <% if categories_not_to_display.first %>
             <li><% if (controller_name == 'categories' && params[:id].to_i==categories_not_to_display.first.id) or controller_name == 'terms' %><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first)), :class => 'selected') %><% else %><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first))) %><% end %></li>
           <% end  %>
@@ -68,78 +76,90 @@
             <li><% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %></li>
           <% end %>
         </ul>
-
-
-
       </div>
+
 
 
       <!-- Content of the web site -->
-      <div id="subheader" class="span-24 last">
-        <!-- Main big left column -->
-        <div class="span-17 colborder" id="content">
-          <p>
-            This site is a prototype. If you want to report feedbacks or contribute, please visit <a href="http://github.com/VinceMD/Scem/tree/master">GitHub</a><br />
-            Ce site est un prototype.
-            Si vous voulez contribuer ou reporter un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a>
-          </p>
-          <hr />
-          <% flash.each do |key, msg| %>
-            <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
-          <% end %>
-          <%= yield %>
-        </div>
-
-        <!-- Right column -->
-        <div class="span-6 last" id="sidebar">
-          <h4 class="caps">CREATE A PAGE</h4>
-          <%= link_to("band, association, pub, business", new_organism_path) %>
-          <br /><br /><br />
-          <hr />
-
-          <h3 class="caps"><%= t("side_bar.search_into") %> <%=  get_current_search_model_type %></h3>
-          <div class="box">
-            <% form_tag url_for(:controller => get_current_search_controller), :method => 'get' do %>
+      <!-- <div class="subheader span-25 last">-->
+      <div class="subheader">
+        <!-- Main big left column-->
+        <div class="content">
+          <div class="contentleft">
+            <div class="information">
               <p>
-                <%= text_field_tag :search, params[:search] %>
-                <%= submit_tag "Go", :name => nil %>
+                Infos: This site is a prototype. If you want to report feedbacks or contribute, please visit <a href="http://github.com/VinceMD/Scem/tree/master">GitHub</a><br />
+                Ce site est un prototype.
+                Si vous voulez contribuer ou reporter un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a>
               </p>
-            <% end %>
+            </div>
+            <div class="eventlist">
+              <% flash.each do |key, msg| %>
+              <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+              <% end %>
+              <%= yield %>
+            </div>
           </div>
-          <h3 class="caps"><%= t("side_bar.calendar") %></h3>
 
-          <%= events_calendar_display %>
-          <br />
-          <h3 class="caps">Logo | Ads</h3>
-          <div class="box">
-            ...<br />
-            ...<br />
-            ...<br />
-            ...<br />
-            ...<br />
-            ...<br />
+          <!-- Right column -->
+          <div class="contentright">
+            <div class="sidebar">
+              <div class="titlesearch">
+             <!--  <h3 class="caps"><%= t("side_bar.search_into") %> <%=  get_current_search_model_type %></h3>-->
+              </div>
+              <div class="searchbox">
+                <% form_tag url_for(get_current_search_controller), :method => 'get' do %>
+                  <p>
+                    <%= text_field_tag :search, params[:search], :size=>20 %>
+                    <%= submit_tag "Go", :name => nil %>
+                  </p>
+                <% end %>
+              </div>
+              <div class="titlecalendar">
+             <!-- <h3 class="caps"><%= t("side_bar.calendar") %></h3>-->
+              </div>
+              <%= events_calendar_display %>
+              <br />
+              <div class="titlepartners"></div>
+              <div class="partnersbox">
+                <script type="text/javascript"><!--
+                google_ad_client = "pub-3129952355573123";
+                /* 200x200, date de création 29/10/09 */
+                google_ad_slot = "0430759924";
+                google_ad_width = 200;
+                google_ad_height = 200;
+                //-->
+                </script>
+                <script type="text/javascript"
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+              </div>
+              <% if get_next_user_terms.size>0 %>
+              <!--<h3 class="caps"><%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)</h3>-->
+              <div class="titlediary"></div>
+              <div class="diarybox">
+                  <%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)
+                  <% get_next_user_terms.each do |term| %>
+              <div>
+                 <%= display_event_cover(term.event, "mini") %>
+              </div>
+              <div>
+                 <%= link_to(term.event.name, term.event) %><br />
+                 <%= display_simpliest_date(term.start) %> at <%= display_nice_time(term.start) %>
+               </div>
+               
+               <hr />
+               <% end %>
+                </div>
+               <% end %>
+              
+            </div>
           </div>
-          <% if get_next_user_terms.size>0 %>
-            <h3 class="caps"><%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)</h3>
-
-            <% get_next_user_terms.each do |term| %>
-              <div class="span-2">
-                <%= display_event_cover(term.event, "mini") %>
-              </div>
-              <div class="span-4 last">
-                <%= link_to(term.event.name, term.event) %><br />
-                <%= display_simpliest_date(term.start) %> at <%= display_nice_time(term.start) %>
-              </div>
-              <hr />
-            <% end %>
-          <% end %>
-                    <h4 class="caps">CREATE A MEETING NOW!</h4>
-              <%= link_to("meet people, meet your friends", new_event_path(:type => 'user_event')) %>
-          <br /><br /><br />
-          <hr />
-
         </div>
       </div>
+    
     </div>
+      <div class="footer">
+  </div>
   </body>
 </html>

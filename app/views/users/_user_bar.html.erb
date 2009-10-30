@@ -1,25 +1,28 @@
 <div class="userbarbox">
   <% if logged_in? -%>
+    <div class="userbarboxleft">
+      <%= display_user_cover(current_user, "mini") %>
+    </div>
+    <div class="userbarboxright">
+      <%# if current_user.facebook_user? %>
+      <% if !facebook_session.nil? %>
+        <%= t("sessions.bar.logged_in_as") %> <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
+        (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'><%= t("sessions.log_out") %></a>)
+      <% else %>
+        <%= t("sessions.bar.logged_in_as") %> <%= link_to_current_user :content_method => :login %>
+        (<%= link_to t("sessions.log_out"), logout_path   %>)
+      <% end %>
+    </div>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= display_user_cover(current_user, "mini") %>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <%# if current_user.facebook_user? %>
-    <% if !facebook_session.nil? %>
-      <%= t("sessions.bar.logged_in_as") %> <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
-      (<%= fb_logout_link(t("sessions.log_out"),logout_path) %>)
-    <% else %>
-      <%= t("sessions.bar.logged_in_as") %> <%= link_to_current_user :content_method => :login %>
-      (<%= link_to t("sessions.log_out"), logout_path   %>)
-    <% end %>
   <% else -%>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= t('sessions.bar.classic_account') %>: <%= link_to t("sessions.login"),  login_path %> /
-    <%= link_to t("sessions.sign_up"), signup_path %>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= fb_login_button('window.location = "/facebook";')%>
-
+    <div class="loginboxleft">
+      <%= t('sessions.bar.classic_account') %>: <%= link_to t("sessions.login"),  login_path %> /
+      <%= link_to t("sessions.sign_up"), signup_path %>
+    </div>
+    <div class="loginboxright">
+      <%= fb_login_button('window.location = "/facebook";')%>
+    </div>
 
   <% end -%>
 </div>

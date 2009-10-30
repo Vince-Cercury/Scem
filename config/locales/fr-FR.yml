@@ -81,7 +81,7 @@ fr-FR:
     - Lun
     - Mar
     - Mer
-    - jeu
+    - Jeu
     - Ven
     - Sam
     formats:
@@ -94,7 +94,7 @@ fr-FR:
     - Lundi
     - Mardi
     - Mercredi
-    - jeudi
+    - Jeudi
     - Vendredi
     - Samedi
     month_names:

@@ -1,15 +1,15 @@
-<div id="results">
+<div class="results">
   <% @terms.each do |term| %>
     <% event=term.event %>
 
-    <div class="span-4 colborder" id="event-left">
+    <div class="eventleft">
       <%=  display_term_box(term.start, term.end) %><br />
       <%= display_event_cover(event, :small) %>
     </div>
-    <div class="span-12 last" id="event-right">
+    <div class="eventright">
       <div class="box">
-        <h4 class="prepend-5"><%= link_to(event.name, event) %></h4>
-        <% if !h(term.description).blank? %>
+        <h4><%= link_to(event.name, event) %></h4>
+       <% if !h(term.description).blank? %>
           <%= term.description %>
         <% else %>
           <%=h event.description_short %>
