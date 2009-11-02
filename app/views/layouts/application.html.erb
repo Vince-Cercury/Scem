@@ -131,8 +131,14 @@
              <!--  <h3 class="caps"><%= t("side_bar.search_into") %> <%=  get_current_search_model_type %></h3>-->
               </div>
               <div class="searchbox">
-                <% form_tag url_for(get_current_search_controller), :method => 'get' do %>
+                <% form_tag get_current_search_path, :method => 'get' do %>
                   <p>
+                    <% if !params[:period].blank? %>
+                      <%= hidden_field_tag :period, params[:period] %>
+                    <% end %>
+                    <% if !params[:date].blank? %>
+                      <%= hidden_field_tag :date, params[:date] %>
+                    <% end %>
                     <%= text_field_tag :search, params[:search], :size=>20 %>
                     <%= submit_tag "Go", :name => nil %>
                   </p>

@@ -121,29 +121,38 @@ module ApplicationHelper
 
   #we want to seach only in those models
   #by default, we search into events
-  def get_current_search_controller
+  def get_current_search_path
 
     case controller_name
     when 'participations'
-      result = 'participations'
+      result = url_for('participations')
     when 'events'
-      result = 'events'
+      result = url_for('events')
     when 'organisms'
-      result = 'organisms'
+      result = url_for('organisms')
     when 'activities'
-      result = 'activities'
+      if @activity
+        result = url_for(@activity)
+      else
+        result = url_for('organisms')
+      end
     when 'categories'
-      result = 'events'
+      if @category
+        result = url_for(@category)
+        #result = category_path(@category, :period => params[:period])
+      else
+        result = url_for('events')
+      end
     when 'galleries'
-      result = 'galleries'
+      result = url_for('galleries')
     when 'users'
-      result = 'users'
+      result = url_for('users')
     when 'friends'
-      result = 'friends'
+      result = url_for('friends')
     when 'other_friends'
-      result = 'other_friends'
+      result = url_for('other_friends')
     else
-      result = 'events'
+      result = url_for('events')
     end
     return result
   end
