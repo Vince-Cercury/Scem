@@ -148,6 +148,15 @@ class EventsController < ApplicationController
     create_contribution(:contributions, :partner_ids, "partner")
     create_contribution(:contributions, :organizer_ids, "organizer")
     create_contribution(:contributions, :place_ids, "place")
+
+    #hack: do not consider categories id made of hash ['_all'] => id. Problem comes from Swapselect
+    category_ids = Array.new
+    params[:event][:category_ids].each do |id|
+      if !id.include? "_all"
+        category_ids << id
+      end
+    end
+    params[:event][:category_ids] = category_ids
     
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -273,17 +282,18 @@ class EventsController < ApplicationController
         if id && id!=""
           #this is a bug. We souldn't obtain an id='_all' from swap_select
           #happen when we didn't select any contributor in the list. Organizer or Partner ?
-          begin
-            contributor = Organism.find(id)
-            contribution = Contribution.new
-            contribution.event_id=@event.id
-            contribution.organism_id=contributor.id
-            contribution.role=role
-            contribution.save
-          rescue
-            throw Exception.new "Unable to retrieve an organism with id '#{id}' to create a contribution"
+          if !id.include? "_all"
+            begin
+              contributor = Organism.find(id)
+              contribution = Contribution.new
+              contribution.event_id=@event.id
+              contribution.organism_id=contributor.id
+              contribution.role=role
+              contribution.save      
+            rescue
+              throw Exception.new "Unable to retrieve an organism with id '#{id}' to create a contribution"
+            end
           end
-
         end
       end
     end
