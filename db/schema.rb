@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091030132633) do
+ActiveRecord::Schema.define(:version => 20091031105634) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20091030132633) do
     t.boolean  "to_display"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
   end
 
   create_table "categories_events", :id => false, :force => true do |t|

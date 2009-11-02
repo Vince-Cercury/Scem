@@ -30,7 +30,9 @@ class FacebookController < ApplicationController
     current_user.first_name=facebook_session.user.first_name
     current_user.last_name=facebook_session.user.last_name
 
-    current_user.email = facebook_session.user.proxied_email
+    if current_user.email.include?('facebook.com')
+      current_user.email = facebook_session.user.proxied_email
+    end
 
     current_user.save(false)
 
