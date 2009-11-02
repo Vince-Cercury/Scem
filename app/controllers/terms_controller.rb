@@ -13,12 +13,14 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.xml
   def index
+    @show_end_date = true
 
     if params[:period] == "past"
       @period_link_param = "futur"
       @terms = Term.search_has_publisher_past(params[:search], params[:page])
     else
       @period_link_param = "past"
+      @show_end_date = false
       @terms = Term.search_has_publisher_futur(params[:search], params[:page])
     end
 

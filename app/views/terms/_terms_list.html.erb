@@ -3,7 +3,11 @@
     <% event=term.event %>
 
     <div class="eventleft">
-      <%=  display_term_box(term.start, term.end) %><br />
+      <% if @show_end_date%>
+        <%=  display_term_box(term.start, term.end) %>
+      <% else %>
+        <%=  display_date_box(term.start) %>
+      <% end %><br />
       <%= display_event_cover(event, :small) %>
     </div>
     <div class="eventright">

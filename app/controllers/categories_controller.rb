@@ -29,6 +29,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1.xml
   def show
     @category = Category.find(params[:id])
+
+    @show_end_date = true
     
 
     if !params[:date] 
@@ -37,6 +39,7 @@ class CategoriesController < ApplicationController
         @terms = Term.search_has_publisher_past_by_category(params[:search], params[:page], @category.id)
       else
         @period_link_param = "past"
+        @show_end_date = false
         @terms = Term.search_has_publisher_futur_by_category(params[:search], params[:page], @category.id)
       end
     else
@@ -48,7 +51,8 @@ class CategoriesController < ApplicationController
           @period_link_param = "futur"
           @terms = Term.search_has_publisher_past_by_date_and_category(params[:search], params[:page], @category.id, @the_selected_date)
         else
-          @period_link_param = "past" 
+          @period_link_param = "past"
+          @show_end_date = false
           @terms = Term.search_has_publisher_futur_by_date_and_category(params[:search], params[:page], @category.id, @the_selected_date)
         end
       else

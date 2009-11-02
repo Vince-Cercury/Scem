@@ -2,6 +2,15 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en-US:
+  the: "The"
+  from: "from"
+  From: "From"
+  at: "at"
+  to: "to"
+  until: "until"
+  Today: "Today"
+  Tomorrow: "Tomorrow"
+  Yesterday: "Yesterday"
   next_number: "next {{number}}"
   main_menu:
     events_by_date: Events by dates
@@ -64,6 +73,9 @@ en-US:
       short1: "%d %B %Y"
       only_second: "%S"
       only_month: "%B"
+      day_name_and_number: "%A %d"
+      day_name_and_number_and_month: "%A %d %B"
+      day_name_and_number_and_month_and_year: "%A %d %B %Y"
       datetime:
         formats:
           default: "%Y-%m-%dT%H:%M:%S%Z"
