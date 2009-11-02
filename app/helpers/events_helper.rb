@@ -109,6 +109,6 @@ module EventsHelper
     if !event.city.blank?
       city = event.city
     end
-    return city
+    return city 
   end
 end
