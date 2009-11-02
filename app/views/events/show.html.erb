@@ -16,15 +16,15 @@
   <div class="box">
       <p>
         <b>location</b>:<br />
-        <%= @event.location %>
+        <%= get_event_location(@event) %>
       </p>
       <p>
         <b>number, street/road</b>:<br />
-        <%= @event.street %>
+        <%= get_event_street(@event) %>
       </p>
       <p>
         <b>Town/city</b>:<br />
-        <%= @event.city %>
+        <%= get_event_city(@event) %>
       </p>
   </div>
 </div>

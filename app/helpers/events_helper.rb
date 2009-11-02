@@ -75,5 +75,40 @@ module EventsHelper
       page.insert_html :bottom, :terms, :partial => 'term', :object => Term.new
     end
   end
-  
+
+  def get_event_location(event)
+    if event.places.size > 0
+      if !event.places.first.name.blank?
+        location = event.places.first.name
+      end
+    end
+    if !event.location.blank?
+      location =event.location
+    end
+    return location
+  end
+
+  def get_event_street(event)
+    if event.places.size > 0
+      if !event.places.first.street.blank?
+        street = event.places.first.street
+      end
+    end
+    if !event.street.blank?
+      street = event.street
+    end
+    return street
+  end
+
+  def get_event_city(event)
+    if event.places.size > 0
+      if !event.places.first.city.blank?
+        city = event.places.first.city
+      end
+    end
+    if !event.city.blank?
+      city = event.city
+    end
+    return city
+  end
 end
