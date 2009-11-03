@@ -1,10 +1,11 @@
-<h2 class="caps">Activity <%=h @activity.name %></h2>
+<div class="activitiesList">
+<h2 class="caps"><%=h @activity.name %></h2>
 <p>
   <b>Description:</b>
   <%=h @activity.description %>
 </p>
-
-<h3 class="caps"><%= t(".listing_organisms") %></h3>
+</div>
+<!--<h3 class="caps"><%= t(".listing_organisms") %></h3> -->
 <%= render :partial => "/organisms/organisms_list" %>
 
 

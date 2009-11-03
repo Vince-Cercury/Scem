@@ -1,39 +1,39 @@
-<div class="results" id="results">
+<div class="results">
   <% @terms.each do |term| %>
     <% event=term.event %>
-
-    <div class="eventleft">
-      <% if @show_end_date%>
-        <%=  display_term_box(term.start, term.end) %>
-      <% else %>
-        <%=  display_date_box(term.start) %>
-      <% end %><br />
-      <%= display_event_cover(event, :small) %>
-    </div>
-    <div class="eventright">
-      <div class="box">
-        <h4><%= link_to(event.name, event) %></h4>
-       <% if !h(term.description).blank? %>
-          <%= term.description %>
+    <div class="listSeparator">
+      <div class="listLeft">
+        <% if @show_end_date%>
+          <%=  display_term_box(term.start, term.end) %>
         <% else %>
-          <%=h event.description_short %>
-        <% end %>
+          <%=  display_date_box(term.start) %>
+        <% end %><br />
+        <%= display_event_cover(event, :small) %>
+      </div>
+      <div class="listRight">
+        <div class="box">
+          <h4><%= link_to(event.name, event) %></h4>
+          <% if !h(term.description).blank? %>
+            <%= term.description %>
+          <% else %>
+            <%=h event.description_short %>
+          <% end %>
 
-        <div class="quiet">
-          <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
-          <%= link_to('Number of participants: ' + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
-          <%= link_to('Number of comments: ' + event.comments.size.to_s, event) unless  event.comments.size == 0 %><br />
+          <div class="quiet">
+            <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
+            <%= link_to('Number of participants: ' + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
+            <%= link_to('Number of comments: ' + event.comments.size.to_s, event) unless event.comments.size == 0 %><br />
+          </div>
         </div>
-
       </div>
     </div>
-    <hr />
+
 
   <% end %>
-    <% if @terms.size == 0 %>
-      <div class="box">
-        <h5 class="caps">Currently no events in this category</h5>
-      </div>
-    <% end %>
+  <% if @terms.size == 0 %>
+    <div class="noEvent">
+      Currently no events in this category
+    </div>
+  <% end %>
   <%= will_paginate @terms %>
 </div>

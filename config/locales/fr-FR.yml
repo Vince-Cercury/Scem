@@ -13,7 +13,7 @@ fr-FR:
   Yesterday: "Hier"
   next_number: "{{number}} suivants"
   main_menu:
-    events_by_date: Evénements par date
+    events_by_date: Accueil
     directory: Annuaire
     pictures_galleries: Galleries photos
     users: Utilisateurs

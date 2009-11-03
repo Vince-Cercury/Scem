@@ -68,37 +68,14 @@
       </div>
 
       <div class="menu">
-        <div class="span-2 colborder">
-          <% categories_by_parent_id(0).each do |category| %>
-              <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+        <ul class='tabcategories'>
+          <% if categories_not_to_display.first %>
+            <li><% if (controller_name == 'categories' && params[:id].to_i==categories_not_to_display.first.id) or controller_name == 'terms' %><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first)), :class => 'selected') %><% else %><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first))) %><% end %></li>
           <% end %>
-        </div>
-        <div class="span-2 colborder">
-          <% categories_by_parent_id(1).each do |category| %>
-           
-              <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
-        
+          <% categories_to_display.each do |category| %>
+            <li><% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %></li>
           <% end %>
-        </div>
-        <div class="span-2 colborder">
-          <% categories_by_parent_id(2).each do |category| %>
-       
-             <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
-         
-          <% end %>
-        </div>
-        <div class="span-2 colborder">
-          <% categories_by_parent_id(3).each do |category| %>
-           
-           <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
-           
-          <% end %>
-        </div>
-        <div class="span-2 last">
-          <% categories_by_parent_id(4).each do |category| %>
-            <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
-          <% end %>
-        </div>
+        </ul>
       </div>
 
 
@@ -185,10 +162,28 @@
             </div>
           </div>
         </div>
+      
+        <div class="subFooter">
+          <script type="text/javascript"><!--
+          google_ad_client = "pub-3129952355573123";
+          /* 728x90, date de création 02/11/09 */
+          google_ad_slot = "5713324159";
+          google_ad_width = 728;
+          google_ad_height = 90;
+          //-->
+          </script>
+          <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+          </script>
+        </div>
       </div>
+<<<<<<< HEAD:app/views/layouts/application.html.erb
 
     </div>
     <div class="footer">
     </div>
+=======
+    </div>
+    <div class="footer"></div>
+>>>>>>> adbff425f4e2a820f1dd8c1aa3f72f19b8861590:app/views/layouts/application.html.erb
   </body>
 </html>
