@@ -12,7 +12,7 @@
 
         <% event.terms.each do |term| %>
           <div class="quiet">
-            <%= display_term_box(term.start, term.end) %>
+            <%= display_term_box(term.start_at, term.end_at) %>
           </div>
         <% end %>
         <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>

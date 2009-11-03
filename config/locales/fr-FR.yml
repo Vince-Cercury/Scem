@@ -255,3 +255,14 @@ fr-FR:
     select:
       # default value for :prompt => true in FormOptionsHelper
       prompt: "Please select"
+      en:
+  will_paginate:
+    previous_label: '&laquo; Précédent'
+    next_label: 'Suivant &raquo;'
+    gap_marker: '<span class="gap">&hellip;</span>'
+    entry_name: 'entry'
+    page_entries_info:
+      zero: 'No {{pluralized_entry_name}} found'
+      one: 'Displaying <em>1</em> {{entry_name}}'
+      all: 'Displaying <em>all {{total_count}}</em> {{pluralized_entry_name}}'
+      n_to_m_of_x: 'Displaying {{pluralized_entry_name}} <em>{{start_count}}&nbsp;-&nbsp;{{end_count}}</em> of <em>{{total_count}}</em> in total'
