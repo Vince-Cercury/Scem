@@ -1,6 +1,22 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+      def get_url_futur_tab
+    if @category.nil?
+      return terms_path(:period => 'futur', :date => params[:date])
+    else
+      return category_path(@category, :period => 'futur', :date => params[:date])
+    end
+  end
+
+    def get_url_past_tab
+    if @category.nil?
+      return terms_path(:period => 'past', :date => params[:date])
+    else
+      return category_path(@category, :period => 'past', :date => params[:date])
+    end
+  end
+
   def get_url_past_or_futur_tab
     if @category.nil?
       return terms_path(:period => @period_link_param, :date => params[:date])
