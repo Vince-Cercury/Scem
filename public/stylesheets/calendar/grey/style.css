@@ -18,9 +18,8 @@
     margin:-1px 0 0 0;
     color: white;
     text-align: center;}
+
 .calendar th {width:5px;}
-
-
 
 .dayName th {  
   background-color: #fff;
@@ -32,8 +31,7 @@
   margin:0 0 0 0;
   font-size: 0.7em;}
 
-
-.day, .specialDay, .weekendDay, .otherMonth, .today, .day_today {
+.day, .specialDay, .weekendDay, .otherMonth, .today, .day_today, .today_today {
   border-right:1px solid #111111;
   border-bottom: 1px solid #111111;
   text-align:center; padding:0 0 0 0; margin:0 0 0 0;
@@ -54,25 +52,19 @@ thead tr {color: black;}
 
 .monthName{background: #fff; text-align:center; font-weight:bold; color: #000;}
 
-
 /*.dayName tr { height: 20px;}*/
 .dayName td { width: 40px;}
 
-
 .weekendDay {background-color: #ffb500;}
 
-
 /*  sdfdfssdf*/
-
 .tbody {width:21px; background: red;}
-
 
 /* Jours mois précédent*/
 .otherMonth {
-  /*color: #999999;*/ 
+  /*color: #999999;*/
   background-color: #ffeaaf;
   color:#000}
-
 
 .numberEvent{
     font-size: 0.9em;
@@ -84,12 +76,12 @@ thead tr {color: black;}
     margin: -7px 0 0 27px;
     z-index:1;}
 
-.dayEvent{position: relative; z-index: 0;}
+.dayEvent{position: relative; z-index: 0; }
 
 .specialDay a, .specialDay a:visited {
   color: black;
   text-align: center;
-  background: #fff;
+  background: transparent;
   font-weight: bold;
   text-decoration: none; 
   display: block;
@@ -104,12 +96,16 @@ thead tr {color: black;}
         text-align: center;
         font-weight: bold;
 	color: #fff;}
+
+
 /*Real TODAY*/
 .day_today {
 	background-color: #fff;
         text-align: center;
         font-weight: bold;
 	color: #ffb500;}
-
-
-
+.today_today {
+	background-color: #fff;
+        text-align: center;
+        font-weight: bold;
+	color: #ffb500;}

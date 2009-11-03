@@ -9,7 +9,7 @@
    * For credits and origins, see AUTHORS.
 
 ----------------------------------------------------------------------- */
-
+/***************************** MENU PRINCIPAL****************************/
 .tabs {
   border-bottom:none;
   height:1%; /* fixing IE 6 */
@@ -20,16 +20,13 @@
 }
 
 .tabs li {
-    text-align:right;
-}
-.tabs li {
-  float:left;
+  float:right;
   line-height:1.5; 
   list-style-type:none;
   margin:0 .25em 0 0;
   color:#f0882f;
   font-weight:bold;
-  
+  text-align:right;
   height: 30px;
   display:block;
 }
@@ -45,14 +42,13 @@
   color:#fff;
   cursor:pointer;
   display:block;
-  float:left;
+  float:right;
   font-weight:bold; 
   text-decoration:none;
 }
 
-
 .tabs li .selected {
-  float:left;
+  float:right;
   line-height:1.5;
   list-style-type:none;
   margin:0 .25em 0 0;
@@ -67,7 +63,7 @@
 }
 
 .tabs li a:active {
-  color:#aaaaaa;
+  color:#fff;
 }
 
 #TopId{
@@ -76,20 +72,20 @@ border-top: 5px solid transparent;
 border-bottom: 1px solid black;
 border-right: 0px solid black;
 }
-.test1{width:100%;}
-.test2{width:100%;}
 
-.categories {
+
+/*************************** MENU DES CATEGORIES***************************/
+.tabcategories {
   border-bottom:none;
   height:1%; /* fixing IE 6 */
-  margin:0 0 .75em 0;
+  margin:0 0 0 0;
   height:70px;
   overflow:auto;
   color: #f0882f;
-  width:986px;
+  width:946px;
   padding: 0 20px 0 20px;
 }
-.categories li {
+.tabcategories li {
   border:none;
   border-bottom:none;
   float:left;
@@ -100,7 +96,7 @@ border-right: 0px solid black;
   font-weight:bold;
   padding:.15em .33em .25em .33em;
 }
-.categories li a {
+.tabcategories li a {
   background:#fff;
   height: 30px;
   border:none;
@@ -113,53 +109,70 @@ border-right: 0px solid black;
   
   text-decoration:none;
 }
-
-.categories li a:hover {
+.tabcategories li a:hover {
   color:#f0882f;
 }
-
-.categories li a:active {
+.tabcategories li a:active {
   color:#aaaaaa;
 }
 
+/************************* MENU DES EVENTS A VENIR / EN COURS *****************/
 .tabsevent {
   border-bottom:none;
+  background: #fff;
   height:1%; /* fixing IE 6 */
   margin:0 0 0 0;
-  height:40px;
   overflow:auto;
-  color: #000;
-  background:#fff;
 }
 
-.tabsevent li {
-  border:none;
-  border-bottom:none;
-  float:left;
+.tabseventevent li {
+  float:right;
+  background: #000;
+  text-align:right;
   line-height:1.5;
   list-style-type:none;
-  margin:5px .25em 0 5px;
-  padding:0;
+  margin:0 0 0 0;
+  color:#aaaaaa;
+  font-weight:bold;
+  display:block;
 }
+
 .tabsevent li a {
-  background:#fff;
-  height: 30px;
-  border:none;
+  background:#000;
+  float:right;
+  margin: 5px 5px 5px 5px;
+  padding: 2px 2px 2px 2px;
+  border-top:none;
   border-bottom:none;
-  color:#000;
+  border-right:none;
+  color:#ffb500;
   cursor:pointer;
   display:block;
-  float:left;
   font-weight:bold;
-  padding:.15em .33em .25em .33em;
   text-decoration:none;
 }
 
+
+.tabsevent li .selected {
+  float:right;
+  line-height:1.5;
+  list-style-type:none;
+  margin: 5px 5px 5px 5px;
+  padding: 2px 2px 2px 2px;
+  color:#fff;
+  background: #ffb500;
+  font-weight:bold;
+  display:block;
+}
+
 .tabsevent li a:hover {
-  color:#f0882f;
+  color:#fff;
+  background: #ffb500;
 }
 
 .tabsevent li a:active {
   color:#aaaaaa;
 }
+
+
 

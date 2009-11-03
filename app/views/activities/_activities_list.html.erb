@@ -1,15 +1,19 @@
 <div id="results">
+ 
   <% @activities.each do |activity| %>
-    <div class="span-4">
-      <div class="box">
+    <div class="activities">
+      <div class="activitie">
         <% if activity.organisms.size>0 %>
-          <h4><%= link_to(activity.name, activity) %></h4>
+          <h4><%= link_to(activity.name, activity) %> (<%= activity.organisms.size %>) </h4>
+          
         <% else %>
           <h4><%= activity.name %></h4>
         <% end %>
       </div>
     </div>
   <% end %>
+ 
   <hr />
+
   <%= will_paginate @activities %>
 </div>

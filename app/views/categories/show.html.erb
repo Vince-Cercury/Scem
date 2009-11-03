@@ -1,13 +1,9 @@
-<div class="span-7">
- <h3 class="caps">CATEGORY - <%=h @category.name %></h3>
-</div>
-<div class="span-10 last">
-  <p>
-    <b>Description:</b>
+<div class="categorie">
+ <h3 class="caps"><%=h @category.name %></h3>
+ <b>Description:</b>
     <%=h @category.description %>
-  </p>
 </div>
-<hr />
+
 <%= render :partial => "terms_sub_header" %>
 <%= render :partial => "/terms/terms_list" %>
 
