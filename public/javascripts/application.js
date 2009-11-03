@@ -4,7 +4,7 @@
 
 function remove_field(element, item) {
     element.up(item).remove();
-}
+} 
 
 function copy_start_date_to_end_date(start_date){
     if($('term_end_at').value =="")
