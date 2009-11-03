@@ -1,6 +1,6 @@
 <% @event.terms.each do |@term| %>
   <div class="span-8">
-    <div class="box"><%=  display_term_box(@term.start, @term.end) %>
+    <div class="box"><%=  display_term_box(@term.start_at, @term.end_at) %>
 
 
       <% if facebook_session %>

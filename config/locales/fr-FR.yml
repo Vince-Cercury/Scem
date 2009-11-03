@@ -15,7 +15,7 @@ fr-FR:
   main_menu:
     events_by_date: Accueil
     directory: Annuaire
-    pictures_galleries: Galleries photos
+    pictures_galleries: Galeries photos
     users: Utilisateurs
   side_bar:
     calendar: Calendrier
@@ -122,7 +122,7 @@ fr-FR:
     - Septembre
     - Octobre
     - Novembre
-    - Decembre
+    - Décembre
     abbr_month_names:
     -
     - Jan

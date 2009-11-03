@@ -4,9 +4,9 @@
     <div class="listSeparator">
       <div class="listLeft">
         <% if @show_end_date%>
-          <%=  display_term_box(term.start, term.end) %>
+          <%=  display_term_box(term.start_at, term.end_at) %>
         <% else %>
-          <%=  display_date_box(term.start) %>
+          <%=  display_date_box(term.start_at) %>
         <% end %><br />
         <%= display_event_cover(event, :small) %>
       </div>

@@ -2,15 +2,17 @@
   <% fields_for_term(term) do |term_form| %>
     <% @term = term %>
     <p>
-      <%= term_form.label :start %> <% if !error_message_on(:term, :start).blank? %>(Please check the format of the date and that it's not already past)<% end %><br />
+      <%= term_form.label :start_at %> <% if !error_message_on(:term, :start_at).blank? %>(Please check the format of the date and that it's not already past)<% end %><br />
   <%#= term_form.datetime_select :start %>
       
-      <%= term_form.calendar_date_select :start, :embedded => false,:year_range => [0.years.ago, 2.years.from_now] %>
+      <%= term_form.calendar_date_select :start_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false, :onchange => "event_copy_start_date_to_end_date($F(this));" %>
+      <%= term_form.text_field :start_hour, :size => 2 %>:<%= term_form.text_field :start_min, :size => 2 %>
     </p>
     <p>
-      <%= term_form.label :end %> <% if !error_message_on(:term, :end).blank? %>(Please check the format of the date and that it's not already past)<% end %><br />
+      <%= term_form.label :end_at %> <% if !error_message_on(:term, :end_at).blank? %>(Please check the format of the date and that it's not already past)<% end %><br />
   <%#= term_form.datetime_select :end %>
-      <%= term_form.calendar_date_select :end, :embedded => false,:year_range => [0.years.ago, 2.years.from_now] %>
+      <%= term_form.calendar_date_select :end_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false %>
+      <%= term_form.text_field :end_hour, :size => 2 %>:<%= term_form.text_field :end_min, :size => 2 %>
     </p>
     <%#= hidden_field(:term, :description) %>
     <%#= hidden_field( :term, :description => '' )%>
