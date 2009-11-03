@@ -45,9 +45,8 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.xml
   def show
     @current_object = @gallery = Gallery.find(params[:id])
-
-    @parent_object = @gallery.get_parent_object
     
+    @parent_object = @gallery.get_parent_object
 
     #the object comment is needed for displaying the form of new comment
     initialize_new_comment(@gallery)

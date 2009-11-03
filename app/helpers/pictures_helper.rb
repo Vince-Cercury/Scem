@@ -18,4 +18,16 @@ module PicturesHelper
     end
   end
 
+  def is_picture_moderator?(picture)
+    if current_user
+      if picture.creator_id==current_user.id
+        return true
+      end
+      if picture.is_user_moderator?(current_user)
+        return true
+      end
+    end
+    return false
+  end
+
 end

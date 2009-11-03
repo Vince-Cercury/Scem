@@ -12,7 +12,9 @@
 </div>
 
 <br />
+<% if is_picture_moderator?(@picture) %>
 <%= link_to 'Edit', get_edit_picture_polymorphic_parent_url(@picture) %>
+<% end %>
 
 
 <% if @picture.description %>

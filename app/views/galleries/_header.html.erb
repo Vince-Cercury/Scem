@@ -8,8 +8,10 @@
 <div class="span-6 last">
   <%= render :partial => "rating/rating", :locals => { :current_object => @gallery } %>
   <br />
+  <% if is_gallery_moderator?(@gallery) %>
   <%= link_to("Edit pictures", url_for_even_polymorphic(@gallery, :action => 'edit_pics')) %>
   <%= link_to("Add pictures", url_for_even_polymorphic(@gallery, :action => 'add_pics')) %>
   <%= link_to( 'Edit the gallery', url_for_even_polymorphic(@gallery,:action => 'edit')) %>
+  <% end %>
 </div>
 <hr />
