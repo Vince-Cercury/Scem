@@ -2,7 +2,8 @@
   <%  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])) %><h3 class="caps">STEP 1</h3><% else %><h3 class="caps">LAST STEP</h3><% end %>
 <p>We would advise you to let this web site performing some simple actions thanks to your Facebook account.<br />
 For that, just click on the following link (you can change your mind and many time):<br />
- <%= fb_prompt_permissions(['publish_stream','email','rsvp_event','create_event'], 'Improve Facebook permissions') %></p>
+ 
+ <a href="javascript:ask_fb_permissions();" >Improve Facebook permissions !</a></p>
 <% end %>
 
 <% if current_user.email.nil? or current_user.email=="" %>

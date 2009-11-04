@@ -1,6 +1,12 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+function ask_fb_permissions() {
+	FB.Connect.showPermissionDialog('publish_stream,email,rsvp_event,create_event', function(accepted)
+{ window.location="/";
+ } );
+}
+
 
 function remove_field(element, item) {
     element.up(item).remove();
