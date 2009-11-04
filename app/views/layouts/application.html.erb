@@ -140,25 +140,9 @@
                         src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
                 </script>
               </div>
-              <% if get_next_user_terms.size>0 %>
-                  <!--<h3 class="caps"><%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)</h3>-->
-                <div class="titlediary"></div>
-                <div class="diarybox">
-                  <%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)
-                  <% get_next_user_terms.each do |term| %>
-                    <div>
-                      <%= display_event_cover(term.event, "mini") %>
-                    </div>
-                    <div>
-                      <%= link_to(term.event.name, term.event) %><br />
-                      <%= display_simpliest_date(term.start_at) %> at <%= display_nice_time(term.start_at) %>
-                    </div>
-
-                    <hr />
-                  <% end %>
-                </div>
-              <% end %>
-
+          <% if logged_in? -%>
+         <%= render :partial => "/diary/side_diary" %>
+         <% end -%>
             </div>
           </div>
         </div>

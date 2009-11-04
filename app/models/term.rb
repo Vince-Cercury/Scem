@@ -247,7 +247,14 @@ class Term < ActiveRecord::Base
       
   end
 
-
+  def self.search_by_user_participation(search, page, per_page, user, is_private=false)
+    paginate  :per_page => per_page,
+      :page => page,
+      :include => [:event],
+      :conditions => ["events.name LIKE ? and events.is_private = ? and start_at >= NOW() and participations.user_id = ?", "%#{search}%", is_private, user.id],
+      :joins => "inner join events on events.id = terms.event_id inner join participations on participations.term_id = terms.id and participations.role='sure' or participations.role='maybe' ",
+      :order => 'start_at ASC'
+  end
 
 
   def self.count_occuring_in_the_day(category_id, the_date, is_private=false)
