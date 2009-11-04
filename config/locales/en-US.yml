@@ -2,6 +2,10 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en-US:
+  Directory: "Directory"
+  Galleries: "Galleries"
+  Users: "Users"
+  Events: "Events"
   the: "The"
   from: "from"
   From: "From"

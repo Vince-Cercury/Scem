@@ -1,6 +1,46 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+  def get_page_title
+    result = ENV['APPNAME']
+    if @category && controller_name == 'categories'
+      result += " - " + @category.name
+    end
+    if controller_name == 'activities'
+      if @activity
+        result += " - " + @activity.name
+      else
+        result += " - " + t('Directory')
+      end
+    end
+    if @event && controller_name == 'events'
+        result += " - " + @event.name
+    end
+    if @organism && controller_name == 'organisms'
+      result += " - " + @organism.name
+    end
+    if controller_name == 'galleries'
+      if  @gallery
+        result += " - " + @gallery.name
+      else
+        result += " - " + t('Galleries')
+      end
+    end
+    if  controller_name == 'users'
+      if @user
+        result += " - " + get_user_name_or_pseudo(@user)
+      else
+        result += " - " + t('Users')
+      end
+    end
+    if controller_name == 'terms' || controller_name == 'events'
+      if !@event
+        result += " - " + t('Events')
+      end
+    end
+    return result + " - " + ENV['AREA']
+  end
+
       def get_url_futur_tab
     if @category.nil?
       return terms_path(:period => 'futur', :date => params[:date])
