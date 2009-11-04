@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
 
   def search_participate_in_futur(search, page, max_results)
     participations.paginate :per_page => max_results, :page => page,
-        :conditions => ["name like ? and (role='maybe' or role='sure') ", "%#{search}%"],
+        :conditions => ["name like ? and (role='maybe' or role='sure')  and start_at >= NOW() ", "%#{search}%"],
         #:include => :event,
         :joins => "inner join terms on terms.id = participations.term_id inner join events on events.id = terms.event_id ",
         :order => 'start_at ASC'
