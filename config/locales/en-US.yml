@@ -31,6 +31,10 @@ en-US:
     listing_events: "LISTING EVENTS"
     no_categories: "not specified"
   users:
+    participations: "My participations"
+    organisms: "My organisms"
+    organisms:
+      events: "My organisms events"
     meetings: "Users meetings"
     update_success: "User was successfully updated."
     create_success: "Thanks for signing up!  We're sending you an email with your activation code."

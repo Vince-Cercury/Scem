@@ -73,8 +73,8 @@ class Term < ActiveRecord::Base
       :order => 'start_at ASC'
   end
 
-  def self.search_has_publisher_futur(search, page, is_private=false)
-    paginate  :per_page => ENV['PER_PAGE'],
+  def self.search_has_publisher_futur(search, page, per_page, is_private=false)
+    paginate  :per_page => per_page,
       :page => page,
       :conditions => ['events.name LIKE ? and events.is_private = ? and terms.start_at > NOW()', "%#{search}%", is_private],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher'",
@@ -247,12 +247,23 @@ class Term < ActiveRecord::Base
       
   end
 
-  def self.search_by_user_participation(search, page, per_page, user, is_private=false)
+#  def self.search_by_user_participation(search, page, per_page, user, is_private=false)
+#    paginate  :per_page => per_page,
+#      :page => page,
+#      :include => [:event],
+#      :conditions => ["events.name LIKE ? and events.is_private = ? and start_at >= NOW() and participations.user_id = ?", "%#{search}%", is_private, user.id],
+#      :joins => "inner join events on events.id = terms.event_id inner join participations on participations.term_id = terms.id and participations.role='sure' or participations.role='maybe' ",
+#      :order => 'start_at ASC'
+#  end
+
+  def self.search_by_user_organisms(search, page, per_page, user, is_private=false)
     paginate  :per_page => per_page,
       :page => page,
       :include => [:event],
-      :conditions => ["events.name LIKE ? and events.is_private = ? and start_at >= NOW() and participations.user_id = ?", "%#{search}%", is_private, user.id],
-      :joins => "inner join events on events.id = terms.event_id inner join participations on participations.term_id = terms.id and participations.role='sure' or participations.role='maybe' ",
+      :conditions => ["events.name LIKE ? and events.is_private = ? and start_at >= NOW() and organisms_users.user_id = ?", "%#{search}%", is_private, user.id],
+      :joins => "inner join events on events.id = terms.event_id 
+      inner join contributions on contributions.event_id = events.id
+      inner join organisms_users on organisms_users.organism_id = contributions.organism_id",
       :order => 'start_at ASC'
   end
 

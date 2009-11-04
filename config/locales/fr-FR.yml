@@ -31,6 +31,10 @@ fr-FR:
     listing_events: "LISTE DES EVENEMENTS"
     no_categories: "aucune"
   users:
+    participations: "Mes participations"
+    organisms: "Mes organisms"
+    organisms:
+      events: "Les événements de mes organismes"
     meetings: "Les rendez-vous"
     update_success: "Utilisateur mis à jour avec succès."
     create_success: "Merci de vous être inscris! Nous vous envoyons un email avec votre code d'activation."

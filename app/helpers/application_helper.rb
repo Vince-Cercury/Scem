@@ -66,10 +66,19 @@ module ApplicationHelper
   end
 
 
-  def get_next_user_terms
+  def get_next_user_participations(max_results)
     #the_date = parse_params_date_or_now_date
-    Term.search_by_user_participation('',1,ENV['USER_EVENTS_MAX_RESULTS'], current_user)
+    current_user.search_participate_in_futur('', 1, max_results)
   end
+
+    def get_next_user_organisms_terms(max_results)
+    #the_date = parse_params_date_or_now_date
+    Term.search_by_user_organisms('',1,max_results, current_user)
+  end
+
+    def get_next_events(max_results)
+      Term.search_has_publisher_futur(params[:search], 1, max_results)
+    end
 
   def boolean_to_literal(the_boolean)
     buff=""

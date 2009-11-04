@@ -21,7 +21,7 @@ class TermsController < ApplicationController
     else
       @period_link_param = "past"
       @show_end_date = false
-      @terms = Term.search_has_publisher_futur(params[:search], params[:page])
+      @terms = Term.search_has_publisher_futur(params[:search], params[:page], ENV['PER_PAGE'])
     end
 
     respond_to do |format|
