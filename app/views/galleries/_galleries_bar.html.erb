@@ -1,28 +1,30 @@
 <% if @current_object.galleries.size > 0 %>
 </div>
-  <div class="eventShowBodyCommentaire">
-    <h4 class="caps">PICTURES GALLERIES</h4>
-    <br />
-     <%#= link_to("All galleries  (#{@current_object.galleries.size})", organism_galleries_path(:organism_id => @organism.id)) %>
-    <br /> <br />
+<div class="gallerieBar">
+  <h4 class="caps">PICTURES GALLERIES</h4>
+  <% @current_object.galleries.each do |gallery| %>
+    <div class="span-3">
+      <div class="box">
+        <%= link_to(display_gallery_cover(gallery, :thumb), gallery) %>&nbsp;
+        <%= link_to gallery.name, polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
+        <%= gallery.pictures.size %>&nbsp;photos
+      </div>
+    </div>
+  <% end %>
+
+<% if is_current_object_moderator?(@current_object) %>
+
+
+  <div class="box">
     <%= link_to("Attach a new gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
   </div>
-  <div class="eventShowBodyCommentaire">
-    <% @current_object.galleries.each do |gallery| %>
-      <div class="span-3">
-        <div class="box">
-          <%= link_to(display_gallery_cover(gallery, :thumb), gallery) %>&nbsp;
-          <%= link_to gallery.name, polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
-          <%= gallery.pictures.size %>&nbsp;photos
-        </div>
-      </div>
-    <% end %>
-  </div>
+
+<% end %>
+</div>
 <div>
 <% elsif is_current_object_moderator?(@current_object) %>
 </div>
   <div class="eventShowBodyCommentaire">
-    <h4 class="caps">PICTURES GALLERIES</h4>
     <div class="box">
       <%= link_to("Attach a new gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
     </div>

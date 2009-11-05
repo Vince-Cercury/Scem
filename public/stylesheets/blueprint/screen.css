@@ -121,8 +121,7 @@ body {font-size:75%;
         background-repeat: no-repeat;
         width: 1004px;
         float: left;
-        margin : 0 0 10px 0;
-        margin-left: -16px;
+        margin : 0 0 10px -16px;
         height: 73px;}
 
                                             /* ---------------------PAGE DE LOGIN---------------------- */
@@ -153,9 +152,10 @@ body {font-size:75%;
 .eventShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 .eventShowBodyCommentaire {width: 688px; margin: 10px 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
 .eventShowBodyCommentaire h5 {padding: 5px; color: red; font-size: 16px; margin: 0px;}
-.eventShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px;}
+.eventShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
 
-
+.gallerieBar {width: 688px; margin: 10px 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
+.gallerieBarBox {width: 126px; margin: 0; padding: 5px; background: #fff; float: left;}
                                                 /* ---------------------PAGE EVENT SHOW'---------------------- */
 .commentaireContent{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .commentaire{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
