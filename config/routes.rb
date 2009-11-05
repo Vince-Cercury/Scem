@@ -133,7 +133,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.activate '/activate_organism/:activation_code', :controller => 'organisms', :action => 'activate', :activation_code => nil
 
-  map.resources :categories
+  map.resources :categories do |category|
+    category.resources :date, :controller => 'categories'
+  end
 
   map.resources :rating, :collection =>{
     :rate => :get }

@@ -28,7 +28,11 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.xml
   def show
-    @category = Category.find(params[:id])
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+    else
+      @category = Category.find(params[:id])
+    end
 
     @show_end_date = true
     

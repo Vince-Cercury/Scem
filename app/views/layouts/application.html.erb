@@ -113,9 +113,9 @@
                     <% if !params[:period].blank? %>
                       <%= hidden_field_tag :period, params[:period] %>
                     <% end %>
-                    <% if !params[:date].blank? %>
-                      <%= hidden_field_tag :date, params[:date] %>
-                    <% end %>
+                    <%# if !params[:date].blank? %>
+                      <%#= hidden_field_tag :date, params[:date] %>
+                    <%# end %>
                     <%= text_field_tag :search, params[:search], :size=>20 %>
                     <%= submit_tag "Go", :name => nil %>
                   </p>

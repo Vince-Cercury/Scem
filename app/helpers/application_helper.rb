@@ -14,9 +14,9 @@ module ApplicationHelper
       end
     end
     if @event && controller_name == 'events'
-        if @event.name
-          result += " - " + @event.name
-        end
+      if @event.name
+        result += " - " + @event.name
+      end
     end
     if @organism && controller_name == 'organisms'
       if @organism.name
@@ -47,7 +47,7 @@ module ApplicationHelper
     return result + " - " + ENV['AREA']
   end
 
-      def get_url_futur_tab
+  def get_url_futur_tab
     if @category.nil?
       return terms_path(:period => 'futur', :date => params[:date])
     else
@@ -55,7 +55,7 @@ module ApplicationHelper
     end
   end
 
-    def get_url_past_tab
+  def get_url_past_tab
     if @category.nil?
       return terms_path(:period => 'past', :date => params[:date])
     else
@@ -77,14 +77,14 @@ module ApplicationHelper
     current_user.search_participate_in_futur('', 1, max_results)
   end
 
-    def get_next_user_organisms_terms(max_results)
+  def get_next_user_organisms_terms(max_results)
     #the_date = parse_params_date_or_now_date
     Term.search_by_user_organisms('',1,max_results, current_user)
   end
 
-    def get_next_events(max_results)
-      Term.search_has_publisher_futur(params[:search], 1, max_results)
-    end
+  def get_next_events(max_results)
+    Term.search_has_publisher_futur(params[:search], 1, max_results)
+  end
 
   def boolean_to_literal(the_boolean)
     buff=""
@@ -104,30 +104,43 @@ module ApplicationHelper
   #use intenrsively the plugin calendar_helper
   def events_calendar_display
 
-    #get the current category or use the general category
-    if(controller_name == "categories" && params[:id])
-      current_category = Category.find(params[:id])
+    if params[:category_id]
+      current_category = Category.find(params[:category_id])
+      if params[:id]
+        the_date = Time.parse(params[:id])
+      else
+        the_date = parse_params_date_or_now_date
+      end
     else
-      current_category = categories_not_to_display.first
+      #get the current category or use the general category
+      if(controller_name == "categories" && params[:id])
+        current_category = Category.find(params[:id])
+      else
+        current_category = categories_not_to_display.first
+      end
+      the_date = parse_params_date_or_now_date
     end
 
-    the_date = parse_params_date_or_now_date
+
+    
     
     complete = "$('spinner-cal').hide(); " + "$('the-cal').show()"
     loading = "$('spinner-cal').show(); " + "$('the-cal').hide(); "
 
    
     if the_date.year > 2008
-        prev_date = "01-#{the_date.last_month.month}-#{the_date.last_month.year}"
-        prev_month_link = link_to_remote( l(the_date.last_month, :format => 'only_month'), :url => { :controller => "calendar",
-              :action => "generate", :category_id => current_category.id, :date => prev_date}, :loading => loading, :complete => complete)
+      prev_date = "01-#{the_date.last_month.month}-#{the_date.last_month.year}"
+      prev_month_link = link_to_remote( l(the_date.last_month, :format => 'only_month'),
+        :url => { :controller => "calendar",
+          :action => "generate", :category_id => current_category.id, :date => prev_date, :no_day_selection => true},
+        :loading => loading, :complete => complete)
       #prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), category_path(current_category, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" ))
       #raise prev_month_link.inspect
     end
     if the_date.year < 2020
-        next_date = "01-#{the_date.next_month.month}-#{the_date.next_month.year}"
-        next_month_link = link_to_remote( l(the_date.next_month, :format => 'only_month'),  :url => { :controller => "calendar",
-              :action => "generate", :category_id => current_category.id, :date => next_date}, :loading => loading, :complete => complete)
+      next_date = "01-#{the_date.next_month.month}-#{the_date.next_month.year}"
+      next_month_link = link_to_remote( l(the_date.next_month, :format => 'only_month'),  :url => { :controller => "calendar",
+          :action => "generate", :category_id => current_category.id, :date => next_date, :no_day_selection => true}, :loading => loading, :complete => complete)
       #next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), category_path(current_category, :date =>  "01-#{the_date.next_month.month}-#{the_date.next_month.year}" ))
     end
     
@@ -137,7 +150,7 @@ module ApplicationHelper
       number_of_events = Term.count_occuring_in_the_day(current_category.id, d)
       if number_of_events > 0
         cell_text = "<div class='dayEvent'>"
-        cell_text += link_to( "#{d.mday}", category_path(current_category, :date => "#{d.day}-#{d.month}-#{d.year}" ))
+        cell_text += link_to( "#{d.mday}", category_date_path(current_category, :id => "#{d.day}-#{d.month}-#{d.year}" ))
         cell_text += "</div><div class='numberEvent'>#{number_of_events}</div>"
 
         cell_attrs[:class] = 'specialDay'
@@ -147,10 +160,12 @@ module ApplicationHelper
       end
 
       # we use the class 'today' if the day is the one selected
-      if (d.year == the_date.year && d.month == the_date.month && d.day == the_date.day)
-        cell_attrs = {:class => 'today'}
+      if !params[:no_day_selection]
+        if (d.year == the_date.year && d.month == the_date.month && d.day == the_date.day)
+          cell_attrs = {:class => 'today'}
+        end
       end
-
+      
       [cell_text, cell_attrs]
     end
 
