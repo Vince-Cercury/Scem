@@ -101,8 +101,8 @@ body {font-size:75%;
                background-image:url('/images/header/french/enteteCalendrier.png');
                background-repeat: no-repeat}
 
-#the-cal {}
-#spinner-cal { display: none; width: 241px; text-align: center; height: 241px; line-height: 241px; vertical-align: middle; background: #fff;}
+/*#the-cal {}*/
+#spinner-cal { width: 241px; text-align: center; height: 241px; line-height: 241px; vertical-align: middle; background: #fff;}
 
 /* Partners box*/
 .titlepartners {width: 153px; height: 29px; background: #000;background-image:url('/images/header/french/entetePartenaires.png');background-repeat: no-repeat}
