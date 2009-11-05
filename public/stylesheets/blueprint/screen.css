@@ -100,6 +100,9 @@ body {font-size:75%;
                background: #000;
                background-image:url('/images/header/french/enteteCalendrier.png');
                background-repeat: no-repeat}
+.calendar{}
+.spinner {display: none; width: 241px; text-align: center; height: 241px; line-height: 241px; vertical-align: middle; background: #fff;}
+
 /* Partners box*/
 .titlepartners {width: 153px; height: 29px; background: #000;background-image:url('/images/header/french/entetePartenaires.png');background-repeat: no-repeat}
 .partnersbox {background:#fff; padding: 10px 5px 5px 20px;  margin: -1px 0 25px 0;}
