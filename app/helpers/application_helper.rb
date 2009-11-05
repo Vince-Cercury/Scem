@@ -25,7 +25,7 @@ module ApplicationHelper
     end
     if controller_name == 'galleries'
       if  @gallery
-        if @gallery.name
+        if @gallery.name 
           result += " - " + @gallery.name
         end
       else
