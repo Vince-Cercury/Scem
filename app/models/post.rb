@@ -2,11 +2,13 @@ class Post < ActiveRecord::Base
   include SharedMethods
   before_validation :remove_whitespace_from_name
 
+  has_friendly_id :name, :use_slug => true, :reserved => ["new","edit"]
+
   belongs_to :parent, :polymorphic => true
 
   acts_as_commentable
 
-  validates_presence_of :name, :text_short
+  validates_presence_of :name, :text_long#, :text_short
 
   #validates_presence_of :parent_id
   validates_presence_of :parent_type

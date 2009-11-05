@@ -3,21 +3,21 @@
 <h4>POST - <%=h @post.name %></h4>
 
 <div class="box">
-  <% if @post.text_long && @post.text_long!='' %>
+  <%# if @post.text_long && @post.text_long!='' %>
     <b>Text long:</b>
     <div class="whitebox">
 
       <%= @post.text_long %>
     </div>
-  <% else %>
+  <%# else %>
 
-    <b>Text short:</b>
-    <div class="whitebox">
+    <%#*<b>Text short:</b>%>
+    <%#*<div class="whitebox">%>
 
-      <%= @post.text_short %>
-    </div>
+      <%#= @post.text_short %>
+    <%#*</div>%>
 
-  <% end %>
+  <%# end %>
 </div>
 <b>Created</b> <%= time_ago_in_words(@post.created_at) %> ago by <%= get_user_name_or_pseudo_link_by_id(@post.creator_id) %>
 <br />
