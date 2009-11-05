@@ -98,7 +98,7 @@ ActionController::Routing::Routes.draw do |map|
         :unsuspend => :get,
         :activate     => :get }
     end
-    event.resources :terms do |term|
+    event.resources :terms, :controller => 'event_terms' do |term|
       term.resources :participations
     end
   end

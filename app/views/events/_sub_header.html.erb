@@ -6,6 +6,15 @@
       <%= link_to("Profil", @event, :class => 'selected') %>
     <% end %>
   </li>
+  <% if @event.terms.size > 0 || is_event_moderator?(@event) %>
+    <li>
+      <% if controller_name != 'terms' %>
+        <%= link_to("Dates", event_terms_path(@event)) %>
+      <% else %>
+        <%= link_to("Dates", event_terms_path(@event), :class => 'selected') %>
+      <% end %>
+    </li>
+  <% end %>
   <% if @event.posts.size > 0 || is_event_moderator?(@event) %>
     <li>
       <% if controller_name != 'posts' %>
@@ -18,27 +27,27 @@
   <% if @event.list_participants.size > 0 %>
     <li>
       <% if controller_name != "participations" %>
-        <%= link_to("Participants", event_participations_path(:event_id => @event.id, :role =>:sure)) %>
+        <%= link_to("Participants", event_participations_path(@event, :role =>:sure)) %>
       <% else %>
-        <%= link_to("Participants", event_participations_path(:event_id => @event.id, :role =>:sure), :class => 'selected') %>
+        <%= link_to("Participants", event_participations_path(@event, :role =>:sure), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
 <% if @event.galleries.size > 0 %>
   <li>
   <% if controller_name != 'galleries' %>
-    <%= link_to("Pictures galleries", event_galleries_path(:event_id => @event.id)) %>
+    <%= link_to("Pictures galleries", event_galleries_path(@event)) %>
   <% else %>
-    <%= link_to("Pictures galleries", event_galleries_path(:event_id => @event.id), :clas => 'selected') %>
+    <%= link_to("Pictures galleries", event_galleries_path(@event), :class => 'selected') %>
   <% end %>
   </li>
 <% end %>
 <% if @event.comments.size > 0 %>
   <li>
   <% if controller_name != 'comments' %>
-    <%= link_to("Comments", event_comments_path(:event_id => @event.id)) %>
+    <%= link_to("Comments", event_comments_path(@event)) %>
   <% else %>
-    <%= link_to("Comments", event_comments_path(:event_id => @event.id), :clas => 'selected') %>
+    <%= link_to("Comments", event_comments_path(@event), :class => 'selected') %>
   <% end %>
   </li>
 <% end %>
