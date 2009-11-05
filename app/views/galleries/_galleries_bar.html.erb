@@ -1,7 +1,7 @@
 <% if @current_object.galleries.size > 0 %>
 </div>
 <div class="gallerieBar">
-  <h4 class="caps">PICTURES GALLERIES</h4>
+  <h4>PICTURES GALLERIES</h4>
   <% @current_object.galleries.each do |gallery| %>
     <div class="gallerieBarBox">
     
@@ -25,9 +25,10 @@
 <% elsif is_current_object_moderator?(@current_object) %>
 </div>
   <div class="gallerieBar">
-  
-      <%= link_to("New gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
-  
+      <h4>PICTURES GALLERIES</h4>
+      <div class="gallerieBarContent">
+          <%= link_to("New gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
+      </div>
   </div>
 <div>
 <% end %>
