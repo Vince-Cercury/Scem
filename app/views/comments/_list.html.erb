@@ -1,4 +1,4 @@
-<% @current_object.comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <div class="commentaire">
     <div class="commentaireLeft">
       <%= display_user_cover_by_id(comment.user_id, "mini") %>
@@ -21,6 +21,7 @@
     </div>
   </div>
 <% end %>
+<%= will_paginate(@comments) %>
 <% if @current_object.comments.size == 0 %>
   <div class="box"> No comment at the moment</div>
 <% end %>

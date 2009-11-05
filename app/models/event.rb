@@ -110,6 +110,14 @@ class Event < ActiveRecord::Base
       :order => 'name'
   end
 
+  def search_comments(search, page, per_page)
+    
+    comments.paginate :per_page => per_page, :page => page,
+      :conditions => ['text like ?', "%#{search}%"],
+      :order => 'created_at DESC'
+    
+  end
+
 
   # in the future we can change the select to have many publisher per event
   #but now we want to restrict to just one

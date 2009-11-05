@@ -19,7 +19,9 @@ module ApplicationHelper
         end
     end
     if @organism && controller_name == 'organisms'
-      result += " - " + @organism.name
+      if @organism.name
+        result += " - " + @organism.name
+      end
     end
     if controller_name == 'galleries'
       if  @gallery
