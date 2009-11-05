@@ -112,17 +112,22 @@ module ApplicationHelper
     end
 
     the_date = parse_params_date_or_now_date
+    
+    complete = "$('spinner-cal').hide(); " + "$('the-cal').show()"
+    loading = "$('spinner-cal').show(); " + "$('the-cal').hide(); "
 
+   
     if the_date.year > 2008
         prev_date = "01-#{the_date.last_month.month}-#{the_date.last_month.year}"
-        prev_month_link = link_to_remote( l(the_date.last_month, :format => 'only_month'), {:url => { :controller => "calendar",
-              :action => "generate", :category_id => current_category.id, :date => prev_date}})
+        prev_month_link = link_to_remote( l(the_date.last_month, :format => 'only_month'), :url => { :controller => "calendar",
+              :action => "generate", :category_id => current_category.id, :date => prev_date}, :loading => loading, :complete => complete)
       #prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), category_path(current_category, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" ))
+      #raise prev_month_link.inspect
     end
     if the_date.year < 2020
         next_date = "01-#{the_date.next_month.month}-#{the_date.next_month.year}"
-        next_month_link = link_to_remote( l(the_date.next_month, :format => 'only_month'), {:url => { :controller => "calendar",
-              :action => "generate", :category_id => current_category.id, :date => next_date}})
+        next_month_link = link_to_remote( l(the_date.next_month, :format => 'only_month'),  :url => { :controller => "calendar",
+              :action => "generate", :category_id => current_category.id, :date => next_date}, :loading => loading, :complete => complete)
       #next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), category_path(current_category, :date =>  "01-#{the_date.next_month.month}-#{the_date.next_month.year}" ))
     end
     
