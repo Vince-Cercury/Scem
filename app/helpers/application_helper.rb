@@ -203,8 +203,14 @@ module ApplicationHelper
       result = url_for('participations')
     when 'events'
       result = url_for('events')
+      if @event
+        result = url_for(:controller => 'events', :action => 'index')
+      end
     when 'organisms'
       result = url_for('organisms')
+      if @organism
+        result = url_for(:controller => 'organisms', :action => 'index')
+      end
     when 'activities'
       if @activity
         result = url_for(@activity)

@@ -29,6 +29,7 @@ class OrganismsController < ApplicationController
   # GET /organisms/1.xml
   def show
     @current_object = @organism = Organism.find(params[:id])
+    @comments = @organism.search_comments('', 1, 3)
 
     #the object comment is needed for displaying the form of new comment
     initialize_new_comment(@organism)
