@@ -148,8 +148,11 @@ body {font-size:75%;
 .eventHeader h3{font-size: 20px;}
 /*BODY*/
 .eventShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
-.eventShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left;}
-.eventShowBodyRight{width: 416px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: right;}
+.eventShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; font-weight: bold; margin-bottom:5px;}
+.eventShowBodyLeft img {margin: 10px 0;}
+.eventShowBodyLeft a {background:#000; color:#fff; padding: 5px; }
+.eventShowBodyLeft a:hover {background:#ffb500; color:#000;}
+.eventShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right;}
 .eventShowBodyMiddle{width: 678px; margin: 10px 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .eventShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .eventShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
@@ -157,8 +160,25 @@ body {font-size:75%;
 .eventShowBodyCommentaire h5 {padding: 5px; color: red; font-size: 16px; margin: 0px;}
 .eventShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
 
-.gallerieBar {width: 688px; margin: 10px 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
-.gallerieBarBox {width: 126px; margin: 0; padding: 5px; background: #fff; float: left;}
+.gallerieBar {width: 678px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
+.gallerieBarBox {width: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
+.gallerieBarContent {width: 678px; background: #fff; float: left; text-align: right; font-weight: bold; margin-bottom:5px;}
+.gallerieBarContent a {background:#000; color:#fff; padding: 5px; }
+.gallerieBarContent a:hover {background:#ffb500; color:#000;}
+
+                                                /* ---------------------PAGE LIST GALLERY'---------------------- */
+
+.GalleryListHeader{background:#fff; width:688px; margin: 0; padding: 0; float: left; height: auto;}
+.GalleryListHeaderLeft{background:#fff; width:568px; padding: 5px; float: left; text-align: center; height: 40px; line-height: 40px; vertical-align: middle;}
+.GalleryListHeaderRight{background:#fff; width:100px; padding: 5px; float: right; text-align: right; height: 40px; line-height: 40px; vertical-align: middle; font-weight: bold;}
+.GalleryListHeaderRight a {background:#000; color:#fff; padding: 5px;}
+.GalleryListHeaderRight a:hover {background:#ffb500; color:#000;}
+
+.GalleryListLeft{width:151px; padding:5px 0 0 5px; float:left;}
+.GalleryListRight{width:527px; padding:5px 0 0 5px; float:right;}
+.GalleryListSeparator{background:#fff; width:688px; margin-top: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
+.GalleryAction{text-align:right; padding: 0 10px 0 0;}
+.GalleryListRight h4 {text-align:center;}
                                                 /* ---------------------PAGE EVENT SHOW'---------------------- */
 .commentaireContent{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .commentaire{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}

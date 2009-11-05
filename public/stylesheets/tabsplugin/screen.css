@@ -126,9 +126,9 @@ border-right: 0px solid black;
   overflow:auto;
 }
 
-.tabseventevent li {
+.tabsevent li {
   float:right;
-  background: #000;
+  background: #fff;
   text-align:right;
   line-height:1.5;
   list-style-type:none;
