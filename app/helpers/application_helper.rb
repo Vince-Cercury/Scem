@@ -148,7 +148,7 @@ module ApplicationHelper
       cell_attrs = {:class => 'day'}
       
       number_of_events = Term.count_occuring_in_the_day(current_category.id, d)
-      if number_of_events > 0
+      if number_of_events > 0 
         cell_text = "<div class='dayEvent'>"
         cell_text += link_to( "#{d.mday}", category_date_path(current_category, :id => "#{d.day}-#{d.month}-#{d.year}" ))
         cell_text += "</div><div class='numberEvent'>#{number_of_events}</div>"
