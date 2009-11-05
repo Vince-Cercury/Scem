@@ -97,12 +97,6 @@ class Organism < ActiveRecord::Base
       :order => 'name'
   end
 
-  def search_comments(search, page, per_page)
-    comments.paginate :per_page => per_page, :page => page,
-      :conditions => ['text like ?', "%#{search}%"],
-      :order => 'created_at DESC'
-  end
-
   def search_events(search, page)
     events.paginate :per_page => ENV['PER_PAGE'], :page => page,
       :conditions => ['name like ?', "%#{search}%"],
