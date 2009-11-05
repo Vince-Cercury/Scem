@@ -39,7 +39,9 @@ class Gallery < ActiveRecord::Base
       if attributes[:state] == 'active'
         picture.activated_at = Time.now
         picture.set_activated
+        #raise attributes[:creator_id].inspect
         picture.activated_by = attributes[:creator_id]
+        
       end
       #picture.parent_type='Gallery'
       

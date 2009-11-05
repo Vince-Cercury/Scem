@@ -1,8 +1,8 @@
 <%= render :partial => "/events/header" %>
-<div class="span-8 colborder">
-  <div class="box">
+<div class="eventShowBody">
+  <div class="eventShowBodyLeft">
     <% if @event.picture.nil? %>
-      <%= get_default_event_picture(:medium) %><br />
+      <%= get_default_event_picture(:medium) %>
       <% if current_user && @event.is_user_moderator?(current_user) %>
         <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@event, :picture)) %>
       <% end %>
@@ -13,83 +13,84 @@
       <% end %>
     <% end %>
   </div>
-  <div class="box">
+  <div class="eventShowBodyRight">
       <p>
-        <b>location</b>:<br />
+        <b>location</b>:
         <%= get_event_location(@event) %>
       </p>
       <p>
-        <b>number, street/road</b>:<br />
+        <b>number, street/road</b>:
         <%= get_event_street(@event) %>
       </p>
       <p>
-        <b>Town/city</b>:<br />
+        <b>Town/city</b>:
         <%= get_event_city(@event) %>
       </p>
+      <% if current_user && current_user.facebook_user? && facebook_session %>
+        <p>
+          <%= link_to 'Publish the event on my Facebook', url_for(:controller => 'facebook', :event_id =>@event.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
+        </p>
+      <% end %>
+      <% if current_user %>
+        <p>
+          <%= link_to 'Tell your friends', share_event_path %>
+        </p>
+      <% end %>
+      <% if current_user && @event.is_granted_to_edit?(current_user) %>
+        <p>
+          <b>Is charged:</b>
+          <%=h boolean_to_literal(@event.is_charged) %>
+        </p>
+        <p>
+          <b>Is private:</b>
+          <%=h boolean_to_literal(@event.is_private) %>
+        </p>
+      <% end %>
+      <p>
+        <b>Categories:</b>
+        <%= displayable_categories_links(@event) %>
+      </p>
   </div>
-</div>
-<div class="span-8 last">
-  <div class="box">
-    <%=h @event.description_short %>
-    <% if current_user && current_user.facebook_user? && facebook_session %>
-      <br /><br /><%= link_to 'Publish the event on my Facebook', url_for(:controller => 'facebook', :event_id =>@event.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
-    <% end %>
-    <% if current_user %>
-    <br /><br /><%= link_to 'Tell your friends', share_event_path %>
-    <% end %>
-  </div>
-  <div class="box">
-    <% if current_user && @event.is_granted_to_edit?(current_user) %>
-      <b>Is charged:</b>
-      <%=h boolean_to_literal(@event.is_charged) %><br />
-      <b>Is private:</b>
-      <%=h boolean_to_literal(@event.is_private) %><br />
-    <% end %>
-    <b>Categories:</b>
-      <%= displayable_categories_links(@event) %>
-  </div>
-</div>
-
-<% if @event.description_long && @event.description_long!='' %>
-  <hr />
-  <div class="box">
-    <div class="whitebox">
+  <% if @event.description_long && @event.description_long!='' %>
+    </div>
+    <div class="eventShowBodyMiddle">
       <%= @event.description_long %>
     </div>
+    <div>
+  <% end %>
+</div>
+      <%#= render :partial => "contributions" %>
+     <%#*<div class="eventShowBodyMiddle"><h4 class="caps">DATE(S)</h4></div>%>
+     <%# if current_user && @event.is_granted_to_edit?(current_user) %>
+      <%#*<div class="span-4 last"><%= link_to('New term', new_url_for_even_polymorphic(@event, :term)) %>
+      <%#*</div>%>
+     <%# end %>
+
+     <%#= render :partial => "terms" %>
+
+     <%# if @event.list_participants.size>0 %>
+      <%#*<div class="eventShowBodyMiddle"> -->%>
+        <%#*<h4 class="caps">LAST PARTICIPANTS</h4>%>
+
+      <%#*</div> -->%>
+      <%#*<div class="eventShowBodyMiddle"> -->%>
+        <%# @event.list_participants[0,4].each do |user| %>
+          <%#*<div class="span-3"> -->%>
+            <%#*<div class="box"> -->%>
+              <%#= display_user_cover(user, :thumb) %>
+              <%#= get_user_name_or_pseudo_link(user) %>
+            <%#*</div>%>
+          <%#*</div>%>
+        <%# end %>
+     <%#*</div>%>
+
+    <%# end %>
+    <%= render :partial => "/galleries/galleries_bar" %>
+
+  <div class="eventShowBodyCommentaire">
+    <h4 class="caps">COMMENTS</h4>
+    <%= render :partial => "/comments/list" %>
+    <%= render :partial => "/comments/form" %>
   </div>
-<% end %>
+ 
 
-<%= render :partial => "contributions" %>
-<hr />
-<div class="span-13"><h4 class="caps">DATE(S)</h4></div>
-<% if current_user && @event.is_granted_to_edit?(current_user) %>
-  <div class="span-4 last"><%= link_to('New term', new_url_for_even_polymorphic(@event, :term)) %></div>
-<% end %>
-<hr />
-<%= render :partial => "terms" %>
-
-<% if @event.list_participants.size>0 %>
-  <div class="span-4 colborder">
-    <h4 class="caps">LAST PARTICIPANTS</h4>
-
-  </div>
-  <div class="span-12 last">
-    <% @event.list_participants[0,4].each do |user| %>
-      <div class="span-3">
-        <div class="box">
-          <%= display_user_cover(user, :thumb) %><br />
-          <%= get_user_name_or_pseudo_link(user) %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <hr />
-<% end %>
-<%= render :partial => "/galleries/galleries_bar" %>
-
-
-<h4 class="caps">COMMENTS</h4>
-<%= render :partial => "/comments/list" %>
-<%= render :partial => "/comments/form" %>
-
-<hr />
