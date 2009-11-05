@@ -1,1 +1,1 @@
-page.replace_html "terms-calendar", :partial => 'display'
+page.replace_html "the-cal", :partial => 'display'

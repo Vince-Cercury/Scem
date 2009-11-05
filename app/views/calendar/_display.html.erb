@@ -1,8 +1,9 @@
-<div class="terms-calendar">
-  <div class="calendar">
-  <%= events_calendar_display %>
+<div id="terms-calendar">
+  <div id="spinner-cal">
+   <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
+   <%= image_tag "spinner.gif", :class => "image", :alt => "refreshing calendar" %>
   </div>
-  <div class="spinner">
-   <img src="/images/spinner.gif" alt="Refresh calendar" />
+  <div id="the-cal">
+  <%= events_calendar_display %>
   </div>
 </div>

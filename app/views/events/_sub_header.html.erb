@@ -18,18 +18,18 @@
   <% if @event.posts.size > 0 || is_event_moderator?(@event) %>
     <li>
       <% if controller_name != 'posts' %>
-        <%= link_to("Blog", event_posts_path(:event_id => @event.id)) %>
+        <%= link_to("Blog", event_posts_path(@event)) %>
       <% else %>
-        <%= link_to("Blog", event_posts_path(:event_id => @event.id), :class => 'selected') %>
+        <%= link_to("Blog", event_posts_path(@event), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if @event.list_participants.size > 0 %>
     <li>
       <% if controller_name != "participations" %>
-        <%= link_to("Participants", event_participations_path(@event, :role =>:sure)) %>
+        <%= link_to("Participants", term_participations_path(:term_id => @event.terms.first.id, :role =>:sure)) %>
       <% else %>
-        <%= link_to("Participants", event_participations_path(@event, :role =>:sure), :class => 'selected') %>
+        <%= link_to("Participants", term_participations_path(:term_id => @event.terms.first.id, :role =>:sure), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
