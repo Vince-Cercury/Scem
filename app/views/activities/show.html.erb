@@ -1,12 +1,14 @@
 <div class="activitiesList">
 <h2 class="caps"><%=h @activity.name %></h2>
-<p>
-  <b>Description:</b>
-  <%=h @activity.description %>
-</p>
+<%#*<p>%>
+  <%#*<b>Description:</b>%>
+  <%#=h @activity.description %>
+<%#*</p>%>
+<div class="activitiesListBack">
+  <%= link_to 'Back', activities_path %>
 </div>
-<!--<h3 class="caps"><%= t(".listing_organisms") %></h3> -->
+</div>
+
 <%= render :partial => "/organisms/organisms_list" %>
 
 
-<%= link_to 'Back', activities_path %>

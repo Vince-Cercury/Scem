@@ -1,5 +1,5 @@
 <div id="results">
- 
+
   <% @activities.each do |activity| %>
     <div class="activities">
       <div class="activitie">
@@ -12,8 +12,7 @@
       </div>
     </div>
   <% end %>
- 
-  <hr />
 
   <%= will_paginate @activities %>
+
 </div>

@@ -1,16 +1,24 @@
 <%= render :partial => "/organisms/header" %>
+<div class="organismShowBody">
+  <div class="organismShowBodyLeft">
 
-<div class="span-8 colborder">
-  <div class="box">
     <% if @organism.picture.nil? %>
-      <%= display_organism_cover(@organism, :medium) %><br />
-      <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@organism, :picture)) %>
+      <%= display_organism_cover(@organism, :medium) %>
+      <% if current_user && @organism.is_user_moderator?(current_user) %>
+           <div class="organismShowBodyLeftContent">
+              <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@organism, :picture)) %>
+           </div>
+      <% end %>
     <% else %>
-      <%= link_to(image_tag(@organism.picture.attached.url(:medium)), url_for_even_polymorphic(@organism.picture)) %><br />
-      <%= link_to("Change the image",new_url_for_even_polymorphic(@organism, :picture)) %>
+      <%= link_to(image_tag(@organism.picture.attached.url(:medium)), url_for_even_polymorphic(@organism.picture)) %>
+      <% if current_user && @organism.is_user_moderator?(current_user) %>
+        <div class="organismShowBodyLeftContent">
+          <%= link_to("Change the image",new_url_for_even_polymorphic(@organism, :picture)) %>
+        </div>
+      <% end %>
     <% end %>
   </div>
-    <div class="box">
+  <div class="organismShowBodyRight">
       <p>
         <b>number, street/road</b>:<br />
         <%= @organism.street %>
@@ -19,73 +27,61 @@
         <b>Town/city</b>:<br />
         <%= @organism.city %>
       </p>
-  </div>
-</div>
-<div class="span-8 last">
-  <div class="box">
-    <%=h @organism.description_short %>
-    <% if current_user && current_user.facebook_user? && facebook_session %>
-      <br /><br /><%= link_to 'Publish the organism on my Facebook Wall', url_for(:controller => 'facebook', :organism_id =>@organism.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
+      <% if current_user && current_user.facebook_user? && facebook_session %>
+        <p>
+          <%= link_to 'Publish the organism on my Facebook Wall', url_for(:controller => 'facebook', :organism_id =>@organism.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
+        </p>
+      <% end %>
+      <% if current_user && @organism.is_user_moderator?(current_user)%>
+        <p>
+          <b>Manager name:</b>
+          <%=h @organism.manager_name %>
+        </p>
+        <p>
+          <b>Phone:</b>
+          <%=h @organism.phone %>
+        </p>
+        <p>
+          <b>In directory:</b>
+          <%=h boolean_to_literal(@organism.in_directory) %>
+        </p>
+      <% end %>
+      <p>
+        <b>Activities:</b>
+        <% @organism.activities.each do |@activity| %>
+          <%= link_to(@activity.name, url_for(activity_path(@activity))) %>&nbsp;
+        <% end %>
+      </p>
+      <% if @organism.admins.size > 0 %>
+        <p>
+          <b>Admins:</b>
+          <% @organism.admins.each do |admin| %>
+            <%= get_user_name_or_pseudo_link(admin) %>
+          <% end %>
+        </p>
+      <% end %>
+      <% if @organism.moderators.size > 0 %>
+      <p>
+        <b>Moderators:</b>
+        <% @organism.moderators.each do |moderator| %>
+          <%= get_user_name_or_pseudo_link(moderator) %>
+        <% end %>
+      </p>
     <% end %>
   </div>
-  <% if current_user && @organism.is_user_moderator?(current_user)%>
-    <div class="box">
-      <b>Manager name:</b>
-      <%=h @organism.manager_name %>
-      <br />
-      <b>Phone:</b>
-      <%=h @organism.phone %>
-      <br />
-      <b>In directory:</b>
-      <%=h boolean_to_literal(@organism.in_directory) %>
+
+  <% if @organism.description_long && @organism.description_long!='' %>
     </div>
-  <% end %>
-</div>
-<hr />
-
-<div class="span-8 colborder">
-  <div class="box">
-    <b>Activities:</b>
-    <% @organism.activities.each do |@activity| %>
-      <%= link_to(@activity.name, url_for(activity_path(@activity))) %>&nbsp;
-    <% end %>
-
-  </div>
-</div>
-<div class="span-8 last">
-  <div class="box">
-    <% if @organism.admins.size > 0 %>
-      <b>Admins:</b>
-      <% @organism.admins.each do |admin| %>
-        <%= get_user_name_or_pseudo_link(admin) %><br />
-      <% end %>
-    <% end %>
-    <% if @organism.moderators.size > 0 %>
-      <b>Moderators:</b>
-      <% @organism.moderators.each do |moderator| %>
-        <%= get_user_name_or_pseudo_link(moderator) %><br />
-      <% end %>
-    <% end %>
-  </div>
-</div>
-<hr />
-
-<% if @organism.description_long && @organism.description_long!='' %>
-
-  <div class="box">
-    <div class="whitebox">
+    <div class="organismShowBodyMiddle">
       <%= @organism.description_long %>
     </div>
-  </div>
-  <hr />
-<% end %>
+    <div>
+  <% end %>
+</div>
 
 <% if logged_in? -%>
-
-  <h4 class="caps">BECOME A MEMBER</h4>
-  <div class="box">
-
-
+  <h4>BECOME A MEMBER</h4>
+  <div class="organismShowBodyMiddle">
     <% if @organism.is_user_related?(current_user) %>
       <%= link_to 'Not be a member anymore', { :controller => "members", :action => "destroy_current_user_relation", :organism_id => @organism.id  }%>
     <% elsif @organism.is_user_pending?(current_user) %>
@@ -98,36 +94,30 @@
         </p>
       <% end %>
     <% end  %>
-
   </div>
-
-  <hr />
 <% end  %>
-<%= render :partial => "/galleries/galleries_bar" %>
-<% if @organism.members.size>0 %>
 
-  <div class="span-4 colborder">
-    <h4 class="caps">LAST MEMBERS</h4>
-    <br />
-    <%= link_to "All members (#{@organism.members.size})", organism_members_path(:organism_id => @organism.id, :role =>:members) %>
-  </div>
-  <div class="span-12 last">
+<% if @organism.members.size>0 %>
+  <div class="memberBar">
+    <h4>LAST MEMBERS</h4>
+    <div class="memberBarContent">
+      <%= link_to "All members (#{@organism.members.size})", organism_members_path(:organism_id => @organism.id, :role =>:members) %>
+    </div>
     <% @organism.members[0,4].each do |user| %>
-      <div class="span-3">
-        <div class="box">
+      <div class="memberBarBox">
           <%= display_user_cover(user, :thumb) %><br />
           <%= get_user_name_or_pseudo_link(user) %>
-        </div>
       </div>
     <% end %>
   </div>
-  <hr />
 <% end %>
 
+<%= render :partial => "/galleries/galleries_bar" %>
+
+<div class="organismShowBodyCommentaire">
+    <h3>COMMENTS</h3>
+    <%= render :partial => "/comments/list" %>
+    <%= render :partial => "/comments/form" %>
+</div>
 
 
-<h2>Comments</h2>
-<%= render :partial => "/comments/list" %>
-<%= render :partial => "/comments/form" %>
-
-<%= link_to 'Back', organisms_path %>

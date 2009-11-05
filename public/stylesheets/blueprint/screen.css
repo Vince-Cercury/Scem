@@ -162,9 +162,40 @@ body {font-size:75%;
 .eventShowBodyCommentaire h5 {padding: 5px; color: red; font-size: 16px; margin: 0px;}
 .eventShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
 
+                                                            /* ---------------------PAGE ORGANISM SHOW'---------------------- */
+/*HEADER*/
+.organismHeader{width: 688px; height: 82px; background: #fff; overflow:auto;}
+.organismHeaderImage{width: 72px; height: 72px; line-height: 72px; padding: 5px; float: left; }
+.organismHeaderImage img{vertical-align: middle;}
+.organismHeaderRight{width: 606px; height: 82px; background: #fff; overflow:auto; float: right;}
+.organismHeaderTitle{width: 436px; line-height: 72px; padding: 5px; vertical-align: middle; float: left; text-align:center; }
+.organismHeaderNotation{width: 150px;  height: 72px;  vertical-align: middle; padding: 5px; float: right; text-align:center;}
+.organismHeader h3{font-size: 20px;}
+/*BODY*/
+.organismShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
+.organismShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
+.organismShowBodyLeft img {margin: 10px 0;}
+.organismShowBodyLeftContent {width: 252px; padding: 0px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; font-weight: bold;}
+.organismShowBodyLeftContent a {background:#000; color:#fff; padding: 5px; }
+.organismShowBodyLeftContent a:hover {background:#ffb500; color:#000;}
+.organismShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right;}
+.organismShowBodyMiddle{width: 678px; margin: 10px 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
+.organismShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
+.organismShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
+.organismShowBodyCommentaire {width: 688px; margin: 10px 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
+.organismShowBodyCommentaire h5 {padding: 5px; color: red; font-size: 16px; margin: 0px;}
+.organismShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
+
+
+.memberBar {width: 678px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
+.memberBarBox {width: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
+.memberBarContent {width: 678px; background: #fff; float: left; text-align: right; font-weight: bold; margin:5px 0 5px 0;}
+.memberBarContent a {background:#000; color:#fff; padding: 5px; }
+.memberBarContent a:hover {background:#ffb500; color:#000;}
+
 .gallerieBar {width: 678px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
 .gallerieBarBox {width: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
-.gallerieBarContent {width: 678px; background: #fff; float: left; text-align: right; font-weight: bold; margin-bottom:5px;}
+.gallerieBarContent {width: 678px; background: #fff; float: left; text-align: right; font-weight: bold; margin:5px 0 5px 0;}
 .gallerieBarContent a {background:#000; color:#fff; padding: 5px; }
 .gallerieBarContent a:hover {background:#ffb500; color:#000;}
 
@@ -181,7 +212,7 @@ body {font-size:75%;
 .GalleryListSeparator{background:#fff; width:688px; margin-top: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
 .GalleryAction{text-align:right; padding: 0 10px 0 0;}
 .GalleryListRight h4 {text-align:center;}
-                                                /* ---------------------PAGE EVENT SHOW'---------------------- */
+                                                /* ---------------------COMMENTAIRE'---------------------- */
 .commentaireContent{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .commentaire{width: 678px; margin: 1px 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .commentaireLeft{width: 86px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
@@ -198,13 +229,17 @@ body {font-size:75%;
                                                 /* ---------------------PAGE ANNUAIRE'---------------------- */
 
 
-.activities{width: 172px; padding: 0 0 0 0; background: #fff; float: left; }
-.activitie{padding: 5px; margin: 5px; background: #ffad4c; }
+.activities{width: 229px; padding: 0 0 0 0; background: #fff; float: left; }
+.activitie{padding: 10px; margin: 10px; background: #ffad4c; }
 .activitie h4{margin:0; color: #000; text-align: center;}
 .activitie h4 a{margin:0; color: #000; text-align: center; font-weight: bold;}
 .activitie a:hover {margin:0; color: #fff; text-align: center; font-weight: bold;}
 
 .activitiesList {background:#fff; padding: 5px 5px 5px 5px;}
+.activitiesList h2 {text-align: center;}
+.activitiesListBack {text-align: right; font-weight: bold;}
+.activitiesListBack a {background:#000; color:#fff; padding: 3px;}
+.activitiesListBack a:hover {background:#ffb500; color:#000;}
                                                                     /*---*****  GENERIC *****---*/
 
 .box {background:#fff; padding: 5px 5px 5px 5px;}
