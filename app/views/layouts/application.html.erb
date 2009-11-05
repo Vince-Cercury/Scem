@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
-    <title>SCEM - Events Manager [ <%= controller_name %> => <%= controller.action_name %> ]</title>
+    <title><%= get_page_title %></title>
 <%#= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'livevalidation' %>
     <%= stylesheet_link_tag 'swapselect' %>
@@ -124,7 +124,8 @@
               <div class="titlecalendar">
              <!-- <h3 class="caps"><%= t("side_bar.calendar") %></h3>-->
               </div>
-              <%= events_calendar_display %>
+              <%= render :partial => "/calendar/display" %>
+              <%#= events_calendar_display %>
               <br />
               <div class="titlepartners"></div>
               <div class="partnersbox">
@@ -140,23 +141,8 @@
                         src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
                 </script>
               </div>
-              <% if get_next_user_terms.size>0 %>
-                  <!--<h3 class="caps"><%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)</h3>-->
-                <div class="titlediary"></div>
-                <div class="diarybox">
-                  <%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)
-                  <% get_next_user_terms.each do |term| %>
-                    <div>
-                      <%= display_event_cover(term.event, "mini") %>
-                    </div>
-                    <div>
-                      <%= link_to(term.event.name, term.event) %><br />
-                      <%= display_simpliest_date(term.start) %> at <%= display_nice_time(term.start) %>
-                    </div>
-
-                  <% end %>
-                </div>
-              <% end %>
+          
+         <%= render :partial => "/diary/side_diary" %>
 
             </div>
           </div>

@@ -109,6 +109,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
 
+
   map.resources :participations, :collection =>{
     :create_or_update => :get }
 
@@ -137,6 +138,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :rating, :collection =>{
     :rate => :get }
+
+    map.resources :calendar, :collection =>{
+    :generate => :get }
 
   #deprecated
   map.resources :comments, :collection => { :suspend   => :get,

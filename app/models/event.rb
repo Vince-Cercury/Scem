@@ -57,10 +57,10 @@ class Event < ActiveRecord::Base
         attributes['description'] = ''
       end
       #raise attributes.inspect
-      attributes = parse_my_date(attributes)
-      #raise attributes.inspect
-      terms.build(attributes)
+      parsed_attributes = parse_my_date(attributes)
+      terms.build(parsed_attributes)
     end
+    #raise terms.inspect
   end
 
   def existing_term_attributes=(term_attributes)
@@ -253,9 +253,19 @@ class Event < ActiveRecord::Base
 
   private
   def parse_my_date(attributes)
-    attributes[:end] = Time.parse(attributes[:end])
-    attributes[:start] = Time.parse(attributes[:start])
-    return attributes
+    parsed_attributes = Hash.new
+
+    parsed_attributes[:description] = attributes[:description]
+
+    end_to_parse = attributes[:end_at] + " "+ attributes[:end_hour] + ":" + attributes[:end_min]
+    #attributes[:end_at] = Time.parse(end_to_parse)
+    parsed_attributes[:end_at] = Time.parse(end_to_parse)
+
+    start_to_parse = attributes[:start_at] + " "+ attributes[:start_hour] + ":" + attributes[:start_min]
+    #attributes[:start_at] = Time.parse(start_to_parse)
+    parsed_attributes[:start_at] = Time.parse(start_to_parse)
+    #return attributes
+    return parsed_attributes
   end
 end
 

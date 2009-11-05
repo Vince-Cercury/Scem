@@ -16,12 +16,13 @@
         <br />
         From <%= gallery.parent_type %> <%=  link_to(gallery.get_parent_object.name, gallery.get_parent_object) %>
         
-
+        <% if is_gallery_moderator?(gallery) %>
         <div class="quiet">
           <%= link_to 'Show', url_for_even_polymorphic(gallery) %>
           <%= link_to 'Edit', edit_polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
           <%= link_to 'Destroy', gallery, :confirm => 'Are you sure?', :method => :delete %>
         </div>
+        <% end %>
       </div>
     </div>
     <hr />

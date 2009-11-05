@@ -2,6 +2,10 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 fr-FR:
+  Directory: "Annuaire"
+  Galleries: "Galeries"
+  Users: "Utilisateurs"
+  Events: "Evénements"
   the: "Le"
   from: "de"
   From: "Du"
@@ -15,7 +19,7 @@ fr-FR:
   main_menu:
     events_by_date: Accueil
     directory: Annuaire
-    pictures_galleries: Galleries photos
+    pictures_galleries: Galeries photos
     users: Utilisateurs
   side_bar:
     calendar: Calendrier
@@ -27,6 +31,10 @@ fr-FR:
     listing_events: "LISTE DES EVENEMENTS"
     no_categories: "aucune"
   users:
+    participations: "Mes participations"
+    organisms: "Mes organisms"
+    organisms:
+      events: "Les événements de mes organismes"
     meetings: "Les rendez-vous"
     update_success: "Utilisateur mis à jour avec succès."
     create_success: "Merci de vous être inscris! Nous vous envoyons un email avec votre code d'activation."
@@ -122,7 +130,7 @@ fr-FR:
     - Septembre
     - Octobre
     - Novembre
-    - Decembre
+    - Décembre
     abbr_month_names:
     -
     - Jan
@@ -255,3 +263,14 @@ fr-FR:
     select:
       # default value for :prompt => true in FormOptionsHelper
       prompt: "Please select"
+      en:
+  will_paginate:
+    previous_label: '&laquo; Précédent'
+    next_label: 'Suivant &raquo;'
+    gap_marker: '<span class="gap">&hellip;</span>'
+    entry_name: 'entry'
+    page_entries_info:
+      zero: 'No {{pluralized_entry_name}} found'
+      one: 'Displaying <em>1</em> {{entry_name}}'
+      all: 'Displaying <em>all {{total_count}}</em> {{pluralized_entry_name}}'
+      n_to_m_of_x: 'Displaying {{pluralized_entry_name}} <em>{{start_count}}&nbsp;-&nbsp;{{end_count}}</em> of <em>{{total_count}}</em> in total'

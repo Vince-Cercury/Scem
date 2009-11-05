@@ -1,6 +1,48 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+  def get_page_title
+    result = ENV['APPNAME']
+    if @category && controller_name == 'categories'
+      result += " - " + @category.name
+    end
+    if controller_name == 'activities'
+      if @activity
+        result += " - " + @activity.name
+      else
+        result += " - " + t('Directory')
+      end
+    end
+    if @event && controller_name == 'events'
+        if @event.name
+          result += " - " + @event.name
+        end
+    end
+    if @organism && controller_name == 'organisms'
+      result += " - " + @organism.name
+    end
+    if controller_name == 'galleries'
+      if  @gallery
+        result += " - " + @gallery.name
+      else
+        result += " - " + t('Galleries')
+      end
+    end
+    if  controller_name == 'users'
+      if @user
+        result += " - " + get_user_name_or_pseudo(@user)
+      else
+        result += " - " + t('Users')
+      end
+    end
+    if controller_name == 'terms' || controller_name == 'events'
+      if !@event
+        result += " - " + t('Events')
+      end
+    end
+    return result + " - " + ENV['AREA']
+  end
+
       def get_url_futur_tab
     if @category.nil?
       return terms_path(:period => 'futur', :date => params[:date])
@@ -26,17 +68,19 @@ module ApplicationHelper
   end
 
 
-  def get_next_user_terms
-    #get the current category or use the general category
-    if(controller_name == "categories" && params[:id])
-      category_id = params[:id]
-    else
-      category_id = categories_not_to_display.first.id
-    end
-
+  def get_next_user_participations(max_results)
     #the_date = parse_params_date_or_now_date
-    Term.search_has_no_publisher_futur_by_category('',1,ENV['USER_EVENTS_MAX_RESULTS'], category_id)
+    current_user.search_participate_in_futur('', 1, max_results)
   end
+
+    def get_next_user_organisms_terms(max_results)
+    #the_date = parse_params_date_or_now_date
+    Term.search_by_user_organisms('',1,max_results, current_user)
+  end
+
+    def get_next_events(max_results)
+      Term.search_has_publisher_futur(params[:search], 1, max_results)
+    end
 
   def boolean_to_literal(the_boolean)
     buff=""
@@ -66,10 +110,16 @@ module ApplicationHelper
     the_date = parse_params_date_or_now_date
 
     if the_date.year > 2008
-      prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), category_path(current_category, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" ))
+        prev_date = "01-#{the_date.last_month.month}-#{the_date.last_month.year}"
+        prev_month_link = link_to_remote( l(the_date.last_month, :format => 'only_month'), {:url => { :controller => "calendar",
+              :action => "generate", :category_id => current_category.id, :date => prev_date}})
+      #prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), category_path(current_category, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" ))
     end
     if the_date.year < 2020
-      next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), category_path(current_category, :date =>  "01-#{the_date.next_month.month}-#{the_date.next_month.year}" ))
+        next_date = "01-#{the_date.next_month.month}-#{the_date.next_month.year}"
+        next_month_link = link_to_remote( l(the_date.next_month, :format => 'only_month'), {:url => { :controller => "calendar",
+              :action => "generate", :category_id => current_category.id, :date => next_date}})
+      #next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), category_path(current_category, :date =>  "01-#{the_date.next_month.month}-#{the_date.next_month.year}" ))
     end
     
     calendar(:year => the_date.year, :month => the_date.month, :first_day_of_week => 1, :previous_month_text => prev_month_link, :next_month_text => next_month_link, :the_date => the_date) do |d|

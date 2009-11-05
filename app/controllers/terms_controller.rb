@@ -21,7 +21,7 @@ class TermsController < ApplicationController
     else
       @period_link_param = "past"
       @show_end_date = false
-      @terms = Term.search_has_publisher_futur(params[:search], params[:page])
+      @terms = Term.search_has_publisher_futur(params[:search], params[:page], ENV['PER_PAGE'])
     end
 
     respond_to do |format|
@@ -69,18 +69,18 @@ class TermsController < ApplicationController
   # POST /terms
   # POST /terms.xml
   def create
-    
-    @term = Term.new(params[:term])
 
-    @term.start = Time.parse(params[:term][:start])
-    @term.end = Time.parse(params[:term][:end])
     #@term.start = Date.strptime(params[:term][:start], "%d/%m/%Y %H:%M")
+
+
+    @term = Term.new(parse_term_params)
     
 
     @term.event_id = params[:event_id]
 
     #create associations between terms and categories via categories_terms table
     @event = Event.find(params[:event_id])
+
     @event.terms << @term
     
     respond_to do |format|
@@ -101,11 +101,9 @@ class TermsController < ApplicationController
     @term = Term.find(params[:id])
     @event = Event.find(params[:event_id])
 
-    params[:term][:start] = Time.parse(params[:term][:start])
-    params[:term][:end] = Time.parse(params[:term][:end])
 
     respond_to do |format|
-      if @term.update_attributes(params[:term])
+      if @term.update_attributes(parse_term_params)
         flash[:notice] = 'Term was successfully updated.'
         format.html { redirect_to(@event) }
         format.xml  { head :ok }
@@ -129,9 +127,16 @@ class TermsController < ApplicationController
     end
   end
 
-
   
   protected
+
+  def parse_term_params
+    term_params_parsed = Hash.new
+    term_params_parsed[:start_at] = Time.parse(params[:term][:start_at] + " " + params[:term][:start_hour]+":"+params[:term][:start_min])
+    term_params_parsed[:end_at] = Time.parse(params[:term][:end_at] + " " + params[:term][:end_hour]+":"+params[:term][:end_min])
+    term_params_parsed[:description] = params[:term][:description]
+    return term_params_parsed
+  end
 
   def ensure_event_parameter?
     no_event_param_redirection unless !params[:event_id].nil? && !Event.find(params[:event_id]).nil?

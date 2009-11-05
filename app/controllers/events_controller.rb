@@ -88,9 +88,9 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-    
 
     @event = Event.new(params[:event])
+
     
 
     @event.created_by = current_user.id
@@ -150,13 +150,15 @@ class EventsController < ApplicationController
     create_contribution(:contributions, :place_ids, "place")
 
     #hack: do not consider categories id made of hash ['_all'] => id. Problem comes from Swapselect
-    category_ids = Array.new
-    params[:event][:category_ids].each do |id|
-      if !id.include? "_all"
-        category_ids << id
+    if params[:event][:category_ids]
+      category_ids = Array.new
+      params[:event][:category_ids].each do |id|
+        if !id.include? "_all"
+          category_ids << id
+        end
       end
+      params[:event][:category_ids] = category_ids
     end
-    params[:event][:category_ids] = category_ids
     
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -208,7 +210,7 @@ class EventsController < ApplicationController
       @message_body += "Date:\n"
     end
     @event.terms.each do |term|
-      @message_body += display_term_box(term.start, term.end) + "\n"
+      @message_body += display_term_box(term.start_at, term.end_at) + "\n"
     end
     @message_body += "\nYou can find some more information on the following link:\n"
     @message_body += url_for(@event)
