@@ -149,10 +149,11 @@ body {font-size:75%;
 .eventHeader h3{font-size: 20px;}
 /*BODY*/
 .eventShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
-.eventShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; font-weight: bold; margin-bottom:5px;}
+.eventShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
 .eventShowBodyLeft img {margin: 10px 0;}
-.eventShowBodyLeft a {background:#000; color:#fff; padding: 5px; }
-.eventShowBodyLeft a:hover {background:#ffb500; color:#000;}
+.eventShowBodyLeftContent {width: 252px; padding: 0px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; font-weight: bold;}
+.eventShowBodyLeftContent a {background:#000; color:#fff; padding: 5px; }
+.eventShowBodyLeftContent a:hover {background:#ffb500; color:#000;}
 .eventShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right;}
 .eventShowBodyMiddle{width: 678px; margin: 10px 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .eventShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
@@ -182,9 +183,19 @@ body {font-size:75%;
 .GalleryListRight h4 {text-align:center;}
                                                 /* ---------------------PAGE EVENT SHOW'---------------------- */
 .commentaireContent{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
-.commentaire{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
+.commentaire{width: 678px; margin: 1px 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .commentaireLeft{width: 86px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
-.commentaireRight{width: 572px; padding: 5px 5px 5px 5px; background: #fff; float: right;}                                                /* ---------------------PAGE ANNUAIRE'---------------------- */
+.commentaireRight{width: 572px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
+.commentaireRightEdit {text-align: right;}
+.commentaireRightEdit a {background:#000; color:#fff; padding: 3px;}
+.commentaireRightEdit a:hover {background:#ffb500; color:#000;}
+
+.commentaireListHeader{background:#fff; width:678px; margin: 0; padding: 5px; float: left; height: auto; text-align: center;}
+.commentaireBodyMiddle{width: 678px; margin: 10px 0 10px 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
+.commentaireBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
+.commentaireBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
+
+                                                /* ---------------------PAGE ANNUAIRE'---------------------- */
 
 
 .activities{width: 172px; padding: 0 0 0 0; background: #fff; float: left; }
@@ -201,7 +212,7 @@ body {font-size:75%;
 
 
 h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#f0882f;}
-h1 {font-size:4em;line-height:1;margin-bottom:0.5em;}
+h1 {}
 h2 {font-size:2em;margin-bottom:0.75em;}
 h3 {}
 h4 {font-size:1.2em;line-height:1.25;}

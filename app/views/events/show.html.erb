@@ -4,12 +4,16 @@
     <% if @event.picture.nil? %>
       <%= get_default_event_picture(:medium) %>
       <% if current_user && @event.is_user_moderator?(current_user) %>
-        <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@event, :picture)) %>
+           <div class="eventShowBodyLeftContent">
+              <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@event, :picture)) %>
+           </div>
       <% end %>
     <% else %>
       <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %><br />
       <% if current_user && @event.is_user_moderator?(current_user) %>
-        <%= link_to("Change the image", new_url_for_even_polymorphic(@event, :picture)) %>
+        <div class="eventShowBodyLeftContent">
+          <%= link_to("Change the image", new_url_for_even_polymorphic(@event, :picture)) %>
+        </div>
       <% end %>
     <% end %>
   </div>
@@ -88,7 +92,7 @@
     <%= render :partial => "/galleries/galleries_bar" %>
 
   <div class="eventShowBodyCommentaire">
-    <h4 class="caps">COMMENTS</h4>
+    <h3>COMMENTS</h3>
     <%= render :partial => "/comments/list" %>
     <%= render :partial => "/comments/form" %>
   </div>
