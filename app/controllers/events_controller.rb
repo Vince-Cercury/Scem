@@ -54,6 +54,7 @@ class EventsController < ApplicationController
 
     #current_object is used for comment form
     @current_object = @event = Event.find(params[:id])
+    @comments = @event.search_comments('', 1, 3)
     #the object comment is needed for displaying the form of new comment
     initialize_new_comment(@event)
     

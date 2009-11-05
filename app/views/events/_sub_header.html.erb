@@ -20,33 +20,45 @@
       <% if controller_name != "participations" %>
         <%= link_to("Participants", event_participations_path(:event_id => @event.id, :role =>:sure)) %>
       <% else %>
-        <%= link_to("Participants", event_participations_path(:event_id => @event.id, :role =>:sure), :class => 'selected') %><% end %></li><% end %>
-      <% if @event.galleries.size > 0 %>
-    <li>
-      <% if controller_name != 'galleries' %>
-        <%= link_to("Pictures galleries", event_galleries_path(:event_id => @event.id)) %>
-      <% else %>
-        <%= link_to("Pictures galleries", event_galleries_path(:event_id => @event.id), :clas => 'selected') %>
+        <%= link_to("Participants", event_participations_path(:event_id => @event.id, :role =>:sure), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
-  <% if is_event_moderator?(@event) %>
-    <li>
-      <% if (controller_name != 'events' || controller.action_name!='edit') %>
-        <%= link_to("Edit", edit_event_path(@event)) %>
-      <% else %>
-        <%= link_to("Edit", edit_event_path(@event), :class => 'selected') %>
-      <% end %>
-    </li>
+<% if @event.galleries.size > 0 %>
+  <li>
+  <% if controller_name != 'galleries' %>
+    <%= link_to("Pictures galleries", event_galleries_path(:event_id => @event.id)) %>
+  <% else %>
+    <%= link_to("Pictures galleries", event_galleries_path(:event_id => @event.id), :clas => 'selected') %>
   <% end %>
-  <% if controller_name == 'events' && controller.action_name=='share' %>
-    <li>
-      <%= link_to("Share", share_event_path(@event), :class => 'selected') %>
-    </li>
+  </li>
+<% end %>
+<% if @event.comments.size > 0 %>
+  <li>
+  <% if controller_name != 'comments' %>
+    <%= link_to("Comments", event_comments_path(:event_id => @event.id)) %>
+  <% else %>
+    <%= link_to("Comments", event_comments_path(:event_id => @event.id), :clas => 'selected') %>
   <% end %>
-  <% if current_user && @event.is_user_moderator?(current_user) %>
-    <li>
-      <%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %>
-    </li>
+  </li>
+<% end %>
+<% if is_event_moderator?(@event) %>
+  <li>
+  <% if (controller_name != 'events' || controller.action_name!='edit') %>
+    <%= link_to("Edit", edit_event_path(@event)) %>
+  <% else %>
+    <%= link_to("Edit", edit_event_path(@event), :class => 'selected') %>
+  <% end %>
+  </li>
+<% end %>
+<% if controller_name == 'events' && controller.action_name=='share' %>
+  <li>
+  <%= link_to("Share", share_event_path(@event), :class => 'selected') %>
+  </li>
+<% end %>
+<% if current_user && @event.is_user_moderator?(current_user) %>
+  <li>
+  <%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %>
+  </li>
 <% end %>
 </ul>
