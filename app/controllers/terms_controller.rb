@@ -127,7 +127,6 @@ class TermsController < ApplicationController
     end
   end
 
-
   
   protected
 

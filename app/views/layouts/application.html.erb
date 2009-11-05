@@ -124,7 +124,8 @@
               <div class="titlecalendar">
              <!-- <h3 class="caps"><%= t("side_bar.calendar") %></h3>-->
               </div>
-              <%= events_calendar_display %>
+              <%= render :partial => "/calendar/display" %>
+              <%#= events_calendar_display %>
               <br />
               <div class="titlepartners"></div>
               <div class="partnersbox">

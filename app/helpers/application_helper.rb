@@ -14,7 +14,9 @@ module ApplicationHelper
       end
     end
     if @event && controller_name == 'events'
-        result += " - " + @event.name
+        if @event.name
+          result += " - " + @event.name
+        end
     end
     if @organism && controller_name == 'organisms'
       result += " - " + @organism.name
@@ -108,10 +110,16 @@ module ApplicationHelper
     the_date = parse_params_date_or_now_date
 
     if the_date.year > 2008
-      prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), category_path(current_category, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" ))
+        prev_date = "01-#{the_date.last_month.month}-#{the_date.last_month.year}"
+        prev_month_link = link_to_remote( l(the_date.last_month, :format => 'only_month'), {:url => { :controller => "calendar",
+              :action => "generate", :category_id => current_category.id, :date => prev_date}})
+      #prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), category_path(current_category, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" ))
     end
     if the_date.year < 2020
-      next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), category_path(current_category, :date =>  "01-#{the_date.next_month.month}-#{the_date.next_month.year}" ))
+        next_date = "01-#{the_date.next_month.month}-#{the_date.next_month.year}"
+        next_month_link = link_to_remote( l(the_date.next_month, :format => 'only_month'), {:url => { :controller => "calendar",
+              :action => "generate", :category_id => current_category.id, :date => next_date}})
+      #next_month_link = link_to( l(the_date.next_month, :format => 'only_month'), category_path(current_category, :date =>  "01-#{the_date.next_month.month}-#{the_date.next_month.year}" ))
     end
     
     calendar(:year => the_date.year, :month => the_date.month, :first_day_of_week => 1, :previous_month_text => prev_month_link, :next_month_text => next_month_link, :the_date => the_date) do |d|

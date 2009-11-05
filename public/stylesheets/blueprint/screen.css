@@ -451,3 +451,8 @@ div.colborder {padding-right:24px;margin-right:25px;border-right:1px solid #eee;
 .push-1, .push-2, .push-4, .push-4, .push-5, .push-6, .push-7, .push-8, .push-9, .push-10, .push-11, .push-12, .push-13, .push-14, .push-15, .push-16, .push-17, .push-18, .push-19, .push-20, .push-21, .push-22, .push-23, .push-24 {float:right;position:relative;}
 .prepend-top {margin-top:1.5em;}
 .append-bottom {margin-bottom:1.5em;}
+
+div.loading {
+	background: url(/images/spinner.gif) no-repeat 8px 6px;
+	text-indent: -999px;
+}
