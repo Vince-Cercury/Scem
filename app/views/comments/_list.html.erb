@@ -1,7 +1,5 @@
 <div id="comments">
-  <% if @current_object.comments.size == 0 %>
-    <div class="box"> No comment at the moment</div>
-  <% else %>
+  <% if @current_object.comments.size > 0 %>
 
     <% @comments.each do |comment| %>
 

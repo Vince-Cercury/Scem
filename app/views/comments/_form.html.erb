@@ -1,9 +1,9 @@
 <% if logged_in? -%>
   <div id="create-comment-form">
-    <% complete = "$('create-comment-spinner').hide(); " + "$('create-comment-form').enable();" #+ "$('comment__text_editor').enable()" #+ "$('form-comment').show()"  %>
-    <% loading = "$('create-comment-spinner').show(); "+ "$('create-comment-form').disable();"+ "$('commentaireBodyMiddle').hide(); " #  + "$('comment_submit').disable();" #+ "$('comment__text_editor').disable()" #+ "$('form-comment').hide(); " %>
+    <% complete = "$('create-comment-spinner').hide(); " + "$('create-comment-form').show();" #+ "$('comment__text_editor').enable()" #+ "$('form-comment').show()"  %>
+    <% loading = "$('create-comment-spinner').show(); "+ "$('create-comment-form').hide();"+ "$('commentaireBodyMiddle').hide(); " #  + "$('comment_submit').disable();" #+ "$('comment__text_editor').disable()" #+ "$('form-comment').hide(); " %>
 
-    <% remote_form_for(:comment, @comment, :url => {:controller => 'comments', :action => 'create'},:loading => loading, :complete => complete, :id=> 'form-comm' ) do |f| %>
+    <% remote_form_for(:comment, @comment, :url => {:controller => 'comments', :action => 'create'}, :before => fckeditor_before_js('comment', 'text'),:loading => loading, :complete => complete, :id=> 'form-comm' ) do |f| %>
 
       <%=  hidden_field_tag 'commentable_type', @current_object.class %>
       <%=  hidden_field_tag 'commentable_id', @current_object.id %>
@@ -20,8 +20,8 @@
           <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
         </div>
         <div class="commentaireBodyMiddleRight">
-          <%= fckeditor_textarea(:comment, :text, :toolbarSet => 'Comment', :width => '536px', :height => '100px') %>
-          <%= f.submit 'Create', :onclick => "FCKFixer.fixIt();"  %>
+          <%= fckeditor_textarea(:comment, :text, :ajax => true, :toolbarSet => 'Comment', :width => '536px', :height => '100px') %>
+          <%= f.submit 'Create'  %>
         </div>
       </div>
 

@@ -102,7 +102,7 @@ class CommentsController < ApplicationController
   # PUT /comments/1.xml
   def update
     @comment = Comment.find(params[:comment_id])
-
+      #raise params.inspect
     
     respond_to do |format|
 			if @comment.update_attributes(params[:comment])
