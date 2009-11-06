@@ -40,17 +40,17 @@ class CommentsController < ApplicationController
   # POST /comments.xml
   def create
     puts "intend to create a comment"
-    comment = Comment.new(params[:comment])
+    @comment = Comment.new(params[:comment])
     commentable_object = Comment.find_commentable(params[:commentable_type], params[:commentable_id])
 
-    comment.user_id = current_user.id
+    @comment.user_id = current_user.id
     #raise commentable_object.inspect
     
     #respond_to do |format|
-      if commentable_object.comments << comment
+      if commentable_object.comments << @comment
 
         #moderation depends on configuration and if the author is a moderator
-        user_creator = User.find(comment.user_id)
+        user_creator = User.find(@comment.user_id)
         list_moderators = commentable_object.get_moderators_list
         if ENV['MODERATE_COMMENTS']=='true'
           moderation_state = true
@@ -65,11 +65,15 @@ class CommentsController < ApplicationController
         if moderation_state
           flash[:notice] = 'Comment created. A moderator will eventually accept it'
         else
-          comment.activate!
+          @comment.activate!
           flash[:notice] = 'Comment was successfully added.'
         end
       end
-        redirect_back_or_default('/')
+
+    #inserting html
+
+
+       # redirect_back_or_default('/')
         #format.html { redirect_to(url_for_even_polymorphic(commentable_object)) }
         #format.xml  { render :xml => commentable_object, :status => :created, :location => commentable_object }
 #      else

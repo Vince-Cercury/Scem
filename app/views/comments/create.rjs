@@ -1,0 +1,2 @@
+page.insert_html :top, 'comments', :partial => 'comment', :locals => {:comment => @comment}
+#page.visual_effect :highlight, 'comments', :duration => 5, :startcolor => "#fff6a6", :endcolor => "#eeeeee"

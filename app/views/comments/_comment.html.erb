@@ -1,0 +1,20 @@
+<div class="commentaire">
+  <div class="commentaireLeft">
+    <%= display_user_cover_by_id(comment.user_id, "mini") %>
+    <%= get_user_name_or_pseudo_link_by_id(comment.user_id) %>
+  </div>
+  <div class="commentaireRight">
+
+    <% if comment.suspended?  %>
+      <div class="quiet">Comment suspended <%= time_ago_in_words(comment.suspended_at) %> ago by <%= get_user_name_or_pseudo_by_id(comment.suspended_by) %></div>
+    <% end %>
+    <% if comment.edited? or comment.active?  %>
+      <%= comment.text %>
+      <div class="commentaireRightEdit"><%= time_ago_in_words(comment.created_at) %> ago <%=  edit_comment_if_not_too_late(comment.created_at, comment) %></div>
+    <% end %>
+    <% if comment.edited? %>
+      <div class="commentaireRightEdit">Comment edited <%= time_ago_in_words(comment.edited_at) %> ago by <%= get_user_name_or_pseudo_by_id(comment.edited_by) %></div>
+    <% end %>
+
+  </div>
+</div>

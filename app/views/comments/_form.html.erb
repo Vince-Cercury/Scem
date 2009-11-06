@@ -1,45 +1,53 @@
 <% if logged_in? -%>
-  <% form_for(@comment, :url => url_for_even_polymorphic(@comment)) do |f| %>
+  <% complete = "$('spinner-comment').hide(); " #+ "$('form-comment').show()"  %>
+  <% loading = "$('spinner-comment').show(); " #+ "$('form-comment').hide(); " %>
+   <div id="form-comment">
+    <% remote_form_for(:comment, @comment, :url => {:controller => 'comments', :action => 'create'},:loading => loading, :complete => complete, :id=> 'form-comm' ) do |f| %>
 
-    <%=  hidden_field_tag 'commentable_type', @current_object.class %>
-    <%=  hidden_field_tag 'commentable_id', @current_object.id %>
+      <%=  hidden_field_tag 'commentable_type', @current_object.class %>
+      <%=  hidden_field_tag 'commentable_id', @current_object.id %>
 
-    <div class="commentaireBodyMiddle">
-      
+      <div class="commentaireBodyMiddle">
+
         <% if @current_object.comments.size == 0 %>
           <h5 class="caps">BE THE FIRST TO WRITE:</h5>
         <% else %>
           <h5 class="caps">ADD A COMMENT:</h5>
         <% end %>
-      <div class="commentaireBodyMiddleLeft">
-        <%= display_user_cover_by_id(current_user.id, :thumb) %>
-        <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
+        <div class="commentaireBodyMiddleLeft">
+          <%= display_user_cover_by_id(current_user.id, :thumb) %>
+          <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
+        </div>
+        <div class="commentaireBodyMiddleRight">
+          <%= fckeditor_textarea(:comment, :text, :toolbarSet => 'Comment', :width => '536px', :height => '100px') %>
+          <%= f.submit 'Create', :onclick => "FCKFixer.fixIt();"  %>
+        </div>
       </div>
-      <div class="commentaireBodyMiddleRight">
-        <%= fckeditor_textarea(:comment, :text, :toolbarSet => 'Comment', :width => '536px', :height => '100px') %>
-        <%= f.submit 'Create' %>
-      </div>
-    </div>
 
-  <% end %>
+    <% end %>
+  </div>
+  <div id="spinner-comment" style="display:none;">
+    <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
+    <%= image_tag "spinner-horizontal-big.gif", :class => "image", :alt => "refreshing calendar" %>
+  </div>
 <% else %>
-  
- <!--  <div class="span-3 colborder"> -->
- <!--    <%= get_default_user_cover(:thumb) %><br /> -->
- <!--    You -->
- <!--  </div> -->
- <!--  <div class="span-13 last"> -->
- <!--    <div class="box"> -->
- <!--      <div id="user-bar-greeting">Login with Facebook:<br/> <%= fb_login_button('window.location = "/facebook";')%><br/>  </div> -->
- <!--      <div id="user-bar-action"  > -->
- <!--        <%= link_to "Or log in with limited account",  login_path,  { :title => "Log in" } %> <br /> -->
- <!--       <%= link_to "Sign up", signup_path, { :title => "Create an account" } %></div> -->
- <!--    </div> -->
- <!--  </div> -->
- </div>
- <div class="eventShowBodyCommentaire">
-  <h5 class="caps">For Add comment you need to be connected</h5>
-  <div class="loginBox">
+
+  <!--  <div class="span-3 colborder"> -->
+  <!--    <%= get_default_user_cover(:thumb) %><br /> -->
+  <!--    You -->
+  <!--  </div> -->
+  <!--  <div class="span-13 last"> -->
+  <!--    <div class="box"> -->
+  <!--      <div id="user-bar-greeting">Login with Facebook:<br/> <%= fb_login_button('window.location = "/facebook";')%><br/>  </div> -->
+  <!--      <div id="user-bar-action"  > -->
+  <!--        <%= link_to "Or log in with limited account",  login_path,  { :title => "Log in" } %> <br /> -->
+  <!--       <%= link_to "Sign up", signup_path, { :title => "Create an account" } %></div> -->
+  <!--    </div> -->
+  <!--  </div> -->
+  </div>
+  <div class="eventShowBodyCommentaire">
+    <h5 class="caps">In order to add a comment, you need to be connected</h5>
+    <div class="loginBox">
       <div class="loginLeft">
         <h4 class="caps">Log in with limited account</h4>
         <% form_tag session_path do -%>
@@ -60,27 +68,27 @@
       </div>
       <div class="loginRight">
         <h3 class="caps">OR LOG IN WITH FACEBOOK CONNECT:</h3>
-          <br />
+        <br />
         <%= fb_login_button('window.location = "/facebook";')%>
-          <br />
-          If you got an facebook account, don't hesitate.
-          It's way easier!
+        <br />
+        If you got an facebook account, don't hesitate.
+        It's way easier!
       </div>
       <div class="loginPub">
-       <script type="text/javascript"><!--
-        google_ad_client = "pub-3129952355573123";
-        /* 468x60, date de création 02/11/09 */
-        google_ad_slot = "6972458001";
-        google_ad_width = 468;
-        google_ad_height = 60;
-        //-->
+        <script type="text/javascript"><!--
+          google_ad_client = "pub-3129952355573123";
+          /* 468x60, date de création 02/11/09 */
+          google_ad_slot = "6972458001";
+          google_ad_width = 468;
+          google_ad_height = 60;
+          //-->
         </script>
         <script type="text/javascript"
-        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
         </script>
       </div>
     </div>
- </div>
- <div>
+  </div>
+  <div>
 
-<% end %>
+  <% end %>
