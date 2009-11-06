@@ -47,55 +47,61 @@ class CommentsController < ApplicationController
     #raise commentable_object.inspect
     
     #respond_to do |format|
-      if commentable_object.comments << @comment
+    if commentable_object.comments << @comment
 
-        #moderation depends on configuration and if the author is a moderator
-        user_creator = User.find(@comment.user_id)
-        list_moderators = commentable_object.get_moderators_list
-        if ENV['MODERATE_COMMENTS']=='true'
-          moderation_state = true
-        else
-          moderation_state = false
-        end
-        if list_moderators.include?(user_creator)
-          moderation_state = false
-        end
-
-        #activate the comment or not regarding to moderation state
-        if moderation_state
-          flash[:notice] = 'Comment created. A moderator will eventually accept it'
-        else
-          @comment.activate!
-          flash[:notice] = 'Comment was successfully added.'
-        end
+      #moderation depends on configuration and if the author is a moderator
+      user_creator = User.find(@comment.user_id)
+      list_moderators = commentable_object.get_moderators_list
+      if ENV['MODERATE_COMMENTS']=='true'
+        moderation_state = true
+      else
+        moderation_state = false
       end
+      if list_moderators.include?(user_creator)
+        moderation_state = false
+      end
+
+      #activate the comment or not regarding to moderation state
+      if moderation_state
+        #flash[:notice] = 'Comment created. A moderator will eventually accept it'
+      else
+        @comment.activate!
+        #flash[:notice] = 'Comment was successfully added.'
+      end
+    end
 
     #inserting html
 
 
-       # redirect_back_or_default('/')
-        #format.html { redirect_to(url_for_even_polymorphic(commentable_object)) }
-        #format.xml  { render :xml => commentable_object, :status => :created, :location => commentable_object }
-#      else
-#        format.html { render :action => "new" }
-#        format.xml  { render :xml => commentable_object.errors, :status => :unprocessable_entity }
-#      end
+    # redirect_back_or_default('/')
+    #format.html { redirect_to(url_for_even_polymorphic(commentable_object)) }
+    #format.xml  { render :xml => commentable_object, :status => :created, :location => commentable_object }
+    #      else
+    #        format.html { render :action => "new" }
+    #        format.xml  { render :xml => cosmmentable_object.errors, :status => :unprocessable_entity }
+    #      end
     #end
   end
 
   # GET /comments/1/edit
   def edit
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
 		respond_to do |format|
-			format.html
-			format.xml { render :xml => @comment }
+			#format.html
+			#format.xml { render :xml => @comment }
+      format.js {
+        render :update do |page|
+          page.replace_html "comment_#{@comment.id}-content", :partial => 'edit_form', :locals => {:comment => @comment}
+        end
+      }
     end
+
   end
 
   # PUT /comments/1
   # PUT /comments/1.xml
   def update
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
 
     
     respond_to do |format|
@@ -104,10 +110,17 @@ class CommentsController < ApplicationController
         @comment.edited_by = current_user.id
         @comment.edit!
 
-        commentable_object = Comment.find_commentable(@comment.commentable_type, @comment.commentable_id)
-				flash[:notice] = 'Comment was successfully updated.'
-				format.html { redirect_to(commentable_object) }
-				format.xml  { head :ok }
+        #commentable_object = Comment.find_commentable(@comment.commentable_type, @comment.commentable_id)
+        #				flash[:notice] = 'Comment was successfully updated.'
+        #				format.html { redirect_to(commentable_object) }
+        #				format.xml  { head :ok }
+
+        format.js {
+          render :update do |page|
+            page.replace_html "form-update-comment_#{@comment.id}", :partial => 'content', :locals => {:comment => @comment}
+          end
+        }
+
 			else
 				flash[:error] = 'Comment update failed.'
 				format.html { render :action => "edit" }
@@ -160,13 +173,13 @@ class CommentsController < ApplicationController
 
   def not_too_late_edit_comment?
     puts "ensure current user has moderation rights or not owner and not too late (comment)"
-    comment = Comment.find(params[:id])
+    comment = Comment.find(params[:comment_id])
     too_late_editing unless comment && ((time_diff_in_minutes(comment.created_at) < Integer(ENV['TIME_ALLOW_EDIT_COMMENT']) or has_current_user_moderation_rights))
   end
 
   def ensure_moderator_edit_rights?
     puts "ensure current user is owner or has moderation rights (comment)"
-    comment = Comment.find(params[:id])
+    comment = Comment.find(params[:comment_id])
     not_enough_rights unless self.current_user && comment && comment.user_id==self.current_user.id or has_current_user_moderation_rights
   end
 

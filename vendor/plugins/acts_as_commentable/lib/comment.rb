@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
   end
 
   aasm_event :edit do
-    transitions :from => [:passive, :active], :to => :edited
+    transitions :from => [:passive, :active, :edited], :to => :edited
   end
 
   aasm_event :suspend do

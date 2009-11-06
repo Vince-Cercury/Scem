@@ -103,7 +103,7 @@ body {font-size:75%;
 
 /*#the-cal {}*/
 #spinner-cal { width: 241px; text-align: center; height: 241px; line-height: 241px; vertical-align: middle; background: #fff;}
-#spinner-comment { text-align: center; height: 100px; vertical-align: middle; background: #fff;}
+.spinner-comment { text-align: center; height: 100px; vertical-align: middle; background: #fff;}
 
 
 /* Partners box*/

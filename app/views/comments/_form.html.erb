@@ -1,7 +1,8 @@
 <% if logged_in? -%>
-  <% complete = "$('spinner-comment').hide(); " #+ "$('form-comment').show()"  %>
-  <% loading = "$('spinner-comment').show(); " #+ "$('form-comment').hide(); " %>
-   <div id="form-comment">
+  <div id="create-comment-form">
+    <% complete = "$('create-comment-spinner').hide(); " + "$('create-comment-form').enable();" #+ "$('comment__text_editor').enable()" #+ "$('form-comment').show()"  %>
+    <% loading = "$('create-comment-spinner').show(); "+ "$('create-comment-form').disable();"+ "$('commentaireBodyMiddle').hide(); " #  + "$('comment_submit').disable();" #+ "$('comment__text_editor').disable()" #+ "$('form-comment').hide(); " %>
+
     <% remote_form_for(:comment, @comment, :url => {:controller => 'comments', :action => 'create'},:loading => loading, :complete => complete, :id=> 'form-comm' ) do |f| %>
 
       <%=  hidden_field_tag 'commentable_type', @current_object.class %>
@@ -26,9 +27,9 @@
 
     <% end %>
   </div>
-  <div id="spinner-comment" style="display:none;">
+  <div class="create-comment-spinner" id="create-comment-spinner" style="display:none;">
     <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
-    <%= image_tag "spinner-horizontal-big.gif", :class => "image", :alt => "refreshing calendar" %>
+    <%= image_tag "spinner-horizontal-big.gif", :class => "image", :alt => "loading form" %>
   </div>
 <% else %>
 
