@@ -1,6 +1,6 @@
 <div class="commentaire" id='comment_<%= comment.id %>'>
   <%= render :partial => "/comments/content", :locals => {:comment => comment} %>
-  <div class="edit-comment-spinner" id="edit-comment-spinner_<%= comment.id %>" style="display:none;">
+    <div class="edit-comment-spinner" id="edit-comment-spinner_<%= comment.id %>" style="display:none;">
     <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
     <%= image_tag "spinner-horizontal-big.gif", :class => "image", :alt => "loading form" %>
   </div>
