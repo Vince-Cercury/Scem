@@ -1,10 +1,10 @@
 <div id="results">
   <% @organisms.each do |organism| %>
-   <div class="listSeparator">
-     <div class="listLeft">
+   <div class="organismListSeparator">
+     <div class="organismListLeft">
         <%= display_organism_cover(organism, :small) %>
      </div>
-     <div class="listRight">
+     <div class="organismListRight">
          <div class="box">
         <h4 class="box"><%= link_to(organism.name, organism) %></h4>
 

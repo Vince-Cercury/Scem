@@ -116,64 +116,6 @@ border-right: 0px solid black;
   color:#aaaaaa;
 }
 
-/************************* MENU DES EVENTS A VENIR / EN COURS *****************/
-.tabsevent {
-  border-bottom:none;
-  background: #fff;
-  height:1%; /* fixing IE 6 */
-  padding-left: 300px;
-  margin:0 0 0 0;
-  overflow:auto;
-}
-
-.tabsevent li {
-  float:right;
-  background: #fff;
-  text-align:right;
-  line-height:1.5;
-  list-style-type:none;
-  margin:0 0 0 0;
-  color:#aaaaaa;
-  font-weight:bold;
-  display:block;
-}
-
-.tabsevent li a {
-  background:#000;
-  float:left;
-  margin: 5px 5px 5px 5px;
-  padding: 2px 2px 2px 2px;
-  border-top:none;
-  border-bottom:none;
-  border-right:none;
-  color:#fff;
-  cursor:pointer;
-  display:block;
-  font-weight:bold;
-  text-decoration:none;
-}
-
-
-.tabsevent li .selected {
-  float:left;
-  line-height:1.5;
-  list-style-type:none;
-  margin: 5px 5px 5px 5px;
-  padding: 2px 2px 2px 2px;
-  color:#000;
-  background: #ffb500;
-  font-weight:bold;
-  display:block;
-}
-
-.tabsevent li a:hover {
-  color:#000;
-  background: #ffb500;
-}
-
-.tabsevent li a:active {
-  color:#aaaaaa;
-}
 /************************* MENU EVENT SHOW *****************/
 .tabsShowEvent {
   border-bottom:none;
@@ -283,3 +225,112 @@ border-right: 0px solid black;
   color:#fff;
 }
 
+/************************* MENU PARTICIPANT *****************/
+.tabsParticipant {
+  border-bottom:none;
+  height:1%; /* fixing IE 6 */
+  margin:0 0 0 0;
+  overflow:auto;
+  color: #fff;
+}
+
+.tabsParticipant li {
+  float:left;
+  line-height:1.5;
+  list-style-type:none;
+  margin: 0 5px 0 0;
+  color:#f0882f;
+  font-weight:bold;
+  text-align:right;
+  display:block;
+}
+
+.tabsParticipant li a {
+  background:#000;
+  border-top:none;
+  border-bottom:none;
+  border-right:none;
+  padding: 5px;
+  color:#fff;
+  cursor:pointer;
+  display:block;
+  float:right;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.tabsParticipant li .selected {
+  float:left;
+  line-height:1.5;
+  list-style-type:none;
+  background: #000;
+  padding: 6px 5px 6px 5px;
+  color:#fff;
+  margin: 0 0 0 0;
+  font-weight:bold;
+  display:block;
+}
+
+.tabsParticipant li a:hover {
+  color:#fff;
+  background: #f0882f;
+}
+
+.tabsParticipant li a:active {
+  color:#fff;
+}
+
+/************************* MENU EVENT NEXT/PAST *****************/
+.tabsevent {
+  border-bottom:none;
+  height:1%; /* fixing IE 6 */
+  margin:0 0 0 0;
+  overflow:auto;
+  color: #fff;
+}
+
+.tabsevent li {
+  float:left;
+  line-height:1.5;
+  list-style-type:none;
+  margin: 0 5px 0 0;
+  color:#f0882f;
+  font-weight:bold;
+  text-align:right;
+  display:block;
+}
+
+.tabsevent li a {
+  background:#000;
+  border-top:none;
+  border-bottom:none;
+  border-right:none;
+  padding: 5px;
+  color:#fff;
+  cursor:pointer;
+  display:block;
+  float:right;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.tabsevent li .selected {
+  float:left;
+  line-height:1.5;
+  list-style-type:none;
+  background: #000;
+  padding: 6px 5px 6px 5px;
+  color:#fff;
+  margin: 0 0 0 0;
+  font-weight:bold;
+  display:block;
+}
+
+.tabsevent li a:hover {
+  color:#fff;
+  background: #f0882f;
+}
+
+.tabsevent li a:active {
+  color:#fff;
+}

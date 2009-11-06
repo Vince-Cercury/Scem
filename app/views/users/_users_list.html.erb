@@ -1,14 +1,15 @@
-
 <div id="results">
-  <% @users.each do |user| %>
-    <div class="span-4 colborder">
-      <%= display_user_cover(user, :small) %>
-    </div>
-    <div class="span-12 last">
-      <div class="box">
-        <h4 class="prepend-5"><%= user_profile_link(user) %></h4>
+  <div class="userList">
+    <% @users.each do |user| %>
+      <div class="userListBox">
+        <div class="userListBoxImage">
+          <%= display_user_cover(user, :thumb) %>
+        </div>
+        <div class="userListBoxName">
+        <h4><%= user_profile_link(user) %></h4>
         <% if logged_in? && @organism -%>
           <% if @organism.is_user_moderator?(current_user) %>
+
 
             <% if !@organism.nil?   %>
               <% if !@organism.admins.include?(user) %>
@@ -22,16 +23,15 @@
               <% end  %>
               <%= link_to 'Destroy his relation with this organism', { :controller => "organisms_users", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
             <% end  %>
-            <br />
-          <% end %>
+           <% end %>
         <% end -%>
-      </div>
-    </div>
-    <hr />
-  <% end %>
+       </div>
+        </div>
+     <% end %>
+  </div>
   <%= will_paginate @users %>
   <% if @users.size == 0 %>
-    <div class="box">
+    <div class="userListMessage">
       Sorry, no result
     </div>
    <% end %>

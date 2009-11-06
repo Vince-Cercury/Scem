@@ -1,4 +1,5 @@
-<div class="results" id="results">
+<div id="results">
+  <div class="list">
   <% @terms.each do |term| %>
     <% event=term.event %>
     <div class="listSeparator">
@@ -27,16 +28,13 @@
         </div>
       </div>
     </div>
-
-
   <% end %>
+  </div>
   <% if @terms.size == 0 %>
     <div class="noEvent">
       Currently no events in this category
     </div>
   <% end %>
-  
-    <%= will_paginate @terms %>
-  
-  
+  <%= will_paginate @terms %>
+</div>
 </div>

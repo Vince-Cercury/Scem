@@ -52,9 +52,9 @@
       </div>
       <!--Header of the web site containing menus -->
       <div class="header">
-        <div class="headerleft" onclick="location.href='<%= root_path  %> ';" style="cursor:pointer;" title="Accueil Le Bounce" alt="Accueil Le Bounce">
+        <div class="headerleft" onclick="location.href='<%= root_path  %> ';" style="cursor:pointer;" title="Accueil Le Bounce">
         </div>
-        <div class="headerright" text-align="right">
+        <div class="headerright">
           <ul class='tabs'>
             <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to(t('main_menu.events_by_date'), url_for(terms_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.events_by_date'), url_for(terms_path), :class => 'selected') %></div><% end %></li>
             <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.directory'), url_for(activities_path), :class => 'selected') %></div><% end %></li>
@@ -93,7 +93,7 @@
                 Si vous voulez contribuer ou reporter un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a>
               </p>
             </div>
-            <div class="eventlist">
+            <div class="accueil">
               <% flash.each do |key, msg| %>
                 <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
               <% end %>

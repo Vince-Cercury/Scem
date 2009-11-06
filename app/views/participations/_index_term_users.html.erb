@@ -1,8 +1,8 @@
 <%= render :partial => "/events/header" %>
-<div class="span-6">
-  <b><%= display_term_box(@term.start_at, @term.end_at) %></b>
+<div class="searchBox">
+  <%= display_term_box(@term.start_at, @term.end_at) %>
 </div>
-<div class="prepend-4 span-7 last ">
+<div class="searchBox">
   <% form_tag term_participations_path, :method => 'get' do %>
 
       <%=  hidden_field_tag 'role', params[:role] %>
@@ -12,14 +12,31 @@
 
   <% end %>
 </div>
-<br />
-<br /><br /><br />
-<div class="span-17">
-<ul class='tabs'>
-  <li><% if params[:role]!='sure' %><%= link_to "attending (#{@term.sure_participants.size})", term_participations_path(:term_id => @term.id, :role =>:sure) %><% else %><%= link_to "attending (#{@term.sure_participants.size})", term_participations_path(:term_id => @term.id, :role =>:sure), :class => 'selected' %><% end %></li>
-  <li><% if params[:role]!='maybe' %><%= link_to "may be attending (#{@term.maybe_participants.size})", term_participations_path(:term_id => @term.id, :role =>:may_be) %><% else %><%= link_to "may be attending (#{@term.maybe_participants.size})", term_participations_path(:term_id => @term.id, :role =>:may_be), :class => 'selected' %><% end %></li>
-  <li><% if params[:role]!='not' %><%= link_to "not attending (#{@term.not_participants.size})", term_participations_path(:term_id => @term.id, :role =>:not) %><% else %><%= link_to "not attending (#{@term.not_participants.size})", term_participations_path(:term_id => @term.id, :role =>:not), :class => 'selected' %><% end %></li>
-</ul>
-</div>
+<div class="participantContent">
+  <ul class='tabsParticipant'>
+    <li>
+      <% if params[:role]!='sure' %>
+        <%= link_to "attending (#{@term.sure_participants.size})", term_participations_path(:term_id => @term.id, :role =>:sure) %>
+      <% else %>
+        <%= link_to "attending (#{@term.sure_participants.size})", term_participations_path(:term_id => @term.id, :role =>:sure), :class => 'selected' %>
+      <% end %>
+    </li>
+    <li>
+      <% if params[:role]!='maybe' %>
+        <%= link_to "may be attending (#{@term.maybe_participants.size})", term_participations_path(:term_id => @term.id, :role =>:may_be) %>
+      <% else %>
+        <%= link_to "may be attending (#{@term.maybe_participants.size})", term_participations_path(:term_id => @term.id, :role =>:may_be), :class => 'selected' %>
+      <% end %>
+    </li>
+    <li>
+      <% if params[:role]!='not' %>
+        <%= link_to "not attending (#{@term.not_participants.size})", term_participations_path(:term_id => @term.id, :role =>:not) %>
+      <% else %>
+        <%= link_to "not attending (#{@term.not_participants.size})", term_participations_path(:term_id => @term.id, :role =>:not), :class => 'selected' %>
+      <% end %>
+    </li>
+  </ul>
 <%= render :partial => "/users/users_list" %>
+</div>
+
 

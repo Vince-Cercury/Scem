@@ -40,7 +40,7 @@ body {font-size:75%;
                                                                 /*--- HEADER ---*/
 .header {width: 988px; position:relative;}
 .headerleft{width:451px; height:170px; float:left;}
-.headerright{width:417px; float:right; margin: 84px 0 18px 120px;}
+.headerright{width:417px; float:right; margin: 84px 0 18px 120px; text-align: right;}
 .menu{width: 968px; padding: 10px 15px 15px 5px; height: 70px; float:left;}
 
                                                                 /*--- CORPS ---*/
@@ -55,51 +55,28 @@ body {font-size:75%;
                                                                 /*--- COLONNE GAUCHE ---*/
 .contentleft{width: 687px; float: left; margin: 0 10px 0 20px; position:relative;}
 .information{width:678px; background:#fff; color:#000; padding: 0 5px 0 5px; margin: 0 0 10px 0;}
-.eventlist{width: 688px; padding: 0 0 0 0; background: #000;}
+.accueil{width: 688px; padding: 0 0 0 0; background: #000;}
 .noEvent{width: 678px; padding: 5px; margin: 10px 0 0 0; background: #f6bdbd; color: #000; text-align: center; font-weight: bold;}
 
-.titleevent {
-    padding:0 533px 0 16px;
-    width: 139px;
-    text-align: right;
-    height: 29px;
-    background: #000;
-    background-image:url('/images/header/french/enteteAccueil.png');
-    background-repeat: no-repeat}
-.results{background:#000;
-    width:688px;
-    position:relative;
-    margin-bottom:10px;}
-.listLeft{width:151px;
-          padding:5px 0 0 5px;
-          float:left;}
-.listRight{width:527px;
-          padding:5px 0 0 5px;
-          float:right;}
-.listSeparator{background:#fff;
-    width:688px;
-    margin-top: 10px;
-    float: left;
-    height: auto;}
-#imagetitle
-{width:100%; height:100%;}
-.pagination{background:#fff; width:688px; margin-top: 10px; padding:5px 0 5px 0; float: left; height: auto; text-align: center;}
+.titleevent {padding:0 533px 0 16px; width: 139px; text-align: right; height: 29px; background: #000; background-image:url('/images/header/french/enteteAccueil.png'); background-repeat: no-repeat}
+
+.listContent{width: 678px; padding: 10px 5px 5px 5px; background: #fff; overflow: auto;}
+.list{width: 668px; margin: 0; padding: 0px 5px 5px 5px; background: #000; float: left;}
+.listSeparator{width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center; overflow: auto;}
+.listLeft{width:141px;  margin: 0; padding: 5px; background: #fff; float: left; text-align: left;}
+.listRight{width:507px;  margin: 0; padding: 5px; background: #fff; float: right; text-align: left;}
+
+#imagetitle{width:100%; height:100%;}
+
+.pagination{background:#fff; width:100%; margin-top: 10px; padding:5px 0 5px 0; float: left; height: auto; text-align: center;}
                                                                 /*--- COLONNE DROITE ---*/
 .contentright{width: 241px; float: right; margin: 0 20px 0 10px; color:#f0882f;}
 /*Search box*/
 .searchbox {background:#fff; padding: 5px 5px 5px 8px; height:35px; margin: -1px 0 25px 0;}
-.titlesearch {width: 153px;
-             height: 29px;
-             background: #000;
-             background-image:url('/images/header/french/enteteRecherche.png');
-             background-repeat: no-repeat}
+.titlesearch {width: 153px; height: 29px; background: #000; background-image:url('/images/header/french/enteteRecherche.png'); background-repeat: no-repeat}
 /*Calendar box*/
 .calendarbox {background:#fff; padding: 5px 5px 5px 8px; height:35px; margin: -1px 0 10px 0;}
-.titlecalendar {width: 153px;
-               height: 29px;
-               background: #000;
-               background-image:url('/images/header/french/enteteCalendrier.png');
-               background-repeat: no-repeat}
+.titlecalendar {width: 153px; height: 29px; background: #000; background-image:url('/images/header/french/enteteCalendrier.png'); background-repeat: no-repeat}
 
 /*#the-cal {}*/
 #spinner-cal { width: 241px; text-align: center; height: 241px; line-height: 241px; vertical-align: middle; background: #fff;}
@@ -112,21 +89,10 @@ body {font-size:75%;
 .diarybox {background:#fff; padding: 5px 5px 5px 8px;  margin: -1px 0 25px 0;}
 
                                                                         /*--- PUBLICITEE ---*/
-.subFooter {background: #000;
-           margin: 0px 0px 0 0px;
-           padding: 10px 0 0px 0;
-           float: left;
-           text-align:center;
-           width: 986px;
-           height: 90px;}
+.subFooter {background: #000; margin: 0px 0px 0 0px; padding: 10px 0 0px 0; float: left; text-align:center; width: 986px; height: 90px;}
 
                                                                         /*--- FOOTER ---*/
-.footer {background-image:url('/images/body/french/footer.png');
-        background-repeat: no-repeat;
-        width: 1004px;
-        float: left;
-        margin : 0 0 10px -16px;
-        height: 73px;}
+.footer {background-image:url('/images/body/french/footer.png'); background-repeat: no-repeat; width: 1004px; float: left; margin : 0 0 10px -16px; height: 73px;}
 
                                             /* ---------------------PAGE DE LOGIN---------------------- */
 
@@ -186,6 +152,14 @@ body {font-size:75%;
 .organismShowBodyCommentaire h5 {padding: 5px; color: red; font-size: 16px; margin: 0px;}
 .organismShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
 
+.participantContent{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto;}
+.userList {width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left;}
+.userListBox {width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center;}
+.userListBoxImage {width: 72px; height: 72px; line-height: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
+.userListBoxImage img {vertical-align: middle;}
+.userListBoxName {width: 576px; height: 72px; line-height: 72px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
+.userListBoxName h4 {vertical-align: middle; font-size: 14px;}
+.userListMessage {width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
 
 .memberBar {width: 678px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
 .memberBarBox {width: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
@@ -226,6 +200,8 @@ body {font-size:75%;
 .commentaireBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .commentaireBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 
+.searchBox{background:#fff; width:678px; margin: 0; padding: 5px; float: left; height: auto; text-align: center;}
+
                                                 /* ---------------------PAGE ANNUAIRE'---------------------- */
 
 
@@ -240,6 +216,11 @@ body {font-size:75%;
 .activitiesListBack {text-align: right; font-weight: bold;}
 .activitiesListBack a {background:#000; color:#fff; padding: 3px;}
 .activitiesListBack a:hover {background:#ffb500; color:#000;}
+
+.organismListLeft{width:151px; padding:5px 0 0 5px; float:left;}
+.organismListRight{width:527px; padding:5px 0 0 5px; float:right;}
+.organismListSeparator{background:#fff; width:688px; margin-top: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
+
                                                                     /*---*****  GENERIC *****---*/
 
 .box {background:#fff; padding: 5px 5px 5px 5px;}
@@ -250,7 +231,7 @@ h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#f0882f;}
 h1 {}
 h2 {font-size:2em;margin-bottom:0.75em;}
 h3 {}
-h4 {font-size:1.2em;line-height:1.25;}
+h4 {}
 h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
 h6 {font-size:1em;font-weight:bold;}
 h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
@@ -340,7 +321,7 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
           height: 50px;
           margin: 10px 20px 0 566px;}
 .loginbox a {color:#f0882f;}
-.loginbox a:hoover {font-weight:bold;}
+.loginbox a:hover {font-weight:bold;}
 .loginboxleft {width: 250px;
               float:left;}
 .loginboxright {width: 150px;
