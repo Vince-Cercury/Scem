@@ -1,0 +1,14 @@
+<div id='form-update-comment_<%= comment.id %>'>
+  <% loading = "$('edit-comment-spinner_#{comment.id}').show(); " + "$('comment_#{comment.id}-content').hide();" %>
+  <% remote_form_for(:comment, comment, :url => {:controller => 'comments', :action => 'update', :comment_id => comment.id},:loading => loading) do |f| %>
+
+    <p>
+      Edit the comment:<br />
+      <%= fckeditor_textarea(:comment, :text, :toolbarSet => 'Comment', :width => '80%', :height => '200px') %>
+    </p>
+
+    <%= f.submit 'Update', :onclick => "FCKFixer.fixIt();", :id => "comment_#{comment.id}_submit"%>
+
+
+  <% end %>
+</div>
