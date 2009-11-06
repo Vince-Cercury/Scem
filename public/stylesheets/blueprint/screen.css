@@ -46,7 +46,7 @@ body {font-size:75%;
                                                                 /*--- CORPS ---*/
 .subheader {background-image:url('/images/body/french/corps.png');
            background-repeat:repeat-y;
-           margin: 0 0 0 -1px;
+           margin: 0 0 0 0px;
            float: left;
            width: 988px;
            height: 100%;}
@@ -120,8 +120,7 @@ body {font-size:75%;
 .footer {background-image:url('/images/body/french/footer.png');
         background-repeat: no-repeat;
         width: 1004px;
-        margin : 0 0 10px 0;
-        margin-left: -16px;
+        margin : 0 0 10px -16px; 
         height: 73px;}
 
                                             /* ---------------------PAGE DE LOGIN---------------------- */
