@@ -57,10 +57,10 @@
         </div>
         <div class="headerright">
           <ul class='tabs'>
-            <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to(t('main_menu.events_by_date'), url_for(terms_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.events_by_date'), url_for(terms_path), :class => 'selected') %></div><% end %></li>
-            <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.directory'), url_for(activities_path), :class => 'selected') %></div><% end %></li>
-            <li><% if controller_name != 'galleries' %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path), :class => 'selected') %></div><% end %></li>
-            <li><% if controller_name != 'users' %><%= link_to(t('main_menu.users'), url_for(users_path)) %><% else %><div id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.users'), url_for(users_path), :class => 'selected') %></div><% end %></li>
+            <li><% if controller_name != 'terms' && controller_name != 'categories' %><%= link_to(t('main_menu.events_by_date'), url_for(terms_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.events_by_date'), url_for(terms_path), :class => 'selected') %></div><% end %></li>
+            <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.directory'), url_for(activities_path), :class => 'selected') %></div><% end %></li>
+            <li><% if controller_name != 'galleries' %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path), :class => 'selected') %></div><% end %></li>
+            <li><% if controller_name != 'users' %><%= link_to(t('main_menu.users'), url_for(users_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.users'), url_for(users_path), :class => 'selected') %></div><% end %></li>
           </ul>
           <script type="text/javascript">
             setBorder("SelectedId", "TopId");
@@ -68,15 +68,43 @@
         </div>
       </div>
 
+      <!-- categories of the events/organisms-->
+      
+
+
+            
       <div class="menu">
-        <ul class='tabcategories'>
-          <% if categories_not_to_display.first %>
-            <li><% if (controller_name == 'categories' && params[:id].to_i==categories_not_to_display.first.id) or controller_name == 'terms' %><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first)), :class => 'selected') %><% else %><%= link_to(categories_not_to_display.first.name, url_for(category_path(categories_not_to_display.first))) %><% end %></li>
+        <div class="span-2 colborder">
+          <% categories_by_parent_id(0).each do |category| %>
+              <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
           <% end %>
-          <% categories_to_display.each do |category| %>
-            <li><% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %></li>
+        </div>
+        <div class="span-2 colborder">
+          <% categories_by_parent_id(1).each do |category| %>
+
+              <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+
           <% end %>
-        </ul>
+        </div>
+        <div class="span-2 colborder">
+          <% categories_by_parent_id(2).each do |category| %>
+
+             <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+
+          <% end %>
+        </div>
+        <div class="span-2 colborder">
+          <% categories_by_parent_id(3).each do |category| %>
+
+           <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+
+          <% end %>
+        </div>
+        <div class="span-2 last">
+          <% categories_by_parent_id(4).each do |category| %>
+            <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+          <% end %>
+        </div>
       </div>
 
 

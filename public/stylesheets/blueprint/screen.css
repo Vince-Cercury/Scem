@@ -46,7 +46,7 @@ body {font-size:75%;
                                                                 /*--- CORPS ---*/
 .subheader {background-image:url('/images/body/french/corps.png');
            background-repeat:repeat-y;
-           margin: 0 0 0 -1px;
+           margin: 0 0 0 0px;
            float: left;
            width: 988px;
            height: 100%;}
@@ -94,7 +94,14 @@ body {font-size:75%;
 .subFooter {background: #000; margin: 0px 0px 0 0px; padding: 10px 0 0px 0; float: left; text-align:center; width: 986px; height: 90px;}
 
                                                                         /*--- FOOTER ---*/
-.footer {background-image:url('/images/body/french/footer.png'); background-repeat: no-repeat; width: 1004px; float: left; margin : 0 0 10px -16px; height: 73px;}
+
+.footer {background-image:url('/images/body/french/footer.png');
+        background-repeat: no-repeat;
+        width: 1004px;
+        float: left;
+        margin : 0 0 10px -16px;
+        height: 73px;}
+
 
                                             /* ---------------------PAGE DE LOGIN---------------------- */
 

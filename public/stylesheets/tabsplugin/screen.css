@@ -66,8 +66,8 @@
   color:#fff;
 }
 
-#TopId{
-font-size: 0px; line-height: 0%; width: 0px;
+.topId{
+    font-size: 0px; line-height: 0%; width: 0px;
 border-top: 5px solid transparent;
 border-bottom: 1px solid black;
 border-right: 0px solid black;
