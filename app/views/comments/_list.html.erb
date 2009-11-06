@@ -1,26 +1,12 @@
-<% @current_object.comments.each do |comment| %>
-  <div class="span-3 colborder">
-    <%= display_user_cover_by_id(comment.user_id, :thumb) %><br />
-    <%= get_user_name_or_pseudo_link_by_id(comment.user_id) %>
-  </div>
-  <div class="span-13 last">
-    <div class="box">
-      <% if comment.suspended?  %>
-        <div class="quiet">Comment suspended <%= time_ago_in_words(comment.suspended_at) %> ago by <%= get_user_name_or_pseudo_by_id(comment.suspended_by) %></div>
-      <% end %>
-      <% if comment.edited? or comment.active?  %>
-        <%= comment.text %>
-        <div class="quiet"><%= time_ago_in_words(comment.created_at) %> ago</div>
-        <div class="quiet"><%=  edit_comment_if_not_too_late(comment.created_at, comment) %></div>
-      <% end %>
-      <% if comment.edited? %>
-        <div class="quiet">Comment edited <%= time_ago_in_words(comment.edited_at) %> ago by <%= get_user_name_or_pseudo_by_id(comment.edited_by) %></div>
-      <% end %>
-    </div>
-  </div>
-  <hr />
-<% end %>
-<% if @current_object.comments.size == 0 %>
-  <div class="box"> No comment at the moment</div>
-    <hr />
-<% end %>
+<div id="comments">
+  <% if @current_object.comments.size == 0 %>
+    <div class="box"> No comment at the moment</div>
+  <% else %>
+
+    <% @comments.each do |comment| %>
+
+      <%= render :partial => "/comments/comment", :locals => {:comment => comment } %>
+
+    <% end %>
+  <% end %>
+</div>

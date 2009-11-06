@@ -1,32 +1,37 @@
-<hr />
+
 <div id="results">
   <% @galleries.each do |gallery| %>
-    <div class="span-4 colborder" id="gallery-left">
+  <div class="GalleryListSeparator">
+    <div class="GalleryListLeft">
       <%= display_gallery_cover(gallery, :small) %>
-               <%= gallery.pictures.size %>&nbsp;photos
-        
-      <br />Created by <%= get_user_name_or_pseudo_link_by_id(gallery.creator_id) %>
+      <%= gallery.pictures.size %>&nbsp;photos
+            
     </div>
-    <div class="span-12 last" id="gallery-right">
-      <div class="box">
-        <h4 class="prepend-5"><%= link_to(gallery.name, url_for_even_polymorphic(gallery)) %></h4>
+    <div class="GalleryListRight">
+      <h4><%= link_to(gallery.name, url_for_even_polymorphic(gallery)) %></h4>
+      <p>
         <%= gallery.description %>
-        <br />
+      </p>
+      <p>
         <%= render :partial => "rating/mini_rating", :locals => { :current_object => gallery } if gallery.rating > 0 %>
-        <br />
+      </p>
+      <p>
         From <%= gallery.parent_type %> <%=  link_to(gallery.get_parent_object.name, gallery.get_parent_object) %>
-        
-        <% if is_gallery_moderator?(gallery) %>
-        <div class="quiet">
-          <%= link_to 'Show', url_for_even_polymorphic(gallery) %>
-          <%= link_to 'Edit', edit_polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
-          <%= link_to 'Destroy', gallery, :confirm => 'Are you sure?', :method => :delete %>
-        </div>
-        <% end %>
+      </p>
+      <p>
+        Created by <%= get_user_name_or_pseudo_link_by_id(gallery.creator_id) %>
+      </p>
+      <% if is_gallery_moderator?(gallery) %>
+      <div class="GalleryAction">
+        <%= link_to 'Show', url_for_even_polymorphic(gallery) %>
+        <%= link_to 'Edit', edit_polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
+        <%= link_to 'Destroy', gallery, :confirm => 'Are you sure?', :method => :delete %>
       </div>
+      <% end %>
     </div>
-    <hr />
+  </div>
   <% end %>
-  <%= will_paginate @galleries %>
-
+  <div class="pagination">
+    <%= will_paginate @galleries %>
+  </div>
 </div>

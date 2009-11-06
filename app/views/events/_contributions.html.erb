@@ -1,33 +1,37 @@
 <% if @event.contributions.size > 0 %>
-<hr />
-<div class="box">
+<div class="eventShowBodyRight">
   <% if @event.publishers.size > 0 %>
-    <b>Publishers:</b>
-    <% @event.publishers.each do |@organism| %>
-      <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
-    <% end %>
-    <br />
+    <p>
+      <b>Publishers:</b>
+      <% @event.publishers.each do |@organism| %>
+        <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
+      <% end %>
+    </p>
   <% end %>
 
   <% if @event.organizers.size > 0 %>
-    <b>Organizers:</b>
-    <% @event.organizers.each do |@organism| %>
-      <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
-    <% end %>
-    <br />
+    <p>
+      <b>Organizers:</b>
+      <% @event.organizers.each do |@organism| %>
+        <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
+      <% end %>
+    </p>
   <% end %>
   <% if @event.partners.size > 0 %>
+    <p>
     <b>Partners:</b>
-    <% @event.partners.each do |@organism| %>
-      <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
-    <% end %>
-    <br />
+      <% @event.partners.each do |@organism| %>
+        <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
+      <% end %>
+    </p>
   <% end %>
   <% if @event.places.size > 0 %>
+    <p>
     <b>Place:</b>
     <% @event.places.each do |@organism| %>
       <%= link_to(@organism.name, url_for(organism_path(@organism))) %>&nbsp;
     <% end %>
+    </p>
   <% end %>
 </div>
 <%  end %>

@@ -31,7 +31,7 @@
   margin:0 0 0 0;
   font-size: 0.7em;}
 
-.day, .specialDay, .weekendDay, .otherMonth, .today, .day_today, .today_today {
+.day, .specialDay, .weekendDay, .otherMonth, .today, .day_today, .today_today, .specialDay_today, .weekendDay_today, .otherMonth_today  {
   border-right:1px solid #111111;
   border-bottom: 1px solid #111111;
   text-align:center; padding:0 0 0 0; margin:0 0 0 0;
@@ -99,12 +99,7 @@ thead tr {color: black;}
 
 
 /*Real TODAY*/
-.day_today {
-	background-color: #fff;
-        text-align: center;
-        font-weight: bold;
-	color: #ffb500;}
-.today_today {
+.day_today, .today_today, .specialDay_today, .weekendDay_today, .otherMonth_today  {
 	background-color: #fff;
         text-align: center;
         font-weight: bold;

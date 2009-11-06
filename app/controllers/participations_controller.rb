@@ -115,16 +115,16 @@ class ParticipationsController < ApplicationController
   protected
 
   def ensure_term_parameter?
-    param_uncorrect_redirection unless !params[:term_id].nil? and Term.exists?(params[:term_id])
+    param_uncorrect_redirection unless !params[:term_id].nil? and Term.find(params[:term_id])
   end
 
 
   def ensure_user_parameter?
-    param_uncorrect_redirection unless !params[:user_id].nil? and User.exists?(params[:user_id])
+    param_uncorrect_redirection unless !params[:user_id].nil? and User.find(params[:user_id])
   end
 
   def ensure_term_or_event_or_user_parameter?
-    param_uncorrect_redirection unless (!params[:event_id].nil? and Event.exists?(params[:event_id])) or (!params[:term_id].nil? and Term.exists?(params[:term_id])) or (!params[:user_id].nil? and User.exists?(params[:user_id]))
+    param_uncorrect_redirection unless (!params[:event_id].nil? and Event.find(params[:event_id])) or (!params[:term_id].nil? and Term.find(params[:term_id])) or (!params[:user_id].nil? and User.find(params[:user_id]))
   end
 
 

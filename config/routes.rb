@@ -98,7 +98,7 @@ ActionController::Routing::Routes.draw do |map|
         :unsuspend => :get,
         :activate     => :get }
     end
-    event.resources :terms do |term|
+    event.resources :terms, :controller => 'event_terms' do |term|
       term.resources :participations
     end
   end
@@ -107,7 +107,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :terms do |term|
     term.resources :participations
   end
-
 
 
   map.resources :participations, :collection =>{
@@ -134,13 +133,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.activate '/activate_organism/:activation_code', :controller => 'organisms', :action => 'activate', :activation_code => nil
 
-  map.resources :categories
+  map.resources :categories do |category|
+    category.resources :date, :controller => 'categories'
+  end
 
   map.resources :rating, :collection =>{
     :rate => :get }
-
-    map.resources :calendar, :collection =>{
-    :generate => :get }
 
   #deprecated
   map.resources :comments, :collection => { :suspend   => :get,

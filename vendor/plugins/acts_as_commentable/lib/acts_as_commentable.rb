@@ -55,6 +55,12 @@ module Juixe
         def add_comment(comment)
           comments << comment
         end
+
+        def search_comments(search, page, per_page)
+          comments.paginate :per_page => per_page, :page => page,
+            :conditions => ['text like ?', "%#{search}%"],
+            :order => 'created_at DESC'
+        end
       end
       
     end

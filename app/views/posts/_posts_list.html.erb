@@ -3,19 +3,26 @@
     <div class="box">
       <h3><%=h post.name %></h3>
 
-      <b>Text: </b>
-      <div class="whitebox">
+      <%= post.text_long %>
 
-        <%= post.text_short %>
-      </div>
+
+  <%#*<b>Text: </b>%>
+  <%#*<div class="whitebox">%>
+
+  <%#= post.text_short %>
+  <%#*</div>%>
 
       <b>Created</b> <%= time_ago_in_words(post.created_at) %> ago by <%= get_user_name_or_pseudo_link_by_id(post.creator_id) %>
 
       <br />
 
-      <% if post.text_long && post.text_long!='' %>
-        <%= link_to 'Read more', polymorphic_path([@parent_object, post].flatten) %>
-      <% end %>
+
+      <%= link_to 'Read or post some comments', polymorphic_path([@parent_object, post].flatten) %>
+      <br />
+
+  <%# if post.text_long && post.text_long!='' %>
+  <%#= link_to 'Read more', polymorphic_path([@parent_object, post].flatten) %>
+  <%# end %>
       <% if post.is_user_moderator?(current_user) %>
         <%= link_to 'Edit', edit_polymorphic_path([@parent_object, post].flatten) %> |
         <%= link_to 'Activate', polymorphic_path([@parent_object, post].flatten, :action => 'activate') if post.passive? %>
@@ -27,7 +34,7 @@
     <hr />
   <% end %>
   <%= will_paginate @posts %>
-  <% if @posts.size > 0 %>
+  <% if @posts.size == 0 %>
     <div class="bloc">
       No results
     </div>

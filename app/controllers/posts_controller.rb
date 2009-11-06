@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   def show
     @current_object = @post = Post.find(params[:id])
     @parent_object = @post.get_parent_object
+    @comments = @post.search_comments(params[:search], params[:page], ENV['PER_PAGE'])
 
     if(@post.active?) or (current_user && @parent_object.is_user_moderator?(current_user))
       initialize_new_comment(@post)

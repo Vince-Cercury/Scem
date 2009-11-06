@@ -1,26 +1,56 @@
 class CommentsController < ApplicationController
 
+  # store the current location in case of an atempt to login, for redirecting back
+  before_filter :store_location, :only => [:index]
   before_filter :is_logged?, :only => [:create]
   before_filter :ensure_moderator_edit_rights?, :only => [:edit, :update]
   before_filter :not_too_late_edit_comment?, :only => [:edit, :update]
   before_filter :ensure_has_current_user_moderation_rights, :only => [:activate, :suspend, :unsuspend]
 
 
+  def index
+    
+    if params[:organism_id]
+      @current_object = @organism = Organism.find(params[:organism_id])
+      @comments = @organism.search_comments(params[:search], params[:page], ENV['PER_PAGE'])
+      @search_comments_header = 'comments_organism_search'
+      initialize_new_comment(@organism)
+    end
+
+    if params[:event_id]
+      @current_object = @event = Event.find(params[:event_id])
+      @comments = @event.search_comments(params[:search], params[:page], ENV['PER_PAGE'])
+      @search_comments_header = 'comments_event_search'
+      initialize_new_comment(@event)
+    end
+
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @comments }
+      format.js {
+        render :update do |page|
+          page.replace_html 'results', :partial => 'list'
+        end
+      }
+    end
+  end
+
   # POST /comments
   # POST /comments.xml
   def create
     puts "intend to create a comment"
-    comment = Comment.new(params[:comment])
+    @comment = Comment.new(params[:comment])
     commentable_object = Comment.find_commentable(params[:commentable_type], params[:commentable_id])
 
-    comment.user_id = current_user.id
+    @comment.user_id = current_user.id
     #raise commentable_object.inspect
     
-    respond_to do |format|
-      if commentable_object.comments << comment
+    #respond_to do |format|
+      if commentable_object.comments << @comment
 
         #moderation depends on configuration and if the author is a moderator
-        user_creator = User.find(comment.user_id)
+        user_creator = User.find(@comment.user_id)
         list_moderators = commentable_object.get_moderators_list
         if ENV['MODERATE_COMMENTS']=='true'
           moderation_state = true
@@ -35,18 +65,22 @@ class CommentsController < ApplicationController
         if moderation_state
           flash[:notice] = 'Comment created. A moderator will eventually accept it'
         else
-          comment.activate!
+          @comment.activate!
           flash[:notice] = 'Comment was successfully added.'
         end
-
-
-        format.html { redirect_to(url_for_even_polymorphic(commentable_object)) }
-        format.xml  { render :xml => commentable_object, :status => :created, :location => commentable_object }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => commentable_object.errors, :status => :unprocessable_entity }
       end
-    end
+
+    #inserting html
+
+
+       # redirect_back_or_default('/')
+        #format.html { redirect_to(url_for_even_polymorphic(commentable_object)) }
+        #format.xml  { render :xml => commentable_object, :status => :created, :location => commentable_object }
+#      else
+#        format.html { render :action => "new" }
+#        format.xml  { render :xml => commentable_object.errors, :status => :unprocessable_entity }
+#      end
+    #end
   end
 
   # GET /comments/1/edit

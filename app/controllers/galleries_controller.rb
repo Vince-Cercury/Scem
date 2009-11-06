@@ -45,6 +45,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.xml
   def show
     @current_object = @gallery = Gallery.find(params[:id])
+    @comments = @gallery.search_comments(params[:search], params[:page], ENV['PER_PAGE'])
     
     @parent_object = @gallery.get_parent_object
 

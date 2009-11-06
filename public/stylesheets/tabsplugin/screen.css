@@ -20,7 +20,7 @@
 }
 
 .tabs li {
-  float:right;
+  float: left;
   line-height:1.5; 
   list-style-type:none;
   margin:0 .25em 0 0;
@@ -42,13 +42,13 @@
   color:#fff;
   cursor:pointer;
   display:block;
-  float:right;
+  float: left;
   font-weight:bold; 
   text-decoration:none;
 }
 
 .tabs li .selected {
-  float:right;
+  float: left;
   line-height:1.5;
   list-style-type:none;
   margin:0 .25em 0 0;
@@ -97,7 +97,7 @@ border-right: 0px solid black;
   padding:.15em .33em .25em .33em;
 }
 .tabcategories li a {
-  background:#fff;
+  background:transparent;
   height: 30px;
   border:none;
   border-bottom:none;
@@ -121,13 +121,14 @@ border-right: 0px solid black;
   border-bottom:none;
   background: #fff;
   height:1%; /* fixing IE 6 */
+  padding-left: 300px;
   margin:0 0 0 0;
   overflow:auto;
 }
 
-.tabseventevent li {
+.tabsevent li {
   float:right;
-  background: #000;
+  background: #fff;
   text-align:right;
   line-height:1.5;
   list-style-type:none;
@@ -139,13 +140,13 @@ border-right: 0px solid black;
 
 .tabsevent li a {
   background:#000;
-  float:right;
+  float:left;
   margin: 5px 5px 5px 5px;
   padding: 2px 2px 2px 2px;
   border-top:none;
   border-bottom:none;
   border-right:none;
-  color:#ffb500;
+  color:#fff;
   cursor:pointer;
   display:block;
   font-weight:bold;
@@ -154,25 +155,131 @@ border-right: 0px solid black;
 
 
 .tabsevent li .selected {
-  float:right;
+  float:left;
   line-height:1.5;
   list-style-type:none;
   margin: 5px 5px 5px 5px;
   padding: 2px 2px 2px 2px;
-  color:#fff;
+  color:#000;
   background: #ffb500;
   font-weight:bold;
   display:block;
 }
 
 .tabsevent li a:hover {
-  color:#fff;
+  color:#000;
   background: #ffb500;
 }
 
 .tabsevent li a:active {
   color:#aaaaaa;
 }
+/************************* MENU EVENT SHOW *****************/
+.tabsShowEvent {
+  border-bottom:none;
+  height:1%; /* fixing IE 6 */
+  margin:10px 0 0 0;
+  overflow:auto;
+  color: #fff;
+}
+
+.tabsShowEvent li {
+  float:left;
+  line-height:1.5;
+  list-style-type:none;
+  margin: 0 5px 0 0;
+  color:#f0882f;
+  font-weight:bold;
+  text-align:right;
+  display:block;
+}
+
+.tabsShowEvent li a {
+  background:#fff;
+  border-top:none;
+  border-bottom:none;
+  border-right:none;
+  padding: 5px;
+  color:#000;
+  cursor:pointer;
+  display:block;
+  float:right;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.tabsShowEvent li .selected {
+  float:left;
+  line-height:1.5;
+  list-style-type:none;
+  background: #fff;
+  padding: 6px 5px 6px 5px;
+  color:#000;
+  font-weight:bold;
+  display:block;
+}
+
+.tabsShowEvent li a:hover {
+  color:#fff;
+  background: #f0882f;
+}
+
+.tabsShowEvent li a:active {
+  color:#fff;
+}
 
 
+/************************* MENU ORGA SHOW *****************/
+.tabsShowOrganism {
+  border-bottom:none;
+  height:1%; /* fixing IE 6 */
+  margin:10px 0 0 0;
+  overflow:auto;
+  color: #fff;
+}
+
+.tabsShowOrganism li {
+  float:left;
+  line-height:1.5;
+  list-style-type:none;
+  margin: 0 5px 0 0;
+  color:#f0882f;
+  font-weight:bold;
+  text-align:right;
+  display:block;
+}
+
+.tabsShowOrganism li a {
+  background:#fff;
+  border-top:none;
+  border-bottom:none;
+  border-right:none;
+  padding: 5px;
+  color:#000;
+  cursor:pointer;
+  display:block;
+  float:right;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.tabsShowOrganism li .selected {
+  float:left;
+  line-height:1.5;
+  list-style-type:none;
+  background: #fff;
+  padding: 6px 5px 6px 5px;
+  color:#000;
+  font-weight:bold;
+  display:block;
+}
+
+.tabsShowOrganism li a:hover {
+  color:#fff;
+  background: #f0882f;
+}
+
+.tabsShowOrganism li a:active {
+  color:#fff;
+}
 
