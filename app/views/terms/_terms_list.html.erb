@@ -14,11 +14,11 @@
       <div class="listRight">
         <div class="box">
           <h4><%= link_to(event.name, url_for_even_polymorphic(term)) %></h4>
-          <% if !h(term.description).blank? %>
-            <%= term.description %>
-          <% else %>
+          <%# if !h(term.description).blank? %>
+            <%#= term.description %>
+          <%# else %>
             <%=h event.description_short %>
-          <% end %>
+          <%# end %>
 
           <div class="quiet">
             <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
