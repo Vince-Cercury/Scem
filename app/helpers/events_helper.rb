@@ -16,6 +16,18 @@ module EventsHelper
     end
   end
 
+  def display_term_cover(term, style)
+    if term.event.picture.nil?
+      link_to(get_default_event_picture(style), url_for_even_polymorphic(term))
+    else
+      if style == "mini"
+        link_to(image_tag(term.event.picture.attached.url(:small), :height => get_mini_height), url_for_even_polymorphic(term))
+      else
+        link_to(image_tag(term.event.picture.attached.url(style)), url_for_even_polymorphic(term))
+      end
+    end
+  end
+
   def get_default_event_picture(style)
     if style == "mini"
       image_tag("default/event/small/1.jpg", :height => get_mini_height)
@@ -110,5 +122,31 @@ module EventsHelper
       city = event.city
     end
     return city 
+  end
+
+  def get_event_description_long_or_term_description
+    if @term
+      if !@term.description.blank?
+        return @term.description
+      end
+    end
+    if @event
+      if !@event.description_long.blank?
+        return @event.description_long
+      end
+    end
+  end
+
+  def get_event_description_short_or_term_description
+    if @term
+      if !@term.description.blank?
+        return @term.description
+      end
+    end
+    if @event
+      if !@event.description_short.blank?
+        return @event.description_short
+      end
+    end
   end
 end

@@ -9,11 +9,11 @@
         <% else %>
           <%=  display_date_box(term.start_at) %>
         <% end %><br />
-        <%= display_event_cover(event, :small) %>
+        <%= display_term_cover(term, :small) %>
       </div>
       <div class="listRight">
         <div class="box">
-          <h4><%= link_to(event.name, event) %></h4>
+          <h4><%= link_to(event.name, url_for_even_polymorphic(term)) %></h4>
           <% if !h(term.description).blank? %>
             <%= term.description %>
           <% else %>

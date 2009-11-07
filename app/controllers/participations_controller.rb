@@ -87,7 +87,7 @@ class ParticipationsController < ApplicationController
       respond_to do |format|
         if participation.save
           flash[:notice] = 'Relation work is done.'
-          format.html { redirect_to(term.event) }
+          format.html { redirect_to(url_for_even_polymorphic(term)) }
           format.xml  { head :ok }
         else
           format.html { render :action => "new" }

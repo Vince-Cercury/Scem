@@ -30,6 +30,7 @@ class CategoriesController < ApplicationController
   def show
     if params[:category_id]
       @category = Category.find(params[:category_id])
+      date_param = params[:id]
     else
       @category = Category.find(params[:id])
     end
@@ -37,7 +38,7 @@ class CategoriesController < ApplicationController
     @show_end_date = true
     
 
-    if !params[:date] 
+    if !date_param
       if params[:period] == "past"
         @period_link_param = "futur"
         @terms = Term.search_has_publisher_past_by_category(params[:search], params[:page], @category.id)
@@ -47,7 +48,7 @@ class CategoriesController < ApplicationController
         @terms = Term.search_has_publisher_futur_by_category(params[:search], params[:page], @category.id)
       end
     else
-      @the_selected_date = Time.parse(params[:date])
+      @the_selected_date = Time.parse(date_param)
       today = Time.zone.now
       #if date selected is the same as today
       if @the_selected_date.strftime("%y") == today.strftime("%y") && @the_selected_date.strftime("%m") == today.strftime("%m") && @the_selected_date.strftime("%d") == today.strftime("%d")

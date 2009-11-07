@@ -60,11 +60,11 @@ class TermsController < ApplicationController
     end
   end
 
-  # GET /terms/1/edit
-  def edit
-    @event = Event.find(params[:event_id])
-    @term = Term.find(params[:id])
-  end
+#  # GET /terms/1/edit
+#  def edit
+#    @event = Event.find(params[:event_id])
+#    @term = Term.find(params[:id])
+#  end
 
   # POST /terms
   # POST /terms.xml
@@ -95,24 +95,24 @@ class TermsController < ApplicationController
     end
   end
 
-  # PUT /terms/1
-  # PUT /terms/1.xml
-  def update
-    @term = Term.find(params[:id])
-    @event = Event.find(params[:event_id])
-
-
-    respond_to do |format|
-      if @term.update_attributes(parse_term_params)
-        flash[:notice] = 'Term was successfully updated.'
-        format.html { redirect_to(@event) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @term.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+#  # PUT /terms/1
+#  # PUT /terms/1.xml
+#  def update
+#    @term = Term.find(params[:id])
+#    @event = Event.find(params[:event_id])
+#
+#
+#    respond_to do |format|
+#      if @term.update_attributes(parse_term_params)
+#        flash[:notice] = 'Term was successfully updated.'
+#        format.html { redirect_to(@event) }
+#        format.xml  { head :ok }
+#      else
+#        format.html { render :action => "edit" }
+#        format.xml  { render :xml => @term.errors, :status => :unprocessable_entity }
+#      end
+#    end
+#  end
 
   # DELETE /terms/1
   # DELETE /terms/1.xml
@@ -130,13 +130,13 @@ class TermsController < ApplicationController
   
   protected
 
-  def parse_term_params
-    term_params_parsed = Hash.new
-    term_params_parsed[:start_at] = Time.parse(params[:term][:start_at] + " " + params[:term][:start_hour]+":"+params[:term][:start_min])
-    term_params_parsed[:end_at] = Time.parse(params[:term][:end_at] + " " + params[:term][:end_hour]+":"+params[:term][:end_min])
-    term_params_parsed[:description] = params[:term][:description]
-    return term_params_parsed
-  end
+#  def parse_term_params
+#    term_params_parsed = Hash.new
+#    term_params_parsed[:start_at] = Time.parse(params[:term][:start_at] + " " + params[:term][:start_hour]+":"+params[:term][:start_min])
+#    term_params_parsed[:end_at] = Time.parse(params[:term][:end_at] + " " + params[:term][:end_hour]+":"+params[:term][:end_min])
+#    term_params_parsed[:description] = params[:term][:description]
+#    return term_params_parsed
+#  end
 
   def ensure_event_parameter?
     no_event_param_redirection unless !params[:event_id].nil? && !Event.find(params[:event_id]).nil?
