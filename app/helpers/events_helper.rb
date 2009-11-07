@@ -149,4 +149,15 @@ module EventsHelper
       end
     end
   end
+
+  def get_event_if_term_url(term)
+    event = term.event
+    if event.terms.size == 0
+      return url_for(event)
+    elsif event.terms.size == 1
+      return url_for(event)
+    else
+      return url_for_even_polymorphic(term)
+    end
+  end
 end

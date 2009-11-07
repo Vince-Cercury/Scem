@@ -13,7 +13,7 @@
       </div>
       <div class="listRight">
         <div class="box">
-          <h4><%= link_to(event.name, url_for_even_polymorphic(term)) %></h4>
+          <h4><%= link_to(event.name, get_event_if_term_url(term)) %></h4>
           <%# if !h(term.description).blank? %>
             <%#= term.description %>
           <%# else %>

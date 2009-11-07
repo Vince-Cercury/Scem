@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091103153631) do
+ActiveRecord::Schema.define(:version => 20091107115322) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cached_slug"
   end
 
   create_table "activities_organisms", :id => false, :force => true do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20091103153631) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
+    t.string   "cached_slug"
   end
 
   create_table "categories_events", :id => false, :force => true do |t|
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20091103153631) do
     t.string   "location"
     t.string   "street"
     t.string   "city"
+    t.string   "cached_slug"
   end
 
   create_table "galleries", :force => true do |t|
@@ -104,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20091103153631) do
     t.string   "add_picture_right",      :default => "moderators"
     t.boolean  "add_picture_moderation", :default => true
     t.string   "name"
+    t.string   "cached_slug"
   end
 
   create_table "images", :force => true do |t|
@@ -144,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20091103153631) do
     t.integer  "edited_by"
     t.string   "street"
     t.string   "city"
+    t.string   "cached_slug"
   end
 
   create_table "organisms_users", :force => true do |t|
@@ -243,6 +248,7 @@ ActiveRecord::Schema.define(:version => 20091103153631) do
     t.integer  "event_id"
     t.integer  "facebook_eid", :limit => 8
     t.text     "description"
+    t.string   "cached_slug"
   end
 
   create_table "users", :force => true do |t|

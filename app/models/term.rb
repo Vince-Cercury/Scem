@@ -1,25 +1,37 @@
 class Term < ActiveRecord::Base
 
+  belongs_to :event
 
-  validates_presence_of :start_at, :end_at
-  validates_length_of :description, :maximum=>400
+  has_friendly_id :url_start_param, :use_slug => true #, :scope => :event
 
-  #validates_datetime :start, :allow_nil => false
+  def url_start_param
+    s = start_at
+    e = end_at
+    result = ""
+    result += "#{s.day}-#{s.month}-#{s.year}-#{s.hour}-#{s.min}"
+    #result += '-to-'
+    #result += "#{e.day}-#{e.month}-#{e.year}-#{e.hour}-#{e.min}"
+  end
 
-  #validates_datetime :end, :allow_nil => false
-
-
-  validates_datetime :start_at, :after => Proc.new { Time.zone.now },
-    :after_message => "date must be in the future"
-
-
-  validates_datetime :end_at, :after => Proc.new { Time.zone.now },
-    :after_message => "date must be in the future"
-
-
-  validates_datetime :start_at,
-    :before => :end_at,
-    :before_message => "must be before end"
+#  validates_presence_of :start_at, :end_at
+#  validates_length_of :description, :maximum=>400
+#
+#  #validates_datetime :start, :allow_nil => false
+#
+#  #validates_datetime :end, :allow_nil => false
+#
+#
+#  validates_datetime :start_at, :after => Proc.new { Time.zone.now },
+#    :after_message => "date must be in the future"
+#
+#
+#  validates_datetime :end_at, :after => Proc.new { Time.zone.now },
+#    :after_message => "date must be in the future"
+#
+#
+#  validates_datetime :start_at,
+#    :before => :end_at,
+#    :before_message => "must be before end"
 
   def start_hour
     start_at.strftime("%H") unless start_at.nil?
@@ -36,8 +48,7 @@ class Term < ActiveRecord::Base
   def end_min
     end_at.strftime("%M") unless end_at.nil?
   end
-  
-  belongs_to :event
+
 
   has_many :participations
   has_many :participants, :through => :participations
