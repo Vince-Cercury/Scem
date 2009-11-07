@@ -13,25 +13,25 @@ class Term < ActiveRecord::Base
     #result += "#{e.day}-#{e.month}-#{e.year}-#{e.hour}-#{e.min}"
   end
 
-#  validates_presence_of :start_at, :end_at
-#  validates_length_of :description, :maximum=>400
-#
-#  #validates_datetime :start, :allow_nil => false
-#
-#  #validates_datetime :end, :allow_nil => false
-#
-#
-#  validates_datetime :start_at, :after => Proc.new { Time.zone.now },
-#    :after_message => "date must be in the future"
-#
-#
-#  validates_datetime :end_at, :after => Proc.new { Time.zone.now },
-#    :after_message => "date must be in the future"
-#
-#
-#  validates_datetime :start_at,
-#    :before => :end_at,
-#    :before_message => "must be before end"
+  validates_presence_of :start_at, :end_at
+  validates_length_of :description, :maximum=>400
+
+  #validates_datetime :start, :allow_nil => false
+
+  #validates_datetime :end, :allow_nil => false
+
+
+  validates_datetime :start_at, :after => Proc.new { Time.zone.now },
+    :after_message => "date must be in the future"
+
+
+  validates_datetime :end_at, :after => Proc.new { Time.zone.now },
+    :after_message => "date must be in the future"
+
+
+  validates_datetime :start_at,
+    :before => :end_at,
+    :before_message => "must be before end"
 
   def start_hour
     start_at.strftime("%H") unless start_at.nil?

@@ -65,6 +65,7 @@
   <div class="eventShowBodyMiddle">
     <p>
       <%= get_event_description_short_or_term_description %>
+      <% if !@event.description_long.blank? %>
       <br/>
       <%=   link_to_function("Show me more...", nil, :id => "more_link") do |page|
         page.visual_effect(:toggle_blind, 'description_long')
@@ -74,6 +75,7 @@
           page.replace_html(:more_link,"Show me more...")
         page << "}"
       end %>
+      <% end %>
     </p>
   </div>
 <% end %>
