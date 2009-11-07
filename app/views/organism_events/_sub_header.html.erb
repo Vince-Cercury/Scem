@@ -1,0 +1,22 @@
+<!--<% if @category.nil? %><h3 class="titleevent"><%= t("events.listing_events") %></h3><% end %>-->
+
+<h3 class="titleevent"></h3>
+<div class="listContent">
+<ul class="tabsevent">
+  <li>
+    <% if params[:period]=='past'%>
+      <%= link_to t('terms.next_events_coming'), organism_events_path(:period => 'futur') %>
+    <% else %>
+      <%= link_to(t('terms.next_events_coming'), organism_events_path(:period => 'futur'), :class => 'selected') %>
+    <% end %>
+  </li>
+  <li>
+    <% if params[:period]!='past'%>
+      <%= link_to t('terms.already_started_or_past'), organism_events_path(:period => 'past') %>
+    <% else %>
+      <%= link_to t('terms.already_started_or_past'), organism_events_path(:period => 'past'), :class => 'selected' %>
+    <% end %>
+  </li>
+</ul>
+
+

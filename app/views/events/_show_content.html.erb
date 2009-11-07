@@ -95,7 +95,9 @@
 <% end %>
 <div>
 </div>
-<%#= render :partial => "contributions" %>
+<div class="eventShowBodyMiddle">
+<%= render :partial => "/events/contributions" %>
+</div>
 <%#*<div class="eventShowBodyMiddle"><h4 class="caps">DATE(S)</h4></div>%>
 <%# if current_user && @event.is_granted_to_edit?(current_user) %>
 <%#*<div class="span-4 last"><%= link_to('New term', new_url_for_even_polymorphic(@event, :term)) %>

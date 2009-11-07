@@ -137,6 +137,24 @@ class Term < ActiveRecord::Base
       :group => 'terms.id'
   end
 
+  def self.search_has_publisher_futur_by_organism(search, page, organism_id, is_private=false)
+    paginate  :per_page => ENV['PER_PAGE'],
+      :page => page,
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and contributions.organism_id = ?', "%#{search}%", is_private, organism_id],
+      :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id",
+      :order => 'start_at ASC',
+      :group => 'terms.id'
+  end
+
+  def self.search_has_publisher_past_by_organism(search, page, organism_id, is_private=false)
+    paginate  :per_page => ENV['PER_PAGE'],
+      :page => page,
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() and contributions.organism_id = ?', "%#{search}%", is_private, organism_id],
+      :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id",
+      :order => 'start_at ASC',
+      :group => 'terms.id'
+  end
+
   def self.search_has_no_publisher_futur_by_category(search, page, per_page, category_id, is_private=false)
     paginate  :per_page => per_page,
       :page => page,
