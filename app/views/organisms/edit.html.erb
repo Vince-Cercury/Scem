@@ -51,6 +51,14 @@
       <%= f.check_box :in_directory %>
       <br />
       <p>
+        <%= f.label :admins_password %>:<br />
+        <%= f.text_field :admins_password %>
+      </p>
+      <p>
+        <%= f.label :moderators_password %>:<br />
+        <%= f.text_field :moderators_password %>
+      </p>
+      <p>
         <%= f.label :members_password %>:<br />
         <%= f.text_field :members_password %>
       </p>

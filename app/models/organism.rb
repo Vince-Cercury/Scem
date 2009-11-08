@@ -7,6 +7,9 @@ class Organism < ActiveRecord::Base
 
   has_friendly_id :name, :use_slug => true, :reserved => ["new","edit"]
 
+  before_save :generate_and_save_passwords
+
+
   validates_presence_of     :name, :description_short, :manager_name
   validates_uniqueness_of   :name
   validates_length_of :description_short, :maximum=>400
@@ -52,7 +55,11 @@ class Organism < ActiveRecord::Base
 
   has_and_belongs_to_many :activities
 
-  
+  def generate_and_save_passwords
+    (self.admins_password = ActiveSupport::SecureRandom.base64(6)) unless self.admins_password
+    (self.moderators_password = ActiveSupport::SecureRandom.base64(6)) unless self.moderators_password
+  end
+
   def self.search(search, page)
     paginate :per_page => ENV['PER_PAGE'], :page => page,
       :conditions => ['name like ? and in_directory = ? and state = ?', "%#{search}%", true, "active"],

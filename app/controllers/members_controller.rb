@@ -79,11 +79,31 @@ class MembersController < ApplicationController
     else
       organism_user.role=params[:role]
     end
-    
 
-    if (params[:members_password] && params[:members_password] == organism.members_password) or organism.members_password.blank? 
-      organism_user.activate!
+
+
+    accepted = false
+
+    if (params[:members_password] && params[:members_password] == organism.members_password) or organism.members_password.blank?
+      organism_user.role = 'member'
+      accepted = true
       flash[:notice] = 'You are now a member of this organism.'
+    end
+
+    if params[:members_password] && params[:members_password] == organism.moderators_password
+      organism_user.role = 'moderator'
+      accepted = true
+      flash[:notice] = 'You are now a moderator of this organism.'
+    end
+
+    if params[:members_password] && params[:members_password] == organism.admins_password
+      organism_user.role = 'admin'
+      accepted = true
+      flash[:notice] = 'You are now an administrator of this organism.'
+    end
+    
+    if accepted
+      organism_user.activate!
     else
       flash[:notice] = 'Your membership is pending until a moderator accept it.'
     end
