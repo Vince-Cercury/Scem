@@ -8,6 +8,15 @@
       <%= link_to("Profil", url_profile, :class => 'selected') %>
     <% end %>
   </li>
+  <% if get_event_street(@event) && get_event_city(@event) %>
+    <li>
+      <% if controller_name != 'maps' %>
+        <%= link_to("Map", event_maps_path(@event)) %>
+      <% else %>
+        <%= link_to("Map", organism_maps_path(@event), :class => 'selected') %>
+      <% end %>
+    </li>
+  <% end %>
   <% if @event.terms.size > 0 || is_event_moderator?(@event) %>
     <li>
       <% if controller_name != 'terms' %>

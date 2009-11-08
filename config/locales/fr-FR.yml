@@ -16,6 +16,8 @@ fr-FR:
   Tomorrow: "Demain"
   Yesterday: "Hier"
   next_number: "{{number}} suivants"
+  map:
+    not_found: "Adresse introuvable"
   main_menu:
     events_by_date: Accueil
     directory: Annuaire

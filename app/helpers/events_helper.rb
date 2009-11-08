@@ -172,4 +172,19 @@ module EventsHelper
       return url_for_even_polymorphic(term)
     end
   end
+
+  def get_event_place_as_string(event)
+    result = ""
+    if get_event_location(event) && get_event_street(event) && get_event_city(event)
+      result = get_event_location(event) + ", " + get_event_street(event) + ", " + get_event_city(event)
+    end
+    if get_event_street(event) && get_event_city(event)
+      result = get_event_street(event) + ", " + get_event_city(event)
+    elsif get_event_street(event)
+      result = get_event_street(event)
+    elsif get_event_city(event)
+      result = get_event_city(event)
+    end
+    return result
+  end
 end

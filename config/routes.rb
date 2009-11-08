@@ -53,6 +53,7 @@ ActionController::Routing::Routes.draw do |map|
         :unsuspend => :get,
         :activate     => :get }
     end
+    organism.resources :maps
   end
 
 
@@ -101,6 +102,7 @@ ActionController::Routing::Routes.draw do |map|
     event.resources :terms, :controller => 'event_terms' do |term|
       term.resources :participations
     end
+    event.resources :maps
   end
 
   #deprecated

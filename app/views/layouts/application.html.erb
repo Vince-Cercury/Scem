@@ -37,6 +37,10 @@
 
     <%= javascript_include_tag :fckeditor %>
 
+    <% if controller_name == 'maps' %>
+        <%= GMap.header %>
+        <%= @map.to_html %>
+    <% end %>
 
   </head>
   <body>

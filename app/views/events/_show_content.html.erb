@@ -18,18 +18,12 @@
     <% end %>
   </div>
   <div class="eventShowBodyRight">
+    <% if !get_event_place_as_string(@event).blank? %>
     <p>
-      <b>location</b>:
-      <%= get_event_location(@event) %>
+      <b>Place</b>:
+      <%= link_to(get_event_place_as_string(@event), event_maps_path(@event)) %>
     </p>
-    <p>
-      <b>number, street/road</b>:
-      <%= get_event_street(@event) %>
-    </p>
-    <p>
-      <b>Town/city</b>:
-      <%= get_event_city(@event) %>
-    </p>
+    <% end %>
     <% if current_user && @event.is_granted_to_edit?(current_user) %>
       <p>
         <b>Is charged:</b>

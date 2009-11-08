@@ -42,6 +42,15 @@
       <% end %>
     </li>
   <% end %>
+  <% if @organism.street && @organism.city %>
+    <li>
+      <% if controller_name != 'maps' %>
+        <%= link_to("Map", organism_maps_path(@organism)) %>
+      <% else %>
+        <%= link_to("Map", organism_maps_path(@organism), :class => 'selected') %>
+      <% end %>
+    </li>
+  <% end %>
   <% if is_organism_admin?(@organism) %>
     <li>
       <% if (controller_name != 'organisms' || controller.action_name!='edit') %>

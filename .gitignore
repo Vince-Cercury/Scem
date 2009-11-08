@@ -4,6 +4,7 @@ config/environment.rb
 config/database.yml
 config/database.yml_GANDI
 config/facebooker.yml
+config/gmaps_api_key.yml
 config/environments/development.rb
 config/environments/production.rb
 config/environments/test.rb
