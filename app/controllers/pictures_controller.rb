@@ -72,7 +72,7 @@ class PicturesController < ApplicationController
 
     ensure_parent_parameters
 
-   # raise Picture.get_picture_root_path(params[:parent_type], params[:parent_id]).inspect
+    # raise Picture.get_picture_root_path(params[:parent_type], params[:parent_id]).inspect
 
     if !@parent_object.picture.nil?
       if !@parent_object.picture.suspended?
@@ -177,7 +177,7 @@ class PicturesController < ApplicationController
     wrong_parameters_redirection unless @parent_object
   end
 
-    def get_parent_object_from_params
+  def get_parent_object_from_params
     
     if(params[:organism_id])
       parent_object = Organism.find(params[:organism_id])
@@ -214,7 +214,9 @@ class PicturesController < ApplicationController
 
   def ensure_create_rights?
     parent_object = get_parent_object_from_params
-    not_enough_rights unless current_user && ((parent_object && (parent_object.is_user_moderator?(current_user)) or current_user.has_system_role('moderator') or (parent_object.type=="Gallery" && parent_object.is_user_allowed_add_picture(current_user))))
+    if parent_object
+      not_enough_rights unless current_user && ((parent_object.is_user_moderator?(current_user)) or current_user.has_system_role('moderator') or (parent_object.type=="Gallery" && parent_object.is_user_allowed_add_picture(current_user)))
+    end
   end
 
   def ensure_has_current_user_moderation_rights

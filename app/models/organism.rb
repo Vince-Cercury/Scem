@@ -2,6 +2,9 @@ class Organism < ActiveRecord::Base
   include SharedMethods
   before_validation :remove_whitespace_from_name
 
+  attr_accessible :name, :activity_ids, :description_short, :description_long, :manager_name, :phone, :street, :city
+
+
   has_friendly_id :name, :use_slug => true, :reserved => ["new","edit"]
 
   validates_presence_of     :name, :description_short, :manager_name
@@ -50,8 +53,6 @@ class Organism < ActiveRecord::Base
   has_and_belongs_to_many :activities
 
   
-  attr_accessible :name, :activity_ids, :description_short, :description_long, :manager_name, :phone, :street, :city
-
   def self.search(search, page)
     paginate :per_page => ENV['PER_PAGE'], :page => page,
       :conditions => ['name like ? and in_directory = ? and state = ?', "%#{search}%", true, "active"],
