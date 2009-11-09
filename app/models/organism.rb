@@ -5,7 +5,7 @@ class Organism < ActiveRecord::Base
   attr_accessible :name, :activity_ids, :description_short, :description_long, :manager_name, :phone, :street, :city
 
 
-  has_friendly_id :name, :use_slug => true, :reserved => ["new","edit"]
+  has_friendly_id :name, :use_slug => true, :strip_diacritics => true #, :reserved => ["new","edit"]
 
   before_save :generate_and_save_passwords
 

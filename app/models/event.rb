@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   include SharedMethods
   before_validation :remove_whitespace_from_name
 
-  has_friendly_id :name, :use_slug => true, :reserved => ["new","edit"]
+  has_friendly_id :name, :use_slug => true, :strip_diacritics => true #, :reserved => ["new","edit"]
 
   has_many :galleries, :as => :parent, :dependent => :destroy
 
