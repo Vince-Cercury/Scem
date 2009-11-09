@@ -177,8 +177,7 @@ module EventsHelper
     result = ""
     if get_event_location(event) && get_event_street(event) && get_event_city(event)
       result = get_event_location(event) + ", " + get_event_street(event) + ", " + get_event_city(event)
-    end
-    if get_event_street(event) && get_event_city(event)
+    elsif get_event_street(event) && get_event_city(event)
       result = get_event_street(event) + ", " + get_event_city(event)
     elsif get_event_street(event)
       result = get_event_street(event)
