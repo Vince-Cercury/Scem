@@ -97,4 +97,12 @@ class Gallery < ActiveRecord::Base
     pictures.find_by_cover(true) or pictures.first
   end
 
+  def defined_cover
+    pictures.find_by_cover(true)
+  end
+
+  def get_rand_pics_not_cover(number)
+    pictures.find_all_by_cover(false, :limit => number, :order => "RAND()")
+  end
+
 end

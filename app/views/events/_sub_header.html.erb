@@ -17,7 +17,7 @@
       <% end %>
     </li>
   <% end %>
-  <% if @event.terms.size > 0 || is_event_moderator?(@event) %>
+  <% if @event.terms.size > 0 %>
     <li>
       <% if controller_name != 'terms' %>
         <%= link_to("Dates", event_terms_path(@event)) %>
