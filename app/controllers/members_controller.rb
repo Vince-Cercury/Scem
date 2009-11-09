@@ -175,7 +175,7 @@ class MembersController < ApplicationController
   protected
 
   def ensure_organism_parameter?
-    param_uncorrect_redirection unless !params[:organism_id].nil? and Organism.exists?(params[:organism_id])
+    param_uncorrect_redirection unless !params[:organism_id].nil? and Organism.find(params[:organism_id])
   end
 
 
@@ -184,7 +184,7 @@ class MembersController < ApplicationController
   end
 
   def ensure_organism_or_user_parameter?
-    param_uncorrect_redirection unless (!params[:organism_id].nil? and Organism.exists?(params[:organism_id])) or (!params[:user_id].nil? and User.exists?(params[:user_id]))
+    param_uncorrect_redirection unless (!params[:organism_id].nil? and Organism.find(params[:organism_id])) or (!params[:user_id].nil? and User.exists?(params[:user_id]))
   end
 
 
