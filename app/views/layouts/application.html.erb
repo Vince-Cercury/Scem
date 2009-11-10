@@ -74,36 +74,50 @@
 
             
       <div class="menu">
-        <div class="span-2 colborder">
-          <% categories_by_parent_id(0).each do |category| %>
-              <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
-          <% end %>
+        <div class="colallcategories">
+          <ul class='tabsCategories'>
+            <% categories_by_parent_id(0).each do |category| %>
+              <li>
+                <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+              </li>
+            <% end %>
+          </ul>
         </div>
-        <div class="span-2 colborder">
-          <% categories_by_parent_id(1).each do |category| %>
-
-              <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
-
-          <% end %>
+        <div class="colcategories">
+          <ul class='tabsCategories'>
+            <% categories_by_parent_id(1).each do |category| %>
+              <li>
+                <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+              </li>
+            <% end %>
+          </ul>
         </div>
-        <div class="span-2 colborder">
-          <% categories_by_parent_id(2).each do |category| %>
-
-             <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
-
-          <% end %>
+        <div class="colcategories">
+          <ul class='tabsCategories'>
+            <% categories_by_parent_id(2).each do |category| %>
+              <li>
+                <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+              </li>
+            <% end %>
+          </ul>
         </div>
-        <div class="span-2 colborder">
-          <% categories_by_parent_id(3).each do |category| %>
-
-           <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
-
-          <% end %>
+        <div class="colcategories">
+          <ul class='tabsCategories'>
+            <% categories_by_parent_id(3).each do |category| %>
+              <li>
+                <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+              </li>
+            <% end %>
+          </ul>
         </div>
-        <div class="span-2 last">
-          <% categories_by_parent_id(4).each do |category| %>
-            <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
-          <% end %>
+        <div class="colcategories">
+          <ul class='tabsCategories'>
+            <% categories_by_parent_id(4).each do |category| %>
+              <li>
+                <% if (controller_name == 'categories' && params[:id].to_i==category.id) %><%= link_to(category.name, url_for(category_path(category)), :class => 'selected') %><% else %><%= link_to(category.name, url_for(category_path(category))) %><% end %>
+              </li>
+            <% end %>
+          </ul>
         </div>
       </div>
 
