@@ -16,11 +16,14 @@ en-US:
   Tomorrow: "Tomorrow"
   Yesterday: "Yesterday"
   next_number: "next {{number}}"
+  map:
+    not_found: "Address not found"
   main_menu:
     events_by_date: Events by dates
     directory: Yellow pages
     pictures_galleries: Pictures galleries
     users: Users
+    information: Info ?
   side_bar:
     calendar: Calendar
     search_into: "Search into"

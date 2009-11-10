@@ -14,4 +14,15 @@ module GalleriesHelper
       return false
     end
   end
+
+  def get_cover_and_random_pics(gallery, number)
+    results = Array.new
+    if gallery.defined_cover
+      results << gallery.cover
+      number = number -1
+    end
+    if gallery.get_rand_pics_not_cover(number)
+      results += gallery.get_rand_pics_not_cover(number)
+    end
+  end
 end

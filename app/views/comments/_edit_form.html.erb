@@ -1,0 +1,27 @@
+
+<div id='form-update-comment_<%= comment.id %>'>
+      <div class="commentaireLeft">
+      <%= display_user_cover_by_id(comment.user_id, "mini") %>
+      <%= get_user_name_or_pseudo_link_by_id(comment.user_id) %>
+    </div>
+<div class="commentaireRight">
+  <div id='form-update-comment-fields_<%= comment.id %>'>
+  <% loading = "$('update-comment-spinner_#{comment.id}').show(); " + "$('form-update-comment-fields_#{comment.id}').hide();" %>
+  <% remote_form_for(:comment, comment, :url => {:controller => 'comments', :action => 'update', :comment_id => comment.id}, :before => fckeditor_before_js('comment', 'text'), :loading => loading) do |f| %>
+
+    <p>
+      Edit the comment:<br />
+      <%= fckeditor_textarea(:comment, :text, :ajax => true, :toolbarSet => 'Comment', :width => '100%', :height => '150px') %>
+    </p>
+
+    <%= f.submit 'Update' %>
+
+
+  <% end %>
+  </div>
+  <div class="update-comment-spinner" id="update-comment-spinner_<%= comment.id %>" style="display:none;">
+    <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
+    <%= image_tag "spinner-horizontal-big.gif", :class => "image", :alt => "loading form" %>
+  </div>
+</div>
+</div>

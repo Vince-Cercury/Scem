@@ -2,10 +2,14 @@
 </div>
 <div class="gallerieBar">
   <h4>PICTURES GALLERIES</h4>
-  <% @current_object.galleries.each do |gallery| %>
+  <% @current_object.galleries(:limit => 2, :order => 'updated_at DESC').each do |gallery| %>
     <div class="gallerieBarBox">
     
-        <%= link_to(display_gallery_cover(gallery, :thumb), gallery) %>&nbsp;
+        <%#= link_to(display_gallery_cover(gallery, :thumb), gallery) %>
+      <% get_cover_and_random_pics(gallery, 3).each do |picture| %>
+        <%= link_to(image_tag(picture.attached.url(:thumb)), polymorphic_path([gallery.get_parent_object, gallery].flatten)) %>
+      <% end %>
+
         <%= link_to gallery.name, polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
         <%= gallery.pictures.size %>&nbsp;photos
    

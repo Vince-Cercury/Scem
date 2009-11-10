@@ -1,12 +1,23 @@
 <ul class='tabsShowEvent'>
   <li>
+    <% if @term%><% url_profile = url_for_even_polymorphic(@term) %><% else %><% url_profile = url_for(@event) %><% end %>
+
     <% if controller_name != 'events' || controller.action_name=='edit' || controller.action_name=='share' %>
-      <%= link_to("Profil", @event) %>
+      <%= link_to("Profil", url_profile) %>
     <% else %>
-      <%= link_to("Profil", @event, :class => 'selected') %>
+      <%= link_to("Profil", url_profile, :class => 'selected') %>
     <% end %>
   </li>
-  <% if @event.terms.size > 0 || is_event_moderator?(@event) %>
+  <% if get_event_street(@event) && get_event_city(@event) %>
+    <li>
+      <% if controller_name != 'maps' %>
+        <%= link_to("Map", event_maps_path(@event)) %>
+      <% else %>
+        <%= link_to("Map", organism_maps_path(@event), :class => 'selected') %>
+      <% end %>
+    </li>
+  <% end %>
+  <% if @event.terms.size > 0 %>
     <li>
       <% if controller_name != 'terms' %>
         <%= link_to("Dates", event_terms_path(@event)) %>
@@ -24,14 +35,16 @@
       <% end %>
     </li>
   <% end %>
-  <% if @event.list_participants.size > 0 %>
+  <% if @term %>
+    <% if @term.participations.size > 0 %>
     <li>
       <% if controller_name != "participations" %>
-        <%= link_to("Participants", term_participations_path(:term_id => @event.terms.first.id, :role =>:sure)) %>
+        <%= link_to("Participants", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure)) %>
       <% else %>
-        <%= link_to("Participants", term_participations_path(:term_id => @event.terms.first.id, :role =>:sure), :class => 'selected') %>
+        <%= link_to("Participants", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure), :class => 'selected') %>
       <% end %>
     </li>
+    <% end %>
   <% end %>
 <% if @event.galleries.size > 0 %>
   <li>

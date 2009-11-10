@@ -34,7 +34,9 @@ module ApplicationHelper
     end
     if  controller_name == 'users'
       if @user
-        result += " - " + get_user_name_or_pseudo(@user)
+        if get_user_name_or_pseudo(@user)
+          result += " - " + get_user_name_or_pseudo(@user)
+        end
       else
         result += " - " + t('Users')
       end

@@ -87,6 +87,14 @@ class User < ActiveRecord::Base
     obj.has_many :sure_participate, :conditions => "participations.role = 'sure'"
     obj.has_many :maybe_participate, :conditions => "participations.role = 'maybe'"
     obj.has_many :not_participate, :conditions => "participations.role = 'not'"
+
+    obj.has_many :sure_participate_futur, :conditions => "participations.role = 'sure' and terms.start_at > NOW()"
+    obj.has_many :maybe_participate_futur, :conditions => "participations.role = 'maybe' and terms.start_at > NOW()"
+    obj.has_many :not_participate_futur, :conditions => "participations.role = 'not' and terms.start_at > NOW()"
+
+        obj.has_many :sure_participate_past, :conditions => "participations.role = 'sure' and terms.start_at <= NOW()"
+    obj.has_many :maybe_participate_past, :conditions => "participations.role = 'maybe' and terms.start_at <= NOW()"
+    obj.has_many :not_participate_past, :conditions => "participations.role = 'not' and terms.start_at <= NOW()"
   end
 
   after_create :register_user_to_fb
@@ -123,6 +131,48 @@ class User < ActiveRecord::Base
         :order => 'events.name'
     end
   end
+
+  def search_participate_futur(role, search, page)
+    case role
+    when "maybe"
+      maybe_participate.paginate :per_page => ENV['PER_PAGE'], :page => page,
+        :conditions => ['name like ? and terms.start_at > NOW()', "%#{search}%"],
+        :include => :event,
+        :order => 'events.name'
+    when "not"
+      not_participate.paginate :per_page => ENV['PER_PAGE'], :page => page,
+        :conditions => ['name like ? and terms.start_at > NOW()', "%#{search}%"],
+        :include => :event,
+        :order => 'events.name'
+    else
+      sure_participate.paginate :per_page => ENV['PER_PAGE'], :page => page,
+        :conditions => ['name like ? and terms.start_at > NOW()', "%#{search}%"],
+        :include => :event,
+        :order => 'events.name'
+    end
+  end
+  
+  def search_participate_past(role, search, page)
+    case role
+    when "maybe"
+      maybe_participate.paginate :per_page => ENV['PER_PAGE'], :page => page,
+        :conditions => ['name like ? and terms.start_at <= NOW()', "%#{search}%"],
+        :include => :event,
+        :order => 'events.name'
+    when "not"
+      not_participate.paginate :per_page => ENV['PER_PAGE'], :page => page,
+        :conditions => ['name like ? and terms.start_at <= NOW()', "%#{search}%"],
+        :include => :event,
+        :order => 'events.name'
+    else
+      sure_participate.paginate :per_page => ENV['PER_PAGE'], :page => page,
+        :conditions => ['name like ? and terms.start_at <= NOW()', "%#{search}%"],
+        :include => :event,
+        :order => 'events.name'
+    end
+  end
+
+
 
   def search_participate_in_futur(search, page, max_results)
     participations.paginate :per_page => max_results, :page => page,

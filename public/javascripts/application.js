@@ -44,13 +44,3 @@ function event_copy_start_date_to_end_date(start_date){
     })
 
 
-var FCKFixer = {
-  fixIt: function() {
-    for ( i = 0; i < parent.frames.length; ++i )
-      if ( parent.frames[i].FCK )
-        parent.frames[i].FCK.UpdateLinkedField();
-  }
-}
-
-
-

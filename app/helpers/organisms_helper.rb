@@ -27,4 +27,15 @@ module OrganismsHelper
     end
   end
 
+    def get_organism_address_as_string(organism)
+    result = ""
+      if organism.street && organism.city
+        result = organism.street + ", " + organism.city
+      elsif organism.street
+        result = organism.street
+      elsif organism.city
+        result = organism.city
+      end
+    return result
+  end
 end

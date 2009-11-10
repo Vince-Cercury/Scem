@@ -2,7 +2,7 @@ class Gallery < ActiveRecord::Base
   include SharedMethods
   before_validation :remove_whitespace_from_name
 
-  has_friendly_id :name, :use_slug => true, :reserved => ["new","edit", "edit_pics", "add_pics"]
+  has_friendly_id :name, :use_slug => true, :strip_diacritics => true , :reserved => ["edit_pics", "add_pics"]
 
   has_many :pictures, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'", :order => "pictures.position"
 
@@ -95,6 +95,14 @@ class Gallery < ActiveRecord::Base
 
   def cover
     pictures.find_by_cover(true) or pictures.first
+  end
+
+  def defined_cover
+    pictures.find_by_cover(true)
+  end
+
+  def get_rand_pics_not_cover(number)
+    pictures.find_all_by_cover(false, :limit => number, :order => "RAND()")
   end
 
 end

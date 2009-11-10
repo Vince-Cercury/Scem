@@ -1,8 +1,20 @@
 class Term < ActiveRecord::Base
 
+  belongs_to :event
+
+  has_friendly_id :url_start_param, :use_slug => true, :strip_diacritics => true  #, :scope => :event
+
+  def url_start_param
+    s = start_at
+    e = end_at
+    result = ""
+    result += "#{s.day}-#{s.month}-#{s.year}-#{s.hour}-#{s.min}"
+    #result += '-to-'
+    #result += "#{e.day}-#{e.month}-#{e.year}-#{e.hour}-#{e.min}"
+  end
 
   validates_presence_of :start_at, :end_at
-  validates_length_of :description, :maximum=>800
+  validates_length_of :description, :maximum=>400
 
   #validates_datetime :start, :allow_nil => false
 
@@ -36,8 +48,7 @@ class Term < ActiveRecord::Base
   def end_min
     end_at.strftime("%M") unless end_at.nil?
   end
-  
-  belongs_to :event
+
 
   has_many :participations
   has_many :participants, :through => :participations
@@ -122,6 +133,24 @@ class Term < ActiveRecord::Base
       :page => page,
       :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and categories_events.category_id = ?', "%#{search}%", is_private, category_id],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
+      :order => 'start_at ASC',
+      :group => 'terms.id'
+  end
+
+  def self.search_has_publisher_futur_by_organism(search, page, organism_id, is_private=false)
+    paginate  :per_page => ENV['PER_PAGE'],
+      :page => page,
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and contributions.organism_id = ?', "%#{search}%", is_private, organism_id],
+      :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id",
+      :order => 'start_at ASC',
+      :group => 'terms.id'
+  end
+
+  def self.search_has_publisher_past_by_organism(search, page, organism_id, is_private=false)
+    paginate  :per_page => ENV['PER_PAGE'],
+      :page => page,
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() and contributions.organism_id = ?', "%#{search}%", is_private, organism_id],
+      :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'
   end

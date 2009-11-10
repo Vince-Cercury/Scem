@@ -19,14 +19,12 @@
     <% end %>
   </div>
   <div class="organismShowBodyRight">
-      <p>
-        <b>number, street/road</b>:<br />
-        <%= @organism.street %>
-      </p>
-      <p>
-        <b>Town/city</b>:<br />
-        <%= @organism.city %>
-      </p>
+    <% if !get_organism_address_as_string(@organism).blank? %>
+    <p>
+      <b>Address</b>:
+      <%= link_to(get_organism_address_as_string(@organism), organism_maps_path(@organism)) %>
+    </p>
+    <% end %>
       <% if current_user && current_user.facebook_user? && facebook_session %>
         <p>
           <%= link_to 'Publish the organism on my Facebook Wall', url_for(:controller => 'facebook', :organism_id =>@organism.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>

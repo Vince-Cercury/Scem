@@ -9,36 +9,45 @@
   <% if @organism.posts.size > 0 || is_organism_admin?(@organism) %>
     <li>
       <% if controller_name != 'posts' %>
-        <%= link_to("Blog", organism_posts_path(:organism_id => @organism.id)) %>
+        <%= link_to("Blog", organism_posts_path(@organism)) %>
       <% else %>
-        <%= link_to("Blog", organism_posts_path(:organism_id => @organism.id), :class => 'selected') %>
+        <%= link_to("Blog", organism_posts_path(@organism), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if @organism.events.size > 0 || is_organism_admin?(@organism) %>
     <li>
       <% if controller_name != 'organism_events' %>
-        <%= link_to("Events", organism_events_path(:organism_id => @organism.id)) %>
+        <%= link_to("Events", organism_events_path(@organism)) %>
       <% else %>
-        <%= link_to("Events", organism_events_path(:organism_id => @organism.id), :class => 'selected') %>
+        <%= link_to("Events", organism_events_path(@organism), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if @organism.members.size > 0 || is_organism_admin?(@organism)%>
     <li>
     <% if controller_name != 'members' %>
-      <%= link_to("Members", organism_members_path(:organism_id => @organism.id,:role => 'members')) %>
+      <%= link_to("Members", organism_members_path(@organism,:role => 'members')) %>
     <% else %>
-      <%= link_to("Members", organism_members_path(:organism_id => @organism.id,:role => 'members'), :class => 'selected') %>
+      <%= link_to("Members", organism_members_path(@organism,:role => 'members'), :class => 'selected') %>
     <% end %>
     </li>
   <% end %>
   <% if @organism.galleries.size > 0 || is_organism_admin?(@organism) %>
     <li>
       <% if controller_name != 'galleries' %>
-        <%= link_to("Pictures galleries", organism_galleries_path(:organism_id => @organism.id)) %>
+        <%= link_to("Pictures galleries", organism_galleries_path(@organism)) %>
       <% else %>
-        <%= link_to("Pictures galleries", organism_galleries_path(:organism_id => @organism.id), :class => 'selected') %>
+        <%= link_to("Pictures galleries", organism_galleries_path(@organism), :class => 'selected') %>
+      <% end %>
+    </li>
+  <% end %>
+  <% if @organism.street && @organism.city %>
+    <li>
+      <% if controller_name != 'maps' %>
+        <%= link_to("Map", organism_maps_path(@organism)) %>
+      <% else %>
+        <%= link_to("Map", organism_maps_path(@organism), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>

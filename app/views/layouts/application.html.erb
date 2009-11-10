@@ -37,6 +37,10 @@
 
     <%= javascript_include_tag :fckeditor %>
 
+    <% if controller_name == 'maps' %>
+        <%= GMap.header %>
+        <%= @map.to_html %>
+    <% end %>
 
   </head>
   <body>
@@ -61,6 +65,7 @@
             <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.directory'), url_for(activities_path), :class => 'selected') %></div><% end %></li>
             <li><% if controller_name != 'galleries' %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path), :class => 'selected') %></div><% end %></li>
             <li><% if controller_name != 'users' %><%= link_to(t('main_menu.users'), url_for(users_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.users'), url_for(users_path), :class => 'selected') %></div><% end %></li>
+            <li><% if controller_name != 'information' %><%= link_to(t('main_menu.information'), url_for(information_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.information'), url_for(information_path), :class => 'selected') %></div><% end %></li>
           </ul>
           <script type="text/javascript">
             setBorder("SelectedId", "TopId");
@@ -131,9 +136,8 @@
           <div class="contentleft">
             <div class="information">
               <p>
-                Infos: This site is a prototype. If you want to report feedbacks or contribute, please visit <a href="http://github.com/VinceMD/Scem/tree/master">GitHub</a><br />
-                Ce site est un prototype.
-                Si vous voulez contribuer ou reporter un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a>
+                Ce site est un prototype. Si un évènement manque ou que vous rencontrez un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a><br />
+                Pour publier un évènement ou pour plus d'infos, <%= link_to 'rendez-vous ici ', information_path %>
               </p>
             </div>
             <div class="accueil">

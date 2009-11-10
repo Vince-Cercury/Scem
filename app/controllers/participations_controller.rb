@@ -29,7 +29,11 @@ class ParticipationsController < ApplicationController
     
     if params[:event_id].nil? && params[:term_id].nil?
       @user = User.find(params[:user_id])
-      @terms = @user.search_participate(params[:role],params[:search], params[:page])
+      if params[:period] == "past"
+        @terms = @user.search_participate_past(params[:role],params[:search], params[:page])
+      else
+        @terms = @user.search_participate_futur(params[:role],params[:search], params[:page])
+      end
       @partial_path = 'index_user_terms'
     end
 
@@ -87,7 +91,7 @@ class ParticipationsController < ApplicationController
       respond_to do |format|
         if participation.save
           flash[:notice] = 'Relation work is done.'
-          format.html { redirect_to(term.event) }
+          format.html { redirect_to(url_for_even_polymorphic(term)) }
           format.xml  { head :ok }
         else
           format.html { render :action => "new" }

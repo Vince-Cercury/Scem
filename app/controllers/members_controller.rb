@@ -79,11 +79,31 @@ class MembersController < ApplicationController
     else
       organism_user.role=params[:role]
     end
-    
 
-    if (params[:members_password] && params[:members_password] == organism.members_password) or organism.members_password.blank? 
-      organism_user.activate!
+
+
+    accepted = false
+
+    if (params[:members_password] && params[:members_password] == organism.members_password) or organism.members_password.blank?
+      organism_user.role = 'member'
+      accepted = true
       flash[:notice] = 'You are now a member of this organism.'
+    end
+
+    if params[:members_password] && params[:members_password] == organism.moderators_password
+      organism_user.role = 'moderator'
+      accepted = true
+      flash[:notice] = 'You are now a moderator of this organism.'
+    end
+
+    if params[:members_password] && params[:members_password] == organism.admins_password
+      organism_user.role = 'admin'
+      accepted = true
+      flash[:notice] = 'You are now an administrator of this organism.'
+    end
+    
+    if accepted
+      organism_user.activate!
     else
       flash[:notice] = 'Your membership is pending until a moderator accept it.'
     end
@@ -155,7 +175,7 @@ class MembersController < ApplicationController
   protected
 
   def ensure_organism_parameter?
-    param_uncorrect_redirection unless !params[:organism_id].nil? and Organism.exists?(params[:organism_id])
+    param_uncorrect_redirection unless !params[:organism_id].nil? and Organism.find(params[:organism_id])
   end
 
 
@@ -164,7 +184,7 @@ class MembersController < ApplicationController
   end
 
   def ensure_organism_or_user_parameter?
-    param_uncorrect_redirection unless (!params[:organism_id].nil? and Organism.exists?(params[:organism_id])) or (!params[:user_id].nil? and User.exists?(params[:user_id]))
+    param_uncorrect_redirection unless (!params[:organism_id].nil? and Organism.find(params[:organism_id])) or (!params[:user_id].nil? and User.exists?(params[:user_id]))
   end
 
 

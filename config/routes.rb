@@ -53,6 +53,7 @@ ActionController::Routing::Routes.draw do |map|
         :unsuspend => :get,
         :activate     => :get }
     end
+    organism.resources :maps
   end
 
 
@@ -101,6 +102,7 @@ ActionController::Routing::Routes.draw do |map|
     event.resources :terms, :controller => 'event_terms' do |term|
       term.resources :participations
     end
+    event.resources :maps
   end
 
   #deprecated
@@ -112,10 +114,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :participations, :collection =>{
     :create_or_update => :get }
 
+  map.information '/information', :controller => 'information', :action => 'index'
+
   #deprecated
   map.resources :terms
 
   map.resources :activities
+
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'

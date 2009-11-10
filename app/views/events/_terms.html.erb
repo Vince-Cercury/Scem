@@ -1,6 +1,5 @@
 <% @event.terms.each do |@term| %>
-  <div class="span-8">
-    <div class="box"><%=  display_term_box(@term.start_at, @term.end_at) %>
+<b><%=  link_to(display_term_box(@term.start_at, @term.end_at),url_for_even_polymorphic(@term)) %></b>
 
 
       <% if facebook_session %>
@@ -49,14 +48,12 @@
       <% if @term.maybe_participants.size> 0 %><%= link_to "may be", term_participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %><% else %>maybe: 0<% end %> |
       <% if @term.not_participants.size> 0 %><%= link_to "no", term_participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %><% else %>no: 0<% end %>
 
-    </div>
-  </div>
 
-  <div class="span-9 last">
+        <% if !@term.description.blank? %>
     <div class="box">
       <%= @term.description %>
     </div>
-  </div>
+      <% end %>
 
   <hr />
 <% end %>

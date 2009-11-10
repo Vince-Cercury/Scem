@@ -2,7 +2,13 @@ class Organism < ActiveRecord::Base
   include SharedMethods
   before_validation :remove_whitespace_from_name
 
-  has_friendly_id :name, :use_slug => true, :reserved => ["new","edit"]
+  attr_accessible :name, :activity_ids, :description_short, :description_long, :manager_name, :phone, :street, :city
+
+
+  has_friendly_id :name, :use_slug => true, :strip_diacritics => true #, :reserved => ["new","edit"]
+
+  before_save :generate_and_save_passwords
+
 
   validates_presence_of     :name, :description_short, :manager_name
   validates_uniqueness_of   :name
@@ -49,8 +55,10 @@ class Organism < ActiveRecord::Base
 
   has_and_belongs_to_many :activities
 
-  
-  attr_accessible :name, :activity_ids, :description_short, :description_long, :manager_name, :phone, :street, :city
+  def generate_and_save_passwords
+    (self.admins_password = ActiveSupport::SecureRandom.base64(6)) unless self.admins_password
+    (self.moderators_password = ActiveSupport::SecureRandom.base64(6)) unless self.moderators_password
+  end
 
   def self.search(search, page)
     paginate :per_page => ENV['PER_PAGE'], :page => page,

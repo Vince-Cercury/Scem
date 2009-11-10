@@ -57,6 +57,12 @@ class EventsController < ApplicationController
     @comments = @event.search_comments('', 1, 3)
     #the object comment is needed for displaying the form of new comment
     initialize_new_comment(@event)
+
+    #if the event got only one terme defined, inject it in views
+    if @event.terms.size == 1
+      @term = @event.terms.first
+    end
+    
     
     respond_to do |format|
       format.html # show.html.erb
