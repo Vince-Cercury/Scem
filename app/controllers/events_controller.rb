@@ -141,6 +141,7 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.xml
   def update
+    #raise params.inspect
     @event = Event.find(params[:id])
     @event.edited_by = current_user.id
     set_session_parent_pictures_root_path(@event)

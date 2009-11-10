@@ -2,7 +2,7 @@ class Term < ActiveRecord::Base
 
   belongs_to :event
 
-  has_friendly_id :url_start_param, :use_slug => true, :strip_diacritics => true  #, :scope => :event
+  #has_friendly_id :url_start_param, :use_slug => true, :strip_diacritics => true  #, :scope => :event
 
   def url_start_param
     s = start_at

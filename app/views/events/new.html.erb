@@ -22,7 +22,8 @@
     </div>
   <% end %>
   <%= hidden_field_tag('type', params[:type]) %>
-
+  
+<%= calendar_date_select_includes nil,:locale=>'fr' %>
   
   <div id="terms">
     <%= render :partial => 'term', :collection => @event.terms %>

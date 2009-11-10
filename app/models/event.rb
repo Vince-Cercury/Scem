@@ -259,11 +259,15 @@ class Event < ActiveRecord::Base
 
     end_to_parse = attributes[:end_at] + " "+ attributes[:end_hour] + ":" + attributes[:end_min]
     #attributes[:end_at] = Time.parse(end_to_parse)
-    parsed_attributes[:end_at] = Time.parse(end_to_parse)
+    #parsed_attributes[:end_at] = Time.parse(end_to_parse)
+    parsed_attributes[:start_at] = DateTime.strptime(end_to_parse,'%d/%m/%Y %H:%M')
 
     start_to_parse = attributes[:start_at] + " "+ attributes[:start_hour] + ":" + attributes[:start_min]
     #attributes[:start_at] = Time.parse(start_to_parse)
-    parsed_attributes[:start_at] = Time.parse(start_to_parse)
+    #parsed_attributes[:start_at] = Time.parse(start_to_parse)
+    parsed_attributes[:start_at] = DateTime.strptime(start_to_parse,'%d/%m/%Y %H:%M')
+    
+
     #return attributes
     return parsed_attributes
   end
