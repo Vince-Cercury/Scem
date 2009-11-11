@@ -13,7 +13,7 @@ class UserMailer < ActionMailer::Base
 
   def signup_notification(user)
     setup_email(user)
-    @subject    += 'Please activate your new account'
+    @subject    += I18n.t('user_mailer.subject_created')
   
     @body[:url]  = "#{ENV['SITE_URL']}/activate_user/#{user.activation_code}"
   
@@ -21,13 +21,13 @@ class UserMailer < ActionMailer::Base
   
   def activation(user)
     setup_email(user)
-    @subject    += 'Your account has been activated!'
+    @subject    += I18n.t('user_mailer.subject_activated')
     @body[:url]  = "#{ENV['SITE_URL']}/"
   end
 
   def activation_notification_to_moderators(admin_or_moderator, new_user)
     setup_email(admin_or_moderator)
-    @subject    += 'A new user account has been activated!'
+    @subject    += I18n.t(user_mailer.subject_new_account_activated)
     @body[:new_user]  = new_user
     @body[:url]  = "#{ENV['SITE_URL']}/"
   end
@@ -36,7 +36,7 @@ class UserMailer < ActionMailer::Base
   def setup_email(user)
     @recipients  = "#{user.email}"
     @from        = "#{ENV['ADMINEMAIL']}"
-    @subject     = "[SCEM] "
+    @subject     = "#{ENV['APPNAME']} "
     @sent_on     = Time.now
     @body[:user] = user
     @content_type = "text/html"

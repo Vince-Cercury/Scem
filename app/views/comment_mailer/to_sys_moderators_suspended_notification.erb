@@ -1,14 +1,4 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
+<%= t("comment_mailer.to_sys_moderators_suspended_notification", :user => get_user_name_or_pseudo(@user), :comment=> @comment.text, :url=> link_to(@parent_object_url,@parent_object_url)) %>
 
-<p>You receive this email because you are a system moderator or admin.<br />
-A comment has been suspended by an organism admin.</p>
-
-<p>Comment's text:<br />
-  <%= h @comment.text %></p>
-
-<p>You can see what was the context of the comment:<br />
-  <%= @parent_object_url %></p>
-
-<p>Regards.</p>
 <%= render :partial => "/shared_templates/email_footer" %>

@@ -1,15 +1,3 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
-
-<p>Your organism has been created.</p>
-
-<p>
-  Name: <%=h @organism.name %><br />
-  Manager name: <%=h @organism.manager_name %><br />
-  Short description:<br />
-  <%=h @organism.description_short %></p>
-
-<p>You now have to wait until a moderator activate it.</p>
-
-<p>Thanks</p>
+<%= t("organism_mailer.signup_notif_to_organism_modo_admin", :user => get_user_name_or_pseudo(@user), :organism => link_to(@organism.name,@url), :manager => @organism.manager_name, :description => @organism.description_short) %>
 <%= render :partial => "/shared_templates/email_footer" %>

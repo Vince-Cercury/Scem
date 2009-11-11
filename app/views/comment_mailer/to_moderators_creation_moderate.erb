@@ -1,22 +1,4 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
+<%= t("comment_mailer.to_moderators_creation_moderate", :user => get_user_name_or_pseudo(@user), :comment=> @comment.text, :url_activate => link_to(@url_activate,@url_activate), :url=> link_to(@parent_object_url,@parent_object_url)) %>
 
-<p>You receive this email because you are a moderator or admin of an organism.</p>
-
-<p>A comment has been posted</p>
-
-<p>Comment's text:<br />
-  <%= h @comment.text %></p>
-
-<p>You can :</p>
-
-<p>Accept the comment:<br />
-  <%=h @url_activate %><br />
-(do nothing if you don't want the comment to be published)</p>
-
-<p>You can see the comment in its context:<br />
-  <%= @parent_object_url %></p>
-
-<p>Regards.</p>
 <%= render :partial => "/shared_templates/email_footer" %>
-

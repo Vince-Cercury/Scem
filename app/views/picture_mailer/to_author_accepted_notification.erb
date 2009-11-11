@@ -1,14 +1,5 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-<p>You receive this email because you have posted a picture.</p>
+<%= t("picture_mailer.to_author_accepted_notification", :user => get_user_name_or_pseudo(@user), :url=> link_to(@url,@url), :url_context=> link_to(@url_context,@url_context)) %>
 
-<p>Your picture has been accepted.<br />
-  <%=h @url %></p>
-
-
-<p>The context of this picture is:<br />
- <%=h @url_context %></p>
-
-<p>Regards.</p>
 <%= render :partial => "/shared_templates/email_footer" %>

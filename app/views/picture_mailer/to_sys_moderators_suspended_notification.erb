@@ -1,16 +1,4 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
+<%= t("picture_mailer.to_sys_moderators_suspended_notification", :user => get_user_name_or_pseudo(@user), :url_picture => link_to(@url_picture,@url_picture), :url_context=> link_to(@url_context,@url_context)) %>
 
-<p>You receive this email because you are a system moderator or admin.<br />
-A picture has been suspended by an organism admin.</p>
-
-
-<p>You can see what was the picture:<br />
- <%=h @url_picture %></p>
-
-
-<p>The context of this picture was:<br />
- <%=h @url_context %></p>
-
-<p>Regards.</p>
 <%= render :partial => "/shared_templates/email_footer" %>

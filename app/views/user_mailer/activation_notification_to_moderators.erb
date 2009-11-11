@@ -1,4 +1,2 @@
-Hi <%=h get_user_name_or_pseudo(@user) %>
-<%=h get_user_name_or_pseudo(@new_user) %>, account has been activated.
-
-  <%=h @url %>
+<%= t("user_mailer.account_created_to_moderators", :username => get_user_name_or_pseudo(@user), :newuser => link_to(get_user_name_or_pseudo(@new_user),@url)) %>
+<%= render :partial => "/shared_templates/email_footer" %>

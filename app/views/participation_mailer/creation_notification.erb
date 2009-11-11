@@ -1,16 +1,6 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h @receiver.login %>,</p>
 
-<p>You receive this email because you are a moderator or admin of an organism.</p>
+<%= t("participation_mailer.creation_notification", :user => @receiver.login, :eventname => link_to(@event.name,@url_event), :event => link_to(@url_event,@url_event), :url_user => link_to(@url_user,@url_user), :url_participants => link_to(@url_participants,@url_participants)) %>
 
-<p>A user has notified his participation status to the event <%=h @event.name %>:<br />
-<%= @url_event %></p>
-
-<p>The user is profil is visible here:<br />
-<%= @url_user %></p>
-
-<p>You can get all information about participants of the event at this address:<br />
-<%= @url_participants %></p>
-
-<p>Regards.</p>
 <%= render :partial => "/shared_templates/email_footer" %>
+

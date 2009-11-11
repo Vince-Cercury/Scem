@@ -1,14 +1,3 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
-
-<p>You receive this email because you have posted a comment.</p>
-
-<p>Your comment, has been accepted.<br />
-<%= h @comment.text %></p>
-
-
-<p>See it in its context:<br />
-<%= @parent_object_url %></p>
-
-<p>Regards.</p>
+<%= t("comment_mailer.to_author_accepted_notification", :user => get_user_name_or_pseudo(@user), :comment=> @comment.text, :url=> link_to(@parent_object_url,@parent_object_url)) %>
 <%= render :partial => "/shared_templates/email_footer" %>
