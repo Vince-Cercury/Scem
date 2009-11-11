@@ -1,4 +1,5 @@
 <div id="results">
+  <% if @users.size>0 %>
   <div class="userList">
     <% @users.each do |user| %>
       <div class="userListBox">
@@ -29,6 +30,7 @@
         </div>
      <% end %>
   </div>
+  <% end %>
   <%= will_paginate @users %>
   <% if @users.size == 0 %>
     <div class="userListMessage">
