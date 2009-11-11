@@ -66,7 +66,7 @@ class Organism < ActiveRecord::Base
       :order => 'name'
   end
 
-  def search_users(role, search, page)
+  def search_users_by_role(role, search, page)
     if role=="admins"
       admins.paginate :per_page => ENV['PER_PAGE'], :page => page,
         :conditions => ['login like ? or first_name like ? or last_name like ?', "%#{search}%","%#{search}%","%#{search}%"],
@@ -80,6 +80,14 @@ class Organism < ActiveRecord::Base
         :conditions => ['login like ? or first_name like ? or last_name like ?', "%#{search}%","%#{search}%","%#{search}%"],
         :order => 'login'
     end
+  end
+
+  def search_users(search, page)
+
+      users.paginate :per_page => ENV['PER_PAGE'], :page => page,
+        :conditions => ['login like ? or first_name like ? or last_name like ?', "%#{search}%","%#{search}%","%#{search}%"],
+        :order => 'login, first_name, last_name'
+
   end
 
   def search_users_pending(role, search, page)

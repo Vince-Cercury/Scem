@@ -1,5 +1,6 @@
 class Term < ActiveRecord::Base
 
+
   belongs_to :event
 
   has_friendly_id :url_start_param, :use_slug => true, :strip_diacritics => true  #, :scope => :event
@@ -16,9 +17,12 @@ class Term < ActiveRecord::Base
   validates_presence_of :start_at, :end_at
   validates_length_of :description, :maximum=>400
 
-  #validates_datetime :start, :allow_nil => false
+  #validates_length_of :start_at, :minimum=>8
+  #validates_length_of :end_at, :minimum=>8
 
-  #validates_datetime :end, :allow_nil => false
+  validates_datetime :start_at, :allow_nil => false
+
+  validates_datetime :end_at, :allow_nil => false
 
 
   validates_datetime :start_at, :after => Proc.new { Time.zone.now },
