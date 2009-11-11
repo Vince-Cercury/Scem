@@ -1,12 +1,3 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>This user wants to become a member: <%= get_user_name_or_pseudo(@user) %></p>
-
-<p>You can:</p>
-
-<p>- accept as a member <%= @url_member %></p>
-
-<p>- accept as a moderator <%= @url_moderator %><br />
-- accept as an admin <%= @url_admin %></p>
-
-<p>- refuse <%= @url_refuse %></p>
+<%= t("organisms_user.creation_notification", :user => get_user_name_or_pseudo(@user), :url_member => link_to(@url_member,@url_member), :url_moderator=> link_to(@url_moderator,@url_moderator), :url_admin => link_to(@url_admin,@url_admin), :refuse =>link_to(@url_refuse,@url_refuse) ) %>
 <%= render :partial => "/shared_templates/email_footer" %>

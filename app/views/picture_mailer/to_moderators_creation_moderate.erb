@@ -1,21 +1,3 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
-
-<p>You receive this email because you are a moderator or admin of an organism.</p>
-
-<p>A picture has been posted</p>
-
-<p>You can :</p>
-
-<p>Accept the picture:<br />
-  <%=h @url_activate %><br />
-(do nothing if you don't want the comment to be published)</p>
-
-<p>You can see the picture:<br />
- <%=h @url_picture %></p>
-
-<p>The context of this picture is:<br />
- <%=h @url_context %></p>
-
-<p>Regards.</p>
+<%= t("picture_mailer.to_moderators_creation_notification", :user => get_user_name_or_pseudo(@user), :url_activate=> link_to(@url_activate,@url_activate), :url_picture => link_to(@url_picture,@url_picture), :url_context=> link_to(@url_context,@url_context)) %>
 <%= render :partial => "/shared_templates/email_footer" %>

@@ -6,7 +6,7 @@ class ParticipationMailer < ActionMailer::Base
     
     #organism_admin and organism_modo, send this emails
     setup_email(admin_or_modo,user, event, role)
-    @subject    += "Participation of an event notification (#{event.name})"
+    @subject    += I18n.t('participation_mailer.subject_participation_notification',:event => event.name)
     @body[:url_event]  = "#{ENV['SITE_URL']}/events/#{event.id}"
     @body[:url_user]  = "#{ENV['SITE_URL']}/users/#{user.id}"
     @body[:url_participants]  = "#{ENV['SITE_URL']}/participations/?term_id=#{term.id}"
@@ -16,7 +16,7 @@ class ParticipationMailer < ActionMailer::Base
 
     #organism_admin and organism_modo, send this emails
     setup_email(admin_or_modo,user, event, role)
-    @subject    += "Participation of an event notification (#{event.name})"
+    @subject    += I18n.t('participation_mailer.subject_participation_notification',:event => event.name)
     @body[:url_event]  = "#{ENV['SITE_URL']}/events/#{event.id}"
     @body[:url_user]  = "#{ENV['SITE_URL']}/users/#{user.id}"
     @body[:url_participants]  = "#{ENV['SITE_URL']}/participations/?term_id=#{term.id}"
@@ -27,7 +27,7 @@ class ParticipationMailer < ActionMailer::Base
   def setup_email(receiver, user, event, role)
     @recipients  = "#{receiver.email}"
     @from        = "#{ENV['ADMINEMAIL']}"
-    @subject     = "[SCEM] "
+    @subject     = "#{ENV['APPNAME']} "
     @sent_on     = Time.now
     @body[:user] = user
     @body[:receiver] = receiver

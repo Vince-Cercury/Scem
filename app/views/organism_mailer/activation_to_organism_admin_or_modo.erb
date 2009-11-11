@@ -1,7 +1,3 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
-
-<p>Congratulation, your organism, <%=h @organism.name %>, has been activated.</p>
-
- <p><%=h @url %></p>
+<%= t("organism_mailer.activation_to_organism_admin_modo", :user => get_user_name_or_pseudo(@user), :organism => link_to(@organism.name,@url)) %>
 <%= render :partial => "/shared_templates/email_footer" %>

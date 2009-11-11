@@ -1,23 +1,5 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-<p>You receive this email because you are a system moderator or admin.</p>
+<%= t("comment_mailer.to_sys_moderators_accepted_notification", :user => get_user_name_or_pseudo(@user), :comment=> @comment.text, :url_edit => link_to(@url_edit,@url_edit), :url_suspend => link_to(@url_suspend,@url_suspend), :url=> link_to(@parent_object_url,@parent_object_url)) %>
 
-<p>A comment has been accepted by an organism moderator</p>
-
-<p>Comment's text:
-  <%= h @comment.text %></p>
-
-<p>You can eventually:</p>
-
-<p>Edit the comment:<br />
-  <%=h @url_edit %></p>
-
-<p>Suspend the comment:<br />
-  <%=h @url_suspend %></p>
-
-<p>You can see the comment in its context:<br />
-  <%= @parent_object_url %></p>
-
-<p>Regards.</p>
 <%= render :partial => "/shared_templates/email_footer" %>

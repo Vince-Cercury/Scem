@@ -1,7 +1,4 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
-
-<p>You are now a <%= @role %> of <%=h @organism.name %></p>
-
-<p><%=h @url %></p>
+<%= t("organisms_user.activation_notification", :user => get_user_name_or_pseudo(@user), :role => @role, :organism_name => @organism.name, :url => link_to(@url,@url)) %>
 <%= render :partial => "/shared_templates/email_footer" %>
+

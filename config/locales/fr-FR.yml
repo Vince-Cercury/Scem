@@ -1,4 +1,4 @@
-# Sample localization file for English. Add more files in this directory for other locales.
+# Sample localization file for French. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 fr-FR:
@@ -9,13 +9,19 @@ fr-FR:
   the: "Le"
   from: "de"
   From: "Du"
-  at: "à"
-  until: "à"
+  at: "&agrave;"
+  until: "&agrave;"
   to: "au"
   Today: "Aujourd'hui"
   Tomorrow: "Demain"
   Yesterday: "Hier"
   next_number: "{{number}} suivants"
+  type:
+    Event: "évènement"
+    Organism: "organisme"
+    User: "utilisateur"
+    Gallery: "galerie"
+    Post: "billet"
   map:
     not_found: "Adresse introuvable"
   main_menu:
@@ -29,7 +35,7 @@ fr-FR:
     search_into: "Rechercher dans les"
   terms:
     next_events_coming: "Prochain événements"
-    already_started_or_past: "Evénements déjà commencés ou finis"
+    already_started_or_past: "Evénements déj&agrave; commencés ou finis"
   events:
     listing_events: "LISTE DES EVENEMENTS"
     no_categories: "aucune"
@@ -39,16 +45,16 @@ fr-FR:
     organisms:
       events: "Les événements de mes organismes"
     meetings: "Les rendez-vous"
-    update_success: "Utilisateur mis à jour avec succès."
-    create_success: "Merci de vous être inscris! Nous vous envoyons un email avec votre code d'activation."
+    update_success: "Utilisateur mis &agrave; jour avec succ&egrave;s."
+    create_success: "Merci de vous &ecirc;tre inscris! Nous vous envoyons un email avec votre code d'activation."
     create_error: "Nous n'avons pas pu créer ce compte, désolé.  merci de réessayer, ou contacter un administrateur."
-    activate_success: "Inscription complète! Authentifiez-vous pour continuer."
+    activate_success: "Inscription compl&egrave;te! Authentifiez-vous pour continuer."
     activate_code_missing: "Le code d'activation est absent. Merci de suivre le lien qui se trouve dans l'email."
-    activate_not_found: "Nous n'avons pas trouvé d'utilisateur avec ce code d'activation -- vérifier l'email? Ou peut-être que vous l'avez déjà activé -- essayez de vous authentifier."
+    activate_not_found: "Nous n'avons pas trouvé d'utilisateur avec ce code d'activation -- vérifier l'email? Ou peut-&ecirc;tre que vous l'avez déj&agrave; activé -- essayez de vous authentifier."
     index:
       listing_users: "LISTE DES UTILISATEURS"
   sessions:
-    logged_in_success: Connecté avec succès
+    logged_in_success: Connecté avec succ&egrave;s
     logged_out: "Vous avez été déconnecté"
     login_error: "Impossible de vous connecter en tant que "
     sign_up: "Inscription"
@@ -254,7 +260,7 @@ fr-FR:
   activerecord:
     errors:
       messages:
-        blank: "Ceci ne peut être vide"
+        blank: "Ceci ne peut &ecirc;tre vide"
       template:
         header:
           one: "1 error prohibited this {{model}} from being saved"
@@ -277,3 +283,49 @@ fr-FR:
       one: 'Displaying <em>1</em> {{entry_name}}'
       all: 'Displaying <em>all {{total_count}}</em> {{pluralized_entry_name}}'
       n_to_m_of_x: 'Displaying {{pluralized_entry_name}} <em>{{start_count}}&nbsp;-&nbsp;{{end_count}}</em> of <em>{{total_count}}</em> in total'
+  user_mailer:
+    account_created: "<html><body>Bienvenue sur LeBounce.Com<br /><br />Vous &ecirc;tes pri&eacute; de conserver cet e-mail dans vos archives. Les informations concernant votre compte :<br /><br />----------------------------<br />Nom d'utilisateur : {{username}}<br />Mot de passe : {{password}}<br />----------------------------<br /><br />Votre compte a &eacute;t&eacute; cr&eacute;&eacute; mais est actuellement inactif. Vous ne pouvez pas l'utiliser tant que vous n'aurez pas visit&eacute; le lien suivant : <br /><br />{{url}}<br /><br />Merci de vous &ecirc;tre enregistr&eacute;.<br /><br />--<br />L'&eacute;quipe de LeBounce.com</body></html>"
+    account_activated: "<html><body>Bienvenue sur LeBounce.com,<br /><br />Votre compte LeBounce a bien &eacute;t&eacute; activ&eacute;.<br /><br />Vous pouvez d&eacute;sormais participer, commenter et administrer des &eacute;v&egrave;nements.<br /><br />Pensez &agrave; inviter vos amis &agrave; rejoindre la communaut&eacute;, vous pourrez ainsi partager vos &eacute;v&egrave;nements avec eux.<br /><br />Nous vous remercions pour votre confiance.<br /><br />L’&eacute;quipe {{url}}</body></html>"
+    account_created_to_moderators: "Bonjour {{username}}, <br /><br />Le compte de l'utilisateur {{newuser}} vient d'&ecirc;tre activ&eacute;.<br /><br />Cordialement,<br /><br />L'&eacute;quipe LeBounce."
+    subject_created: "Merci d'activer votre nouveau compte."
+    subject_activated: "Votre compte &agrave; &eacute;t&eacute; activ&eacute;!"
+    subject_new_account_activated: "Un nouveau compte utilisateur &agrave activ&eacute !"
+  organism_mailer:
+    activation_to_organism_admin_modo: "<html><body>Bonjour {{user}},<br /><br />Votre organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />Vous pouvez d&eacute;sormais publier, administrer des &eacute;v&egrave;nements, des photos.<br /><br />Pensez &agrave; inviter vos amis &agrave; rejoindre la communaut&eacute;, vous pourrez ainsi partager vos &eacute;v&egrave;nements avec eux.<br /> Nous vous remercions pour votre confiance.<br /><br />L’&eacute;quipe LeBounce.com<br /></body></html>"
+    activation_to_system_admin_modo: "<html><body>Bonjour {{user}},<br /><br />L'organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />L’&eacute;quipe LeBounce.com<br /></body></html>"
+    signup_notif_to_organism_modo_admin: "<p>Bonjour {{user}},</p><br /><p>Votre organisme vient d'&ecirc;tre cr&eacute;e.</p><br /><p>Nom : {{organism}}<br />Nom du g&eacute;rant : {{manager}}<br />Description courte :<br />{{description}}</p><p>Vous devez maintenant attendre qu'un mod&eacute;rateur l'active.</p><br /><p>Cordialement</p><br /><br /><p>L'&eacute;quipe LeBounce.Com</p>"
+    signup_notif_to_system_modo_admin: "<p>Bonjour {{user}},</p><br /><p>Un organisme vient d'&ecirc;tre cr&eacute;e.</p><br /><p>Nom : {{organism}}<br />Nom du g&eacute;rant : {{manager}}<br />Description courte :<br />{{description}}</p><p>Visitez le lien suivant pour activer l'organisme : <br />{{url}}</p><br /><p>Cordialement</p><br /><br /><p>L'&eacute;quipe LeBounce.Com</p>"
+    subject_an_organism_created: "Un nouvel organisme a &eacute;t&eacute; cr&eacute;&eacute."
+    subject_your_organism_created: "Votre organisme a &eacute;t&eacute; cr&eacute;&eacute;"
+    subject_an_organism_activated: "L'organisme {{name}} a &eacute;t&eacute; activ&eacute; !"
+    subject_your_organism_activated: "Votre organisme {{name}} a &eacute;t&eacute; activ&eacute; !"
+  participation_mailer:
+    creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes administrateur ou mod&eacute;rateur d'un organisme.</p><p>Un utilisateur a chang&eacute; son statut de participation &agrave; l'&eacute;v&egrave;nement {{eventname}} :<br />{{event}}</p><p>Le profil de l'utilisateur est visible ici :<br />{{url_user}}</p><p>Vous pouvez obtenir toutes les informations &agrave; propos des participants de l'&eacute;v&egrave;nement &agrave; l'adresse suivante : <br />{{url_participants}}</p><p>Cordialement,</p><br /><p>L'&eacute;quipe LeBounce.com,</p>"
+    creation_notification_to_sys: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes administrateur ou mod&eacute;rateur syst&egrave;me.</p><p>Un utilisateur a chang&eacute; son statut de participation &agrave; l'&eacute;v&egrave;nement {{eventname}} :<br />{{event}}</p><p>Le profil de l'utilisateur est visible ici :<br />{{url_user}}</p><p>Vous pouvez obtenir toutes les informations &agrave; propos des participants de l'&eacute;v&egrave;nement &agrave; l'adresse suivante : <br />{{url_participants}}</p><p>Cordialement,</p><br /><p>L'&eacute;quipe LeBounce.com,</p>"
+    subject_participation_notification: "Notification de participation &agrave; l'&eacute;v&egrave;nement {{event}}"
+  organisms_user:
+    activation_notification: "<p>Bonjour {{user}},</p><br /><p>Vous &ecirc;tes maintenant {{role}} de {{organism_name}}</p><p>Vous pouvez acc&eacute;der &agrave; la page de l'organisme en cliquant sur le len suivant : </p><p>{{url}}</p><br />Cordialement<br /><br />L'&eacute;quipe LeBounce."
+    creation_notification: "<p>Bonjour, </p><br /><p>Cet utilisateur souhaite devenir membre : {{user}}</p><p>Vous pouvez : </p><p>   - l'accepter comme membre : {{url_member}} </p><p>   - l'accepter comme mod&eacute;rateur : {{url_moderator}} </p><p>   - l'accepter comme administrateur : {{url_admin}} </p><p>   - le refuser : {{refuse}} </p><br /><p>Cordialement, </p><p>L'&eacute;quipe LeBounce.com</p>"
+    subject_role_updated: "Vous avez maintenant le r&ocirc;le{{role}} de {{name}}"
+    subject_member_request: "Requ&ecirc;te de membre {{name}}"
+  comment_mailer:
+    to_author_accepted_notification: "<p>Bonjour {{user}},</p><br /><p>Vous recevez cet email car vous avez posté un commentaire sur www.LeBounce.com</p><p>Votre commentaire a été accepté.<br />{{comment}}</p><p>Votre commentaire dans son contexte :<br />{{url}}</p><br /><p>Cordialement</p><br /><p>L'équipe LeBounce.com</p>"
+    to_moderators_creation_moderate: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur d'un organisme.</p><p>Un commentaire a été posté :<br />{{comment}}</p><p>Vous pouvez l'accepter à l'adresse suivante : <br /> {{url_activate}}</p><p>Ou ne rien si vous ne voulez pas l'accepter.</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'équipe LeBounce</p>"
+    to_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur d'un organisme.</p><p>Un commentaire a été posté :<br />{{comment}}</p><p>Vous pouvez éventuellement le suspendre (dans le cas où il ne respecte pas les règles du site) à l'adresse suivante : <br /> {{url_suspend}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'équipe LeBounce</p>"
+    to_sys_moderators_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur système.</p><p>Un commentaire a été validé par un modérateur.</p><p>Le commentaire concerné est le suivant :<br />{{comment}}</p><p>Vous pouvez éventuellement : <br />l'éditer à l'adresse suivante : {{url_edit}} <br /> le suspendre (dans le cas où il ne respecte pas les règles du site) à l'adresse suivante : <br /> {{url_suspend}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'équipe LeBounce</p>"
+    to_sys_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur système.</p><p>Un commentaire a été créé mais la modération n'est pas activée. Ainsi le commentaire est déjà publié et visible.</p><p>Le commentaire concerné est le suivant :<br />{{comment}}</p><p>Vous pouvez éventuellement : <br />l'éditer à l'adresse suivante : {{url_edit}} <br /> le suspendre (dans le cas où il ne respecte pas les règles du site) à l'adresse suivante : <br /> {{url_suspend}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'équipe LeBounce</p>"
+    to_sys_moderators_suspended_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur système.</p><p>Un commentaire a été suspendu par un administrateur de l'organisme.</p><p>Le commentaire concerné est le suivant :<br />{{comment}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><br /><p>Cordialement,</p><br /><p>L'équipe LeBounce</p>"
+    subject_comment_suspended: "Un commentaire a été posté sur un(e) {{type}}"
+    subject_comment_accepted: "Commentaire accepté"
+  picture_mailer:
+    to_author_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous avez posté une photo sur www.LeBounce.com</p><p>Votre photo a été acceptée à l'adresse suivante : <br />{{url}}</p><p>Vous pouvez également voir l'image dans son contexte à l'adresse suivante : <br />{{url_context}}</p><br /><p>Cordialement,</p><br /><p>L'équipe LeBounce</p>"
+    to_moderators_creation_moderate: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur d'un organisme.</p><p>Une photo a été postée</p><p>Vous pouvez accepter l'image en cliquant sur ce lien (ne rien faire si vous ne voulez pas publier l'image) : <br />{{url_activate}}</p><p>Vous pouvez voir l'image à l'adresse suivante : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'équipe LeBounce</p>"
+    to_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur d'un organisme.</p><p>Une photo a été postée</p><p>Vous pouvez éventuellement suspendre l'image (en cas de non respect des règles du site) à l'adresse suivante : <br />{{url_suspend}}</p><p>Vous pouvez voir l'image à l'adresse suivante : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'équipe LeBounce</p>"
+    to_moderators_updated_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur d'un organisme.</p><p>Une photo a été mise à jour</p><p>Vous pouvez éventuellement suspendre l'image (en cas de non respect des règles du site) à l'adresse suivante : <br />{{url_suspend}}</p><p>Vous pouvez voir l'image à l'adresse suivante : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'équipe LeBounce</p>"
+    to_sys_moderators_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur système.</p><p>Une photo a été validée par un modérateur.</p><p>Vous pouvez éventuellement : <br />    - éditer la photo : {{url_edit}}<br />    - suspendre la photo : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'équipe LeBounce</p>"
+    to_sys_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur système.</p><p>Une photo a été postée mais la modération n'est pas activée. Ainsi la photo est déjà publiée et visible.</p><p>Vous pouvez éventuellement : <br />    - éditer la photo : {{url_edit}}<br />    - suspendre la photo : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'équipe LeBounce</p>"
+    to_sys_moderators_suspended_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur système.</p><p>Une photo a été suspendue par l'administrateur d'un organisme.</p><p>Vous pouvez voir l'image à l'adresse suivante : <br />{{url_picture}}</p>Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'équipe LeBounce</p>"
+    to_sys_moderators_updated_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous êtes modérateur ou administrateur système.</p><p>Une photo a été mise à jour.</p><p>Vous pouvez éventuellement : <br />    - éditer la photo : {{url_edit}}<br />    - suspendre la photo : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'équipe LeBounce</p>"
+    subject_picture_suspended: "Une image d'un {{parent}} a été suspendue"
+    subject_pitcure_posted: "Une photo a été postée pour un {{parent}}"
+    subject_picture_accepted: "Photo acceptée"
