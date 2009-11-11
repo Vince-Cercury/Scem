@@ -16,17 +16,17 @@
                 <p>
                 Donner des autorisations à <%= get_user_name_or_pseudo(user) %> :
                 <% if !@organism.admins.include?(user) %>
-                   <%= link_to 'Administrateur', { :controller => "organisms_users", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :admin }%>
+                   <%= link_to 'Administrateur', { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :admin }%>
                 <% end  %>
                 <% if !@organism.moderators.include?(user) %>
-                   <%= link_to 'Modérateur', { :controller => "organisms_users", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :moderator }%>
+                   <%= link_to 'Modérateur', { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :moderator }%>
                 <% end  %>
                 <% if !@organism.members.include?(user) %>
-                   <%= link_to 'Enlever lui ces droits ', { :controller => "organisms_users", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :member }%>
+                   <%= link_to 'Enlever lui ces droits ', { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :member }%>
                 <% end  %>
                 </p>
                 <p>
-                <%= link_to 'Supprimer cette utilisateur', { :controller => "organisms_users", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
+                <%= link_to 'Supprimer cette utilisateur', { :controller => "members", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
                 </p>
               <% end  %>
              <% end %>
