@@ -1,18 +1,19 @@
 <% if @current_object.galleries.size > 0 %>
 </div>
+<div class="titlegaleries"></div>
 <div class="gallerieBar">
-  <h4>PICTURES GALLERIES</h4>
   <% @current_object.galleries(:limit => 2, :order => 'updated_at DESC').each do |gallery| %>
     <div class="gallerieBarBox">
-    
+      <p>
         <%#= link_to(display_gallery_cover(gallery, :thumb), gallery) %>
       <% get_cover_and_random_pics(gallery, 3).each do |picture| %>
         <%= link_to(image_tag(picture.attached.url(:thumb)), polymorphic_path([gallery.get_parent_object, gallery].flatten)) %>
       <% end %>
-
+      </p>
+      <p>
         <%= link_to gallery.name, polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
         <%= gallery.pictures.size %>&nbsp;photos
-   
+      </p>
     </div>
   <% end %>
 
@@ -28,8 +29,8 @@
 <div>
 <% elsif is_current_object_moderator?(@current_object) %>
 </div>
+  <div class="titlegaleries"></div>
   <div class="gallerieBar">
-      <h4>PICTURES GALLERIES</h4>
       <div class="gallerieBarContent">
           <%= link_to("New gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
       </div>

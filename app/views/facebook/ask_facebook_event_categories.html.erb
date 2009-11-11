@@ -6,7 +6,7 @@
 </p>
 
 <div>
-  <%=  display_term_box(@term.start, @term.end) %>
+  <%=  display_term_box(@term.start_at, @term.end_at) %>
 </div>
 
 <% form_for(@term, :url => url_for(:controller => 'facebook', :action => 'create_event', :id => @term.id)) do |f| %>

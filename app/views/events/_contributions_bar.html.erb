@@ -1,50 +1,36 @@
+
 <% if @event.contributions.size > 0 %>
-  <div class="contributionsBar">
-    <% if @event.places.size > 0 %>
-      <% @event.places.each do |@organism| %>
-        <div class="contributionBarBox">
-          <b>Place</b>
-          <%= display_organism_cover(@organism, :thumb) %>
-          <%= link_to(@organism.name, url_for(organism_path(@organism))) %>
-        <% end %>
-      </div>
-    <% end %>
 
-    <% if @event.publishers.size > 0 %>
-
-      <% @event.publishers.each do |@organism| %>
-        <div class="contributionBarBox">
-          <b>Publisher</b>
-          <%= display_organism_cover(@organism, :thumb) %>
-          <%= link_to(@organism.name, url_for(organism_path(@organism))) %>
-        </div>
-      <% end %>
-
-    <% end %>
-
+  <div class="eventShowBodyCenter">
     <% if @event.organizers.size > 0 %>
-
-
+    <div class="eventShowBodyCenterLeft">
+    <div class="titleorganisateurs"></div>
+      <div class="eventShowBodyCenterLeftContent">
       <% @event.organizers.each do |@organism| %>
-        <div class="contributionBarBox">
-          <b>Organizer</b>
+        <div class="eventShowBodyCenterContentLeft">
           <%= display_organism_cover(@organism, :thumb) %>
+        </div>
+        <div class="eventShowBodyCenterContentRight">
           <%= link_to(@organism.name, url_for(organism_path(@organism))) %>
         </div>
       <% end %>
-
+      </div>
+    </div>
     <% end %>
     <% if @event.partners.size > 0 %>
-
-      <% @event.partners.each do |@organism| %>
-
-        <div class="contributionBarBox">
-          <b>Partner</b>
-          <%= display_organism_cover(@organism, :thumb) %>
-          <%= link_to(@organism.name, url_for(organism_path(@organism))) %>
+      <div class="eventShowBodyCenterRight">
+        <div class="titlepartners"></div>
+        <div class="eventShowBodyCenterRightContent">
+          <% @event.partners.each do |@organism| %>
+          <div class="eventShowBodyCenterContentLeft">
+            <%= display_organism_cover(@organism, :thumb) %>
+          </div>
+          <div class="eventShowBodyCenterContentRight">
+            <%= link_to(@organism.name, url_for(organism_path(@organism))) %>
+          </div>
+          <% end %>
         </div>
-      <% end %>
-
+      </div>
     <% end %>
 
   </div>

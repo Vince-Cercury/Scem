@@ -13,9 +13,9 @@ module EventsHelper
       link_to(get_default_event_picture(style), event)
     else
       if style == "mini"
-        link_to(image_tag(event.picture.attached.url(:small), :height => get_mini_height), event)
+        link_to(image_tag(event.picture.attached.url(:small), :height => get_mini_height,:alt => event.name), event, :title => event.name)
       elsif style == "mini_width"
-        link_to(image_tag(event.picture.attached.url(:small), :width => get_mini_height), event)
+        link_to(image_tag(event.picture.attached.url(:small), :width => get_mini_height,:alt => event.name), event, :title => event.name)
       else
         link_to(image_tag(event.picture.attached.url(style)), event)
       end
@@ -29,11 +29,11 @@ module EventsHelper
       link_to(get_default_event_picture(style), url_for_even_polymorphic(term))
     else
       if style == "mini"
-        link_to(image_tag(term.event.picture.attached.url(:small), :height => get_mini_height), url_for_even_polymorphic(term))
+        link_to(image_tag(term.event.picture.attached.url(:small), :height => get_mini_height,:alt => term.event.name), url_for_even_polymorphic(term), :title => term.event.name)
       elsif style == "mini_width"
-        link_to(image_tag(term.event.picture.attached.url(:small), :width => get_mini_height), url_for_even_polymorphic(term))
+        link_to(image_tag(term.event.picture.attached.url(:small), :width => get_mini_height,:alt => term.event.name), url_for_even_polymorphic(term), :title => term.event.name)
       else
-        link_to(image_tag(term.event.picture.attached.url(style)), url_for_even_polymorphic(term))
+        link_to(image_tag(term.event.picture.attached.url(style),:alt => term.event.name), url_for_even_polymorphic(term), :title => term.event.name)
       end
     end
   end

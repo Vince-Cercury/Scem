@@ -1,9 +1,9 @@
 module OrganismsHelper
   def display_organism_cover(organism, style)
     if organism.picture.nil?
-      link_to(image_tag("default/organism/#{style}/1.jpg"), organism)
+      link_to(image_tag("default/organism/#{style}/1.jpg",:alt => organism.name), organism, :title => organism.name)
     else
-      link_to(image_tag(organism.picture.attached.url(style)), organism)
+      link_to(image_tag(organism.picture.attached.url(style),:alt => organism.name), organism, :title => organism.name)
     end
   end
 
