@@ -1,5 +1,10 @@
 class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
+
+  validates_presence_of :text
+  validates_length_of :text, :maximum=>1000
+  validates_length_of :text, :minimum=>2
+
   
   # NOTE: install the acts_as_votable plugin if you 
   # want user to vote on the quality of comments.

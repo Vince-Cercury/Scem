@@ -1,0 +1,11 @@
+        <% complete = "$('create-comment-spinner').hide(); " + "$('create-comment-form').show();" #+ "$('comment__text_editor').enable()" #+ "$('form-comment').show()"  %>
+        <% loading = "$('create-comment-spinner').show(); "+ "$('create-comment-form').hide();"+ "$('commentaireBodyMiddle').hide(); " #  + "$('comment_submit').disable();" #+ "$('comment__text_editor').disable()" #+ "$('form-comment').hide(); " %>
+
+        <% remote_form_for(:comment, @comment, :url => {:controller => 'comments', :action => 'create'}, :before => fckeditor_before_js('comment', 'text'), :complete => complete, :loading => loading, :id=> 'form-comm' ) do |f| %>
+
+          <%=  hidden_field_tag 'commentable_type', @current_object.class %>
+          <%=  hidden_field_tag 'commentable_id', @current_object.id %>
+          <%= f.error_messages %>
+          <%= fckeditor_textarea(:comment, :text, :ajax => true, :toolbarSet => 'Comment', :width => '536px', :height => '100px') %>
+          <%= f.submit 'Create'  %>
+        <% end %>

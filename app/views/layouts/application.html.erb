@@ -16,10 +16,11 @@
  
       function setBorder(SelectedId, TopId)
       {
-        var SelectedDiv=document.getElementById(SelectedId);
-        var TopDiv=document.getElementById(TopId);
-
+        var SelectedDiv=$(SelectedId);
+        var TopDiv=$(TopId);
+        if(TopDiv){
         TopDiv.style.borderRight = SelectedDiv.offsetWidth-3+"px solid black";
+        }
         return;
       }
  

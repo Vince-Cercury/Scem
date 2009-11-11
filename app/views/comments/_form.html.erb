@@ -1,31 +1,23 @@
 <% if logged_in? -%>
   <div id="create-comment-form">
-    <% complete = "$('create-comment-spinner').hide(); " + "$('create-comment-form').show();" #+ "$('comment__text_editor').enable()" #+ "$('form-comment').show()"  %>
-    <% loading = "$('create-comment-spinner').show(); "+ "$('create-comment-form').hide();"+ "$('commentaireBodyMiddle').hide(); " #  + "$('comment_submit').disable();" #+ "$('comment__text_editor').disable()" #+ "$('form-comment').hide(); " %>
 
-    <% remote_form_for(:comment, @comment, :url => {:controller => 'comments', :action => 'create'}, :before => fckeditor_before_js('comment', 'text'),:loading => loading, :complete => complete, :id=> 'form-comm' ) do |f| %>
+    <div class="commentaireBodyMiddle">
 
-      <%=  hidden_field_tag 'commentable_type', @current_object.class %>
-      <%=  hidden_field_tag 'commentable_id', @current_object.id %>
-
-      <div class="commentaireBodyMiddle">
- 
-        <% if @current_object.comments.size == 0 %>
-          <h5 class="caps">BE THE FIRST TO WRITE:</h5>
-        <% else %>
-          <h5 class="caps">ADD A COMMENT:</h5>
-        <% end %>
-        <div class="commentaireBodyMiddleLeft">
-          <%= display_user_cover_by_id(current_user.id, :thumb) %>
-          <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
-        </div>
-        <div class="commentaireBodyMiddleRight">
-          <%= fckeditor_textarea(:comment, :text, :ajax => true, :toolbarSet => 'Comment', :width => '536px', :height => '100px') %>
-          <%= f.submit 'Create'  %>
-        </div>
+      <% if @current_object.comments.size == 0 %>
+        <h5 class="caps">BE THE FIRST TO WRITE:</h5>
+      <% else %>
+        <h5 class="caps">ADD A COMMENT:</h5>
+      <% end %>
+      <div class="commentaireBodyMiddleLeft">
+        <%= display_user_cover_by_id(current_user.id, :thumb) %>
+        <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
       </div>
+      <div class="commentaireBodyMiddleRight" id="create-form-content">
+        <%= render :partial => "/comments/create_form" %>
+      </div>
+    </div>
 
-    <% end %>
+
   </div>
   <div class="create-comment-spinner" id="create-comment-spinner" style="display:none;">
     <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
