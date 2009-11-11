@@ -70,6 +70,7 @@
 
   <% if @organism.description_long && @organism.description_long!='' %>
     </div>
+    <div class="titledescription"></div>
     <div class="organismShowBodyMiddle">
       <%= @organism.description_long %>
     </div>
@@ -78,7 +79,7 @@
 </div>
 
 <% if logged_in? -%>
-  <h4>BECOME A MEMBER</h4>
+  <div class="titledevenirmembre"></div>
   <div class="organismShowBodyMiddle">
     <% if @organism.is_user_related?(current_user) %>
       <%= link_to 'Not be a member anymore', { :controller => "members", :action => "destroy_current_user_relation", :organism_id => @organism.id  }%>
@@ -96,8 +97,8 @@
 <% end  %>
 
 <% if @organism.members.size>0 %>
+  <div class="titlederniersmembres"></div>
   <div class="memberBar">
-    <h4>LAST MEMBERS</h4>
     <div class="memberBarContent">
       <%= link_to "All members (#{@organism.members.size})", organism_members_path(:organism_id => @organism.id, :role =>:members) %>
     </div>
@@ -111,9 +112,8 @@
 <% end %>
 
 <%= render :partial => "/galleries/galleries_bar" %>
-
+<div class="titlecomment"></div>
 <div class="organismShowBodyCommentaire">
-    <h3>COMMENTS</h3>
     <%= render :partial => "/comments/list" %>
     <%= render :partial => "/comments/form" %>
 </div>

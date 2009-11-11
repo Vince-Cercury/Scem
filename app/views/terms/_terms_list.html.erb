@@ -9,16 +9,18 @@
             <%=  display_term_box(term.start_at, term.end_at) %>
           <% else %>
             <%=  display_date_box(term.start_at) %>
-          <% end %><br />
+          <% end %>
           <%= display_term_cover(term, :small) %>
         </div>
         <div class="listRight">
-          <div class="box">
+          
             <h4><%= link_to(event.name, get_event_if_term_url(term)) %></h4>
             <%# if !h(term.description).blank? %>
               <%#= term.description %>
             <%# else %>
+            <p>
               <%=h event.description_short %>
+            </p>
             <%# end %>
 
             <div class="quiet">
@@ -26,7 +28,7 @@
               <%= link_to('Number of participants: ' + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
               <%= link_to('Number of comments: ' + event.comments.size.to_s, event) unless event.comments.size == 0 %><br />
             </div>
-          </div>
+         
         </div>
       </div>
     <% end %>

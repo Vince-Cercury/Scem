@@ -1,42 +1,22 @@
 <div id="results">
-  <% @posts.each do |post| %>
-    <div class="box">
-      <h3><%=h post.name %></h3>
+  <div class="list">
+    <% @posts.each do |post| %>
+    <div class="listSeparator">
 
-      <%= post.text_long %>
-
-
-  <%#*<b>Text: </b>%>
-  <%#*<div class="whitebox">%>
-
-  <%#= post.text_short %>
-  <%#*</div>%>
-
-      <b>Created</b> <%= time_ago_in_words(post.created_at) %> ago by <%= get_user_name_or_pseudo_link_by_id(post.creator_id) %>
-
-      <br />
-
-
-      <%= link_to 'Read or post some comments', polymorphic_path([@parent_object, post].flatten) %>
-      <br />
-
-  <%# if post.text_long && post.text_long!='' %>
-  <%#= link_to 'Read more', polymorphic_path([@parent_object, post].flatten) %>
-  <%# end %>
-      <% if post.is_user_moderator?(current_user) %>
-        <%= link_to 'Edit', edit_polymorphic_path([@parent_object, post].flatten) %> |
-        <%= link_to 'Activate', polymorphic_path([@parent_object, post].flatten, :action => 'activate') if post.passive? %>
-        <%= link_to 'Suspend', polymorphic_path([@parent_object, post].flatten, :action => 'suspend') if post.active? %>
-        <%= link_to 'Unsuspend', polymorphic_path([@parent_object, post].flatten, :action => 'unsuspend') if post.suspended? %>
-        <%= link_to 'Destroy', edit_polymorphic_path([@parent_object, post].flatten), :confirm => 'Are you sure?', :method => :delete %>
-      <% end %>
+      <div class="blogBox">
+        <h4><%= link_to post.name, polymorphic_path([@parent_object, post].flatten) %></h4>
+        <p>
+          <%= post.text_long %>
+        </p>
+        Created <%= time_ago_in_words(post.created_at) %> ago by <%= get_user_name_or_pseudo_link_by_id(post.creator_id) %>
+      </div>
     </div>
-    <hr />
-  <% end %>
-  <%= will_paginate @posts %>
-  <% if @posts.size == 0 %>
-    <div class="bloc">
-      No results
-    </div>
-  <% end %>
+    <% end %>
+    <%= will_paginate @posts %>
+    <% if @posts.size == 0 %>
+      <div class="noPost">
+        No results
+      </div>
+    <% end %>
+  </div>
 </div>

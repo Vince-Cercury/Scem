@@ -1,15 +1,24 @@
 <%= render :partial => @header_partial %>
-<%= link_to 'Back', polymorphic_path([@parent_object, :posts].flatten) %>
-<h4>Editing post</h4>
+<div class="blogBody">
+    <div class="listContent">
+      <%= render :partial => "sub_header" %>
+      <div class="list">
+        <div class="listSeparator">
+          <div class="blogBox">
+            <h4>Edition du message</h4>
 
-<% form_for(@post, :url => polymorphic_path([@parent_object, @post].flatten)) do |f| %>
-  <%= f.error_messages %>
+            <% form_for(@post, :url => polymorphic_path([@parent_object, @post].flatten)) do |f| %>
+              <%= f.error_messages %>
 
- <%= render :partial => 'form', :locals => { :f => f } %>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+             <%= render :partial => 'form', :locals => { :f => f } %>
 
-<%= link_to 'Show', polymorphic_path([@parent_object, @post].flatten) %> |
-<%= link_to 'Back', polymorphic_path([@parent_object, :posts].flatten) %>
+             <%= f.submit 'Update' %>
+            
+            <% end %>
+          </div>
+          </div>
+        </div>
+       
+
+   </div>
+</div>

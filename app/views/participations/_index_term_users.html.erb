@@ -1,16 +1,20 @@
 <%= render :partial => "/events/header" %>
 <div class="searchBox">
-  <%= display_term_box(@term.start_at, @term.end_at) %>
+   <div class="searchBoxWhite">
+    <%= display_term_box(@term.start_at, @term.end_at) %>
+   </div>
 </div>
 <div class="searchBox">
-  <% form_tag term_participations_path, :method => 'get' do %>
+  <div class="searchBoxWhite">
+    <% form_tag term_participations_path, :method => 'get' do %>
 
-      <%=  hidden_field_tag 'role', params[:role] %>
+        <%=  hidden_field_tag 'role', params[:role] %>
 
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
 
-  <% end %>
+    <% end %>
+  </div>
 </div>
 <div class="participantContent">
   <ul class='tabsParticipant'>

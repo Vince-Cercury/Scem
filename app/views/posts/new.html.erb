@@ -1,17 +1,21 @@
 <%= render :partial => @header_partial %>
-<h4>New post</h4>
+<div class="blogBody">
+  <div class="blogContent">
+    <h4>Ajout d'une nouvelle annonce</h4>
 
-<% form_for(@post, :url => polymorphic_path([@parent_object, :posts].flatten)) do |f| %>
-  <%= f.error_messages %>
+    <% form_for(@post, :url => polymorphic_path([@parent_object, :posts].flatten)) do |f| %>
+      <%= f.error_messages %>
 
-  <%=  hidden_field_tag :parent_id, @parent_object.id %>
-  <%=  hidden_field_tag :parent_type, @parent_object.class %>
+      <%=  hidden_field_tag :parent_id, @parent_object.id %>
+      <%=  hidden_field_tag :parent_type, @parent_object.class %>
 
- <%= render :partial => 'form', :locals => { :f => f } %>
+      <%= render :partial => 'form', :locals => { :f => f } %>
 
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+      <p>
+        <%= f.submit 'Create' %>
+      </p>
+    <% end %>
 
-<%= link_to 'Back', polymorphic_path([@parent_object, :posts].flatten) %>
+
+  </div>
+</div>
