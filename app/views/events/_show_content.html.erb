@@ -18,6 +18,11 @@
     <% end %>
   </div>
   <div class="eventShowBodyRight">
+    <% if @term %>
+      <b> <%=  display_term_box(@term.start_at, @term.end_at) %> </b>
+
+      <%= render :partial => "/event_terms/term" %>
+    <% end %>
     <% if !get_event_place_as_string(@event).blank? %>
     <p>
       <b>Place</b>:
@@ -38,29 +43,32 @@
       <b>Categories:</b>
       <%= displayable_categories_links(@event) %>
     </p>
-    <% if current_user && current_user.facebook_user? && facebook_session %>
-      <p>
-        <%= link_to 'Publish the event on my Facebook', url_for(:controller => 'facebook', :event_id =>@event.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
-      </p>
-    <% end %>
-    <% if current_user %>
-      <p>
-        <%= link_to 'Tell your friends', share_event_path %>
-      </p>
-    <% end %>
-    <% if @term %>
-      <b> <%=  display_term_box(@term.start_at, @term.end_at) %> </b>
+    <script type="text/javascript">
+      var addthis_config = {
+                services_compact: 'email, facebook, twitter,live, hotmail, gmail, favorites, myspace, blogger, bloggy, yahoomail, print, printfriendly, pdfonline, more',
+                services_exclude: 'print'
+      }
+    </script>
+    <!-- AddThis Button BEGIN -->
 
-      <%= render :partial => "/event_terms/term" %>
-    <% end %>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pub=lebounce"></script>
+    <!-- AddThis Button END -->
+
+    </ br>
+
+    <a href="http://www.addthis.com/bookmark.php?v=250&amp;pub=lebounce"
+        class="addthis_button"><img
+        src="http://s7.addthis.com/static/btn/v2/lg-share-fr.gif"
+        width="125" height="16" border="0" alt="Share" /></a>
   </div>
 </div>
 <% if get_event_description_short_or_term_description %>
+  <div class="titledescription"></div>
   <div class="eventShowBodyMiddle">
     <p>
       <%= get_event_description_short_or_term_description %>
       <% if !@event.description_long.blank? %>
-      <br/>
+      
       <%=   link_to_function("Show me more...", nil, :id => "more_link") do |page|
         page.visual_effect(:toggle_blind, 'description_long')
         page << "if ($('description_long').getStyle('display')=='none'){"
@@ -74,6 +82,7 @@
   </div>
 <% end %>
 <% if !@event.description_long.blank? %>
+  <div class="titledescription"></div>
   <div class="eventShowBodyMiddle" id="description_long" style="display:none;">
     <p><%= @event.description_long %><br/>
           <%=   link_to_function("Show me less...", nil, :id => "more_link") do |page|
@@ -87,42 +96,54 @@
     </p>
   </div>
 <% end %>
-<div>
-</div>
-<div class="eventShowBodyMiddle">
-<%= render :partial => "/events/contributions_bar" %>
-</div>
-<%#*<div class="eventShowBodyMiddle"><h4 class="caps">DATE(S)</h4></div>%>
-<%# if current_user && @event.is_granted_to_edit?(current_user) %>
-<%#*<div class="span-4 last"><%= link_to('New term', new_url_for_even_polymorphic(@event, :term)) %>
-<%#*</div>%>
-<%# end %>
 
-<%#= render :partial => "terms" %>
 
-<%# if @event.list_participants.size>0 %>
-<%#*<div class="eventShowBodyMiddle"> -->%>
-<%#*<h4 class="caps">LAST PARTICIPANTS</h4>%>
+<% if @event.contributions.size > 0 %>
+  <div class="eventShowBodyCenter">
+      <% if @event.places.size > 0 %>
+        <div class="eventShowBodyCenterLeft">
+          <div class="titleorganisateurs"></div>
+          <div class="eventShowBodyCenterLeftContent">
+            <% @event.places.each do |@organism| %>
+              <div class="eventShowBodyCenterContentLeft">
+                <%= display_organism_cover(@organism, :thumb) %>
+              </div>
+              <div class="eventShowBodyCenterContentRight">
+                <%= link_to(@organism.name, url_for(organism_path(@organism))) %>
+              </div>
+            <% end %>
+           </div>
+        </div>
+      <% end %>
 
-<%#*</div> -->%>
-<%#*<div class="eventShowBodyMiddle"> -->%>
-<%# @event.list_participants[0,4].each do |user| %>
-<%#*<div class="span-3"> -->%>
-<%#*<div class="box"> -->%>
-<%#= display_user_cover(user, :thumb) %>
-<%#= get_user_name_or_pseudo_link(user) %>
-<%#*</div>%>
-<%#*</div>%>
-<%# end %>
-<%#*</div>%>
+      <% if @event.publishers.size > 0 %>
+        <div class="eventShowBodyCenterRight">
+          <div class="titleorganisateurs"></div>
+          <div class="eventShowBodyCenterRightContent">
+            <% @event.publishers.each do |@organism| %>
+              <div class="eventShowBodyCenterContentLeft">
+                <%= display_organism_cover(@organism, :thumb) %>
+              </div>
+              <div class="eventShowBodyCenterContentRight">
+                <%= link_to(@organism.name, url_for(organism_path(@organism))) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+   
+  </div>
+<% end %>
 
-<%# end %>
+
 <%= render :partial => "/galleries/galleries_bar" %>
 
+<div class="titlecomment"></div>
 <div class="eventShowBodyCommentaire">
-  <h3>COMMENTS</h3>
   <%= render :partial => "/comments/form" %>
   <%= render :partial => "/comments/list" %>
 </div>
 
+
+<%= render :partial => "/events/contributions_bar" %>
 

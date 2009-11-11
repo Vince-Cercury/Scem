@@ -27,7 +27,7 @@ body {font-size:75%;
       color:#222;
       background:#ffb500;
       font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
-      background-image:url('/images/body/french/fond.png');
+      background-image:url('/images/body/french/largeBackground.png');
       background-repeat: no-repeat;
       background-position: top center;
       width: 988px;
@@ -43,26 +43,22 @@ body {font-size:75%;
 .headerright{width:417px; float:right; margin: 84px 0 18px 120px; text-align: right;}
 .menu{width: 968px; padding: 10px 15px 15px 35px; height: 70px; float:left;}
 .colallcategories {
-  color:#000;
-  font-style: bold;
   float:left;
   margin-right:10px;
   width:30px;
   padding-right:24px;
   margin-right:25px;}
 .colcategories {
-  color:#000;
-  font-style: bold;
   float:left;
   margin-right:10px;
   width:150px;
   padding-left:24px;
   margin-left:25px;
-  border-left:1px solid #aaa;}
+  border-left:1px solid #000;}
                                                                 /*--- CORPS ---*/
 .subheader {background-image:url('/images/body/french/corps.png');
            background-repeat:repeat-y;
-           margin: 0 0 0 0px;
+           margin: 0 0 0 -1px;
            float: left;
            width: 988px;
            height: 100%;}
@@ -74,7 +70,7 @@ body {font-size:75%;
 .accueil{width: 688px; padding: 0 0 0 0; background: #000;}
 .noEvent{width: 668px; padding: 5px; margin: 0 0 0 0; background: #f0882f; color: #000; text-align: center; font-weight: bold;}
 .noEventMessage{width: 668px; padding: 5px; margin: 0 0 0 0; background: #000; color: #ffb500; text-align: center; font-weight: bold;}
-.titleevent {padding:0 533px 0 16px; width: 139px; text-align: right; height: 29px; background: #000; background-image:url('/images/header/french/enteteAccueil.png'); background-repeat: no-repeat}
+.titleevent {width: 143px; height: 30px; margin: 0 0 0 10px; padding:0 533px 0 16px; text-align: right; background: #000; background-image:url('/images/header/french/accueil.png'); background-repeat: no-repeat}
 
 .listContent{width: 678px; padding: 10px 5px 5px 5px; background: #fff; overflow: auto;}
 .list{width: 668px; margin: 0; padding: 0px 5px 5px 5px; background: #000; float: left;}
@@ -89,10 +85,10 @@ body {font-size:75%;
 .contentright{width: 241px; float: right; margin: 0 20px 0 10px; color:#f0882f;}
 /*Search box*/
 .searchbox {background:#fff; padding: 5px 5px 5px 8px; height:35px; margin: -1px 0 25px 0;}
-.titlesearch {width: 153px; height: 29px; background: #000; background-image:url('/images/header/french/enteteRecherche.png'); background-repeat: no-repeat}
+
 /*Calendar box*/
 .calendarbox {background:#fff; padding: 5px 5px 5px 8px; height:35px; margin: -1px 0 10px 0;}
-.titlecalendar {width: 153px; height: 29px; background: #000; background-image:url('/images/header/french/enteteCalendrier.png'); background-repeat: no-repeat}
+
 
 /*#the-cal {}*/
 #spinner-cal { width: 241px; text-align: center; height: 241px; line-height: 241px; vertical-align: middle; background: #fff;}
@@ -100,26 +96,26 @@ body {font-size:75%;
 
 
 /* Partners box*/
-.titlepartners {width: 153px; height: 29px; background: #000;background-image:url('/images/header/french/entetePartenaires.png');background-repeat: no-repeat}
 .partnersbox {background:#fff; padding: 10px 5px 5px 20px;  margin: -1px 0 25px 0;}
 /* Agenda box*/
-.titlediary {width: 153px; height: 29px; background: #000;background-image:url('/images/header/french/enteteAgenda.png');background-repeat: no-repeat}
 .diarybox {background:#fff; padding: 5px 5px 5px 8px;  margin: -1px 0 25px 0;}
 
                                                                         /*--- PUBLICITEE ---*/
 .subFooter {background: #000; margin: 0px 0px 0 0px; padding: 10px 0 0px 0; float: left; text-align:center; width: 986px; height: 90px;}
-
                                                                         /*--- FOOTER ---*/
+.footer {background-image:url('/images/body/french/footer.png'); background-repeat: no-repeat;  width: 1004px; float: left; margin : 0 0 10px -16px; height: 73px;}
+                                                        /* ---------------------TITLE---------------------- */
+.titlegaleries {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000; background-image:url('/images/header/french/galeries.png'); background-repeat: no-repeat; float: left;}
+.titlegalerie {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000; background-image:url('/images/header/french/galerie.png'); background-repeat: no-repeat;}
+.titlesearch {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000; background-image:url('/images/header/french/recherche.png'); background-repeat: no-repeat;}
+.titlecalendar {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000; background-image:url('/images/header/french/calendrier.png'); background-repeat: no-repeat;}
+.titlepartners {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000; background-image:url('/images/header/french/partenaires.png');background-repeat: no-repeat;}
+.titlediary {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000;background-image:url('/images/header/french/monagenda.png');background-repeat: no-repeat;}
+.titlecomment {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/commentaires.png');background-repeat: no-repeat; float: left;}
+.titledescription {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/description.png');background-repeat: no-repeat;}
+.titleorganisateurs {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000;background-image:url('/images/header/french/organisateurs.png');background-repeat: no-repeat;}
 
-.footer {background-image:url('/images/body/french/footer.png');
-        background-repeat: no-repeat;
-        width: 1004px;
-        float: left;
-        margin : 0 0 10px -16px;
-        height: 73px;}
-
-
-                                            /* ---------------------PAGE DE LOGIN---------------------- */
+                                                 /* ---------------------PAGE DE LOGIN---------------------- */
 
 .loginLeft{width: 185px; padding: 5px 5px 5px 5px; margin: 0 5px 0 0; background: #fff; float: left;}
 .loginRight{width: 473px; padding: 5px 5px 5px 5px; margin: 0 0 0 5px; background: #fff; float: right; text-align: center;}
@@ -127,7 +123,7 @@ body {font-size:75%;
 
                                             /* ---------------------PAGE D'UNE CATEGORIE'---------------------- */
 .categorie {background:#fff; padding: 5px 5px 5px 5px;}
-.categorie h3{margin-bottom:5px;}
+.categorie h3{margin-bottom:5px; text-align: center; font-size: 16px; font-weight: bold; color:#f0882f;}
 
                                                 /* ---------------------PAGE EVENT SHOW'---------------------- */
 /*HEADER*/
@@ -145,12 +141,22 @@ body {font-size:75%;
 .eventShowBodyLeftContent {width: 252px; padding: 0px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; font-weight: bold;}
 .eventShowBodyLeftContent a {background:#000; color:#fff; padding: 5px; }
 .eventShowBodyLeftContent a:hover {background:#ffb500; color:#000;}
-.eventShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right;}
-.eventShowBodyMiddle{width: 678px; margin: 10px 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
+.eventShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px;}
+.eventShowBodyRight img {float: right;}
+.eventShowBodyMiddle{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .eventShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .eventShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
-.eventShowBodyCommentaire {width: 688px; margin: 10px 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
-.eventShowBodyCommentaire h5 {padding: 5px; color: red; font-size: 16px; margin: 0px;}
+.eventShowBodyCenter{width: 688px; padding: 0 0 0 0; margin: 10px 0 0 0; float: left;}
+.eventShowBodyCenterLeft{width: 339px; margin: 0 5px 0 0; background: #000; float: left;}
+.eventShowBodyCenterLeftContent{width: 339px; padding: 0; background: #fff; float: left;}
+.eventShowBodyCenterRight{width: 339px; margin: 0 0 0 5px; background: #000; float: right;}
+.eventShowBodyCenterRightContent{width: 339px; padding: 0; background: #fff; float: left;}
+.eventShowBodyCenterContentLeft{width: 72px; height: 72px; padding: 5px; background: #fff; float: left; line-height: 72px; text-align: center;}
+.eventShowBodyCenterContentLeft img{vertical-align: middle;}
+.eventShowBodyCenterContentRight{width: 237px; margin: 10px 0 10px 0; height: 52px; padding: 5px; background: #fff; float: right; line-height: 52px; text-align: center; border-left:1px solid #000;}
+.eventShowBodyCenterContentRight a{vertical-align: middle;}
+.eventShowBodyCommentaire {width: 688px; margin: 0 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
+.eventShowBodyCommentaire h5 {padding: 5px; color: #000; font-size: 12px; margin: 0px;}
 .eventShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
 
 .contributionsBar {width: 668px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
@@ -177,7 +183,7 @@ body {font-size:75%;
 .organismShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .organismShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 .organismShowBodyCommentaire {width: 688px; margin: 10px 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
-.organismShowBodyCommentaire h5 {padding: 5px; color: red; font-size: 16px; margin: 0px;}
+.organismShowBodyCommentaire h5 {padding: 5px; color: #000; font-size: 16px; margin: 0px;}
 .organismShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
 
 .participantContent{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto;}
@@ -185,8 +191,8 @@ body {font-size:75%;
 .userListBox {width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center;}
 .userListBoxImage {width: 72px; height: 72px; line-height: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
 .userListBoxImage img {vertical-align: middle;}
-.userListBoxName {width: 576px; height: 20px; line-height: 20px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
-.userListBoxRight {width: 576px; height: 52px; line-height: 26px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
+.userListBoxName {width: 576px; height: 18px; line-height: 18px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
+.userListBoxRight {width: 576px; height: 54px; line-height: 18px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
 .userListBoxRight a {background: #000; color: #fff; padding: 1px; font-weight: bold;}
 .userListBoxRight a:hover {background: #f0882f; color: #fff;}
 .userListBoxName h4 {vertical-align: middle; font-size: 14px;}
@@ -199,8 +205,11 @@ body {font-size:75%;
 .memberBarContent a {background:#000; color:#fff; padding: 5px; }
 .memberBarContent a:hover {background:#ffb500; color:#000;}
 
-.gallerieBar {width: 678px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
-.gallerieBarBox {width: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
+
+.gallerieBar {width: 678px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left;}
+.gallerieBarBox {width: 339px; height: 90px; margin: 0; padding: 0; background: #fff; float: left; text-align: center;}
+.gallerieBarBox img {padding: 5px;}
+
 .gallerieBarContent {width: 678px; background: #fff; float: left; text-align: right; font-weight: bold; margin:5px 0 5px 0;}
 .gallerieBarContent a {background:#000; color:#fff; padding: 5px; }
 .gallerieBarContent a:hover {background:#ffb500; color:#000;}

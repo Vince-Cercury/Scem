@@ -1,26 +1,22 @@
   <% if facebook_session %>
-    <br />
-    <% if @term.facebook_eid %>
+   <% if @term.facebook_eid %>
       <%= link_to 'See on Facebook', "http://www.facebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank' %>
       <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
         (<%= link_to 'Delete the Facebook page', url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_cancel_message') %> )
       <% end  %>
     <% else %>
       <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
-        <%= link_to 'Publish on Facebook', url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_categories') %>
+        <div class="publishFB">
+          <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => "Publier cet évènement sur FaceBook"), url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_categories'), :title => "Publier cet évènement sur FaceBook") %>
+        </div>
       <% end %>
     <% end %>
   <% else %>
     <% if @term.facebook_eid %>
-      <br />
-      <%= link_to 'See on Facebook', url_for(login_path) %>
+       <%= link_to 'See on Facebook', url_for(login_path) %>
     <% end  %>
   <% end %>
-  <% if current_user && @event.is_user_moderator?(current_user) %>
-    <br />
-    (<%= link_to 'Edit', edit_url_for_even_polymorphic(@term) %> |
-    <%= link_to 'Destroy', @term, :confirm => 'Are you sure?', :method => :delete %>)
-  <% end  %>
+
 
 
   <% if logged_in? -%>
