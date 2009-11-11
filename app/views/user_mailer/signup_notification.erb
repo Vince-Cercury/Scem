@@ -1,8 +1,2 @@
-Your account has been created.
-
-  Username: <%=h @user.login %>
-  Password: <%=h @user.password %>
-
-Visit this url to activate your account:
-
-  <%=h @url %>
+<%= t("user_mailer.account_created", :username => @user.login, :password => @user.password, :url => link_to(@url,@url)) %>
+<%= render :partial => "/shared_templates/email_footer" %>

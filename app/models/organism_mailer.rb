@@ -7,7 +7,7 @@ class OrganismMailer < ActionMailer::Base
 
     #system_admin and system_modo, send this emails
     setup_email(admin_or_modo, organism)
-    @subject    += 'New organism signup'
+    @subject    += I18n.t('organism_mailer.subject_an_organism_created')
 
     @body[:url]  = "#{ENV['SITE_URL']}/activate_organism/#{organism.activation_code}"
   end
@@ -16,21 +16,21 @@ class OrganismMailer < ActionMailer::Base
 
     #system_admin and system_modo, send this emails
     setup_email(admin_or_modo, organism)
-    @subject    += 'Your organism created'
+    @subject    += I18n.t('organism_mailer.subject_your_organism_created')
 
   end
 
   def activation_to_system_admin_or_modo(user, organism)
     #system_admin and system_modo, send this emails
     setup_email(user,organism)
-    @subject    += "The organism #{organism.name} has been activated!"
+    @subject    += I18n.t('organism_mailer.subject_your_organism_activated',:name => organism.name)
     @body[:url]  = "#{ENV['SITE_URL']}#{organisms_path}/#{organism.id}"
   end
 
   def activation_to_organism_admin_or_modo(user, organism)
     #organism_admin and organism_modo, send this emails
     setup_email(user,organism)
-    @subject    += "Your organism #{organism.name} has been activated!"
+    @subject    += I18n.t('organism_mailer.subject_your_organism_activated',:name => organism.name)
     @body[:url]  = "#{ENV['SITE_URL']}#{organisms_path}/#{organism.id}"
   end
 
@@ -38,7 +38,7 @@ class OrganismMailer < ActionMailer::Base
   def setup_email(user, organism)
     @recipients  = "#{user.email}"
     @from        = "#{ENV['ADMINEMAIL']}"
-    @subject     = "[SCEM] "
+    @subject     = "#{ENV['APPNAME']} "
     @sent_on     = Time.now
     @body[:user] = user
     @body[:organism] = organism

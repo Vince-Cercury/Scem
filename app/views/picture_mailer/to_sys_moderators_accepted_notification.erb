@@ -1,24 +1,5 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<p>Dear <%=h get_user_name_or_pseudo(@user) %>,</p>
 
-<p>You receive this email because you are a system moderator or admin.</p>
+<%= t("picture_mailer.to_sys_moderators_accepted_notification", :user => get_user_name_or_pseudo(@user), :url_edit => link_to(@url_edit,@url_edit), :url_suspend=> link_to(@url_suspend,@url_suspend), :url_picture => link_to(@url_picture,@url_picture), :url_context=> link_to(@url_context,@url_context)) %>
 
-<p>A picture has been accepted by an organism moderator</p>
-
-
-<p>You can eventually:</p>
-
-<p>Edit the picture:<br />
-  <%=h @url_edit %></p>
-
-<p>Suspend the picture:<br />
-  <%=h @url_suspend %></p>
-
-<p>You can see the picture:<br />
- <%=h @url_picture %></p>
-
-<p>The context of this picture is:<br />
- <%=h @url_context %></p>
-
-<p>Regards.</p>
 <%= render :partial => "/shared_templates/email_footer" %>
