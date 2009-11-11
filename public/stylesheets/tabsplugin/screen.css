@@ -341,7 +341,16 @@ border-right: 0px solid black;
   border-bottom:none;
   height:1%; /* fixing IE 6 */
   margin:0 0 0 0;
-  overflow:auto; 
-
-
+  overflow:auto;
+  font-weight: bold;
+  color: #000;
 }
+
+.tabsCategories li a{
+  color: #000;
+}
+
+.tabsCategories li a:hover{
+  color: #f0882f;
+}
+
