@@ -1,38 +1,24 @@
 <%= render :partial => @header_partial %>
-<%= link_to 'Back', polymorphic_path([@parent_object, :posts].flatten) %>
-<h4>POST - <%=h @post.name %></h4>
+<div class="blogBody">
+    <div class="listContent">
+      <%= render :partial => "sub_header" %>
 
-<div class="box">
-  <%# if @post.text_long && @post.text_long!='' %>
-    <b>Text long:</b>
-    <div class="whitebox">
-
-      <%= @post.text_long %>
+    <div class="list">
+      <div class="listSeparator">
+        <div class="blogBox">
+          <h4>POST - <%=h @post.name %></h4>
+          <p>
+            <%= @post.text_long %>
+          </p>
+          Created <%= time_ago_in_words(@post.created_at) %> ago by <%= get_user_name_or_pseudo_link_by_id(@post.creator_id) %>
+        </div>
+      </div>
     </div>
-  <%# else %>
-
-    <%#*<b>Text short:</b>%>
-    <%#*<div class="whitebox">%>
-
-      <%#= @post.text_short %>
-    <%#*</div>%>
-
-  <%# end %>
+  </div>
 </div>
-<b>Created</b> <%= time_ago_in_words(@post.created_at) %> ago by <%= get_user_name_or_pseudo_link_by_id(@post.creator_id) %>
-<br />
-<% if @post.is_user_moderator?(current_user) %>
-  <%= link_to 'Edit', edit_polymorphic_path([@parent_object, @post].flatten) %> |
-  <%= link_to 'Activate', polymorphic_path([@parent_object, @post].flatten, :action => 'activate') if @post.passive? %>
-  <%= link_to 'Suspend', polymorphic_path([@parent_object, @post].flatten, :action => 'suspend') if @post.active? %>
-  <%= link_to 'Unsuspend', polymorphic_path([@parent_object, @post].flatten, :action => 'unsuspend') if @post.suspended? %> 
-<% end %>
-<%= link_to 'Back', polymorphic_path([@parent_object, :posts].flatten) %>
+<div class="titlecomment"></div>
+<div class="blogCommentaire">
+  <%= render :partial => "/comments/list" %>
+  <%= render :partial => "/comments/form" %>
+</div>
 
-<hr />
-<h4 class="caps">COMMENTS</h4>
-<%= render :partial => "/comments/list" %>
-<%= render :partial => "/comments/form" %>
-
-<hr />
-<%= link_to 'Back', polymorphic_path([@parent_object, :posts].flatten) %>

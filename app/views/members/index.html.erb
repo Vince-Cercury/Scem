@@ -1,12 +1,15 @@
 <%= render :partial => "/organisms/header" %>
-<div class="searchBox">
-  <% form_tag organism_members_path, :method => 'get' do %>
-      <%=  hidden_field_tag 'role', params[:role] %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search", :name => nil %>
-  <% end %>
-</div>
+
 <div class="participantContent">
+  <div class="searchBox">
+    <div class="searchBoxWhite">
+      <% form_tag organism_members_path, :method => 'get' do %>
+          <%=  hidden_field_tag 'role', params[:role] %>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "Search", :name => nil %>
+      <% end %>
+    </div>
+  </div>
   <%= render :partial => "/users/users_list" %>
 </div>
 
