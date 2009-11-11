@@ -10,10 +10,11 @@ class OrganismEventsController < ApplicationController
     #@events = @organism.search_events(params[:search], params[:page])
 
     if params[:period] == "past"
-      @terms = Term.search_has_publisher_past_by_organism(params[:search], params[:page], params[:organism_id])
+      @terms = Term.search_has_publisher_past_by_organism(params[:search], params[:page], @organism.id)
     else
-      @terms = Term.search_has_publisher_futur_by_organism(params[:search], params[:page], params[:organism_id])
+      @terms = Term.search_has_publisher_futur_by_organism(params[:search], params[:page], @organism.id)
     end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @terms }

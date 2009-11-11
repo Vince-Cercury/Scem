@@ -62,9 +62,14 @@ class EventTermsController < ApplicationController
 
   def parse_term_params
     term_params_parsed = Hash.new
-    term_params_parsed[:start_at] = Time.parse(params[:term][:start_at] + " " + params[:term][:start_hour]+":"+params[:term][:start_min])
-    term_params_parsed[:end_at] = Time.parse(params[:term][:end_at] + " " + params[:term][:end_hour]+":"+params[:term][:end_min])
+
+    start_to_parse = params[:term][:start_at] + " " + params[:term][:start_hour]+":"+params[:term][:start_min]
+    end_to_parse = params[:term][:end_at] + " " + params[:term][:end_hour]+":"+params[:term][:end_min]
+
+    term_params_parsed[:start_at] = DateTime.strptime(start_to_parse,'%d/%m/%Y %H:%M')
+    term_params_parsed[:end_at] = DateTime.strptime(end_to_parse,'%d/%m/%Y %H:%M')
     term_params_parsed[:description] = params[:term][:description]
+    
     return term_params_parsed
   end
 
