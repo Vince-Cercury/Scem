@@ -17,13 +17,13 @@ module UsersHelper
       case style
       when "mini"
         image = image_tag(user.fb_image_small, :height => mini_height)
-      when "thumb"
-        image = image_tag(user.fb_image, :width => thumb_width)
-      when "small"
+      when :thumb
+        image = image_tag(user.fb_image_small, :width => thumb_width)
+      when :small
         image = image_tag(user.fb_image, :width => small_width)
-      when "medium"
+      when :medium
         image = image_tag(user.fb_image)
-      when "large"
+      when :large
         image = image_tag(user.fb_image_big)
       else
         image = image_tag(user.fb_image)

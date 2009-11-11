@@ -261,18 +261,30 @@ class Event < ActiveRecord::Base
     #raise Time.zone.inspect
     parsed_attributes[:description] = attributes[:description]
     #raise DateTime.zone.inspect
+
+
     end_to_parse = attributes[:end_at] + " "+ attributes[:end_hour] + ":" + attributes[:end_min]# + " "+ Time.zone
+
     #attributes[:end_at] = Time.parse(end_to_parse)
     #parsed_attributes[:end_at] = Time.parse(end_to_parse)
-    parsed_attributes[:end_at] = DateTime.strptime(end_to_parse,'%d/%m/%Y %H:%M')#.to_time#.to_time.in_time_zone
+    begin
+      parsed_attributes[:end_at] = DateTime.strptime(end_to_parse,'%d/%m/%Y %H:%M')#.to_time#.to_time.in_time_zone
+    rescue
+      parsed_attributes[:end_at] =""
+    end
     #raise DateTime.strptime(end_to_parse,'%d/%m/%Y %H:%M').to_time.inspect
 
 
     start_to_parse = attributes[:start_at] + " "+ attributes[:start_hour] + ":" + attributes[:start_min]# + " "+ Time.zone
     #attributes[:start_at] = Time.parse(start_to_parse)
     #parsed_attributes[:start_at] = Time.parse(start_to_parse)
-    parsed_attributes[:start_at] = DateTime.strptime(start_to_parse,'%d/%m/%Y %H:%M')#.to_time#.to_time.in_time_zone
-   #raise parsed_attributes.inspect
+
+    begin
+      parsed_attributes[:start_at] = DateTime.strptime(start_to_parse,'%d/%m/%Y %H:%M')#.to_time#.to_time.in_time_zone
+    rescue
+      parsed_attributes[:start_at] = ""
+    end
+      #raise parsed_attributes.inspect
     #return attributes
     return parsed_attributes
   end

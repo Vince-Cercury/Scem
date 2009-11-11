@@ -21,7 +21,7 @@ class MembersController < ApplicationController
   # GET /terms.xml
   def index
       @organism = Organism.find(params[:organism_id])
-      @users = @organism.search_users(params[:role],params[:search], params[:page])
+      @users = @organism.search_users(params[:search], params[:page])
 
 
     respond_to do |format|

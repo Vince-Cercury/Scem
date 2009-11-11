@@ -1,4 +1,5 @@
 <div id="results">
+  <% if @users.size>0 %>
   <div class="userList">
     <% @users.each do |user| %>
       <div class="userListBox">
@@ -16,17 +17,17 @@
                 <p>
                 Donner l'autorisation à <%= get_user_name_or_pseudo(user) %> d'être :
                 <% if !@organism.admins.include?(user) %>
-                   <%= link_to 'Administrateur', { :controller => "organisms_users", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :admin }%>
+                   <%= link_to 'Administrateur', { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :admin }%>
                 <% end  %>
                 <% if !@organism.moderators.include?(user) %>
-                   <%= link_to 'Modérateur', { :controller => "organisms_users", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :moderator }%>
+                   <%= link_to 'Modérateur', { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :moderator }%>
                 <% end  %>
                 <% if !@organism.members.include?(user) %>
-                   <%= link_to 'Enlever lui ses droits ', { :controller => "organisms_users", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :member }%>
+                   <%= link_to 'Enlever lui ses droits ', { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :member }%>
                 <% end  %>
                 </p>
                 <p>
-                <%= link_to 'Supprimer cet utilisateur des membres', { :controller => "organisms_users", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
+                <%= link_to 'Supprimer cet utilisateur des membres', { :controller => "members", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
                 </p>
               <% end  %>
              <% end %>
@@ -35,6 +36,7 @@
       </div>
     <% end %>
   </div>
+  <% end %>
   <%= will_paginate @users %>
   <% if @users.size == 0 %>
     <div class="userListMessage">
