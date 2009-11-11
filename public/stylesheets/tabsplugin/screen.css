@@ -21,7 +21,7 @@
 
 .tabs li {
   float: left;
-  line-height:1.5; 
+  line-height:1.5;
   list-style-type:none;
   margin:0 .25em 0 0;
   color:#f0882f;
@@ -31,7 +31,7 @@
   display:block;
 }
 
-.tabs li a { 
+.tabs li a {
   background:#000;
   height: 30px;
   border-top:none;
@@ -43,7 +43,7 @@
   cursor:pointer;
   display:block;
   float: left;
-  font-weight:bold; 
+  font-weight:bold;
   text-decoration:none;
 }
 
@@ -58,7 +58,7 @@
   display:block;
 }
 
-.tabs li a:hover { 
+.tabs li a:hover {
   color:#f0882f;
 }
 
@@ -106,7 +106,7 @@ border-right: 0px solid black;
   display:block;
   float:left;
   font-weight:bold;
-  
+
   text-decoration:none;
 }
 .tabcategories li a:hover {
@@ -346,6 +346,9 @@ border-right: 0px solid black;
   color: #000;
 }
 
+.tabsCategories li a{
+  color: #000;
+}
 
 .tabsCategories li a:hover{
   color: #f0882f;
