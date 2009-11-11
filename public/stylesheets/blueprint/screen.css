@@ -42,8 +42,23 @@ body {font-size:75%;
 .headerleft{width:451px; height:170px; float:left;}
 .headerright{width:417px; float:right; margin: 84px 0 18px 120px; text-align: right;}
 .menu{width: 968px; padding: 10px 15px 15px 35px; height: 70px; float:left;}
-.colallcategories {float:left;margin-right:10px;width:30px;padding-right:24px;margin-right:25px;}
-.colcategories {float:left;margin-right:10px;width:150px;padding-left:24px;margin-left:25px;border-left:1px solid #aaa;}
+.colallcategories {
+  color:#000;
+  font-style: bold;
+  float:left;
+  margin-right:10px;
+  width:30px;
+  padding-right:24px;
+  margin-right:25px;}
+.colcategories {
+  color:#000;
+  font-style: bold;
+  float:left;
+  margin-right:10px;
+  width:150px;
+  padding-left:24px;
+  margin-left:25px;
+  border-left:1px solid #aaa;}
                                                                 /*--- CORPS ---*/
 .subheader {background-image:url('/images/body/french/corps.png');
            background-repeat:repeat-y;
