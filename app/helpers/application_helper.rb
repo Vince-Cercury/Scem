@@ -4,7 +4,9 @@ module ApplicationHelper
   def get_page_title
     result = ENV['APPNAME']
     if @category && controller_name == 'categories'
-      result += " - " + @category.name
+       if @category.name
+          result += " - " + @category.name
+      end
     end
     if controller_name == 'activities'
       if @activity
