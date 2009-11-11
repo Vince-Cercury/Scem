@@ -19,4 +19,3 @@
 [submodule "vendor/plugins/live-validations"]
         path = vendor/plugins/live-validations
         url = git://github.com/augustl/live-validations.git
-

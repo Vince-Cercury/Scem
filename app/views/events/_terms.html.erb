@@ -1,6 +1,6 @@
 <% @event.terms.each do |@term| %>
 <b><%=  link_to(display_term_box(@term.start_at, @term.end_at),url_for_even_polymorphic(@term)) %></b>
-
+<%#= raise @term.start_at.in_time_zone.strftime("%H:%M").inspect %>
 
       <% if facebook_session %>
         <br />
