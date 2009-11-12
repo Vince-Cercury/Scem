@@ -14,21 +14,21 @@
           <% if logged_in? && @organism -%>
             <% if @organism.is_user_moderator?(current_user) %>
               <% if !@organism.nil?   %>
-                <%= t('users.users_list.This_user_is') %> <%= OrganismsUser.find_by_organism_id_and_user_id(@organism.id, user.id).role %>
+                <%= t('users.users_list.This_user_is') %> <%= t('users_list.'+OrganismsUser.find_by_organism_id_and_user_id(@organism.id, user.id).role) %>
                 <p>
                 <%= t('users.users_list.Give_authorisation_to') %><%= get_user_name_or_pseudo(user) %> <%= t('users.users_list.to_be') %>
                 <% if !@organism.admins.include?(user) %>
-                   <%= link_to 'Administrateur', { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :admin }%>
+                   <%= link_to t('users_list.Administrator'), { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :admin }%>
                 <% end  %>
                 <% if !@organism.moderators.include?(user) %>
-                   <%= link_to 'Modérateur', { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :moderator }%>
+                   <%= link_to t('users_list.Moderator'), { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :moderator }%>
                 <% end  %>
                 <% if !@organism.members.include?(user) %>
-                   <%= link_to 'Enlever lui ses droits ', { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :member }%>
+                   <%= link_to t('users_list.Remove_rights'), { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :member }%>
                 <% end  %>
                 </p>
                 <p>
-                <%= link_to 'Supprimer cet utilisateur des membres', { :controller => "members", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
+                <%= link_to t('users_list.Remove_user'), { :controller => "members", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
                 </p>
               <% end  %>
              <% end %>
