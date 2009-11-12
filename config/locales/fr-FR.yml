@@ -39,6 +39,10 @@ fr-FR:
     already_started_or_past: "Evénements déj&agrave; commencés ou finis"
     controller:
       Successfully_updated: "La date a été modifiée avec succès."
+      Successfully_created: "La date a été créée avec succès."
+      Missing_event_parameter: "Le paramètre concernant l'évènement est manquant ou incorrect."
+      Not_allowed_to_do_this: "Action non autorisée."
+
   events:
     controller:
       Successfully_created: "L'évènement a été créé avec succès."
@@ -125,6 +129,9 @@ fr-FR:
     Stars: "Etoiles"
     votes: "votes"
   users:
+    controller:
+      Not_friend: "Vous n'êtes pas un(e) ami(e)s de cet utilisateur, vous ne pouvez pas voir son profil..."
+      Not_allowed: "Vous nêtes pas autorisé à effectué cette action. Essayer de vous connecter puis recommencez."
     participations: "Mes participations"
     organisms: "Mes organisms"
     organisms:
@@ -513,6 +520,15 @@ fr-FR:
     subject_pitcure_posted: "Une photo a été postée pour un {{parent}}"
     subject_picture_accepted: "Photo acceptée"
   posts:
+    controller:
+      Not_visible: "Le billet n'est pas visible."
+      Posts_created_success: "Billet créé avec succès."
+      Posts_updated_success: "Billet modifié avec succès."
+      Couldnt_find: "Nous ne pouvons pas trouver le billet."
+      Posts_activated: "Billet désormais activé."
+      Posts_suspended: "Billet suspendu."
+      Posts_unsuspended: "Billet non suspendu."
+      Not_allowed_to_do_this: "Vous n'avez pas suffisamment de droits pour effectuer cette action."
     show:
       Post: "Billet"
       Created: "Créé il y a "
@@ -622,14 +638,13 @@ fr-FR:
       Drop: "Supprimer"
       Set_as_cover: "Définir comme couverture"
       Move_before: "Déplacer avant"
-      Move_after: "Déplacer après"
-      Back: "Retour à la galerie"
+      Move_after: "Déplacer après" 
     edit:
-      Back_gallery: "Retour à la galerie"
+      Back_gallery: "La galerie"
       Back_to: "Retour à "
       Update: "Mettre à jour"
     add_picture:
-      Add_picture: "Ajouter une image"
+      Add_picture: "Ajouter une image supplémentaire"
       Update: "Mise à jour"
       Back_to_gallery: "Retour à la galerie"
     picture:
@@ -637,11 +652,11 @@ fr-FR:
     header:
       Gallery: "Galerie"
       Back_to: "Retour "
-      user: "à l'utilisateur"
-      event: "à l'évènement"
-      organism: "à l'organisme"
-      Edit_picture: "Editer une image"
-      Add_picture: "Ajouter une image"
+      User: "à l'utilisateur"
+      Event: "à l'évènement"
+      Organism: "à l'organisme"
+      Edit_picture: "Editer les images"
+      Add_picture: "Ajouter des images"
       Edit_gallery: "Editer la galerie"
     organism_search:
       Search: "Rechercher"

@@ -85,7 +85,7 @@ class TermsController < ApplicationController
     
     respond_to do |format|
       if @term.save
-        flash[:notice] = 'Term was successfully created.'
+        flash[:notice] = I18n.t('terms.controller.Successfully_created')
         format.html { redirect_to(@event) }
         format.xml  { head :ok }
       else
@@ -143,7 +143,7 @@ class TermsController < ApplicationController
   end
 
   def no_event_param_redirection
-		flash[:error] = "Event parameter is missing or not correct."
+		flash[:error] = I18n.t('terms.controller.Missing_event_parameter')
 		redirect_to root_path
 	end
 
@@ -159,7 +159,7 @@ class TermsController < ApplicationController
   end
 
   def not_granted_redirection
-    flash[:error] = "Not allowed to do this"
+    flash[:error] = I18n.t('terms.controller.Not_allowed_to_do_this')
     redirect_to root_path
   end
 
