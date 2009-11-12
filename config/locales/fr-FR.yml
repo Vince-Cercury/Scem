@@ -127,9 +127,16 @@ fr-FR:
       listing_users: "LISTE DES UTILISATEURS"
     Sorry_no_results: "Désolé, aucun résultat trouvé"
     users_list:
-      This_user_is: "Cet utilisateur est"
+      This_user_is: "Cet utilisateur est "
       Give_authorisation_to: "Donner l'autorisation à "
       to_be: "d'être :"
+      Administrator: "Administrateur "
+      Moderator: "Modérateur"
+      Remove_rights: "Enlever lui ses droits"
+      Remove_user: "Supprimer cet utilisateur des membres"
+      admin: "un administrateur"
+      moderator: "un modérateur"
+      member: "un membre"
     edit:
       Editing_user: "Edition d'utilisateur"
       Facebook_user: "Vous êtes connecté grâce à Facebook, merci d'aller sur Facebook pour éditer vos informations. Cependant, vous pouvez éditer quelques paramètres spécifiques ici."
