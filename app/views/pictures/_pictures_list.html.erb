@@ -1,10 +1,10 @@
 <div id="results">
   <table>
     <tr>
-      <th>Preview</th>
-      <th>Parent</th>
-      <th>Description</th>
-      <th>Creator</th>
+      <th><%= t('pictures.list.Preview') %></th>
+      <th><%= t('pictures.list.Parent') %></th>
+      <th><%= t('pictures.list.Description') %></th>
+      <th><%= t('pictures.list.Creator') %></th>
     </tr>
 
     <% @pictures.each do |picture| %>
@@ -13,7 +13,7 @@
         <td>From <%= picture.parent_type %> <%=  link_to(picture.get_parent_object.name, picture.get_parent_object) %></td>
         <td><%=h picture.description %></td>
         <td><%= get_user_name_or_pseudo_link_by_id(picture.creator_id) %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <td><%= link_to t('pictures.list.Edit'), edit_picture_path(picture) %></td>
         <td><%= render :partial => "rating/mini_rating", :locals => { :current_object => picture } if picture.rating > 0 %></td>
       </tr>
     <% end %>

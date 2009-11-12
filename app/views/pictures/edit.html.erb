@@ -1,6 +1,6 @@
 <%= render :partial => "header" %>
 <hr />
-<h3>Editing picture</h3>
+<h3><%= t('pictures.edit.Editing_picture') %></h3>
 
 <%=  image_tag(@picture.attached.url(:medium)) %>
 
@@ -14,6 +14,6 @@
 
  
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t('pictures.edit.Update') %>
   </p>
 <% end %>

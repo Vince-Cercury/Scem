@@ -1,37 +1,38 @@
 <div id="results">
   <% if @terms.size > 0 %>
     <div class="list">
-    <% @terms.each do |term| %>
-      <% event=term.event %>
-      <div class="listSeparator">
-        <div class="listLeft">
-          <% if @show_end_date%>
-            <%=  display_term_box(term.start_at, term.end_at) %>
-          <% else %>
-            <%=  display_date_box(term.start_at) %>
-          <% end %>
-          <%= display_term_cover(term, :small) %>
-        </div>
-        <div class="listRight">
-          
+      <% @terms.each do |term| %>
+        <% event=term.event %>
+        <div class="listSeparator">
+          <div class="listLeft">
+            <%= l(term.start_at,:format => 'day_number') %>
+            <%= l(term.start_at,:format => 'only_month') %>
+            <%= display_term_cover(term, :small) %>
+          </div>
+          <div class="listRight">
+
             <h4><%= link_to(event.name, get_event_if_term_url(term)) %></h4>
-            <%# if !h(term.description).blank? %>
-              <%#= term.description %>
-            <%# else %>
+    <%# if !h(term.description).blank? %>
+    <%#= term.description %>
+    <%# else %>
             <p>
               <%=h event.description_short %>
             </p>
-            <%# end %>
+    <%# end %>
 
             <div class="quiet">
               <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
               <%= link_to(t('events.terms.Number_of_participants') + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
               <%= link_to(t('events.terms.Number_of_comments') + event.comments.size.to_s, event) unless event.comments.size == 0 %><br />
             </div>
-         
+            <% if @show_end_date%>
+              <%=  display_term_box(term.start_at, term.end_at) %>
+            <% else %>
+              <%=  display_date_box(term.start_at) %>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
     </div>
   <% end %>
   <% if @terms.size == 0 %>

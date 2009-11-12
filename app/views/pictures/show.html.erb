@@ -2,8 +2,8 @@
 <div class="span-6 last">
   <%= render :partial => "rating/rating", :locals => { :current_object => @picture } %>
   <% if  @parent_object.class.to_s.eql?("Gallery") %>
-    <%= link_to("previous", url_for_even_polymorphic(@picture.previous_item)) unless @picture.first_item? %>&nbsp;&nbsp;
-    <%= link_to("next", url_for_even_polymorphic(@picture.next_item)) unless @picture.last_item? %>
+    <%= link_to(t('pictures.show.Previous'), url_for_even_polymorphic(@picture.previous_item)) unless @picture.first_item? %>&nbsp;&nbsp;
+    <%= link_to(t('pictures.show.Next'), url_for_even_polymorphic(@picture.next_item)) unless @picture.last_item? %>
   <% end %>
 </div>
 <hr />
@@ -13,22 +13,22 @@
 
 <br />
 <% if is_picture_moderator?(@picture) %>
-<%= link_to 'Edit', get_edit_picture_polymorphic_parent_url(@picture) %>
+<%= link_to t('pictures.show.Edit'), get_edit_picture_polymorphic_parent_url(@picture) %>
 <% end %>
 
 
 <% if @picture.description %>
   <p>
-    <b>Description:</b>
+    <b><%= t('pictures.show.Description') %></b>
     <%=h @picture.description %>
   </p>
 <% end %>
 <p>
-  <b>Creator:</b>
+  <b><%= t('pictures.show.Creator') %></b>
   <%= get_user_name_or_pseudo_link_by_id(@picture.creator_id) %>
 </p>
 
-<h2>Comments</h2>
+<h2><%= t('pictures.show.Comments') %></h2>
 <%= render :partial => "/comments/list" %>
 <%= render :partial => "/comments/form" %>
 

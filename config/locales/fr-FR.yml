@@ -7,6 +7,7 @@ fr-FR:
   Users: "Utilisateurs"
   Events: "Evénements"
   the: "Le"
+  The+space: ""
   from: "de"
   From: "Du"
   at: "&agrave;"
@@ -159,6 +160,7 @@ fr-FR:
       Create_page: "Créer une page"
       new_organism: "Groupe, association, pub, business ?"
   sessions:
+    Get_facebook_account: "Si vous avez un compte facebook, n'hésitez pas, c'est le plus simple !"
     Logged_in_success: Connecté avec succ&egrave;s
     Logged_out: "Vous avez été déconnecté"
     Login_error: "Impossible de vous connecter en tant que "
@@ -202,6 +204,7 @@ fr-FR:
       short1: "%d %B %Y"
       only_second: "%S"
       only_month: "%B"
+      day_number: "%d"
       day_name_and_number: "%A %d"
       day_name_and_number_and_month: "%A %d %B"
       day_name_and_number_and_month_and_year: "%A %d %B %Y"
@@ -441,3 +444,73 @@ fr-FR:
     subject_picture_suspended: "Une image d'un {{parent}} a été suspendue"
     subject_pitcure_posted: "Une photo a été postée pour un {{parent}}"
     subject_picture_accepted: "Photo acceptée"
+  posts:
+    show:
+      Post: "Billet"
+      Created: "Créé il y a "
+      by: "par "
+    new:
+      Add_new: "Ajout d'une nouvelle annonce"
+      Create: "Créer"
+    edit:
+      Message_edition: "Edition du message"
+      Update: "Mettre à jour"
+    sub_header:
+      Back_to_blog_page: "Retouner sur la page du Blog"
+      Show: "Afficher"
+      Edit: "Editer"
+      New_message: "Nouveau message"
+      Activate: "Activer"
+      Suspend: "Suspendre"
+      Unsuspend: "Valider"
+    list:
+      No_results: "Aucun résultat"
+      Created: "Créé il y a "
+      by: "par "
+    form:
+      Title: "Titre :"
+      Message: "Message :"
+  pictures:
+    show:
+      Previous: "Précédante"
+      Next: "Suivante"
+      Edit: "Editer"
+      Description: "Description :"
+      Creator: "Auteur :"
+      Comments: "Commentaires :"
+    new:
+      Create: "Créer"
+    index:
+      Listing_pictures: "Liste des photos"
+      New_picture: "Nouvelle image"
+    edit:
+      Editing_picture: "Edition d'image"
+      Update: "Mettre à jour"
+    list:
+      Preview: "Aperçu"
+      Parent: "Parent"
+      Description: "Description"
+      Creator: "Auteur"
+      Edit: "Editer"
+    header:
+      Back_to: "Retour à "
+  participations:
+    index_user:
+      Search: "Rechercher"
+      Participated_to: " A participé à"
+      Could_participate_to: "A peut être participé à"
+      Did_not_participated_to: "N'a pas participé à"
+      Participate_to: "Participe à"
+      Might_participate_to: "Participe peut être à"
+      Do_not_participate_to: "Ne participe pas à"
+      of_date: "du "
+    index_terms:
+      List: "Liste de date"
+    index_term:
+      Search: "Rechercher"
+      Attending: "Présent"
+      Maybe_attending: "Peut être présent"
+      Not_attending: "Non présent"
+
+
+
