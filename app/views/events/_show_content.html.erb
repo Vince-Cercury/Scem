@@ -82,7 +82,7 @@
   </div>
 <% end %>
 <% if !@event.description_long.blank? %>
-  <div class="titledescription"></div>
+  
   <div class="eventShowBodyMiddle" id="description_long" style="display:none;">
     <p><%= @event.description_long %><br/>
           <%=   link_to_function(t('.content.Show_me_less'), nil, :id => "more_link") do |page|

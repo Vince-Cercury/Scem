@@ -105,6 +105,17 @@ class OrganismsController < ApplicationController
 
 
     set_session_parent_pictures_root_path(@organism)
+
+     #hack: do not consider categories id made of hash ['_all'] => id. Problem comes from Swapselect
+    if params[:organism][:category_ids]
+      category_ids = Array.new
+      params[:organism][:category_ids].each do |id|
+        if !id.include? "_all"
+          category_ids << id
+        end
+      end
+      params[:organism][:category_ids] = category_ids
+    end
     
     respond_to do |format|
       if @organism.update_attributes(params[:organism])

@@ -21,6 +21,26 @@ FCKConfig.ContextMenu = ['Generic','Anchor','Flash','Select','Textarea','Checkbo
 // ONLY CHANGE BELOW HERE
 FCKConfig.SkinPath = FCKConfig.BasePath + 'skins/silver/';
 
+FCKConfig.ToolbarSets["Blog"] = [
+	['Source','DocProps','-','Save','NewPage','Preview','-','Templates'],
+	['Cut','Copy','Paste','PasteText','PasteWord','-','Print','SpellCheck'],
+	['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat'],
+        '/',
+	['Form','Checkbox','Radio','TextField','Textarea','Select','Button','ImageButton','HiddenField'],
+	['FitWindow','ShowBlocks','-','About'],
+        ['Image','Flash','Table','Rule','Smiley','SpecialChar','PageBreak'],
+        ['TextColor','BGColor'],
+        '/',
+	['Bold','Italic','Underline','StrikeThrough','-','Subscript','Superscript'],
+	['OrderedList','UnorderedList','-','Outdent','Indent','Blockquote','CreateDiv'],
+	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
+	['Link','Unlink','Anchor'],
+	'/',
+	['Style','FontFormat','FontName','FontSize']
+	
+			// No comma for the last row.
+] ;
+
 FCKConfig.ToolbarSets["Easy"] = [
         ['Bold','Italic','Underline','StrikeThrough','-'],
         ['OrderedList','UnorderedList','-'],
@@ -50,3 +70,5 @@ FCKConfig.ToolbarSets["Comment"] = [
         ['TextColor','BGColor'],
         ['Smiley', 'easyLink', 'Unlink']
 ] ;
+
+

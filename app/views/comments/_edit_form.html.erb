@@ -1,5 +1,4 @@
-
-<div id='form-update-comment_<%= comment.id %>'>
+  <div class="commentaire" id='comment_<%= comment.id %>-content'>
       <div class="commentaireLeft">
       <%= display_user_cover_by_id(comment.user_id, "mini") %>
       <%= get_user_name_or_pseudo_link_by_id(comment.user_id) %>
@@ -8,7 +7,7 @@
   <div id='form-update-comment-fields_<%= comment.id %>'>
   <% loading = "$('update-comment-spinner_#{comment.id}').show(); " + "$('form-update-comment-fields_#{comment.id}').hide();" %>
   <% remote_form_for(:comment, comment, :url => {:controller => 'comments', :action => 'update', :comment_id => comment.id}, :before => fckeditor_before_js('comment', 'text'), :loading => loading) do |f| %>
-
+    <%= f.error_messages %>
     <p>
       Edit the comment:<br />
       <%= fckeditor_textarea(:comment, :text, :ajax => true, :toolbarSet => 'Comment', :width => '100%', :height => '150px') %>

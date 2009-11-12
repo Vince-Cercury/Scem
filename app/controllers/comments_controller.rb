@@ -41,14 +41,16 @@ class CommentsController < ApplicationController
   def create
     puts "intend to create a comment"
     @comment = Comment.new(params[:comment])
-    commentable_object = Comment.find_commentable(params[:commentable_type], params[:commentable_id])
+    @current_object = commentable_object = Comment.find_commentable(params[:commentable_type], params[:commentable_id])
 
     @comment.user_id = current_user.id
     #raise commentable_object.inspect
-    
-    #respond_to do |format|
-    if commentable_object.comments << @comment
 
+    result = false
+    #respond_to do |format|
+    if @comment.valid? && commentable_object.comments << @comment
+
+      result = true
       #moderation depends on configuration and if the author is a moderator
       user_creator = User.find(@comment.user_id)
       list_moderators = commentable_object.get_moderators_list
@@ -70,6 +72,24 @@ class CommentsController < ApplicationController
       end
     end
 
+    respond_to do |format|
+      if result
+        format.js {
+          render :update do |page|
+            page.replace_html 'create-comment-form', :partial => 'comment', :locals => {:comment => @comment}
+          end
+        }
+      else
+        format.js {
+          render :update do |page|
+            #        render :update do |page|
+            page.replace_html "create-form-content", :partial => 'create_form', :locals => {:comment => @comment}
+            #        end
+          end
+        }
+  
+      end
+    end
     #inserting html
 
 
@@ -102,10 +122,10 @@ class CommentsController < ApplicationController
   # PUT /comments/1.xml
   def update
     @comment = Comment.find(params[:comment_id])
-      #raise params.inspect
+    #raise params.inspect
     
     respond_to do |format|
-			if @comment.update_attributes(params[:comment])
+			if @comment.valid? &&@comment.update_attributes(params[:comment])
         
         @comment.edited_by = current_user.id
         @comment.edit!
@@ -117,14 +137,19 @@ class CommentsController < ApplicationController
 
         format.js {
           render :update do |page|
-            page.replace_html "form-update-comment_#{@comment.id}", :partial => 'content', :locals => {:comment => @comment}
+            page.replace_html "comment_#{@comment.id}-content", :partial => 'content', :locals => {:comment => @comment}
           end
         }
 
 			else
-				flash[:error] = 'Comment update failed.'
-				format.html { render :action => "edit" }
-				format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        format.js {
+          render :update do |page|
+            page.replace_html "form-update-comment_#{@comment.id}", :partial => 'edit_form', :locals => {:comment => @comment}
+          end
+        }
+				#flash[:error] = 'Comment update failed.'
+				#format.html { render :action => "edit" }
+				#format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
 			end
 		end
   end

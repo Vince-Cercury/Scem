@@ -16,10 +16,11 @@
  
       function setBorder(SelectedId, TopId)
       {
-        var SelectedDiv=document.getElementById(SelectedId);
-        var TopDiv=document.getElementById(TopId);
-
+        var SelectedDiv=$(SelectedId);
+        var TopDiv=$(TopId);
+        if(TopDiv){
         TopDiv.style.borderRight = SelectedDiv.offsetWidth-3+"px solid black";
+        }
         return;
       }
  
@@ -156,7 +157,7 @@
               </div>
               <div class="searchbox">
                 <% form_tag get_current_search_path, :method => 'get' do %>
-                  <p>
+                  
                     <% if !params[:period].blank? %>
                       <%= hidden_field_tag :period, params[:period] %>
                     <% end %>
@@ -165,7 +166,7 @@
                     <%# end %>
                     <%= text_field_tag :search, params[:search], :size=>20 %>
                     <%= submit_tag "Go", :name => nil %>
-                  </p>
+                  
                 <% end %>
               </div>
               <div class="titlecalendar">
