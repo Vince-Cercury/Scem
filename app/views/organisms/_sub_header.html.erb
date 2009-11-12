@@ -29,7 +29,7 @@
     <% if controller_name != 'members' %>
       <%= link_to(t('organisms.sub_header.Members'), organism_members_path(@organism)) %>
     <% else %>
-      <%= link_to(t('organisms.sub_header.Profile'), organism_members_path(@organism), :class => 'selected') %>
+      <%= link_to(t('organisms.sub_header.Members'), organism_members_path(@organism), :class => 'selected') %>
     <% end %>
     </li>
   <% end %>

@@ -1,2 +1,2 @@
-<p>Then you can try again to publish the gallery on your Facebook Wall, by clicking on this link: <br />
-<%= link_to 'Publish the gallery on my Wall', url_for(:controller => 'facebook', :gallery_id =>@gallery.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %></p>
+<p><%= t('facebook.wall_permissions_for_event.Summary') %>
+<%= link_to t('facebook.wall_permissions_for_event.Publish_event_on_wall'), url_for(:controller => 'facebook', :gallery_id =>@gallery.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %></p>

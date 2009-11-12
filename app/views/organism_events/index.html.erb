@@ -2,7 +2,7 @@
 <%= render :partial => "sub_header" %>
 <% if is_organism_admin?(@organism) %>
   <div class="noEventMessage">
-    <h4><%= link_to(t('organisms_events.index.Create_new_event'), new_event_path) %></h4>
+    <h4><%= link_to(t('organism_events.index.Create_new_event'), new_event_path) %></h4>
   </div>
 <% end %>
 <% if @terms.size > 0 %>

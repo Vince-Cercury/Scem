@@ -1,12 +1,11 @@
 <%= render :partial => @header %>
 
-<h3 class="caps">STEP 1</h3>
-<p>In order to publish information on your Facebook Wall, you must allow some extended permission<br />
-  You can change your mind at any time.<br />
-  <%= fb_prompt_permissions(['publish_stream'], 'Please, click on this link to proceed') %>...
+<h3 class="caps"><%= t('facebook.ask_publish_stream.Step_1') %></h3>
+<p><%= t('facebook.ask_publish_stream.Step_1_text') %><br />
+  <%= fb_prompt_permissions(['publish_stream'], t('facebook.ask_publish_stream.Step_1_link') ) %>...
 </p>
 
-<h3 class="caps">STEP 2</h3>
+<h3 class="caps"><%= t('facebook.ask_publish_stream.Step_2') %></h3>
 <% if @event %>
 <%= render :partial => "wall_permissions_for_event" %>
 <% end %>
