@@ -302,6 +302,21 @@ en-US:
       Message: "Hey I found that website useful. It's about all events happening in the local area! That just great for knowing what's going on in the city. You should give a try. You can even rate, comments and create events. As you already got a Facebook account it's easy, just use it to connect in one click ! Check out http://www.LeBounce.com. C ya"
       
   facebook:
+    controller:
+      Publish_problem: "A problem occured when trying to publish the object on Facebook. You can try again later. Sorry..."
+      Publish_success: "The object has been published on the wall with success!"
+      Couldnt_find_account: "You wanted to post a message on the wall of an user {{user}}. But couldn't find his facebook account ..."
+      Logged_request_publish: "You must be logged in with Facebook in order to publish anything on a Wall."
+      Logged_request_cancel: "You must be logged in with Facebook in order to cancel an event."
+      Cancel_success: "The event has been successfully cancelled on Facebook. The page no longer exists."
+      Cancel_problem: "Something went wrong while cancelling the facebook event. Sorry for that..."
+      Event_not_found: "The event has not been found. Are you sure about the link? If the problem persist, contact an admin"
+      Logged_request_create: "You must be logged in with Facebook in order to create an event."
+      Publish_event_success: "The event has been successfully published on Facebook. You can visit their pages to modify or check the content."
+      Event_problem: "Something went wrong while creating the facebook event or updated the event on this site. Sorry for that..."
+      Logged_request_status: "You must be logged in with Facebook in order to update your status for a Facebook event."
+      Not_allowed_to_do_this: "Not allowed to do this"
+
     ask_publish_stream:
       Step_1: "1st step"
       Step_2: "2nd step"
@@ -408,10 +423,33 @@ en-US:
     wall_permissions_for_event:
       Summary: "Then you can try again to publish the event on your Facebook Wall, by clicking on this link:"
       Publish_event_on_wall: "Publish the event on my Wall"
-comments:
-  form:
-    Be_the_first_to_write: "Be the first to write :"
-    Add_a_comment: "Add a comment"
-    U_need_to_be_connected: "In order to add a comment, you need to be connected"
-    Limited_account: "Log in with limited account"
-    Facebook_ad: "If you got an facebook account, don't hesitate. It's way easier!"
+  comments:
+    form:
+      Be_the_first_to_write: "Be the first to write :"
+      Add_a_comment: "Add a comment"
+      U_need_to_be_connected: "In order to add a comment, you need to be connected"
+      Limited_account: "Log in with limited account"
+      Facebook_ad: "If you got an facebook account, don't hesitate. It's way easier!"
+
+  application:
+    controller:
+      Facebook_session_expired: "Your facebook session has expired. Please log in again ..."
+      You_ve_to_be_logged: "You have to be logged in to do this."
+      Permission_denied: "Permission denied"
+  friends:
+    Search: "Search"
+    controller:
+      Feature_not_available: "This feature is not available for users that aren't on Facebook"
+
+  galleries:
+    controller:
+      Set_cover_success: "Set cover successfuly."
+      Set_cover_fail: "Picture set cover failed."
+      Aprobation_required: "Pictures need aprobation of the moderators to be visible."
+      Add_picture_success: "Pictures successfully added to gallery."
+      Pictures_moved_successfully: "Has moved picture."
+      Pictures_moved_failed: "Pictures moved failed."
+      Gallery_successfully_created: "Gallery was successfully created."
+      Gallery_successfully_updated: "Gallery was successfully updated."
+      Not_allowed_to_do_this: "Not allowed to do this. Not owner or enough rights."
+      missing_parameters: "Some parameters are missing or wrong" 

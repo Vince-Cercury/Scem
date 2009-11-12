@@ -37,7 +37,7 @@ class FriendsController < ApplicationController
   end
   
   def not_facebook_user_redirection
-    flash[:error] = "This feature is not available for users that aren't on Facebook"
+    flash[:error] = I18n.t('friends.controller.Feature_not_available')
     redirect_to root_path
   end
 

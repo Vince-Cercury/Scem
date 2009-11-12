@@ -133,17 +133,18 @@ class FacebookController < ApplicationController
               ],
               :attachment => attachment
             )
+
           rescue
-            flash[:error] = "A problem occured when trying to publish the object on Facebook. You can try again later. Sorry..."
+            flash[:error] = I18n.t('facebook.controller.Publish_problem')
             redirect_to @current_object
           end
 
           if stream_id
-            flash[:notice] = "The object has been published on the wall with success!"
+            flash[:notice] = I18n.t('facebook.controller.Publish_success')
             redirect_to @current_object
           end
         else
-          flash[:error] = "You wanted to post a message on the wall of an user (#{@user_recipient.first_name} #{@user_recipient.last_name}). But couldn't find his facebook account ..."
+          flash[:error] = I18n.t('facebook.controller.Couldnt_find_account',:user => "#{@user_recipient.first_name} &nbsp #{@user_recipient.last_name}")
           redirect_to root_path
         end
       else
@@ -154,7 +155,7 @@ class FacebookController < ApplicationController
         end
       end
     else
-      flash[:error] = "You must be logged in with Facebook in order to publish anything on a Wall."
+      flash[:error] = I18n.t('facebook.controller.Logged_request_publish')
       redirect_to root_path
     end
   end
@@ -181,8 +182,8 @@ class FacebookController < ApplicationController
           format.xml  { render :xml => current_user }
         end
       end
-    else
-      flash[:error] = "You must be logged in with Facebook in order to cancel an event."
+    else 
+      flash[:error] = I18n.t('facebook.controller.Logged_request_cancel')
       redirect_to root_path
     end
 
@@ -202,15 +203,15 @@ class FacebookController < ApplicationController
           @term.updated_at = Time.now
 
           if @term.save!
-            #redirect to the Facebook event page
-            flash[:notice] = "The event has been successfully cancelled on Facebook. The page no longer exists."
+            #redirect to the Facebook event page 
+            flash[:notice] = I18n.t('facebook.controller.Cancel_success')
             redirect_to @term.event
           else
-            flash[:error] = "Something went wrong while cancelling the facebook event. Sorry for that..."
+            flash[:error] =  I18n.t('facebook.controller.Cancel_problem')
             redirect_to @term.event
           end
         else
-          flash[:error] = "The event has not been found. Are you sure about the link? If the problem persist, contact an admin"
+          flash[:error] = I18n.t('facebook.controller.Event_not_found')
           redirect_to root_path
         end
 
@@ -223,7 +224,7 @@ class FacebookController < ApplicationController
         end
       end
     else
-      flash[:error] = "You must be logged in with Facebook in order to cancel an event."
+      flash[:error] = I18n.t('facebook.controller.Logged_request_cancel')
       redirect_to root_path
     end
 
@@ -248,7 +249,7 @@ class FacebookController < ApplicationController
         end
       end
     else
-      flash[:error] = "You must be logged in with Facebook in order to create an event."
+      flash[:error] = I18n.t('facebook.controller.Logged_request_create')
       redirect_to root_path
     end
 
@@ -281,14 +282,15 @@ class FacebookController < ApplicationController
 
           if @term.save!
             #redirect to the Facebook event page
-            flash[:notice] = "The event has been successfully published on Facebook. You can visit their pages to modify or check the content."
+            
+            flash[:notice] = I18n.t('facebook.controller.Publish_event_success')
             redirect_to @term.event
           else
-            flash[:error] = "Something went wrong while creating the facebook event or updated the event on this site. Sorry for that..."
+            flash[:error] =  I18n.t('facebook.controller.Event_problem')
             redirect_to @term.event
           end
         else
-          flash[:error] = "The event has not been found. Are you sure about the link? If the problem persist, contact an admin"
+          flash[:error] = I18n.t('facebook.controller.Event_not_found')
           redirect_to root_path
         end
 
@@ -300,8 +302,8 @@ class FacebookController < ApplicationController
           format.xml  { render :xml => current_user }
         end
       end
-    else
-      flash[:error] = "You must be logged in with Facebook in order to create an event."
+    else 
+      flash[:error] = I18n.t('facebook.controller.Logged_request_create')
       redirect_to root_path
     end
 
@@ -316,8 +318,8 @@ class FacebookController < ApplicationController
         format.html # show.html.erb
         format.xml  { render :xml => @term }
       end
-    else
-      flash[:error] = "You must be logged in with Facebook in order to update your status for a Facebook event."
+    else 
+      flash[:error] = I18n.t('facebook.controller.Logged_request_status')
       redirect_to root_path
     end
 
@@ -404,7 +406,7 @@ class FacebookController < ApplicationController
   end
 
   def not_granted_redirection
-    flash[:error] = "Not allowed to do this"
+    flash[:error] = I18n.t('facebook.controller.Not_allowed_to_do_this')
     redirect_to root_path
   end
 

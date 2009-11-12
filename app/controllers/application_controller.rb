@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     clear_fb_cookies!
     clear_facebook_session_information
     reset_session # remove your cookies!
-    flash[:error] = "Your facebook session has expired. Please log in again ..."
+    flash[:error] =  I18n.t('application.controller.Facebook_session_expired')
     redirect_to login_path
   end
 
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
     if logged_in?
       return true
     else
-      flash[:error] = 'You have to be logged in to do this.'
+      flash[:error] = I18n.t('application.controller.You_ve_to_be_logged')
       redirect_to login_path
     end
   end
@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
   #
   # he will be redirected to the default homepage with message "Permission denied'
 	def no_permission_redirection
-		flash[:error] = "Permission denied"
+		flash[:error] = I18n.t('application.controller.Permission_denied')
 		redirect_to root_path
 	end
 
