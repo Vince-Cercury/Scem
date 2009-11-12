@@ -6,7 +6,7 @@
 </div>
 <div class="span-11 last">
   <% if @status_message!=" " %>
-    <h4 class="caps">LAST STATUS:</h4>
+    <h4 class="caps"><%= t('users.show.Last_status') %></h4>
     <div class ="box">
       <%= @status_message %> <fb:time t='<%= @status_time %>' preposition="true" ></fb:time>
     </div>
@@ -20,16 +20,16 @@
   <%= display_user_cover(@user, "medium") %>
 <hr />
 
-  <br />(This user has a limited profile because he didn't connect through Facebook)
+  <br /><%= t('users.show.Limited_profile') %>
 <% end %>
 <% if current_user_equal(@user) %>
-  <h4 class="caps">CREATE A MEETING NOW!</h4>
-  <%= link_to("meet people, meet your friends", new_event_path(:type => 'user_event')) %>
+  <h4 class="caps"><%= t('users.show.Create_meeting_now') %></h4>
+  <%= link_to(t('users.show.meet_friends'), new_event_path(:type => 'user_event')) %>
   <br /><br /><br />
   <hr />
 
-  <h4 class="caps">CREATE A PAGE</h4>
-  <%= link_to("band, association, pub, business?", new_organism_path) %>
+  <h4 class="caps"><%= t('users.show.Create_page') %></h4>
+  <%= link_to(t('users.show.new_organism'), new_organism_path) %>
   <br /><br /><br />
   <hr />
 <% end %>

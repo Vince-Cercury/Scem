@@ -5,11 +5,11 @@
   <%#=  hidden_field_tag 'role', params[:role] %>
 
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= submit_tag t('events.share.Search'), :name => nil %>
   </p>
 <% end %>
 <hr />
-<p>Tick the box of the users you want to share the event with</p>
+<p><%= t('events.share.Tick_users') %></p>
 
 <% form_tag(url_for(:controller => 'events', :action => 'do_share', :id => @event.id), :method => :put) do %>
   <%#= f.error_messages %>
@@ -18,13 +18,13 @@
 
 
   <div>
-     <div class="label">Subject:</div>
+    <div class="label"><%= t('events.share.Subject') %></div>
     <%= text_field_tag :subject, @event.name, :class => 'title' %>
   </div>
   <div>
-    <div class="label">Body:</div>
+    <div class="label"><%= t('events.share.Body') %></div>
     <%= text_area_tag :body, @message_body, :cols => 70, :rows => 10 %>
   </div>
 
-  <%= submit_tag 'Send event' %>
+  <%= submit_tag t('.share.Send_event') %>
   <% end %>

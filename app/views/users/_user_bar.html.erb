@@ -6,11 +6,11 @@
     <div class="userbarboxright">
       <%# if current_user.facebook_user? %>
       <% if !facebook_session.nil? %>
-        <%= t("sessions.bar.logged_in_as") %> <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
-        (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'><%= t("sessions.log_out") %></a>)
+        <%= t("sessions.bar.Logged_in_as") %> <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
+        (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'><%= t("sessions.Log_out") %></a>)
       <% else %>
-        <%= t("sessions.bar.logged_in_as") %> <%= link_to_current_user :content_method => :login %>
-        (<%= link_to t("sessions.log_out"), logout_path   %>)
+        <%= t("sessions.bar.Logged_in_as") %> <%= link_to_current_user :content_method => :login %>
+        (<%= link_to t("sessions.Log_out"), logout_path   %>)
       <% end %>
     </div>
 
@@ -18,7 +18,7 @@
 
     <div class="loginboxleft">
       <%= t('sessions.bar.classic_account') %>: <%= link_to t("sessions.login"),  login_path %> /
-      <%= link_to t("sessions.sign_up"), signup_path %>
+      <%= link_to t("sessions.Sign_up"), signup_path %>
     </div>
     <div class="loginboxright">
       <%= fb_login_button('window.location = "/facebook";')%>

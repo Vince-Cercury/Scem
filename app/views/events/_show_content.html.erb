@@ -5,14 +5,14 @@
       <%= get_default_event_picture(:medium) %>
       <% if current_user && @event.is_user_moderator?(current_user) %>
         <div class="eventShowBodyLeftContent">
-          <%= link_to("Attach a picture !", new_url_for_even_polymorphic(@event, :picture)) %>
+          <%= link_to(t('events.content.Attach_picture'), new_url_for_even_polymorphic(@event, :picture)) %>
         </div>
       <% end %>
     <% else %>
       <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %>
       <% if current_user && @event.is_user_moderator?(current_user) %>
         <div class="eventShowBodyLeftContent">
-          <%= link_to("Change the image", new_url_for_even_polymorphic(@event, :picture)) %>
+          <%= link_to(t('events.content.Change_image'), new_url_for_even_polymorphic(@event, :picture)) %>
         </div>
       <% end %>
     <% end %>
@@ -25,22 +25,22 @@
     <% end %>
     <% if !get_event_place_as_string(@event).blank? %>
     <p>
-      <b>Place</b>:
+      <b><%= t('events.content.Place') %></b>
       <%= link_to(get_event_place_as_string(@event), event_maps_path(@event)) %>
     </p>
     <% end %>
     <% if current_user && @event.is_granted_to_edit?(current_user) %>
       <p>
-        <b>Is charged:</b>
+        <b><%= t('events.content.Is_charged') %></b>
         <%=h boolean_to_literal(@event.is_charged) %>
       </p>
       <p>
-        <b>Is private:</b>
+        <b><%= t('events.content.Is_private') %></b>
         <%=h boolean_to_literal(@event.is_private) %>
       </p>
     <% end %>
     <p>
-      <b>Categories:</b>
+      <b><%= t('events.content.Categories') %></b>
       <%= displayable_categories_links(@event) %>
     </p>
     <script type="text/javascript">
@@ -69,12 +69,12 @@
       <%= get_event_description_short_or_term_description %>
       <% if !@event.description_long.blank? %>
       
-      <%=   link_to_function("Show me more...", nil, :id => "more_link") do |page|
+      <%=   link_to_function(t('.content.Show_me_more'), nil, :id => "more_link") do |page|
         page.visual_effect(:toggle_blind, 'description_long')
         page << "if ($('description_long').getStyle('display')=='none'){"
-          page.replace_html(:more_link,"Show me less...")
+          page.replace_html(:more_link,t('.content.Show_me_less'))
         page << "}else{"
-          page.replace_html(:more_link,"Show me more...")
+          page.replace_html(:more_link,t('.content.Show_me_more'))
         page << "}"
       end %>
       <% end %>
@@ -85,12 +85,12 @@
   <div class="titledescription"></div>
   <div class="eventShowBodyMiddle" id="description_long" style="display:none;">
     <p><%= @event.description_long %><br/>
-          <%=   link_to_function("Show me less...", nil, :id => "more_link") do |page|
+          <%=   link_to_function(t('.content.Show_me_less'), nil, :id => "more_link") do |page|
         page.visual_effect(:toggle_blind, 'description_long')
         page << "if ($('description_long').getStyle('display')=='none'){"
-          page.replace_html(:more_link,"Show me less...")
+          page.replace_html(:more_link,t('.content.Show_me_less'))
         page << "}else{"
-          page.replace_html(:more_link,"Show me more...")
+          page.replace_html(:more_link,t('.content.Show_me_more'))
         page << "}"
       end %>
     </p>

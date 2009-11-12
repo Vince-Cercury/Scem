@@ -23,8 +23,8 @@
 
             <div class="quiet">
               <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
-              <%= link_to('Number of participants: ' + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
-              <%= link_to('Number of comments: ' + event.comments.size.to_s, event) unless event.comments.size == 0 %><br />
+              <%= link_to(t('events.terms.Number_of_participants') + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
+              <%= link_to(t('events.terms.Number_of_comments') + event.comments.size.to_s, event) unless event.comments.size == 0 %><br />
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@
   <% end %>
   <% if @terms.size == 0 %>
     <div class="noEvent">
-      Currently no events in this category
+      <%= t('events.terms.Currently_no_event_category') %>
     </div>
   <% end %>
   <%= will_paginate @terms %>
