@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
   has_friendly_id :name, :use_slug => true, :strip_diacritics => true #, :reserved => ["new","edit"]
 
-  has_many :galleries, :as => :parent#, :dependent => :destroy
+  has_many :galleries, :as => :parent, :dependent => :destroy
 
   has_one :picture, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'"
 
