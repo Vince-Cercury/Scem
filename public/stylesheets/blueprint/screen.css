@@ -257,7 +257,7 @@ body {font-size:75%;
 
 
 .gallerieBar {width: 678px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left;}
-.gallerieBarBox {width: 339px; height: 90px; margin: 0; padding: 0; background: #fff; float: left; text-align: center;}
+.gallerieBarBox {width: 339px; height: 110px; margin: 0; padding: 0; background: #fff; float: left; text-align: center;}
 .gallerieBarBox p {text-align: center; text-indent: 30px;}
 .gallerieBarBox img {padding: 5px;}
 
