@@ -1,68 +1,68 @@
 <ul class='tabsShowOrganism'>
   <li>
     <% if controller_name != 'organisms' || controller.action_name=='edit' %>
-      <%= link_to("Profil", @organism) %>
+      <%= link_to(t('organisms.sub_header.Profile'), @organism) %>
     <% else %>
-      <%= link_to("Profil", @organism, :class => 'selected') %>
+      <%= link_to(t('organisms.sub_header.Profile'), @organism, :class => 'selected') %>
     <% end %>
   </li>
   <% if @organism.posts.size > 0 || is_organism_admin?(@organism) %>
     <li>
       <% if controller_name != 'posts' %>
-        <%= link_to("Blog", organism_posts_path(@organism)) %>
+        <%= link_to(t('organisms.sub_header.Blog'), organism_posts_path(@organism)) %>
       <% else %>
-        <%= link_to("Blog", organism_posts_path(@organism), :class => 'selected') %>
+        <%= link_to(t('organisms.sub_header.Blog'), organism_posts_path(@organism), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if @organism.events.size > 0 || is_organism_admin?(@organism) %>
     <li>
       <% if controller_name != 'organism_events' %>
-        <%= link_to("Events", organism_events_path(@organism)) %>
+        <%= link_to(t('organisms.sub_header.Events'), organism_events_path(@organism)) %>
       <% else %>
-        <%= link_to("Events", organism_events_path(@organism), :class => 'selected') %>
+        <%= link_to(t('organisms.sub_header.Events'), organism_events_path(@organism), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if @organism.members.size > 0 || is_organism_admin?(@organism)%>
     <li>
     <% if controller_name != 'members' %>
-      <%= link_to("Members", organism_members_path(@organism)) %>
+      <%= link_to(t('organisms.sub_header.Members'), organism_members_path(@organism)) %>
     <% else %>
-      <%= link_to("Members", organism_members_path(@organism), :class => 'selected') %>
+      <%= link_to(t('organisms.sub_header.Profile'), organism_members_path(@organism), :class => 'selected') %>
     <% end %>
     </li>
   <% end %>
   <% if @organism.galleries.size > 0 || is_organism_admin?(@organism) %>
     <li>
       <% if controller_name != 'galleries' %>
-        <%= link_to("Pictures galleries", organism_galleries_path(@organism)) %>
+        <%= link_to(t('organisms.sub_header.Pictures_galleries'), organism_galleries_path(@organism)) %>
       <% else %>
-        <%= link_to("Pictures galleries", organism_galleries_path(@organism), :class => 'selected') %>
+        <%= link_to(t('organisms.sub_header.Pictures_galleries'), organism_galleries_path(@organism), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if @organism.street && @organism.city %>
     <li>
       <% if controller_name != 'maps' %>
-        <%= link_to("Map", organism_maps_path(@organism)) %>
+        <%= link_to(t('organisms.sub_header.Map'), organism_maps_path(@organism)) %>
       <% else %>
-        <%= link_to("Map", organism_maps_path(@organism), :class => 'selected') %>
+        <%= link_to(t('organisms.sub_header.Map'), organism_maps_path(@organism), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if is_organism_admin?(@organism) %>
     <li>
       <% if (controller_name != 'organisms' || controller.action_name!='edit') %>
-        <%= link_to("Edit", edit_organism_path(@organism)) %>
+        <%= link_to(t('organisms.sub_header.Edit'), edit_organism_path(@organism)) %>
       <% else %>
-        <%= link_to("Edit", edit_organism_path(@organism), :class => 'selected') %>
+        <%= link_to(t('organisms.sub_header.Edit'), edit_organism_path(@organism), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if current_user && @organism.is_user_moderator?(current_user) %>
     <li>
-      <%= link_to 'Destroy', @organism, :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to t('organisms.sub_header.Destroy'), @organism, :confirm => t('organisms.sub_header.Are_you_sure'), :method => :delete %>
     </li>
   <% end %>
 </ul>

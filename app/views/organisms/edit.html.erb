@@ -9,7 +9,7 @@
   <div class="span-2 last">
     <% if current_user && @organism.is_user_moderator?(current_user) %>
     <br /><br />
-    (  <%= link_to 'Destroy', @organism, :confirm => 'Are you sure?', :method => :delete %> )
+    (  <%= link_to t('organism.edit.Destroy'), @organism, :confirm => t('organisms.edit.Are_you_sure'), :method => :delete %> )
     <% end %>
   </div>
   <hr />
@@ -19,10 +19,10 @@
     <div class="box">
       <% if @organism.picture.nil? %>
         <%= display_organism_cover(@organism, :medium) %><br />
-        <%= link_to("Attach a picture !", url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+        <%= link_to(t('organisms.edit.Attach_picture'), url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
       <% else %>
         <%= display_organism_cover(@organism, :medium) %><br />
-        <%= link_to("Change the image", url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+        <%= link_to(t('organisms.edit.Change_picture'), url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
       <% end %>
     </div>
     <div class="box">
@@ -41,13 +41,13 @@
       <%= f.text_area :description_short, :cols => 35, :rows => 5 %>
     </div>
     <div class="box">
-      <b>Manager name:</b>
+      <b><%= t('organisms.edit.Manager_name') %></b>
       <%= f.text_field :manager_name, :style => 'text' %>
       <br />
-      <b>Phone:</b>
+      <b><%= t('organisms.edit.Phone') %></b>
       <%= f.text_field :phone, :style => 'text' %>
       <br />
-      <b>In directory:</b>
+      <b><%= t('organisms.edit.In_directory') %></b>
       <%= f.check_box :in_directory %>
       <br />
       <p>
@@ -85,9 +85,9 @@
     </div>
 
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t('organisms.edit.Update') %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @organism %> |
-<%= link_to 'Back', organisms_path %>
+<%= link_to t('organisms.edit.Show'), @organism %> |
+<%= link_to t('organisms.edit.Back'), organisms_path %>

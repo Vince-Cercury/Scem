@@ -10,14 +10,14 @@ module EventsHelper
 
   def display_event_cover(event, style)
     if event.picture.nil?
-      link_to(get_default_event_picture(style), event)
+      link_to(get_default_event_picture(event,style), event, :title => event.name)
     else
       if style == "mini"
         link_to(image_tag(event.picture.attached.url(:small), :height => get_mini_height,:alt => event.name), event, :title => event.name)
       elsif style == "mini_width"
         link_to(image_tag(event.picture.attached.url(:small), :width => get_mini_height,:alt => event.name), event, :title => event.name)
       else
-        link_to(image_tag(event.picture.attached.url(style)), event)
+        link_to(image_tag(event.picture.attached.url(style),:alt => event.name), event, :title => event.name)
       end
     end
   end
@@ -26,7 +26,7 @@ module EventsHelper
 
   def display_term_cover(term, style)
     if term.event.picture.nil?
-      link_to(get_default_event_picture(style), url_for_even_polymorphic(term))
+      link_to(get_default_event_picture(term.event,style), url_for_even_polymorphic(term), :title => term.event.name)
     else
       if style == "mini"
         link_to(image_tag(term.event.picture.attached.url(:small), :height => get_mini_height,:alt => term.event.name), url_for_even_polymorphic(term), :title => term.event.name)
@@ -38,13 +38,13 @@ module EventsHelper
     end
   end
 
-  def get_default_event_picture(style)
+  def get_default_event_picture(event, style)
     if style == "mini"
-      image_tag("default/event/small/1.jpg", :height => get_mini_height)
+      image_tag("default/event/small/1.jpg", :height => get_mini_height,:alt => event.name)
     elsif style == "mini_width"
-      image_tag("default/event/small/1.jpg", :width => get_mini_width)
+      image_tag("default/event/small/1.jpg", :width => get_mini_width,:alt => event.name)
     else
-      image_tag("default/event/#{style}/1.jpg")
+      image_tag("default/event/#{style}/1.jpg",:alt => event.name)
     end
   end
 
