@@ -1,28 +1,44 @@
 <div class="loginBox">
   <div class="loginLeft">
-    <h4 class="caps"><%= t('sessions.Log_in_limited_account') %></h4>
-    <% form_tag session_path do -%>
-      <p><%= label_tag t('sessions.Login') %><br />
-      <%= text_field_tag 'login', @login %></p>
 
-      <p><%= label_tag t('sessions.Password') %><br/>
-      <%= password_field_tag 'password', nil %></p>
+    <h4><%= t('sessions.Log_in_limited_account') %></h4>
+    <% form_tag session_path do -%>
+      <p>
+        <%= label_tag t('sessions.Login') %>
+      </p>
+      <p>
+        <%= text_field_tag 'login', @login %>
+      </p>
+
+      <p>
+        <%= label_tag t('sessions.Password') %>
+      </p>
+      <p>
+        <%= password_field_tag 'password', nil %>
+      </p>
 
       <!-- Uncomment this if you want this functionality -->
-      <p><%= label_tag 'remember_me', t('sessions.Remember_me') %>
-      <%= check_box_tag 'remember_me', '1', @remember_me %></p>
+      <p>
+        <%= label_tag 'remember_me', t('sessions.Remember_me') %>
+        <%= check_box_tag 'remember_me', '1', @remember_me %>
+      </p>
 
-      <p><%= submit_tag t('sessions.Log_in') %></p>
+      <p>
+        <%= submit_tag t('sessions.Log_in') %>
+      </p>
     <% end -%>
 
-    <h4 class="caps"><%= link_to t('sessions.Sign_up'), signup_path, { :title => t('sessions.Create_account') } %></h4>
+    <h4><%= link_to t('sessions.Sign_up'), signup_path, { :title => t('sessions.Create_account') } %></h4>
   </div>
+  
   <div class="loginRight">
-    <h4><%= t('sessions.Or_Facebook_connect') %></h4>
-      <br />
+
+  <h4><%= t('sessions.Or_Facebook_connect') %></h4>
+  <p>
     <%= fb_login_button('window.location = "/facebook";')%>
-      <br />
-      <%= t('sessions.Get_facebook_account') %>
+  </p>
+  <%= t('sessions.Get_facebook_account') %>
+
   </div>
   <div class="loginPub">
    <script type="text/javascript"><!--
