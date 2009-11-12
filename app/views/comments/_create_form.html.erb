@@ -7,5 +7,5 @@
           <%=  hidden_field_tag 'commentable_id', @current_object.id %>
           <%= f.error_messages %>
           <%= fckeditor_textarea(:comment, :text, :ajax => true, :toolbarSet => 'Comment', :width => '536px', :height => '100px') %>
-          <%= f.submit 'Create'  %>
+          <%= f.submit t('comments.create.Create')  %>
         <% end %>
