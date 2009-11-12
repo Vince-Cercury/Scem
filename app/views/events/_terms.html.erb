@@ -37,7 +37,7 @@
               <%= t('events.terms.not') %><%= radio_button :participation, :role, "not", :checked => @term.is_user_participant(current_user, 'not') %>
 
 
-              <%= submit_tag t('.terms.Go'), :name => nil %>
+              <%= submit_tag t('events.terms.Go'), :name => nil %>
             <% end  %>
           <% end  %>
         </div>

@@ -216,7 +216,7 @@ body {font-size:75%;
 .blogCommentaire {width: 688px; margin: 0 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
 .blogCommentaire h5 {padding: 5px; color: #000; font-size: 16px; margin: 0px;}
 .blogCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px;}
-.blogBox{width: 658px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-align: right;}
+.blogBox{width: 658px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-align: left;}
 .blogBox h4{padding: 5px; font-size: 16px; margin: 0px; text-align: center;}
 .blogBox h5{text-align: left;}
 .blogBox p{text-align: left; text-indent: 30px;}
