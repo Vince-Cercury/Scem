@@ -1,19 +1,22 @@
 <%= render :partial => "/users/header" %>
 
-<% form_tag user_memberships_path, :method => 'get' do %>
-  <p>
-    <%#=  hidden_field_tag 'user_id', @user.id %>
-    <%=  hidden_field_tag 'role', params[:role] %>
+<div class="userShowSearch">
+  <% form_tag user_memberships_path, :method => 'get' do %>
+    <p>
+      <%#=  hidden_field_tag 'user_id', @user.id %>
+      <%=  hidden_field_tag 'role', params[:role] %>
 
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag t('memberships.Search'), :name => nil %>
-  </p>
-<% end %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag t('memberships.Search'), :name => nil %>
+    </p>
+  <% end %>
+</div>
 
-<ul class='tabs'>
-  <li><% if params[:role]!='member' %><%= link_to t('memberships.Member_of')+"#{@user.is_member_of.size} "+ t('memberships.organisms'), user_memberships_path %><% else %><%= link_to t('memberships.Member_of')+"#{@user.is_member_of.size} "+ t('memberships.organisms'), user_memberships_path, :class => 'selected' %><% end %></li>
-  <li><% if params[:role]!='moderator' %><%= link_to t('memberships.Moderator_of')+"#{@user.is_moderator_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:moderator) %><% else %><%= link_to t('memberships.Moderator_of')+"#{@user.is_moderator_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:moderator), :class => 'selected' %><% end %></li>
-  <li><% if params[:role]!='admin' %><%= link_to t('memberships.Administrator_of')+"#{@user.is_admin_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:admin) %><% else %><%= link_to t('memberships.Administrator_of')+"#{@user.is_admin_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:admin), :class => 'selected' %><% end %></li>
-</ul>
-
-<%= render :partial => "/organisms/organisms_list" %>
+<div class="organismListTabs">
+  <ul class='tabsevent'>
+    <li><% if params[:role]!='member' %><%= link_to t('memberships.Member_of')+"#{@user.is_member_of.size} "+ t('memberships.organisms'), user_memberships_path %><% else %><%= link_to t('memberships.Member_of')+"#{@user.is_member_of.size} "+ t('memberships.organisms'), user_memberships_path, :class => 'selected' %><% end %></li>
+    <li><% if params[:role]!='moderator' %><%= link_to t('memberships.Moderator_of')+"#{@user.is_moderator_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:moderator) %><% else %><%= link_to t('memberships.Moderator_of')+"#{@user.is_moderator_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:moderator), :class => 'selected' %><% end %></li>
+    <li><% if params[:role]!='admin' %><%= link_to t('memberships.Administrator_of')+"#{@user.is_admin_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:admin) %><% else %><%= link_to t('memberships.Administrator_of')+"#{@user.is_admin_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:admin), :class => 'selected' %><% end %></li>
+  </ul>
+</div>
+  <%= render :partial => "/organisms/organisms_list" %>

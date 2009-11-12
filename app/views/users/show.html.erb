@@ -1,35 +1,32 @@
 <%= render :partial => "/users/header" %>
-
-<% if @user.facebook_user? %>
-<div class="span-6">
-  <%= display_user_cover(@user, "large") %>
-</div>
-<div class="span-11 last">
-  <% if @status_message!=" " %>
-    <h4 class="caps"><%= t('users.show.Last_status') %></h4>
-    <div class ="box">
-      <%= @status_message %> <fb:time t='<%= @status_time %>' preposition="true" ></fb:time>
+<div class="userShowBody">
+  <% if @user.facebook_user? %>
+    <div class="userShowBodyLeft">
+      <%= display_user_cover(@user, "large") %>
     </div>
-</div>
+  <% else %>
+    <div class="userShowBodyLeft">
+      <%= display_user_cover(@user, "medium") %>
+      <%= t('users.show.Limited_profile') %>
+    </div>
+
   <% end %>
-    <hr />
-<% else %>
-
-
-  <h2><%= @user.login %></h2>
-  <%= display_user_cover(@user, "medium") %>
-<hr />
-
-  <br /><%= t('users.show.Limited_profile') %>
-<% end %>
-<% if current_user_equal(@user) %>
-  <h4 class="caps"><%= t('users.show.Create_meeting_now') %></h4>
-  <%= link_to(t('users.show.meet_friends'), new_event_path(:type => 'user_event')) %>
-  <br /><br /><br />
-  <hr />
-
-  <h4 class="caps"><%= t('users.show.Create_page') %></h4>
-  <%= link_to(t('users.show.new_organism'), new_organism_path) %>
-  <br /><br /><br />
-  <hr />
-<% end %>
+  <div class="userShowBodyRight">
+    <p>
+      <%= @user.first_name %>
+      <%= @user.last_name %>
+    </p>
+    <p>
+      <%= t('users.show.Create_account') %>
+      <%= @user.created_at %>
+    </p>
+    <% if current_user_equal(@user) %>
+    <p>
+      <%= link_to(t('users.show.meet_friends'), new_event_path(:type => 'user_event')) %>
+    </p>
+    <p>
+      <%= link_to(t('users.show.new_organism'), new_organism_path) %>
+    </p>
+    <% end %>
+  </div>
+</div>

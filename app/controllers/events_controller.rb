@@ -186,15 +186,16 @@ class EventsController < ApplicationController
 
   # DELETE /events/1
   # DELETE /events/1.xml
-  #  def destroy
-  #    @event = Event.find(params[:id])
-  #    @event.destroy
-  #
-  #    respond_to do |format|
-  #      format.html { redirect_to(events_url) }
-  #      format.xml  { head :ok }
-  #    end
-  #  end
+    def destroy
+      @event = Event.find(params[:id])
+      @event.destroy
+
+      flash[:notice] = 'Event successfully destroyed.'
+      respond_to do |format|
+        format.html { redirect_to(root_path) }
+        format.xml  { head :ok }
+      end
+    end
 
 
   def share

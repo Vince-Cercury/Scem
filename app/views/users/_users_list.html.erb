@@ -1,47 +1,48 @@
 <div id="results">
-  <div class="titleutilisateurs"></div>
-  <% if @users.size>0 %>
-  <div class="userList">
-    <% @users.each do |user| %>
-      <div class="userListBox">
-        <div class="userListBoxImage">
-          <%= display_user_cover(user, :thumb) %>
-        </div>
-        <div class="userListBoxName">
-          <h4><%= user_profile_link(user) %></h4>
-        </div>
-        <div class="userListBoxRight">
-          <% if logged_in? && @organism -%>
-            <% if @organism.is_user_moderator?(current_user) %>
-              <% if !@organism.nil?   %>
-                <%= t('users.users_list.This_user_is') %> <%= t('users.users_list.'+OrganismsUser.find_by_organism_id_and_user_id(@organism.id, user.id).role) %>
-                <p>
-                <%= t('users.users_list.Give_authorisation_to') %><%= get_user_name_or_pseudo(user) %> <%= t('users.users_list.to_be') %>
-                <% if !@organism.admins.include?(user) %>
-                   <%= link_to t('users.users_list.Administrator'), { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :admin }%>
+  <div class="participantContent">
+    <% if @users.size>0 %>
+    <div class="userList">
+      <% @users.each do |user| %>
+        <div class="userListBox">
+          <div class="userListBoxImage">
+            <%= display_user_cover(user, :thumb) %>
+          </div>
+          <div class="userListBoxName">
+            <h4><%= user_profile_link(user) %></h4>
+          </div>
+          <div class="userListBoxRight">
+            <% if logged_in? && @organism -%>
+              <% if @organism.is_user_moderator?(current_user) %>
+                <% if !@organism.nil?   %>
+                  <%= t('users.users_list.This_user_is') %> <%= t('users.users_list.'+OrganismsUser.find_by_organism_id_and_user_id(@organism.id, user.id).role) %>
+                  <p>
+                  <%= t('users.users_list.Give_authorisation_to') %><%= get_user_name_or_pseudo(user) %> <%= t('users.users_list.to_be') %>
+                  <% if !@organism.admins.include?(user) %>
+                     <%= link_to t('users.users_list.Administrator'), { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :admin }%>
+                  <% end  %>
+                  <% if !@organism.moderators.include?(user) %>
+                     <%= link_to t('users.users_list.Moderator'), { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :moderator }%>
+                  <% end  %>
+                  <% if !@organism.members.include?(user) %>
+                     <%= link_to t('users.users_list.Remove_rights'), { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :member }%>
+                  <% end  %>
+                  </p>
+                  <p>
+                  <%= link_to t('users.users_list.Remove_user'), { :controller => "members", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
+                  </p>
                 <% end  %>
-                <% if !@organism.moderators.include?(user) %>
-                   <%= link_to t('users.users_list.Moderator'), { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :moderator }%>
-                <% end  %>
-                <% if !@organism.members.include?(user) %>
-                   <%= link_to t('users.users_list.Remove_rights'), { :controller => "members", :action => "create_or_update", :organism_id => @organism.id, :user_id => user.id, :role => :member }%>
-                <% end  %>
-                </p>
-                <p>
-                <%= link_to t('users.users_list.Remove_user'), { :controller => "members", :action => "destroy_relation", :organism_id => @organism.id, :user_id => user.id }%>
-                </p>
-              <% end  %>
-             <% end %>
-          <% end -%>
+               <% end %>
+            <% end -%>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-  <% end %>
-  <%= will_paginate @users %>
-  <% if @users.size == 0 %>
-    <div class="userListMessage">
-      <%= t('users.Sorry_no_results') %>
+      <% end %>
     </div>
-   <% end %>
+    <% end %>
+    <%= will_paginate @users %>
+    <% if @users.size == 0 %>
+      <div class="userListMessage">
+        <%= t('users.Sorry_no_results') %>
+      </div>
+     <% end %>
+  </div>
 </div>

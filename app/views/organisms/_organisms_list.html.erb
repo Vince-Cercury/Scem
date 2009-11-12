@@ -1,25 +1,30 @@
 <div id="results">
-  <% @organisms.each do |organism| %>
-   <div class="organismListSeparator">
-     <div class="organismListLeft">
-        <%= display_organism_cover(organism, :small) %>
-     </div>
-     <div class="organismListRight">
-        
-        <h4><%= link_to(organism.name, organism) %></h4>
-        <p>
-          <%=h organism.description_short %>
-        </p>
-        <div class="quiet">
-          <%= render :partial => "rating/mini_rating", :locals => { :current_object => organism } if organism.rating > 0 %>
+  <div class="organismListContent">
+    <div class="organismList">
+      <% @organisms.each do |organism| %>
+        <div class="organismListBox">
+          <div class="organismListBoxImage">
+            <%= display_organism_cover(organism, :small) %>
+          </div>
+          <div class="organismListBoxName">
+
+            <h4><%= link_to(organism.name, organism) %></h4>
+          </div>
+          <div class="organismListBoxRight">
+            <p>
+              <%=h organism.description_short %>
+            </p>
+            <%= render :partial => "rating/mini_rating", :locals => { :current_object => organism } if organism.rating > 0 %>
+
+          </div>
         </div>
-     </div>
-  </div>
-  <% end %>
-  <%= will_paginate @organisms %>
-  <% if @organisms.size == 0 %>
-    <div class="box">
-      <%= t('organisms.list.Sorry_no_result') %>
+      <% end %>
+      <%= will_paginate @organisms %>
+      <% if @organisms.size == 0 %>
+        <div class="organismListMessage">
+          <%= t('organisms.list.Sorry_no_result') %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
