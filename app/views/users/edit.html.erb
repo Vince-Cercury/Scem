@@ -1,53 +1,86 @@
 <%= render :partial => "/users/header" %>
-<h4><%= t('users.edit.Editing_user') %></h4>
-<% if current_user.facebook_user? %>
-  <%= t('users.edit.Facebook_user') %>
+
+<%#*<h4>%>
+<%#= t('users.edit.Editing_user') %>
+<%#*</h4>%>
+<div class="editAccountBody">
+
+  <% if current_user.facebook_user? %>
+
+    <p>
+      <%= t('users.edit.Facebook_user') %>
+    </p>
     <% form_for(@user) do |f| %>
-    <%= f.error_messages %>
+      <p>
+        <%= f.error_messages %>
+      </p>
+      <div class="editAccountBodyCenter">
+        <p>
+          <%= f.label :receive_comment_notification %>
+          <%= f.check_box :receive_comment_notification %>
+        </p>
+        <p>
+          <%= f.label :receive_picture_notification %>
+          <%= f.check_box :receive_picture_notification %>
+        </p>
 
-    <p>
-      <%= f.label :receive_comment_notification %><br />
-      <%= f.check_box :receive_comment_notification %>
-    </p>
-    <p>
-      <%= f.label :receive_picture_notification %><br />
-      <%= f.check_box :receive_picture_notification %>
-    </p>
-    <p>
-      <%= f.submit  t('users.edit.Update') %>
-    </p>
+        <%= f.submit  t('users.edit.Update') %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <% form_for(@user) do |f| %>
+      <p>
+        <%= f.error_messages %>
+      </p>
+
+      <div class="editAccountBodyLeft">
+        <p><%= label_tag  t('users.edit.Login') %></p>
+      </div>
+      <div class="editAccountBodyRight">
+        <p><%= f.text_field :login %></p>
+      </div>
+
+      <div class="editAccountBodyLeft">
+        <p><%= label_tag  t('users.edit.First_name') %></p>
+      </div>
+      <div class="editAccountBodyRight">
+        <p><%= f.text_field :first_name %></p>
+      </div>
+
+      <div class="editAccountBodyLeft">
+        <p><%= label_tag t('users.edit.Last_name')  %></p>
+      </div>
+      <div class="editAccountBodyRight">
+        <p><%= f.text_field :last_name %></p>
+      </div>
+
+      <div class="editAccountBodyLeft">
+        <p><%= label_tag t('users.edit.Birth_date')  %></p>
+      </div>
+      <div class="editAccountBodyRight">
+        <p><%= f.date_select(:date_of_birth, :start_year => 1900, :end_year => 2005, :default => 15.years.ago) %></p>
+      </div>
+
+      <div class="editAccountBodyLeft">
+        <p><%= label_tag t('users.edit.Email')  %></p>
+      </div>
+      <div class="editAccountBodyRight">
+        <p><%= f.text_field :email %></p>
+      </div>
+
+      <div class="editAccountBodyCenter">
+        <p>
+          <%= f.label :receive_comment_notification %>
+          <%= f.check_box :receive_comment_notification %>
+        </p>
+        <p>
+          <%= f.label :receive_picture_notification %>
+          <%= f.check_box :receive_picture_notification %>
+        </p>
+        <%= f.submit  t('users.edit.Update') %>
+      </div>
+    <% end %>
   <% end %>
-<% else %>
-  <% form_for(@user) do |f| %>
-    <%= f.error_messages %>
 
-    <p><%= label_tag  t('users.edit.Login') %><br/>
-    <%= f.text_field :login %></p>
-
-    <p><%= label_tag  t('users.edit.First_name') %><br/>
-    <%= f.text_field :first_name %></p>
-
-    <p><%= label_tag t('users.edit.Last_name')  %><br/>
-    <%= f.text_field :last_name %></p>
-
-    <p><%= label_tag t('users.edit.Birth_date')  %><br/>
-    <%= f.date_select(:date_of_birth, :start_year => 1900, :end_year => 2005, :default => 15.years.ago) %></p>
-
-    <p><%= label_tag t('users.edit.Email')  %><br/>
-    <%= f.text_field :email %></p>
-    <p>
-      <%= f.label :receive_comment_notification %><br />
-      <%= f.check_box :receive_comment_notification %>
-    </p>
-    <p>
-      <%= f.label :receive_picture_notification %><br />
-      <%= f.check_box :receive_picture_notification %>
-    </p>
-    <p>
-      <%= f.submit t('users.edit.Update')  %>
-    </p>
-  <% end %>
-<% end %>
-
-<%= link_to t('users.edit.Show') , @user %> |
-<%= link_to t('users.edit.Back') , users_path %>
+</div>

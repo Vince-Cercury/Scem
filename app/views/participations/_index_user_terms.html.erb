@@ -1,25 +1,61 @@
 <%= render :partial => "/users/header" %>
+<div class="userShowSearch">
+  <% form_tag user_participations_path, :method => 'get' do %>
+    <p>
+      <%=  hidden_field_tag 'role', params[:role] %>
+      <%=  hidden_field_tag 'period', params[:period] %>
+
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag t('participations.index_user.Search'), :name => nil %>
+    </p>
+  <% end %>
+</div>
+
 <%= render :partial => "user_terms_sub_header" %>
 
-
-<% form_tag user_participations_path, :method => 'get' do %>
-  <p>
-    <%=  hidden_field_tag 'role', params[:role] %>
-    <%=  hidden_field_tag 'period', params[:period] %>
-
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag t('participations.index_user.Search'), :name => nil %>
-  </p>
-<% end %>
 <ul class='tabs'>
   <% if params[:period] == 'past' %>
-    <li><% if params[:role]!='sure' %><%= link_to t('participations.index_user.Participated_to')+" #{@user.sure_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:sure, :period => params[:period]) %><% else %><%= link_to t('participations.index_user.Participated_to')+" #{@user.sure_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:sure, :period => params[:period]) %><% end %></li>
-    <li><% if params[:role]!='maybe' %><%= link_to t('participations.index_user.Could_participate_to')+" #{@user.maybe_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:maybe, :period => params[:period]) %><% else %><%= link_to t('participations.index_user.Could_participate_to')+" #{@user.maybe_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:maybe, :period => params[:period]), :class => 'selected' %><% end %></li>
-    <li><% if params[:role]!='not' %><%= link_to t('participations.index_user.Did_not_participated_to')+" #{@user.not_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:not, :period => params[:period]) %><% else %><%= link_to t('participations.index_user.Did_not_participated_to')+" #{@user.not_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:not, :period => params[:period]), :class => 'selected' %><% end %></li>
-  <% else %>
-    <li><% if params[:role]!='sure' %><%= link_to t('participations.index_user.Participate_to')+" #{@user.sure_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:sure, :period => params[:period]) %><% else %><%= link_to t('participations.index_user.Participate_to')+" #{@user.sure_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:sure, :period => params[:period]) %><% end %></li>
-    <li><% if params[:role]!='maybe' %><%= link_to t('participations.index_user.Might_participate_to')+" #{@user.maybe_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:maybe, :period => params[:period]) %><% else %><%= link_to t('participations.index_user.Might_participate_to')+" #{@user.maybe_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:maybe, :period => params[:period]), :class => 'selected' %><% end %></li>
-    <li><% if params[:role]!='not' %><%= link_to t('participations.index_user.Do_not_participate_to')+" #{@user.not_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:not, :period => params[:period]) %><% else %><%= link_to t('participations.index_user.Do_not_participate_to')+" #{@user.not_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:not, :period => params[:period]), :class => 'selected' %><% end %></li>
+    <li>
+      <% if params[:role]!='sure' %>
+        <%= link_to t('participations.index_user.Participated_to')+" #{@user.sure_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:sure, :period => params[:period]) %>
+      <% else %>
+        <%= link_to t('participations.index_user.Participated_to')+" #{@user.sure_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:sure, :period => params[:period]) %>
+      <% end %>
+    </li>
+    <li>
+      <% if params[:role]!='maybe' %>
+        <%= link_to t('participations.index_user.Could_participate_to')+" #{@user.maybe_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:maybe, :period => params[:period]) %>
+      <% else %>
+        <%= link_to t('participations.index_user.Could_participate_to')+" #{@user.maybe_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:maybe, :period => params[:period]), :class => 'selected' %>
+      <% end %>
+    </li>
+    <li>
+      <% if params[:role]!='not' %>
+        <%= link_to t('participations.index_user.Did_not_participated_to')+" #{@user.not_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:not, :period => params[:period]) %>
+      <% else %>
+        <%= link_to t('participations.index_user.Did_not_participated_to')+" #{@user.not_participate_past.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:not, :period => params[:period]), :class => 'selected' %><% end %></li>
+    <% else %>
+    <li>
+      <% if params[:role]!='sure' %>
+        <%= link_to t('participations.index_user.Participate_to')+" #{@user.sure_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:sure, :period => params[:period]) %>
+      <% else %>
+        <%= link_to t('participations.index_user.Participate_to')+" #{@user.sure_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:sure, :period => params[:period]) %>
+      <% end %>
+    </li>
+    <li>
+      <% if params[:role]!='maybe' %>
+        <%= link_to t('participations.index_user.Might_participate_to')+" #{@user.maybe_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:maybe, :period => params[:period]) %>
+      <% else %>
+        <%= link_to t('participations.index_user.Might_participate_to')+" #{@user.maybe_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:maybe, :period => params[:period]), :class => 'selected' %>
+      <% end %>
+    </li>
+    <li>
+      <% if params[:role]!='not' %>
+        <%= link_to t('participations.index_user.Do_not_participate_to')+" #{@user.not_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:not, :period => params[:period]) %>
+      <% else %>
+        <%= link_to t('participations.index_user.Do_not_participate_to')+" #{@user.not_participate_futur.size} " + t('participations.index_user.of_date'), user_participations_path(:user_id => @user.id, :role =>:not, :period => params[:period]), :class => 'selected' %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 

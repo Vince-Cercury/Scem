@@ -17,7 +17,7 @@
       <%= @user.last_name %>
     </p>
     <p>
-      t('users.show.Create_account')
+      <%= t('users.show.Create_account') %>
       <%= @user.created_at %>
     </p>
     <% if current_user_equal(@user) %>
