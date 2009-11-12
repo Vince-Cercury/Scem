@@ -12,13 +12,15 @@
           <div class="listRight">
 
             <h4><%= link_to(event.name, get_event_if_term_url(term)) %></h4>
-    <%# if !h(term.description).blank? %>
-    <%#= term.description %>
-    <%# else %>
-            <p>
-              <%=h event.description_short %>
-            </p>
-    <%# end %>
+            <% if !h(term.description).blank? %>
+              <p>
+                <%= term.description %>
+              </p>
+            <% else %>
+              <p>
+                <%=h event.description_short %>
+              </p>
+            <% end %>
 
             <div class="quiet">
               <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
