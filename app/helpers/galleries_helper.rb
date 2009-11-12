@@ -5,7 +5,7 @@ module GalleriesHelper
     else
       link_to(image_tag(gallery.cover.attached.url(style),:alt => gallery.name), polymorphic_path([gallery.get_parent_object, gallery].flatten), :title => gallery.name)
     end
-  end
+  end 
 
   def is_gallery_moderator?(gallery)
     if current_user && gallery.is_user_moderator?(current_user)
