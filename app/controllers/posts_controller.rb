@@ -42,7 +42,7 @@ class PostsController < ApplicationController
         format.xml  { render :xml => @post }
       end
     else
-      flash[:notice]  = "The post is not visible"
+      flash[:notice]  = I18n.t('posts.controller.Not_visible')
       redirect_to(polymorphic_path([@parent_object, :posts].flatten))
     end
 
@@ -86,7 +86,7 @@ class PostsController < ApplicationController
       if @parent_object.posts << @post
         @post.activate!
         
-        flash[:notice] = 'Post was successfully created.'
+        flash[:notice] = I18n.t('posts.controller.Posts_created_success')
         format.html { redirect_to(url_for(polymorphic_path([@parent_object, @post].flatten))) }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
@@ -105,7 +105,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        flash[:notice] = 'Post was successfully updated.'
+        flash[:notice] = I18n.t('posts.controller.Posts_updated_success')
         format.html {  redirect_to(url_for(polymorphic_path([parent_object, @post].flatten)))  }
         format.xml  { head :ok }
       else
@@ -132,12 +132,12 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     parent_object = post.get_parent_object
     if post.nil?
-      flash[:error] = "We couldn't find the post."
+      flash[:error] = I18n.t('posts.controller.Couldnt_find')
       redirect_back_or_default('/')
     else
       post.activated_by = current_user.id
       post.activate!
-      flash[:notice]  = "Ok, post activated"
+      flash[:notice]  = I18n.t('posts.controller.Posts_activated')
       redirect_to(polymorphic_path([parent_object, post].flatten))
     end
   end
@@ -148,7 +148,7 @@ class PostsController < ApplicationController
     parent_object = post.get_parent_object
     post.suspended_by = self.current_user.id
     post.suspend!
-    flash[:notice] = 'Post has been suspended.'
+    flash[:notice] = I18n.t('posts.controller.Posts_suspended')
     redirect_to( redirect_to(polymorphic_path([parent_object, :posts].flatten)))
   end
 
@@ -157,7 +157,7 @@ class PostsController < ApplicationController
     post = Post.find(params[:id])
     parent_object = post.get_parent_object
     post.unsuspend!
-    flash[:notice] = 'Post has been unsuspended.'
+    flash[:notice] = I18n.t('posts.controller.Posts_unsuspended')
     redirect_to(polymorphic_path([parent_object, post].flatten))
   end
 
@@ -246,7 +246,7 @@ class PostsController < ApplicationController
   end
 
   def not_enough_rights
-    flash[:error] = "Not allowed to do this. Not owner or enough rights."
+    flash[:error] = I18n.t('posts.controller.Not_allowed_to_do_this')
     redirect_to root_path
   end
 
