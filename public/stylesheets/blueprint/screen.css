@@ -269,7 +269,7 @@ body {font-size:75%;
 .participantContent{width: 678px; padding: 5px 5px 5px 5px; background: #fff; overflow: auto; float: left;}
 .userList {width: 668px; margin: 0; padding: 5px 5px 0 5px; background: #000; float: left;}
 .userListBox {width: 668px; margin: 0 0 5px 0; padding: 0; background: #fff; float: left; text-align: center;}
-.userListBoxImage {width: 72px; height: 72px; line-height: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
+.userListBoxImage {width: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
 .userListBoxImage img {vertical-align: middle;}
 .userListBoxName {width: 576px; height: 18px; line-height: 18px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
 .userListBoxRight {width: 576px; height: 54px; line-height: 18px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
@@ -304,7 +304,6 @@ body {font-size:75%;
 .GalleryListHeaderRight{background:#fff; width:100px; padding: 5px; float: right; text-align: right; height: 40px; line-height: 40px; vertical-align: middle; font-weight: bold;}
 .GalleryListHeaderRight a {background:#000; color:#fff; padding: 5px;}
 .GalleryListHeaderRight a:hover {background:#ffb500; color:#000;}
-
 .GalleryListLeft{width:151px; padding:5px 0 0 5px; float:left;}
 .GalleryListRight{width:527px; padding:5px 0 0 5px; float:right;}
 .GalleryListSeparator{background:#fff; width:688px; margin-bottom: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
@@ -344,15 +343,14 @@ body {font-size:75%;
 .organismListTabs{width: 668px; padding: 5px 10px 0 10px; background: #fff; overflow: auto; float: left; }
 .organismListContent{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto; float: left; }
 .organismList {width: 668px; margin: 0; padding: 5px 5px 0 5px; background: #000; float: left;}
-.organismListBox {width: 668px; margin: 0 0 5px 0; padding: 0; background: #fff; float: left; text-align: center;}
+.organismListBox {width: 668px; margin: 0 0 5px 0; padding: 0; background: #fff; float: left;}
 .organismListBoxImage {width: 126px; height: 126px; line-height: 126px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
 .organismListBoxImage img {vertical-align: middle;}
 .organismListBoxName {width: 522px; height: 18px; line-height: 18px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
-.organismListBoxRight {width: 522px; height: 108px; line-height: 18px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
-.organismListBoxRight a {background: #000; color: #fff; padding: 1px; font-weight: bold;}
-.organismListBoxRight a:hover {background: #f0882f; color: #fff;}
+.organismListBoxRight {width: 522px; height: 108px; line-height: 18px; margin: 0; padding: 5px; float: right; background: #fff;}
 .organismListBoxName h4 {vertical-align: middle; font-size: 14px;}
 .organismListMessage {width: 658px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
+.mini{overflow: auto; background: #fff;}
 
 .loginbox {color:#fff; width: 400px; height: 50px; margin: 10px 20px 0 566px;}
 .loginbox a {color:#f0882f;}
