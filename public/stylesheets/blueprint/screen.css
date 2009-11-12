@@ -106,17 +106,23 @@ body {font-size:75%;
                                                                         /*--- FOOTER ---*/
 .footer {background-image:url('/images/body/french/footer.png'); background-repeat: no-repeat;  width: 1004px; float: left; margin : 0 0 10px -16px; height: 73px;}
                                                         /* ---------------------TITLE---------------------- */
+/*Normal*/
 .titlegaleries {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000; background-image:url('/images/header/french/galeries.png'); background-repeat: no-repeat; float: left;}
 .titlegalerie {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000; background-image:url('/images/header/french/galerie.png'); background-repeat: no-repeat;}
 .titlesearch {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000; background-image:url('/images/header/french/recherche.png'); background-repeat: no-repeat;}
 .titlecalendar {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000; background-image:url('/images/header/french/calendrier.png'); background-repeat: no-repeat;}
-.titlepartners {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000; background-image:url('/images/header/french/partenaires.png');background-repeat: no-repeat;}
+.titlepartners {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000; background-image:url('/images/header/french/partenaires.png');background-repeat: no-repeat;}
 .titlediary {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000;background-image:url('/images/header/french/monagenda.png');background-repeat: no-repeat;}
 .titlecomment {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/commentaires.png');background-repeat: no-repeat; float: left;}
 .titledescription {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/description.png');background-repeat: no-repeat;}
-.titleorganisateurs {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000;background-image:url('/images/header/french/organisateurs.png');background-repeat: no-repeat;}
+.titleorganisateurs {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/organisateurs.png');background-repeat: no-repeat;}
 .titlemembres {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/membres.png');background-repeat: no-repeat; float: left;}
 .titlemembre {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/membre.png');background-repeat: no-repeat; float: left;}
+.titleannuaire {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/annuaire.png');background-repeat: no-repeat; float: left;}
+.titleutilisateurs {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/utilisateurs.png');background-repeat: no-repeat; float: left;}
+.titlelieu {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/lieu.png');background-repeat: no-repeat; float: left;}
+.titleediteur {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/editeur.png');background-repeat: no-repeat; float: left;}
+/*Large*/
 .titledevenirmembre{width: 179px; height: 31px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/devenirmembre.png');background-repeat: no-repeat; float: left;}
 .titlederniersmembres{width: 179px; height: 31px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/derniersmembres.png');background-repeat: no-repeat; float: left;}
 
@@ -124,7 +130,10 @@ body {font-size:75%;
                                             /* ---------------------PAGE DE LOGIN---------------------- */
 
 .loginLeft{width: 185px; padding: 5px 5px 5px 5px; margin: 0 5px 0 0; background: #fff; float: left;}
+.loginLeft h4 {font-size: 16px; text-align:center; font-weight: bold;}
+.loginLeft p {text-align: center; text-indent: 0px;}
 .loginRight{width: 473px; padding: 5px 5px 5px 5px; margin: 0 0 0 5px; background: #fff; float: right; text-align: center;}
+.loginRight p {text-align: center; text-indent: 0px;}
 .loginPub{width: 473px; height: 70px; padding: 5px 5px 5px 5px; margin: 10px 0 0 5px; background: #fff; float: right;}
 
                                             /* ---------------------PAGE D'UNE CATEGORIE'---------------------- */
@@ -152,11 +161,11 @@ body {font-size:75%;
 .eventShowBodyMiddle{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px; text-align: justify;}
 .eventShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .eventShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
-.eventShowBodyCenter{width: 688px; padding: 0 0 0 0; margin: 10px 0 0 0; float: left;}
-.eventShowBodyCenterLeft{width: 339px; margin: 0 5px 0 0; background: #000; float: left;}
-.eventShowBodyCenterLeftContent{width: 339px; padding: 0; background: #fff; float: left;}
-.eventShowBodyCenterRight{width: 339px; margin: 0 0 0 5px; background: #000; float: right;}
-.eventShowBodyCenterRightContent{width: 339px; padding: 0; background: #fff; float: left;}
+.eventShowBodyCenter{width: 688px; padding: 0 0 0 0; margin: 0 0 0 0; float: left; overflow: auto;}
+.eventShowBodyCenterLeft{width: 339px;  margin: 0 5px 0 0; background: #000; float: left;overflow: auto;}
+.eventShowBodyCenterLeftContent{width: 339px; height: 82px; padding: 0; background: #fff; float: left; }
+.eventShowBodyCenterRight{width: 339px; margin: 0 0 0 5px; background: #000; float: right; overflow: auto;}
+.eventShowBodyCenterRightContent{width: 339px; height: 82px; padding: 0; background: #fff; float: left; }
 .eventShowBodyCenterContentLeft{width: 72px; height: 72px; padding: 5px; background: #fff; float: left; line-height: 72px; text-align: center;}
 .eventShowBodyCenterContentLeft img{vertical-align: middle;}
 .eventShowBodyCenterContentRight{width: 237px; margin: 10px 0 10px 0; height: 52px; padding: 5px; background: #fff; float: right; line-height: 52px; text-align: center; border-left:1px solid #000;}
@@ -211,7 +220,7 @@ body {font-size:75%;
 
 .participantContent{width: 678px; padding: 5px 5px 5px 5px; background: #fff; overflow: auto;}
 .userList {width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left;}
-.userListBox {width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center;}
+.userListBox {width: 668px; margin: 0 0 5px 0; padding: 0; background: #fff; float: left; text-align: center;}
 .userListBoxImage {width: 72px; height: 72px; line-height: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
 .userListBoxImage img {vertical-align: middle;}
 .userListBoxName {width: 576px; height: 18px; line-height: 18px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
@@ -250,7 +259,7 @@ body {font-size:75%;
 
 .GalleryListLeft{width:151px; padding:5px 0 0 5px; float:left;}
 .GalleryListRight{width:527px; padding:5px 0 0 5px; float:right;}
-.GalleryListSeparator{background:#fff; width:688px; margin-top: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
+.GalleryListSeparator{background:#fff; width:688px; margin-bottom: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
 .GalleryAction{text-align:right; padding: 0 10px 0 0;}
 .GalleryListRight h4 {text-align:center;}
                                                 /* ---------------------COMMENTAIRE'---------------------- */
@@ -271,7 +280,7 @@ body {font-size:75%;
 .searchBoxWhite{background:#fff; width:668px; margin: 0; padding: 0; float: left; height: auto; text-align: center;}
                                                 /* ---------------------PAGE ANNUAIRE'---------------------- */
 
-
+.activitiesBody{background:#fff; width:688px; margin: 0; padding: 0; float: left; height: auto;}
 .activities{width: 229px; padding: 0 0 0 0; background: #fff; float: left; }
 .activitie{padding: 10px; margin: 10px; background: #ffad4c; }
 .activitie h4{margin:0; color: #000; text-align: center;}
@@ -288,6 +297,18 @@ body {font-size:75%;
 .organismListRight{width:517px; padding: 5px; float:right;}
 .organismListRight h4 {font-size: 16px; text-align:center;}
 .organismListSeparator{background:#fff; width:688px; margin-top: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
+
+
+.loginbox {color:#fff; width: 400px; height: 50px; margin: 10px 20px 0 566px;}
+.loginbox a {color:#f0882f;}
+.loginbox a:hover {font-weight:bold;}
+.loginboxleft {width: 250px; float:left;}
+.loginboxright {width: 150px; float:right;}
+
+.userbarbox {vertical-align: middle;}
+.userbarboxleft {width: 50px;  height: 40px; float:left;}
+.userbarboxright {width: 345px; margin: 8px 0 0 5px; height: 32px; vertical-align:middle; float:right;}
+
 
                                                                     /*---*****  GENERIC *****---*/
 
@@ -384,26 +405,6 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 /* CUSTOM */
 
 
-.loginbox {color:#fff;
-          width: 400px;
-          height: 50px;
-          margin: 10px 20px 0 566px;}
-.loginbox a {color:#f0882f;}
-.loginbox a:hover {font-weight:bold;}
-.loginboxleft {width: 250px;
-              float:left;}
-.loginboxright {width: 150px;
-              float:right;}
-
-.userbarbox {vertical-align: middle;}
-.userbarboxleft {width: 50px;
-                 height: 40px;
-                 float:left;}
-.userbarboxright {width: 345px;
-                  margin: 8px 0 0 5px;
-                  height: 32px;
-                  vertical-align:middle;
-                  float:right;}
 
 .whitebox {padding:0.5em;margin-bottom:0.5em;background:#FFFFFF;}
 
