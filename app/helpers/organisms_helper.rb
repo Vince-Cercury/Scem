@@ -29,11 +29,11 @@ module OrganismsHelper
 
     def get_organism_address_as_string(organism)
     result = ""
-      if organism.street && organism.city
+      if !organism.street.blank? && !organism.city.blank?
         result = organism.street + ", " + organism.city
-      elsif organism.street
+      elsif !organism.street.blank?
         result = organism.street
-      elsif organism.city
+      elsif !organism.city.blank?
         result = organism.city
       end
     return result
