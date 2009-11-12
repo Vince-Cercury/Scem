@@ -171,9 +171,9 @@ body {font-size:75%;
 .eventShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 .eventShowBodyCenter{width: 688px; padding: 0 0 0 0; margin: 0 0 0 0; float: left; overflow: auto;}
 .eventShowBodyCenterLeft{width: 339px;  margin: 0 5px 0 0; background: #000; float: left;overflow: auto;}
-.eventShowBodyCenterLeftContent{width: 339px; height: 82px; padding: 0; background: #fff; float: left; }
+.eventShowBodyCenterLeftContent{width: 339px; min-height: 82px; padding: 0; background: #fff; float: left; }
 .eventShowBodyCenterRight{width: 339px; margin: 0 0 0 5px; background: #000; float: right; overflow: auto;}
-.eventShowBodyCenterRightContent{width: 339px; height: 82px; padding: 0; background: #fff; float: left; }
+.eventShowBodyCenterRightContent{width: 339px; min-height: 82px; padding: 0; background: #fff; float: left; }
 .eventShowBodyCenterContentLeft{width: 72px; height: 72px; padding: 5px; background: #fff; float: left; line-height: 72px; text-align: center;}
 .eventShowBodyCenterContentLeft img{vertical-align: middle;}
 .eventShowBodyCenterContentRight{width: 237px; margin: 10px 0 10px 0; height: 52px; padding: 5px; background: #fff; float: right; line-height: 52px; text-align: center; border-left:1px solid #000;}
@@ -226,6 +226,13 @@ body {font-size:75%;
 
 .noPost{width: 678px; padding: 0; margin: 0 0 0 0; background: #f0882f; color: #000; text-align: center; font-weight: bold; font-size: 14px;}
 
+                                                        /* ---------------------DATE LIST'---------------------- */
+.dateListBody{width: 678px; padding: 5px 5px 5px 5px; background: #fff; overflow: auto;}
+.dateListContent{width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left;}
+.dateListDate {width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left;}
+.dateListDateContent {width: 658px; margin: 0; padding: 5px; background: #fff; float: left;}
+.dateListDate img {float: right; padding: 5px;}
+
 .participantContent{width: 678px; padding: 5px 5px 5px 5px; background: #fff; overflow: auto;}
 .userList {width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left;}
 .userListBox {width: 668px; margin: 0 0 5px 0; padding: 0; background: #fff; float: left; text-align: center;}
@@ -251,6 +258,7 @@ body {font-size:75%;
 
 .gallerieBar {width: 678px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left;}
 .gallerieBarBox {width: 339px; height: 90px; margin: 0; padding: 0; background: #fff; float: left; text-align: center;}
+.gallerieBarBox p {text-align: center; text-indent: 30px;}
 .gallerieBarBox img {padding: 5px;}
 
 .gallerieBarContent {width: 678px; background: #fff; float: left; text-align: right; font-weight: bold; margin:5px 0 5px 0;}

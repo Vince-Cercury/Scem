@@ -76,7 +76,7 @@ module TermsHelper
 
     if (start_at.to_date == today or start_at.to_date == tomorrow or start_at.to_date == yesterday) && end_at.to_date == start_at.to_date
       result =the_day
-      result +='<br />'+t("from")+' '
+      result +=' '+t("from")+' '
       result += start_at.strftime("%H:%M")
       result += ' '+t("until")+' '
       result += end_at.strftime("%H:%M")
