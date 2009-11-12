@@ -1,4 +1,4 @@
-<h1>Listing pictures</h1>
+<h1><%= t('pictures.index.Listing_pictures') %></h1>
 
 <%= render :partial => "pictures_list" %>
-<%= link_to 'New picture', new_picture_path %>
+<%= link_to t('pictures.index.New_picture'), new_picture_path %>

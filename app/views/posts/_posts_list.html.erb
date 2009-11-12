@@ -8,14 +8,14 @@
         <p>
           <%= post.text_long %>
         </p>
-        Created <%= time_ago_in_words(post.created_at) %> ago by <%= get_user_name_or_pseudo_link_by_id(post.creator_id) %>
+        <%= t('posts.list.Created') %>  <%= time_ago_in_words(post.created_at) %>  <%= t('posts.list.by') %>y <%= get_user_name_or_pseudo_link_by_id(post.creator_id) %>
       </div>
     </div>
     <% end %>
     <%= will_paginate @posts %>
     <% if @posts.size == 0 %>
       <div class="noPost">
-        No results
+         <%= t('posts.list.No_results') %>
       </div>
     <% end %>
   </div>

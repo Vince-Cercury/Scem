@@ -6,11 +6,11 @@
     <div class="list">
       <div class="listSeparator">
         <div class="blogBox">
-          <h4>POST - <%=h @post.name %></h4>
+          <h4><%= t('posts.show.Post') %> - <%=h @post.name %></h4>
           <p>
             <%= @post.text_long %>
           </p>
-          Created <%= time_ago_in_words(@post.created_at) %> ago by <%= get_user_name_or_pseudo_link_by_id(@post.creator_id) %>
+          <%= t('posts.show.Created') %> <%= time_ago_in_words(@post.created_at) %> <%= t('posts.show.by') %> <%= get_user_name_or_pseudo_link_by_id(@post.creator_id) %>
         </div>
       </div>
     </div>

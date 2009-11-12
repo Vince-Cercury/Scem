@@ -1,25 +1,25 @@
 <ul class="tabsevent">
   <li>
-    <%= link_to 'Retouner sur la page du Blog', polymorphic_path([@parent_object, :posts].flatten) %>
+    <%= link_to t('posts.sub_header.Back_to_blog_page'), polymorphic_path([@parent_object, :posts].flatten) %>
   </li>
   <li>
-    <% if action_name == 'show' %><%= link_to 'Show', polymorphic_path([@parent_object, @post].flatten), :class => 'selected' %><% else %><%= link_to 'Show', polymorphic_path([@parent_object, @post].flatten) %><% end %>
+    <% if action_name == 'show' %><%= link_to t('posts.sub_header.Show'), polymorphic_path([@parent_object, @post].flatten), :class => 'selected' %><% else %><%= link_to 'Show', polymorphic_path([@parent_object, @post].flatten) %><% end %>
   </li>
   <% if @post.is_user_moderator?(current_user) %>
     <li>
-      <% if action_name == 'edit' %><%= link_to 'Edit', edit_polymorphic_path([@parent_object, @post].flatten), :class => 'selected' %><% else %><%= link_to 'Edit', edit_polymorphic_path([@parent_object, @post].flatten) %><% end %>
+      <% if action_name == 'edit' %><%= link_to t('posts.sub_header.Edit'), edit_polymorphic_path([@parent_object, @post].flatten), :class => 'selected' %><% else %><%= link_to 'Edit', edit_polymorphic_path([@parent_object, @post].flatten) %><% end %>
     </li>
     <li>
-      <%= link_to 'Nouveau message', new_polymorphic_path([@parent_object, :post].flatten) %>
+      <%= link_to t('posts.sub_header.New_message'), new_polymorphic_path([@parent_object, :post].flatten) %>
     </li>
     <li>
-      <%= link_to 'Activate', polymorphic_path([@parent_object, @post].flatten, :action => 'activate') if @post.passive? %>
+      <%= link_to t('posts.sub_header.Activate'), polymorphic_path([@parent_object, @post].flatten, :action => 'activate') if @post.passive? %>
     </li>
     <li>
-      <%= link_to 'Suspend', polymorphic_path([@parent_object, @post].flatten, :action => 'suspend') if @post.active? %>
+      <%= link_to t('posts.sub_header.Suspend'), polymorphic_path([@parent_object, @post].flatten, :action => 'suspend') if @post.active? %>
     </li>
     <li>
-      <%= link_to 'Unsuspend', polymorphic_path([@parent_object, @post].flatten, :action => 'unsuspend') if @post.suspended? %>
+      <%= link_to t('posts.sub_header.Unsuspend'), polymorphic_path([@parent_object, @post].flatten, :action => 'unsuspend') if @post.suspended? %>
     </li>
   <% end %>
 </ul>
