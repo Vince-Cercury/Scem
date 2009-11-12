@@ -187,13 +187,38 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.xml
     def destroy
-      @event = Event.find(params[:id])
-      @event.destroy
+      event = Event.find(params[:id])
 
-      flash[:notice] = 'Event successfully destroyed.'
-      respond_to do |format|
-        format.html { redirect_to(root_path) }
-        format.xml  { head :ok }
+      destroyable = true
+
+      if(event.galleries.size>0)
+        destroyable = false
+      end
+
+      event.terms.each do |term|
+        if term.participations.size > 0
+          destroyable = false
+        end
+      end
+
+      if event.comments.size>0
+        destroyable = false
+      end
+
+      if destroyable
+        event.destroy
+        flash[:notice] = 'Event successfully destroyed.'
+        respond_to do |format|
+          format.html { redirect_to(root_path) }
+          format.xml  { head :ok }
+        end
+      else
+        #TODO: redirect to canceling email form for participants
+        flash[:notice] = "The event contains important data. Can't be destroyed. Try cancel it instead"
+        respond_to do |format|
+          format.html { redirect_to(event) }
+          format.xml  { head :ok }
+        end
       end
     end
 
