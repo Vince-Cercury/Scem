@@ -186,41 +186,64 @@ class EventsController < ApplicationController
 
   # DELETE /events/1
   # DELETE /events/1.xml
-    def destroy
-      event = Event.find(params[:id])
+  def destroy
+    event = Event.find(params[:id])
 
-      destroyable = true
+    destroyable = true
 
-      if(event.galleries.size>0)
-        destroyable = false
+    if(event.galleries.size>0)
+      destroyable = false
+    end
+
+    if event.comments.size>0
+      destroyable = false
+    end
+
+    if destroyable
+      event.destroy
+      flash[:notice] = 'Event successfully destroyed.'
+      respond_to do |format|
+        format.html { redirect_to(root_path) }
+        format.xml  { head :ok }
       end
-
+    else
+      cancelable = true
       event.terms.each do |term|
         if term.participations.size > 0
-          destroyable = false
+          cancelable = false
         end
       end
-
-      if event.comments.size>0
-        destroyable = false
-      end
-
-      if destroyable
-        event.destroy
-        flash[:notice] = 'Event successfully destroyed.'
+      if cancelable
+        event.cancel!
+        flash[:notice] = 'Event successfully canceled.'
         respond_to do |format|
           format.html { redirect_to(root_path) }
           format.xml  { head :ok }
         end
       else
-        #TODO: redirect to canceling email form for participants
-        flash[:notice] = "The event contains important data. Can't be destroyed. Try cancel it instead"
         respond_to do |format|
-          format.html { redirect_to(event) }
+          format.html { redirect_to(url_for(event, :action => 'cancel_notify')) }
           format.xml  { head :ok }
         end
       end
     end
+  end
+
+  def cancel_notify
+    respond_to do |format|
+      format.html 
+      format.xml
+    end
+  end
+
+  def cancel
+    event.cancel!
+    flash[:notice] = 'Event successfully canceled.'
+    respond_to do |format|
+      format.html { redirect_to(root_path) }
+      format.xml  { head :ok }
+    end
+  end
 
 
   def share

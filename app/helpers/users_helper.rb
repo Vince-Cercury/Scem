@@ -18,7 +18,7 @@ module UsersHelper
       when "mini"
         image = image_tag(user.fb_image_small, :height => mini_height)
       when :thumb
-        image = image_tag(user.fb_image_small, :width => thumb_width)
+        image = image_tag(user.fb_image, :width => thumb_width)
       when :small
         image = image_tag(user.fb_image, :width => small_width)
       when :medium
