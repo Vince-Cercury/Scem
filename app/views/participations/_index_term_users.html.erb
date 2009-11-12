@@ -20,23 +20,23 @@
   <ul class='tabsParticipant'>
     <li>
       <% if params[:role]!='sure' %>
-        <%= link_to t('participation.index_term.Attending')+" (#{@term.sure_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure) %>
+        <%= link_to t('participations.index_term.Attending')+" (#{@term.sure_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure) %>
       <% else %>
-        <%= link_to t('participation.index_term.Attending')+" (#{@term.sure_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure), :class => 'selected' %>
+        <%= link_to t('participations.index_term.Attending')+" (#{@term.sure_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure), :class => 'selected' %>
       <% end %>
     </li>
     <li>
       <% if params[:role]!='maybe' %>
-        <%= link_to t('participation.index_term.Maybe_attending')+" (#{@term.maybe_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:may_be) %>
+        <%= link_to t('participations.index_term.Maybe_attending')+" (#{@term.maybe_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:may_be) %>
       <% else %>
-        <%= link_to t('participation.index_term.Maybe_attending')+" (#{@term.maybe_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:may_be), :class => 'selected' %>
+        <%= link_to t('participations.index_term.Maybe_attending')+" (#{@term.maybe_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:may_be), :class => 'selected' %>
       <% end %>
     </li>
     <li>
       <% if params[:role]!='not' %>
-        <%= link_to t('participation.index_term.Not_attending')+" (#{@term.not_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:not) %>
+        <%= link_to t('participations.index_term.Not_attending')+" (#{@term.not_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:not) %>
       <% else %>
-        <%= link_to t('participation.index_term.Not_attending')+" (#{@term.not_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:not), :class => 'selected' %>
+        <%= link_to t('participations.index_term.Not_attending')+" (#{@term.not_participants.size})", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:not), :class => 'selected' %>
       <% end %>
     </li>
   </ul>
