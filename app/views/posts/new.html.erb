@@ -1,7 +1,7 @@
 <%= render :partial => @header_partial %>
 <div class="blogBody">
   <div class="blogContent">
-    <h4>Ajout d'une nouvelle annonce</h4>
+    <h4><%= t('posts.new.Add_new') %></h4>
 
     <% form_for(@post, :url => polymorphic_path([@parent_object, :posts].flatten), :live_validations => true) do |f| %>
       <%= f.error_messages %>
@@ -12,7 +12,7 @@
       <%= render :partial => 'form', :locals => { :f => f } %>
 
       <p>
-        <%= f.submit 'Create' %>
+        <%= f.submit t('posts.new.Create') %>
       </p>
     <% end %>
 

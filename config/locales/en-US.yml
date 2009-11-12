@@ -56,6 +56,7 @@ en-US:
       Limited_profile: "(This user has a limited profile because he didn't connect through Facebook)"
       new_organism: "band, association, pub, business?"
   sessions:
+    Get_facebook_account: " If you got an facebook account, don't hesitate.It's way easier!"
     logged_in_success: Logged in successfully
     logged_out: "You have been logged out."
     login_error: "Couldn't log you in as "
@@ -286,3 +287,8 @@ en-US:
       one: 'Displaying <em>1</em> {{entry_name}}'
       all: 'Displaying <em>all {{total_count}}</em> {{pluralized_entry_name}}'
       n_to_m_of_x: 'Displaying {{pluralized_entry_name}} <em>{{start_count}}&nbsp;-&nbsp;{{end_count}}</em> of <em>{{total_count}}</em> in total'
+  posts:
+    show:
+      Post: "Post "
+      Created: "Created "
+      by: " ago by "
