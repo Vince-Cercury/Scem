@@ -200,7 +200,8 @@ body {font-size:75%;
 .organismShowBodyLeftContent {width: 252px; padding: 0px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; font-weight: bold;}
 .organismShowBodyLeftContent a {background:#000; color:#fff; padding: 5px; }
 .organismShowBodyLeftContent a:hover {background:#ffb500; color:#000;}
-.organismShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right;}
+.organismShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px;}
+.organismShowBodyRight img {float: right;}
 .organismShowBodyMiddle{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
 .organismShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .organismShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
