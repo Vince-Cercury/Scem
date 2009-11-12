@@ -2,8 +2,7 @@
 <%= render :partial => "sub_header" %>
 <% if is_organism_admin?(@organism) %>
   <div class="noEventMessage">
-    <h4>CREATE A NEW EVENT NOW!</h4>
-    <%= link_to("Let people know about your actions", new_event_path) %>
+    <h4><%= link_to(t('organisms_events.index.Create_new_event'), new_event_path) %></h4>
   </div>
 <% end %>
 <% if @terms.size > 0 %>
@@ -14,7 +13,7 @@
         <% if !params[:period].blank? %>
           <%= hidden_field_tag :period, params[:period] %>
         <% end %>
-        <%= submit_tag "Search", :name => nil %>
+        <%= submit_tag t('organism_events.index.Search'), :name => nil %>
       <% end %>
     </div>
   </div>

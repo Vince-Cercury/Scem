@@ -189,6 +189,10 @@ fr-FR:
       listing_activities: "LISTE DES ACTIVITES"
     show:
       listing_organisms: "LISTE DES ORGANISMES"
+  organism_events:
+    index:
+      Create_new_event: "Créer et partagez un nouvel évènement maintenant !"
+      Search: "Rechercher"
   organisms:
     index:
       listing_activities: "Liste des organismes"
