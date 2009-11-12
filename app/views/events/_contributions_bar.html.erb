@@ -5,7 +5,7 @@
           <% if size_min_organizers> size_min_partners %><% size_min = size_min_organizers %><% else %><% size_min = size_min_partners %><% end %>
 
   <div class="eventShowBodyCenter">
-    <% if @event.organizers.size > 0 %>
+    
       <div class="eventShowBodyCenterLeft">
         <div class="titleorganisateurs"></div>
         <div class="eventShowBodyCenterLeftContent" style="height:<%= size_min %>px">
@@ -19,8 +19,7 @@
           <% end %>
         </div>
       </div>
-    <% end %>
-    <% if @event.partners.size > 0 %>
+    
       <div class="eventShowBodyCenterRight">
         <div class="titlepartners"></div>
         <div class="eventShowBodyCenterRightContent" style="height:<%= size_min %>px">
@@ -35,7 +34,7 @@
           <% end %>
         </div>
       </div>
-    <% end %>
+    
 
   </div>
 <%  end %>
