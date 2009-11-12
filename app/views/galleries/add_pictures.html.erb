@@ -8,14 +8,14 @@
     <%= render :partial => 'picture', :collection => @new_pictures %>
   </div>
 
-  <%= link_to_function "Add a picture" do |page|
+  <%= link_to_function t('galleries.add_picture.Add_picture') do |page|
     page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
   end %>
 
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t('galleries.add_picture.Update') %>
   </p>
 <% end %>
 
 
-<%= link_to 'Back to the gallery', @gallery %>
+<%= link_to t('gelleries.add_picture.Back_to_gallery'), @gallery %>
