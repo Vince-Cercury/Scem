@@ -24,6 +24,7 @@ class OrganismsUser < ActiveRecord::Base
   end
 
 
+
   def recently_activated?
     @activated
   end

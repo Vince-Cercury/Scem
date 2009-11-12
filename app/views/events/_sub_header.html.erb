@@ -1,11 +1,10 @@
 <ul class='tabsShowEvent'>
   <li>
     <% if @term%><% url_profile = url_for_even_polymorphic(@term) %><% else %><% url_profile = url_for(@event) %><% end %>
-
-    <% if controller_name != 'events' || controller.action_name=='edit' || controller.action_name=='share' %>
-      <%= link_to(t('events.subheader.Profil'), url_profile) %>
+    <% if action_name=='show' && (controller_name == 'events' || controller_name == 'event_terms')%>
+      <%= link_to(t('events.subheader.Profil'), url_profile, :class => 'selected') %>    
     <% else %>
-      <%= link_to(t('events.subheader.Profil'), url_profile, :class => 'selected') %>
+      <%= link_to(t('events.subheader.Profil'), url_profile) %>
     <% end %>
   </li>
   <% if get_event_street(@event) && get_event_city(@event) %>
@@ -17,9 +16,9 @@
       <% end %>
     </li>
   <% end %>
-  <% if @event.terms.size > 0 %>
+  <% if @event.terms.size > 1 %>
     <li>
-      <% if controller_name != 'terms' %>
+      <% if controller_name != 'event_terms' %>
         <%= link_to(t('events.subheader.Dates'), event_terms_path(@event)) %>
       <% else %>
         <%= link_to(t('events.subheader.Dates'), event_terms_path(@event), :class => 'selected') %>

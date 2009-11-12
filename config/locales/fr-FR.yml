@@ -127,9 +127,16 @@ fr-FR:
       listing_users: "LISTE DES UTILISATEURS"
     Sorry_no_results: "Désolé, aucun résultat trouvé"
     users_list:
-      This_user_is: "Cet utilisateur est"
+      This_user_is: "Cet utilisateur est "
       Give_authorisation_to: "Donner l'autorisation à "
       to_be: "d'être :"
+      Administrator: "Administrateur "
+      Moderator: "Modérateur"
+      Remove_rights: "Enlever lui ses droits"
+      Remove_user: "Supprimer cet utilisateur des membres"
+      admin: "un administrateur"
+      moderator: "un modérateur"
+      member: "un membre"
     edit:
       Editing_user: "Edition d'utilisateur"
       Facebook_user: "Vous êtes connecté grâce à Facebook, merci d'aller sur Facebook pour éditer vos informations. Cependant, vous pouvez éditer quelques paramètres spécifiques ici."
@@ -511,6 +518,11 @@ fr-FR:
       Attending: "Présent"
       Maybe_attending: "Peut être présent"
       Not_attending: "Non présent"
-
-
+  other_friends:
+    index:
+      Search: "Rechercher"
+      Invite_friends: "Invitez vos amis"
+      Facebook_friends: "Ces personnes sont vos amis sur Facebook mais elles ne se sont jamais connectée ici. Aidez les à ce joindre à nous en les invitant. Vous pouvez envoyer un message personnalisé aux personnes que vous souhaitez inviter en les Sélectionnant dans la liste."
+      Send_invitation: "Envoyer l'invitation"
+      Message: "Salut, J'ai trouvé ce site très utile. C'est sur les évènements angevins! C'est juste génial pour connaître ce qui se passe dans la ville. Tu devrais essayer. Tu peux même noter, commenter et créer un évènement. Comme tu as déjà un compte Facebook,utilises-le pour te connecter en un clic sur http://www.your-scem-site.com. bye"
 
