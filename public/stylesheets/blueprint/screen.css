@@ -257,7 +257,7 @@ body {font-size:75%;
 
 
 .gallerieBar {width: 678px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left;}
-.gallerieBarBox {width: 339px; height: 90px; margin: 0; padding: 0; background: #fff; float: left; text-align: center;}
+.gallerieBarBox {width: 339px; height: 110px; margin: 0; padding: 0; background: #fff; float: left; text-align: center;}
 .gallerieBarBox p {text-align: center; text-indent: 30px;}
 .gallerieBarBox img {padding: 5px;}
 
@@ -277,7 +277,7 @@ body {font-size:75%;
 .GalleryListRight{width:527px; padding:5px 0 0 5px; float:right;}
 .GalleryListSeparator{background:#fff; width:688px; margin-bottom: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
 .GalleryAction{text-align:right; padding: 0 10px 0 0;}
-.GalleryListRight h4 {text-align:center;}
+.GalleryListRight h4 {text-align:center; font-size: 16px;}
                                                 /* ---------------------COMMENTAIRE'---------------------- */
 .commentaireContent{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .commentaire{width: 678px; margin: 1px 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}

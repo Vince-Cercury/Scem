@@ -24,10 +24,10 @@
       <%= render :partial => "/event_terms/term" %>
     <% end %>
     <% if !get_event_place_as_string(@event).blank? %>
-    <p>
-      <b><%= t('events.content.Place') %></b>
-      <%= link_to(get_event_place_as_string(@event), event_maps_path(@event)) %>
-    </p>
+      <p>
+        <b><%= t('events.content.Place') %></b>
+        <%= link_to(get_event_place_as_string(@event), event_maps_path(@event)) %>
+      </p>
     <% end %>
     <% if current_user && @event.is_granted_to_edit?(current_user) %>
       <p>
@@ -67,15 +67,15 @@
   <div class="eventShowBodyMiddle">
     <p>
       <%= get_event_description_short_or_term_description %>
-      <% if !@event.description_long.blank? %>     
-      <%=   link_to_function(t('.content.Show_me_more'), nil, :id => "more_link") do |page|
-        page.visual_effect(:toggle_blind, 'description_long')
-        page << "if ($('description_long').getStyle('display')=='none'){"
+      <% if !@event.description_long.blank? %>
+        <%=   link_to_function(t('.content.Show_me_more'), nil, :id => "more_link") do |page|
+          page.visual_effect(:toggle_blind, 'description_long')
+          page << "if ($('description_long').getStyle('display')=='none'){"
           page.replace_html(:more_link,t('.content.Show_me_less'))
-        page << "}else{"
+          page << "}else{"
           page.replace_html(:more_link,t('.content.Show_me_more'))
-        page << "}"
-      end %>
+          page << "}"
+        end %>
       <% end %>
     </p>
   </div>
@@ -84,12 +84,12 @@
 
   <div class="eventShowBodyMiddle" id="description_long" style="display:none;">
     <p><%= @event.description_long %><br/>
-          <%=   link_to_function(t('.content.Show_me_less'), nil, :id => "more_link") do |page|
+      <%=   link_to_function(t('.content.Show_me_less'), nil, :id => "more_link") do |page|
         page.visual_effect(:toggle_blind, 'description_long')
         page << "if ($('description_long').getStyle('display')=='none'){"
-          page.replace_html(:more_link,t('.content.Show_me_less'))
+        page.replace_html(:more_link,t('.content.Show_me_less'))
         page << "}else{"
-          page.replace_html(:more_link,t('.content.Show_me_more'))
+        page.replace_html(:more_link,t('.content.Show_me_more'))
         page << "}"
       end %>
     </p>
@@ -102,7 +102,7 @@
     <div class="eventShowBodyCenterLeft">
       <div class="titleediteur"></div>
       <div class="eventShowBodyCenterLeftContent">
-      <% if @event.publishers.size > 0 %>
+        <% if @event.publishers.size > 0 %>
 
           <% @event.publishers.each do |@organism| %>
             <div class="eventShowBodyCenterContentLeft">
@@ -112,7 +112,13 @@
               <%= link_to(@organism.name, url_for(organism_path(@organism))) %>
             </div>
           <% end %>
-
+        <% else %>
+          <% if !get_event_place_as_string(@event).blank? %>
+            <p>
+              <b><%= t('events.content.Place') %></b>
+              <%= link_to(get_event_place_as_string(@event), event_maps_path(@event)) %>
+            </p>
+          <% end %>
         <% end %>
       </div>
     </div>
