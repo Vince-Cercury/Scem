@@ -24,7 +24,7 @@ class FacebookController < ApplicationController
 
     #update facebook avatar pictures, first_name, last_name
     current_user.fb_image=facebook_session.user.pic
-    current_user.fb_image_small=facebook_session.user.pic_square
+    current_user.fb_image_small=facebook_session.user.pic_small
     
     current_user.fb_image_big=facebook_session.user.pic_big
 

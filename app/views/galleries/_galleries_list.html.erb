@@ -5,7 +5,7 @@
   <div class="GalleryListSeparator">
     <div class="GalleryListLeft">
       <%= display_gallery_cover(gallery, :small) %>
-      <%= gallery.pictures.size %>&nbsp;photos
+      <%= gallery.pictures.size %><%= t('galleries.list.Pictures') %>
             
     </div>
     <div class="GalleryListRight">
@@ -17,16 +17,16 @@
         <%= render :partial => "rating/mini_rating", :locals => { :current_object => gallery } if gallery.rating > 0 %>
       </p>
       <p>
-        From <%= gallery.parent_type %> <%=  link_to(gallery.get_parent_object.name, gallery.get_parent_object) %>
+        <%= t('galleries.list.From') %> <%= gallery.parent_type %> <%=  link_to(gallery.get_parent_object.name, gallery.get_parent_object) %>
       </p>
       <p>
-        Created by <%= get_user_name_or_pseudo_link_by_id(gallery.creator_id) %>
+        <%= t('galleries.list.From') %> <%= get_user_name_or_pseudo_link_by_id(gallery.creator_id) %>
       </p>
       <% if is_gallery_moderator?(gallery) %>
       <div class="GalleryAction">
-        <%= link_to 'Show', url_for_even_polymorphic(gallery) %>
-        <%= link_to 'Edit', edit_polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
-        <%= link_to 'Destroy', gallery, :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to t('galleries.list.Show'), url_for_even_polymorphic(gallery) %>
+        <%= link_to t('galleries.list.Edit'), edit_polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
+        <%= link_to t('galleries.list.Destroy'), gallery, :confirm => t('galleries.list.Are_you_sure'), :method => :delete %>
       </div>
       <% end %>
     </div>

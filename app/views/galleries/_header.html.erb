@@ -2,16 +2,16 @@
   <h3>Gallery - <%= @gallery.name %></h3>
   <%= link_to("Gallery", url_for_even_polymorphic(@gallery)) %> 
   <% if !@parent_object.nil? %>
-    <%= link_to "Back to #{@parent_object.type}", url_for(@parent_object) %>
+    <%= link_to t('galleries.header.Back_to')+t('galleries.header.'+"#{@parent_object.type}"), url_for(@parent_object) %>
   <% end %>
 </div>
 <div class="span-6 last">
   <%= render :partial => "rating/rating", :locals => { :current_object => @gallery } %>
   <br />
   <% if is_gallery_moderator?(@gallery) %>
-  <%= link_to("Edit pictures", url_for_even_polymorphic(@gallery, :action => 'edit_pics')) %>
-  <%= link_to("Add pictures", url_for_even_polymorphic(@gallery, :action => 'add_pics')) %>
-  <%= link_to( 'Edit the gallery', url_for_even_polymorphic(@gallery,:action => 'edit')) %>
+  <%= link_to(t('galleries.header.Edit_picture'), url_for_even_polymorphic(@gallery, :action => 'edit_pics')) %>
+  <%= link_to(t('galleries.header.Add_picture'), url_for_even_polymorphic(@gallery, :action => 'add_pics')) %>
+  <%= link_to(t('galleries.header.Edit_gallery'), url_for_even_polymorphic(@gallery,:action => 'edit')) %>
   <% end %>
 </div>
 <hr />

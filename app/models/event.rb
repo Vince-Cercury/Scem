@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
   has_friendly_id :name, :use_slug => true, :strip_diacritics => true #, :reserved => ["new","edit"]
 
-  has_many :galleries, :as => :parent, :dependent => :destroy
+  has_many :galleries, :as => :parent#, :dependent => :destroy
 
   has_one :picture, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'"
 
@@ -30,11 +30,11 @@ class Event < ActiveRecord::Base
   validates_length_of :description_short, :maximum=>800
 
   
-  has_many :terms
+  has_many :terms, :dependent => :destroy
   has_and_belongs_to_many :categories#, :conditions => "categories.to_display = true"
 
 
-  has_many :contributions
+  has_many :contributions, :dependent => :destroy
   has_many :organisms, :through => :contributions, :uniq => true
 
   with_options :through => :contributions, :source => :organism do |obj|

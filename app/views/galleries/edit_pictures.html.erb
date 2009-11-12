@@ -1,16 +1,16 @@
 <%= render :partial => "header" %>
-Pictures you are the owner or allowed to edit:<br />
+<%= t('galleries.edit_pictures.Allowed_edit_picture') %><br />
 <% for picture in @gallery.pictures %>
   <% if picture.creator_id == current_user.id or @gallery.is_user_moderator?(current_user) %>
 
   <div class="span-5">
     <div class="box">
     <%=  image_tag(picture.attached.url(:small)) %>
-   <br /> <%= link_to("Drop", url_for_even_polymorphic(picture, :action => 'suspend')) %>
+   <br /> <%= link_to(t('galleries.edit_pictures.Drop'), url_for_even_polymorphic(picture, :action => 'suspend')) %>
     <% if @gallery.is_user_moderator?(current_user) %>
-      <br /><%= link_to("Set as cover", url_for_even_polymorphic(@gallery, :action => 'set_cover', :picture_id => picture.id)) unless picture.cover %>
-      <br /><%= link_to("Move before", url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'up')) unless picture.first_item?  %>
-       <%= link_to("Move after", url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'down')) unless picture.last_item? %>
+      <br /><%= link_to(t('galleries.edit_pictures.Set_as_cover'), url_for_even_polymorphic(@gallery, :action => 'set_cover', :picture_id => picture.id)) unless picture.cover %>
+      <br /><%= link_to(t('galleries.edit_pictures.Move_before'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'up')) unless picture.first_item?  %>
+       <%= link_to(t('galleries.edit_pictures.Move_after'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'down')) unless picture.last_item? %>
     <% end %>
     </div>
   </div>
@@ -19,4 +19,4 @@ Pictures you are the owner or allowed to edit:<br />
 <hr />
 
 
-<%= link_to 'Back to the gallery', @gallery %>
+<%= link_to t('galleries.edit_pictures.Back'), @gallery %>

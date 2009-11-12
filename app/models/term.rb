@@ -54,7 +54,7 @@ class Term < ActiveRecord::Base
   end
 
 
-  has_many :participations
+  has_many :participations, :dependent => :destroy
   has_many :participants, :through => :participations
 
   with_options :through => :participations, :source => :user do |obj|
