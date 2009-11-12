@@ -53,7 +53,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if organism_user.save
-        flash[:notice] = 'Relation work is done.'
+        flash[:notice] = 'Modification effectuée.'
         format.html { redirect_back_or_default('/') }
         format.xml  { head :ok }
       else

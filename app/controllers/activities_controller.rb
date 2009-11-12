@@ -65,7 +65,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        flash[:notice] = 'Activity was successfully created.'
+        flash[:notice] = I18n.t('activities.controller.Successfully_created')
         format.html { redirect_to(@activity) }
         format.xml  { render :xml => @activity, :status => :created, :location => @activity }
       else
@@ -82,7 +82,7 @@ class ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.update_attributes(params[:activity])
-        flash[:notice] = 'Activity was successfully updated.'
+        flash[:notice] = I18n.t('activities.controller.Successfully_updated')
         format.html { redirect_to(activities_path) }
         format.xml  { head :ok }
       else

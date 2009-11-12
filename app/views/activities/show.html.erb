@@ -1,11 +1,7 @@
 <div class="activitiesList">
 <h2 class="caps"><%=h @activity.name %></h2>
-<%#*<p>%>
-  <%#*<b>Description:</b>%>
-  <%#=h @activity.description %>
-<%#*</p>%>
 <div class="activitiesListBack">
-  <%= link_to 'Back', activities_path %>
+  <%= link_to t('activities.show.Back'), activities_path %>
 </div>
 </div>
 

@@ -9,7 +9,7 @@
 <% else %>
   <div class="listContent">
   <ul class="tabsevent">
-    <li><%= link_to "Events occuring #{display_simpliest_date(@the_selected_date)} ", get_url_past_or_futur_tab %></li>
+    <li><%= link_to t('categories.ters_subheader')+"#{display_simpliest_date(@the_selected_date)} ", get_url_past_or_futur_tab %></li>
   </ul>
 <% end %>
 

@@ -1,4 +1,4 @@
-<h1>Editing activity</h1>
+<h1><%= t('activities.edit.Edit') %></h1>
 
 <% form_for(@activity) do |f| %>
   <%= f.error_messages %>
@@ -12,9 +12,9 @@
     <%= f.text_area :description, :cols => 35, :rows => 5 %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t('activities.edit.Update') %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @activity %> |
-<%= link_to 'Back', activities_path %>
+<%= link_to t('activities.edit.Show'), @activity %> |
+<%= link_to t('activities.edit.Back'), activities_path %>

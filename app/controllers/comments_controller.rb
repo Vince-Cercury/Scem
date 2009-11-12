@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    puts "intend to create a comment"
+    #puts "intend to create a comment"
     @comment = Comment.new(params[:comment])
     @current_object = commentable_object = Comment.find_commentable(params[:commentable_type], params[:commentable_id])
 
@@ -158,12 +158,12 @@ class CommentsController < ApplicationController
     comment = Comment.find(params[:id])
     commentable_object = Comment.find_commentable(comment.commentable_type, comment.commentable_id)
     if comment.nil?
-      flash[:error] = "We couldn't find the comment."
+      flash[:error] = I18n.t('comments.controller.Couldnt_find_comment')
       redirect_back_or_default('/')
     else
       comment.activated_by = current_user.id
       comment.activate!
-      flash[:notice]  = "Ok, comment activated"
+      flash[:notice]  = I18n.t('comments.controller.Comment_activated')
       redirect_to(commentable_object)
     end
   end
@@ -174,7 +174,7 @@ class CommentsController < ApplicationController
     commentable_object = Comment.find_commentable(@comment.commentable_type, @comment.commentable_id)
     @comment.suspended_by = current_user.id
     @comment.suspend!
-    flash[:notice] = 'Comment was suspended.'
+    flash[:notice] = I18n.t('comments.controller.Comment_suspended')
     redirect_to(commentable_object)
   end
 
@@ -183,7 +183,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     commentable_object = Comment.find_commentable(@comment.commentable_type, @comment.commentable_id)
     @comment.unsuspend!
-    flash[:notice] = 'Comment was unsuspended.'
+    flash[:notice] = I18n.t('comments.controller.Comment_unsuspended')
     redirect_to(commentable_object)
   end
 
@@ -197,29 +197,29 @@ class CommentsController < ApplicationController
   end
 
   def not_too_late_edit_comment?
-    puts "ensure current user has moderation rights or not owner and not too late (comment)"
+    #puts "ensure current user has moderation rights or not owner and not too late (comment)"
     comment = Comment.find(params[:comment_id])
     too_late_editing unless comment && ((time_diff_in_minutes(comment.created_at) < Integer(ENV['TIME_ALLOW_EDIT_COMMENT']) or has_current_user_moderation_rights))
   end
 
   def ensure_moderator_edit_rights?
-    puts "ensure current user is owner or has moderation rights (comment)"
+    #puts "ensure current user is owner or has moderation rights (comment)"
     comment = Comment.find(params[:comment_id])
     not_enough_rights unless self.current_user && comment && comment.user_id==self.current_user.id or has_current_user_moderation_rights
   end
 
   def ensure_has_current_user_moderation_rights
-    puts "ensure has current user moderation rights (comment)"
+    #puts "ensure has current user moderation rights (comment)"
     not_enough_rights unless has_current_user_moderation_rights
   end
   
   def not_enough_rights
-    flash[:error] = "Not allowed to do this. Not owner or enough rights to edit the comment"
+    flash[:error] = I18n.t('comments.controller.Not_allowed_no_right')
     redirect_to root_path
   end
 
   def too_late_editing
-    flash[:error] = "Not allowed to do this. Too late for editing: #{ENV['TIME_ALLOW_EDIT_COMMENT']} minutes maximum"
+    flash[:error] = I18n.t('comments.controller.Not_allowed_too_late',:minuts =>" #{ENV['TIME_ALLOW_EDIT_COMMENT']}")
     redirect_to root_path
   end
 
