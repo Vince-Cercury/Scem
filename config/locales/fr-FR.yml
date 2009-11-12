@@ -576,6 +576,18 @@ fr-FR:
     Member_of: "Membre de "
     Moderator_of: "Modérateur de "
     Administrator_of: "Administrateur de "
-    organisms :"organisme(s)"
+    organisms: "organisme(s)"
   members:
     Search: "Rechercher"
+  galleries:
+    show:
+      Description: "Decription :"
+      Publish_Facebook_wall: "Publier sur mon mur Facebook"
+      Creator: "Auteur"
+      Comments: "Commentaires"
+      Edit: "Editer"
+      Back: "Retour"
+    new:
+      New_gallery: "Nouvelle galerie"
+      Create: "Créer"
+      Back: "Retour"

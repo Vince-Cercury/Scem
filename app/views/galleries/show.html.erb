@@ -5,16 +5,16 @@
 <div class="span-9 last">
   <% if @gallery.description && @gallery.description!='' %>
     <div class="box">
-      <b>Description:</b>
+      <b><%= t('galleries.show.Description') %></b>
       <%= @gallery.description %>
       <% if current_user && current_user.facebook_user? && facebook_session %>
-        <br /><br /><%= link_to 'Publish the gallery on my Facebook Wall', url_for(:controller => 'facebook', :gallery_id =>@gallery.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
+        <br /><br /><%= link_to t('galleries.show.Publish_Facebook_wall'), url_for(:controller => 'facebook', :gallery_id =>@gallery.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
       <% end %>
     </div>
 
   <% end %>
   <div class="box"><br />
-    <b>Creator:</b>
+    <b><%= t('galleries.show.Creator') %></b>
     <%=h get_user_name_or_pseudo_by_id(@gallery.creator_id) %>
   </div>
 </div>
@@ -36,9 +36,9 @@
 
 
 
-<h2>Comments</h2>
+<h2><%= t('galleries.show.Comments') %></h2>
 <%= render :partial => "/comments/list" %>
 <%= render :partial => "/comments/form" %>
 
-<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
-<%= link_to 'Back', @parent_object %>
+<%= link_to t('galleries.show.Edit'), edit_gallery_path(@gallery) %> |
+<%= link_to t('galleries.show.Back'), @parent_object %>

@@ -1,4 +1,4 @@
-<h1>New gallery</h1>
+<h1><%= t('galleries.new.New_Gallery') %></h1>
 
 <% form_for @gallery, :html => { :multipart => true }  do |f| %>
 
@@ -34,8 +34,8 @@
     page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
   end %>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit t('galleries.new.Create') %>
   </p>
 <% end %>
 
-<%= link_to 'Back', galleries_path %>
+<%= link_to t('galleries.new.Back'), galleries_path %>
