@@ -610,6 +610,14 @@ fr-FR:
     organisms: "organisme(s)"
   members:
     Search: "Rechercher"
+    controlleur:
+      Update_done: "Modification effectuée."
+      Now_member_organism: "Vous êtes désormais un membre de cet organisme."
+      Membership_pending: "Votre demande est en attente d'acceptation par un modérateur."
+      Updating_error: "Une erreur s'est produite durant la modification."
+      Incorrect_parameter: "Un paramètre est manquant ou incorrecte"
+      Cant_decide_alone: "Vous ne pouvez pas décider seul de devenir administraeur ou modérateur de cet organisme."
+
   galleries:
     controller:
       Set_cover_success: "Couverture changée avec succès."

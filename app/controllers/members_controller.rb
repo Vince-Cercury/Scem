@@ -53,7 +53,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if organism_user.save
-        flash[:notice] = 'Modification effectuée.'
+        flash[:notice] = I18n.t('members.controller.Update_done')
         format.html { redirect_back_or_default('/') }
         format.xml  { head :ok }
       else
@@ -87,25 +87,25 @@ class MembersController < ApplicationController
     if (params[:members_password] && params[:members_password] == organism.members_password) or organism.members_password.blank?
       organism_user.role = 'member'
       accepted = true
-      flash[:notice] = 'You are now a member of this organism.'
+      flash[:notice] = I18n.t('members.controller.Now_member_organism')
     end
 
     if params[:members_password] && params[:members_password] == organism.moderators_password
       organism_user.role = 'moderator'
       accepted = true
-      flash[:notice] = 'You are now a moderator of this organism.'
+      flash[:notice] = I18n.t('members.controller.Now_member_organism')
     end
 
     if params[:members_password] && params[:members_password] == organism.admins_password
       organism_user.role = 'admin'
       accepted = true
-      flash[:notice] = 'You are now an administrator of this organism.'
+      flash[:notice] = I18n.t('members.controller.Now_member_organism')
     end
     
     if accepted
       organism_user.activate!
     else
-      flash[:notice] = 'Your membership is pending until a moderator accept it.'
+      flash[:notice] = I18n.t('members.controller.Membership_pending')
     end
 
     
@@ -154,16 +154,16 @@ class MembersController < ApplicationController
 
     if organism_user && !organism_user.active?
       organism_user.activate!
-      flash[:notice] = "Membership done"
+      flash[:notice] = I18n.t('members.controller.Now_member_organism')
       redirect_to(organism)
     elsif organism_user && organism_user.active?
       if organism_user.role != params[:role]
         organism_user.save!
       end
-      flash[:notice] = "Membership work is done"
+      flash[:notice] = I18n.t('members.controller.Update_done')
       redirect_to(organism)
     else
-      flash[:error]  = "Something went wrong when updating the membership..."
+      flash[:error]  = I18n.t('members.controller.Updating_error')
       redirect_to root_path
     end
   end
@@ -206,13 +206,13 @@ class MembersController < ApplicationController
   end
 
   def param_uncorrect_redirection
-    flash[:error] = "A parameter is missing or not correct"
+    flash[:error] = I18n.t('members.controller.Incorrect_parameter')
     redirect_to root_path
   end
 
   def cant_become_himself_admin_or_modo
     if(params[:role] == "admin" or params[:role] == "moderator")
-      flash[:error] = "You cannot decide by yourself to become and admin or moderator of this organism"
+      flash[:error] = I18n.t('members.controller.Cant_decide_alone')
       redirect_to root_path
     end
   end
