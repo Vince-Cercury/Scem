@@ -571,4 +571,9 @@ fr-FR:
       Facebook_friends: "Ces personnes sont vos amis sur Facebook mais elles ne se sont jamais connectée ici. Aidez les à ce joindre à nous en les invitant. Vous pouvez envoyer un message personnalisé aux personnes que vous souhaitez inviter en les Sélectionnant dans la liste."
       Send_invitation: "Envoyer l'invitation"
       Message: "Salut, J'ai trouvé ce site très utile. C'est sur les évènements angevins! C'est juste génial pour connaître ce qui se passe dans la ville. Tu devrais essayer. Tu peux même noter, commenter et créer un évènement. Comme tu as déjà un compte Facebook,utilises-le pour te connecter en un clic sur http://www.your-scem-site.com. bye"
-
+  memberships:
+    Search: "Rechercher"
+    Member_of: "Membre de "
+    Moderator_of: "Modérateur de "
+    Administrator_of: "Administrateur de "
+    organisms :"organisme(s)"
