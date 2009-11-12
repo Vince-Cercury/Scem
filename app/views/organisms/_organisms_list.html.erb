@@ -14,8 +14,9 @@
             <p>
               <%=h organism.description_short %>
             </p>
+            <p>
             <%= render :partial => "rating/mini_rating", :locals => { :current_object => organism } if organism.rating > 0 %>
-
+            </p>
           </div>
         </div>
       <% end %>
