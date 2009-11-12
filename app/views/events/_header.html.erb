@@ -4,7 +4,13 @@
   </div>
   <div class="eventHeaderRight">
     <div class="eventHeaderTitle">
-      <h3><%=h @event.name %></h3>
+      <% if @term%>
+        <% url_profile = url_for_even_polymorphic(@term) %>
+      <% else %>
+        <% url_profile = url_for(@event) %>
+      <% end %>
+      <h3><%= link_to(@event.name, url_profile) %></h3>
+   
     </div>
     <div class="eventHeaderNotation">
       <%= render :partial => "rating/rating", :locals => { :current_object => @event } %>

@@ -2,7 +2,7 @@
 <div class="eventShowBody">
   <div class="eventShowBodyLeft">
     <% if @event.picture.nil? %>
-      <%= get_default_event_picture(:medium) %>
+      <%= get_default_event_picture(@event, :medium) %>
       <% if current_user && @event.is_user_moderator?(current_user) %>
         <div class="eventShowBodyLeftContent">
           <%= link_to(t('events.content.Attach_picture'), new_url_for_even_polymorphic(@event, :picture)) %>
