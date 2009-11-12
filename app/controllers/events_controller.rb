@@ -200,6 +200,11 @@ class EventsController < ApplicationController
     end
 
     if destroyable
+      #raise event.contributions.inspect
+#      event.contributions.each do |contribution|
+#        contribution.destroy
+#      end
+
       event.destroy
       flash[:notice] = 'Event successfully destroyed.'
       respond_to do |format|
