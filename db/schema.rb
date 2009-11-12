@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091112210247) do
+ActiveRecord::Schema.define(:version => 20091112233603) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20091112210247) do
 
   add_index "comments", ["user_id"], :name => "fk_comments_user"
 
-  create_table "contributions", :id => false, :force => true do |t|
+  create_table "contributions", :force => true do |t|
     t.integer "event_id"
     t.integer "organism_id"
     t.string  "role"

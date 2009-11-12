@@ -76,7 +76,7 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :categories#, :conditions => "categories.to_display = true"
 
 
-  has_many :contributions#, :dependent => :destroy
+  has_many :contributions, :dependent => :destroy
   has_many :organisms, :through => :contributions, :uniq => true
 
   with_options :through => :contributions, :source => :organism do |obj|
