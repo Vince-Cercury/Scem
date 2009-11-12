@@ -24,17 +24,10 @@
       <%= render :partial => "/event_terms/term" %>
     <% end %>
     <% if !get_event_place_as_string(@event).blank? %>
-<<<<<<< HEAD:app/views/events/_show_content.html.erb
-      <p>
-        <b>Place</b>:
-        <%= link_to(get_event_place_as_string(@event), event_maps_path(@event)) %>
-      </p>
-=======
     <p>
       <b><%= t('events.content.Place') %></b>
       <%= link_to(get_event_place_as_string(@event), event_maps_path(@event)) %>
     </p>
->>>>>>> cc0ee0d1ea747f1edc08617f65b64af3d9affa31:app/views/events/_show_content.html.erb
     <% end %>
     <% if current_user && @event.is_granted_to_edit?(current_user) %>
       <p>
