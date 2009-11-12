@@ -746,32 +746,37 @@ fr-FR:
   wall_permissions_for_event:
     Summary: "Vous pouvez réessayer de publier l'évènement sur votre mur en cliquant sur ce lien :"
     Publish_event_on_wall: "Publier l'évènement sur mon mur"
-comments:
-  form:
-    Be_the_first_to_write: "Soyez le premier à réagir :"
-    Add_a_comment: "Ajouter un commentaire"
-    U_need_to_be_connected: "Vous devez être connecté pour ajouter un commentaire"
-    Limited_account: "Connexion avec un compte LeBounce"
-    Login: "Nom d'utilisateur"
-    Password: "Mot de passe"
-    Remember_me: "Se souvenir de moi"
-    Log_in: "Connexion"
-    Sign_up: "S'enregistrer"
-    Create_an_account: "Créer un compte"
-    or_log_in_facebook_connect: "Ou se connecter avec Facebook"
-    Facebook_ad: "Si vous avez un compte Facebook, n'hésitez pas c'est le plus simple !"
-  edit:
-    Edit: "Editer le commentaire :"
-    Update: "Mettre à jour"
-  create:
-    Create: "Créer"
-  content:
-    Suspended: "Commentaire suspendu il y a "
-    ago_by: " par "
-    ago: " "
-    Created: "Créer il y a "
-    Edited: "Commentaire édité il y a "
-  comments_organism_search:
-    Search: "Rechercher"
-  comments_event_search:
-    Search: "Rechercher"
+  comments:
+    form:
+      Be_the_first_to_write: "Soyez le premier à réagir :"
+      Add_a_comment: "Ajouter un commentaire"
+      U_need_to_be_connected: "Vous devez être connecté pour ajouter un commentaire"
+      Limited_account: "Connexion avec un compte LeBounce"
+      Login: "Nom d'utilisateur"
+      Password: "Mot de passe"
+      Remember_me: "Se souvenir de moi"
+      Log_in: "Connexion"
+      Sign_up: "S'enregistrer"
+      Create_an_account: "Créer un compte"
+      or_log_in_facebook_connect: "Ou se connecter avec Facebook"
+      Facebook_ad: "Si vous avez un compte Facebook, n'hésitez pas c'est le plus simple !"
+    edit:
+      Edit: "Editer le commentaire :"
+      Update: "Mettre à jour"
+    create:
+      Create: "Créer"
+    content:
+      Suspended: "Commentaire suspendu il y a "
+      ago_by: " par "
+      ago: " "
+      Created: "Créer il y a "
+      Edited: "Commentaire édité il y a "
+    comments_organism_search:
+      Search: "Rechercher"
+    comments_event_search:
+      Search: "Rechercher"
+  categories:
+    show:
+      Description: "Description :"
+    new:
+      New_category: "Nouvelle catégorie"

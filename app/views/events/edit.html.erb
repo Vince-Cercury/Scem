@@ -9,7 +9,7 @@
   <div class="span-2 last">
     <% if current_user && @event.is_user_moderator?(current_user) %>
       <br /><br />
-      (  <%= link_to t('.edit.Destroy'), @event, :confirm => t('.edit.Are_you_sure'), :method => :delete %> )
+      (  <%= link_to t('events.edit.Destroy'), @event, :confirm => t('events.edit.Are_you_sure'), :method => :delete %> )
     <% end %>
   </div>
   <hr />
@@ -19,10 +19,10 @@
     <div class="box">
       <% if @event.picture.nil? %>
         <%= get_default_event_picture(@event, :medium) %><br />
-        <%= link_to(t('.edit.Attach_picture'), new_url_for_even_polymorphic(@event, :picture)) %>
+        <%= link_to(t('events.edit.Attach_picture'), new_url_for_even_polymorphic(@event, :picture)) %>
       <% else %>
         <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %><br />
-        <%= link_to(t('.edit.Change_image'), new_url_for_even_polymorphic(@event, :picture)) %>
+        <%= link_to(t('events.edit.Change_image'), new_url_for_even_polymorphic(@event, :picture)) %>
       <% end %>
     </div>
   </div>
