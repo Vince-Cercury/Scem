@@ -591,3 +591,46 @@ fr-FR:
       New_gallery: "Nouvelle galerie"
       Create: "Créer"
       Back: "Retour"
+    edit_pictures:
+      Allowed_edit_picture: "Vous êtes authorisé à editer cette image"
+      Drop: "Supprimer"
+      Set_as_cover: "Définir comme couverture"
+      Move_before: "Déplacer avant"
+      Move_after: "Déplacer après"
+      Back: "Retour à la galerie"
+    edit:
+      Back_gallery: "Retour à la galerie"
+      Back_to: "Retour à "
+      Update: "Mettre à jour"
+    add_picture:
+      Add_picture: "Ajouter une image"
+      Update: "Mise à jour"
+      Back_to_gallery: "Retour à la galerie"
+    picture:
+      Delete: "Supprimer"
+    header:
+      Gallery: "Galerie"
+      Back_to: "Retour "
+      user: "à l'utilisateur"
+      event: "à l'évènement"
+      organism: "à l'organisme"
+      Edit_picture: "Editer une image"
+      Add_picture: "Ajouter une image"
+      Edit_gallery: "Editer la galerie"
+    organism_search:
+      Search: "Rechercher"
+      New_gallery: "Nouvelle galerie !"
+    list:
+      Pictures: "&nbsp;Photos"
+      From: "De "
+      Created_by: "Créé par "
+      Show: "Afficher"
+      Edit: "Editer"
+      Destroy: "Supprimer"
+      Are_you_sure: "Etes-vous sûr(e) ?"
+    event_search:
+      Search: "Rechercher"
+      New_gallery: "Nouvelle galerie !"
+    bar:
+      Pictures: "&nbsp;Photos"
+      New_gallery: "Nouvelle galerie !"

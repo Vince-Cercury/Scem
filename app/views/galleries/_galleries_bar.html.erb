@@ -12,7 +12,7 @@
       </p>
       <p>
         <%= link_to gallery.name, polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
-        <%= gallery.pictures.size %>&nbsp;photos
+        <%= gallery.pictures.size %><%= t('galleries.bar.Pictures') %>
       </p>
     </div>
   <% end %>
@@ -21,7 +21,7 @@
 
 
   <div class="gallerieBarContent">
-    <%= link_to("New gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
+    <%= link_to(t('galleries.bar.New_gallery'), url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
   </div>
 
 <% end %>
@@ -32,7 +32,7 @@
   <div class="titlegaleries"></div>
   <div class="gallerieBar">
       <div class="gallerieBarContent">
-          <%= link_to("New gallery !", url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
+          <%= link_to(t('galleries.bar.New_gallery'), url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
       </div>
   </div>
 <div>

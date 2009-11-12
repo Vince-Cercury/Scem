@@ -2,9 +2,9 @@
   <%= f.error_messages %>
 <div class="span-17 last">
   <h3>Gallery - <%= f.text_field :name, :class => 'title' %></h3>
-  <%= link_to("Back to Gallery", polymorphic_path([@gallery.get_parent_object, @gallery].flatten)) %>
+  <%= link_to(t('galleries.edit.Back_gallery'), polymorphic_path([@gallery.get_parent_object, @gallery].flatten)) %>
   <% if !@parent_object.nil? %>
-    <%= link_to "Back to #{@parent_object.type}", url_for(@parent_object) %>
+    <%= link_to t('galleries.edit.Back_to')+"#{@parent_object.type}", url_for(@parent_object) %>
   <% end %>
 </div>
 <hr />
@@ -24,6 +24,6 @@
 
 
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t('galleries.edit.Update') %>
   </p>
 <% end %>
