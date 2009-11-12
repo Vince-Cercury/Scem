@@ -175,13 +175,13 @@ module EventsHelper
 
   def get_event_place_as_string(event)
     result = ""
-    if get_event_location(event) && get_event_street(event) && get_event_city(event)
+    if !get_event_location(event).blank? && !get_event_street(event).blank? && !get_event_city(event).blank?
       result = get_event_location(event) + ", " + get_event_street(event) + ", " + get_event_city(event)
-    elsif get_event_street(event) && get_event_city(event)
+    elsif !get_event_street(event).blank? && !get_event_city(event).blank?
       result = get_event_street(event) + ", " + get_event_city(event)
-    elsif get_event_street(event)
+    elsif !get_event_street(event).blank?
       result = get_event_street(event)
-    elsif get_event_city(event)
+    elsif !get_event_city(event).blank?
       result = get_event_city(event)
     end
     return result
