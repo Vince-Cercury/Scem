@@ -19,7 +19,7 @@
   <%= will_paginate @organisms %>
   <% if @organisms.size == 0 %>
     <div class="box">
-      Sorry, no result
+      <%= t('organisms.list.Sorry_no_result') %>
     </div>
   <% end %>
 </div>

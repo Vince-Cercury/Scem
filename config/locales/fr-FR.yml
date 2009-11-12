@@ -191,7 +191,49 @@ fr-FR:
       listing_organisms: "LISTE DES ORGANISMES"
   organisms:
     index:
-      listing_activities: "LISTE DES ORGANISMES"
+      listing_activities: "Liste des organismes"
+    edit:
+      Destroy: "Supprimer"
+      Are_you_sure: "Etes-vous sûr(e) ?"
+      Attach_picture: "Joindre une photo !"
+      Change_picture: "Changer la photo"
+      Manager_name: "Gérant :"
+      Phone: "Téléphone :"
+      In_directory: "Dans l'annuaire :"
+      Update: "Mettre à jour"
+      Show: "Afficher"
+      Back: "Retour"
+    sub_header:
+      Profile: "Profil"
+      Blog: "Blog"
+      Events: "Evènements"
+      Members: "Membres"
+      Pictures_galleries: "Galeries photos"
+      Map: "Plan"
+      Edit: "Editer"
+      Destroy: "Supprimer"
+      Are_you_sure: "Etes-vous sûr(e) ?"
+    list:
+      Sorry_no_result: "Désolé, aucun résultat"
+    show:
+      Attach_picture: "Joindre une photo !"
+      Change_image: "Changer l'image"
+      Publish_Facebook_wall: "Publier l'organisme sur mon mur Facebook"
+      Manager_name: "Gérant :"
+      Phone: "Téléphone :"
+      In_directory: "Dans l'annuaire :"
+      Activities: "Activitées :"
+      Admins: "Administrateurs :"
+      Moderators: "Modérateurs :"
+      Not_be_a_member_anymore: "Se désinscrire"
+      Cancel_membership_pending_activation: "Annuler la demande de membre en attente"
+      Optional_password: "Mot de passe optionnel :"
+      only_if_u_know_it: " (seulement si vous le connaissez, facultatif)"
+      Go: "Go"
+      All_members: "Tout les membres"
+    new:
+      Create: "Créer"
+      Back: "Retour"
   search:
     model_type:
       events: événements
