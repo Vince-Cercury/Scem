@@ -68,12 +68,12 @@
     <p>
       <%= get_event_description_short_or_term_description %>
       <% if !@event.description_long.blank? %>
-        <%=   link_to_function(t('.content.Show_me_more'), nil, :id => "more_link") do |page|
+        <%=   link_to_function(t('events.content.Show_me_more'), nil, :id => "more_link") do |page|
           page.visual_effect(:toggle_blind, 'description_long')
           page << "if ($('description_long').getStyle('display')=='none'){"
-          page.replace_html(:more_link,t('.content.Show_me_less'))
+          page.replace_html(:more_link,t('events.content.Show_me_less'))
           page << "}else{"
-          page.replace_html(:more_link,t('.content.Show_me_more'))
+          page.replace_html(:more_link,t('events.content.Show_me_more'))
           page << "}"
         end %>
       <% end %>
@@ -84,12 +84,12 @@
 
   <div class="eventShowBodyMiddle" id="description_long" style="display:none;">
     <p><%= @event.description_long %><br/>
-      <%=   link_to_function(t('.content.Show_me_less'), nil, :id => "more_link") do |page|
+      <%=   link_to_function(t('events.content.Show_me_less'), nil, :id => "more_link") do |page|
         page.visual_effect(:toggle_blind, 'description_long')
         page << "if ($('description_long').getStyle('display')=='none'){"
-        page.replace_html(:more_link,t('.content.Show_me_less'))
+        page.replace_html(:more_link,t('events.content.Show_me_less'))
         page << "}else{"
-        page.replace_html(:more_link,t('.content.Show_me_more'))
+        page.replace_html(:more_link,t('events.content.Show_me_more'))
         page << "}"
       end %>
     </p>

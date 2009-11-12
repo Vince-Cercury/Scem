@@ -1,7 +1,6 @@
 <%= render :partial => "/events/header" %>
 <p>
-  This will definitely cancel the event <b>on Facebook</b> with this specified date.<br />
-  Keep in mind that this is not cancelling the event on this site! (only on Facebook)<br />
+  <%= t('facebook.ask_facebook_event_cancel.Summary') %>
 </p>
 
 <div>
@@ -12,11 +11,11 @@
   <%= f.error_messages %>
 
   <p>
-    <b>Optional message (for facebook users attending)...</b><br />
+    <b><%= t('facebook.ask_facebook_event_cancel.Optional_message') %></b><br />
     <textarea  id="cancel_message" name="cancel_message" cols="60" rows="10"></textarea>
   </p>
   <%=  hidden_field_tag 'event_id', @event.id %>
   <p>
-    <%= f.submit 'Cancel on Facebook !' %>
+    <%= f.submit t('facebook.ask_facebook_event_cancel.Cancel_Facebook') %>
   </p>
 <% end %>

@@ -1,2 +1,2 @@
-<p>Then you can try again to publish the organism on your Facebook Wall, by clicking on this link: <br />
-<%= link_to 'Publish the organism on my Wall', url_for(:controller => 'facebook', :organism_id =>@organism.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %></p>
+<p> <%=t('facebook.wall_permissions_for_organism.Summary')%><br />
+<%= link_to t('facebook.wall_permissions_for_organism.Publish_object_on_wall'), url_for(:controller => 'facebook', :organism_id =>@organism.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %></p>

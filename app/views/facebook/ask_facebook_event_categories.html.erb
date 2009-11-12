@@ -1,8 +1,6 @@
 <%= render :partial => "/events/header" %>
 <p>
-  This page allows you publishing the event (with these specific dates) on Facebook.<br />
-  You will be the administrator of the page on Facebook.<br />
-  You can, at any time, access to it for managing, editing or cancelling.
+  <%= t('facebook.ask_facebook_event_categories.Summary') %>
 </p>
 
 <div>
@@ -13,82 +11,82 @@
   <%= f.error_messages %>
 
   <p>
-    <b>Category</b><br />
+    <b><%= t('facebook.ask_facebook_event_categories.Category') %></b><br />
     <%= select_tag "category", "
-      <option value='1'>Party</option>
-      <option value='2'>Causes</option>
-      <option value='3'>Education</option>
-      <option value='4'>Meetings</option>
-      <option value='5'>Music/Arts</option>
-      <option value='6'>Sports</option>
-      <option value='7'>Trips</option>
-      <option value='8'>Other</option>" %>
+      <option value='1'>" + t('facebook.ask_facebook_event_categories.Party')+"</option>
+      <option value='2'>" + t('facebook.ask_facebook_event_categories.Causes')+"</option>
+      <option value='3'>" + t('facebook.ask_facebook_event_categories.Education')+"</option>
+      <option value='4'>" + t('facebook.ask_facebook_event_categories.Meetings')+"</option>
+      <option value='5'>" + t('facebook.ask_facebook_event_categories.Music_arts')+"</option>
+      <option value='6'>" + t('facebook.ask_facebook_event_categories.Sports')+"</option>
+      <option value='7'>" + t('facebook.ask_facebook_event_categories.Trips')+"</option>
+      <option value='8'>" + t('facebook.ask_facebook_event_categories.Other')+"</option>" %>
   </p>
 
     <p>
     <b>Sub-category</b><br />
     <%= select_tag "subcategory",
-      "<option value='1'>Birthday Party</option>
-      <option value='2'>Cocktail Party </option>
-      <option value='3'>Club Party</option>
-      <option value='4'>Potluck</option>
-      <option value='5'>Fraternity/Sorority Party</option>
-      <option value='6'>Business Meeting</option>
-      <option value='7'>Barbecue</option>
-      <option value='8'>Card Night</option>
-      <option value='9'>Dinner Party</option>
-      <option value='10'>Holiday Party</option>
-      <option value='11'>Night of Mayhem</option>
-      <option value='12'>Movie/TV Night</option>
-      <option value='13'>Drinking Games</option>
-      <option value='14'>Bar Night</option>
-      <option value='15'>LAN Party</option>
-      <option value='16'>Brunch</option>
-      <option value='17'>Mixer</option>
-      <option value='18'>Slumber Party</option>
-      <option value='19'>Erotic Party</option>
-      <option value='20'>Benefit</option>
-      <option value='21'>Goodbye Party</option>
-      <option value='22'>House Party</option>
-      <option value='23'>Reunion</option>
-      <option value='24'>Fundraiser</option>
-      <option value='25'>Protest</option>
-      <option value='26'>Rally</option>
-      <option value='27'>Class</option>
-      <option value='28'>Lecture</option>
-      <option value='29'>Office Hours</option>
-      <option value='30'>Workshop</option>
-      <option value='31'>Club/Group Meeting</option>
-      <option value='32'>Convention</option>
-      <option value='33'>Dorm/House Meeting</option>
-      <option value='34'>Informational Meeting</option>
-    <option value='35'>Audition</option>
-    <option value='36'>Exhibit</option>
-    <option value='37'>Jam Session </option>
-    <option value='38'>Listening Party</option>
-    <option value='39'>Opening</option>
-    <option value='40'>Performance</option>
-    <option value='41'>Preview</option>
-    <option value='42'>Recital</option>
-    <option value='43'>Rehearsal</option>
-    <option value='44'>Pep Rally</option>
-    <option value='45'>Pick-Up</option>
-    <option value='46'>Sporting Event</option>
-    <option value='47'>Sports Practice</option>
-    <option value='48'>Tournament</option>
-    <option value='49'>Camping Trip</option>
-    <option value='50'>Daytrip</option>
-    <option value='51'>Group Trip</option>
-    <option value='52'>Roadtrip</option>
-    <option value='53'>Carnival</option>
-    <option value='54'>Ceremony</option>
-    <option value='55'>Festival</option>
-    <option value='56'>Flea Market</option>
-    <option value='57'>Retail</option>
-    <option value='58'>Wedding</option>" %>
+      "<option value='1'>" + t('facebook.ask_facebook_event_categories.Birthday_party')+"</option>
+      <option value='2'>" + t('facebook.ask_facebook_event_categories.Cocktail_party ')+"</option>
+      <option value='3'>" + t('facebook.ask_facebook_event_categories.Club_party')+"</option>
+      <option value='4'>" + t('facebook.ask_facebook_event_categories.Fraternity')+"</option>
+      <option value='5'>" + t('facebook.ask_facebook_event_categories.Barbecue')+"</option>
+      <option value='6'>" + t('facebook.ask_facebook_event_categories.Card_night')+"</option>
+      <option value='7'>" + t('facebook.ask_facebook_event_categories.Dinner_party')+"</option>
+      <option value='8'>" + t('facebook.ask_facebook_event_categories.Holiday_party')+"</option>
+      <option value='9'>" + t('facebook.ask_facebook_event_categories.Night_of_mayhem')+"</option>
+      <option value='10'>" + t('facebook.ask_facebook_event_categories.Movie')+"</option>
+      <option value='11'>" + t('facebook.ask_facebook_event_categories.Drinking_games')+"</option>
+      <option value='12'>" + t('facebook.ask_facebook_event_categories.Bar_night')+"</option>
+      <option value='13'>" + t('facebook.ask_facebook_event_categories.LAN_party')+"</option>
+      <option value='14'>" + t('facebook.ask_facebook_event_categories.Mixer')+"</option>
+      <option value='15'>" + t('facebook.ask_facebook_event_categories.Slumber_party')+"</option>
+      <option value='16'>" + t('facebook.ask_facebook_event_categories.Erotic_party')+"</option>
+      <option value='17'>" + t('facebook.ask_facebook_event_categories.Benefit')+"</option>
+      <option value='18'>" + t('facebook.ask_facebook_event_categories.Goodbye_party')+"</option>
+      <option value='19'>" + t('facebook.ask_facebook_event_categories.House_party')+"</option>
+      <option value='20'>" + t('facebook.ask_facebook_event_categories.Reunion')+"</option>
+      <option value='21'>" + t('facebook.ask_facebook_event_categories.Fundraiser')+"</option>
+      <option value='22'>" + t('facebook.ask_facebook_event_categories.Protest')+"</option>
+      <option value='23'>" + t('facebook.ask_facebook_event_categories.Rally')+"</option>
+      <option value='24'>" + t('facebook.ask_facebook_event_categories.Study_group')+"</option>
+      <option value='25'>" + t('facebook.ask_facebook_event_categories.Class')+"</option>
+      <option value='26'>" + t('facebook.ask_facebook_event_categories.Lecture')+"</option>
+      <option value='27'>" + t('facebook.ask_facebook_event_categories.Office_hours')+"</option>
+      <option value='28'>" + t('facebook.ask_facebook_event_categories.Workshop')+"</option>
+      <option value='29'>" + t('facebook.ask_facebook_event_categories.Business_meeting')+"</option>
+      <option value='30'>" + t('facebook.ask_facebook_event_categories.Club')+"</option>
+      <option value='31'>" + t('facebook.ask_facebook_event_categories.Convention')+"</option>
+      <option value='32'>" + t('facebook.ask_facebook_event_categories.Dorm')+"</option>
+      <option value='33'>" + t('facebook.ask_facebook_event_categories.Informational_meeting')+"</option>
+      <option value='34'>" + t('facebook.ask_facebook_event_categories.Concert')+"</option>
+    <option value='35'>" + t('facebook.ask_facebook_event_categories.Audition')+"</option>
+    <option value='36'>" + t('facebook.ask_facebook_event_categories.Exhibit')+"</option>
+    <option value='37'>" + t('facebook.ask_facebook_event_categories.Jam_session ')+"</option>
+    <option value='38'>" + t('facebook.ask_facebook_event_categories.Listening_party')+"</option>
+    <option value='39'>" + t('facebook.ask_facebook_event_categories.Opening')+"</option>
+    <option value='40'>" + t('facebook.ask_facebook_event_categories.Performance')+"</option>
+    <option value='41'>" + t('facebook.ask_facebook_event_categories.Preview')+"</option>
+    <option value='42'>" + t('facebook.ask_facebook_event_categories.Recital')+"</option>
+    <option value='43'>" + t('facebook.ask_facebook_event_categories.Rehearsal')+"</option>
+    <option value='44'>" + t('facebook.ask_facebook_event_categories.Pep_rally')+"</option>
+    <option value='45'>" + t('facebook.ask_facebook_event_categories.Pick-Up')+"</option>
+    <option value='46'>" + t('facebook.ask_facebook_event_categories.Sporting-event')+"</option>
+    <option value='47'>" + t('facebook.ask_facebook_event_categories.Sports_practice')+"</option>
+    <option value='48'>" + t('facebook.ask_facebook_event_categories.Tournament')+"</option>
+    <option value='49'>" + t('facebook.ask_facebook_event_categories.Camping_trip')+"</option>
+    <option value='50'>" + t('facebook.ask_facebook_event_categories.Daytrip')+"</option>
+    <option value='51'>" + t('facebook.ask_facebook_event_categories.Group_trip')+"</option>
+    <option value='52'>" + t('facebook.ask_facebook_event_categories.Roadtrip')+"</option>
+    <option value='53'>" + t('facebook.ask_facebook_event_categories.Carnival')+"</option>
+    <option value='54'>" + t('facebook.ask_facebook_event_categories.Ceremony')+"</option>
+    <option value='55'>" + t('facebook.ask_facebook_event_categories.Festival')+"</option>
+    <option value='56'>" + t('facebook.ask_facebook_event_categories.Flea_market')+"</option>
+    <option value='57'>" + t('facebook.ask_facebook_event_categories.Retail')+"</option>
+    <option value='58'>" + t('facebook.ask_facebook_event_categories.Wedding')+"</option>" %>
   </p>
   <%=  hidden_field_tag 'event_id', @event.id %>
   <p>
-    <%= f.submit 'Publish on Facebook' %>
+    <%= f.submit t('facebook.ask_facebook_event_categories.Publish_Facebook') %>
   </p>
 <% end %>

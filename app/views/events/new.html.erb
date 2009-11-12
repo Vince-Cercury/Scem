@@ -28,12 +28,12 @@
   <div id="terms">
     <%= render :partial => 'term', :collection => @event.terms %>
   </div>
-  <p><%= add_term_link t('.new.Add_term') %></p>
+  <p><%= add_term_link t('events.new.Add_term') %></p>
 
 
   <p>
-    <%= f.submit t('.new.Create') %>
+    <%= f.submit t('events.new.Create') %>
   </p>
 <% end %>
 
-<%= link_to t('.new.Back'), events_path %>
+<%= link_to t('events.new.Back'), events_path %>

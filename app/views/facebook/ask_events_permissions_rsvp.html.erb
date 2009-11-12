@@ -1,23 +1,22 @@
 <%= render :partial => "/events/header" %>
 
-<p>We noticed that this event also exists on Facebook.<br />
-  In order to change your status on Facebook, we need your acceptance<br />
-  <%= fb_prompt_permissions(['rsvp_event'], 'Please, click on this link to proceed') %>...
+<p><%= t('facebook.ask_events_permissions_rscp.Summary') %>
+  <%= fb_prompt_permissions(['rsvp_event'], t('facebook.ask_events_permissions_rscp.Summary_link')) %>...
 </p>
 
 
-<p>Then, you can try again</p>
+<p><%= t('facebook.ask_events_permissions_rscp.Try_again') %></p>
 <% form_tag :controller => 'participations', :action => 'create_or_update' do %>
   <%=  hidden_field_tag 'term_id', @term.id %>
   <%=  hidden_field_tag 'user_id', current_user.id %>
 
-  I'll be there<%= radio_button :participation, :role, "sure", :checked => @term.is_user_participant(current_user, 'sure')%>
+  <%= t('facebook.ask_events_permissions_rscp.sure') %><%= radio_button :participation, :role, "sure", :checked => @term.is_user_participant(current_user, 'sure')%>
 
-  May be<%= radio_button :participation, :role, "maybe", :checked => @term.is_user_participant(current_user, 'maybe') %>
+  <%= t('facebook.ask_events_permissions_rscp.maybe') %><%= radio_button :participation, :role, "maybe", :checked => @term.is_user_participant(current_user, 'maybe') %>
 
-  I won't<%= radio_button :participation, :role, "not", :checked => @term.is_user_participant(current_user, 'not') %>
+  <%= t('facebook.ask_events_permissions_rscp.non') %><%= radio_button :participation, :role, "not", :checked => @term.is_user_participant(current_user, 'not') %>
 
 
-  <%= submit_tag "Go", :name => nil %>
+  <%= submit_tag t('facebook.ask_events_permissions_rscp.Go'), :name => nil %>
 <% end %>
 
