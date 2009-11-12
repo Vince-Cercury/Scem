@@ -292,3 +292,9 @@ en-US:
       Post: "Post "
       Created: "Created "
       by: " ago by "
+  other_friends:
+    index:
+      Search: "Search"
+      Invite_friends: "Invite your friends"
+      Facebook_friends: "These people are your friends on Facebook, but have never connected here. Help them join you by inviting them. Select those you want to send the invitation to, and then personalize the message if you wish."
+      Message: "Hey I found that website useful. It's about all events happening in the local area! That just great for knowing what's going on in the city. You should give a try. You can even rate, comments and create events. As you already got a Facebook account it's easy, just use it to connect in one click ! Check out http://www.LeBounce.com. C ya
