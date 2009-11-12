@@ -3,8 +3,8 @@
 
     <% if current_user && @event.is_user_moderator?(current_user) %>
       <br />
-      <%= link_to 'Edit', edit_term_path(@term, :event_id=>@event.id) %> |
-      <%= link_to 'Destroy', @term, :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to t('events.terms.Edit'), edit_term_path(@term, :event_id=>@event.id) %> |
+      <%= link_to t('events.terms.Destroy'), @term, :confirm => t('events.terms.Are_you_sure'), :method => :delete %>
     <% end  %>
   </div>
 </div>
@@ -16,20 +16,20 @@
         <%=  hidden_field_tag 'term_id', @term.id %>
         <%=  hidden_field_tag 'user_id', current_user.id %>
 
-        I'll be there<%= radio_button :participation, :role, "sure", :checked => @term.is_user_participant(current_user, 'sure')%>
+        <%= t('events.terms.sure') %><%= radio_button :participation, :role,  "sure", :checked => @term.is_user_participant(current_user, 'sure')%>
 
-        May be<%= radio_button :participation, :role, "maybe", :checked => @term.is_user_participant(current_user, 'maybe') %>
+        <%= t('events.terms.maybe') %><%= radio_button :participation, :role,  "maybe", :checked => @term.is_user_participant(current_user, 'maybe') %>
 
-        I won't<%= radio_button :participation, :role, "not", :checked => @term.is_user_participant(current_user, 'not') %>
+        <%= t('events.terms.not') %><%= radio_button :participation, :role,  "not", :checked => @term.is_user_participant(current_user, 'not') %>
 
 
         <%= submit_tag "Go", :name => nil %>
       <% end  %>
     <% end  %>
-    Participation:
-    <%= link_to "sure", participations_path(:term_id => @term.id, :role =>:sure) %>: <%= @term.sure_participants.size %> |
-    <%= link_to "may be", participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %> |
-    <%= link_to "no", participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %>
+    <%= t('events.terms.Participation') %>
+    <%= link_to t('events.terms.sure'), participations_path(:term_id => @term.id, :role =>:sure) %>: <%= @term.sure_participants.size %> |
+    <%= link_to t('events.terms.maybe'), participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %> |
+    <%= link_to t('events.terms.not'), participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %>
   </div>
 </div>
 

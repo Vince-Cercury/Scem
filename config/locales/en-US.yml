@@ -33,6 +33,8 @@ en-US:
   events:
     listing_events: "LISTING EVENTS"
     no_categories: "not specified"
+    share:
+      Tick_users: "Tick the box of the users you want to share the event with"
   users:
     participations: "My participations"
     organisms: "My organisms"
@@ -47,6 +49,12 @@ en-US:
     activate_not_found: "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
     index:
       listing_users: "LISTING USERS"
+    edit:
+      Editing_user: "Editing user"
+      Facebook_user: "You've connected with Facebook, please go on facebook to edit all your information.Nevertheless you can edit some specific parameters here."
+    show:
+      Limited_profile: "(This user has a limited profile because he didn't connect through Facebook)"
+      new_organism: "band, association, pub, business?"
   sessions:
     logged_in_success: Logged in successfully
     logged_out: "You have been logged out."

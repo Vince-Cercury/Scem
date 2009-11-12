@@ -22,7 +22,7 @@
   <%= will_paginate @events %>
   <% if @events.size == 0 %>
     <div class="box">
-      Sorry, no result
+      <%= t('events.events_list.no_result') %>
     </div>
   <% end %>
 </div>

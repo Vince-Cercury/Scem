@@ -3,35 +3,35 @@
     <% if @term%><% url_profile = url_for_even_polymorphic(@term) %><% else %><% url_profile = url_for(@event) %><% end %>
 
     <% if controller_name != 'events' || controller.action_name=='edit' || controller.action_name=='share' %>
-      <%= link_to("Profil", url_profile) %>
+      <%= link_to(t('events.subheader.Profil'), url_profile) %>
     <% else %>
-      <%= link_to("Profil", url_profile, :class => 'selected') %>
+      <%= link_to(t('events.subheader.Profil'), url_profile, :class => 'selected') %>
     <% end %>
   </li>
   <% if get_event_street(@event) && get_event_city(@event) %>
     <li>
       <% if controller_name != 'maps' %>
-        <%= link_to("Map", event_maps_path(@event)) %>
+        <%= link_to(t('events.subheader.Map'), event_maps_path(@event)) %>
       <% else %>
-        <%= link_to("Map", organism_maps_path(@event), :class => 'selected') %>
+        <%= link_to(t('events.subheader.Map'), organism_maps_path(@event), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if @event.terms.size > 0 %>
     <li>
       <% if controller_name != 'terms' %>
-        <%= link_to("Dates", event_terms_path(@event)) %>
+        <%= link_to(t('events.subheader.Dates'), event_terms_path(@event)) %>
       <% else %>
-        <%= link_to("Dates", event_terms_path(@event), :class => 'selected') %>
+        <%= link_to(t('events.subheader.Dates'), event_terms_path(@event), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
   <% if @event.posts.size > 0 || is_event_moderator?(@event) %>
     <li>
       <% if controller_name != 'posts' %>
-        <%= link_to("Blog", event_posts_path(@event)) %>
+        <%= link_to(t('events.subheader.Blog'), event_posts_path(@event)) %>
       <% else %>
-        <%= link_to("Blog", event_posts_path(@event), :class => 'selected') %>
+        <%= link_to(t('events.subheader.Blog'), event_posts_path(@event), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
@@ -39,9 +39,9 @@
     <% if @term.participations.size > 0 %>
     <li>
       <% if controller_name != "participations" %>
-        <%= link_to("Participants", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure)) %>
+        <%= link_to(t('events.subheader.Participants'), event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure)) %>
       <% else %>
-        <%= link_to("Participants", event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure), :class => 'selected') %>
+        <%= link_to(t('events.subheader.Participants'), event_term_participations_path(:event_id =>@event.id, :term_id => @term.id, :role =>:sure), :class => 'selected') %>
       <% end %>
     </li>
     <% end %>
@@ -49,38 +49,38 @@
 <% if @event.galleries.size > 0 %>
   <li>
   <% if controller_name != 'galleries' %>
-    <%= link_to("Pictures galleries", event_galleries_path(@event)) %>
+    <%= link_to(t('events.subheader.Picture_galleries'), event_galleries_path(@event)) %>
   <% else %>
-    <%= link_to("Pictures galleries", event_galleries_path(@event), :class => 'selected') %>
+    <%= link_to(t('events.subheader.Picture_galleries'), event_galleries_path(@event), :class => 'selected') %>
   <% end %>
   </li>
 <% end %>
 <% if @event.comments.size > 0 %>
   <li>
   <% if controller_name != 'comments' %>
-    <%= link_to("Comments", event_comments_path(@event)) %>
+    <%= link_to(t('events.subheader.Comments'), event_comments_path(@event)) %>
   <% else %>
-    <%= link_to("Comments", event_comments_path(@event), :class => 'selected') %>
+    <%= link_to(t('events.subheader.Comments'), event_comments_path(@event), :class => 'selected') %>
   <% end %>
   </li>
 <% end %>
 <% if is_event_moderator?(@event) %>
   <li>
   <% if (controller_name != 'events' || controller.action_name!='edit') %>
-    <%= link_to("Edit", edit_event_path(@event)) %>
+    <%= link_to(t('events.subheader.Edit'), edit_event_path(@event)) %>
   <% else %>
-    <%= link_to("Edit", edit_event_path(@event), :class => 'selected') %>
+    <%= link_to(t('events.subheader.Edit'), edit_event_path(@event), :class => 'selected') %>
   <% end %>
   </li>
 <% end %>
 <% if controller_name == 'events' && controller.action_name=='share' %>
   <li>
-  <%= link_to("Share", share_event_path(@event), :class => 'selected') %>
+  <%= link_to(t('events.subheader.Share'), share_event_path(@event), :class => 'selected') %>
   </li>
 <% end %>
 <% if current_user && @event.is_user_moderator?(current_user) %>
   <li>
-  <%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %>
+  <%= link_to t('events.subheader.Destroy'), @event, :confirm => t('events.subheader.Are_you_sure'), :method => :delete %>
   </li>
 <% end %>
 </ul>

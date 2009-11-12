@@ -17,7 +17,7 @@
   <%#= will_paginate @users %>
   <% if @users.size == 0 %>
     <div class="box">
-      Sorry, no result
+      <%= t('users.Sorry_no_results') %>
     </div>
    <% end %>
 </div>
