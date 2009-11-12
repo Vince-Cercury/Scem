@@ -17,7 +17,7 @@
       <% end %>
     </li>
   <% end %>
-  <% if @event.terms.size > 0 %>
+  <% if @event.terms.size > 1 %>
     <li>
       <% if controller_name != 'terms' %>
         <%= link_to(t('events.subheader.Dates'), event_terms_path(@event)) %>
