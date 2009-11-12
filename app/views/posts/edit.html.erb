@@ -7,7 +7,7 @@
           <div class="blogBox">
             <h4><%= t('posts.edit.Message_edition') %></h4>
 
-            <% form_for(@post, :url => polymorphic_path([@parent_object, @post].flatten)) do |f| %>
+            <% form_for(@post, :live_validations => true, :url => polymorphic_path([@parent_object, @post].flatten)) do |f| %>
               <%= f.error_messages %>
 
              <%= render :partial => 'form', :locals => { :f => f } %>

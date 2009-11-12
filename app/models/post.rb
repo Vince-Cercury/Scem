@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
   acts_as_commentable
 
   validates_presence_of :name, :text_long#, :text_short
+  validates_length_of :name, :maximum=>150
 
   #validates_presence_of :parent_id
   validates_presence_of :parent_type

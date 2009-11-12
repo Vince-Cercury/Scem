@@ -3,7 +3,7 @@
   <div class="blogContent">
     <h4><%= t('posts.new.Add_new') %></h4>
 
-    <% form_for(@post, :url => polymorphic_path([@parent_object, :posts].flatten)) do |f| %>
+    <% form_for(@post, :url => polymorphic_path([@parent_object, :posts].flatten), :live_validations => true) do |f| %>
       <%= f.error_messages %>
 
       <%=  hidden_field_tag :parent_id, @parent_object.id %>
