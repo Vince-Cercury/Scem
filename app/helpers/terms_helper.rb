@@ -50,7 +50,7 @@ module TermsHelper
 
 
     if (date.to_date != today and date.to_date != tomorrow and date.to_date != yesterday)
-      result = t("the")+" "+ display_simpliest_date(date) 
+      result = t("The+space")+ display_simpliest_date(date)
       result += ' '+t("at")+' '
       result += date.strftime("%H:%M")
     end
@@ -94,7 +94,7 @@ module TermsHelper
     end
 
     if (start_at.to_date != today and start_at.to_date != tomorrow and start_at.to_date != yesterday)  && end_at.to_date == start_at.to_date
-      result = t("the")+" "+ display_simpliest_date(start_at)
+      result = t("The+space")+ display_simpliest_date(start_at)
       result += ' '+t("from")+' '
       result += start_at.strftime("%H:%M")
       result += ' '+t("until")+' '
