@@ -1,32 +1,71 @@
-<h1><%= t('users.new.Sign_up_new_user') %></h1>
-<% @user.password = @user.password_confirmation = nil %>
+<div class="titlecreeruncompte"></div>
+<%#*<h1>%>
+  <%#= t('users.new.Sign_up_new_user') %>
+<%#*</h1>%>
 
-<%= error_messages_for :user %>
-<% form_for(@user) do |f| -%>
-<p><%= label_tag t('users.new.Login') %><br/>
-<%= f.text_field :login %></p>
+<div class="newAccountBody">
+  <% @user.password = @user.password_confirmation = nil %>
 
-<p><%= label_tag t('users.new.First_name') %><br/>
-<%= f.text_field :first_name %></p>
+  <%= error_messages_for :user %>
+  <% form_for(@user) do |f| -%>
+    <div class="newAccountBodyLeft">
+      <p><%= label_tag t('users.new.Login') %></p>
+    </div>
+    <div class="newAccountBodyRight">
+      <p><%= f.text_field :login %></p>
+    </div>
 
-<p><%= label_tag t('users.new.Last_name') %><br/>
-<%= f.text_field :last_name %></p>
+    <div class="newAccountBodyLeft">
+      <p><%= label_tag t('users.new.First_name') %></p>
+    </div>
+    <div class="newAccountBodyRight">
+      <p><%= f.text_field :first_name %></p>
+    </div>
+    
+    <div class="newAccountBodyLeft">
+      <p><%= label_tag t('users.new.Last_name') %></p>
+    </div>
+    <div class="newAccountBodyRight">
+      <p><%= f.text_field :last_name %></p>
+    </div>
 
-<p><%= label_tag t('users.new.Birth_date') %><br/>
-<%= f.date_select(:date_of_birth, :start_year => 1900, :end_year => 2005, :default => 15.years.ago) %></p>
+    <div class="newAccountBodyLeft">
+      <p><%= label_tag t('users.new.Birth_date') %></p>
+    </div>
+    <div class="newAccountBodyRight">
+      <p><%= f.date_select(:date_of_birth, :start_year => 1900, :end_year => 2005, :default => 15.years.ago) %></p>
+    </div>
 
-<p><%= label_tag t('users.new.Email') %><br/>
-<%= f.text_field :email %></p>
+    <div class="newAccountBodyLeft">
+      <p><%= label_tag t('users.new.Email') %></p>
+    </div>
+    <div class="newAccountBodyRight">
+      <p><%= f.text_field :email %></p>
+    </div>
 
-<p><%= label_tag t('users.new.Password') %><br/>
-<%= f.password_field :password %></p>
+    <div class="newAccountBodyLeft">
+      <p><%= label_tag t('users.new.Password') %></p>
+    </div>
+    <div class="newAccountBodyRight">
+      <p><%= f.password_field :password %></p>
+    </div>
 
-<p><%= label_tag 'password_confirmation', t('users.new.Password_confirmation') %><br/>
-<%= f.password_field :password_confirmation %></p>
+    <div class="newAccountBodyLeft">
+      <p><%= label_tag 'password_confirmation', t('users.new.Password_confirmation') %></p>
+    </div>
+    <div class="newAccountBodyRight">
+      <p><%= f.password_field :password_confirmation %></p>
+    </div>
 
-<p><%= submit_tag t('users.new.Sign_up') %></p>
-<% end -%>
+    <div class="newAccountBodyCenter">
+      <p><%= submit_tag t('users.new.Sign_up') %></p>
+    </div>
 
-<p><%= t('users.new.Or_Facebook_connect') %></p>
-<%= fb_login_button('window.location = "/facebook";')%>
-
+  <% end -%>
+  <div class="newAccountBodyCenter">
+    <p><%= t('users.new.Or_Facebook_connect') %></p>
+  </div>
+  <div class="newAccountBodyCenter">
+    <p><%= fb_login_button('window.location = "/facebook";')%></p>
+  </div>
+</div>

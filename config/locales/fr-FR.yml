@@ -493,5 +493,24 @@ fr-FR:
       Creator: "Auteur"
       Edit: "Editer"
     header:
-      Back_to: "Retour à " 
+      Back_to: "Retour à "
+  participations:
+    index_user:
+      Search: "Rechercher"
+      Participated_to: " A participé à"
+      Could_participate_to: "A peut être participé à"
+      Did_not_participated_to: "N'a pas participé à"
+      Participate_to: "Participe à"
+      Might_participate_to: "Participe peut être à"
+      Do_not_participate_to: "Ne participe pas à"
+      of_date: "du "
+    index_terms:
+      List: "Liste de date"
+    index_term:
+      Search: "Rechercher"
+      Attending: "Présent"
+      Maybe_attending: "Peut être présent"
+      Not_attending: "Non présent"
+
+
 
