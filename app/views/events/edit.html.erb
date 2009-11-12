@@ -18,7 +18,7 @@
   <div class="span-8 colborder">
     <div class="box">
       <% if @event.picture.nil? %>
-        <%= get_default_event_picture(:medium) %><br />
+        <%= get_default_event_picture(@event, :medium) %><br />
         <%= link_to(t('.edit.Attach_picture'), new_url_for_even_polymorphic(@event, :picture)) %>
       <% else %>
         <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %><br />
