@@ -4,7 +4,7 @@
   </div>
   <div class="organismHeaderRight">
     <div class="organismHeaderTitle">
-       <h3><%=h @organism.name %></h3>
+      <h3><%= link_to(@organism.name, @organism) %></h3>
     </div>
     <div class="organismHeaderNotation">
        <%= render :partial => "rating/rating", :locals => { :current_object => @organism } %>
