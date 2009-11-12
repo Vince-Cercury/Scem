@@ -15,7 +15,7 @@ class Term < ActiveRecord::Base
   end
 
   validates_presence_of :start_at, :end_at
-  validates_length_of :description, :maximum=>400
+  validates_length_of :description, :maximum=>800
 
   #validates_length_of :start_at, :minimum=>8
   #validates_length_of :end_at, :minimum=>8

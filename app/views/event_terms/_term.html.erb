@@ -1,43 +1,42 @@
-  <% if facebook_session %>
-   <% if @term.facebook_eid %>
-      <%= link_to t('events.terms.See_on_Facebook'), "http://www.facebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank' %>
-      <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
-        (<%= link_to t('events.terms.Delete_the_Facebook_page'), url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_cancel_message') %> )
-      <% end  %>
-    <% else %>
-      <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
-        <div class="publishFB">
-          <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => t('events.terms.Publish_this_event_on_Facebook')), url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_categories'), :title => t('events.terms.Publish_this_event_on_Facebook')) %>
-        </div>
-      <% end %>
-    <% end %>
+<% if facebook_session %>
+
+  <% if @term.facebook_eid %>
+    <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => t('events.terms.See_on_Facebook')), "http://wwwfacebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank') %>
+    <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
+      (<%= link_to(image_tag("bouton/FaceBook_Logo2n.png",:alt => t('events.terms.Delete_the_Facebook_page')), url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_cancel_message')) %> )
+    <% end  %>
   <% else %>
-    <% if @term.facebook_eid %>
-       <%= link_to t('events.terms.See_on_Facebook'), url_for(login_path) %>
-    <% end  %>
+    <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
+      <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => t('events.terms.Publish_this_event_on_Facebook')), url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_categories'), :title => t('events.terms.Publish_this_event_on_Facebook')) %>
+    <% end %>
   <% end %>
-
-
-
-  <% if logged_in? -%>
-    <% form_tag :controller => 'participations', :action => 'create_or_update' do %>
-      <%=  hidden_field_tag 'term_id', @term.id %>
-      <%=  hidden_field_tag 'user_id', current_user.id %>
-
-      <%= t('events.terms.sure')%><%= radio_button :participation, :role, "sure", :checked => @term.is_user_participant(current_user, 'sure')%>
-      
-      <%=t('events.terms.maybe')%><%= radio_button :participation, :role,  "maybe", :checked => @term.is_user_participant(current_user, 'maybe') %>
-      
-      <%= t('events.terms.not') %><%= radio_button :participation, :role, "not", :checked => @term.is_user_participant(current_user, 'not') %>
-   
-
-      <%= submit_tag t('events.terms.Go'), :name => nil %>
-    <% end  %>
+<% else %>
+  <% if @term.facebook_eid %>
+    <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => t('events.terms.See_on_Facebook')), "http://wwwfacebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank') %>
   <% end  %>
+<% end %>
 
 
-  <%= t('events.terms.Participation') %>
-  <% if @term.sure_participants.size> 0 %><%= link_to t('events.terms.sure'), term_participations_path(:term_id => @term.id, :role =>:sure) %>: <%= @term.sure_participants.size %><% else %>sure: 0<% end %> |
-  <% if @term.maybe_participants.size> 0 %><%= link_to t('events.terms.maybe'), term_participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %><% else %>maybe: 0<% end %> |
-  <% if @term.not_participants.size> 0 %><%= link_to t('events.terms.not'), term_participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %><% else %>no: 0<% end %>
+
+<% if logged_in? -%>
+  <% form_tag :controller => 'participations', :action => 'create_or_update' do %>
+    <%=  hidden_field_tag 'term_id', @term.id %>
+    <%=  hidden_field_tag 'user_id', current_user.id %>
+
+    <%= t('events.terms.sure')%><%= radio_button :participation, :role, "sure", :checked => @term.is_user_participant(current_user, 'sure')%>
+
+    <%=t('events.terms.maybe')%><%= radio_button :participation, :role,  "maybe", :checked => @term.is_user_participant(current_user, 'maybe') %>
+
+    <%= t('events.terms.not') %><%= radio_button :participation, :role, "not", :checked => @term.is_user_participant(current_user, 'not') %>
+
+
+    <%= submit_tag t('events.terms.Go'), :name => nil %>
+  <% end  %>
+<% end  %>
+
+
+<%= t('events.terms.Participation') %>
+<% if @term.sure_participants.size> 0 %><%= link_to t('events.terms.sure'), term_participations_path(:term_id => @term.id, :role =>:sure) %>: <%= @term.sure_participants.size %><% else %>sure: 0<% end %> |
+<% if @term.maybe_participants.size> 0 %><%= link_to t('events.terms.maybe'), term_participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %><% else %>maybe: 0<% end %> |
+<% if @term.not_participants.size> 0 %><%= link_to t('events.terms.not'), term_participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %><% else %>no: 0<% end %>
 
