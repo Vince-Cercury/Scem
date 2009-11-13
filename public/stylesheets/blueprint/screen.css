@@ -316,7 +316,7 @@ body {font-size:75%;
 .userListBoxRight a {background: #000; color: #fff; padding: 1px; font-weight: bold;}
 .userListBoxRight a:hover {background: #f0882f; color: #fff;}
 .userListBoxName h4 {vertical-align: middle; font-size: 14px;}
-.userListMessage {width: 658px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
+.userListMessage {width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
 
 .contributionsBar {width: 668px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
 .contributionBarBox {width: 112px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
@@ -364,7 +364,7 @@ body {font-size:75%;
 .commentaireBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 
 .searchBox{background:#000; width:668px; margin: 0; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
-.searchBoxWhite{background:#fff; width:668px; margin: 0; padding: 0; float: left; height: auto; text-align: center;}
+.searchBoxWhite{background:#fff; width:658px; margin: 0; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
                                                 /* ---------------------PAGE ANNUAIRE'---------------------- */
 
 .activitiesBody{background:#fff; width:688px; margin: 0; padding: 0; float: left; height: auto;}
