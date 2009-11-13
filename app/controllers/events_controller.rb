@@ -174,7 +174,7 @@ class EventsController < ApplicationController
         #add the categories not to display in the list of categories of the event
         add_categories_not_to_display(@event)
 
-        flash[:notice] = I18n.t('event.controller.Successfully_updated')
+        flash[:notice] = I18n.t('events.controller.Successfully_updated')
         format.html { redirect_to(@event) }
         format.xml  { head :ok }
       else
@@ -206,7 +206,7 @@ class EventsController < ApplicationController
 #      end
 
       event.destroy
-      flash[:notice] = 'Event successfully destroyed.'
+      flash[:notice] = I18n.t('events.controller.Successfully_destroyed')
       respond_to do |format|
         format.html { redirect_to(root_path) }
         format.xml  { head :ok }
@@ -220,7 +220,7 @@ class EventsController < ApplicationController
       end
       if cancelable
         event.cancel!
-        flash[:notice] = 'Event successfully canceled.'
+        flash[:notice] = I18n.t('events.controller.Successfully_cancelled')
         respond_to do |format|
           format.html { redirect_to(root_path) }
           format.xml  { head :ok }
@@ -243,7 +243,7 @@ class EventsController < ApplicationController
 
   def cancel
     event.cancel!
-    flash[:notice] = 'Event successfully canceled.'
+    flash[:notice] = I18n.t('events.controller.Successfully_cancelled')
     respond_to do |format|
       format.html { redirect_to(root_path) }
       format.xml  { head :ok }
