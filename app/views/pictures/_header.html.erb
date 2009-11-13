@@ -10,7 +10,7 @@
       <% end %>
     </li>
   <% end %>
-  <% if is_picture_moderator?(@picture) %>
+  <% if is_picture_moderator?(@picture) && @picture.id %>
     <li>
       <% if action_name == 'edit' %>
         <%= link_to t('pictures.show.Edit'), get_edit_picture_polymorphic_parent_url(@picture), :class => 'selected' %>
