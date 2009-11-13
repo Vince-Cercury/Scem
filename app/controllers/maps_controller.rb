@@ -29,6 +29,12 @@ class MapsController < ApplicationController
       elsif get_event_city(@event)
         address_to_locate = get_event_city(@event)
       end
+
+      #if the event got only one terme defined, inject it in views
+      if @event.terms.size == 1
+        @term = @event.terms.first
+      end
+    
     end
     
 
@@ -61,7 +67,7 @@ class MapsController < ApplicationController
 
   private
 
-    def get_event_location(event)
+  def get_event_location(event)
     if event.places.size > 0
       if !event.places.first.name.blank?
         location = event.places.first.name
