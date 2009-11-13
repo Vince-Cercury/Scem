@@ -9,7 +9,7 @@
   <div class="span-2 last">
     <% if current_user && @organism.is_user_moderator?(current_user) %>
     <br /><br />
-    (  <%= link_to t('organism.edit.Destroy'), @organism, :confirm => t('organisms.edit.Are_you_sure'), :method => :delete %> )
+    (  <%= link_to t('organisms.edit.Destroy'), @organism, :confirm => t('organisms.edit.Are_you_sure'), :method => :delete %> )
     <% end %>
   </div>
   <hr />
