@@ -594,6 +594,12 @@ fr-FR:
       Edit: "Editer"
     header:
       Back_to: "Retour à "
+      Picture: "Photo"
+      Organism: "l'organisme"
+      Gallery: "la galerie"
+      User: "l'utilisateur"
+      Event: "l'évènement"
+      of: "de"
   participations:
     controller:
       Error_status_update: "Votre statut concernant cet évènement n'a pas pu être modifié su Facebook. Désolé"

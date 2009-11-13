@@ -1,9 +1,22 @@
-<div class="span-11">
-  <h3>Pictures - <%= @picture.get_parent_object.name %></h3>
-  <% if @picture.last_position != 0 %>Picture <%= @picture.position %> of <%= @picture.last_position %> |<% end %>
-  <%= link_to  t('pictures.header.Back_to') + "#{@picture.get_parent_object.type}", url_for_even_polymorphic(@picture.get_parent_object) %>
-  <% if !@picture.get_parent_object.get_parent_object.nil? %>
-    | <%= link_to t('pictures.header.Back_to') +" #{@picture.get_parent_object.get_parent_object.type}", url_for(@picture.get_parent_object.get_parent_object) %>
+<%= render :partial => @header_gallery %>
+<ul class="tabsShowUser">
+
+  <% if @picture.last_position != 0 %>
+    <li>
+      <%= t('pictures.header.Picture') %>  <%= @picture.position %> <%= t('pictures.header.of') %> <%= @picture.last_position %>
+    </li>
   <% end %>
-</div>
-<hr />
+  <% if is_picture_moderator?(@picture) %>
+    <li>
+      <%= link_to t('pictures.show.Edit'), get_edit_picture_polymorphic_parent_url(@picture) %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to  t('pictures.header.Back_to') + t('pictures.header.'"#{@picture.get_parent_object.type}"), url_for_even_polymorphic(@picture.get_parent_object) %>
+  </li>
+  <% if !@picture.get_parent_object.get_parent_object.nil? %>
+    <li>
+      <%= link_to t('pictures.header.Back_to') + t('pictures.header.'"#{@picture.get_parent_object.get_parent_object.type}"), url_for(@picture.get_parent_object.get_parent_object) %>
+    </li>
+  <% end %>
+</ul>

@@ -253,6 +253,15 @@ body {font-size:75%;
 .galleriesBoxEdit {width: 658px; margin: 0 0 0 0; padding: 0; background: #fff; float: left; text-align: center;}
 
 
+                                                /* ---------------------PAGE PICTURE SHOW---------------------- */
+.pictureShowContent{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
+.pictureShowNotation{width: 150px; padding: 5px 264px 5px 264px; margin: 0; background: #fff; float: left;}
+.pictureShowLeft{width: 329px; padding: 5px; margin: 0; background: #fff; float: left; text-align: right;}
+.pictureShowRight{width: 329px; padding: 5px; margin: 0; background: #fff; float: right; text-align: left;}
+.pictureShowPicure{width: 504px; height: 504px; line-height: 504px; padding: 30px 87px 30px 87px; margin: 0; background: #fff; float: left; text-align: center;}
+.pictureShowPicure img{text-align: center; vertical-align: middle;}
+                                                /* ---------------------EDIT ACCOUNT---------------------- */
+
 .editAccountBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; float: left;}
 .editAccountBodyLeft{width: 229px; padding: 5px; height: 35px; line-height: 35px; background: #fff; float: left;}
 .editAccountBodyLeft p{vertical-align: middle; text-indent: 0; text-align: right;}
