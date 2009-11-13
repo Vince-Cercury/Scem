@@ -343,7 +343,7 @@ class GalleriesController < ApplicationController
 
 
   def not_enough_rights
-    flash[:error] =  I18n.t('galleries.controller.missing_parameters')
+    flash[:error] =  I18n.t('galleries.controller.Missing_parameters')
     redirect_to root_path
   end
 

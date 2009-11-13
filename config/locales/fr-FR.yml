@@ -216,6 +216,13 @@ fr-FR:
       Create_new_event: "Créer et partagez un nouvel évènement maintenant !"
       Search: "Rechercher"
   organisms:
+    controller:
+      Successfully_created: "L'organisme a été créé avec succès, unmodérateur doit désormais le valider."
+      Successfully_updated: "L'organisme a été modifié avec succès."
+      Activated: "L'organisme est activé, vous pouvez commencer à l'utiliser."
+      Activation_code_missing: "Le code d'activation est manquant. Merci de suivre l'adresse présente dans votre email."
+      Cant_find_organism_activation: "Nous n'avons pu trouver un organisme avec ce code d'activation vérifier votre email ou vous l'avez peut êter déjà activé. Essayez de l'utiliser."
+      Not_allowed_to_do_this: "Vous nêtes pas autorisé à effectué cette action."
     index:
       listing_activities: "Liste des organismes"
     edit:
@@ -555,6 +562,15 @@ fr-FR:
       Title: "Titre :"
       Message: "Message :"
   pictures:
+    controller:
+      Successfully_created: "L'image a été créée avec succès."
+      Successfully_updated: "L'image a été modifiée avec succès."
+      Cant_find_picture: "Nous ne pouvons pas trouer la photo."
+      Activated: "L'image a été activée."
+      Suspended: "L'image a été suspendue."
+      Not_allowed_to_do_this: "Vous n'avez pas suffisamment de droits pour effectuer cette action."
+      Missing_parameters: "Des paramètres sont manquants ou erronés"
+      Not_visible: "Désolé, l'image n'est pas visible."
     show:
       Previous: "Précédente"
       Next: "Suivante"
@@ -579,6 +595,10 @@ fr-FR:
     header:
       Back_to: "Retour à "
   participations:
+    controller:
+      Error_status_update: "Votre statut concernant cet évènement n'a pas pu être modifié su Facebook. Désolé"
+      Successfully_updated: "Modifications effectuées."
+      Missing_parameters: "Des paramètres sont manquants ou erronés"
     index_user:
       Search: "Rechercher"
       Participated_to: " A participé à"
@@ -596,6 +616,8 @@ fr-FR:
       Maybe_attending: "Peut être présent"
       Not_attending: "Non présent"
   other_friends:
+    controller:
+      Feature_not_available: "Cette foncionnalité n'est pas accessible si vous n'êtes pas sur Facebook"
     index:
       Search: "Rechercher"
       Invite_friends: "Invitez vos amis"
@@ -608,6 +630,14 @@ fr-FR:
     Moderator_of: "Modérateur de "
     Administrator_of: "Administrateur de "
     organisms: "organisme(s)"
+    controlleur:
+      Update_done: "Modification effectuée."
+      Now_member_organism: "Vous êtes désormais un membre de cet organisme."
+      Membership_pending: "Votre demande est en attente d'acceptation par un modérateur."
+      Updating_error: "Une erreur s'est produite durant la modification."
+      Incorrect_parameter: "Un paramètre est manquant ou incorrecte"
+      Cant_decide_alone: "Vous ne pouvez pas décider seul de devenir administraeur ou modérateur de cet organisme."
+
   members:
     Search: "Rechercher"
     controlleur:
@@ -629,7 +659,7 @@ fr-FR:
       Gallery_successfully_created: "Galerie créée avec succès"
       Gallery_successfully_updated: "Galerie modifiée avec succès"
       Not_allowed_to_do_this: "Vous n'avez pas suffisamment de droits pour effectuer cette action."
-      missing_parameters: "Des paramètres sont manquants ou erronés"
+      Missing_parameters: "Des paramètres sont manquants ou erronés"
     show:
       Description: "Decription :"
       Publish_Facebook_wall: "Publier sur mon mur Facebook"

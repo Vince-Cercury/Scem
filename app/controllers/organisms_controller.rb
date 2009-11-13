@@ -87,7 +87,7 @@ class OrganismsController < ApplicationController
           organism_user.save 
         end
 
-        flash[:notice] = 'Organism was successfully created. A moderator will look at it for activation ASAP'
+        flash[:notice] = I18n.t('organisms.controller.Successfully_created')
         format.html { redirect_to(@organism) }
         format.xml  { render :xml => @organism, :status => :created, :location => @organism }
       else
@@ -119,7 +119,7 @@ class OrganismsController < ApplicationController
     
     respond_to do |format|
       if @organism.update_attributes(params[:organism])
-        flash[:notice] = 'Organism was successfully updated.'
+        flash[:notice] = I18n.t('organisms.controller.Successfully_updated')
         format.html { redirect_to(@organism) }
         format.xml  { head :ok }
       else
@@ -146,13 +146,13 @@ class OrganismsController < ApplicationController
     case
     when (!params[:activation_code].blank?) && organism && !organism.active?
       organism.activate!
-      flash[:notice] = "Organism activated! You can start to use it."
+      flash[:notice] = I18n.t('organisms.controller.Activated')
       redirect_to(organism)
     when params[:activation_code].blank?
-      flash[:error] = "The activation code was missing.  Please follow the URL from your email."
+      flash[:error] = I18n.t('organisms.controller.Activation_code_missing')
       redirect_back_or_default('/')
     else
-      flash[:error]  = "We couldn't find an organism with that activation code -- check your email? Or maybe you've already activated -- try using it."
+      flash[:error]  = I18n.t('organisms.controller.Cant_find_organism_activation')
       redirect_back_or_default('/')
     end
   end
@@ -205,7 +205,7 @@ class OrganismsController < ApplicationController
   end
 
   def not_granted_redirection
-    flash[:error] = "Not allowed to do this"
+    flash[:error] = I18n.t('organisms.controller.Not_allowed_to_do_this')
     redirect_to root_path
   end
 
