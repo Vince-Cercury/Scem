@@ -230,6 +230,28 @@ body {font-size:75%;
 .userShowSearch{width: 678px; padding: 10px 5px 5px 5px; background: #fff; overflow: auto; float: left;}
 .userShowSearch p {text-align: center; text-indent: 0px;}
 
+                                                /* ---------------------PAGE Galleries SHOW'---------------------- */
+/*HEADER*/
+.galleriesHeader{width: 688px; background: #fff; overflow:auto; margin-bottom: 10px;}
+.galleriesHeaderTitle{width: 517px; padding: 10px; float: right; text-align:center; }
+.galleriesHeaderTitle h3{font-size: 20px; text-align: center;}
+.galleriesHeaderImage {width: 126px; height: 126px; line-height: 126px; padding: 10px; float: left; }
+.galleriesHeaderImage img{vertical-align: middle;}
+.galleriesHeaderNotation {width: 146px; background: #fff; overflow:auto; float: right; padding: 10px 193px 10px 193px; text-align: center; }
+.galleriesHeaderRight {width: 532px; background: #fff; overflow:auto; float: right; padding: 5px; text-align: right; }
+
+/*BODY*/
+.galleriesSubHeader{width: 668px; padding:5px 5px 0 5px; background: #fff; overflow: auto;}
+.galleriesContent{width: 678px; padding: 10px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
+.galleriesList {width: 668px; margin: 0; padding: 5px 5px 5px 5px; background: #000; float: left;}
+.galleriesBox {width: 658px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left; text-align: right;}
+.galleriesBoxImage {width: 186px; height: 190px; margin: 0; padding: 15px 16px 0 17px; background: #fff; float: left; text-align: center;}
+.galleriesBoxImageNotation {width: 100px; padding: 0 43px 0 43px; }
+.galleriesBoxImageEdit {width: 186px; height: 190px; margin: 0; padding: 15px 16px 0 17px; background: #fff; float: left;}
+.galleriesBoxImageEdit img{text-align: center;}
+.galleriesBoxImageEdit p { text-align: left; text-indent: 0;}
+.galleriesBoxEdit {width: 658px; margin: 0 0 0 0; padding: 0; background: #fff; float: left; text-align: center;}
+
 
 .editAccountBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; float: left;}
 .editAccountBodyLeft{width: 229px; padding: 5px; height: 35px; line-height: 35px; background: #fff; float: left;}
@@ -319,7 +341,7 @@ body {font-size:75%;
 .commentaireRightEdit a:hover {background:#ffb500; color:#000;}
 
 .commentaireListHeader{background:#fff; width:678px; margin: 0; padding: 5px; float: left; height: auto; text-align: center;}
-.commentaireBodyMiddle{width: 678px; margin: 10px 0 10px 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
+.commentaireBodyMiddle{width: 678px; margin: 0 0 10px 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .commentaireBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .commentaireBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 

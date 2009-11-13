@@ -1,29 +1,27 @@
-<% form_for @gallery, :html => { :multipart => true }  do |f| %>
-  <%= f.error_messages %>
-<div class="span-17 last">
-  <h3>Gallery - <%= f.text_field :name, :class => 'title' %></h3>
-  <%= link_to(t('galleries.edit.Back_gallery'), polymorphic_path([@gallery.get_parent_object, @gallery].flatten)) %>
-  <% if !@parent_object.nil? %>
-    <%= link_to t('galleries.edit.Back_to')+"#{@parent_object.type}", url_for(@parent_object) %>
-  <% end %>
+<div class="galleriesContent">
+  <%= render :partial => "sub_header" %>
+  <div class="galleriesList">
+    <div class="galleriesBox">
+    <% form_for @gallery, :html => { :multipart => true }  do |f| %>
+      <%= f.error_messages %>
+      <div class="galleriesBoxEdit">
+        <h3><%= f.text_field :name, :class => 'title' %></h3>
+        
+          <%= fckeditor_textarea(:gallery, :description, :toolbarSet => 'Simple', :width => '80%', :height => '400px') %>
+        
+        <p>
+          <%= f.label :add_picture_right %>
+          <%=  select("gallery", "add_picture_right", @rights, {}, { }) %>
+        </p>
+        <p>
+          <%= f.label :add_picture_moderation %>
+          <%= f.check_box :add_picture_moderation %>
+        </p>
+       
+          <%= f.submit t('galleries.edit.Update') %>
+        
+      </div>
+    <% end %>
+    </div>
+  </div>
 </div>
-<hr />
-
-  <p>
-    <%= f.label :description %><br />
-    <%= fckeditor_textarea(:gallery, :description, :toolbarSet => 'Simple', :width => '80%', :height => '400px') %>
-  </p>
-  <p>
-    <%= f.label :add_picture_right %><br />
-    <%=  select("gallery", "add_picture_right", @rights, {}, { }) %>
-  </p>
-  <p>
-    <%= f.label :add_picture_moderation %><br />
-    <%= f.check_box :add_picture_moderation %>
-  </p>
-
-
-  <p>
-    <%= f.submit t('galleries.edit.Update') %>
-  </p>
-<% end %>

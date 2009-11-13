@@ -1,5 +1,5 @@
 
-<% if @event.contributions.size > 0 %>
+<% if @event.organizers.size > 0 || @event.partners.size > 0 %>
           <% size_min_organizers = @event.partners.size*82 %>
           <% size_min_partners = @event.organizers.size*82 %>
           <% if size_min_organizers> size_min_partners %><% size_min = size_min_organizers %><% else %><% size_min = size_min_partners %><% end %>

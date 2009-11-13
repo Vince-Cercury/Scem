@@ -1,17 +1,31 @@
-<div class="span-11">
-  <h3>Gallery - <%= @gallery.name %></h3>
-  <%= link_to("Gallery", url_for_even_polymorphic(@gallery)) %> 
-  <% if !@parent_object.nil? %>
-    <%= link_to t('galleries.header.Back_to')+t('galleries.header.'+"#{@parent_object.type}"), url_for(@parent_object) %>
-  <% end %>
+<div class="galleriesHeader">
+  <div class="galleriesHeaderTitle">
+    <h3><%= link_to(@gallery.name, url_for_even_polymorphic(@gallery)) %></h3>
+  </div>
+  <div class="galleriesHeaderImage">
+    <%= display_gallery_cover(@gallery, :small) %>
+
+  </div>
+  <div class="galleriesHeaderNotation">
+    <%= render :partial => "rating/rating", :locals => { :current_object => @gallery } %>
+  </div>
+  <div class="galleriesHeaderRight">
+      <script type="text/javascript">
+      var addthis_config = {
+        services_compact: 'email, facebook, twitter,live, hotmail, gmail, favorites, myspace, blogger, bloggy, yahoomail, print, printfriendly, pdfonline, more',
+        services_exclude: 'print'
+      }
+    </script>
+    <!-- AddThis Button BEGIN -->
+
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pub=lebounce"></script>
+    <!-- AddThis Button END -->
+
+    </ br>
+
+    <a href="http://www.addthis.com/bookmark.php?v=250&amp;pub=lebounce"
+       class="addthis_button"><img
+        src="http://s7.addthis.com/static/btn/v2/lg-share-fr.gif"
+        width="125" height="16" border="0" alt="Share" /></a>
+    </div>
 </div>
-<div class="span-6 last">
-  <%= render :partial => "rating/rating", :locals => { :current_object => @gallery } %>
-  <br />
-  <% if is_gallery_moderator?(@gallery) %>
-  <%= link_to(t('galleries.header.Edit_picture'), url_for_even_polymorphic(@gallery, :action => 'edit_pics')) %>
-  <%= link_to(t('galleries.header.Add_picture'), url_for_even_polymorphic(@gallery, :action => 'add_pics')) %>
-  <%= link_to(t('galleries.header.Edit_gallery'), url_for_even_polymorphic(@gallery,:action => 'edit')) %>
-  <% end %>
-</div>
-<hr />

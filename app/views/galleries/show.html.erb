@@ -1,44 +1,38 @@
 <%= render :partial => "header" %>
-<div class="span-8">
-  <%= display_gallery_cover(@gallery, :medium) %>
-</div>
-<div class="span-9 last">
-  <% if @gallery.description && @gallery.description!='' %>
-    <div class="box">
-      <b><%= t('galleries.show.Description') %></b>
-      <%= @gallery.description %>
-      <% if current_user && current_user.facebook_user? && facebook_session %>
-        <br /><br /><%= link_to t('galleries.show.Publish_Facebook_wall'), url_for(:controller => 'facebook', :gallery_id =>@gallery.id, :user_id => current_user.id, :action => 'publish_object_on_wall') %>
+<div class="galleriesContent">
+  <%= render :partial => "sub_header" %>
+  <div class="galleriesList">
+    <% if @gallery.description && @gallery.description!='' %>
+      <div class="titledescription"></div>
+      <div class="galleriesBox">
+        <p>
+          <%= @gallery.description %>
+        </p>
+      </div>
+    <% end %>
+    <div class="galleriesBox">
+      <%= t('galleries.show.Creator') %>
+      <%= get_user_name_or_pseudo_link_by_id(@gallery.creator_id) %>
+    </div>
+    <div class="galleriesBox">
+      <% for picture in @gallery.pictures %>
+        <div class="galleriesBoxImage">
+
+            <%= link_to(image_tag(picture.attached.url(:small)), polymorphic_path([@gallery.get_parent_object, @gallery, picture].flatten)) %>
+          <div class="galleriesBoxImageNotation">
+            <%= render :partial => "rating/mini_rating", :locals => { :current_object => picture } if picture.rating > 0 %>
+          </div>
+
+            
+
+        </div>
       <% end %>
     </div>
 
-  <% end %>
-  <div class="box"><br />
-    <b><%= t('galleries.show.Creator') %></b>
-    <%=h get_user_name_or_pseudo_by_id(@gallery.creator_id) %>
   </div>
 </div>
-<hr />
-<% cc = 1 %>
-<% for picture in @gallery.pictures %>
-  <div class="span-5">
-    <div class="box">
-      <%= link_to(image_tag(picture.attached.url(:small)), polymorphic_path([@gallery.get_parent_object, @gallery, picture].flatten)) %>
-      <%= render :partial => "rating/mini_rating", :locals => { :current_object => picture } if picture.rating > 0 %>
-    </div>
-  </div>
-  <% if cc.modulo(3)==0 %>
-    <hr />
-  <% end %>
-  <% cc += 1 %>
-<% end %>
-<hr />
 
-
-
-<h2><%= t('galleries.show.Comments') %></h2>
+<div class="titlecomment"></div>
 <%= render :partial => "/comments/list" %>
 <%= render :partial => "/comments/form" %>
 
-<%= link_to t('galleries.show.Edit'), edit_gallery_path(@gallery) %> |
-<%= link_to t('galleries.show.Back'), @parent_object %>
