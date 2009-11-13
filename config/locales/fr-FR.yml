@@ -274,6 +274,7 @@ fr-FR:
       only_if_u_know_it: " (seulement si vous le connaissez, facultatif)"
       Go: "Go"
       All_members: "Tout les membres"
+      Address: "Adresse :"
     new:
       Create: "Cr&eacute;er"
       Back: "Retour"
