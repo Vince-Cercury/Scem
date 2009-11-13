@@ -207,7 +207,7 @@ class PicturesController < ApplicationController
   end
 
   def ensure_moderator_edit_rights?
-    puts "ensure current user is owner or has moderation rights (picture)"
+    #puts "ensure current user is owner or has moderation rights (picture)"
     picture = Picture.find(params[:id])
     not_enough_rights unless self.current_user && picture && picture.creator_id==self.current_user.id or has_current_user_moderation_rights
   end
@@ -220,7 +220,7 @@ class PicturesController < ApplicationController
   end
 
   def ensure_has_current_user_moderation_rights
-    puts "ensure has current user moderation rights (comment)"
+    #puts "ensure has current user moderation rights (comment)"
     not_enough_rights unless has_current_user_moderation_rights
   end
 

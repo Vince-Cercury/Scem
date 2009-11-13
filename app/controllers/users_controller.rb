@@ -207,10 +207,10 @@ class UsersController < ApplicationController
 
   def not_allowed_to_view_redirection
     if current_user
-      flash[:error] = "You are not a friend of this user, you cannot see his profile..."
+      flash[:error] = I18n.t('users.controller.Not_friend')
       redirect_to users_path
     else
-      flash[:error] = "Not allowed to do this. May be log in could help."
+      flash[:error] = I18n.t('users.controller.Not_allowed')
       redirect_to login_path
     end
 

@@ -112,9 +112,9 @@ class GalleriesController < ApplicationController
 
     respond_to do |format|
       if @gallery && picture && picture.save
-        flash[:notice] = 'Set cover successfuly.'
+        flash[:notice] =  I18n.t('galleries.controller.Set_cover_success')
       else
-        flash[:error] = 'Picture set cover failed.'
+        flash[:error] = I18n.t('galleries.controller.Set_cover_fail')
       end
       format.html { redirect_to(url_for_even_polymorphic(@gallery, :action => 'edit_pics')) }
       format.xml  { render :xml => @gallery }
@@ -152,10 +152,10 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
         if(moderation_state)
-          flash[:notice] = 'Pictures need aprobation of the moderators to be visible.'
+          flash[:notice] = I18n.t('galleries.controller.Aprobation_required')
           format.html { redirect_to(url_for_even_polymorphic(@gallery)) }
         else
-          flash[:notice] = 'Pictures successfully added to gallery.'
+          flash[:notice] = I18n.t('galleries.controller.Add_picture_success')
           format.html { redirect_to(url_for_even_polymorphic(@gallery, :action => 'edit_pics')) }
         end
         format.xml  { head :ok }
@@ -184,9 +184,9 @@ class GalleriesController < ApplicationController
 
     respond_to do |format|
       if @gallery && picture && result
-        flash[:notice] = 'Has moved picture.'
+        flash[:notice] = I18n.t('galleries.controller.Pictures_moved_successfully')
       else
-        flash[:error] = 'Pictures moved failed.'
+        flash[:error] = I18n.t('galleries.controller.Pictures_moved_failed')
       end
       format.html { redirect_to(url_for_even_polymorphic(@gallery, :action => 'edit_pics')) }
       format.xml  { render :xml => @gallery }
@@ -212,7 +212,7 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       if @gallery.save
 
-        flash[:notice] = 'Gallery was successfully created.'
+        flash[:notice] = I18n.t('galleries.controller.Gallery_successfully_created')
         #format.html { redirect_to(@gallery) }
         format.html { redirect_to(url_for_even_polymorphic(@gallery, :action => 'add_pics')) }
         format.xml  { render :xml => @gallery}
@@ -234,7 +234,7 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
 
-        flash[:notice] = 'Gallery was successfully updated.'
+        flash[:notice] = I18n.t('galleries.controller.Gallery_successfully_updated')
         format.html { redirect_to(url_for_even_polymorphic(@gallery)) }
         format.xml  { head :ok }
       else
@@ -307,7 +307,7 @@ class GalleriesController < ApplicationController
   end
 
   def ensure_moderator_edit_rights?
-    puts "ensure current user is owner or has moderation rights (picture)"
+   # puts "ensure current user is owner or has moderation rights (picture)"
     gallery = Gallery.find(params[:id])
     not_enough_rights unless self.current_user && gallery && gallery.creator_id==self.current_user.id or has_current_user_moderation_rights
   end
@@ -337,13 +337,13 @@ class GalleriesController < ApplicationController
   end
 
   def wrong_parameters_redirection
-    flash[:error] = "Some parameters are missing or wrong"
+    flash[:error] = I18n.t('galleries.controller.Gallery_successfully_updated')
     redirect_to root_path
   end
 
 
   def not_enough_rights
-    flash[:error] = "Not allowed to do this. Not owner or enough rights."
+    flash[:error] =  I18n.t('galleries.controller.missing_parameters')
     redirect_to root_path
   end
 

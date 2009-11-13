@@ -10,6 +10,48 @@ class Event < ActiveRecord::Base
 
   has_many :posts, :as => :parent, :dependent => :destroy
 
+  include AASM
+  aasm_column :state
+
+  aasm_initial_state :initial => :pending
+
+  aasm_state :passive
+  aasm_state :pending
+  aasm_state :active,  :enter => :do_activate
+  aasm_state :canceled, :enter => :do_cancel
+
+  aasm_event :register do
+    transitions :from => :passive, :to => :pending , :guard => Proc.new {|e| !e.manager_name.blank? and !e.description_short.blank? }
+  end
+
+  aasm_event :activate do
+    transitions :from => :pending, :to => :active
+  end
+
+  aasm_event :cancel do
+    transitions :from => [:passive, :pending, :active], :to => :canceled
+  end
+
+  aasm_event :uncancel do
+    transitions :from => :canceled, :to => :active, :guard => Proc.new {|e| !e.manager_name.blank? and !e.description_short.blank? }
+    transitions :from => :canceled, :to => :pending, :guard => Proc.new {|e| !e.manager_name.blank? and !e.description_short.blank? }
+    transitions :from => :canceled, :to => :passive, :guard => Proc.new {|e| !e.manager_name.blank? and !e.description_short.blank? }
+  end
+
+  def recently_activated?
+    @activated
+  end
+
+  def do_cancel
+    self.canceled_at = Time.now.utc
+  end
+
+  def do_activate
+    @activated = true
+    self.activated_at = Time.now.utc
+    self.canceled_at  = nil
+  end
+
   def search_posts(search, page)
     posts.paginate :per_page => ENV['PER_PAGE'], :page => page,
       :conditions => ['name like ?',"%#{search}%"],
@@ -284,7 +326,7 @@ class Event < ActiveRecord::Base
     rescue
       parsed_attributes[:start_at] = ""
     end
-      #raise parsed_attributes.inspect
+    #raise parsed_attributes.inspect
     #return attributes
     return parsed_attributes
   end

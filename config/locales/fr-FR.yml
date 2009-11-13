@@ -37,7 +37,24 @@ fr-FR:
   terms:
     next_events_coming: "Prochain événements"
     already_started_or_past: "Evénements déj&agrave; commencés ou finis"
+    controller:
+      Successfully_updated: "La date a été modifiée avec succès."
+      Successfully_created: "La date a été créée avec succès."
+      Missing_event_parameter: "Le paramètre concernant l'évènement est manquant ou incorrect."
+      Not_allowed_to_do_this: "Action non autorisée."
+
   events:
+    controller:
+      Successfully_created: "L'évènement a été créé avec succès."
+      Successfully_updated: "L'évènement a été modifié avec succès."
+      Successfully_destroyed: "L'évènement a été supprimé avec succès."
+      Event_contains_data: "L'évènement contient des données importantes et ne peut pas être supprimé. Essayez de l'annuler."
+      Not_facebook_user_redirection: "Cette fonctionnalité n'est pas disponible pour les utilisateurs n'ayant pas de compte Facebook."
+      Private_event: "C'est un évènement privé. Vous devez être membre d'un des organismes organisateurs pour y accéder."
+      Not_allowed_to_do_this: "Action non autorisée."
+      Not_allowed_to_do_this_login: "Action non autorisée, essayez de vous connecter."
+      Create_event_ve_to_be_admin: "Pour créer un évènement, vous devez au moins être modérateur ou administrateur. Vous pouvez essayer de créer un organisme en premier."
+
     listing_events: "LISTE DES EVENEMENTS"
     no_categories: "aucune"
     content:
@@ -112,6 +129,9 @@ fr-FR:
     Stars: "Etoiles"
     votes: "votes"
   users:
+    controller:
+      Not_friend: "Vous n'êtes pas un(e) ami(e)s de cet utilisateur, vous ne pouvez pas voir son profil..."
+      Not_allowed: "Vous nêtes pas autorisé à effectué cette action. Essayer de vous connecter puis recommencez."
     participations: "Mes participations"
     organisms: "Mes organisms"
     organisms:
@@ -500,6 +520,15 @@ fr-FR:
     subject_pitcure_posted: "Une photo a été postée pour un {{parent}}"
     subject_picture_accepted: "Photo acceptée"
   posts:
+    controller:
+      Not_visible: "Le billet n'est pas visible."
+      Posts_created_success: "Billet créé avec succès."
+      Posts_updated_success: "Billet modifié avec succès."
+      Couldnt_find: "Nous ne pouvons pas trouver le billet."
+      Posts_activated: "Billet désormais activé."
+      Posts_suspended: "Billet suspendu."
+      Posts_unsuspended: "Billet non suspendu."
+      Not_allowed_to_do_this: "Vous n'avez pas suffisamment de droits pour effectuer cette action."
     show:
       Post: "Billet"
       Created: "Créé il y a "
@@ -581,7 +610,26 @@ fr-FR:
     organisms: "organisme(s)"
   members:
     Search: "Rechercher"
+    controlleur:
+      Update_done: "Modification effectuée."
+      Now_member_organism: "Vous êtes désormais un membre de cet organisme."
+      Membership_pending: "Votre demande est en attente d'acceptation par un modérateur."
+      Updating_error: "Une erreur s'est produite durant la modification."
+      Incorrect_parameter: "Un paramètre est manquant ou incorrecte"
+      Cant_decide_alone: "Vous ne pouvez pas décider seul de devenir administraeur ou modérateur de cet organisme."
+
   galleries:
+    controller:
+      Set_cover_success: "Couverture changée avec succès."
+      Set_cover_fail: "La modification de la couverture a échoué."
+      Aprobation_required: "Les photos nécessitent l'approbation d'un administrateur pour être visibles."
+      Add_picture_success: "Photos ajoutées à la galerie avec succès."
+      Pictures_moved_successfully: "Photo déplacée avec succès."
+      Pictures_moved_failed: "Erreur lors du déplacement de l'image."
+      Gallery_successfully_created: "Galerie créée avec succès"
+      Gallery_successfully_updated: "Galerie modifiée avec succès"
+      Not_allowed_to_do_this: "Vous n'avez pas suffisamment de droits pour effectuer cette action."
+      missing_parameters: "Des paramètres sont manquants ou erronés"
     show:
       Description: "Decription :"
       Publish_Facebook_wall: "Publier sur mon mur Facebook"
@@ -598,14 +646,13 @@ fr-FR:
       Drop: "Supprimer"
       Set_as_cover: "Définir comme couverture"
       Move_before: "Déplacer avant"
-      Move_after: "Déplacer après"
-      Back: "Retour à la galerie"
+      Move_after: "Déplacer après" 
     edit:
-      Back_gallery: "Retour à la galerie"
+      Back_gallery: "La galerie"
       Back_to: "Retour à "
       Update: "Mettre à jour"
     add_picture:
-      Add_picture: "Ajouter une image"
+      Add_picture: "Ajouter une image supplémentaire"
       Update: "Mise à jour"
       Back_to_gallery: "Retour à la galerie"
     picture:
@@ -613,11 +660,11 @@ fr-FR:
     header:
       Gallery: "Galerie"
       Back_to: "Retour "
-      user: "à l'utilisateur"
-      event: "à l'évènement"
-      organism: "à l'organisme"
-      Edit_picture: "Editer une image"
-      Add_picture: "Ajouter une image"
+      User: "à l'utilisateur"
+      Event: "à l'évènement"
+      Organism: "à l'organisme"
+      Edit_picture: "Editer les images"
+      Add_picture: "Ajouter des images"
       Edit_gallery: "Editer la galerie"
     organism_search:
       Search: "Rechercher"
@@ -638,7 +685,23 @@ fr-FR:
       New_gallery: "Nouvelle galerie !"
   friends:
     Search: "Rechercher"
+    controller:
+      Feature_not_available: "Cette foncionnalité n'est pas accessible si vous n'êtes pas sur Facebook"
   facebook:
+    controller:
+      Publish_problem: "Un problème s'est produit durant la publication d'un objet sur Facebook. Vous pouvez réessayer plus tard. Désolé..."
+      Publish_success: "L'objet a été publié sur le mur aevc succès !"
+      Couldnt_find_account: "Vous voulez poster un message sur le mur de {{user}}. Mais nous ne pouvons trouver son compte sur Facebook ..."
+      Logged_request_publish: "Vous devez être connecté avec Facebook pour pouvoir publier quelque chose sur votre mur."
+      Logged_request_cancel: "Vous devez être connecté avec Facebook pour annuler un évènement."
+      Cancel_success: "L'évènement a été annulé sur Facebook avec succès. La page n'exsite plus."
+      Cancel_problem: "Un problème est survenu durant l'annulation de l'évènement. Désolé..."
+      Event_not_found: "L'évènement n'a pas été trouvé. Etes vous sûr(e) du lien ? Si le problème persiste, contactez un administrateur."
+      Logged_request_create: "Vous devez être connecté avec Facebook pour créer un évènement."
+      Publish_event_success: "L'évènement a été publié sur Facebook avec succès. Vous pouvez visiter la page pour vérifier ou modifier le contenu."
+      Event_problem: "Un problème est survenu durant la création ou la modification de l'évènement Facebook sur ce site. Désolé..."
+      Logged_request_status: "Vous devez être connecté avec Facebook pour mettre à jour votre statut pour un évènement Facebook."
+      Not_allowed_to_do_this: "Vous n'êtes pas autorisé à effectuer cette action."
     ask_publish_stream:
       Step_1: "1ère étape"
       Step_1_text: "Pour publier des informations sur Facebook, vous devez nous en donner la permission. Vous pouvez changer d'avis quand vous le voulez."
@@ -747,6 +810,13 @@ fr-FR:
     Summary: "Vous pouvez réessayer de publier l'évènement sur votre mur en cliquant sur ce lien :"
     Publish_event_on_wall: "Publier l'évènement sur mon mur"
   comments:
+    controller:
+      Comment_activated: "Commentaire activé."
+      Couldnt_find_comment: "Nous n'avons pu trouvé le commentaire"
+      Comment_suspended: "Commentaire suspendu"
+      Comment_unsuspended: "Commentaire activé"
+      Not_allowed_too_late: "Vous ne pouvez pas éditer le commentaire, {{minuts}} minutes maximum"
+      Not_allowed_no_right: "Vous n'avez pas les droits nécessaire pour modifier le commentaire."
     form:
       Be_the_first_to_write: "Soyez le premier à réagir :"
       Add_a_comment: "Ajouter un commentaire"
@@ -776,7 +846,47 @@ fr-FR:
     comments_event_search:
       Search: "Rechercher"
   categories:
+    controller:
+      Successfully_created: "Categorie créée avec succès."
+      Successfully_updated: "Categorie modifiée avec succès."
     show:
       Description: "Description :"
     new:
       New_category: "Nouvelle catégorie"
+      Back: "Retour"
+      Create: "Créer"
+    index:
+      New_category: "Nouvelle catégorie"
+    edit:
+      Edit: "Editer la catégorie"
+      Update: "Mettre à jour"
+      Show: "Afficher"
+      Back: "Retour"
+    terms_subheader:
+      Events_occuring: "Evènement en cours"
+    list:
+      Show: "Afficher"
+      Edit: "Editer"
+      Destroy: "Supprimer"
+      Are_you_sure: "Etes-vous sûr(e) ?"
+  activities:
+    show:
+      Back: "Retour"
+    new:
+      New_activity: "Nouvelle activité"
+      Create: "Créer"
+      Back: "Retour"
+    edit:
+      Edit: "Editer une activiter"
+      Update: "Mettre à jour"
+      Show: "Afficher"
+      Back: "Retour"
+    controller:
+      Successfully_created: "L'activité a été créée avec succès."
+      Successfully_updated: "L'activité a été mise à jour avec succès."
+  application:
+    controller:
+      Facebook_session_expired: "Votre seession Facebook a expiré. Merci de vous connecter de nouveau ..."
+      You_ve_to_be_logged: "Vous devez être connecté pour executer cette action."
+      Permission_denied: "Accès refusé"
+

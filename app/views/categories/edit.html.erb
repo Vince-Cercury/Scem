@@ -1,4 +1,4 @@
-<h1>Editing category</h1>
+<h1><%= t('categories.edit.Edit') %></h1>
 
 <% form_for(@category) do |f| %>
   <%= f.error_messages %>
@@ -16,9 +16,9 @@
     <%= f.check_box :to_display %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t('categories.edit.Update') %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to t('categories.edit.Show'), @category %> |
+<%= link_to t('categories.edit.Back'), categories_path %>

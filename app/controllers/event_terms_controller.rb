@@ -34,7 +34,7 @@ class EventTermsController < ApplicationController
 
     respond_to do |format|
       if @term.update_attributes(parse_term_params)
-        flash[:notice] = 'Term was successfully updated.'
+        flash[:notice] = I18n.t('terms.controller.Successfully_updated')
         format.html { redirect_to(url_for_even_polymorphic(@term)) }
         format.xml  { head :ok }
       else

@@ -128,7 +128,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        flash[:notice] = 'Event was successfully created.'
+        flash[:notice] = I18n.t('events.controller.Successfully_created')
         format.html { redirect_to(@event) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
@@ -174,7 +174,7 @@ class EventsController < ApplicationController
         #add the categories not to display in the list of categories of the event
         add_categories_not_to_display(@event)
 
-        flash[:notice] = 'The event was successfully updated.'
+        flash[:notice] = I18n.t('event.controller.Successfully_updated')
         format.html { redirect_to(@event) }
         format.xml  { head :ok }
       else
@@ -186,109 +186,137 @@ class EventsController < ApplicationController
 
   # DELETE /events/1
   # DELETE /events/1.xml
-    def destroy
-      event = Event.find(params[:id])
+  def destroy
+    event = Event.find(params[:id])
 
-      destroyable = true
+    destroyable = true
 
-      if(event.galleries.size>0)
-        destroyable = false
+    if(event.galleries.size>0)
+      destroyable = false
+    end
+
+    if event.comments.size>0
+      destroyable = false
+    end
+
+    if destroyable
+      #raise event.contributions.inspect
+#      event.contributions.each do |contribution|
+#        contribution.destroy
+#      end
+
+      event.destroy
+      flash[:notice] = 'Event successfully destroyed.'
+      respond_to do |format|
+        format.html { redirect_to(root_path) }
+        format.xml  { head :ok }
       end
-
+    else
+      cancelable = true
       event.terms.each do |term|
         if term.participations.size > 0
-          destroyable = false
+          cancelable = false
         end
       end
-
-      if event.comments.size>0
-        destroyable = false
-      end
-
-      if destroyable
-        event.destroy
-        flash[:notice] = 'Event successfully destroyed.'
+      if cancelable
+        event.cancel!
+        flash[:notice] = 'Event successfully canceled.'
         respond_to do |format|
           format.html { redirect_to(root_path) }
           format.xml  { head :ok }
         end
       else
-        #TODO: redirect to canceling email form for participants
-        flash[:notice] = "The event contains important data. Can't be destroyed. Try cancel it instead"
         respond_to do |format|
-          format.html { redirect_to(event) }
+          format.html { redirect_to(url_for(event, :action => 'cancel_notify')) }
           format.xml  { head :ok }
         end
       end
     end
+  end
 
-
-  def share
-
-    @current_object = @event = Event.find(params[:id])
-
-    #friends = FacebookTools.get_user_friends(current_user)
-    
-    #@users = friends.paginate :per_page => ENV['PER_PAGE'], :page => params[:page]
-
-    @users = FacebookTools.get_user_friends(current_user, params[:search])
-
-    #build the pre-defined messager to send
-    @message_body = "#{get_user_name_or_pseudo(current_user)} would like to inform you about an event.\n\n"
-    @message_body += "-------------------------\n\n"
-    @message_body += @event.name + "\n\n"
-    @message_body += @event.description_short + "\n\n"
-    if @event.terms.size > 1
-      @message_body += "Date(s):\n"
-    elsif @event.terms.size == 1
-      @message_body += "Date:\n"
-    end
-    @event.terms.each do |term|
-      @message_body += display_term_box(term.start_at, term.end_at) + "\n"
-    end
-    @message_body += "\nYou can find some more information on the following link:\n"
-    @message_body += url_for(@event)
-
+  def cancel_notify
     respond_to do |format|
-      format.html
-      format.xml  { render :xml => @users }
-      format.js {
-        render :update do |page|
-          page.replace_html 'results', :partial => 'users_list'
-        end
-      }
+      format.html 
+      format.xml
     end
   end
 
-  def do_share
-
-    if(current_user && params[:friends_ids] && params[:subject] && params[:body])
-
-      mail = Mail.new(:sender => current_user, :subject => params[:subject], :body => params[:body])
-      
-      params[:friends_ids].each do |friend_id|
-        recipient = Recipient.new
-        recipient.user = User.find(friend_id)
-        mail.recipients << recipient
-      end
-      
-
-      if(mail.save!)
-        Delayed::Job.enqueue(EmailsSenderJob.new(mail.id),2)
-        #for testing purpose
-        #job = EmailsSenderJob.new(mail.id)
-        #job.perform
-        flash[:notice] = "The message is being sent to the selected people."
-        redirect_to event_path
-      else
-        flash[:error] = "A problem occured when creating the mailing. Please, try again or contact an admin."
-        redirect_to share_event_path
-      end
-    else
-      flash[:error] = "Something was missing. Be sure to write a subject, a body and to select some users."
-      redirect_to share_event_path
+  def cancel
+    event.cancel!
+    flash[:notice] = 'Event successfully canceled.'
+    respond_to do |format|
+      format.html { redirect_to(root_path) }
+      format.xml  { head :ok }
     end
   end
+
+
+#  def share
+#
+#    @current_object = @event = Event.find(params[:id])
+#
+#    #friends = FacebookTools.get_user_friends(current_user)
+#
+#    #@users = friends.paginate :per_page => ENV['PER_PAGE'], :page => params[:page]
+#
+#    @users = FacebookTools.get_user_friends(current_user, params[:search])
+#
+#    #build the pre-defined messager to send
+#    @message_body = "#{get_user_name_or_pseudo(current_user)} would like to inform you about an event.\n\n"
+#    @message_body += "-------------------------\n\n"
+#    @message_body += @event.name + "\n\n"
+#    @message_body += @event.description_short + "\n\n"
+#    if @event.terms.size > 1
+#      @message_body += "Date(s):\n"
+#    elsif @event.terms.size == 1
+#      @message_body += "Date:\n"
+#    end
+#    @event.terms.each do |term|
+#      @message_body += display_term_box(term.start_at, term.end_at) + "\n"
+#    end
+#    @message_body += "\nYou can find some more information on the following link:\n"
+#    @message_body += url_for(@event)
+#
+#    respond_to do |format|
+#      format.html
+#      format.xml  { render :xml => @users }
+#      format.js {
+#        render :update do |page|
+#          page.replace_html 'results', :partial => 'users_list'
+#        end
+#      }
+#    end
+#  end
+#
+#  def do_share
+#
+#    if(current_user && params[:friends_ids] && params[:subject] && params[:body])
+#
+#      mail = Mail.new(:sender => current_user, :subject => params[:subject], :body => params[:body])
+#
+#      params[:friends_ids].each do |friend_id|
+#        recipient = Recipient.new
+#        recipient.user = User.find(friend_id)
+#        mail.recipients << recipient
+#      end
+#
+#
+#      if(mail.save!)
+#        Delayed::Job.enqueue(EmailsSenderJob.new(mail.id),2)
+#        #for testing purpose
+#        #job = EmailsSenderJob.new(mail.id)
+#        #job.perform
+#        flash[:notice] = "The message is being sent to the selected people."
+#        redirect_to event_path
+#      else
+#        flash[:error] = "A problem occured when creating the mailing. Please, try again or contact an admin."
+#        redirect_to share_event_path
+#      end
+#    else
+#      flash[:error] = "Something was missing. Be sure to write a subject, a body and to select some users."
+#      redirect_to share_event_path
+#    end
+#  end
 
   private
 
@@ -297,7 +325,7 @@ class EventsController < ApplicationController
   end
   
   def not_facebook_user_redirection
-    flash[:error] = "This feature is not available for users that aren't on Facebook"
+    flash[:error] = I18n.t('events.controller.Not_facebook_user_redirection')
     redirect_to root_path
   end
 
@@ -353,16 +381,16 @@ class EventsController < ApplicationController
   end
 
   def not_member_redirection
-    flash[:error] = "This is a private event. You must be a member of one of the organizators in order to see it."
+    flash[:error] = I18n.t('events.controller.Private_event')
     redirect_to('/')
   end
 
   def not_granted_redirection
     if current_user
-      flash[:error] = "Not allowed to do this."
+      flash[:error] = I18n.t('events.controller.Not_allowed_to_do_this')
       redirect_back_or_default('/')
     else
-      flash[:error] = "Not allowed to do this. May be log in could help."
+      flash[:error] = I18n.t('events.controller.Not_allowed_to_do_this_login')
       redirect_to login_path
     end
 
@@ -370,10 +398,10 @@ class EventsController < ApplicationController
 
   def not_moderator_of_any_organism
     if current_user
-      flash[:error] = "To create an event, you must be at least a moderator or an admin. You can try to create an organism first."
+      flash[:error] = I18n.t('events.controller.Create_event_ve_to_be_admin')
       redirect_back_or_default('/')
     else
-      flash[:error] = "Not allowed to do this. May be log in could help."
+      flash[:error] = I18n.t('events.controller.Not_allowed_to_do_this_login')
       redirect_to login_path
     end
 

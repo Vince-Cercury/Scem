@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091112085929) do
+ActiveRecord::Schema.define(:version => 20091112233603) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20091112085929) do
 
   add_index "comments", ["user_id"], :name => "fk_comments_user"
 
-  create_table "contributions", :id => false, :force => true do |t|
+  create_table "contributions", :force => true do |t|
     t.integer "event_id"
     t.integer "organism_id"
     t.string  "role"
@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(:version => 20091112085929) do
     t.string   "name"
     t.text     "description_short"
     t.text     "description_long"
-    t.boolean  "is_charged",        :default => false, :null => false
-    t.boolean  "is_private",        :default => false, :null => false
+    t.boolean  "is_charged",        :default => false,     :null => false
+    t.boolean  "is_private",        :default => false,     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "created_by"
@@ -95,6 +95,9 @@ ActiveRecord::Schema.define(:version => 20091112085929) do
     t.string   "street"
     t.string   "city"
     t.string   "cached_slug"
+    t.string   "state",             :default => "passive"
+    t.datetime "canceled_at"
+    t.datetime "activated_at"
   end
 
   create_table "galleries", :force => true do |t|
