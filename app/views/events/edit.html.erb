@@ -101,7 +101,7 @@
           :publisher_ids,
           get_list_organism_rights_user(current_user),
           :id, :name,{ :selected => @event.get_first_publisher, :include_blank => true },
-          { :multiple => false } -%>
+          { :multiple => false, :class => 'textField' } -%>
     <%# elsif get_list_organism_rights_user(current_user).size == 1 %>
     <%#= get_list_organism_rights_user(current_user).first.name %>
     <%# end %>

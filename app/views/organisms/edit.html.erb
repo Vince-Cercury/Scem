@@ -1,93 +1,143 @@
 <% form_for(@organism, :live_validations => true) do |f| %>
-  <%= f.error_messages %>
-  <div class="span-3">
-    <%= display_organism_cover(@organism, :thumb) %>
-  </div>
-  <div class="span-12">
-    <h3> <%= f.text_field :name, :class => 'title' %></h3>
-  </div>
-  <div class="span-2 last">
-    <% if current_user && @organism.is_user_moderator?(current_user) %>
-    <br /><br />
-    (  <%= link_to t('organisms.edit.Destroy'), @organism, :confirm => t('organisms.edit.Are_you_sure'), :method => :delete %> )
-    <% end %>
-  </div>
-  <hr />
   <%= render :partial => "/organisms/sub_header" %>
 
-  <div class="span-8 colborder">
-    <div class="box">
+  <div class="organismEditBody">
+    <%= f.error_messages %>
+    <div class="organismEditBodyLeft">
       <% if @organism.picture.nil? %>
-        <%= display_organism_cover(@organism, :medium) %><br />
-        <%= link_to(t('organisms.edit.Attach_picture'), url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+        <%= display_organism_cover(@organism, :medium) %>
+        <div class="organismEditBodyLeftContent">
+          <%= link_to(t('organisms.edit.Attach_picture'), url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+        </div>
+
       <% else %>
-        <%= display_organism_cover(@organism, :medium) %><br />
-        <%= link_to(t('organisms.edit.Change_picture'), url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+        <%= display_organism_cover(@organism, :medium) %>
+        <div class="organismEditBodyLeftContent">
+          <%= link_to(t('organisms.edit.Change_picture'), url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+        </div>
       <% end %>
     </div>
-    <div class="box">
+    <div class="organismEditBodyRight">
+      <h3> <%= f.text_field :name, :class => 'title' %></h3>
+    </div>
+
+    <div class="organismEditBodyCenter">
+      <h3><%= t('organisms.edit.Adress') %></h3>
+      <div class="organismEditBodyContentLeft">
         <p>
-          <%= t('organisms.edit.Street') %><br />
-          <%= f.text_field :street %>
-        </p>
-        <p>
-          <%= t('organisms.edit.City') %><br />
-          <%= f.text_field :city %>
+          <%= t('organisms.edit.Street') %>
         </p>
       </div>
-  </div>
-  <div class="span-8 last">
-    <div class="box">
+      <div class="organismEditBodyContentRight">
+        <%= f.text_field :street %>
+      </div>
+    </div>
+
+    <div class="organismEditBodyCenter">
+      <div class="organismEditBodyContentLeft">
+        <p>
+          <%= t('organisms.edit.City') %>
+        </p>
+      </div>
+      <div class="organismEditBodyContentRight">
+        <%= f.text_field :city %>
+      </div>
+    </div>
+
+    <div class="organismEditBodyCenter">
+      <h3><%= t('organisms.edit.DescriptionShort') %></h3>
       <%= f.text_area :description_short, :cols => 35, :rows => 5 %>
     </div>
-    <div class="box">
-      <b><%= t('organisms.edit.Manager_name') %></b>
-      <%= f.text_field :manager_name, :style => 'text' %>
-      <br />
-      <b><%= t('organisms.edit.Phone') %></b>
-      <%= f.text_field :phone, :style => 'text' %>
-      <br />
-      <b><%= t('organisms.edit.In_directory') %></b>
-      <%= f.check_box :in_directory %>
-      <br />
-      <p>
-        <%= t('organisms.edit.Admins_pwd') %><br />
+
+    <div class="organismEditBodyCenter">
+      <h3><%= t('organisms.edit.Contact') %></h3>
+      <div class="organismEditBodyContentLeft">
+        <p>
+          <%= t('organisms.edit.Manager_name') %>
+        </p>
+      </div>
+      <div class="organismEditBodyContentRight">
+        <%= f.text_field :manager_name, :style => 'text' %>
+      </div>
+    </div>
+
+    <div class="organismEditBodyCenter">
+      <div class="organismEditBodyContentLeft">
+        <p>
+          <%= t('organisms.edit.Phone') %>
+        </p>
+      </div>
+      <div class="organismEditBodyContentRight">
+        <%= f.text_field :phone, :style => 'text' %>
+      </div>
+    </div>
+
+    <div class="organismEditBodyCenter">
+      <h3><%= t('organisms.edit.Public') %></h3>
+      <div class="organismEditBodyContentLeft">
+        <p>
+          <%= t('organisms.edit.In_directory') %>
+        </p>
+      </div>
+      <div class="organismEditBodyContentRight">
+        <p>
+          <%= f.check_box :in_directory %>
+        </p>
+      </div>
+    </div>
+
+    <div class="organismEditBodyCenter">
+      <h3><%= t('organisms.edit.Password') %></h3>
+      <div class="organismEditBodyContentLeft">
+        <p>
+          <%= t('organisms.edit.Admins_pwd') %>
+        </p>
+      </div>
+      <div class="organismEditBodyContentRight">
         <%= f.text_field :admins_password %>
-      </p>
-      <p>
-        <%= t('organisms.edit.Moderators_pwd') %><br />
+      </div>
+    </div>
+
+    <div class="organismEditBodyCenter">
+      <div class="organismEditBodyContentLeft">
+        <p>
+          <%= t('organisms.edit.Moderators_pwd') %>
+        </p>
+      </div>
+      <div class="organismEditBodyContentRight">
         <%= f.text_field :moderators_password %>
-      </p>
-      <p>
-        <%= t('organisms.edit.Members_pwd') %><br />
+      </div>
+    </div>
+
+    <div class="organismEditBodyCenter">
+      <div class="organismEditBodyContentLeft">
+        <p>
+          <%= t('organisms.edit.Members_pwd') %>
+        </p>
+      </div>
+      <div class="organismEditBodyContentRight">
         <%= f.text_field :members_password %>
-      </p>
+      </div>
     </div>
-  </div>
-  <hr />
-  <div class="box">
 
-    <b><%= t('organisms.edit.Activities') %></b>
-    <%=  swapselect :organism,
-      @organism,
-      :activities,
-      Activity.find(:all, :order => 'name').map{ |activity| [activity.name.gsub(/[']/, '\\\\\''), activity.id] }
-  %>
 
-  </div>
 
-  <hr />
+    <div class="organismEditBodyCenter">
+      <h3><%= t('organisms.edit.Activities') %></h3>
+      <%=  swapselect :organism,
+        @organism,
+        :activities,
+        Activity.find(:all, :order => 'name').map{ |activity| [activity.name.gsub(/[']/, '\\\\\''), activity.id] }, :size => 7
+    %>
+    </div>
 
-    <div class="box">
-      <%= t('organisms.edit.Long_description') %><br />
+    <div class="organismEditBodyCenter">
+      <h3><%= t('organisms.edit.Long_description') %></h3>
       <%= fckeditor_textarea(:organism, :description_long, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
-
     </div>
 
-  <p>
-    <%= f.submit t('organisms.edit.Update') %>
-  </p>
+    <div class="organismEditBodyCenter">
+      <%= f.submit t('organisms.edit.Update') %>
+    </div>
+  </div>
 <% end %>
-
-<%= link_to t('organisms.edit.Show'), @organism %> |
-<%= link_to t('organisms.edit.Back'), organisms_path %>

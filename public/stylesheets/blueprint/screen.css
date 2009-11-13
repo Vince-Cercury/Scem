@@ -246,6 +246,18 @@ body {font-size:75%;
 .organismShowBodyCommentaire h5 {padding: 5px; color: #000; font-size: 16px; margin: 0px;}
 .organismShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
 
+.organismEditBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
+.organismEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
+.organismEditBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
+.organismEditBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
+.organismEditBody h3 { font-size:14px;}
+.organismEditBodyCenterLeft{width: 229px; height: 35px; line-height: 35px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
+.organismEditBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
+.organismEditBodyCenterRight{width: 429px; height: 35px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
+.organismEditBodyContentLeft{width: 329px; height: 35px; line-height: 35px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: right;}
+.organismEditBodyContentLeft p{vertical-align: middle; text-indent: 0; text-align: right;}
+.organismEditBodyContentRight{width: 329px; height: 35px; padding: 5px 5px 5px 5px;; margin: 0 0 0 0; background: #fff; float: right; text-align: left;}
+
                                                             /* ---------------------PAGE user SHOW'---------------------- */
 /*HEADER*/
 .userHeader{width: 688px; min-height: 82px; background: #fff; overflow:auto;}
