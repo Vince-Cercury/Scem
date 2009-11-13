@@ -50,7 +50,7 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if organism_user.save
-        flash[:notice] = 'Relation work is done.'
+        flash[:notice] = I18n.t('memberships.controller.Update_done')
         format.html { redirect_back_or_default('/') }
         format.xml  { head :ok }
       else
@@ -79,7 +79,7 @@ class MembershipsController < ApplicationController
     
     respond_to do |format|
       if organism_user
-        flash[:notice] = 'Relation work is done.'
+        flash[:notice] = I18n.t('memberships.controller.Update_done')
         format.html { redirect_back_or_default('/') }
         format.xml  { head :ok }
       else
@@ -123,10 +123,10 @@ class MembershipsController < ApplicationController
 
     if organism_user && !organism_user.active?
       organism_user.activate!
-      flash[:notice] = "Membership done"
+      flash[:notice] = I18n.t('memberships.controller.Update_done')
       redirect_to(organism)
     else
-      flash[:error]  = "Something went wrong when updating the membership..."
+      flash[:error]  = I18n.t('memberships.controller.Update_error')
       redirect_back_or_default('/')
     end
 
@@ -166,13 +166,13 @@ class MembershipsController < ApplicationController
   end
 
   def param_uncorrect_redirection
-    flash[:error] = "A parameter is missing or not correct"
+    flash[:error] = I18n.t('memberships.controller.Incorrect_parameter')
     redirect_to root_path
   end
 
   def cant_become_himself_admin_or_modo
     if(params[:role] == "admin" or params[:role] == "moderator")
-      flash[:error] = "You cannot decide by yourself to become and admin or moderator of this organism"
+      flash[:error] = I18n.t('memberships.controller.Cant_decide_alone')
       redirect_to root_path
     end
   end

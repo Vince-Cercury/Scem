@@ -87,7 +87,7 @@ class PicturesController < ApplicationController
         @picture.activate! unless @picture.parent_type=="Gallery" && @parent_object.add_picture_moderation
 
 
-        flash[:notice] = 'Picture has been successfully created.'
+        flash[:notice] = I18n.t('pictures.controller.Successfully_created')
         format.html { redirect_to(url_for_even_polymorphic(@parent_object)) }
         format.xml  { render :xml => @parent_object }
       else
@@ -107,7 +107,7 @@ class PicturesController < ApplicationController
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
 
-        flash[:notice] = 'Picture has been successfully updated.'
+        flash[:notice] = I18n.t('pictures.controller.Successfully_updated')
         format.html { redirect_to(url_for_even_polymorphic(@picture)) }
         format.xml  { head :ok }
       else
@@ -121,12 +121,12 @@ class PicturesController < ApplicationController
     picture = Picture.find(params[:id])
     picturable_object = Picture.find_parent(picture.parent_type, picture.parent_id)
     if picture.nil?
-      flash[:error] = "We couldn't find the picture."
+      flash[:error] =  I18n.t('pictures.controller.Cant_find_picture')
       redirect_back_or_default('/')
     else
       picture.activated_by = current_user.id
       picture.activate!
-      flash[:notice]  = "Ok, picture activated"
+      flash[:notice]  = I18n.t('pictures.controller.Activated')
       redirect_to(picturable_object)
     end
   end
@@ -137,7 +137,7 @@ class PicturesController < ApplicationController
     picturable_object = Picture.find_parent(picture.parent_type, picture.parent_id)
     picture.suspended_by = self.current_user.id
     picture.suspend!
-    flash[:notice] = 'Picture has been suspended.'
+    flash[:notice] = I18n.t('pictures.controller.Suspended')
     redirect_to(url_for_even_polymorphic(picturable_object))
   end
 
@@ -146,7 +146,7 @@ class PicturesController < ApplicationController
     picture = Picture.find(params[:id])
     picturable_object = Picture.find_parent(picture.parent_type, picture.parent_id)
     picture.unsuspend!
-    flash[:notice] = 'Picture has been unsuspended.'
+    flash[:notice] = I18n.t('pictures.controller.Activated')
     redirect_to(picturable_object)
   end
 
@@ -225,18 +225,18 @@ class PicturesController < ApplicationController
   end
 
   def not_enough_rights
-    flash[:error] = "Not allowed to do this. Not owner or enough rights."
+    flash[:error] = I18n.t('pictures.controller.Not_allowed_to_do_this')
     redirect_to root_path
   end
 
 
   def wrong_parameters_redirection
-    flash[:error] = "Some parameters are missing or wrong"
+    flash[:error] = I18n.t('pictures.controller.Missing_parameters')
     redirect_to root_path
   end
 
   def not_visible
-    flash[:error] = "Sorry, the picture is not visible"
+    flash[:error] =  I18n.t('pictures.controller.Not_visible')
     redirect_to root_path
   end
   

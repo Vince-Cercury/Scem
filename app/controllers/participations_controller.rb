@@ -84,13 +84,13 @@ class ParticipationsController < ApplicationController
       end
     end
     rescue
-      flash[:error] = "Your status for this event couldn't be updated on Facebook. Sorry"
+      flash[:error] = I18n.t('participations.controller.Error_status_update')
     end
 
     if proceed_rendering
       respond_to do |format|
         if participation.save
-          flash[:notice] = 'Relation work is done.'
+          flash[:notice] = I18n.t('participations.controller.Successfully_updated')
           format.html { redirect_to(url_for_even_polymorphic(term)) }
           format.xml  { head :ok }
         else
@@ -141,7 +141,7 @@ class ParticipationsController < ApplicationController
   end
 
   def param_uncorrect_redirection
-    flash[:error] = "A parameter is missing or not correct"
+    flash[:error] = I18n.t('organisms.controller.Missing_parameters')
     redirect_to root_path
   end
 

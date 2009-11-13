@@ -216,6 +216,13 @@ fr-FR:
       Create_new_event: "Créer et partagez un nouvel évènement maintenant !"
       Search: "Rechercher"
   organisms:
+    controller:
+      Successfully_created: "L'organisme a été créé avec succès, unmodérateur doit désormais le valider."
+      Successfully_updated: "L'organisme a été modifié avec succès."
+      Activated: "L'organisme est activé, vous pouvez commencer à l'utiliser."
+      Activation_code_missing: "Le code d'activation est manquant. Merci de suivre l'adresse présente dans votre email."
+      Cant_find_organism_activation: "Nous n'avons pu trouver un organisme avec ce code d'activation vérifier votre email ou vous l'avez peut êter déjà activé. Essayez de l'utiliser."
+      Not_allowed_to_do_this: "Vous nêtes pas autorisé à effectué cette action."
     index:
       listing_activities: "Liste des organismes"
     edit:
@@ -608,6 +615,14 @@ fr-FR:
     Moderator_of: "Modérateur de "
     Administrator_of: "Administrateur de "
     organisms: "organisme(s)"
+    controlleur:
+      Update_done: "Modification effectuée."
+      Now_member_organism: "Vous êtes désormais un membre de cet organisme."
+      Membership_pending: "Votre demande est en attente d'acceptation par un modérateur."
+      Updating_error: "Une erreur s'est produite durant la modification."
+      Incorrect_parameter: "Un paramètre est manquant ou incorrecte"
+      Cant_decide_alone: "Vous ne pouvez pas décider seul de devenir administraeur ou modérateur de cet organisme."
+
   members:
     Search: "Rechercher"
     controlleur:
