@@ -15,6 +15,14 @@ module GalleriesHelper
     end
   end
 
+  def is_allowed_add_picture(gallery)
+    if current_user && gallery.is_user_moderator?(current_user) || gallery.is_user_allowed_add_picture(current_user)
+      return true
+    else
+      return false
+    end
+  end
+
   def get_cover_and_random_pics(gallery, number)
     results = Array.new
     if gallery.defined_cover

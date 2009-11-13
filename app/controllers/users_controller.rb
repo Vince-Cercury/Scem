@@ -40,8 +40,10 @@ class UsersController < ApplicationController
 
     if @user.facebook_user?
       @to_display_fb_user = Facebooker::User.new(@user.fb_user_id)
-      @status_message = @to_display_fb_user.status.message
-      @status_time = @to_display_fb_user.status.time
+      if @to_display_fb_user.status
+        @status_message = @to_display_fb_user.status.message
+        @status_time = @to_display_fb_user.status.time
+      end
     end
 
     respond_to do |format|

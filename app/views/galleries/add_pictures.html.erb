@@ -1,21 +1,24 @@
 <%= render :partial => "header" %>
+<div class="galleriesContent">
+  <%= render :partial => "sub_header" %>
+  <div class="galleriesList">
+    <div class="galleriesBox">
+      <% form_for(@gallery, :url => url_for_even_polymorphic(@gallery, :action => 'do_add_pics'), :html => { :multipart => true })  do |f| %>
 
-<% form_for(@gallery, :url => url_for_even_polymorphic(@gallery, :action => 'do_add_pics'), :html => { :multipart => true })  do |f| %>
+        <%= f.error_messages %>
 
-  <%= f.error_messages %>
+        <div id="pictures">
+          <%= render :partial => 'picture', :collection => @new_pictures %>
+        </div>
 
-  <div id="pictures">
-    <%= render :partial => 'picture', :collection => @new_pictures %>
+        <%= link_to_function t('galleries.add_picture.Add_picture') do |page|
+          page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
+        end %>
+
+        <p>
+          <%= f.submit t('galleries.add_picture.Update') %>
+        </p>
+      <% end %>
+    </div>
   </div>
-
-  <%= link_to_function t('galleries.add_picture.Add_picture') do |page|
-    page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
-  end %>
-
-  <p>
-    <%= f.submit t('galleries.add_picture.Update') %>
-  </p>
-<% end %>
-
-
-<%= link_to t('gelleries.add_picture.Back_to_gallery'), @gallery %>
+</div>

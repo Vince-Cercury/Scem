@@ -1,0 +1,40 @@
+<div class="galleriesSubHeader">
+  <ul class="tabsevent">
+    <li>
+      <%= link_to t('galleries.show.Back'), @parent_object %>
+    </li>
+    <li>
+      <% if action_name == 'show' %>
+        <%= link_to t('galleries.edit.Back_gallery'), @gallery, :class => 'selected' %>
+      <% else %>
+        <%= link_to t('galleries.edit.Back_gallery'), @gallery %>
+      <% end %>
+    </li>
+    <% if is_allowed_add_picture(@gallery) %>
+      <li>
+        <% if action_name == 'edit_pics' %>
+          <%= link_to(t('galleries.header.Edit_picture'), url_for_even_polymorphic(@gallery, :action => 'edit_pics'), :class => 'selected') %>
+        <% else %>
+          <%= link_to(t('galleries.header.Edit_picture'), url_for_even_polymorphic(@gallery, :action => 'edit_pics')) %>
+        <% end %>
+      </li>
+      <li>
+        <% if action_name == 'add_pics' %>
+          <%= link_to(t('galleries.header.Add_picture'), url_for_even_polymorphic(@gallery, :action => 'add_pics'), :class => 'selected') %>
+        <% else %>
+          <%= link_to(t('galleries.header.Add_picture'), url_for_even_polymorphic(@gallery, :action => 'add_pics')) %>
+        <% end %>
+      </li>
+    <% end %>
+    <% if is_gallery_moderator?(@gallery) %>
+      <li>
+        <% if action_name == 'edit' %>
+          <%= link_to(t('galleries.header.Edit_gallery'), url_for_even_polymorphic(@gallery,:action => 'edit'), :class => 'selected') %>
+        <% else %>
+          <%= link_to(t('galleries.header.Edit_gallery'), url_for_even_polymorphic(@gallery,:action => 'edit')) %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+

@@ -1,22 +1,36 @@
 <%= render :partial => "header" %>
-<%= t('galleries.edit_pictures.Allowed_edit_picture') %><br />
-<% for picture in @gallery.pictures %>
-  <% if picture.creator_id == current_user.id or @gallery.is_user_moderator?(current_user) %>
+<div class="galleriesContent">
+  <%= render :partial => "sub_header" %>
+  <div class="galleriesList">
+    <div class="galleriesBox">
+      <% for picture in @gallery.pictures %>
+        <% if picture.creator_id == current_user.id or @gallery.is_user_moderator?(current_user) %>
 
-  <div class="span-5">
-    <div class="box">
-    <%=  image_tag(picture.attached.url(:small)) %>
-   <br /> <%= link_to(t('galleries.edit_pictures.Drop'), url_for_even_polymorphic(picture, :action => 'suspend')) %>
-    <% if @gallery.is_user_moderator?(current_user) %>
-      <br /><%= link_to(t('galleries.edit_pictures.Set_as_cover'), url_for_even_polymorphic(@gallery, :action => 'set_cover', :picture_id => picture.id)) unless picture.cover %>
-      <br /><%= link_to(t('galleries.edit_pictures.Move_before'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'up')) unless picture.first_item?  %>
-       <%= link_to(t('galleries.edit_pictures.Move_after'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'down')) unless picture.last_item? %>
-    <% end %>
+          <div class="galleriesBoxImageEdit">
+            <p>
+              <%=  image_tag(picture.attached.url(:small)) %>
+            </p>
+            <p>
+              <%= link_to(t('galleries.edit_pictures.Drop'), url_for_even_polymorphic(picture, :action => 'suspend')) %>
+            </p>
+            <p>
+              <%= link_to(t('galleries.edit_pictures.Set_as_cover'), url_for_even_polymorphic(@gallery, :action => 'set_cover', :picture_id => picture.id)) unless picture.cover %>
+            </p>
+            <p>
+              <%= link_to(t('galleries.edit_pictures.Move_before'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'up')) unless picture.first_item?  %>
+            </p>
+            <p>
+              <%= link_to(t('galleries.edit_pictures.Move_after'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'down')) unless picture.last_item? %>
+            </p>
+
+
+          </div>
+
+        <% end %>
+      <% end %>
     </div>
+
   </div>
-  <% end %>
-<% end %>
-<hr />
 
 
-<%= link_to t('galleries.edit_pictures.Back'), @gallery %>
+</div>
