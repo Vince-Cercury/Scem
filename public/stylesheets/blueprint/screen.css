@@ -155,7 +155,7 @@ body {font-size:75%;
 /*Large*/
 .titledevenirmembre{width: 179px; height: 31px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/devenirmembre.png');background-repeat: no-repeat; float: left;}
 .titlederniersmembres{width: 179px; height: 31px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/derniersmembres.png');background-repeat: no-repeat; float: left;}
-.titlecreeruncompte{width: 179px; height: 31px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/devenirmembre.png');background-repeat: no-repeat; float: left;}
+.titlecreeruncompte{width: 179px; height: 31px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/creeruncompte.png');background-repeat: no-repeat; float: left;}
 
                                             /* ---------------------PAGE DE LOGIN---------------------- */
 
@@ -180,12 +180,12 @@ body {font-size:75%;
 
                                                 /* ---------------------PAGE EVENT SHOW'---------------------- */
 /*HEADER*/
-.eventHeader{width: 688px; height: 82px; background: #fff; overflow:auto;}
-.eventHeaderImage{width: 72px; height: 72px; line-height: 72px; padding: 5px; float: left; }
+.eventHeader{width: 688px; min-height: 82px; background: #fff; overflow:auto;}
+.eventHeaderImage{width: 72px; min-height: 72px; line-height: 72px; padding: 5px; float: left; }
 .eventHeaderImage img{vertical-align: middle;}
-.eventHeaderRight{width: 606px; height: 82px; background: #fff; overflow:auto; float: right;}
-.eventHeaderTitle{width: 436px; line-height: 72px; padding: 5px; vertical-align: middle; float: left; text-align:center; }
-.eventHeaderNotation{width: 150px;  height: 72px;  vertical-align: middle; padding: 5px; float: right; text-align:center;}
+.eventHeaderRight{width: 606px; min-height: 82px; background: #fff; overflow:auto; float: right;}
+.eventHeaderTitle{width: 436px; padding: 30px 5px 0 5px; float: left; text-align:center; }
+.eventHeaderNotation{width: 150px;  min-height: 72px;  padding: 30px 5px 0 5px; float: right; text-align:center;}
 .eventHeader h3{font-size: 20px;}
 /*BODY*/
 .eventShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
@@ -212,15 +212,30 @@ body {font-size:75%;
 .eventShowBodyCommentaire h5 {padding: 5px; color: #000; font-size: 12px; margin: 0px;}
 .eventShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
 
+.eventEditBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
+.eventEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
+.eventEditBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
+.eventEditBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
+.eventEditBody h3 { font-size:14px;}
+.eventEditBodyCenterLeft{width: 129px; height: 35px; line-height: 35px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto;}
+.eventEditBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
+.eventEditBodyCenterRight{width: 529px; height: 35px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
+.eventEditBodyContentLeft{width: 329px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center;}
+.eventEditBodyContentRight{width: 329px; padding: 5px 5px 5px 5px;; margin: 0 0 0 0; background: #fff; float: right; text-align: center;}
+.textField {width: 400px;}
 
-                                                            /* ---------------------PAGE ORGANISM SHOW'---------------------- */
+.termbox{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
+.termboxLeft{width: 329px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center;}
+.termboxRight{width: 329px; padding: 5px 5px 5px 5px;; margin: 0 0 0 0; background: #fff; float: right; text-align: center;}
+
+                                                           /* ---------------------PAGE ORGANISM SHOW'---------------------- */
 /*HEADER*/
-.organismHeader{width: 688px; height: 82px; background: #fff; overflow:auto;}
-.organismHeaderImage{width: 72px; height: 72px; line-height: 72px; padding: 5px; float: left; }
+.organismHeader{width: 688px; min-height: 82px; background: #fff; overflow:auto;}
+.organismHeaderImage{width: 72px; min-height: 72px; line-height: 72px; padding: 5px; float: left; }
 .organismHeaderImage img{vertical-align: middle;}
-.organismHeaderRight{width: 606px; height: 82px; background: #fff; overflow:auto; float: right;}
-.organismHeaderTitle{width: 436px; line-height: 72px; padding: 5px; vertical-align: middle; float: left; text-align:center; }
-.organismHeaderNotation{width: 150px;  height: 72px;  vertical-align: middle; padding: 5px; float: right; text-align:center;}
+.organismHeaderRight{width: 606px; min-height: 82px; background: #fff; overflow:auto; float: right;}
+.organismHeaderTitle{width: 436px; padding: 30px 5px 0 5px; float: left; text-align:center; }
+.organismHeaderNotation{width: 150px;  min-height: 72px;  padding: 30px 5px 0 5px; float: right; text-align:center;}
 .organismHeader h3{font-size: 20px;}
 /*BODY*/
 .organismShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
@@ -240,11 +255,11 @@ body {font-size:75%;
 
                                                             /* ---------------------PAGE user SHOW'---------------------- */
 /*HEADER*/
-.userHeader{width: 688px; height: 82px; background: #fff; overflow:auto;}
-.userHeaderImage{width: 72px; height: 72px; line-height: 72px; padding: 5px; float: left; }
+.userHeader{width: 688px; min-height: 82px; background: #fff; overflow:auto;}
+.userHeaderImage{width: 72px; min-height: 72px; line-height: 72px; padding: 5px; float: left; }
 .userHeaderImage img{vertical-align: middle;}
-.userHeaderRight{width: 606px; height: 82px; line-height: 82px; background: #fff; overflow:auto; float: right;}
-.userHeader h3{font-size: 20px; text-align: center; vertical-align: middle;}
+.userHeaderRight{width: 596px; min-height: 82px; padding: 30px 5px 0 5px; background: #fff; overflow:auto; float: right;}
+.userHeader h3{font-size: 20px; text-align: center;}
 /*BODY*/
 .userShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .userShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
@@ -264,7 +279,7 @@ body {font-size:75%;
 .galleriesHeader{width: 688px; background: #fff; overflow:auto; margin-bottom: 10px;}
 .galleriesHeaderTitle{width: 517px; padding: 10px; float: right; text-align:center; }
 .galleriesHeaderTitle h3{font-size: 20px; text-align: center;}
-.galleriesHeaderImage {width: 126px; height: 126px; line-height: 126px; padding: 10px; float: left; }
+.galleriesHeaderImage {width: 126px; min-height: 126px; line-height: 126px; padding: 10px; float: left; }
 .galleriesHeaderImage img{vertical-align: middle;}
 .galleriesHeaderNotation {width: 146px; background: #fff; overflow:auto; float: right; padding: 10px 193px 10px 193px; text-align: center; }
 .galleriesHeaderRight {width: 532px; background: #fff; overflow:auto; float: right; padding: 5px; text-align: right; }
@@ -495,7 +510,7 @@ legend {font-weight:bold;font-size:1.2em;}
 input[type=text], input[type=password], input.text, input.title, textarea, select {background-color:#fff;border:1px solid #bbb;}
 input[type=text]:focus, input[type=password]:focus, input.text:focus, input.title:focus, textarea:focus, select:focus {border-color:#666;}
 input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0.5em 0;}
-input.text, input.title {width:450px;padding:5px;}
+input.text, input.title {width:400px;padding:5px;}
 input.title {font-size:1.5em;}
 textarea {padding:5px;}
 

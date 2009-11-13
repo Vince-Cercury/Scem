@@ -1,127 +1,143 @@
 <% form_for(@event, :live_validations => true) do |f| %>
-  <%= f.error_messages %>
-  <div class="span-3">
-    <%= display_event_cover(@event, :thumb) %>
-  </div>
-  <div class="span-12">
-    <h3><%= f.text_field :name, :class => 'title' %></h3>
-  </div>
-  <div class="span-2 last">
-    <% if current_user && @event.is_user_moderator?(current_user) %>
-      <br /><br />
-      (  <%= link_to t('events.edit.Destroy'), @event, :confirm => t('events.edit.Are_you_sure'), :method => :delete %> )
-    <% end %>
-  </div>
-  <hr />
   <%= render :partial => "/events/sub_header" %>
+  <div class="eventEditBody">
 
-  <div class="span-8 colborder">
-    <div class="box">
+    <%= f.error_messages %>
+    <div class="eventEditBodyLeft">
       <% if @event.picture.nil? %>
-        <%= get_default_event_picture(@event, :medium) %><br />
-        <%= link_to(t('events.edit.Attach_picture'), new_url_for_even_polymorphic(@event, :picture)) %>
+        <%= get_default_event_picture(@event, :medium) %>
+        <div class="eventEditBodyLeftContent">
+          <%= link_to(t('events.edit.Attach_picture'), new_url_for_even_polymorphic(@event, :picture)) %>
+        </div>
       <% else %>
-        <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %><br />
-        <%= link_to(t('events.edit.Change_image'), new_url_for_even_polymorphic(@event, :picture)) %>
+        <%= link_to(image_tag(@event.picture.attached.url(:medium)), url_for_even_polymorphic(@event.picture))  %>
+        <div class="eventEditBodyLeftContent">
+          <%= link_to(t('events.edit.Change_image'), new_url_for_even_polymorphic(@event, :picture)) %>
+        </div>
       <% end %>
     </div>
-  </div>
-  <div class="span-8 last">
-    <div class="box">
-      <%= f.text_area :description_short, :cols => 35, :rows => 5  %>
+    <div class="eventEditBodyRight">
+      <h3><%= t('events.edit.Title')  %></h3>
+      <%= f.text_field :name, :class => 'title'%>
     </div>
-    <div class="box">
-      <b><%=t('events.edit.Is_charged')  %></b>
-      <%= f.check_box :is_charged %><br />
-      <b><%= t('events.edit.Is_private') %></b>
-      <%= f.check_box :is_private %><br />
-    </div>
-  </div>
-  <hr />
 
-  <%= f.label :categories %>
-  <%=  swapselect :event,
-    @event,
-    :categories,
-    categories_to_display.map{ |category| [category.name.gsub(/[']/, '\\\\\''), category.id] }
-%>
-
-  <hr />
-  <div class="box">
-    <%= f.label :description_long %><br />
-    <%= fckeditor_textarea(:event, :description_long, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
-
-  </div>
-  <hr />
-  <div class="span-8 colborder">
-    <div class="box">
-      <%= f.label :places %><br />
-      <%= collection_select :contributions,
-        :place_ids,
-        Organism.find_all_by_state('active', :order =>'name'),
-        :id, :name,{ :selected => @event.get_first_place, :include_blank => true},
-        { :multiple => false } -%>
+    <div class="eventEditBodyCenter">
+      <h3><%= t('events.edit.Sumarry')  %></h3>
+      <%= f.text_area :description_short, :cols => 80, :rows => 10  %>
     </div>
-    <div class="span-8 last">
-    </div>
-    <div class="box">
+    <div class="eventEditBodyCenter">
       <p>
-        <%= f.label :location %>:<br />
-        <%= f.text_field :location %>
+        <%=t('events.edit.Is_charged')  %>
+        <%= f.check_box :is_charged %>
       </p>
       <p>
-        <%= f.label :street %>:<br />
-        <%= f.text_field :street %>
-      </p>
-      <p>
-        <%= f.label :city %>:<br />
-        <%= f.text_field :city %>
+        <%= t('events.edit.Is_private') %>
+        <%= f.check_box :is_private %>
       </p>
     </div>
-  </div>
-  <hr />
-  <% if current_user.is_admin_or_moderator_of.size>0 or current_user.has_system_role("moderator") %>
-    <div class="box">
-      <b><%= t('events.edit.Publisher') %></b><br />
+
+    <div class="eventEditBodyCenter">
+      <h3><%= t('events.edit.Categories') %></h3>
+      <%=  swapselect :event,
+        @event,
+        :categories,
+        categories_to_display.map{ |category| [category.name.gsub(/[']/, '\\\\\''), category.id] }, :size => 7
+    %>
+    </div>
+
+    <div class="eventEditBodyCenter">
+      <h3><%= t('events.edit.Description') %></h3>
+      <%= fckeditor_textarea(:event, :description_long, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
+    </div>
+
+    <div class="eventEditBodyCenter">
+      <h3><%= t('events.edit.Adress') %></h3>
+      <div class="eventEditBodyCenterLeft">
+        <p>
+          <%= f.label :location %>
+        </p>
+      </div>
+      <div class="eventEditBodyCenterRight">
+        <%= collection_select :contributions,
+          :place_ids,
+          Organism.find_all_by_state('active', :order =>'name'),
+          :id, :name,{ :selected => @event.get_first_place, :include_blank => true},
+          { :multiple => false, :class => 'textField' } -%>
+      </div>
+
+      <div class="eventEditBodyCenterLeft">
+        <p>
+          <%= f.label :places %>
+        </p>
+      </div>
+      <div class="eventEditBodyCenterRight">
+        <%= f.text_field :location, :class => 'textField' %>
+      </div>
+
+      <div class="eventEditBodyCenterLeft">
+        <p>
+          <%= f.label :street %>
+        </p>
+      </div>
+      <div class="eventEditBodyCenterRight">
+        <%= f.text_field :street, :class => 'textField' %>
+      </div>
+
+      <div class="eventEditBodyCenterLeft">
+        <p>
+          <%= f.label :city %>
+        </p>
+      </div>
+      <div class="eventEditBodyCenterRight">
+        <%= f.text_field :city, :class => 'textField' %>
+      </div>
+
+    </div>
+    <% if current_user.is_admin_or_moderator_of.size>0 or current_user.has_system_role("moderator") %>
+      <div class="eventEditBodyCenter">
+        <h3><%= t('events.edit.Publisher') %></h3>
     <%# if get_list_organism_rights_user(current_user).size > 1 %>
-      <%= collection_select :contributions,
-        :publisher_ids,
-        get_list_organism_rights_user(current_user),
-        :id, :name,{ :selected => @event.get_first_publisher, :include_blank => true },
-        { :multiple => false } -%>
+        <%= collection_select :contributions,
+          :publisher_ids,
+          get_list_organism_rights_user(current_user),
+          :id, :name,{ :selected => @event.get_first_publisher, :include_blank => true },
+          { :multiple => false } -%>
     <%# elsif get_list_organism_rights_user(current_user).size == 1 %>
     <%#= get_list_organism_rights_user(current_user).first.name %>
     <%# end %>
+      </div>
+      <div class="eventEditBodyCenter">
+        <h3><%= t('events.edit.Organizers') %></h3>
+        <%= swapselect :contributions,
+          @event,
+          :organizer,
+          Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }, :size => 10
+        #get_list_organism_rights_user(current_user).map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
+        %>
+      </div>
+      <div class="eventEditBodyCenter">
+        <h3><%= t('events.edit.Partners') %></h3>
+        <%= swapselect :contributions,
+          @event,
+          :partner,
+          Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }, :size => 10
+      %>
+      </div>
+    <% end %>
+
+    <div class="eventEditBodyCenter">
+      <h3><%= t('events.edit.Date') %></h3>
     </div>
-    <hr />
 
-    <%= f.label :organizers %><br />
-    <%= swapselect :contributions,
-      @event,
-      :organizer,
-      Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
-    #get_list_organism_rights_user(current_user).map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
-    %>
-
-    <hr />
-
-
-    <%= f.label :partners %><br />
-    <%= swapselect :contributions,
-      @event,
-      :partner,
-      Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
-  %>
-    <hr />
+    <div id="terms">
+      <%= render :partial => 'term', :collection => @event.terms %>
+    </div>
+    <div class="eventEditBodyCenter">
+      <%= add_term_link t('events.edit.add_term') %>
+    </div>   
+    <div class="eventEditBodyCenter">
+      <%= f.submit t('events.edit.Update') %>
+    </div>
   <% end %>
-  <div id="terms">
-    <%= render :partial => 'term', :collection => @event.terms %>
-  </div>
-  <p><%= add_term_link t('events.edit.add_term') %></p>
 
-  <div class="box">
-    <%= f.submit t('events.edit.Update') %>
-  </div>
-<% end %>
-
-<%= link_to t('events.edit.Show'), @event %>
+</div>
