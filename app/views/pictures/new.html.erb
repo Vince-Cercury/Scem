@@ -1,13 +1,18 @@
 <%= render :partial => "header" %>
 
-<% form_for(@picture, :url => url_for_even_polymorphic(@picture), :html => { :multipart => true }) do |f| %>
+<div class="pictureNew">
 
-  <%=  hidden_field_tag :parent_id, @parent_object.id %>
-  <%=  hidden_field_tag :parent_type, @parent_object.class.to_s %>
+  <% form_for(@picture, :url => url_for_even_polymorphic(@picture), :html => { :multipart => true }) do |f| %>
 
-<%= render :partial => 'form', :locals => {:f => f} %>
+    <%=  hidden_field_tag :parent_id, @parent_object.id %>
+    <%=  hidden_field_tag :parent_type, @parent_object.class.to_s %>
+    <div class="pictureNewCenter">
+      <%= render :partial => 'form', :locals => {:f => f}%>
+    </div>
 
-  <p>
-    <%= f.submit t('pictures.new.Create')%>
-  </p>
-<% end %>
+    <div class="pictureNewCenter">
+      <%= f.submit t('pictures.new.Create')%>
+    </div>
+  <% end %>
+
+</div>

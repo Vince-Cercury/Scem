@@ -68,67 +68,38 @@ body {font-size:75%;
 .contentleft{width: 687px; float: left; margin: 0 10px 0 20px; position:relative;}
 .information{width:678px; background:#fff; color:#000; padding: 0 5px 0 5px; margin: 0 0 10px 0;}
 .accueil{width: 688px; padding: 0 0 0 0; background: #000; float: left;}
-.noEvent{width: 668px; padding: 5px; margin: 0 0 0 0; background: #f0882f; color: #000; text-align: center; font-weight: bold;}
-.noEventMessage{width: 668px; padding: 5px; margin: 0 0 0 0; background: #000; color: #ffb500; text-align: center; font-weight: bold;}
 
-
-.listContent{width: 678px; padding: 10px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
+/*Non utilisé mais a conserver*/
 .list{width: 668px; margin: 0; padding: 5px 5px 5px 5px; background: #000; float: left;}
 .listSeparator{position:relative; width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center; overflow: auto;}
 .listLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: left;}
 .listRight{width:507px; margin: 0; padding: 5px; background: #fff; float: right; text-align: left;}
 .listRight h4 {font-size: 16px; text-align:center;}
+/*Non utilisé mais a conserver*/
 
-.listContent{width: 678px; padding: 10px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
 
+                                                        /* ---------------------EVENT LIST---------------------- */
+
+.listContent{width: 678px; padding: 10px 5px 5px 5px; background: #fff; overflow: auto; float: left;}
 .listTerm{width: 668px; margin: 0; padding: 5px 5px 5px 5px; background: #000; float: left;}
 .listTermSeparator{position:relative; width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center; overflow: auto;}
-
 .listTermRight{width:600px; margin: 0; padding: 0; background: #fff; float: right; text-align: left;}
 .listTermRightTitle{width: 590px; padding: 5px; background: #fff; float: left; text-align: center; }
 .listTermRightTitle h4 {font-size: 16px; text-align:center;}
-
 .listTermRightContent{width: 600px; overflow: auto; float: left;}
 .listTermRightContentLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
 .listTermRightContentRight{width:439px; margin: 0; padding: 5px; background: #fff; float: right;}
-
 .listTermRightBottom{width: 600px; overflow: auto; float: left;}
 .listTermRightBottomLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
 .listTermRightBottomRight{width:439px; margin: 0; padding: 5px; background: #fff; float: right; text-align:left;}
-
-
-
+.noEvent{width: 668px; padding: 5px; margin: 0 0 0 0; background: #f0882f; color: #000; text-align: center; font-weight: bold;}
+.noEventMessage{width: 668px; padding: 5px; margin: 0 0 0 0; background: #000; color: #ffb500; text-align: center; font-weight: bold;}
 /*----kangoo date-----*/
-.kangooDate {
-    background-image:url('/images/body/kangooDate.png');
-    background-repeat: no-repeat;
-    margin: 5px;
-    padding: 0;
-    height:52px;
-    width:58px;
-    float: left;
-    text-align: left;
-}
-.kangooDayDate{
-    font-size:20px;
-    font-weight: bold;
-    padding: 0 0 0 10px;
-    vertical-align: middle;
-}
-.kangooMonthDate{
-    margin: -5px 0 0 0;
-    padding: 0 0 0 10px;
-    font-size: 12px;
-}
+.kangooDate {background-image:url('/images/body/kangooDate.png');  background-repeat: no-repeat; margin: 5px; padding: 0; height:52px; width:58px; float: left; text-align: left;}
+.kangooDayDate{ font-size:20px; font-weight: bold; padding: 0 0 0 10px; vertical-align: middle;}
+.kangooMonthDate{ margin: -5px 0 0 0; padding: 0 0 0 10px; font-size: 12px; }
 
-.bottomEventDate{
-    margin: 0 0 5px 0;  
-    vertical-align: bottom;
-    float:left;
-    position: absolute;
-    bottom: 0;
-    left: 155px;
-}
+
 
 #imagetitle{width:100%; height:100%;}
 
@@ -328,6 +299,10 @@ body {font-size:75%;
 .pictureShowRight{width: 329px; padding: 5px; margin: 0; background: #fff; float: right; text-align: left;}
 .pictureShowPicure{width: 504px; height: 504px; line-height: 504px; padding: 10px 87px 10px 87px; margin: 0; background: #fff; float: left; text-align: center;}
 .pictureShowPicure img{text-align: center; vertical-align: middle;}
+
+.pictureNew{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
+.pictureNewCenter{width: 668px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left; text-align: center;}
+.descriptionPhoto{width: 500px;}
 
 .pictureShowEdit{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
 .pictureShowEditLeft{width: 256px; height:256px; line-height:256px; padding: 5px; margin: 0; background: #fff; float: left; text-align: right;}

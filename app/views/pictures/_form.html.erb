@@ -1,9 +1,9 @@
- <%= f.error_messages %>
+<%= f.error_messages %>
 
-    <%= f.file_field :attached %>
+<%= f.file_field :attached %>
 
 
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
+<p>
+  <%= t('pictures.new.Description')%>
+</p>
+<%= f.text_area :description, :cols => 50, :rows => 5 %>

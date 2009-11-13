@@ -608,6 +608,7 @@ fr-FR:
       Comments: "Commentaires :"
     new:
       Create: "Cr&eacute;er"
+      Description: "Entrez une description &#224; votre image :"
     index:
       Listing_pictures: "Liste des photos"
       New_picture: "Nouvelle image"
