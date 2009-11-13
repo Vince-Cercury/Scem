@@ -71,7 +71,7 @@ ActionController::Routing::Routes.draw do |map|
   end
 
 
-  map.resources :events, :member => {:share => :get, :do_share => :put} do |event|
+  map.resources :events, :member => {:share => :get, :do_share => :put, :cancel => :put} do |event|
     event.resources :participations
     event.resources :galleries, :member => {:set_cover => :get, :move_a_pic => :get, :add_pics => :get,  :edit_pics => :get,  :do_add_pics => :put   } do |gallery|
       gallery.resources :pictures, :member => { :suspend   => :get,
