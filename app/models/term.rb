@@ -58,6 +58,7 @@ class Term < ActiveRecord::Base
   has_many :participants, :through => :participations
 
   with_options :through => :participations, :source => :user do |obj|
+    obj.has_many :maybe_or_sure_participants, :conditions => "participations.role = 'sure' or participations.role = 'maybe'"
     obj.has_many :sure_participants, :conditions => "participations.role = 'sure'"
     obj.has_many :maybe_participants, :conditions => "participations.role = 'maybe'"
     obj.has_many :not_participants, :conditions => "participations.role = 'not'"

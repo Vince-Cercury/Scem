@@ -17,14 +17,10 @@
     <div class="galleriesBox">
       <% for picture in @gallery.pictures %>
         <div class="galleriesBoxImage">
-
             <%= link_to(image_tag(picture.attached.url(:small)), polymorphic_path([@gallery.get_parent_object, @gallery, picture].flatten)) %>
           <div class="galleriesBoxImageNotation">
             <%= render :partial => "rating/mini_rating", :locals => { :current_object => picture } if picture.rating > 0 %>
           </div>
-
-            
-
         </div>
       <% end %>
     </div>

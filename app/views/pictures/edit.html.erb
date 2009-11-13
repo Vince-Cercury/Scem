@@ -1,19 +1,27 @@
+
 <%= render :partial => "header" %>
-<hr />
-<h3><%= t('pictures.edit.Editing_picture') %></h3>
 
-<%=  image_tag(@picture.attached.url(:medium)) %>
+<div class="pictureShowEdit">
 
-<% form_for(@picture, :url => url_for_even_polymorphic(@picture), :html => { :multipart => true }) do |f| %>
+  <div class="pictureShowEditLeft">
 
- <%= f.error_messages %>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
+    <%=  image_tag(@picture.attached.url(:medium)) %>
+  </div>
 
- 
-  <p>
-    <%= f.submit t('pictures.edit.Update') %>
-  </p>
-<% end %>
+  <div class="pictureShowEditRight">
+    <% form_for(@picture, :url => url_for_even_polymorphic(@picture), :html => { :multipart => true }) do |f| %>
+
+      <%= f.error_messages %>
+      
+        <%= t('pictures.edit.Description') %>
+      
+        <%= f.text_area :description, :cols => 50, :rows => 5 %>
+      
+
+    </div>
+    <div class="pictureShowEditCenter">
+      <%= f.submit t('pictures.edit.Update') %>
+    </div>
+
+  <% end %>
+</div>

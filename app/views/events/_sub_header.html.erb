@@ -77,9 +77,14 @@
   <%= link_to(t('events.subheader.Share'), share_event_path(@event), :class => 'selected') %>
   </li>
 <% end %>
-<% if current_user && @event.is_user_moderator?(current_user) %>
+<% if current_user && @event.is_user_moderator?(current_user) && !@event.canceled? %>
   <li>
   <%= link_to t('events.subheader.Destroy'), @event, :confirm => t('events.subheader.Are_you_sure'), :method => :delete %>
   </li>
 <% end %>
+  <%# if current_user && @event.is_user_moderator?(current_user) && @event.canceled? %>
+  <%#*<li>%>
+  <%#= link_to t('events.subheader.UnDestroy'), @event, :confirm => t('events.subheader.Are_you_sure'), :method => :undestroy %>
+  <%#*</li>%>
+<%# end %>
 </ul>

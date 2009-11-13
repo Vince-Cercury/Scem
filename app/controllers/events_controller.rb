@@ -174,7 +174,7 @@ class EventsController < ApplicationController
         #add the categories not to display in the list of categories of the event
         add_categories_not_to_display(@event)
 
-        flash[:notice] = I18n.t('event.controller.Successfully_updated')
+        flash[:notice] = I18n.t('events.controller.Successfully_updated')
         format.html { redirect_to(@event) }
         format.xml  { head :ok }
       else
@@ -210,7 +210,7 @@ class EventsController < ApplicationController
     if destroyable
       #destroy in cascade
       event.destroy
-      flash[:notice] = 'Event successfully destroyed.'
+      flash[:notice] = I18n.t('events.controller.Successfully_destroyed')
       respond_to do |format|
         format.html { redirect_to(root_path) }
         format.xml  { head :ok }
@@ -218,7 +218,7 @@ class EventsController < ApplicationController
     else
       if cancelable
         event.cancel!
-        flash[:notice] = 'Event successfully canceled.'
+        flash[:notice] = I18n.t('events.controller.Successfully_cancelled')
         respond_to do |format|
           format.html { redirect_to(root_path) }
           format.xml  { head :ok }
@@ -228,17 +228,17 @@ class EventsController < ApplicationController
 
           @event = event
 
-          @cancel_message = I18n.t('event.cancel.Send_notification.header')
+          @cancel_message = I18n.t('events.controller.cancel.Send_notification.Header', :event_name => event.name)
           if event.terms.size > 0
             @cancel_message += "\n"
           end
           event.terms.each do |term|
-            @cancel_message += '\n'+ display_term_box(term.start_at, term.end_at) + '\n'
+            @cancel_message += "\n"+ display_term_box(term.start_at, term.end_at) + "\n"
           end
           if event.terms.size > 0
             @cancel_message += "\n"
           end
-          @cancel_message += I18n.t('event.cancel.Send_notification.footer')
+          @cancel_message += I18n.t('events.controller.cancel.Send_notification.Footer')
 
          
           format.html
@@ -249,12 +249,43 @@ class EventsController < ApplicationController
   end
 
   def cancel
-    event.cancel!
-    flash[:notice] = 'Event successfully canceled.'
-    respond_to do |format|
-      format.html { redirect_to(root_path) }
-      format.xml  { head :ok }
+
+    event = Event.find(params[:id])
+
+
+    mail = Mail.new(:sender => current_user, :subject => I18n.t('events.controller.cancel.Send_notification.Subject'), :body => params[:message])
+
+    event.terms.each do |term|
+      term.maybe_or_sure_participants.each do |user|
+        recipient = Recipient.new
+        recipient.user = user
+        mail.recipients << recipient
+      end
     end
+
+    if(mail.save!)
+      Delayed::Job.enqueue(EmailsSenderJob.new(mail.id),2)
+      #for testing purpose
+      #job = EmailsSenderJob.new(mail.id)
+      #job.perform
+      event.cancel!
+      flash[:notice] = I18n.t('events.controller.Successfully_cancelled')
+      respond_to do |format|
+        format.html { redirect_to(root_path) }
+        format.xml  { head :ok }
+      end
+    else
+      flash[:error] = "A problem occured when creating the mailing. Please, try again or contact an admin."
+      redirect_to event
+    end
+
+
+    #    event.cancel!
+    #    flash[:notice] = I18n.t('events.controller.Successfully_cancelled')
+    #    respond_to do |format|
+    #      format.html { redirect_to(root_path) }
+    #      format.xml  { head :ok }
+    #    end
   end
 
 
@@ -360,7 +391,7 @@ class EventsController < ApplicationController
               contribution.event_id=@event.id
               contribution.organism_id=contributor.id
               contribution.role=role
-              contribution.save      
+              contribution.save
             rescue
               throw Exception.new "Unable to retrieve an organism with id '#{id}' to create a contribution"
             end

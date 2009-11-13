@@ -114,7 +114,7 @@ body {font-size:75%;
 .titlepartners {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000; background-image:url('/images/header/french/partenaires.png');background-repeat: no-repeat;}
 .titlediary {width: 143px; height: 30px; margin: 0 0 0 10px; background: #000;background-image:url('/images/header/french/monagenda.png');background-repeat: no-repeat;}
 .titlecomment {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/commentaires.png');background-repeat: no-repeat; float: left;}
-.titledescription {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/description.png');background-repeat: no-repeat;}
+.titledescription {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/description.png');background-repeat: no-repeat; float:left;}
 .titleorganisateurs {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/organisateurs.png');background-repeat: no-repeat;}
 .titlemembres {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/membres.png');background-repeat: no-repeat; float: left;}
 .titlemembre {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/membre.png');background-repeat: no-repeat; float: left;}
@@ -253,6 +253,24 @@ body {font-size:75%;
 .galleriesBoxEdit {width: 658px; margin: 0 0 0 0; padding: 0; background: #fff; float: left; text-align: center;}
 
 
+                                                /* ---------------------PAGE PICTURE SHOW---------------------- */
+
+.pictureShowContent{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
+.pictureShowNotation{width: 150px; padding: 5px 264px 5px 264px; margin: 0; background: #fff; float: left; text-align: center;}
+.pictureShowCenter{width: 678px; padding: 0; margin: 0; background: #fff; overflow: auto; float: left;}
+.pictureShowLeft{width: 329px; padding: 5px; margin: 0; background: #fff; float: left; text-align: right;}
+.pictureShowRight{width: 329px; padding: 5px; margin: 0; background: #fff; float: right; text-align: left;}
+.pictureShowPicure{width: 504px; height: 504px; line-height: 504px; padding: 10px 87px 10px 87px; margin: 0; background: #fff; float: left; text-align: center;}
+.pictureShowPicure img{text-align: center; vertical-align: middle;}
+
+.pictureShowEdit{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
+.pictureShowEditLeft{width: 256px; height:256px; line-height:256px; padding: 5px; margin: 0; background: #fff; float: left; text-align: right;}
+.pictureShowEditRight{width: 402px; padding: 50px 5px 25px 5px; margin: 0; background: #fff; float: right; text-align: left; font-weight: bold;}
+.pictureShowEditLeft img{text-align: center; vertical-align: middle;}
+.pictureShowEditCenter{width: 678px; padding: 0; margin: 0; background: #fff; overflow: auto; float: left; text-align: center;}
+
+                                                /* ---------------------EDIT ACCOUNT---------------------- */
+
 .editAccountBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; float: left;}
 .editAccountBodyLeft{width: 229px; padding: 5px; height: 35px; line-height: 35px; background: #fff; float: left;}
 .editAccountBodyLeft p{vertical-align: middle; text-indent: 0; text-align: right;}
@@ -333,7 +351,7 @@ body {font-size:75%;
 .GalleryListRight h4 {text-align:center; font-size: 16px;}
                                                 /* ---------------------COMMENTAIRE'---------------------- */
 .commentaireContent{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
-.commentaire{width: 678px; margin: 1px 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
+.commentaire{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .commentaireLeft{width: 86px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .commentaireRight{width: 572px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 .commentaireRightEdit {text-align: right;}

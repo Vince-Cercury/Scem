@@ -36,7 +36,14 @@ class PicturesController < ApplicationController
     #the object comment is needed for displaying the form of new comment
     initialize_new_comment(@picture)
 
+    @comments = @picture.comments
+
     @parent_object = @picture.get_parent_object
+
+    if @picture.parent_type == 'Gallery'
+      @header_gallery  = '/galleries/header'
+      @gallery = @parent_object
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -62,6 +69,13 @@ class PicturesController < ApplicationController
   # GET /pictures/1/edit
   def edit
     @picture = Picture.find(params[:id])
+
+    @parent_object = @picture.get_parent_object
+
+    if @picture.parent_type == 'Gallery'
+      @header_gallery  = '/galleries/header'
+      @gallery = @parent_object
+    end
   end
 
   # POST /pictures
