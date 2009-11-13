@@ -246,6 +246,7 @@ fr-FR:
     index:
       listing_activities: "Liste des organismes"
     edit:
+      Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. Vous avez la possibilité de le remplir partiellement et de le compl&eacute;ter ult&#233;rieurement. L'organisme est soumis &#224; une validation, il sera donc valid&eacute; une fois que vous aurez enti&#233;rement compl&eacute;t&eacute; ce formulaire."
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
       Attach_picture: "Joindre une photo !"
