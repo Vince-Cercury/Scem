@@ -79,13 +79,35 @@ body {font-size:75%;
 .listRight{width:507px; margin: 0; padding: 5px; background: #fff; float: right; text-align: left;}
 .listRight h4 {font-size: 16px; text-align:center;}
 
+.listContent{width: 678px; padding: 10px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
+
+.listTerm{width: 668px; margin: 0; padding: 5px 5px 5px 5px; background: #000; float: left;}
+.listTermSeparator{position:relative; width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center; overflow: auto;}
+
+.listTermRight{width:600px; margin: 0; padding: 0; background: #fff; float: right; text-align: left;}
+.listTermRightTitle{width: 590px; padding: 5px; background: #fff; float: left; text-align: center; }
+.listTermRightTitle h4 {font-size: 16px; text-align:center;}
+
+.listTermRightContent{width: 600px; overflow: auto; float: left;}
+.listTermRightContentLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
+.listTermRightContentRight{width:439px; margin: 0; padding: 5px; background: #fff; float: right;}
+
+.listTermRightBottom{width: 600px; overflow: auto; float: left;}
+.listTermRightBottomLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
+.listTermRightBottomRight{width:439px; margin: 0; padding: 5px; background: #fff; float: right; text-align:left;}
+
+
+
 /*----kangoo date-----*/
 .kangooDate {
     background-image:url('/images/body/kangooDate.png');
     background-repeat: no-repeat;
-    margin: 0 0 10px 0;
+    margin: 5px;
+    padding: 0;
     height:52px;
     width:58px;
+    float: left;
+    text-align: left;
 }
 .kangooDayDate{
     font-size:20px;

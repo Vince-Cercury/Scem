@@ -1,41 +1,52 @@
 <div id="results">
   <% if @terms.size > 0 %>
-    <div class="list">
+    <div class="listTerm">
       <% @terms.each do |term| %>
         <% event=term.event %>
-        <div class="listSeparator">
-          <div class="listLeft">
-            <div class="kangooDate">
-              <div class="kangooDayDate"><%= l(term.start_at,:format => 'day_number') %></div>
-              <div class="kangooMonthDate"><%= l(term.start_at,:format => 'only_short_month') %></div>
-            </div>
-            <%= display_term_cover(term, :small) %>
+        <div class="listTermSeparator">
+          <div class="kangooDate">
+            <div class="kangooDayDate"><%= l(term.start_at,:format => 'day_number') %></div>
+            <div class="kangooMonthDate"><%= l(term.start_at,:format => 'only_short_month') %></div>
           </div>
-          <div class="listRight">
 
-            <h4><%= link_to(event.name, get_event_if_term_url(term)) %></h4>
-            <% if !h(term.description).blank? %>
-              <p>
-                <%= term.description %>
-              </p>
-            <% else %>
-              <p>
-                <%=h event.description_short %>
-              </p>
-            <% end %>
 
-            <div class="quiet">
-              <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
-              <%= link_to(t('events.terms.Number_of_participants') + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
-              <%= link_to(t('events.terms.Number_of_comments') + event.comments.size.to_s, event) unless event.comments.size == 0 %><br />
+          <div class="listTermRight">
+            <div class="listTermRightTitle">
+              <h4><%= link_to(event.name, get_event_if_term_url(term)) %></h4>
             </div>
-          </div>
-          <div class="bottomEventDate">
-            <% if @show_end_date%>
-              <%=  display_term_box(term.start_at, term.end_at) %>
-            <% else %>
-              <%=  display_date_box(term.start_at) %>
-            <% end %>
+
+            <div class="listTermRightContent">
+              <div class="listTermRightContentLeft">
+                <%= display_term_cover(term, :small) %>
+              </div>
+              <div class="listTermRightContentRight">
+                <% if !h(term.description).blank? %>
+                  <p>
+                    <%= term.description %>
+                  </p>
+                <% else %>
+                  <p>
+                    <%=h event.description_short %>
+                  </p>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="listTermRightBottom">
+              <div class="listTermRightBottomLeft">
+                <%= render :partial => "rating/mini_rating", :locals => { :current_object => event } if event.rating > 0 %>
+                <%= link_to(t('events.terms.Number_of_participants') + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
+                <%= link_to(t('events.terms.Number_of_comments') + event.comments.size.to_s, event) unless event.comments.size == 0 %>
+              </div>
+              <div class="listTermRightBottomRight">
+                <% if @show_end_date%>
+                  <%=  display_term_box(term.start_at, term.end_at) %>
+                <% else %>
+                  <%=  display_date_box(term.start_at) %>
+                <% end %>
+              </div>
+            </div>
+
           </div>
         </div>
       <% end %>

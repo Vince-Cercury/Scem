@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(:version => 20091112233603) do
     t.string   "name"
     t.text     "description_short"
     t.text     "description_long"
-    t.boolean  "is_charged",        :default => false,     :null => false
-    t.boolean  "is_private",        :default => false,     :null => false
+    t.boolean  "is_charged",        :default => false
+    t.boolean  "is_private",        :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "created_by"
@@ -142,10 +142,10 @@ ActiveRecord::Schema.define(:version => 20091112233603) do
     t.boolean  "in_directory",                       :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "activation_code",     :limit => 40
-    t.datetime "deleted_at"
-    t.datetime "activated_at"
     t.string   "state",                              :default => "passive"
+    t.string   "activation_code",     :limit => 40
+    t.datetime "activated_at"
+    t.datetime "deleted_at"
     t.string   "members_password"
     t.integer  "created_by"
     t.integer  "edited_by"
@@ -190,12 +190,12 @@ ActiveRecord::Schema.define(:version => 20091112233603) do
     t.datetime "attached_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",              :default => 1
     t.string   "state",                 :default => "passive"
     t.datetime "suspended_at"
     t.integer  "suspended_by"
     t.datetime "activated_by"
     t.integer  "activated_at"
-    t.integer  "position",              :default => 1
     t.boolean  "cover",                 :default => false
   end
 

@@ -43,7 +43,7 @@ module TermsHelper
 
     if (date.to_date == today or date.to_date == tomorrow or date.to_date == yesterday)
       result =the_day
-      result +='<br />'+t("at")+' '
+      result +=' '+t("at")+' '
       result += date.strftime("%H:%M")
     end
 
