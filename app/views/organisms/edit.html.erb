@@ -27,11 +27,11 @@
     </div>
     <div class="box">
         <p>
-          <%= f.label :street %>:<br />
+          <%= t('organisms.edit.Street') %><br />
           <%= f.text_field :street %>
         </p>
         <p>
-          <%= f.label :city %>:<br />
+          <%= t('organisms.edit.City') %><br />
           <%= f.text_field :city %>
         </p>
       </div>
@@ -51,15 +51,15 @@
       <%= f.check_box :in_directory %>
       <br />
       <p>
-        <%= f.label :admins_password %>:<br />
+        <%= t('organisms.edit.Admins_pwd') %><br />
         <%= f.text_field :admins_password %>
       </p>
       <p>
-        <%= f.label :moderators_password %>:<br />
+        <%= t('organisms.edit.Moderators_pwd') %><br />
         <%= f.text_field :moderators_password %>
       </p>
       <p>
-        <%= f.label :members_password %>:<br />
+        <%= t('organisms.edit.Members_pwd') %><br />
         <%= f.text_field :members_password %>
       </p>
     </div>
@@ -67,7 +67,7 @@
   <hr />
   <div class="box">
 
-    <b><%= f.label :activities %></b>
+    <b><%= t('organisms.edit.Activities') %></b>
     <%=  swapselect :organism,
       @organism,
       :activities,
@@ -79,7 +79,7 @@
   <hr />
 
     <div class="box">
-      <%= f.label :description_long %><br />
+      <%= t('organisms.edit.Long_description') %><br />
       <%= fckeditor_textarea(:organism, :description_long, :toolbarSet => 'Simple', :width => '100%', :height => '400px') %>
 
     </div>

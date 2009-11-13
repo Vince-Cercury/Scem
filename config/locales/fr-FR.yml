@@ -125,7 +125,7 @@ fr-FR:
       Comments: "Commentaires"
       Edit: "Editer"
       Share: "Partager"
-      Destroy: "Supprimer"
+      Destroy: "Annuler"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
   rating:
     Currently: "Actuellement "
@@ -239,6 +239,13 @@ fr-FR:
       Update: "Mettre &agrave; jour"
       Show: "Afficher"
       Back: "Retour"
+      Street: "Adresse :"
+      City: "Ville :"
+      Admins_pwd: "Mot de passe administrateur :"
+      Moderators_pwd: "Mot de passe mod&eacute;rateur : "
+      Members_pwd: "Mot de passe membres :"
+      Activities: "Activit&eacute;s"
+      Long_description: "Description longue"
     sub_header:
       Profile: "Profil"
       Blog: "Blog"
