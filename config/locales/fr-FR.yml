@@ -588,6 +588,7 @@ fr-FR:
     edit:
       Editing_picture: "Edition d'image"
       Update: "Mettre &agrave; jour"
+      Description: "Description : "
     list:
       Preview: "Aperçu"
       Parent: "Parent"
@@ -596,12 +597,12 @@ fr-FR:
       Edit: "Editer"
     header:
       Back_to: "Retour &agrave; "
-      Picture: "Photo"
+      Picture: "Photo&nbsp;"
       Organism: "l'organisme"
       Gallery: "la galerie"
       User: "l'utilisateur"
       Event: "l'&eacute;v&egrace;nement"
-      of: "de"
+      of: "&nbsp;de&nbsp;"
   participations:
     controller:
       Error_status_update: "Votre statut concernant cet &eacute;v&egrave;nement n'a pas pu &ecirc;tre modifi&eacute; su Facebook. D&eacute;sol&eacute;"

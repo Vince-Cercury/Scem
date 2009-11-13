@@ -69,6 +69,13 @@ class PicturesController < ApplicationController
   # GET /pictures/1/edit
   def edit
     @picture = Picture.find(params[:id])
+
+    @parent_object = @picture.get_parent_object
+
+    if @picture.parent_type == 'Gallery'
+      @header_gallery  = '/galleries/header'
+      @gallery = @parent_object
+    end
   end
 
   # POST /pictures

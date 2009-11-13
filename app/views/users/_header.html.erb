@@ -3,7 +3,7 @@
     <%= display_user_cover(@user, :thumb) %>
   </div>
   <div class="userHeaderRight">
-    <h3><%=h get_user_name_or_pseudo(@user) %></h3>
+    <h3><%= get_user_name_or_pseudo_link_by_id(@user.id) %></h3>
   </div>
 </div>
 

@@ -3,12 +3,20 @@
 
   <% if @picture.last_position != 0 %>
     <li>
-      <%= t('pictures.header.Picture') %>  <%= @picture.position %> <%= t('pictures.header.of') %> <%= @picture.last_position %>
+      <% if action_name == 'show' %>
+        <%= link_to(t('pictures.header.Picture') + "#{@picture.position}" + t('pictures.header.of') + "#{@picture.last_position}", @picture, :class => 'selected') %>
+      <% else %>
+        <%= link_to(t('pictures.header.Picture') + "#{@picture.position}" + t('pictures.header.of') + "#{@picture.last_position}", @picture) %>
+      <% end %>
     </li>
   <% end %>
   <% if is_picture_moderator?(@picture) %>
     <li>
-      <%= link_to t('pictures.show.Edit'), get_edit_picture_polymorphic_parent_url(@picture) %>
+      <% if action_name == 'edit' %>
+        <%= link_to t('pictures.show.Edit'), get_edit_picture_polymorphic_parent_url(@picture), :class => 'selected' %>
+      <% else %>
+        <%= link_to t('pictures.show.Edit'), get_edit_picture_polymorphic_parent_url(@picture) %>
+      <% end %>
     </li>
   <% end %>
   <li>
