@@ -54,6 +54,14 @@ fr-FR:
       Not_allowed_to_do_this: "Action non autoris&eacute;e."
       Not_allowed_to_do_this_login: "Action non autoris&eacute;e, essayez de vous connecter."
       Create_event_ve_to_be_admin: "Pour cr&eacute;er un &eacute;v&egrave;nement, vous devez au moins &ecirc;tre mod&eacute;rateur ou administrateur. Vous pouvez essayer de cr&eacute;er un organisme en premier."
+      cancel:
+        Send_notification:
+          Header: "Cet &eacute;v&egrave;nement a &eacute;t&eacute; annul&eacute; : {{event_name}}\n"
+          Footer: ""
+          Subject: "Evènement annulé"
+    cancel:
+      Form_title: "Message aux participants"
+      Form_submit: "Envoyer"
 
     listing_events: "LISTE DES EVENEMENTS"
     no_categories: "aucune"
@@ -134,7 +142,7 @@ fr-FR:
       Comments: "Commentaires"
       Edit: "Editer"
       Share: "Partager"
-      Destroy: "Supprimer"
+      Destroy: "Annuler"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
   rating:
     Currently: "Actuellement "
@@ -248,6 +256,13 @@ fr-FR:
       Update: "Mettre &agrave; jour"
       Show: "Afficher"
       Back: "Retour"
+      Street: "Adresse :"
+      City: "Ville :"
+      Admins_pwd: "Mot de passe administrateur :"
+      Moderators_pwd: "Mot de passe mod&eacute;rateur : "
+      Members_pwd: "Mot de passe membres :"
+      Activities: "Activit&eacute;s"
+      Long_description: "Description longue"
     sub_header:
       Profile: "Profil"
       Blog: "Blog"
@@ -276,6 +291,7 @@ fr-FR:
       only_if_u_know_it: " (seulement si vous le connaissez, facultatif)"
       Go: "Go"
       All_members: "Tout les membres"
+      Address: "Adresse :"
     new:
       Create: "Cr&eacute;er"
       Back: "Retour"
@@ -298,6 +314,7 @@ fr-FR:
       short1: "%d %B %Y"
       only_second: "%S"
       only_month: "%B"
+      only_short_month: "%b"
       day_number: "%d"
       day_name_and_number: "%A %d"
       day_name_and_number_and_month: "%A %d %B"

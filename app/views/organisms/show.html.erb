@@ -21,7 +21,7 @@
   <div class="organismShowBodyRight">
     <% if !get_organism_address_as_string(@organism).blank? %>
     <p>
-      <b>Address</b>:
+      <b><%= t('organisms.show.Address') %></b>
       <%= link_to(get_organism_address_as_string(@organism), organism_maps_path(@organism)) %>
     </p>
     <% end %>

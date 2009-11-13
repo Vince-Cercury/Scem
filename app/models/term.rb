@@ -58,6 +58,7 @@ class Term < ActiveRecord::Base
   has_many :participants, :through => :participations
 
   with_options :through => :participations, :source => :user do |obj|
+    obj.has_many :maybe_or_sure_participants, :conditions => "participations.role = 'sure' or participations.role = 'maybe'"
     obj.has_many :sure_participants, :conditions => "participations.role = 'sure'"
     obj.has_many :maybe_participants, :conditions => "participations.role = 'maybe'"
     obj.has_many :not_participants, :conditions => "participations.role = 'not'"
@@ -80,129 +81,129 @@ class Term < ActiveRecord::Base
     end
   end
 
-  def self.search_futur(search, page, is_private=false)
+  def self.search_futur(search, page, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
       :include => [ :event],
-      :conditions => ['events.name LIKE ? and events.is_private = ? and terms.start_at > NOW()', "%#{search}%", is_private],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and terms.start_at > NOW() and events.state = ?', "%#{search}%", is_private, event_state],
       :order => 'start_at ASC'
   end
 
-  def self.search_has_publisher_futur(search, page, per_page, is_private=false)
+  def self.search_has_publisher_futur(search, page, per_page, is_private=false, event_state='active')
     paginate  :per_page => per_page,
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ? and terms.start_at > NOW()', "%#{search}%", is_private],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and terms.start_at > NOW() and events.state = ?', "%#{search}%", is_private, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher'",
       :order => 'start_at ASC',
       :group => 'terms.id'
   end
 
-  def self.search_has_no_publisher_futur(search, page, per_page, is_private=false)
+  def self.search_has_no_publisher_futur(search, page, per_page, is_private=false, event_state='active')
     paginate  :per_page => per_page,
       :page => page,
       :include => [ :event],
-      :conditions => ["events.name LIKE ? and events.is_private = ? and terms.start_at > NOW() and events.id not in (select event_id from contributions where role='publisher' and event_id is not null)", "%#{search}%", is_private],
+      :conditions => ["events.name LIKE ? and events.is_private = ? and terms.start_at > NOW()  and events.state = ? and events.id not in (select event_id from contributions where role='publisher' and event_id is not null)", "%#{search}%", is_private, event_state],
       :order => 'start_at ASC'
   end
 
-  def self.search_past(search, page, is_private=false)
+  def self.search_past(search, page, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
       :include => [ :event],
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() ', "%#{search}%", is_private],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() and events.state = ?', "%#{search}%", is_private, event_state],
       :order => 'start_at DESC'
   end
 
 
-  def self.search_has_publisher_past(search, page, is_private=false)
+  def self.search_has_publisher_past(search, page, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() ', "%#{search}%", is_private],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() and events.state = ?', "%#{search}%", is_private, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher'",
       :order => 'start_at DESC',
       :group => 'terms.id'
   end
   
 
-  def self.search_futur_by_category(search, page, category_id, is_private=false)
+  def self.search_futur_by_category(search, page, category_id, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
       :include => [ {:event => :categories}],
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and categories.id = ?', "%#{search}%", category_id, is_private],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and categories.id = ? and events.state = ?', "%#{search}%", is_private, category_id, event_state],
       :order => 'start_at ASC'
   end
 
-  def self.search_has_publisher_futur_by_category(search, page, category_id, is_private=false)
+  def self.search_has_publisher_futur_by_category(search, page, category_id, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and categories_events.category_id = ?', "%#{search}%", is_private, category_id],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and categories_events.category_id = ? and events.state = ?', "%#{search}%", is_private, category_id, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'
   end
 
-  def self.search_has_publisher_futur_by_organism(search, page, organism_id, is_private=false)
+  def self.search_has_publisher_futur_by_organism(search, page, organism_id, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and contributions.organism_id = ?', "%#{search}%", is_private, organism_id],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and contributions.organism_id = ? and events.state = ?', "%#{search}%", is_private, organism_id, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'
   end
 
-  def self.search_has_publisher_past_by_organism(search, page, organism_id, is_private=false)
+  def self.search_has_publisher_past_by_organism(search, page, organism_id, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() and contributions.organism_id = ?', "%#{search}%", is_private, organism_id],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() and contributions.organism_id = ? and events.state = ?', "%#{search}%", is_private, organism_id, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'
   end
 
-  def self.search_has_no_publisher_futur_by_category(search, page, per_page, category_id, is_private=false)
+  def self.search_has_no_publisher_futur_by_category(search, page, per_page, category_id, is_private=false, event_state='active')
     paginate  :per_page => per_page,
       :page => page,
       :include => [ {:event => :categories}],
-      :conditions => ["events.name LIKE ? and events.is_private = ? and start_at >= NOW() and categories.id = ?  and events.id not in (select event_id from contributions where role='publisher' and event_id is not null)", "%#{search}%", is_private, category_id],
+      :conditions => ["events.name LIKE ? and events.is_private = ? and start_at >= NOW() and categories.id = ? and events.state = ? and events.id not in (select event_id from contributions where role='publisher' and event_id is not null)", "%#{search}%", is_private, category_id, event_state],
       :order => 'start_at ASC'
   end
 
-  def self.search_past_by_category(search, page, category_id, is_private=false)
+  def self.search_past_by_category(search, page, category_id, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
       :include => [ {:event => :categories}],
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() and categories.id = ?', "%#{search}%", is_private, category_id],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() and categories.id = ? and events.state = ?', "%#{search}%", is_private, category_id, event_state],
       :order => 'start_at DESC'
   end
   
-  def self.search_has_publisher_past_by_category(search, page, category_id, is_private=false)
+  def self.search_has_publisher_past_by_category(search, page, category_id, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ?  and start_at <= NOW() and categories_events.category_id = ?', "%#{search}%", is_private, category_id],
+      :conditions => ['events.name LIKE ? and events.is_private = ?  and start_at <= NOW() and categories_events.category_id = ? and events.state = ?', "%#{search}%", is_private, category_id,event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
       :order => 'start_at DESC',
       :group => 'terms.id'
   end
 
 
-  def self.search_ended_by_category(search, page, category_id, is_private=false)
+  def self.search_ended_by_category(search, page, category_id, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
       :include => [ {:event => :categories}],
-      :conditions => ['events.name LIKE ? and events.is_private = ? and end_at <= NOW() and categories.id = ?', "%#{search}%", is_private, category_id],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and end_at <= NOW() and categories.id = ? and events.state = ?', "%#{search}%", is_private, category_id, event_state],
       :order => 'end_at DESC'
   end
 
-  def self.search_has_publisher_ended_by_category(search, page, category_id, is_private=false)
+  def self.search_has_publisher_ended_by_category(search, page, category_id, is_private=false, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
-      :conditions => ['events.name LIKE ? and events.is_private = ? and end_at <= NOW() and categories_events.category_id = ?', "%#{search}%", is_private, category_id],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and end_at <= NOW() and categories_events.category_id = ? and events.state = ?', "%#{search}%", is_private, category_id, event_state],
       :order => 'end_at DESC',
       :group => 'terms.id'
   end
 
-  def self.search_by_date_and_category(search, page, category_id, the_date, is_private=false)
+  def self.search_by_date_and_category(search, page, category_id, the_date, is_private=false, event_state='active')
     #preparing 2 datetime dates from year, month, day
     #one at 00h00, the other at 23h59
     start_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).utc.to_s(:db)
@@ -213,11 +214,11 @@ class Term < ActiveRecord::Base
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
       :include => [ {:event => :categories}],
-      :conditions => ['events.name LIKE ? and events.is_private = ? and categories.id = ? and start_at < ? and end_at > ?', "%#{search}%", is_private, category_id, end_of_day, start_of_day],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and categories.id = ? and start_at < ? and end_at > ? and events.state = ?', "%#{search}%", is_private, category_id, end_of_day, start_of_day, event_state],
       :order => 'start_at ASC'
   end
 
-    def self.search_has_publisher_by_date_and_category(search, page, category_id, the_date, is_private=false)
+    def self.search_has_publisher_by_date_and_category(search, page, category_id, the_date, is_private=false, event_state='active')
     #preparing 2 datetime dates from year, month, day
     #one at 00h00, the other at 23h59
     start_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).utc.to_s(:db)
@@ -227,13 +228,13 @@ class Term < ActiveRecord::Base
 
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ?  and categories_events.category_id = ? and start_at < ? and end_at > ?', "%#{search}%", is_private, category_id, end_of_day, start_of_day],
+      :conditions => ['events.name LIKE ? and events.is_private = ?  and categories_events.category_id = ? and start_at < ? and end_at > ? and events.state = ?', "%#{search}%", is_private, category_id, end_of_day, start_of_day, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'
   end
 
-  def self.search_has_publisher_futur_by_date_and_category(search, page, category_id, the_date, is_private=false)
+  def self.search_has_publisher_futur_by_date_and_category(search, page, category_id, the_date, is_private=false, event_state='active')
     #preparing 2 datetime dates from year, month, day
     #one at 00h00, the other at 23h59
     start_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).utc.to_s(:db)
@@ -243,13 +244,13 @@ class Term < ActiveRecord::Base
 
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ?  and categories_events.category_id = ? and start_at < ? and end_at > ?  and start_at >= NOW()', "%#{search}%", is_private, category_id, end_of_day, start_of_day],
+      :conditions => ['events.name LIKE ? and events.is_private = ?  and categories_events.category_id = ? and start_at < ? and end_at > ?  and start_at >= NOW() and events.state = ?', "%#{search}%", is_private, category_id, end_of_day, start_of_day, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'
   end
 
-  def self.search_has_publisher_past_by_date_and_category(search, page, category_id, the_date, is_private=false)
+  def self.search_has_publisher_past_by_date_and_category(search, page, category_id, the_date, is_private=false, event_state='active')
     #preparing 2 datetime dates from year, month, day
     #one at 00h00, the other at 23h59
     start_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).utc.to_s(:db)
@@ -259,13 +260,13 @@ class Term < ActiveRecord::Base
 
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ?  and categories_events.category_id = ? and start_at < ? and end_at > ?  and start_at <= NOW()', "%#{search}%", is_private, category_id, end_of_day, start_of_day],
+      :conditions => ['events.name LIKE ? and events.is_private = ?  and categories_events.category_id = ? and start_at < ? and end_at > ? and start_at <= NOW() and events.state = ?', "%#{search}%", is_private, category_id, end_of_day, start_of_day, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'
   end
 
-  def self.search_has_no_publisher_by_date_and_category(search, page, per_page, category_id, the_date, is_private=false)
+  def self.search_has_no_publisher_by_date_and_category(search, page, per_page, category_id, the_date, is_private=false, event_state='active')
     #preparing 2 datetime dates from year, month, day
     #one at 00h00, the other at 23h59
     start_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).utc.to_s(:db)
@@ -275,7 +276,7 @@ class Term < ActiveRecord::Base
       paginate  :per_page => per_page,
       :page => page,
       :include => [ {:event => :categories}],
-      :conditions => ["events.name LIKE ? and events.is_private = ? and categories.id = ? and start_at < ? and end_at > ?  and events.id not in (select event_id from contributions where role='publisher' and event_id is not null)", "%#{search}%", is_private, category_id, end_of_day, start_of_day],
+      :conditions => ["events.name LIKE ? and events.is_private = ? and categories.id = ? and start_at < ? and end_at > ?  and events.state = ? and events.id not in (select event_id from contributions where role='publisher' and event_id is not null)", "%#{search}%", is_private, category_id, end_of_day, start_of_day, event_state],
       :order => 'start_at ASC'
       
   end
@@ -289,11 +290,11 @@ class Term < ActiveRecord::Base
 #      :order => 'start_at ASC'
 #  end
 
-  def self.search_by_user_organisms(search, page, per_page, user, is_private=false)
+  def self.search_by_user_organisms(search, page, per_page, user, is_private=false, event_state='active')
     paginate  :per_page => per_page,
       :page => page,
       :include => [:event],
-      :conditions => ["events.name LIKE ? and events.is_private = ? and start_at >= NOW() and organisms_users.user_id = ?", "%#{search}%", is_private, user.id],
+      :conditions => ["events.name LIKE ? and events.is_private = ? and start_at >= NOW() and organisms_users.user_id = ? and events.state = ?", "%#{search}%", is_private, user.id, event_state],
       :joins => "inner join events on events.id = terms.event_id 
       inner join contributions on contributions.event_id = events.id
       inner join organisms_users on organisms_users.organism_id = contributions.organism_id",
@@ -301,7 +302,7 @@ class Term < ActiveRecord::Base
   end
 
 
-  def self.count_occuring_in_the_day(category_id, the_date, is_private=false)
+  def self.count_occuring_in_the_day(category_id, the_date, is_private=false, event_state='active')
 
     #preparing 2 datetime dates from year, month, day
     #one at 00h00, the other at 23h59
@@ -311,7 +312,7 @@ class Term < ActiveRecord::Base
 
 
     count 'terms.id', :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
-      :conditions => ['categories_events.category_id = ? and events.is_private = ? and start_at < ? and end_at > ?', category_id, is_private, end_of_day, start_of_day],
+      :conditions => ['categories_events.category_id = ? and events.is_private = ? and start_at < ? and end_at > ? and events.state = ?', category_id, is_private, end_of_day, start_of_day, event_state],
     :distinct => true
   end
 

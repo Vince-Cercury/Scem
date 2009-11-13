@@ -23,6 +23,9 @@
 
       <%= render :partial => "/event_terms/term" %>
     <% end %>
+    <% if @event.canceled? %>
+      <h4>CANCELLED !</h4>
+    <% end %>
     <% if !get_event_place_as_string(@event).blank? %>
       <p>
         <b><%= t('events.content.Place') %></b>

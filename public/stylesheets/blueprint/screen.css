@@ -74,10 +74,39 @@ body {font-size:75%;
 
 .listContent{width: 678px; padding: 10px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
 .list{width: 668px; margin: 0; padding: 5px 5px 5px 5px; background: #000; float: left;}
-.listSeparator{width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center; overflow: auto;}
+.listSeparator{position:relative; width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center; overflow: auto;}
 .listLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: left;}
 .listRight{width:507px; margin: 0; padding: 5px; background: #fff; float: right; text-align: left;}
 .listRight h4 {font-size: 16px; text-align:center;}
+
+/*----kangoo date-----*/
+.kangooDate {
+    background-image:url('/images/body/kangooDate.png');
+    background-repeat: no-repeat;
+    margin: 0 0 10px 0;
+    height:52px;
+    width:58px;
+}
+.kangooDayDate{
+    font-size:20px;
+    font-weight: bold;
+    padding: 0 0 0 10px;
+    vertical-align: middle;
+}
+.kangooMonthDate{
+    margin: -5px 0 0 0;
+    padding: 0 0 0 10px;
+    font-size: 12px;
+}
+
+.bottomEventDate{
+    margin: 0 0 5px 0;  
+    vertical-align: bottom;
+    float:left;
+    position: absolute;
+    bottom: 0;
+    left: 155px;
+}
 
 #imagetitle{width:100%; height:100%;}
 

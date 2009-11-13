@@ -1,0 +1,8 @@
+<%= render :partial => "/events/header" %>
+<% form_tag(url_for(:controller => 'events', :action => 'cancel', :id => @event.id), :method => :put) do %>
+
+  <p><b><%= t('events.cancel.Form_title') %>:</b><br/>
+    <textarea name="message" cols="50" rows="10"><%= @cancel_message %></textarea> </p>
+  <%= submit_tag t('events.cancel.Form_submit') %>
+
+<% end %>

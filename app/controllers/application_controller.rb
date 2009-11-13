@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   #the solution could be to create a special controller or method for letting Facebook ping us.
   #This method would skip verify authenticity_token
-#  self.send(:skip_before_filter, :verify_authenticity_token)  if :facebook_uninstall_user_request?
+  #  self.send(:skip_before_filter, :verify_authenticity_token)  if :facebook_uninstall_user_request?
 
   
   rescue_from Facebooker::Session::SessionExpired, :with => :facebook_session_expired
@@ -23,11 +23,11 @@ class ApplicationController < ActionController::Base
   helper_method :facebook_session
 
   before_filter :set_locale
-#
-#  def self.facebook_uninstall_user_request?
-#    return true if params.include?('fb_sig_uninstall') && params['fb_sig_uninstall'] == '1'
-#    return false
-#  end
+  #
+  #  def self.facebook_uninstall_user_request?
+  #    return true if params.include?('fb_sig_uninstall') && params['fb_sig_uninstall'] == '1'
+  #    return false
+  #  end
 
   def facebook_session_expired
     clear_fb_cookies!
@@ -137,5 +137,6 @@ class ApplicationController < ActionController::Base
       return user.login
     end
   end
+  
   
 end

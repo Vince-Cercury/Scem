@@ -1,8 +1,0 @@
-<% form_for_tag :url => url_for(:controller => 'events', :action => 'cancel', :id => @event.id) do |f| %>
-  <%= f.error_messages %>
-
-  <p><b><%= t('events.cancel.Form_title') %>:</b><br/>
-    <textarea name="message" cols="50" rows="10"><%= t('events.cancel.Message') %></textarea> </p>
-  <%= f.submit t('event.cancel.Send_notification') %>
-
-<% end %>

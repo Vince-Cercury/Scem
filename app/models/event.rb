@@ -21,11 +21,12 @@ class Event < ActiveRecord::Base
   aasm_state :canceled, :enter => :do_cancel
 
   aasm_event :register do
-    transitions :from => :passive, :to => :pending , :guard => Proc.new {|e| !e.manager_name.blank? and !e.description_short.blank? }
+    transitions :from => :passive, :to => :pending, :guard => Proc.new {|e| !e.name.blank? }
   end
 
   aasm_event :activate do
-    transitions :from => :pending, :to => :active
+    transitions :from => :pending, :to => :active, :guard => Proc.new {|e| !e.name.blank? }
+    transitions :from => :passive, :to => :active, :guard => Proc.new {|e| !e.name.blank? }
   end
 
   aasm_event :cancel do
@@ -50,6 +51,13 @@ class Event < ActiveRecord::Base
     @activated = true
     self.activated_at = Time.now.utc
     self.canceled_at  = nil
+  end
+
+  def canceled?
+    if state=='canceled'
+      return true
+    end
+    return false
   end
 
   def search_posts(search, page)
