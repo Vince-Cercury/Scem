@@ -12,9 +12,12 @@
         </div>
 
         <%= link_to_function t('galleries.add_picture.Add_picture') do |page|
+          page << "if ( typeof( window['counter'] ) == 'undefined' ) {counter=0}"
+          page << "if(counter < 3) {"
           page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
+          page << "counter += 1"
+          page << "}"
         end %>
-
         <p>
           <%= f.submit t('galleries.add_picture.Update') %>
         </p>
