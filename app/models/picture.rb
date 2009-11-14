@@ -3,7 +3,7 @@ class Picture < ActiveRecord::Base
   sortable :scope => [:parent_id, :parent_type, :state]
 
   has_attached_file :attached, :styles => {
-    #:original => "1024x768>",
+    :original => "1024x768>",
     :large => ["504x504>", :jpg],  #has to be multiple of 18
     :medium => ["252x252>", :jpg],
     :small => ["126x126>", :jpg],
