@@ -25,11 +25,11 @@
               <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => t('events.terms.See_on_Facebook')), "http://wwwfacebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank') %>
             <% end  %>
           <% end %>
-          <% if logged_in? -%>
+          <% if logged_in? && !@term.is_past? -%>
             <% form_tag :controller => 'participations', :action => 'create_or_update' do %>
               <%=  hidden_field_tag 'term_id', @term.id %>
               <%=  hidden_field_tag 'user_id', current_user.id %>
-
+              <%= t('events.terms.Participation_decision')%>:
               <%= t('events.terms.sure') %><%= radio_button :participation, :role, "sure", :checked => @term.is_user_participant(current_user, 'sure')%>
 
               <%= t('events.terms.maybe') %><%= radio_button :participation, :role, "maybe", :checked => @term.is_user_participant(current_user, 'maybe') %>
@@ -50,9 +50,9 @@
 
         <div class="dateListDateContent">
           <%= t('events.terms.Participation') %>
-          <% if @term.sure_participants.size> 0 %><%= link_to t('events.terms.sure'), term_participations_path(:term_id => @term.id, :role =>:sure) %>: <%= @term.sure_participants.size %><% else %>sure: 0<% end %> |
-          <% if @term.maybe_participants.size> 0 %><%= link_to t('events.terms.maybe'), term_participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %><% else %>maybe: 0<% end %> |
-          <% if @term.not_participants.size> 0 %><%= link_to t('events.terms.not'), term_participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %><% else %>no: 0<% end %>
+          <% if @term.sure_participants.size> 0 %><%= link_to t('events.terms.sure'), term_participations_path(:term_id => @term.id, :role =>:sure) %>: <%= @term.sure_participants.size %><% else %><%= t('events.terms.sure') %>: 0<% end %> |
+          <% if @term.maybe_participants.size> 0 %><%= link_to t('events.terms.maybe'), term_participations_path(:term_id => @term.id, :role =>:may_be) %>: <%= @term.maybe_participants.size %><% else %><%= t('events.terms.maybe') %>: 0<% end %> |
+          <% if @term.not_participants.size> 0 %><%= link_to t('events.terms.not'), term_participations_path(:term_id => @term.id, :role =>:not) %>: <%= @term.not_participants.size %><% else %><%= t('events.terms.not') %>: 0<% end %>
         </div>
       </div>
     <% end %>

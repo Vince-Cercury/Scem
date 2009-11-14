@@ -81,6 +81,8 @@ fr-FR:
       Is_private: "Priv&eacute; :"
       Categories: "Cat&eacute;gories :"
       Void: "Aucun"
+      Has_many_dates_link: "Voir les dates de cet &eacute;v&egrave;nement"
+      Other_dates_link: "Voir les autres dates"
     term:
       Term_description: "Ajoutez une description pour cette date (conseill&eacute; seulement quand l'&eacute;v&egrave;nement est multi-dates)"
       Remove: "Supprimer cette date"
@@ -101,6 +103,7 @@ fr-FR:
       maybe: "peut &ecirc;tre"
       not: "non"
       Go: "Go"
+      Participation_decision: "J'y serais"
       Participation: "Participation :"
       Number_of_participants: "Nombre de participants : "
       Number_of_comments: "Nombre de commentaires : "

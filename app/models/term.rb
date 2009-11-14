@@ -26,16 +26,20 @@ class Term < ActiveRecord::Base
 
 
   validates_datetime :start_at, :after => Proc.new { Time.zone.now },
-    :after_message => "date must be in the future"
+    :after_message => "date must be in the future", :on => :create
 
 
   validates_datetime :end_at, :after => Proc.new { Time.zone.now },
-    :after_message => "date must be in the future"
+    :after_message => "date must be in the future", :on => :create
 
 
   validates_datetime :start_at,
     :before => :end_at,
     :before_message => "must be before end"
+
+  def is_past?
+    return end_at < Time.zone.now
+  end
 
   def start_hour
     start_at.strftime("%H") unless start_at.nil?

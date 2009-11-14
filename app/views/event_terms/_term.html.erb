@@ -18,11 +18,11 @@
 
 
 
-<% if logged_in? -%>
+<% if logged_in?  && !@term.is_past? -%>
   <% form_tag :controller => 'participations', :action => 'create_or_update' do %>
     <%=  hidden_field_tag 'term_id', @term.id %>
     <%=  hidden_field_tag 'user_id', current_user.id %>
-
+    <%= t('events.terms.Participation_decision')%>:
     <%= t('events.terms.sure')%><%= radio_button :participation, :role, "sure", :checked => @term.is_user_participant(current_user, 'sure')%>
 
     <%=t('events.terms.maybe')%><%= radio_button :participation, :role,  "maybe", :checked => @term.is_user_participant(current_user, 'maybe') %>
