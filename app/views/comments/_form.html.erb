@@ -9,7 +9,7 @@
         <h5 class="caps"><%= t('comments.form.Add_a_comment') %></h5>
       <% end %>
       <div class="commentaireBodyMiddleLeft">
-        <%= display_user_cover_by_id(current_user.id, :small) %>
+        <%= display_user_cover_by_id(current_user.id, :thumb) %>
         <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
       </div>
       <div class="commentaireBodyMiddleRight" id="create-form-content">

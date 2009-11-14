@@ -1,6 +1,6 @@
   <div id='comment_<%= comment.id %>-content'>
     <div class="commentaireLeft">
-      <%= display_user_cover_by_id(comment.user_id, "mini") %>
+      <%= display_user_cover_by_id(comment.user_id, :thumb) %>
       <%= get_user_name_or_pseudo_link_by_id(comment.user_id) %>
     </div>
     <div class="commentaireRight">
