@@ -115,10 +115,10 @@
     <div class="memberBarContent">
       <%= link_to t('organisms.show.All_members')+" (#{@organism.members.size})", organism_members_path(:organism_id => @organism.id, :role =>:members) %>
     </div>
-    <% @organism.members[0,4].each do |user| %>
+    <% @organism.organisms_users[0,4].each do |organisms_users| %>
       <div class="memberBarBox">
-          <%= display_user_cover(user, :thumb) %><br />
-          <%= get_user_name_or_pseudo_link(user) %>
+          <%= display_user_cover(organisms_users.user, :thumb) %><br />
+          <%= get_user_name_or_pseudo_link(organisms_users.user) %>
       </div>
     <% end %>
   </div>
