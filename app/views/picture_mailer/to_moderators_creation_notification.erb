@@ -1,5 +1,5 @@
 <%= render :partial => "/shared_templates/email_header" %>
 
-<%= t("picture_mailer.to_moderators_creation_notification", :user => get_user_name_or_pseudo(@user), :url_suspend=> link_to(@url_suspend,@url_suspend), :url_picture => link_to(image_tag(@url_picture),@url_context), :url_context=> link_to(@url_context,@url_context)) %>
+<%= t("picture_mailer.to_moderators_creation_notification", :user => get_user_name_or_pseudo(@user), :url_suspend=> link_to(@url_suspend,@url_suspend), :url_picture => link_to(image_tag(@url_picture_file),@url_picture), :url_context=> link_to(@url_context,@url_context)) %>
 
 <%= render :partial => "/shared_templates/email_footer" %>

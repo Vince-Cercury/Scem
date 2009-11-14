@@ -1,55 +1,62 @@
 class PictureMailer < ActionMailer::Base
 
   helper :users
+  include ApplicationHelper
 
   def to_author_accepted_notification(user, picture, controller)
     setup_email(user, picture)
-    @subject    +=I18n.t('picture_mailer.subject_pitcure_accepted',:parent => I18n.t("type.#{picture.parent_type}"))
-    @body[:url]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}"
-    @body[:url_context]  = "#{ENV['SITE_URL']}/#{controller}/#{picture.parent_id}"
+    @subject    +=I18n.t('picture_mailer.subject_pitcure_accepted',:parent => I18n.t("type_no_html.#{picture.parent_type}"))
+    @body[:url]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture)}"
+    @body[:url_context]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture.get_parent_object)}"
+    @body[:url_picture_file]  = "#{ENV['SITE_URL']}/#{picture.attached.url(:small)}"
   end
 
   def to_moderators_creation_moderate(user, picture, controller)
 
     setup_email(user, picture)
-    @subject    +=I18n.t('picture_mailer.subject_pitcure_posted',:parent =>  I18n.t("type.#{picture.parent_type}"))
+    @subject    +=I18n.t('picture_mailer.subject_pitcure_posted',:parent =>  I18n.t("type_no_html.#{picture.parent_type}"))
     @body[:url_activate]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}/activate"
-    @body[:url_picture]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}"
-    @body[:url_context]  = "#{ENV['SITE_URL']}/#{controller}/#{picture.parent_id}"
+    @body[:url_picture]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture)}"
+    @body[:url_context]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture.get_parent_object)}"
+    @body[:url_picture_file]  = "#{ENV['SITE_URL']}/#{picture.attached.url(:small)}"
   end
 
   def to_moderators_creation_notification(user, picture, controller)
     setup_email(user, picture)
-    @subject    +=I18n.t('picture_mailer.subject_pitcure_posted',:parent =>  I18n.t("type.#{picture.parent_type}"))
+    @subject    +=I18n.t('picture_mailer.subject_pitcure_posted',:parent =>  I18n.t("type_no_html.#{picture.parent_type}"))
     @body[:url_suspend]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}/suspend"
-    @body[:url_picture]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}"
-    @body[:url_context]  = "#{ENV['SITE_URL']}/#{controller}/#{picture.parent_id}"
+    @body[:url_picture]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture)}"
+    @body[:url_context]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture.get_parent_object)}"
+    @body[:url_picture_file]  = "#{ENV['SITE_URL']}/#{picture.attached.url(:small)}"
   end
 
   def to_sys_moderators_accepted_notification(user, picture, controller)
     setup_email(user, picture)
-    @subject    +=I18n.t('picture_mailer.subject_pitcure_posted',:parent => I18n.t("type.#{picture.parent_type}"))
+    @subject    +=I18n.t('picture_mailer.subject_pitcure_posted',:parent => I18n.t("type_no_html.#{picture.parent_type}"))
     @body[:url_suspend]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}/suspend"
     @body[:url_edit]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}/edit"
-    @body[:url_picture]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}"
-    @body[:url_context]  = "#{ENV['SITE_URL']}/#{controller}/#{picture.parent_id}"
+    @body[:url_picture]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture)}"
+    @body[:url_context]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture.get_parent_object)}"
+    @body[:url_picture_file]  = "#{ENV['SITE_URL']}/#{picture.attached.url(:small)}"
   end
 
   def to_sys_moderators_creation_notification(user, picture, controller)
     setup_email(user, picture) 
-    @subject    +=I18n.t('picture_mailer.subject_pitcure_posted',:parent =>  I18n.t("type.#{picture.parent_type}"))
+    @subject    +=I18n.t('picture_mailer.subject_pitcure_posted',:parent =>  I18n.t("type_no_html.#{picture.parent_type}"))
     @body[:url_suspend]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}/suspend"
     @body[:url_edit]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}/edit"
-    @body[:url_picture]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}"
-    @body[:url_context]  = "#{ENV['SITE_URL']}/#{controller}/#{picture.parent_id}"
+    @body[:url_picture]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture)}"
+    @body[:url_context]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture.get_parent_object)}"
+    @body[:url_picture_file]  = "#{ENV['SITE_URL']}/#{picture.attached.url(:small)}"
   end
 
 
   def to_sys_moderators_suspended_notification(user, picture, controller)
     setup_email(user, picture)
-    @subject    += I18n.t('picture_mailer.subject_picture_suspended',:parent =>  I18n.t("type.#{picture.parent_type}"))
-    @body[:url_picture]  = "#{ENV['SITE_URL']}/pictures/#{picture.id}"
-    @body[:url_context]  = "#{ENV['SITE_URL']}/#{controller}/#{picture.parent_id}"
+    @subject    += I18n.t('picture_mailer.subject_picture_suspended',:parent =>  I18n.t("type_no_html.#{picture.parent_type}"))
+    @body[:url_picture]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture)}"
+    @body[:url_context]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(picture.get_parent_object)}"
+    @body[:url_picture_file]  = "#{ENV['SITE_URL']}/#{picture.attached.url(:small)}"
   end
 
 #  def to_moderators_updated_notification(user, picture, controller)

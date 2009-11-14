@@ -23,6 +23,12 @@ fr-FR:
     User: "utilisateur"
     Gallery: "galerie"
     Post: "billet"
+  type_no_html:
+    Event: "Evènement"
+    Organism: "organisme"
+    User: "utilisateur"
+    Gallery: "galerie"
+    Post: "billet"
   map:
     not_found: "Adresse introuvable"
   main_menu:
@@ -74,6 +80,7 @@ fr-FR:
       Is_charged: "Payant :"
       Is_private: "Priv&eacute; :"
       Categories: "Cat&eacute;gories :"
+      Void: "Aucun"
     term:
       Term_description: "Ajoutez une description pour cette date (conseill&eacute; seulement quand l'&eacute;v&egrave;nement est multi-dates)"
       Remove: "Supprimer cette date"
@@ -550,15 +557,15 @@ fr-FR:
     subject_comment_accepted: "Commentaire accepté"
   picture_mailer:
     to_author_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous avez post&eacute; une photo sur www.LeBounce.com</p><p>Votre photo a &eacute;t&eacute; accept&eacute;e &agrave; l'adresse suivante : <br />{{url}}</p><p>Vous pouvez &eacute;galement voir l'image dans son contexte &agrave; l'adresse suivante : <br />{{url_context}}</p><br /><p>Cordialement,</p><br /><p>L'&eacute;quipe LeBounce</p>"
-    to_moderators_creation_moderate: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur d'un organisme.</p><p>Une photo a &eacute;t&eacute; post&eacute;e</p><p>Vous pouvez accepter l'image en cliquant sur ce lien (ne rien faire si vous ne voulez pas publier l'image) : <br />{{url_activate}}</p><p>Vous pouvez voir l'image &agrave; l'adresse suivante : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
-    to_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur d'un organisme.</p><p>Une photo a &eacute;t&eacute; post&eacute;e</p><p>Vous pouvez &eacute;ventuellement suspendre l'image (en cas de non respect des r&egrave;gles du site) &agrave; l'adresse suivante : <br />{{url_suspend}}</p><p>Vous pouvez voir l'image &agrave; l'adresse suivante : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
-    to_moderators_updated_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur d'un organisme.</p><p>Une photo a &eacute;t&eacute; mise &agrave; jour</p><p>Vous pouvez &eacute;ventuellement suspendre l'image (en cas de non respect des r&egrave;gles du site) &agrave; l'adresse suivante : <br />{{url_suspend}}</p><p>Vous pouvez voir l'image &agrave; l'adresse suivante : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
-    to_sys_moderators_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une photo a &eacute;t&eacute; valid&eacute;e par un mod&eacute;rateur.</p><p>Vous pouvez &eacute;ventuellement : <br />    - &eacute;diter la photo : {{url_edit}}<br />    - suspendre la photo : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
-    to_sys_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une photo a &eacute;t&eacute; post&eacute;e mais la mod&eacute;ration n'est pas activ&eacute;e. Ainsi la photo est d&eacute;j&agrave; publi&eacute;e et visible.</p><p>Vous pouvez &eacute;ventuellement : <br />    - &eacute;diter la photo : {{url_edit}}<br />    - suspendre la photo : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
-    to_sys_moderators_suspended_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une photo a &eacute;t&eacute; suspendue par l'administrateur d'un organisme.</p><p>Vous pouvez voir l'image &agrave; l'adresse suivante : <br />{{url_picture}}</p>Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
-    to_sys_moderators_updated_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une photo a &eacute;t&eacute; mise &agrave; jour.</p><p>Vous pouvez &eacute;ventuellement : <br />    - &eacute;diter la photo : {{url_edit}}<br />    - suspendre la photo : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
+    to_moderators_creation_moderate: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur d'un organisme.</p><p>Une image a &eacute;t&eacute; post&eacute;e</p><p>Vous pouvez accepter l'image en cliquant sur ce lien (ne rien faire si vous ne voulez pas publier l'image) : <br />{{url_activate}}</p><p>Vous pouvez voir l'image &agrave; au lien suivant : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
+    to_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur d'un organisme.</p><p>Une image a &eacute;t&eacute; post&eacute;e</p><p>Vous pouvez &eacute;ventuellement suspendre l'image (en cas de non respect des r&egrave;gles du site) &agrave; l'adresse suivante : <br />{{url_suspend}}</p><p>Vous pouvez voir l'image &agrave; lien suivant  : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
+    to_moderators_updated_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur d'un organisme.</p><p>Une image a &eacute;t&eacute; mise &agrave; jour</p><p>Vous pouvez &eacute;ventuellement suspendre l'image (en cas de non respect des r&egrave;gles du site) &agrave; l'adresse suivante : <br />{{url_suspend}}</p><p>Vous pouvez voir l'image &agrave; lien suivant  : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
+    to_sys_moderators_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une image a &eacute;t&eacute; valid&eacute;e par un mod&eacute;rateur.</p><p>Vous pouvez &eacute;ventuellement : <br />    - &eacute;diter la photo : {{url_edit}}<br />    - suspendre la photo : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
+    to_sys_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une image a &eacute;t&eacute; post&eacute;e mais la mod&eacute;ration n'est pas activ&eacute;e. Ainsi la photo est d&eacute;j&agrave; publi&eacute;e et visible.</p><p>Vous pouvez &eacute;ventuellement : <br />    - &eacute;diter la photo : {{url_edit}}<br />    - suspendre la photo : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
+    to_sys_moderators_suspended_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une image a &eacute;t&eacute; suspendue par l'administrateur d'un organisme.</p><p>Vous pouvez voir l'image &agrave; l'adresse suivante : <br />{{url_picture}}</p>Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
+    to_sys_moderators_updated_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une image a &eacute;t&eacute; mise &agrave; jour.</p><p>Vous pouvez &eacute;ventuellement : <br />    - &eacute;diter la photo : {{url_edit}}<br />    - suspendre la photo : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
     subject_picture_suspended: "Une image d'un {{parent}} a été suspendue"
-    subject_pitcure_posted: "Une photo a été posté pour un {{parent}}"
+    subject_pitcure_posted: "Une image a été postée pour un {{parent}}"
     subject_picture_accepted: "Photo acceptée"
   posts:
     controller:
@@ -614,7 +621,7 @@ fr-FR:
       Comments: "Commentaires :"
     new:
       Create: "Cr&eacute;er"
-      Description: "Entrez une description &#224; votre image :"
+      Description: "Entrez une description pour votre image (optionel) :"
     index:
       Listing_pictures: "Liste des photos"
       New_picture: "Nouvelle image"
@@ -911,7 +918,7 @@ fr-FR:
       Suspended: "Commentaire suspendu il y a "
       ago_by: " par "
       ago: " "
-      Created: "Cr&eacute;er il y a "
+      Created: "Cr&eacute;&eacute; il y a "
       Edited: "Commentaire &eacute;dit&eacute; il y a "
     comments_organism_search:
       Search: "Rechercher"

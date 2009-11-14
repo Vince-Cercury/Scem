@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   before_filter :store_location, :only => [:show, :index]
 
   # Protect these actions behind an admin login
-  before_filter :is_granted_to_edit?, :only => [:destroy]#, :purge]
+  #before_filter :is_granted_to_edit?, :only => [:destroy]#, :purge]
 
   # before_filter :is_logged?, :only => [:new, :create, :edit, :update]
 
