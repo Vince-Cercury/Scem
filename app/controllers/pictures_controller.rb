@@ -48,6 +48,11 @@ class PicturesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @picture }
+      format.js {
+        render :update do |page|
+          page.replace_html 'results', :partial => 'picture_show'
+        end
+      }
     end
   end
 
