@@ -58,11 +58,14 @@
         </p>
       </div>
       <div class="eventEditBodyCenterRight">
-        <%= collection_select :contributions,
+        <%#= collection_select :contributions,
           :place_ids,
           Organism.find_all_by_state('active', :order =>'name'),
           :id, :name,{ :selected => @event.get_first_place, :include_blank => true},
           { :multiple => false, :class => 'textField' } -%>
+        <%#= text_field_with_auto_complete :organism, :organism_place_name, {}, {:method => :get}  %>
+
+        <%= text_field_with_auto_complete :event, :organism_place_name, {  }, { :url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
       </div>
 
       <div class="eventEditBodyCenterLeft">

@@ -20,9 +20,11 @@
   <div class="eventShowBodyRight">
     <% if @term %>
       <b> <%=  display_term_box(@term.start_at, @term.end_at) %> </b>
-      <%= link_to(t('events.content.Other_dates_link'), event_terms_path(@event)) %>
+      <% if @event.terms.size > 1 %>
+        <%= link_to(t('events.content.Other_dates_link'), event_terms_path(@event)) %>
+      <% end %>
       <%= render :partial => "/event_terms/term" %>
-      <% elsif @event.terms.size > 0 %>
+    <% elsif @event.terms.size > 0 %>
       <%= link_to(t('events.content.Has_many_dates_link'), event_terms_path(@event)) %>
     <% end %>
     <% if @event.canceled? %>
@@ -141,6 +143,8 @@
               <b><%= t('events.content.Place') %></b>
               <%= link_to(get_event_place_as_string(@event), event_maps_path(@event)) %>
             </p>
+          <% else %>
+            <%= t("events.content.Void") %>
           <% end %>
         <% end %>
       </div>

@@ -11,11 +11,13 @@
           <%= render :partial => 'picture', :collection => @new_pictures %>
         </div>
 
-        <%= link_to_function t('galleries.add_picture.Add_picture') do |page|
+        <%= link_to_function t('galleries.add_picture.Add_picture'), nil, :id => "more_pic" do |page|
           page << "if ( typeof( window['counter'] ) == 'undefined' ) {counter=0}"
           page << "if(counter < 3) {"
-          page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
-          page << "counter += 1"
+            page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
+            page << "counter += 1"
+          page << "}else{"
+            page.replace_html(:more_pic,t('galleries.add_picture.Add_picture_not_possible'))
           page << "}"
         end %>
         <p>

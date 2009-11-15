@@ -10,6 +10,23 @@ class Event < ActiveRecord::Base
 
   has_many :posts, :as => :parent, :dependent => :destroy
 
+  #Auto complete place name (organism)
+  def organism_place_name
+    places.first.name if places.first
+  end
+
+  def organism_place_name=(name)
+    organism_place = Organism.find_by_name(name) unless name.blank?
+    if organism_place
+      contribution = Contribution.new
+      #contribution.event_id=self.id
+      contribution.organism_id=organism_place.id
+      contribution.role="place"
+      self.contributions << contribution
+    end
+  end
+
+
   include AASM
   aasm_column :state
 

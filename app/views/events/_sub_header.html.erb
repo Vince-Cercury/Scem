@@ -7,7 +7,7 @@
       <%= link_to(t('events.subheader.Profil'), url_profile) %>
     <% end %>
   </li>
-  <% if get_event_street(@event) && get_event_city(@event) %>
+  <% if !get_event_place_as_string(@event).blank? %>
     <li>
       <% if controller_name != 'maps' %>
         <%= link_to(t('events.subheader.Map'), event_maps_path(@event)) %>
@@ -18,10 +18,10 @@
   <% end %>
   <% if @event.terms.size > 1 %>
     <li>
-      <% if controller_name != 'event_terms' %>
-        <%= link_to(t('events.subheader.Dates'), event_terms_path(@event)) %>
-      <% else %>
+      <% if controller_name == 'event_terms' && action_name == "index" %>
         <%= link_to(t('events.subheader.Dates'), event_terms_path(@event), :class => 'selected') %>
+      <% else %>
+        <%= link_to(t('events.subheader.Dates'), event_terms_path(@event)) %>
       <% end %>
     </li>
   <% end %>

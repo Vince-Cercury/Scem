@@ -22,7 +22,8 @@ class EventsController < ApplicationController
   #at the moment, friends are managed with Facebook APIshare
 
   before_filter :is_facebook_user?, :only => [:share]
-  
+
+  #auto_complete_for :organism, :name
 
   #Protect this action by cheking of logged in AND if owner of the account or admin or moderator for editing
   #before_filter :organism_admin_or_moderator?, :only => [:new, :edit, :update]
@@ -155,7 +156,7 @@ class EventsController < ApplicationController
     create_contribution(:contributions, :publisher_ids, "publisher")
     create_contribution(:contributions, :partner_ids, "partner")
     create_contribution(:contributions, :organizer_ids, "organizer")
-    create_contribution(:contributions, :place_ids, "place")
+    #create_contribution(:contributions, :place_ids, "place")
 
     #hack: do not consider categories id made of hash ['_all'] => id. Problem comes from Swapselect
     if params[:event][:category_ids]

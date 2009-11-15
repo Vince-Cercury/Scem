@@ -9,6 +9,10 @@ class OrganismsController < ApplicationController
   # Protect these actions behind an admin login
   before_filter :is_organism_admin?, :only => [:update, :edit, :destroy, :purge, :suspend, :unsuspend]
 
+  def list
+    @organisms = Organism.find(:all, :limit => 10, :conditions => ['name like ? and in_directory = ? and state = ?', "%#{params[:search]}%", true, "active"])
+  end
+
   # GET /organisms
   # GET /organisms.xml
   def index

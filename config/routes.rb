@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
 #    :refuse => :get}
 
 
-  map.resources :organisms do |organism|
+  map.resources :organisms, :collection => { :list   => :get} do |organism|
     organism.resources :events, :controller => 'organism_events'
     organism.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |post|
