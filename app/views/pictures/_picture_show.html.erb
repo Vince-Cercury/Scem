@@ -1,67 +1,67 @@
 <%  complete = "$('spinner-pic').hide(); " + "$('picture-show').show()"
-    loading = "$('spinner-pic').show(); " + "$('picture-show').hide(); " %>
+loading = "$('spinner-pic').show(); " + "$('picture-show').hide(); " %>
 <%  prev_pic_link = link_to_remote( t('pictures.show.Previous'),
-        :url => url_for_even_polymorphic(@picture.previous_item),
-        :loading => loading, :complete => complete, :method => :get) unless @picture.first_item? %>
+  :url => url_for_even_polymorphic(@picture.previous_item),
+  :loading => loading, :complete => complete, :method => :get) unless @picture.first_item? %>
 <%  next_pic_link = link_to_remote( t('pictures.show.Next'),
-        :url => url_for_even_polymorphic(@picture.next_item),
-        :loading => loading, :complete => complete, :method => :get) unless @picture.last_item? %>
+  :url => url_for_even_polymorphic(@picture.next_item),
+  :loading => loading, :complete => complete, :method => :get) unless @picture.last_item? %>
 <div id="results">
-<div class="pictureShowContent">
-  <div class="pictureShowNotation">
-    <%= render :partial => "rating/rating", :locals => { :current_object => @picture } %>
-  </div>
-
-  <% if  @parent_object.class.to_s.eql?("Gallery") %>
-    <div class="pictureShowCenter">
-      <div class="pictureShowLeft">
-        <%= prev_pic_link unless prev_pic_link.nil? %>
-      </div>
-      <div class="pictureShowRight">
-        <%= next_pic_link unless next_pic_link.nil? %>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="pictureShowPicure" id="picture-show">
-    <%= link_to(image_tag(@picture.attached.url(:large)),get_picture_polymorphic_parent_url(@picture)) %>
-  </div>
-  <div id="spinner-pic" style="display:none;">
-   <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
-   <%= image_tag "big-spinner.gif", :class => "image", :alt => "changing image" %>
-  </div>
-
-  <% if  @parent_object.class.to_s.eql?("Gallery") %>
-    <div class="pictureShowCenter">
-      <div class="pictureShowLeft">
-        <%= prev_pic_link unless prev_pic_link.nil? %>
-      </div>
-      <div class="pictureShowRight">
-        <%= next_pic_link unless next_pic_link.nil? %>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="pictureShowRight">
-    <p>
-      <b><%= t('pictures.show.Creator') %></b>
-      <%= get_user_name_or_pseudo_link_by_id(@picture.creator_id) %>
-    </p>
-  </div>
-</div>
-
-
-<% if @picture.description %>
-  <div class="titledescription"></div>
   <div class="pictureShowContent">
-    <p>
-      <%=h @picture.description %>
-    </p>
+    <div class="pictureShowNotation">
+      <%= render :partial => "rating/rating", :locals => { :current_object => @picture } %>
+    </div>
+
+    <% if  @parent_object.class.to_s.eql?("Gallery") %>
+      <div class="pictureShowCenter">
+        <div class="pictureShowLeft">
+          <%= prev_pic_link unless prev_pic_link.nil? %>
+        </div>
+        <div class="pictureShowRight">
+          <%= next_pic_link unless next_pic_link.nil? %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="pictureShowPicure" id="picture-show">
+      <%= link_to(image_tag(@picture.attached.url(:large)),get_picture_polymorphic_parent_url(@picture)) %>
+    </div>
+    <div id="spinner-pic" style="display:none;">
+      <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
+      <%= image_tag "big-spinner.gif", :class => "image", :alt => "changing image" %>
+    </div>
+
+    <% if  @parent_object.class.to_s.eql?("Gallery") %>
+      <div class="pictureShowCenter">
+        <div class="pictureShowLeft">
+          <%= prev_pic_link unless prev_pic_link.nil? %>
+        </div>
+        <div class="pictureShowRight">
+          <%= next_pic_link unless next_pic_link.nil? %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="pictureShowRight">
+      <p>
+        <b><%= t('pictures.show.Creator') %></b>
+        <%= get_user_name_or_pseudo_link_by_id(@picture.creator_id) %>
+      </p>
+    </div>
   </div>
-<% end %>
 
 
-<div class="titlecomment"></div>
-<%= render :partial => "/comments/form" %>
-<%= render :partial => "/comments/list" %>
+  <% if @picture.description %>
+    <div class="titledescription"></div>
+    <div class="pictureShowContent">
+      <p>
+        <%=h @picture.description %>
+      </p>
+    </div>
+  <% end %>
+
+
+  <div class="titlecomment"></div>
+  <%= render :partial => "/comments/form" %>
+  <%= render :partial => "/comments/list" %>
 </div>
