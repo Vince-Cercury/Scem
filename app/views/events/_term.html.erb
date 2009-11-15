@@ -1,4 +1,4 @@
-<div class="termbox">
+<div class="termbox" >
   <% fields_for_term(term) do |term_form| %>
     <% @term = term %>
     <div class="termboxLeft">
@@ -27,7 +27,7 @@
     </div>
 
     <p>
-      <%= link_to_function t('events.term.Remove'), "$(this).up('.term').remove()" %>
+      <%= link_to_function t('events.term.Remove'), "remove_field($(this), ('.termbox'))" %>
     </p>
 
   <% end %>

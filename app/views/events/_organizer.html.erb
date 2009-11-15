@@ -1,0 +1,12 @@
+<div class="organizer">
+  <% fields_for_organizer(@event, organizer) do |organizer_form| %>
+  <%# fields_for "event[organizer_attributes][]", organizer do |organizer_form| %>
+
+      <%= organizer_form.text_field_with_auto_complete :name, {}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
+    <div id="spinner_organizer" style="display:none;">
+      <%= image_tag "spinner.gif", :class => "image", :alt => "loading" %>
+    </div>
+      <%= link_to_function t('events.organizer.Remove'), "$(this).up('.organizer').remove()" %>
+
+  <% end %>
+</div>

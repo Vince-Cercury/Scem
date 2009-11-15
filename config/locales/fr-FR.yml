@@ -83,6 +83,10 @@ fr-FR:
       Void: "Aucun"
       Has_many_dates_link: "Voir les dates de cet &eacute;v&egrave;nement"
       Other_dates_link: "Voir les autres dates"
+    organizer:
+      Remove: "Supprimer cet organisateur"
+    partner:
+      Remove: "Supprimer ce partenaire"
     term:
       Term_description: "Ajoutez une description pour cette date (conseill&eacute; seulement quand l'&eacute;v&egrave;nement est multi-dates)"
       Remove: "Supprimer cette date"
@@ -119,6 +123,8 @@ fr-FR:
       Update: "Mettre &agrave; jour"
       Publisher: "S&eacute;lectionnez pour quel organisme vous publiez cet &eacute;v&egrave;nement :"
       Show: "Afficher"
+      add_organizer: "Ajouter un organisateur"
+      add_partner: "Ajouter un partenaire"
       add_term: "Ajouter une nouvelle date"
       Date: "S&eacute;lectionnez une ou plusieurs dates"
       Title: "Titre de l'&eacute;v&egrave;nement :"
@@ -126,8 +132,8 @@ fr-FR:
       Description: "Description longue: entrez toutes les informations utiles à la description de votre &eacute;v&egrave;nement"
       Adress: "Choisissez le lieu ou entrez l'adresse o&#249; se passera votre &eacute;v&egrave;nement."
       Categories: "Choisissez les catégories de votre &eacute;v&egrave;nement"
-      Organizers: "S&eacute;lectionnez les organisateurs de cet &eacute;v&egrave;nement :"
-      Partners: "S&eacute;lectionnez les partenaires de cet &eacute;v&egrave;nement :"
+      Organizers: "Editez les organisateurs de cet &eacute;v&egrave;nement :"
+      Partners: "Editez les partenaires de cet &eacute;v&egrave;nement :"
     new:
       Back: "Retour"
       Create: "Cr&eacute;er"

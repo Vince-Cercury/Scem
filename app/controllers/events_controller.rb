@@ -90,6 +90,27 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+
+    #add empty contributors fields
+    @organizers = Array.new
+    if @event.organizers.size == 0 
+      #1.upto(2) { @organizers << Organism.new }
+      @organizers << Organism.new
+    else
+      @organizers.concat @event.organizers
+      @organizers << Organism.new
+    end
+
+    @partners = Array.new
+    if @event.partners.size == 0
+      #1.upto(2) { @partners << Organism.new }
+      @partners << Organism.new
+    else
+      @partners.concat @event.partners
+      @partners << Organism.new
+    end
+    #raise @partners.inspect
+
     set_session_parent_pictures_root_path(@event)
   end
 
@@ -142,20 +163,22 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.xml
   def update
-    
+
     @event = Event.find(params[:id])
     @event.edited_by = current_user.id
     set_session_parent_pictures_root_path(@event)
 
     params[:event][:existing_term_attributes] ||= {}
+    #params[:event][:existing_organizer_attributes] ||= {}
+
 
     #deleting all contributions for this event, whatever the role of the organism
-    Contribution.delete_all(["event_id = ?", @event.id])
-
-
+   Contribution.delete_all(["event_id = ?", @event.id])
+#
+#
     create_contribution(:contributions, :publisher_ids, "publisher")
-    create_contribution(:contributions, :partner_ids, "partner")
-    create_contribution(:contributions, :organizer_ids, "organizer")
+#    create_contribution(:contributions, :partner_ids, "partner")
+#    create_contribution(:contributions, :organizer_ids, "organizer")
     #create_contribution(:contributions, :place_ids, "place")
 
     #hack: do not consider categories id made of hash ['_all'] => id. Problem comes from Swapselect

@@ -100,6 +100,28 @@ module EventsHelper
     end
   end
 
+  def fields_for_organizer(event, organizer, &block)
+    prefix = event.organizers.include?(organizer) ? 'existing' : 'new'
+    fields_for("event[#{prefix}_organizer_attributes][]", organizer, &block)
+  end
+
+  def add_organizer_link(name)
+    link_to_function name do |page|
+      page.insert_html :bottom, :organizers, :partial => 'organizer', :object => Organism.new
+    end
+  end
+
+  def fields_for_partner(event, partner, &block)
+    prefix = event.partners.include?(partner) ? 'existing' : 'new'
+    fields_for("event[#{prefix}_partner_attributes][]", partner, &block)
+  end
+
+  def add_partner_link(name)
+    link_to_function name do |page|
+      page.insert_html :bottom, :partners, :partial => 'partner', :object => Organism.new
+    end
+  end
+
   def get_event_location(event)
     if event.places.size > 0
       if !event.places.first.name.blank?

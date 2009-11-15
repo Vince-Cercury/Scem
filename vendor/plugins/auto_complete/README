@@ -1,23 +1,91 @@
-Example:
+Fork of the standard auto_complete plugin to support:
 
-  # Controller
-  class BlogController < ApplicationController
-    auto_complete_for :post, :title
-  end
+1. Creating auto complete text fields that can be repeated more than once a single form.
 
-  # View
-  <%= text_field_with_auto_complete :post, title %>
+2. Using auto_complete_for with named scopes to display a customized list
+of autocomplete options.
 
-By default, auto_complete_for limits the results to 10 entries,
-and sorts by the given field.
+See: http://patshaughnessy.net/repeated_auto_complete for details.
 
-auto_complete_for takes a third parameter, an options hash to
-the find method used to search for the records:
 
-  auto_complete_for :post, :title, :limit => 15, :order => 'created_at DESC'
+Repeated autocomplete text fields:
+==================================
 
-For more examples, see script.aculo.us:
-* http://script.aculo.us/demos/ajax/autocompleter
-* http://script.aculo.us/demos/ajax/autocompleter_customized
+A "text_field_with_auto_complete" method is made available to the form builder
+yielded by form_for and fields_for that:
+- Insures unique id's for <input> and <div> tags by inserting unique integers into their
+id attributes
+- Uses the object name from the surrounding call to form_for or fields_for so attribute
+mass assignment will work as usual
+- Works with the same server side controller method, auto_complete_for, as usual
+- Supports nested attributes in Rails 2.3
 
-Copyright (c) 2007 David Heinemeier Hansson, released under the MIT license   
+form.text_field_with_auto_complete works the same as the original text_field_with_auto_complete macro,
+except it does not take the object as a parameter.
+
+Example with nested attributes using Rails 2.3 or later:
+
+class Project < ActiveRecord::Base
+  has_many :tasks
+  accepts_nested_attributes_for :tasks, :allow_destroy => true
+end
+
+<% form_for @project do |project_form| %>
+  <p>
+    <%= project_form.label :name, "Project:" %>
+    <%= project_form.text_field_with_auto_complete :name, {}, {:method => :get } %>
+  </p>
+  <% project_form.fields_for :tasks do |task_form| %>
+    <p>
+      <%= task_form.label :name, "Task:" %>
+      <%= task_form.text_field_with_auto_complete :name, {}, { :method => :get, :skip_style => true } %>
+    </p>
+  <% end %>
+<% end %>
+
+
+Rails 2.2 and earlier example:
+
+<% for person in @group.people %>
+  <% fields_for "group[person_attributes][]", person do |person_form| %>
+    <p>
+      Person <%= person_form.label :name %><br/>
+      <%= person_form.text_field_with_auto_complete :name, {}, {:method => :get }  %>
+    </p>
+  <% end %>
+<% end %>
+
+
+
+Named scopes with auto_complete_for:
+====================================
+
+auto_complete_for now optionally accepts a block that is called with the item list and HTTP parameters
+when the auto complete AJAX request is received. This block can be used to specify that a named scope
+be used to generate a customized list of autocomplete options.
+
+Example using anonymous scope:
+
+auto_complete_for :some_model, :some_other_field do |items, params|
+  items.scoped( { :conditions => [ "a_third_field = ?", params['some_model']['a_third_field'] ] })
+end
+
+
+
+Example using named scope:
+
+class Task < ActiveRecord::Base
+  belongs_to :project
+  named_scope :by_project,
+    lambda { |project_name| {
+      :include => :project,
+      :conditions => [ "projects.name = ?", project_name ]
+    } }
+end
+
+auto_complete_for :task, :name do | items, params |
+  items.by_project(params['project'])
+end
+
+
+Copyright (c) 2009 [Pat Shaughnessy], released under the MIT license

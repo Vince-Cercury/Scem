@@ -43,9 +43,6 @@ class Gallery < ActiveRecord::Base
         picture.activated_by = attributes[:creator_id]
         
       end
-      #picture.parent_type='Gallery'
-      
-      
       pictures << picture
     end
   end

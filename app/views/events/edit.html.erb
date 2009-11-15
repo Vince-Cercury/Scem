@@ -58,14 +58,16 @@
         </p>
       </div>
       <div class="eventEditBodyCenterRight">
-        <%#= collection_select :contributions,
-          :place_ids,
-          Organism.find_all_by_state('active', :order =>'name'),
-          :id, :name,{ :selected => @event.get_first_place, :include_blank => true},
-          { :multiple => false, :class => 'textField' } -%>
-        <%#= text_field_with_auto_complete :organism, :organism_place_name, {}, {:method => :get}  %>
+  <%#= collection_select :contributions,
+  :place_ids,
+  Organism.find_all_by_state('active', :order =>'name'),
+  :id, :name,{ :selected => @event.get_first_place, :include_blank => true},
+  { :multiple => false, :class => 'textField' } -%>
+  <%#= text_field_with_auto_complete :organism, :organism_place_name, {}, {:method => :get}  %>
 
-        <%= text_field_with_auto_complete :event, :organism_place_name, {  }, { :url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
+  <%#= text_field_with_auto_complete :event, :organism_place_name, {  }, { :url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
+        <%= f.text_field_with_auto_complete :organism_place_name, {}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
+
       </div>
 
       <div class="eventEditBodyCenterLeft">
@@ -111,20 +113,19 @@
       </div>
       <div class="eventEditBodyCenter">
         <h3><%= t('events.edit.Organizers') %></h3>
-        <%= swapselect :contributions,
-          @event,
-          :organizer,
-          Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }, :size => 10
-        #get_list_organism_rights_user(current_user).map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
-        %>
+        <div id="organizers">
+          <%= render :partial => 'organizer', :collection => @organizers %>
+        </div>
+        <%= add_organizer_link t('events.edit.add_organizer') %>
+
       </div>
       <div class="eventEditBodyCenter">
         <h3><%= t('events.edit.Partners') %></h3>
-        <%= swapselect :contributions,
-          @event,
-          :partner,
-          Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }, :size => 10
-      %>
+        <div id="partners">
+          <%= render :partial => 'partner', :collection => @partners %>
+        </div>
+
+        <%= add_partner_link t('events.edit.add_partner') %>
       </div>
     <% end %>
 
@@ -137,7 +138,7 @@
     </div>
     <div class="eventEditBodyCenter">
       <%= add_term_link t('events.edit.add_term') %>
-    </div>   
+    </div>
     <div class="eventEditBodyCenter">
       <%= f.submit t('events.edit.Update') %>
     </div>

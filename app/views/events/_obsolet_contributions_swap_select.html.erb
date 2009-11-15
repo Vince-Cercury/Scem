@@ -1,0 +1,12 @@
+        <%= swapselect :contributions,
+          @event,
+          :organizer,
+          Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }, :size => 10
+        #get_list_organism_rights_user(current_user).map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }
+        %>
+
+        <%= swapselect :contributions,
+          @event,
+          :partner,
+          Organism.find_all_by_state('active', :order =>'name').map{ |organism| [organism.name.gsub(/[']/, '\\\\\''), organism.id] }, :size => 10
+      %>

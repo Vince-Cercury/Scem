@@ -1,0 +1,10 @@
+<div class="partner">
+<% fields_for_partner(@event, partner) do |partner_form| %>
+<%# fields_for "event[organizer_attributes][]", organizer do |organizer_form| %>
+  <p>
+    <%= partner_form.text_field_with_auto_complete :name, {}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
+  
+  <%= link_to_function t('events.partner.Remove'), "$(this).up('.partner').remove()" %>
+  </p>
+<% end %>
+</div>

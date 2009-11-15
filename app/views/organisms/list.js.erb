@@ -1,1 +1,13 @@
-<%= auto_complete_result @organisms, :name %>
+<%#= auto_complete_result @organisms, :name %>
+<% if @organisms.size > 0 %>
+<ul>
+  <% @organisms.each do |organism| %>
+    <li><div class="informal">
+      <% if organism.picture.nil? %>
+        <%= get_default_organism_picture(organism, "mini_width") %>
+      <% else %>
+        <%= get_organism_picture(organism, "mini_width") %></div><% end %><%= organism.name %></li>
+    
+  <% end %>
+</ul>
+<% end %>

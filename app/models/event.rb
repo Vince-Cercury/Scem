@@ -10,21 +10,6 @@ class Event < ActiveRecord::Base
 
   has_many :posts, :as => :parent, :dependent => :destroy
 
-  #Auto complete place name (organism)
-  def organism_place_name
-    places.first.name if places.first
-  end
-
-  def organism_place_name=(name)
-    organism_place = Organism.find_by_name(name) unless name.blank?
-    if organism_place
-      contribution = Contribution.new
-      #contribution.event_id=self.id
-      contribution.organism_id=organism_place.id
-      contribution.role="place"
-      self.contributions << contribution
-    end
-  end
 
 
   include AASM
@@ -151,6 +136,72 @@ class Event < ActiveRecord::Base
 
   #MANAGE CONTRIBUTIONS
   validates_associated :contributions
+  
+
+  #  before_update :delete_contributions
+  #
+  #  def delete_contributions
+  #    contributions.delete_all
+  #  end
+
+  #auto complete organizers proced result
+  def existing_organizer_attributes=(organizer_attributes)
+    organizer_attributes.each do |attributes|
+      proceed_contribution_attribute(attributes[1][:name], 'organizer')
+    end
+  end
+
+  def new_organizer_attributes=(organizer_attributes)
+    organizer_attributes.each do |attributes|
+      proceed_contribution_attribute(attributes['name'], 'organizer')
+    end
+  end
+
+    def existing_partner_attributes=(partner_attributes)
+    partner_attributes.each do |attributes|
+      proceed_contribution_attribute(attributes[1][:name], 'partner')
+    end
+  end
+
+  def new_partner_attributes=(partner_attributes)
+    partner_attributes.each do |attributes|
+      proceed_contribution_attribute(attributes['name'], 'partner')
+    end
+  end
+
+  def proceed_contribution_attribute(contributor_name, role)
+    begin
+    contributor = Organism.find_by_name(contributor_name) unless contributor_name.blank?
+      if contributor
+        if(!self.organizers.include?(contributor))
+          contribution = Contribution.new
+          #contribution.event_id=self.id
+          contribution.organism_id=contributor.id
+          contribution.role = role
+          self.contributions << contribution
+        end
+      end
+    rescue
+      #if record not found, do nothing
+    end
+  end
+
+
+  #Auto complete place name proceed result (organism)
+  def organism_place_name
+    places.first.name if places.first
+  end
+
+  def organism_place_name=(name)
+    organism_place = Organism.find_by_name(name) unless name.blank?
+    if organism_place
+      contribution = Contribution.new
+      #contribution.event_id=self.id
+      contribution.organism_id=organism_place.id
+      contribution.role="place"
+      self.contributions << contribution
+    end
+  end
 
   
   def self.search_has_publisher(search, page, is_private=false)
