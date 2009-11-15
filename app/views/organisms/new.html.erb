@@ -4,17 +4,22 @@
   <% form_for(@organism, :live_validations => true) do |f| %>
     <%= f.error_messages %>
     <div class="organismNewBodyCenter">
+      <p>
+        <%= t('organisms.new.Message') %>
+      </p>
+    </div>
+    <div class="organismNewBodyCenter">
       <div class="organismNewBodyCenterLeft">
-        <h3><%= f.label :name %></h3>
+        <h3><%= t('organisms.new.Title') %></h3>
       </div>
       <div class="organismNewBodyCenterRight">
-        <%= f.text_field :name, :class => 'title' %>
+        <%= f.text_field :name, :class => 'textFieldOrganismNew' %>
       </div>
     </div>
 
     <div class="organismNewBodyCenter">
       <div class="organismNewBodyCenterLeft">
-        <h3><%= f.label :description_short %></h3>
+        <h3><%= t('organisms.new.DescriptionShort') %></h3>
       </div>
       <div class="organismNewBodyCenterRight">
         <%= f.text_area :description_short, :cols => 39, :rows => 3 %>
@@ -23,19 +28,19 @@
 
     <div class="organismNewBodyCenter">
       <div class="organismNewBodyCenterLeft">
-        <h3><%= f.label :manager_name %></h3>
+        <h3><%= t('organisms.new.Manager') %></h3>
       </div>
       <div class="organismNewBodyCenterRight">
-        <%= f.text_field :manager_name, :style => 'text' %>
+        <%= f.text_field :manager_name, :style => 'text', :class => 'textFieldOrganismNew' %>
       </div>
     </div>
 
     <div class="organismNewBodyCenter">
       <div class="organismNewBodyCenterLeft">
-        <h3><%= f.label :phone %></h3>
+        <h3><%= t('organisms.new.Phone') %></h3>
       </div>
       <div class="organismNewBodyCenterRight">
-        <%= f.text_field :phone, :style => 'text' %>
+        <%= f.text_field :phone, :style => 'text', :class => 'textFieldOrganismNew' %>
       </div>
     </div>
 
