@@ -470,49 +470,50 @@ fr-FR:
 
   # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
   datetime:
-    distance_in_words:
-      half_a_minute: "half a minute"
+   distance_in_words:
+      half_a_minute: "30 secondes"
       less_than_x_seconds:
-        one: "less than 1 second"
-        other: "less than {{count}} seconds"
+        zero: "moins d'une seconde"
+        one: "moins de 1 seconde"
+        other: "moins de {{count}} secondes"
       x_seconds:
-        one: "1 second"
-        other: "{{count}} seconds"
+        one: "1 seconde"
+        other: "{{count}} secondes"
       less_than_x_minutes:
-        one: "less than a minute"
-        other: "less than {{count}} minutes"
+        zero: "moins d'une minute"
+        one: "moins de 1 minute"
+        other: "moins de {{count}} minutes"
       x_minutes:
         one: "1 minute"
         other: "{{count}} minutes"
       about_x_hours:
-        one: "about 1 hour"
-        other: "about {{count}} hours"
+        one: "environ une heure"
+        other: "environ {{count}} heures"
       x_days:
-        one: "1 day"
-        other: "{{count}} days"
+        one: "1 jour"
+        other: "{{count}} jours"
       about_x_months:
-        one: "about 1 month"
-        other: "about {{count}} months"
+        one: "environ un mois"
+        other: "environ {{count}} mois"
       x_months:
-        one: "1 month"
-        other: "{{count}} months"
+        one: "1 mois"
+        other: "{{count}} mois"
       about_x_years:
-        one: "about 1 year"
-        other: "about {{count}} years"
+        one: "environ un an"
+        other: "environ {{count}} ans"
       over_x_years:
-        one: "over 1 year"
-        other: "over {{count}} years"
+        one: "plus d'un an"
+        other: "plus de {{count}} ans"
       almost_x_years:
-        one: "almost 1 year"
-        other: "almost {{count}} years"
-    prompts:
+        one: "environ 1 year"
+        other: "plus de {{count}} années"
+   prompts:
       year: "Year"
       month: "Month"
       day: "Day"
       hour: "Hour"
       minute: "Minute"
       second: "Seconds"
-
   activerecord:
     errors:
       messages:
