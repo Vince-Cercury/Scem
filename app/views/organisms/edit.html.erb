@@ -3,9 +3,7 @@
 
   <div class="organismEditBody">
     <%= f.error_messages %>
-    <div class="organismEditBodyCenter">
-      <p><%= t('organisms.edit.Message') %></p>
-    </div>
+
     <div class="organismEditBodyLeft">
       <% if @organism.picture.nil? %>
         <%= display_organism_cover(@organism, :medium) %>
