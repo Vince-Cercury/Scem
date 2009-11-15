@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091112233603) do
+ActiveRecord::Schema.define(:version => 20091115184903) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(:version => 20091112233603) do
     t.string   "name"
     t.text     "description_short"
     t.text     "description_long"
-    t.boolean  "is_charged",        :default => false
-    t.boolean  "is_private",        :default => false
+    t.boolean  "is_charged",        :default => false,     :null => false
+    t.boolean  "is_private",        :default => false,     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "created_by"
@@ -111,6 +111,9 @@ ActiveRecord::Schema.define(:version => 20091112233603) do
     t.boolean  "add_picture_moderation", :default => true
     t.string   "name"
     t.string   "cached_slug"
+    t.string   "state",                  :default => "passive"
+    t.datetime "activated_at"
+    t.datetime "suspended_at"
   end
 
   create_table "images", :force => true do |t|
@@ -142,10 +145,10 @@ ActiveRecord::Schema.define(:version => 20091112233603) do
     t.boolean  "in_directory",                       :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "state",                              :default => "passive"
     t.string   "activation_code",     :limit => 40
-    t.datetime "activated_at"
     t.datetime "deleted_at"
+    t.datetime "activated_at"
+    t.string   "state",                              :default => "passive"
     t.string   "members_password"
     t.integer  "created_by"
     t.integer  "edited_by"
@@ -190,12 +193,12 @@ ActiveRecord::Schema.define(:version => 20091112233603) do
     t.datetime "attached_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position",              :default => 1
     t.string   "state",                 :default => "passive"
     t.datetime "suspended_at"
     t.integer  "suspended_by"
     t.datetime "activated_by"
     t.integer  "activated_at"
+    t.integer  "position",              :default => 1
     t.boolean  "cover",                 :default => false
   end
 

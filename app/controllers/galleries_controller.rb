@@ -210,7 +210,7 @@ class GalleriesController < ApplicationController
     #prepare_pictures_attributes(@gallery)
 
     respond_to do |format|
-      if @gallery.save
+      if @picture.activate!
 
         flash[:notice] = I18n.t('galleries.controller.Gallery_successfully_created')
         #format.html { redirect_to(@gallery) }
@@ -248,12 +248,35 @@ class GalleriesController < ApplicationController
   # DELETE /galleries/1
   # DELETE /galleries/1.xml
   def destroy
-    @gallery = Gallery.find(params[:id])
-    @parent_object = @gallery.get_parent_objet
-    @gallery.destroy
+
+    destroyable = true
+
+    gallery = Gallery.find(params[:id])
+    parent_object = gallery.get_parent_object
+
+
+    if(gallery.pictures.size>0)
+      destroyable = false
+    end
+
+    if gallery.comments.size>0
+      destroyable = false
+    end
+
+
+
+    if destroyable
+      gallery.destroy
+    else
+      gallery.pictures.each do |picture|
+        picture.suspend!
+      end
+      gallery.suspend!
+    end
 
     respond_to do |format|
-      format.html { redirect_to(url_for_even_polymorphic(@parent_object)) }
+      flash[:notice] = I18n.t('galleries.controller.Successfully_destroyed')
+      format.html { redirect_to(url_for_even_polymorphic(parent_object)) }
       format.xml  { head :ok }
     end
   end
@@ -307,7 +330,7 @@ class GalleriesController < ApplicationController
   end
 
   def ensure_moderator_edit_rights?
-   # puts "ensure current user is owner or has moderation rights (picture)"
+    # puts "ensure current user is owner or has moderation rights (picture)"
     gallery = Gallery.find(params[:id])
     not_enough_rights unless self.current_user && gallery && gallery.creator_id==self.current_user.id or has_current_user_moderation_rights
   end

@@ -19,10 +19,54 @@ class Gallery < ActiveRecord::Base
 
   acts_as_rateable
 
+   include AASM
+  aasm_column :state
+  aasm_initial_state :initial => :passive
+  aasm_state :passive
+  aasm_state :active,  :enter => :do_activate
+  aasm_state :suspended, :enter => :do_suspend
+  aasm_state :archive,  :enter => :do_activate
 
-  def self.search(search, page)
+
+  aasm_event :activate do
+    transitions :from => :passive, :to => :active
+  end
+
+  aasm_event :suspend do
+    transitions :from => [:passive, :active, :edited], :to => :suspended
+  end
+
+  aasm_event :unsuspend do
+    transitions :from => :suspended, :to => :active
+    transitions :from => :suspended, :to => :passive
+  end
+
+  def recently_activated?
+    @activated
+  end
+
+  def recently_suspended?
+    @suspended
+  end
+
+  def do_suspend
+    @suspended = true
+    self.suspended_at = Time.now.utc
+  end
+
+  def do_activate
+    set_activated
+    self.activated_at = Time.now.utc
+  end
+
+  def set_activated
+    @activated = true
+  end
+
+
+  def self.search(search, page, state = 'active')
     paginate :per_page => ENV['PER_PAGE'], :page => page,
-      :conditions => ['name like ?', "%#{search}%"],
+      :conditions => ['name like ? and state = ?', "%#{search}%", state],
       :order => 'id DESC'
   end
 

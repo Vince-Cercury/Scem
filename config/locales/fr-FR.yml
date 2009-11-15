@@ -726,6 +726,7 @@ fr-FR:
       Gallery_successfully_updated: "Galerie modifi&eacute;e avec succ&egrave;s"
       Not_allowed_to_do_this: "Vous n'avez pas suffisamment de droits pour effectuer cette action."
       Missing_parameters: "Des param&egrave;tres sont manquants ou erron&eacute;s"
+      Successfully_destroyed: "Galerie d&eacute;truite avec succ&egrave;s"
     show:
       Description: "Decription :"
       Publish_Facebook_wall: "Publier sur mon mur Facebook"
@@ -780,6 +781,9 @@ fr-FR:
     bar:
       Pictures: "&nbsp;Photos"
       New_gallery: "Nouvelle galerie !"
+    subheader:
+      Destroy: "Supprimer"
+      Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
   friends:
     Search: "Rechercher"
     controller:

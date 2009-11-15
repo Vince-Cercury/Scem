@@ -107,9 +107,9 @@ class Organism < ActiveRecord::Base
 
   end
 
-  def search_galleries(search, page)
+  def search_galleries(search, page, state = 'active')
     galleries.paginate :per_page => ENV['PER_PAGE'], :page => page,
-      :conditions => ['name like ?', "%#{search}%"],
+      :conditions => ['name like ? and state = ?', "%#{search}%", state],
       :order => 'name'
   end
 

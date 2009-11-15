@@ -66,13 +66,13 @@ class PictureObserver < ActiveRecord::Observer
     end
 
     #send an email to sys moderators in case picture was suspended!
-    if picture.recently_suspended?
-      puts "[picture-observer] picture recently suspended"
-      @list_sys_moderators.each do |user|
-        puts "[picture-observer] deliver email to user (system moderator) with id=#{user.id}"
-        PictureMailer.deliver_to_sys_moderators_suspended_notification(user, picture, @controller) if user.receive_picture_notification && user != @user_creator unless user.email==""
-      end
-    end
+#    if picture.recently_suspended?
+#      puts "[picture-observer] picture recently suspended"
+#      @list_sys_moderators.each do |user|
+#        puts "[picture-observer] deliver email to user (system moderator) with id=#{user.id}"
+#        PictureMailer.deliver_to_sys_moderators_suspended_notification(user, picture, @controller) if user.receive_picture_notification && user != @user_creator unless user.email==""
+#      end
+#    end
 
   end
 

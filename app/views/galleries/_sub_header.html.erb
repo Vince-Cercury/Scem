@@ -35,6 +35,11 @@
         <% end %>
       </li>
     <% end %>
+    <% if is_gallery_moderator?(@gallery) %>
+      <li>
+          <%= link_to t('galleries.subheader.Destroy'), @gallery, :confirm => t('galleries.subheader.Are_you_sure'), :method => :delete %>
+      </li>
+    <% end %>
   </ul>
 </div>
 
