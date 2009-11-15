@@ -143,6 +143,7 @@
               <% flash.each do |key, msg| %>
                 <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
               <% end %>
+              <a name="top"></a>
               <%= yield %>
             </div>
           </div>

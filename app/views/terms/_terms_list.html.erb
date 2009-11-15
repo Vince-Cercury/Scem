@@ -57,6 +57,6 @@
       <%= t('events.terms.Currently_no_event_category') %>
     </div>
   <% end %>
-  <%= will_paginate @terms %>
+  <%= will_paginate @terms, :params => {:anchor => "top" } %>
 </div>
 </div>

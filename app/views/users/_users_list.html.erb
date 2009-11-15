@@ -38,7 +38,7 @@
       <% end %>
     </div>
     <% end %>
-    <%= will_paginate @users %>
+    <%= will_paginate @users, :params => {:anchor => "top" }  %>
     <% if @users.size == 0 %>
       <div class="userListMessage">
         <%= t('users.Sorry_no_results') %>

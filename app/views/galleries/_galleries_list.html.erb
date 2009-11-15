@@ -33,6 +33,6 @@
   </div>
   <% end %>
   <div class="pagination">
-    <%= will_paginate @galleries %>
+    <%= will_paginate @galleries, :params => {:anchor => "top" }  %>
   </div>
 </div>
