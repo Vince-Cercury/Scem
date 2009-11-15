@@ -135,11 +135,15 @@ fr-FR:
       Organizers: "Editez les organisateurs de cet &eacute;v&egrave;nement :"
       Partners: "Editez les partenaires de cet &eacute;v&egrave;nement :"
     new:
+      Step1: "Etape 1: Création de l'évènement."
+      Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un &eacute;v&egrave;nement, pour vous favoriser la publication d'évènement nous avons diviser cette création en deux étapes. Ce premier formulaire comporte les informations indispensables à la création d'un évènement. Vous serez ensuite diriger vers la deuxième étape au vous pourrez détailler plus en détails ces informations."
       Back: "Retour"
       Create: "Cr&eacute;er"
-      Add_term: "Ajouter"
+      Add_term: "Ajouter une autre date"
       New_event: "Nouvel &eacute;v&egrave;nement"
       Publisher: "Editeur : "
+      Title: "Titre de l'&eacute;v&egrave;nement :"
+      DescriptionShort: "Descrivez en quelques mots votre &eacute;v&egrave;nement :"
     share:
       Tick_users: "Cochez les utilisateurs avec lesquels vous souhaitez partager"
       Search: "Rechercher"
@@ -508,7 +512,7 @@ fr-FR:
   activerecord:
     errors:
       messages:
-        blank: "Ceci ne peut &ecirc;tre vide"
+        blank: "Ceci ne peut être vide"
       template:
         header:
           one: "1 error prohibited this {{model}} from being saved"

@@ -1,39 +1,67 @@
-<h1><%= t('events.new.New_event') %></h1>
+<div class="titledescription"></div>
 
-<% form_for(@event, :live_validations => true) do |f| %>
-  <%= f.error_messages %>
+<div class="eventNewBody">
+  <div class="eventNewBodyCenter">
+    <h4><%= t('events.new.Step1') %></h4>
+  </div>
+  <div class="eventNewBodyCenter">
+    <p>
+      <%= t('events.new.Message') %>
+    </p>
+  </div>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :class => 'title' %>
-  </p>
-  <p>
-    <%= f.label :description_short %><br />
-    <%= f.text_area :description_short, :cols => 35, :rows => 5 %>
-  </p>
-  <% if params[:type] != 'user_event' %>
-    <div class="box">
-      <%= t('events.new.Publisher') %> <br />
-      <%= collection_select :contributions,
-        :publisher_ids,
-        get_list_organism_rights_user(current_user),
-        :id, :name,{ :selected => get_list_organism_rights_user(current_user).first, :include_blank => false },
-        { :multiple => false } -%>
+  <% form_for(@event, :live_validations => true) do |f| %>
+    <%= f.error_messages %>
+    <div class="eventNewBodyCenter">
+      <div class="eventNewBodyCenterLeft">
+        <h3><%= t('events.new.Title') %></h3>
+      </div>
+      <div class="eventNewBodyCenterRight">
+        <%= f.text_field :name, :class => 'textFieldEventNew' %>
+      </div>
+    </div>
+
+    <div class="eventNewBodyCenter">
+      <div class="eventNewBodyCenterLeft">
+        <h3><%= t('events.new.DescriptionShort') %></h3>
+      </div>
+      <div class="eventNewBodyCenterRight">
+        <%= f.text_area :description_short, :cols => 39, :rows => 3 %>
+      </div>
+    </div>
+
+
+    <% if params[:type] != 'user_event' %>
+      <div class="eventNewBodyCenter">
+        <div class="eventNewBodyCenterLeft">
+          <h3><%= t('events.new.Publisher') %></h3>
+        </div>
+        <div class="eventNewBodyCenterRight">
+          <%= collection_select :contributions,
+            :publisher_ids,
+            get_list_organism_rights_user(current_user),
+            :id, :name,{ :selected => get_list_organism_rights_user(current_user).first, :include_blank => false },
+            { :multiple => false, :class => 'textFieldNew'} -%>
+        </div>
+      </div>
+    <% end %>
+
+
+    <%= hidden_field_tag('type', params[:type]) %>
+
+    <%= calendar_date_select_includes nil,:locale=>'fr' %>
+
+    <div id="terms">
+      <%= render :partial => 'term', :collection => @event.terms %>
+    </div>
+
+    <div class="eventNewBodyCenter">
+      <%= add_term_link t('events.new.Add_term') %>
+    </div>
+
+
+    <div class="eventNewBodyCenter">
+      <%= f.submit t('events.new.Create') %>
     </div>
   <% end %>
-  <%= hidden_field_tag('type', params[:type]) %>
-  
-<%= calendar_date_select_includes nil,:locale=>'fr' %>
-  
-  <div id="terms">
-    <%= render :partial => 'term', :collection => @event.terms %>
-  </div>
-  <p><%= add_term_link t('events.new.Add_term') %></p>
-
-
-  <p>
-    <%= f.submit t('events.new.Create') %>
-  </p>
-<% end %>
-
-<%= link_to t('events.new.Back'), events_path %>
+</div>
