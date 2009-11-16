@@ -4,11 +4,6 @@
   <div class="eventNewBodyCenter">
     <h4><%= t('events.new.Step1') %></h4>
   </div>
-  <div class="eventNewBodyCenter">
-    <p>
-      <%= t('events.new.Message') %>
-    </p>
-  </div>
 
   <% form_for(@event, :live_validations => true) do |f| %>
     <%= f.error_messages %>
@@ -17,7 +12,7 @@
         <h3><%= t('events.new.Title') %></h3>
       </div>
       <div class="eventNewBodyCenterRight">
-        <%= f.text_field :name, :class => 'textFieldEventNew' %>
+        <%= f.text_field :name, :class => 'textFieldNew' %>
       </div>
     </div>
 

@@ -2,9 +2,10 @@
   <% fields_for_organizer(@event, organizer) do |organizer_form| %>
   <%# fields_for "event[organizer_attributes][]", organizer do |organizer_form| %>
 
-      <%= organizer_form.text_field_with_auto_complete :name, {}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search'} %>
+      <%= organizer_form.text_field_with_auto_complete :name, {:class => 'textFieldShort'}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search', :skip_style => true} %>
 
-      <%= link_to_function t('events.organizer.Remove'), "$(this).up('.organizer').remove()" %>
+    <%= link_to_function t('events.organizer.Remove'), "$(this).up('.organizer').remove()" %>
+
 
   <% end %>
 </div>

@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag 'calendar/grey/style' %>
     <%= stylesheet_link_tag 'mini-rating' %>
     <%= stylesheet_link_tag 'rating' %>
+    <%= stylesheet_link_tag 'autocomplete' %>
     <%= stylesheet_link_tag 'blueprint/screen', :media => "all" %>
     <%= stylesheet_link_tag 'blueprint/print', :media => "print" %>
     <%= stylesheet_link_tag 'tabsplugin/screen', :media => "all" %>
@@ -136,8 +137,23 @@
         <div class="content">
           <div class="contentleft">
             <div class="information">
-              <span>Ce site est un prototype. Si un évènement manque ou que vous rencontrez un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a>.</span>
-              <span>Pour publier un évènement ou pour plus d'infos, <%= link_to 'rendez-vous ici ', '/organisms/le-bounce-redac/posts/8' %>.</span>
+              <script type="text/javascript"><!--
+                google_ad_client = "pub-3129952355573123";
+                /* 468x60, date de création 16/11/09 */
+                google_ad_slot = "7663764758";
+                google_ad_width = 468;
+                google_ad_height = 60;
+                //-->
+              </script>
+              <script type="text/javascript"
+                      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+              </script>
+<%#*<span>%>
+<%#*Ce site est un prototype. Si un évènement manque ou que vous rencontrez un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a>.%>
+<%#*</span>%>
+<%#*<span>%>
+<%#*Pour publier un évènement ou pour plus d'infos, <%= link_to 'rendez-vous ici ', '/organisms/le-bounce-redac/posts/8' %>
+<%#*</span>%>
             </div>
             <div class="accueilwhite">
               <div class="accueilblack">
