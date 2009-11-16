@@ -1,5 +1,5 @@
 <% if @current_object.galleries.size > 0 %>
-</div>
+
 <div class="titlegaleries"></div>
 <div class="gallerieBar">
   <% @current_object.galleries(:limit => 2, :order => 'updated_at DESC').each do |gallery| %>
@@ -26,14 +26,14 @@
 
 <% end %>
 </div>
-<div>
+
 <% elsif is_current_object_moderator?(@current_object) %>
-</div>
+
   <div class="titlegaleries"></div>
   <div class="gallerieBar">
       <div class="gallerieBarContent">
           <%= link_to(t('galleries.bar.New_gallery'), url_for(:controller => 'galleries', :action => 'new', :parent_id =>@current_object.id, :parent_type => @current_object.type)) %>
       </div>
   </div>
-<div>
+
 <% end %>
