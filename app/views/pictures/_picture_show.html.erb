@@ -26,7 +26,7 @@ loading = "$('spinner-pic').show(); " + "$('picture-show').hide(); " %>
     <div class="pictureShowPicure" id="picture-show">
       <%= link_to(image_tag(@picture.attached.url(:large)),get_picture_polymorphic_parent_url(@picture)) %>
     </div>
-    <div id="spinner-pic" style="display:none;">
+    <div id="spinner-pic" class="pictureShowPicure" style="display:none;">
       <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
       <%= image_tag "big-spinner.gif", :class => "image", :alt => "changing image" %>
     </div>

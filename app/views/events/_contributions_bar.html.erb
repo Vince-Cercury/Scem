@@ -18,7 +18,10 @@
           </div>
         <% end %>
         <% if @event.organizers.size == 0 %>
-          <%= t("events.content.Void") %>
+          <div class="eventShowBodyCenterContentRight">
+            <%= t("events.content.Void") %>
+          </div>
+
         <% end %>
       </div>
     </div>
@@ -36,7 +39,9 @@
           </div>
         <% end %>
         <% if @event.partners.size == 0 %>
-          <%= t("events.content.Void") %>
+          <div class="eventShowBodyCenterContentRight">
+            <%= t("events.content.Void") %>
+          </div>
         <% end %>
       </div>
     </div>

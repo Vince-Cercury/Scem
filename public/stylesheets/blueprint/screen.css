@@ -189,7 +189,8 @@ body {font-size:75%;
 .eventShowBodyLeftContent a:hover {background:#ffb500; color:#000;}
 .eventShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px;}
 .eventShowBodyRight img {float: right;}
-.eventShowBodyMiddle{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px; text-align: justify;}
+.eventShowBodyMiddle{width: 678px; min-height: 50px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px; text-align: justify;}
+.eventShowBodyMiddleLong{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px; text-align: justify;}
 .eventShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .eventShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 .eventShowBodyCenter{width: 688px; padding: 0 0 0 0; margin: 0 0 0 0; float: left; overflow: auto;}
@@ -199,8 +200,7 @@ body {font-size:75%;
 .eventShowBodyCenterRightContent{width: 339px; min-height: 82px; padding: 0; background: #fff; float: left; }
 .eventShowBodyCenterContentLeft{width: 72px; height: 72px; padding: 5px; background: #fff; float: left; line-height: 72px; text-align: center;}
 .eventShowBodyCenterContentLeft img{vertical-align: middle;}
-.eventShowBodyCenterContentRight{width: 237px; margin: 10px 0 10px 0; height: 52px; padding: 5px; background: #fff; float: right; line-height: 52px; text-align: center; border-left:1px solid #000;}
-.eventShowBodyCenterContentRight a{vertical-align: middle;}
+.eventShowBodyCenterContentRight{width: 237px; margin: 10px 0 10px 0; min-height: 42px; padding: 15px 5px 5px 5px; background: #fff; float: right; text-align: center; border-left:1px solid #000;}
 .eventShowBodyCommentaire {width: 688px; margin: 0 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
 .eventShowBodyCommentaire h5 {padding: 5px; color: #000; font-size: 12px; margin: 0px;}
 .eventShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
@@ -331,6 +331,7 @@ body {font-size:75%;
 .pictureShowPicure{width: 504px; height: 504px; line-height: 504px; padding: 10px 87px 10px 87px; margin: 0; background: #fff; float: left; text-align: center;}
 .pictureShowPicure img{text-align: center; vertical-align: middle;}
 
+
 .pictureNew{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
 .pictureNewCenter{width: 668px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left; text-align: center;}
 .descriptionPhoto{width: 500px;}
@@ -401,7 +402,7 @@ body {font-size:75%;
 
 
 .gallerieBar {width: 678px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left;}
-.gallerieBarBox {width: 339px; height: 110px; margin: 0; padding: 0; background: #fff; float: left; text-align: center;}
+.gallerieBarBox {width: 339px; min-height: 110px; margin: 0; padding: 0; background: #fff; float: left; text-align: center;}
 .gallerieBarBox p {text-align: center; text-indent: 30px;}
 .gallerieBarBox img {padding: 5px;}
 
