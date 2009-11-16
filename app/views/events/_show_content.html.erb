@@ -86,7 +86,8 @@
 
   <div class="eventShowBodyMiddleLong">
     <div  id="description_long">
-      <p><%= @event.description_long %>
+      <p>
+        <%= @event.description_long %>
       </p>
     </div>
     <%=   link_to_function(t('events.content.Show_me_less'), nil, :id => "more_link") do |page|

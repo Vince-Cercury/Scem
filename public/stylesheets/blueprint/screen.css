@@ -433,8 +433,10 @@ body {font-size:75%;
 
 .commentaireListHeader{background:#fff; width:678px; margin: 0; padding: 5px; float: left; height: auto; text-align: center;}
 .commentaireBodyMiddle{width: 678px; margin: 0 0 10px 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
-.commentaireBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
-.commentaireBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
+.commentaireBodyMiddleLeft{width: 72px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
+.commentaireBodyMiddleRight{width: 532px; min-height: 80px; padding: 5px 32px 5px 32px; background: #fff; float: right; text-align: center;}
+.commentaireBodyMiddleSpinner{width: 532px; min-height: 80px; line-height: 100px; padding: 5px 32px 5px 32px; background: #fff; float: right; text-align: center;}
+.commentaireBodyMiddleSpinner img{vertical-align: middle;}
 
 .searchBox{background:#000; width:668px; margin: 0; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
 .searchBoxWhite{background:#fff; width:658px; margin: 0; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
