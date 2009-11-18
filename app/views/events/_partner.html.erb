@@ -2,8 +2,12 @@
   <% fields_for_partner(@event, partner) do |partner_form| %>
   <%# fields_for "event[organizer_attributes][]", organizer do |organizer_form| %>
 
-    <%= partner_form.text_field_with_auto_complete :name, {:class => 'textFieldShort'}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search', :skip_style => true } %>
- 
-      <%= link_to_function t('events.partner.Remove'), "$(this).up('.partner').remove()" %>
+    <%= partner_form.text_field_with_auto_complete :name, {:class => 'textFieldShort'}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search', :indicator => 'contribution-spinner-'+String(@auto_complete_count+1), :skip_style => true } %>
+
+    <%= link_to_function t('events.partner.Remove'), "$(this).up('.partner').remove()" %>
+    <div class="contribution-spinner" id="contribution-spinner-<%= @auto_complete_count +=1  %>" style="display:none;">
+      <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
+      <%= image_tag "spinner.gif", :class => "image", :alt => "loading form" %>
+    </div>
   <% end %>
 </div>

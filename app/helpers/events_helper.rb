@@ -201,6 +201,8 @@ module EventsHelper
       result = get_event_location(event) + ", " + get_event_street(event) + ", " + get_event_city(event)
     elsif !get_event_street(event).blank? && !get_event_city(event).blank?
       result = get_event_street(event) + ", " + get_event_city(event)
+    elsif !get_event_location(event).blank?
+      result = get_event_location(event)
     elsif !get_event_street(event).blank?
       result = get_event_street(event)
     elsif !get_event_city(event).blank?

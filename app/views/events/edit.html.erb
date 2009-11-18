@@ -1,5 +1,6 @@
+<%= render :partial => "/events/sub_header" %>
 <% form_for(@event, :live_validations => true) do |f| %>
-  <%= render :partial => "/events/sub_header" %>
+  <% @auto_complete_count = 0 %>
   <div class="eventEditBody">
 
     <%= f.error_messages %>
@@ -66,37 +67,31 @@
   <%#= text_field_with_auto_complete :organism, :organism_place_name, {}, {:method => :get}  %>
 
   <%#= text_field_with_auto_complete :event, :organism_place_name, {  }, { :url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
-        <%= f.text_field_with_auto_complete :organism_place_name, { :class => 'textField'}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search', :skip_style => true}%>
+        <%= f.text_field_with_auto_complete :organism_place_name, { :class => 'textField'}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search', :skip_style => true, :indicator => 'contribution-spinner-'+String(@auto_complete_count+1), :after_update_element => "function(element, value){$('event-place-info').hide();} "}%>
+    <div class="contribution-spinner" id="contribution-spinner-<%= @auto_complete_count +=1  %>" style="display:none;">
+    <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
+    <%= image_tag "spinner.gif", :class => "image", :alt => "loading form" %>
+  </div>
+      </div>
+      <div id="event-place-info">
+        <div class="eventEditBodyCenterLeft">
+          <p>
+            <%= t('events.edit.Street') %>
+          </p>
+        </div>
+        <div class="eventEditBodyCenterRight">
+          <%= f.text_field :street, :class => 'textField' %>
+        </div>
 
+        <div class="eventEditBodyCenterLeft">
+          <p>
+            <%= t('events.edit.Town') %>
+          </p>
+        </div>
+        <div class="eventEditBodyCenterRight">
+          <%= f.text_field :city, :class => 'textField' %>
+        </div>
       </div>
-
-      <div class="eventEditBodyCenterLeft">
-        <p>
-          <%= f.label :places %>
-        </p>
-      </div>
-      <div class="eventEditBodyCenterRight">
-        <%= f.text_field :location, :class => 'textField' %>
-      </div>
-
-      <div class="eventEditBodyCenterLeft">
-        <p>
-          <%= t('events.edit.Street') %>
-        </p>
-      </div>
-      <div class="eventEditBodyCenterRight">
-        <%= f.text_field :street, :class => 'textField' %>
-      </div>
-
-      <div class="eventEditBodyCenterLeft">
-        <p>
-          <%= t('events.edit.Town') %>
-        </p>
-      </div>
-      <div class="eventEditBodyCenterRight">
-        <%= f.text_field :city, :class => 'textField' %>
-      </div>
-
     </div>
     <% if current_user.is_admin_or_moderator_of.size>0 or current_user.has_system_role("moderator") %>
       <div class="eventEditBodyCenter">
@@ -106,7 +101,7 @@
           <%= collection_select :contributions,
             :publisher_ids,
             get_list_organism_rights_user(current_user),
-            :id, :name,{ :selected => @event.get_first_publisher, :include_blank => true },
+            :id, :name,{ :selected => @event.get_first_publisher, :include_blank => false },
             { :multiple => false, :class => 'textField' } -%>
         </div>
 
@@ -161,5 +156,5 @@
       <%= f.submit t('events.edit.Update') %>
     </div>
   <% end %>
-
+    <%= hidden_field_tag "auto_complete_count", "0" %>
 </div>

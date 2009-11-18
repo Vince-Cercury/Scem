@@ -2,10 +2,13 @@
   <% fields_for_organizer(@event, organizer) do |organizer_form| %>
   <%# fields_for "event[organizer_attributes][]", organizer do |organizer_form| %>
 
-      <%= organizer_form.text_field_with_auto_complete :name, {:class => 'textFieldShort'}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search', :skip_style => true} %>
+      <%= organizer_form.text_field_with_auto_complete :name, {:class => 'textFieldShort'}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search', :indicator => 'contribution-spinner-'+String(@auto_complete_count+1), :skip_style => true} %>
 
     <%= link_to_function t('events.organizer.Remove'), "$(this).up('.organizer').remove()" %>
-
+    <div class="contribution-spinner" id="contribution-spinner-<%= @auto_complete_count +=1  %>" style="display:none;">
+    <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
+    <%= image_tag "spinner.gif", :class => "image", :alt => "loading form" %>
+  </div>
 
   <% end %>
 </div>

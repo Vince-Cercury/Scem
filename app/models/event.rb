@@ -200,9 +200,14 @@ class Event < ActiveRecord::Base
       contribution.organism_id=organism_place.id
       contribution.role="place"
       self.contributions << contribution
+      #delete address data as we refer to the organism.
+      self.location = ''
+      self.street = ''
+      self.city = ''
+    else
+      self.location = name
     end
   end
-
   
   def self.search_has_publisher(search, page, is_private=false)
     paginate :per_page => ENV['PER_PAGE'], :page => page,

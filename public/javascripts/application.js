@@ -1,6 +1,11 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+function auto_complete_count(hidden_field_count){
+    $(hidden_field_count).value = $(hidden_field_count).value + 1;
+    return $(hidden_field_count);
+}
+
 function ask_fb_permissions() {
 	FB.Connect.showPermissionDialog('publish_stream,email,rsvp_event,create_event', function(accepted)
 { window.location="/";
