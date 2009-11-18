@@ -5,16 +5,16 @@
 <ul class="tabsevent">
   <li>
     <% if params[:period]=='past'%>
-      <%= link_to t('terms.next_events_coming'), user_participations_path(:period => 'futur', :role =>params[:role]) %>
+      <%= link_to t('terms.next_events_coming'), user_participations_path(:period => 'futur') %>
     <% else %>
-      <%= link_to(t('terms.next_events_coming'), user_participations_path(:period => 'futur', :role =>params[:role]), :class => 'selected') %>
+      <%= link_to(t('terms.next_events_coming'), user_participations_path(:period => 'futur'), :class => 'selected') %>
     <% end %>
   </li>
   <li>
     <% if params[:period]!='past'%>
-      <%= link_to t('terms.already_started_or_past'), user_participations_path(:period => 'past', :role =>params[:role]) %>
+      <%= link_to t('terms.already_started_or_past'), user_participations_path(:period => 'past') %>
     <% else %>
-      <%= link_to t('terms.already_started_or_past'), user_participations_path(:period => 'past', :role =>params[:role]), :class => 'selected' %>
+      <%= link_to t('terms.already_started_or_past'), user_participations_path(:period => 'past'), :class => 'selected' %>
     <% end %>
   </li>
 </ul>

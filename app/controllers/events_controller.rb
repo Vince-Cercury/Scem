@@ -94,20 +94,20 @@ class EventsController < ApplicationController
     #add empty contributors fields
     @organizers = Array.new
     if @event.organizers.size == 0 
-      #1.upto(2) { @organizers << Organism.new }
-      @organizers << Organism.new
+      1.upto(2) { @organizers << Organism.new }
+      #@organizers << Organism.new
     else
       @organizers.concat @event.organizers
-      @organizers << Organism.new
+      1.upto(2) { @organizers << Organism.new }
     end
 
     @partners = Array.new
     if @event.partners.size == 0
-      #1.upto(2) { @partners << Organism.new }
-      @partners << Organism.new
+      1.upto(2) { @partners << Organism.new }
+      #@partners << Organism.new
     else
       @partners.concat @event.partners
-      @partners << Organism.new
+      1.upto(2) { @partners << Organism.new }
     end
     #raise @partners.inspect
 

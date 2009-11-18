@@ -9,8 +9,8 @@
 
       <h4><%= t("users.participations") %> (<%= t('next_number', :number =>get_next_user_participations(ENV['USER_EVENTS_MAX_RESULTS']).size) %>)</h4>
       <hr />
-      <% get_next_user_participations(ENV['USER_EVENTS_MAX_RESULTS']).each do |participation| %>
-        <% term = participation.term %>
+      <% get_next_user_participations(ENV['USER_EVENTS_MAX_RESULTS']).each do |term| %>
+        <%# term = participation.term %>
         <div  class="span-2">
           <%= display_event_cover(term.event, "mini_width") %>
         </div>
@@ -27,11 +27,11 @@
 
 
   <%# MY ORGANISMS EVENTS %>
-    <% if max_user_organisms_terms> 0 && get_next_user_organisms_terms(max_user_organisms_terms).size>0 %>
+    <% if max_user_organisms_terms> 0 && get_next_curent_user_organisms_terms(max_user_organisms_terms).size>0 %>
    
-      <h4><%= t("users.organisms.events") %> (<%= t('next_number', :number =>get_next_user_organisms_terms(max_user_organisms_terms).size) %>)</h4>
+      <h4><%= t("users.organisms.events") %> (<%= t('next_number', :number =>get_next_curent_user_organisms_terms(max_user_organisms_terms).size) %>)</h4>
       <hr />
-      <% get_next_user_organisms_terms(max_user_organisms_terms).each do |term| %>
+      <% get_next_curent_user_organisms_terms(max_user_organisms_terms).each do |term| %>
         <div  class="span-2">
           <%= display_event_cover(term.event, "mini_width") %>
         </div>
@@ -46,7 +46,7 @@
 
   <%# Calculating how many events we should display regarding to participations results  and organisms of user(we don't want the list to be too long) %>
     <% if max_user_organisms_terms && max_user_organisms_terms >0 %>
-      <% max_next_terms = max_user_organisms_terms - get_next_user_organisms_terms(max_user_organisms_terms).size %>
+      <% max_next_terms = max_user_organisms_terms - get_next_curent_user_organisms_terms(max_user_organisms_terms).size %>
     <% else %>
       <% max_next_terms = max_user_organisms_terms %>
     <% end %>

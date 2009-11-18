@@ -30,9 +30,9 @@ class ParticipationsController < ApplicationController
     if params[:event_id].nil? && params[:term_id].nil?
       @user = User.find(params[:user_id])
       if params[:period] == "past"
-        @terms = @user.search_participate_past(params[:role],params[:search], params[:page])
+        @terms = @user.search_participate_in_past(params[:search], params[:page], ENV['PER_PAGE'])
       else
-        @terms = @user.search_participate_futur(params[:role],params[:search], params[:page])
+        @terms = @user.search_participate_in_futur(params[:search], params[:page], ENV['PER_PAGE'])
       end
       @partial_path = 'index_user_terms'
     end

@@ -62,6 +62,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :friends
     #user.resources :other_friends
     user.resources :participations
+    user.resources :organisms_terms, :controller => 'user_organisms_terms'
     user.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |post|
         post.resources :comments, :collection => { :suspend   => :get,

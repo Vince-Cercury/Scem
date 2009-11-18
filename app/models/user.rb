@@ -92,9 +92,12 @@ class User < ActiveRecord::Base
     obj.has_many :maybe_participate_futur, :conditions => "participations.role = 'maybe' and terms.start_at > NOW()"
     obj.has_many :not_participate_futur, :conditions => "participations.role = 'not' and terms.start_at > NOW()"
 
-        obj.has_many :sure_participate_past, :conditions => "participations.role = 'sure' and terms.start_at <= NOW()"
+    obj.has_many :sure_participate_past, :conditions => "participations.role = 'sure' and terms.start_at <= NOW()"
     obj.has_many :maybe_participate_past, :conditions => "participations.role = 'maybe' and terms.start_at <= NOW()"
     obj.has_many :not_participate_past, :conditions => "participations.role = 'not' and terms.start_at <= NOW()"
+
+    obj.has_many :sure_or_may_be_participate_futur, :conditions => "(participations.role = 'sure' OR participations.role = 'maybe') and terms.start_at >= NOW()"
+    obj.has_many :sure_or_may_be_participate_past, :conditions => "(participations.role = 'sure' OR participations.role = 'maybe') and terms.start_at < NOW()"
   end
 
   after_create :register_user_to_fb
@@ -174,12 +177,19 @@ class User < ActiveRecord::Base
 
 
 
-  def search_participate_in_futur(search, page, max_results)
-    participations.paginate :per_page => max_results, :page => page,
-        :conditions => ["name like ? and (role='maybe' or role='sure')  and start_at >= NOW() ", "%#{search}%"],
-        #:include => :event,
-        :joins => "inner join terms on terms.id = participations.term_id inner join events on events.id = terms.event_id ",
-        :order => 'start_at ASC'
+  def search_participate_in_futur(search, page, per_page)
+    sure_or_may_be_participate_futur.paginate :per_page => per_page, :page => page,
+        :conditions => ['events.name like ?', "%#{search}%"],
+        :include => :event,
+        :order => 'events.name'
+  end
+
+
+  def search_participate_in_past(search, page, per_page)
+    sure_or_may_be_participate_past.paginate :per_page => per_page, :page => page,
+        :conditions => ['events.name like ?', "%#{search}%"],
+        :include => :event,
+        :order => 'events.name'
   end
 
   def search_organisms(role, search, page)

@@ -301,12 +301,32 @@ class Term < ActiveRecord::Base
   #      :order => 'start_at ASC'
   #  end
 
-  def self.search_by_user_organisms(search, page, per_page, user, is_private=false, event_state='active')
+  def self.search_past_by_user_organisms(search, page, per_page, user, is_private=false, event_state='active')
+    paginate  :per_page => per_page,
+      :page => page,
+      :include => [:event],
+      :conditions => ["events.name LIKE ? and events.is_private = ? and start_at < NOW() and organisms_users.user_id = ? and events.state = ?", "%#{search}%", is_private, user.id, event_state],
+      :joins => "inner join events on events.id = terms.event_id 
+      inner join contributions on contributions.event_id = events.id
+      inner join organisms_users on organisms_users.organism_id = contributions.organism_id",
+      :order => 'end_at DESC'
+  end
+
+  def self.search_futur_by_user_organisms(search, page, per_page, user, is_private=false, event_state='active')
     paginate  :per_page => per_page,
       :page => page,
       :include => [:event],
       :conditions => ["events.name LIKE ? and events.is_private = ? and start_at >= NOW() and organisms_users.user_id = ? and events.state = ?", "%#{search}%", is_private, user.id, event_state],
-      :joins => "inner join events on events.id = terms.event_id 
+      :joins => "inner join events on events.id = terms.event_id
+      inner join contributions on contributions.event_id = events.id
+      inner join organisms_users on organisms_users.organism_id = contributions.organism_id",
+      :order => 'start_at ASC'
+  end
+
+  def self.count_by_user_organisms(search, user, is_private=false, event_state='active')
+    count 'terms.id',
+      :conditions => ["events.name LIKE ? and events.is_private = ? and organisms_users.user_id = ? and events.state = ?", "%#{search}%", is_private, user.id, event_state],
+      :joins => "inner join events on events.id = terms.event_id
       inner join contributions on contributions.event_id = events.id
       inner join organisms_users on organisms_users.organism_id = contributions.organism_id",
       :order => 'start_at ASC'

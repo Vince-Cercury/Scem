@@ -81,9 +81,19 @@ module ApplicationHelper
     current_user.search_participate_in_futur('', 1, max_results)
   end
 
-  def get_next_user_organisms_terms(max_results)
+  def get_next_curent_user_organisms_terms(max_results)
+    if current_user
+      get_next_user_organisms_futur_terms(current_user, max_results)
+    end
+  end
+
+  def get_next_user_organisms_futur_terms(user, max_results)
     #the_date = parse_params_date_or_now_date
-    Term.search_by_user_organisms('',1,max_results, current_user)
+    Term.search_futur_by_user_organisms('',1,max_results, user)
+  end
+
+  def count_next_user_organisms_terms(user)
+    Term.count_by_user_organisms('', user)
   end
 
   def get_next_events(max_results)
