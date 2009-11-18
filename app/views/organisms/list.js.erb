@@ -6,7 +6,7 @@
       <% if organism.picture.nil? %>
         <%= get_default_organism_picture(organism, "mini_width") %>
       <% else %>
-        <%= get_organism_picture(organism, "mini_width") %></div><% end %><%= organism.name %></li>
+        <%= get_organism_picture(organism, "mini_width") %><% end %></div><%= organism.name %></li>
     
   <% end %>
 </ul>
