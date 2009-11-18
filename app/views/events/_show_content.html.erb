@@ -102,7 +102,7 @@
 <% end %>
 
 
-<% if @event.contributions.size > 0 %>
+<% if @event.publishers.size > 0 || @event.places.size > 0 %>
   <div class="eventShowBodyCenter">
     <div class="eventShowBodyCenterLeft">
       <div class="titleediteur"></div>
@@ -139,7 +139,7 @@
             <div class="eventShowBodyCenterContentRight">
               <%= link_to(@organism.name, url_for(organism_path(@organism))) %>
               <% if !get_event_place_as_string(@event).blank? %>
-                <%= link_to(get_event_place_as_string(@event), event_maps_path(@event)) %>
+                <%= link_to(get_event_address_as_string(@event), event_maps_path(@event)) %>
               <% end %>
             </div>
           <% end %>

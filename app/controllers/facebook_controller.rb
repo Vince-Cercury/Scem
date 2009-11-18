@@ -1,5 +1,5 @@
 class FacebookController < ApplicationController
-   before_filter :ensure_authenticated_to_facebook
+  before_filter :ensure_authenticated_to_facebook
   
   # Protect these actions behind a moderator login
   before_filter :is_granted_to_edit_term?, :only => [:cancel_event, :ask_facebook_event_categories, :create_event, :ask_facebook_event_cancel_message]

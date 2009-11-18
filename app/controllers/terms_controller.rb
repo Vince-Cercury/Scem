@@ -17,7 +17,7 @@ class TermsController < ApplicationController
 
     if params[:period] == "past"
       @period_link_param = "futur"
-      @terms = Term.search_has_publisher_past(params[:search], params[:page])
+      @terms = Term.search_has_publisher_past(params[:search], params[:page], ENV['PER_PAGE'])
     else
       @period_link_param = "past"
       @show_end_date = false

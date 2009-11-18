@@ -10,7 +10,7 @@ class Organism < ActiveRecord::Base
   before_save :generate_and_save_passwords
 
 
-  validates_presence_of     :name, :description_short, :manager_name
+  validates_presence_of     :name, :description_short, :manager_name, :phone
   validates_uniqueness_of   :name
   validates_length_of :description_short, :maximum=>400
 
