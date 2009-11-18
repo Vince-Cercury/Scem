@@ -1,0 +1,16 @@
+<ul class="tabsevent">
+  <li>
+    <% if params[:focus]!='terms_futur'%>
+      <%= link_to(t('terms.next_events_coming'), searchs_path(:focus => 'terms_futur')) %>
+    <% else %>
+      <%= link_to(t('terms.next_events_coming'), searchs_path(:focus => 'terms_futur'), :class => 'selected') %>
+    <% end %>
+  </li>
+  <li>
+    <% if params[:focus]=='terms_past'%>
+      <%= link_to(t('terms.already_started_or_past'), searchs_path(:focus => 'terms_past')) %>
+    <% else %>
+      <%= link_to(t('terms.next_events_coming'), searchs_path(:focus => 'terms_past'), :class => 'selected') %>
+    <% end %>
+  </li>
+</ul>

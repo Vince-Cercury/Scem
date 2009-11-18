@@ -17,11 +17,13 @@
         </div>
       <% end %>
     </div>
+    <% if !params[:only_details].blank? %>
     <div class="eventEditBodyRight">
       <h3><%= t('events.edit.Title')  %></h3>
       <%= f.text_field :name, :class => 'title'%>
     </div>
-    
+    <% end %>
+    <% if !params[:only_details].blank? %>
     <div class="eventEditBodyCenter">
       <p>
         <%=t('events.edit.Is_charged')  %>
@@ -32,6 +34,7 @@
         <%= f.check_box :is_private %>
       </p>
     </div>
+    <% end %>
 
     <div class="eventEditBodyCenter">
       <h3><%= t('events.edit.Categories') %></h3>
@@ -137,7 +140,7 @@
         <%= add_partner_link t('events.edit.add_partner') %>
       </div>
     <% end %>
-
+    <% if !params[:only_details].blank? %>
     <div class="eventEditBodyCenter">
       <h3><%= t('events.edit.Date') %></h3>
     </div>
@@ -148,6 +151,7 @@
     <div class="eventEditBodyCenter">
       <%= add_term_link t('events.edit.add_term') %>
     </div>
+    <% end %>
     <div class="eventEditBodyCenter">
       <%= f.submit t('events.edit.Update') %>
     </div>
