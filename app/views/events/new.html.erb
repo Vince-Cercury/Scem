@@ -16,14 +16,17 @@
       </div>
     </div>
 
-    <div class="eventNewBodyCenter">
-      <div class="eventNewBodyCenterLeft">
-        <h3><%= t('events.new.DescriptionShort') %></h3>
-      </div>
-      <div class="eventNewBodyCenterRight">
-        <%= f.text_area :description_short, :cols => 39, :rows => 3 %>
-      </div>
+    <div class="eventEditBodyCenter">
+      <p>
+        <%=t('events.edit.Is_charged')  %>
+        <%= f.check_box :is_charged %>
+      </p>
+      <p>
+        <%= t('events.edit.Is_private') %>
+        <%= f.check_box :is_private %>
+      </p>
     </div>
+
 
 
     <% if params[:type] != 'user_event' %>

@@ -20,7 +20,6 @@
 
     </div>
     <div class="termboxRight">
-      <% if  action_name == 'edit' %>
         <p>
           <%= t('events.term.Term_description') %>
         </p>
@@ -28,5 +27,4 @@
         <%= term_form.text_area :description, :cols => 35, :rows => 5 %>
       <% end %>
     </div>
-  <% end %>
 </div>

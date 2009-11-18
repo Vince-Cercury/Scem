@@ -14,7 +14,7 @@ class Term < ActiveRecord::Base
     #result += "#{e.day}-#{e.month}-#{e.year}-#{e.hour}-#{e.min}"
   end
 
-  validates_presence_of :start_at, :end_at
+  validates_presence_of :start_at, :end_at, :description
   validates_length_of :description, :maximum=>800
 
   #validates_length_of :start_at, :minimum=>8

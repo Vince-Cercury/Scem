@@ -36,9 +36,9 @@ class Event < ActiveRecord::Base
   end
 
   aasm_event :uncancel do
-    transitions :from => :canceled, :to => :active, :guard => Proc.new {|e| !e.manager_name.blank? and !e.description_short.blank? }
-    transitions :from => :canceled, :to => :pending, :guard => Proc.new {|e| !e.manager_name.blank? and !e.description_short.blank? }
-    transitions :from => :canceled, :to => :passive, :guard => Proc.new {|e| !e.manager_name.blank? and !e.description_short.blank? }
+    transitions :from => :canceled, :to => :active, :guard => Proc.new {|e| !e.manager_name.blank?  }
+    transitions :from => :canceled, :to => :pending, :guard => Proc.new {|e| !e.manager_name.blank? }
+    transitions :from => :canceled, :to => :passive, :guard => Proc.new {|e| !e.manager_name.blank? }
   end
 
   def recently_activated?
@@ -78,8 +78,8 @@ class Event < ActiveRecord::Base
 
   acts_as_rateable
 
-  validates_presence_of :name, :description_short
-  validates_length_of :description_short, :maximum=>800
+  validates_presence_of :name#, :description_short
+  #validates_length_of :description_short, :maximum=>800
 
   
   has_many :terms, :dependent => :destroy

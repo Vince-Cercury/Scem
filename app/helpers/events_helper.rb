@@ -91,7 +91,7 @@ module EventsHelper
 
   def fields_for_term(term, &block)
     prefix = term.new_record? ? 'new' : 'existing'
-    fields_for("event[#{prefix}_term_attributes][]", term, &block)
+    fields_for("event[#{prefix}_term_attributes][]", term,  :live_validations => true, &block)
   end
 
   def add_term_link(name)
