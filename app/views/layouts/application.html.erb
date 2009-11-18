@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag 'calendar/grey/style' %>
     <%= stylesheet_link_tag 'mini-rating' %>
     <%= stylesheet_link_tag 'rating' %>
+    <%= stylesheet_link_tag 'autocomplete' %>
     <%= stylesheet_link_tag 'blueprint/screen', :media => "all" %>
     <%= stylesheet_link_tag 'blueprint/print', :media => "print" %>
     <%= stylesheet_link_tag 'tabsplugin/screen', :media => "all" %>
@@ -19,7 +20,7 @@
         var SelectedDiv=$(SelectedId);
         var TopDiv=$(TopId);
         if(TopDiv){
-        TopDiv.style.borderRight = SelectedDiv.offsetWidth-3+"px solid black";
+          TopDiv.style.borderRight = SelectedDiv.offsetWidth-3+"px solid black";
         }
         return;
       }
@@ -30,7 +31,7 @@
 <![endif]-->
 
     <%= javascript_include_tag :defaults%>
-    <%#= javascript_include_tag 'prototype', 'effects', 'dragdrop', 'controls', 'application' %>
+<%#= javascript_include_tag 'prototype', 'effects', 'dragdrop', 'controls', 'application' %>
 
     <%= javascript_include_tag "livevalidation" %>
 
@@ -39,8 +40,8 @@
     <%= javascript_include_tag :fckeditor %>
 
     <% if controller_name == 'maps' %>
-        <%= GMap.header %>
-        <%= @map.to_html %>
+      <%= GMap.header %>
+      <%= @map.to_html %>
     <% end %>
 
   </head>
@@ -75,10 +76,10 @@
       </div>
 
       <!-- categories of the events/organisms-->
-      
 
 
-            
+
+
       <div class="menu">
         <div class="colallcategories">
           <ul class='tabsCategories'>
@@ -136,15 +137,32 @@
         <div class="content">
           <div class="contentleft">
             <div class="information">
-              <span>Ce site est un prototype. Si un évènement manque ou que vous rencontrez un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a>.</span>
-              <span>Pour publier un évènement ou pour plus d'infos, <%= link_to 'rendez-vous ici ', '/organisms/le-bounce-redac/posts/8' %>.</span>
+              <script type="text/javascript"><!--
+                google_ad_client = "pub-3129952355573123";
+                /* 468x60, date de création 16/11/09 */
+                google_ad_slot = "7663764758";
+                google_ad_width = 468;
+                google_ad_height = 60;
+                //-->
+              </script>
+              <script type="text/javascript"
+                      src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+              </script>
+<%#*<span>%>
+<%#*Ce site est un prototype. Si un évènement manque ou que vous rencontrez un bug, merci de nous <a href="mailto:lebounceasso[at]gmail.com">contacter</a>.%>
+<%#*</span>%>
+<%#*<span>%>
+<%#*Pour publier un évènement ou pour plus d'infos, <%= link_to 'rendez-vous ici ', '/organisms/le-bounce-redac/posts/8' %>
+<%#*</span>%>
             </div>
-            <div class="accueil">
-              <% flash.each do |key, msg| %>
-                <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
-              <% end %>
-              <a name="top"></a>
-              <%= yield %>
+            <div class="accueilwhite">
+              <div class="accueilblack">
+                <% flash.each do |key, msg| %>
+                  <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+                <% end %>
+                <a name="top"></a>
+                <%= yield %>
+              </div>
             </div>
           </div>
 
@@ -156,23 +174,23 @@
               </div>
               <div class="searchbox">
                 <% form_tag get_current_search_path, :method => 'get' do %>
-                  
-                    <% if !params[:period].blank? %>
-                      <%= hidden_field_tag :period, params[:period] %>
-                    <% end %>
-                    <%# if !params[:date].blank? %>
-                      <%#= hidden_field_tag :date, params[:date] %>
-                    <%# end %>
-                    <%= text_field_tag :search, params[:search], :size=>20 %>
-                    <%= submit_tag "Go", :name => nil %>
-                  
+
+                  <% if !params[:period].blank? %>
+                    <%= hidden_field_tag :period, params[:period] %>
+                  <% end %>
+  <%# if !params[:date].blank? %>
+  <%#= hidden_field_tag :date, params[:date] %>
+  <%# end %>
+                  <%= text_field_tag :search, params[:search], :size=>20 %>
+                  <%= submit_tag "Go", :name => nil %>
+
                 <% end %>
               </div>
               <div class="titlecalendar">
              <!-- <h3 class="caps"><%= t("side_bar.calendar") %></h3>-->
               </div>
               <%= render :partial => "/calendar/display" %>
-              <%#= events_calendar_display %>
+<%#= events_calendar_display %>
               <br />
               <div class="titlepartners"></div>
               <div class="partnersbox">
@@ -188,29 +206,29 @@
                         src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
                 </script>
               </div>
-          
-         <%= render :partial => "/diary/side_diary" %>
+
+              <%= render :partial => "/diary/side_diary" %>
 
             </div>
           </div>
         </div>
-      
-        
+
+
       </div>
       <div class="subFooter">
-            <script type="text/javascript"><!--
-            google_ad_client = "pub-3129952355573123";
-            /* 728x90, date de création 02/11/09 */
-            google_ad_slot = "5713324159";
-            google_ad_width = 728;
-            google_ad_height = 90;
-            //-->
-            </script>
-            <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-            </script>
+        <script type="text/javascript"><!--
+          google_ad_client = "pub-3129952355573123";
+          /* 728x90, date de création 02/11/09 */
+          google_ad_slot = "5713324159";
+          google_ad_width = 728;
+          google_ad_height = 90;
+          //-->
+        </script>
+        <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
       </div>
     </div>
-    
+
     <div class="footer"></div>
   </body>
 </html>

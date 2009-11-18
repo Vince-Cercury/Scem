@@ -3,18 +3,21 @@
     <% @term = term %>
     <div class="termboxLeft">
       <p>
-        <%= t('events.term.Start_at') %> <% if !error_message_on(:term, :start_at).blank? %><%= t('events.term.Check_format') %><% end %><br />
-
-
-        <%= term_form.calendar_date_select :start_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false, :onchange => "event_copy_start_date_to_end_date($F(this));", :maxlength => 10, :size => 10 %>
-        <%= term_form.text_field :start_hour, :size => 2, :maxlength => 2 %>:<%= term_form.text_field :start_min, :size => 2, :maxlength => 2 %>
+        <%= t('events.term.Start_at') %> <% if !error_message_on(:term, :start_at).blank? %><%= t('events.term.Check_format') %><% end %>
       </p>
+
+      <%= term_form.calendar_date_select :start_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false, :onchange => "event_copy_start_date_to_end_date($F(this));", :maxlength => 10, :size => 10 %>
+      <%= term_form.text_field :start_hour, :size => 2, :maxlength => 2 %>:<%= term_form.text_field :start_min, :size => 2, :maxlength => 2 %>
+
       <p>
-        <%= t('events.term.End_at') %> <% if !error_message_on(:term, :end_at).blank? %><%= t('events.term.Check_format') %><% end %><br />
-
-        <%= term_form.calendar_date_select :end_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false, :maxlength => 10, :size => 10 %>
-        <%= term_form.text_field :end_hour, :size => 2, :maxlength => 2 %>:<%= term_form.text_field :end_min, :size => 2, :maxlength => 2 %>
+        <%= t('events.term.End_at') %> <% if !error_message_on(:term, :end_at).blank? %><%= t('events.term.Check_format') %><% end %>
       </p>
+      <%= term_form.calendar_date_select :end_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false, :maxlength => 10, :size => 10 %>
+      <%= term_form.text_field :end_hour, :size => 2, :maxlength => 2 %>:<%= term_form.text_field :end_min, :size => 2, :maxlength => 2 %>
+      <p>
+          <%= link_to_function t('events.term.Remove'), "remove_field($(this), ('.termbox'))" %>
+      </p>
+
     </div>
     <div class="termboxRight">
       <% if  action_name == 'edit' %>
@@ -25,10 +28,5 @@
         <%= term_form.text_area :description, :cols => 35, :rows => 5 %>
       <% end %>
     </div>
-
-    <p>
-      <%= link_to_function t('events.term.Remove'), "remove_field($(this), ('.termbox'))" %>
-    </p>
-
   <% end %>
 </div>

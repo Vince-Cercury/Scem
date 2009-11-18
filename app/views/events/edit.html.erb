@@ -54,7 +54,7 @@
       <h3><%= t('events.edit.Adress') %></h3>
       <div class="eventEditBodyCenterLeft">
         <p>
-          <%= f.label :location %>
+          <%= t('events.edit.Location') %>
         </p>
       </div>
       <div class="eventEditBodyCenterRight">
@@ -66,7 +66,7 @@
   <%#= text_field_with_auto_complete :organism, :organism_place_name, {}, {:method => :get}  %>
 
   <%#= text_field_with_auto_complete :event, :organism_place_name, {  }, { :url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
-        <%= f.text_field_with_auto_complete :organism_place_name, {}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
+        <%= f.text_field_with_auto_complete :organism_place_name, { :class => 'textField'}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search', :skip_style => true}%>
 
       </div>
 
@@ -81,7 +81,7 @@
 
       <div class="eventEditBodyCenterLeft">
         <p>
-          <%= f.label :street %>
+          <%= t('events.edit.Street') %>
         </p>
       </div>
       <div class="eventEditBodyCenterRight">
@@ -90,7 +90,7 @@
 
       <div class="eventEditBodyCenterLeft">
         <p>
-          <%= f.label :city %>
+          <%= t('events.edit.Town') %>
         </p>
       </div>
       <div class="eventEditBodyCenterRight">
@@ -102,29 +102,47 @@
       <div class="eventEditBodyCenter">
         <h3><%= t('events.edit.Publisher') %></h3>
     <%# if get_list_organism_rights_user(current_user).size > 1 %>
-        <%= collection_select :contributions,
-          :publisher_ids,
-          get_list_organism_rights_user(current_user),
-          :id, :name,{ :selected => @event.get_first_publisher, :include_blank => true },
-          { :multiple => false, :class => 'textField' } -%>
+        <div class="eventEditBodyCenterRight">
+          <%= collection_select :contributions,
+            :publisher_ids,
+            get_list_organism_rights_user(current_user),
+            :id, :name,{ :selected => @event.get_first_publisher, :include_blank => true },
+            { :multiple => false, :class => 'textField' } -%>
+        </div>
+
     <%# elsif get_list_organism_rights_user(current_user).size == 1 %>
     <%#= get_list_organism_rights_user(current_user).first.name %>
     <%# end %>
       </div>
       <div class="eventEditBodyCenter">
         <h3><%= t('events.edit.Organizers') %></h3>
-        <div id="organizers">
-          <%= render :partial => 'organizer', :collection => @organizers %>
+        <div class="eventEditBodyCenterLeft">
+
         </div>
-        <%= add_organizer_link t('events.edit.add_organizer') %>
+        <div class="eventEditBodyCenterRight">
+          <div id="organizers">
+            <%= render :partial => 'organizer', :collection => @organizers %>
+          </div>
+        </div>
+
+
 
       </div>
       <div class="eventEditBodyCenter">
+        <%= add_organizer_link t('events.edit.add_organizer') %>
+      </div>
+      <div class="eventEditBodyCenter">
         <h3><%= t('events.edit.Partners') %></h3>
-        <div id="partners">
-          <%= render :partial => 'partner', :collection => @partners %>
-        </div>
+        <div class="eventEditBodyCenterLeft">
 
+        </div>
+        <div class="eventEditBodyCenterRight">
+          <div id="partners">
+            <%= render :partial => 'partner', :collection => @partners %>
+          </div>
+        </div>
+      </div>
+      <div class="eventEditBodyCenter">
         <%= add_partner_link t('events.edit.add_partner') %>
       </div>
     <% end %>

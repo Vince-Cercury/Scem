@@ -66,8 +66,9 @@ body {font-size:75%;
 
                                                                 /*--- COLONNE GAUCHE ---*/
 .contentleft{width: 687px; float: left; margin: 0 10px 0 20px; position:relative;}
-.information{width:678px; background:#fff; color:#000; padding: 0 5px 0 5px; margin: 0 0 10px 0;}
-.accueil{width: 688px; padding: 0 0 0 0; background: #000; float: left;}
+.information{width:678px; background:#fff; color:#000; padding: 0 5px 0 5px; margin: 0 0 10px 0; text-align: center;}
+.accueilblack{width: 688px; padding: 0 0 0 0; background: #000; float: left; overflow: auto;}
+.accueilwhite{width: 688px; padding: 0 0 0 0; background: #fff; float: left; overflow: auto; min-height: 1100px; }
 
 /*Non utilisé mais a conserver*/
 .list{width: 668px; margin: 0; padding: 5px 5px 5px 5px; background: #000; float: left;}
@@ -151,13 +152,15 @@ body {font-size:75%;
 .titlecreeruncompte{width: 179px; height: 31px; margin: 10px 0 0 10px; background: #000;background-image:url('/images/header/french/creeruncompte.png');background-repeat: no-repeat; float: left;}
 
                                             /* ---------------------PAGE DE LOGIN---------------------- */
-
-.loginLeft{width: 185px; padding: 5px 5px 5px 5px; margin: 0 5px 0 0; background: #fff; float: left;}
-.loginLeft h4 {font-size: 16px; text-align:center; font-weight: bold;}
-.loginLeft p {text-align: center; text-indent: 0px;}
-.loginRight{width: 473px; padding: 5px 5px 5px 5px; margin: 0 0 0 5px; background: #fff; float: right; text-align: center;}
-.loginRight p {text-align: center; text-indent: 0px;}
-.loginPub{width: 473px; height: 70px; padding: 5px 5px 5px 5px; margin: 10px 0 0 5px; background: #fff; float: right;}
+.connect {width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; margin: 0 0 10px 0;}
+.connectLeft{width: 185px; padding: 5px 5px 5px 5px; margin: 0 5px 0 0; background: #fff; float: left;}
+.connectLeft h4 {font-size: 16px; text-align:center; font-weight: bold;}
+.connectLeft p {text-align: center; text-indent: 0px;}
+.connectRight{width: 473px; padding: 40px 5px 5px 5px; margin: 0 0 0 5px; background: #fff; float: right; text-align: center;}
+.connectRight h4 {font-size: 16px; text-align:center; font-weight: bold;}
+.connectRight p {text-align: center; text-indent: 0px;}
+.connectPubLeft{width: 334px; padding: 5px 5px 5px 5px; text-align: center; background: #fff; float: left;}
+.connectPubRight{width: 334px; padding: 5px 5px 5px 5px; text-align: center; background: #fff; float: right;}
                                             /* ---------------------PAGE DE CREATION DE COMPTE---------------------- */
 .newAccountBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; float: left;}
 .newAccountBodyLeft{width: 234px; padding: 5px; height: 35px; line-height: 35px; background: #fff; float: left;}
@@ -209,26 +212,27 @@ body {font-size:75%;
 .eventEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
 .eventEditBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
 .eventEditBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.eventEditBody h3 { font-size:14px;}
+.eventEditBody h3 { font-size:14px; color: #000; font-weight: bold;}
 .eventEditBodyCenterLeft{width: 129px; height: 35px; line-height: 35px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto;}
 .eventEditBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
-.eventEditBodyCenterRight{width: 529px; height: 35px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
+.eventEditBodyCenterRight{width: 529px; min-height: 35px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
 .textField {width: 400px;}
+.textFieldShort {width: 200px;}
 /*NEW*/
 .eventNewBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .eventNewBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.eventNewBody h3 { font-size:14px;}
-.eventNewBody h4 { font-size:16px; font-weight: bold; text-align: left; text-indent: 30px;}
+.eventNewBody h3 { font-size:12px; color:#000;}
+.eventNewBody h4 { font-size:16px; font-weight: bold; text-align: left; text-indent: 30px; color:#000; padding-top: 5px;}
 .eventNewBodyCenterLeft{width: 179px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
 .eventNewBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
 .eventNewBodyCenterRight{width: 479px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
 .eventNewBodyCenterRight .title{width: 400px;}
 .eventNewBodyContentLeft{width: 329px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center;}
 .eventNewBodyContentRight{width: 329px; padding: 5px 5px 5px 5px;; margin: 0 0 0 0; background: #fff; float: right; text-align: center;}
-.textFieldEventNew {width: 300px;}
+.textFieldNew {width: 300px;}
 /*?*/
 .termbox{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.termboxLeft{width: 329px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center;}
+.termboxLeft{width: 329px; padding: 25px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center;}
 .termboxRight{width: 329px; padding: 5px 5px 5px 5px;; margin: 0 0 0 0; background: #fff; float: right; text-align: center;}
 
                                                            /* ---------------------PAGE ORGANISM SHOW'---------------------- */
@@ -322,7 +326,7 @@ body {font-size:75%;
 
 
                                                 /* ---------------------PAGE PICTURE SHOW---------------------- */
-
+/*SHOW*/
 .pictureShowContent{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
 .pictureShowNotation{width: 150px; padding: 5px 264px 5px 264px; margin: 0; background: #fff; float: left; text-align: center;}
 .pictureShowCenter{width: 678px; padding: 0; margin: 0; background: #fff; overflow: auto; float: left;}
@@ -330,12 +334,11 @@ body {font-size:75%;
 .pictureShowRight{width: 329px; padding: 5px; margin: 0; background: #fff; float: right; text-align: left;}
 .pictureShowPicure{width: 504px; height: 504px; line-height: 504px; padding: 10px 87px 10px 87px; margin: 0; background: #fff; float: left; text-align: center;}
 .pictureShowPicure img{text-align: center; vertical-align: middle;}
-
-
+/*NEW*/
 .pictureNew{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
 .pictureNewCenter{width: 668px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left; text-align: center;}
 .descriptionPhoto{width: 500px;}
-
+/*EDIT*/
 .pictureShowEdit{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
 .pictureShowEditLeft{width: 256px; height:256px; line-height:256px; padding: 5px; margin: 0; background: #fff; float: left; text-align: right;}
 .pictureShowEditRight{width: 402px; padding: 50px 5px 25px 5px; margin: 0; background: #fff; float: right; text-align: left; font-weight: bold;}
@@ -440,6 +443,10 @@ body {font-size:75%;
 
 .searchBox{background:#000; width:668px; margin: 0; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
 .searchBoxWhite{background:#fff; width:658px; margin: 0; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
+
+                                                 /* ---------------------AGENDA---------------------- */
+
+
                                                 /* ---------------------PAGE ANNUAIRE'---------------------- */
 
 .activitiesBody{background:#fff; width:688px; margin: 0; padding: 0; float: left; height: auto;}

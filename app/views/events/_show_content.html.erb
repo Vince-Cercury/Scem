@@ -1,5 +1,6 @@
 <%= render :partial => "/events/header" %>
 <div class="eventShowBody">
+
   <div class="eventShowBodyLeft">
     <% if @event.picture.nil? %>
       <%= get_default_event_picture(@event, :medium) %>
