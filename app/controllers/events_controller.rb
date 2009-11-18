@@ -151,7 +151,7 @@ class EventsController < ApplicationController
       if @event.activate! #@event.save
         
         flash[:notice] = I18n.t('events.controller.Successfully_created')
-        format.html { redirect_to(@event) }
+        format.html { redirect_to(edit_event_path(@event, :only_details => true)) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }

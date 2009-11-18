@@ -114,6 +114,7 @@ fr-FR:
     index:
       Listing_events: "Liste de &eacute;v&egrave;nements"
     edit:
+      Only_details_intro: "Nous vous invitons &agrave; donner quelques compl&eacute;ments d'information."
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
       Attach_picture: "Joindre une photo"
