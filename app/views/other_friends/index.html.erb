@@ -1,31 +1,31 @@
 <%= render :partial => "/users/header" %>
 
-<% form_tag user_other_friends_path, :method => 'get' do %>
-  <p>
-  <%#=  hidden_field_tag 'role', params[:role] %>
+  <% form_tag user_other_friends_path, :method => 'get' do %>
+    <p>
+    <%#=  hidden_field_tag 'role', params[:role] %>
 
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag t('other_friends.index.Search'), :name => nil %>
-  </p>
-<% end %>
-
-
-<% if @user == current_user %>
-  <hr />
-  <h4 class="caps"><%= t('other_friends.index.Invite_friends') %></h4>
-  <p><%= t('other_friends.index.Facebook_friends') %></p>
-  <div>
-    <% form_for(@user, :url => url_for(:controller => 'facebook', :action => 'send_invitations', :id => @user.id, :page => params[:page])) do |f| %>
-      <%= f.error_messages %>
-      <%= render :partial => "facebook_users_list" %>
-
-      <p><b>Body text:</b><br/>
-        <textarea name="message" cols="50" rows="10"><%= t('other_friends.index.Message') %></textarea> </p>
-      <%= f.submit t('other_friends.index.Send_invitation') %>
-
-    <% end %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag t('other_friends.index.Search'), :name => nil %>
+    </p>
   <% end %>
-</div>
+
+
+  <% if @user == current_user %>
+    <hr />
+    <h4 class="caps"><%= t('other_friends.index.Invite_friends') %></h4>
+    <p><%= t('other_friends.index.Facebook_friends') %></p>
+    <div>
+      <% form_for(@user, :url => url_for(:controller => 'facebook', :action => 'send_invitations', :id => @user.id, :page => params[:page])) do |f| %>
+        <%= f.error_messages %>
+        <%= render :partial => "facebook_users_list" %>
+
+        <p><b>Body text:</b><br/>
+          <textarea name="message" cols="50" rows="10"><%= t('other_friends.index.Message') %></textarea> </p>
+        <%= f.submit t('other_friends.index.Send_invitation') %>
+
+      <% end %>
+    <% end %>
+  </div>
 
 
 

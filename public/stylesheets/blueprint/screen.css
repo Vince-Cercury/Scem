@@ -95,6 +95,8 @@ body {font-size:75%;
 .listTermRightBottomRight{width:439px; margin: 0; padding: 5px; background: #fff; float: right; text-align:left;}
 .noEvent{width: 668px; padding: 5px; margin: 0 0 0 0; background: #f0882f; color: #000; text-align: center; font-weight: bold;}
 .noEventMessage{width: 668px; padding: 5px; margin: 0 0 0 0; background: #000; color: #ffb500; text-align: center; font-weight: bold;}
+.organismEventContent{width: 678px; padding: 5px 5px 0px 5px; background: #fff; overflow: auto; float: left; }
+.organismEventContentAction{width: 678px; padding: 0px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
 /*----kangoo date-----*/
 .kangooDate {background-image:url('/images/body/kangooDate.png');  background-repeat: no-repeat; margin: 5px; padding: 0; height:52px; width:58px; float: left; text-align: left;}
 .kangooDayDate{ font-size:20px; font-weight: bold; padding: 0 0 0 10px; vertical-align: middle;}
@@ -396,6 +398,9 @@ body {font-size:75%;
 .userListBoxRight a:hover {background: #f0882f; color: #fff;}
 .userListBoxName h4 {vertical-align: middle; font-size: 14px;}
 .userListMessage {width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
+
+.userFriendListContent{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto; float: left; }
+.userNetwork{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto; float: left; }
 
 .contributionsBar {width: 668px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
 .contributionBarBox {width: 112px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
