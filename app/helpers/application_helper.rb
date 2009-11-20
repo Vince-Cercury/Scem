@@ -97,7 +97,7 @@ module ApplicationHelper
   end
 
   def get_next_events(max_results)
-    Term.search_has_publisher_futur(params[:search], 1, max_results)
+    Term.search_has_publisher_futur('', 1, max_results)
   end
 
   def boolean_to_literal(the_boolean)
@@ -225,74 +225,74 @@ module ApplicationHelper
 
   #we want to seach only in those models
   #by default, we search into events
-  def get_current_search_path
+#  def get_current_search_path
+#
+#    case controller_name
+#    when 'participations'
+#      result = url_for('participations')
+#    when 'events'
+#      result = url_for('events')
+#      if @event
+#        result = url_for(:controller => 'events', :action => 'index')
+#      end
+#    when 'organisms'
+#      result = url_for('organisms')
+#      if @organism
+#        result = url_for(:controller => 'organisms', :action => 'index')
+#      end
+#    when 'activities'
+#      if @activity
+#        result = url_for(@activity)
+#      else
+#        result = url_for('organisms')
+#      end
+#    when 'categories'
+#      if @category
+#        result = url_for(@category)
+#        #result = category_path(@category, :period => params[:period])
+#      else
+#        result = url_for('events')
+#      end
+#    when 'galleries'
+#      result = url_for('galleries')
+#    when 'users'
+#      result = url_for('users')
+#    when 'friends'
+#      result = url_for('friends')
+#    when 'other_friends'
+#      result = url_for('other_friends')
+#    else
+#      result = url_for('events')
+#    end
+#    return result
+#  end
 
-    case controller_name
-    when 'participations'
-      result = url_for('participations')
-    when 'events'
-      result = url_for('events')
-      if @event
-        result = url_for(:controller => 'events', :action => 'index')
-      end
-    when 'organisms'
-      result = url_for('organisms')
-      if @organism
-        result = url_for(:controller => 'organisms', :action => 'index')
-      end
-    when 'activities'
-      if @activity
-        result = url_for(@activity)
-      else
-        result = url_for('organisms')
-      end
-    when 'categories'
-      if @category
-        result = url_for(@category)
-        #result = category_path(@category, :period => params[:period])
-      else
-        result = url_for('events')
-      end
-    when 'galleries'
-      result = url_for('galleries')
-    when 'users'
-      result = url_for('users')
-    when 'friends'
-      result = url_for('friends')
-    when 'other_friends'
-      result = url_for('other_friends')
-    else
-      result = url_for('events')
-    end
-    return result
-  end
-
-  def get_current_search_model_type
-
-    case controller_name
-    when 'participations'
-      result = t('search.model_type.participations')
-    when 'events'
-      result = t('search.model_type.events')
-    when 'organisms'
-      result = t('search.model_type.organisms')
-    when 'activities'
-      result = t('search.model_type.organisms')
-    when 'categories'
-      result = t('search.model_type.events')
-    when 'galleries'
-      result = t('search.model_type.galleries')
-    when 'friends'
-      result = t('search.model_type.friends')
-    when 'other_friends'
-      result = t('search.model_type.other_friends')
-    when 'users'
-      result = t('search.model_type.users')
-    else
-      result = t('search.model_type.events')
-    end
-    return result
-  end
+#  def get_current_search_model_type
+#
+#    case controller_name
+#    when 'participations'
+#      result = t('search.model_type.participations')
+#    when 'events'
+#      result = t('search.model_type.events')
+#    when 'organisms'
+#      result = t('search.model_type.organisms')
+#    when 'activities'
+#      result = t('search.model_type.organisms')
+#    when 'categories'
+#      result = t('search.model_type.events')
+#    when 'galleries'
+#      result = t('search.model_type.galleries')
+#    when 'friends'
+#      result = t('search.model_type.friends')
+#    when 'other_friends'
+#      result = t('search.model_type.other_friends')
+#    when 'users'
+#      result = t('search.model_type.users')
+#    else
+#      result = t('search.model_type.events')
+#    end
+#    return result
+#  end
 
   def is_moderator?
     self.current_user && self.current_user.has_system_role('moderator')

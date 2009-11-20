@@ -60,10 +60,20 @@ class Organism < ActiveRecord::Base
     (self.moderators_password = ActiveSupport::SecureRandom.base64(6)) unless self.moderators_password
   end
 
-  def self.search(search, page)
+  def self.search(search, page, in_directory=true, event_state='active')
+    conditions = SearchsTools.prepare_conditions(search, 'organisms.name', 'organisms.in_directory = ? and organisms.state = ?', [in_directory, event_state])
+    
     paginate :per_page => ENV['PER_PAGE'], :page => page,
-      :conditions => ['name like ? and in_directory = ? and state = ?', "%#{search}%", true, "active"],
+      :conditions => conditions,
       :order => 'name'
+  end
+
+  def self.count_search(search, in_directory=true, event_state='active')
+    conditions = SearchsTools.prepare_conditions(search, 'organisms.name', 'organisms.in_directory = ? and organisms.state = ?', [in_directory, event_state])
+
+    count 'organisms.id',
+      :conditions => conditions,
+      :distinct => true
   end
 
   def search_users_by_role(role, search, page)

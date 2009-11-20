@@ -93,6 +93,27 @@ class Term < ActiveRecord::Base
       :order => 'start_at ASC'
   end
 
+  def self.search_has_publisher(search, page, per_page, is_private=false, event_state='active')
+    
+    conditions = SearchsTools.prepare_conditions(search, 'events.name', 'events.is_private = ? and events.state = ?', [is_private, event_state])
+    
+    paginate  :per_page => per_page,
+      :page => page,
+      :conditions => conditions,
+      :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher'",
+      :order => 'end_at DESC',
+      :group => 'terms.id'
+  end
+
+  def self.count_search_has_publisher(search, is_private=false, event_state='active')
+
+    conditions = SearchsTools.prepare_conditions(search, 'events.name', 'events.is_private = ? and events.state = ?', [is_private, event_state])
+    
+    count 'terms.id',
+      :conditions => conditions,
+      :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher'",
+      :distinct => true
+  end
 
   def self.search_has_publisher_futur(search, page, per_page, is_private=false, event_state='active')
     

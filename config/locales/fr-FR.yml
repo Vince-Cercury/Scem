@@ -42,9 +42,9 @@ fr-FR:
     search_into: "Rechercher dans les"
   searchs:
     subheader:
-      Events: "Ev&egrave;nements"
-      Net_events: ""
+      Terms: "Ev&egrave;nements"
       Organisms: "Organismes"
+      Users: "Utilisateurs"
   terms:
     next_events_coming: "Prochain &eacute;v&egrave;nements"
     already_started_or_past: "Ev&eacute;nements d&eacute;j&agrave; commenc&eacute;s ou finis"

@@ -3,7 +3,7 @@
 
 class SearchsTools
 
-  def self.prepare_conditions(search, search_attribute, more_conditions='', more_conditions_param=Array.new)
+  def self.prepare_conditions(search, search_attributes, more_conditions='', more_conditions_param=Array.new)
 
 
     not_to_consider = ['le', 'la', 'les', 'un', 'des', 'et', 'une', 'du', 'de', 'au', 'ou', 'ce', 'cet', 'cette']
@@ -11,14 +11,19 @@ class SearchsTools
     search = search.to_s.split
     search_query = ''
     search_keyword = Array.new
+
+    search_attributes_array = search_attributes.to_s.split(' OR ')
+
     search.each do |a_keyword|
       if !not_to_consider.include?(a_keyword)
-        if search_query.blank?
-          search_query += "(#{search_attribute} LIKE ?"
-          search_keyword << "%#{a_keyword}%"
-        else
-          search_query += " OR #{search_attribute} LIKE ?"
-          search_keyword << "%#{a_keyword}%"
+        search_attributes_array.each do |attribute|
+          if search_query.blank?
+            search_query += "(#{attribute} LIKE ?"
+            search_keyword << "%#{a_keyword}%"
+          else
+            search_query += " OR #{attribute} LIKE ?"
+            search_keyword << "%#{a_keyword}%"
+          end
         end
       end
     end

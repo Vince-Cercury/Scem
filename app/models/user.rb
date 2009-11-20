@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
     return true
   end
 
-    def set_validate_email(value)
+  def set_validate_email(value)
     @validate_email = value
   end
 
@@ -109,10 +109,24 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :first_name, :last_name, :password, :password_confirmation, :image, :receive_comment_notification, :receive_picture_notification, :date_of_birth
 
   #search method for user
-  def self.search(search, page)
+  def self.search(search, page, state='active')
+
+    conditions = SearchsTools.prepare_conditions(search, 'users.login OR users.first_name OR users.last_name', 'users.state = ?', [state])
+
+
     paginate :per_page => ENV['PER_PAGE'], :page => page,
-      :conditions => ['(login like ? or first_name like ? or last_name like ?) and state=?', "%#{search}%","%#{search}%","%#{search}%",'active'],
+      :conditions => conditions,
+      #:conditions => ['(login like ? or first_name like ? or last_name like ?) and state=?', "%#{search}%","%#{search}%","%#{search}%",'active'],
       :order => 'login, first_name, last_name'
+  end
+
+  def self.count_search(search, state='active')
+
+    conditions = SearchsTools.prepare_conditions(search, 'users.login OR users.first_name OR users.last_name', 'users.state = ?', [state])
+
+    count 'users.id',
+      :conditions => conditions,
+      :distinct => true
   end
 
   def search_participate(role, search, page)
@@ -179,17 +193,17 @@ class User < ActiveRecord::Base
 
   def search_participate_in_futur(search, page, per_page)
     sure_or_may_be_participate_futur.paginate :per_page => per_page, :page => page,
-        :conditions => ['events.name like ?', "%#{search}%"],
-        :include => :event,
-        :order => 'events.name'
+      :conditions => ['events.name like ?', "%#{search}%"],
+      :include => :event,
+      :order => 'events.name'
   end
 
 
   def search_participate_in_past(search, page, per_page)
     sure_or_may_be_participate_past.paginate :per_page => per_page, :page => page,
-        :conditions => ['events.name like ?', "%#{search}%"],
-        :include => :event,
-        :order => 'events.name'
+      :conditions => ['events.name like ?', "%#{search}%"],
+      :include => :event,
+      :order => 'events.name'
   end
 
   def search_organisms(role, search, page)

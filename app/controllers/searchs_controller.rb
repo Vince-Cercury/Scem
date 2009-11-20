@@ -2,28 +2,26 @@ class SearchsController < ApplicationController
   def index
 
     #TERMS
-    terms_futur = Term.search_has_publisher_futur(params[:search], params[:page], ENV['PER_PAGE'])
-    terms_past = Term.search_has_publisher_past(params[:search], params[:page], ENV['PER_PAGE'])
-
-    if params[:focus].blank? || params[:focus] == 'terms_past'
-      @terms = terms_past
-    elsif params[:focus].blank? || params[:focus] == 'terms_futur'
-      @terms = terms_futur
+    @terms_count = Term.count_search_has_publisher(params[:search]) 
+    if params[:focus]=='terms' || params[:focus].nil?
+      @terms = Term.search_has_publisher(params[:search], params[:page], ENV['PER_PAGE'])
     end
-
-    #NETWORK TERMS
-    if current_user
-      if params[:period] == "past"
-        @terms = Term.search_past_by_user_organisms(params[:search], params[:page], ENV['PER_PAGE'], current_user)
-      else
-        @terms = Term.search_futur_by_user_organisms(params[:search], params[:page], ENV['PER_PAGE'], current_user)
-      end
-    end
-
-    #EVENTS BY CATEGORY
+  
 
     #ORGANISMS
-    
+    @organisms_count = Organism.count_search(params[:search])
+    if params[:focus]=='organisms'
+      @organisms = Organism.search(params[:search], params[:page])
+    end
+
+
+    #USERS
+    @users_count = User.count_search(params[:search])
+    if params[:focus]=='users'
+      @users = User.search(params[:search], params[:page])
+    end
+
+    #@users = User.search(params[:search], params[:page], ENV['PER_PAGE'])
 
     #    terms_scope = Term.event_name_like_any(keywords).state_equal_to('active').event_state_equal_to('active').event_is_private_equal_to(false)
     #    terms_past_scope = terms_scope.start_at_less_than(Time.now)
