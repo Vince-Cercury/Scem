@@ -229,6 +229,15 @@ fr-FR:
       meet_friends: "Cr&eacute;er un &eacute;v&egrave;nement"
       new_organism: "Cr&eacute;er un organisme"
       Create_account: "Compte cr&eacute;&eacute; le : "
+    facebook:
+      step1: "Etape 1 :"
+      laststep: "Derni&egrave;re &eacute;tape :"
+      step2: "Etape 2 :"
+      info: "Pour pouvoir b&eacute;n&eacute;ficier de toutes les fonctions du site, nous devons demander quelques autorisations à votre compte FaceBook."
+      info2: "Pour continuer cliquez sur le lien suivant  (vous pourrez changer d'avis et revenir en arri&grave;re à tous moment):"
+      allow: "Autoriser les Facebook permissions !"
+      confirmation: "Confirmer votre adresse e-mail, s'il vous plait."
+      info3: "Ensuite vous pourrez utiliser toutes les fonctions du sites. (Demand&eacute; une seule fois)"
   sessions:
     Get_facebook_account: "Si vous avez un compte facebook, n'h&eacute;sitez pas, c'est le plus simple !"
     Logged_in_success: Connect&eacute; avec succ&egrave;s

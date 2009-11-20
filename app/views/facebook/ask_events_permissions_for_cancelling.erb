@@ -1,6 +1,12 @@
-<p><%= t('facebook.ask_events_permissions_for_cancelling.Summary') %>
+<div class="facebookPermissions">
+<p>
+  <%= t('facebook.ask_events_permissions_for_cancelling.Summary') %>
   <%= fb_prompt_permissions(['create_event'], t('facebook.ask_events_permissions_for_cancelling.Summary_link')) %>...
 </p>
 
-<p><%= t('facebook.ask_events_permissions_for_cancelling.link') %><br /><%= link_to t('facebook.ask_events_permissions_for_cancelling.Delete_on_Facebook'), url_for(:controller => 'facebook', :id =>@term.id, :action => 'cancel_event') %></p>
+<p>
+  <%= t('facebook.ask_events_permissions_for_cancelling.link') %>
+  <%= link_to t('facebook.ask_events_permissions_for_cancelling.Delete_on_Facebook'), url_for(:controller => 'facebook', :id =>@term.id, :action => 'cancel_event') %>
+</p>
 
+</div>

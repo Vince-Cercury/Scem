@@ -355,6 +355,9 @@ body {font-size:75%;
 .editAccountBodyCenter{width: 678px; padding: 5px; background: #fff; float: left; text-align: center;}
 .editAccountBodyCenter p{text-align: center; text-indent: 0; padding: 5px;}
 
+                                                /* ---------------------FaceBook Permission---------------------- */
+
+.facebookPermissions{width: 678px; padding: 5px; background: #fff; overflow: auto; float: left;}
 
                                                         /* ---------------------BLOG'---------------------- */
 .blogBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}

@@ -1,7 +1,14 @@
+<div class="facebookPermissions">
+  <p>
+    <%= t('facebook.ask_events_permissions_for_creation.Summary') %>
+    <%= fb_prompt_permissions(['create_event'], t('facebook.ask_events_permissions_for_creation.Summary_link')) %>...
+  </p>
 
-<p><%= t('facebook.ask_events_permissions_for_creation.Summary') %>
-  <%= fb_prompt_permissions(['create_event'], t('facebook.ask_events_permissions_for_creation.Summary_link')) %>...
-</p>
+  <p>
+    <%= t('facebook.ask_events_permissions_for_creation.link') %>
+    <%= link_to t('facebook.ask_events_permissions_for_creation.Publish_on_Facebook'), url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_categories') %>
+  </p>
 
-<p><%= t('facebook.ask_events_permissions_for_creation.link') %> <br /><%= link_to t('facebook.ask_events_permissions_for_creation.Publish_on_Facebook'), url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_categories') %></p>
+
+</div>
 
