@@ -1,0 +1,40 @@
+/* 
+    Document   : autocomplete
+    Created on : 16 nov. 2009, 15:41:28
+    Author     : nojah
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+.auto_complete {
+    width: 400px;
+    background: #fff;
+}
+.auto_complete ul {
+    border:1px solid #888;
+    margin:0;
+    padding:0;
+    width:100%;
+    list-style-type:none;
+}
+.auto_complete ul li {
+    margin:0;
+    padding:3px;
+}
+.auto_complete ul li.selected {
+    background-color: #ffb;
+}
+.auto_complete ul strong.highlight {
+    color: #800;
+    margin:0;
+    padding:0;
+}
