@@ -40,6 +40,11 @@ fr-FR:
   side_bar:
     calendar: "Calendrier"
     search_into: "Rechercher dans les"
+  searchs:
+    subheader:
+      Events: "Ev&egrave;nements"
+      Net_events: ""
+      Organisms: "Organismes"
   terms:
     next_events_coming: "Prochain &eacute;v&egrave;nements"
     already_started_or_past: "Ev&eacute;nements d&eacute;j&agrave; commenc&eacute;s ou finis"
@@ -229,6 +234,8 @@ fr-FR:
       meet_friends: "Cr&eacute;er un &eacute;v&egrave;nement"
       new_organism: "Cr&eacute;er un organisme"
       Create_account: "Compte cr&eacute;&eacute; le : "
+    subheader:
+      Events_network: "Les &eacute;v&egrave;nements de mon réseau"
   sessions:
     Get_facebook_account: "Si vous avez un compte facebook, n'h&eacute;sitez pas, c'est le plus simple !"
     Logged_in_success: Connect&eacute; avec succ&egrave;s

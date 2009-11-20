@@ -92,7 +92,7 @@ class OrganismsController < ApplicationController
         end
 
         flash[:notice] = I18n.t('organisms.controller.Successfully_created')
-        format.html { redirect_to(@organism) }
+        format.html { redirect_to(edit_organism_path(@organism, :only_details => true)) }
         format.xml  { render :xml => @organism, :status => :created, :location => @organism }
       else
         format.html { render :action => "new" }

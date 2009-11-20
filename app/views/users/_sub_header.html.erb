@@ -27,9 +27,9 @@
     <% if count_next_user_organisms_terms(@user).size > 0 || current_user_equal(@user) %>
     <li>
       <% if controller_name != "organisms_terms" %>
-        <%= link_to("My network events", user_organisms_terms_path(:user_id => @user.id)) %>
+        <%= link_to(t('users.subheader.Events_network'), user_organisms_terms_path(:user_id => @user.id)) %>
       <% else %>
-        <%= link_to("My network events", user_organisms_terms_path(:user_id => @user.id), :class => 'selected') %>
+        <%= link_to(t('users.subheader.Events_network'), user_organisms_terms_path(:user_id => @user.id), :class => 'selected') %>
       <% end %>
     </li>
   <% end %>
