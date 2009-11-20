@@ -4,6 +4,10 @@
   <div class="organismEditBody">
     <%= f.error_messages %>
 
+    <% if params[:only_details] %>
+      <%= t("organisms.edit.Only_details_intro") %>
+    <% end %>
+
     <div class="organismEditBodyLeft">
       <% if @organism.picture.nil? %>
         <%= display_organism_cover(@organism, :medium) %>
@@ -18,9 +22,11 @@
         </div>
       <% end %>
     </div>
+    <% if params[:only_details].nil? || params[:only_details] == false %>
     <div class="organismEditBodyRight">
       <h3> <%= f.text_field :name, :class => 'title' %></h3>
     </div>
+    <% end %>
 
     <div class="organismEditBodyCenter">
       <h3><%= t('organisms.edit.Adress') %></h3>
@@ -44,12 +50,14 @@
         <%= f.text_field :city %>
       </div>
     </div>
-
+<% if params[:only_details].nil? || params[:only_details] == false %>
     <div class="organismEditBodyCenter">
       <h3><%= t('organisms.edit.DescriptionShort') %></h3>
       <%= f.text_area :description_short, :cols => 35, :rows => 5 %>
     </div>
+    <% end %>
 
+    <% if params[:only_details].nil? || params[:only_details] == false %>
     <div class="organismEditBodyCenter">
       <h3><%= t('organisms.edit.Contact') %></h3>
       <div class="organismEditBodyContentLeft">
@@ -61,7 +69,8 @@
         <%= f.text_field :manager_name, :style => 'text' %>
       </div>
     </div>
-
+    <% end %>
+    <% if params[:only_details].nil? || params[:only_details] == false %>
     <div class="organismEditBodyCenter">
       <div class="organismEditBodyContentLeft">
         <p>
@@ -72,6 +81,7 @@
         <%= f.text_field :phone, :style => 'text' %>
       </div>
     </div>
+    <% end %>
 
     <div class="organismEditBodyCenter">
       <h3><%= t('organisms.edit.Public') %></h3>

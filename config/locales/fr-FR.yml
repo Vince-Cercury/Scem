@@ -40,6 +40,11 @@ fr-FR:
   side_bar:
     calendar: "Calendrier"
     search_into: "Rechercher dans les"
+  searchs:
+    subheader:
+      Events: "Ev&egrave;nements"
+      Net_events: ""
+      Organisms: "Organismes"
   terms:
     next_events_coming: "Prochain &eacute;v&egrave;nements"
     already_started_or_past: "Ev&eacute;nements d&eacute;j&agrave; commenc&eacute;s ou finis"
@@ -290,6 +295,7 @@ fr-FR:
     index:
       listing_activities: "Liste des organismes"
     edit:
+      Only_details_intro: "Vous pouvez si vous le souhaitez ajouter des d&eacute;tails"
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
       Attach_picture: "Joindre une photo !"
@@ -305,13 +311,13 @@ fr-FR:
       Admins_pwd: "Mot de passe administrateur :"
       Moderators_pwd: "Mot de passe mod&eacute;rateur : "
       Members_pwd: "Mot de passe membres :"
-      Activities: "Choissez l'activit&eacute; qui correspond le mieux &#224; votre organisme"
+      Activities: "Choissez la ou les activit&eacute;s qui correspondent le mieux &#224; votre organisme"
       Long_description: "Descrivez au mieux votre organisme"
-      Adress: "Entrez l'adresse de votre organisme"
+      Adress: "Saisissez l'adresse"
       DescriptionShort: "D&eacute;crivez en quelques mots votre organisme"
-      Public: "Cochez cette case si vous souhaitez que votre organisme figure dans notre annuaire"
+      Public: "Cochez cette case si vous souhaitez qu'il figure dans l'annuaire"
       Contact: "Merci de saisir les informations n&eacute;c&eacute;ssaire &#224; vous contacter (ce contact sera public si vous choisissez l'option Dans l'annuaire)"
-      Password: "Choisissez les mots des passes qui vous servirons &#224; attribuer des droits aux personnes auxquelles vous aurez choisis de leurs communiquer"
+      Password: "Chaque mot de passe est &agrave; utiliser par les visiteurs. Il permet de valider un role (membre, mod&eacute;rateur, administrateur) selon le mot de passe saisi"
     sub_header:
       Profile: "Profil"
       Blog: "Blog"

@@ -1,16 +1,29 @@
 <ul class="tabsevent">
+  <%# EVENTS %>
   <li>
-    <% if params[:focus]!='terms_futur'%>
-      <%= link_to(t('terms.next_events_coming'), searchs_path(:focus => 'terms_futur')) %>
+    <% if params[:focus]!='terms'%>
+      <%= link_to(t('terms.next_events_coming'), searchs_path(:focus => 'terms')) %>
     <% else %>
-      <%= link_to(t('terms.next_events_coming'), searchs_path(:focus => 'terms_futur'), :class => 'selected') %>
+      <%= link_to(t('terms.next_events_coming'), searchs_path(:focus => 'terms'), :class => 'selected') %>
     <% end %>
   </li>
-  <li>
-    <% if params[:focus]=='terms_past'%>
-      <%= link_to(t('terms.already_started_or_past'), searchs_path(:focus => 'terms_past')) %>
+  <%# NETWORK EVENTS %>
+    <li>
+    <% if params[:focus]=='net_terms'%>
+      <%= link_to(t('users.subheader.Events_network'), searchs_path(:focus => 'net_terms')) %>
     <% else %>
-      <%= link_to(t('terms.next_events_coming'), searchs_path(:focus => 'terms_past'), :class => 'selected') %>
+      <%= link_to(t('users.subheader.Events_network'), searchs_path(:focus => 'net_terms'), :class => 'selected') %>
     <% end %>
   </li>
+  <%# EVENTS BY CATEGORY %>
+  <li>
+    <% if params[:focus]=='organisms'%>
+      <%= link_to(t('searchs.subheader.Organisms'), searchs_path(:focus => 'organisms')) %>
+    <% else %>
+      <%= link_to(t('searchs.subheader.Organisms'), searchs_path(:focus => 'organisms'), :class => 'selected') %>
+    <% end %>
+  </li>
+  <%# ORGANISMS %>
+  <%# ORGANISMS BY ACTIVITY %>
+  <%# USERS %>
 </ul>
