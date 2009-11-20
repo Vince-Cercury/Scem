@@ -1,18 +1,20 @@
 <%= render :partial => @header %>
+<div class="facebookPermissions">
+  <h3 class="caps"><%= t('facebook.ask_publish_stream.Step_1') %></h3>
+  <p><%= t('facebook.ask_publish_stream.Step_1_text') %><br />
+    <%= fb_prompt_permissions(['publish_stream'], t('facebook.ask_publish_stream.Step_1_link') ) %>...
+  </p>
 
-<h3 class="caps"><%= t('facebook.ask_publish_stream.Step_1') %></h3>
-<p><%= t('facebook.ask_publish_stream.Step_1_text') %><br />
-  <%= fb_prompt_permissions(['publish_stream'], t('facebook.ask_publish_stream.Step_1_link') ) %>...
-</p>
+  <h3 class="caps"><%= t('facebook.ask_publish_stream.Step_2') %></h3>
+  <% if @event %>
+    <%= render :partial => "wall_permissions_for_event" %>
+  <% end %>
+  <% if @organism %>
+    <%= render :partial => "wall_permissions_for_organism" %>
+  <% end %>
+  <% if @gallery %>
+    <%= render :partial => "wall_permissions_for_gallery" %>
+  <% end %>
+</div>
 
-<h3 class="caps"><%= t('facebook.ask_publish_stream.Step_2') %></h3>
-<% if @event %>
-<%= render :partial => "wall_permissions_for_event" %>
-<% end %>
-<% if @organism %>
-<%= render :partial => "wall_permissions_for_organism" %>
-<% end %>
-<% if @gallery %>
-<%= render :partial => "wall_permissions_for_gallery" %>
-<% end %>
 

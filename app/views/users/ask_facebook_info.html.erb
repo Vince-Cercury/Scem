@@ -1,22 +1,48 @@
-<% if !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])  %>
-  <%  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])) %><h3 class="caps">STEP 1</h3><% else %><h3 class="caps">LAST STEP</h3><% end %>
-<p>We would advise you to let this web site performing some simple actions thanks to your Facebook account.<br />
-For that, just click on the following link (you can change your mind and many time):<br />
- 
- <a href="javascript:ask_fb_permissions();" >Improve Facebook permissions !</a></p>
-<% end %>
+<div class="facebookPermissions">
 
-<% if current_user.email.nil? or current_user.email=="" %>
-  <%  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])) %><h3 class="caps">STEP 2</h3><% else %><h3 class="caps">LAST STEP</h3><% end %>
-<p>Please, confirm your email address. <br />
-  Then you will be able to use all the features of the website. (asked just one time)</p>
-<% form_for(@user, :url => url_for(:id => @user.id, :action => 'save_email')) do |f| %>
-    <%= f.error_messages %>
+  <% if !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])  %>
+    <%  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])) %>
+      <h3><%= t('users.facebook.step1') %></h3>
+    <% else %>
+      <h3><%= t('users.facebook.laststep') %></h3>
+    <% end %>
 
-    <p><%= label_tag 'email' %><br/>
-    <%= f.text_field :email %></p>
     <p>
-      <%= f.submit 'Update' %>
+      <%= t('users.facebook.info') %>
+    </p>
+    <p>
+      <%= t('users.facebook.info2') %>
+    </p>
+    <p>
+      <a href="javascript:ask_fb_permissions();" ><%= t('users.facebook.allow') %></a>
     </p>
   <% end %>
+
+  <% if current_user.email.nil? or current_user.email=="" %>
+    <%  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])) %>
+      <h3><%= t('users.facebook.step2') %></h3>
+    <% else %>
+      <h3><%= t('users.facebook.laststep') %></h3>
+    <% end %>
+    <p>
+      <%= t('users.facebook.description') %>
+    </p>
+    <p>
+      <%= t('users.facebook.info3') %>
+    </p>
+    <% form_for(@user, :url => url_for(:id => @user.id, :action => 'save_email')) do |f| %>
+      <%= f.error_messages %>
+
+      <p>
+        <%= label_tag 'email' %>
+      </p>
+      <p>
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.submit 'Update' %>
+      </p>
+    <% end %>
   <% end %>
+
+</div>

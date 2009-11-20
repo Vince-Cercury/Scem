@@ -119,7 +119,8 @@ fr-FR:
     index:
       Listing_events: "Liste de &eacute;v&egrave;nements"
     edit:
-      Only_details_intro: "Nous vous invitons &agrave; donner quelques compl&eacute;ments d'information."
+      Only_details_title: "Etape 2: Nous vous invitons &agrave; donner quelques compl&eacute;ments d'information."
+      Only_details_intro: "Vous pouvez ne rien remplir pour le moment en cliquant sur le bouton ci-dessous, vous pourrez ensuite revenir compl&eacute;ter ces informations quand vous le souhaiterez."
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
       Attach_picture: "Joindre une photo"
@@ -143,6 +144,7 @@ fr-FR:
       Location: "Lieu :"
       Street: "Rue :"
       Town: "Ville :"
+      Jump: "Passer cette &eacute;tape"
 
     new:
       Step1: "Etape 1: Création de l'évènement."
@@ -234,8 +236,15 @@ fr-FR:
       meet_friends: "Cr&eacute;er un &eacute;v&egrave;nement"
       new_organism: "Cr&eacute;er un organisme"
       Create_account: "Compte cr&eacute;&eacute; le : "
-    subheader:
-      Events_network: "Les &eacute;v&egrave;nements de mon réseau"
+    facebook:
+      step1: "Etape 1 :"
+      laststep: "Derni&egrave;re &eacute;tape :"
+      step2: "Etape 2 :"
+      info: "Pour pouvoir b&eacute;n&eacute;ficier de toutes les fonctions du site, nous devons demander quelques autorisations à votre compte FaceBook."
+      info2: "Pour continuer cliquez sur le lien suivant  (vous pourrez changer d'avis et revenir en arri&grave;re à tous moment):"
+      allow: "Autoriser les Facebook permissions !"
+      confirmation: "Confirmer votre adresse e-mail, s'il vous plait."
+      info3: "Ensuite vous pourrez utiliser toutes les fonctions du sites. (Demand&eacute; une seule fois)"
   sessions:
     Get_facebook_account: "Si vous avez un compte facebook, n'h&eacute;sitez pas, c'est le plus simple !"
     Logged_in_success: Connect&eacute; avec succ&egrave;s

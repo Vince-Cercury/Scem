@@ -1,21 +1,24 @@
 <%= render :partial => "/events/header" %>
-<p>
-  <%= t('facebook.ask_facebook_event_cancel.Summary') %>
-</p>
+<div class="facebookPermissions">
+  <p>
+    <%= t('facebook.ask_facebook_event_cancel.Summary') %>
+  </p>
 
-<div>
-  <%=  display_term_box(@term.start_at, @term.end_at) %>
+  <div>
+    <%=  display_term_box(@term.start_at, @term.end_at) %>
+  </div>
+
+  <% form_for(@term, :url => url_for(:controller => 'facebook', :action => 'cancel_event', :id => @term.id)) do |f| %>
+    <%= f.error_messages %>
+
+    <p>
+      <b><%= t('facebook.ask_facebook_event_cancel.Optional_message') %></b><br />
+      <textarea  id="cancel_message" name="cancel_message" cols="60" rows="10"></textarea>
+    </p>
+    <%=  hidden_field_tag 'event_id', @event.id %>
+    <p>
+      <%= f.submit t('facebook.ask_facebook_event_cancel.Cancel_Facebook') %>
+    </p>
+  <% end %>  
+  
 </div>
-
-<% form_for(@term, :url => url_for(:controller => 'facebook', :action => 'cancel_event', :id => @term.id)) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <b><%= t('facebook.ask_facebook_event_cancel.Optional_message') %></b><br />
-    <textarea  id="cancel_message" name="cancel_message" cols="60" rows="10"></textarea>
-  </p>
-  <%=  hidden_field_tag 'event_id', @event.id %>
-  <p>
-    <%= f.submit t('facebook.ask_facebook_event_cancel.Cancel_Facebook') %>
-  </p>
-<% end %>

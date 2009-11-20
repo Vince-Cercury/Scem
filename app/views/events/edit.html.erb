@@ -7,7 +7,16 @@
 
 
     <% if params[:only_details] %>
-      <%= t("events.edit.Only_details_intro") %>
+      <div class="eventNewBodyCenter">
+        <h3><%= t("events.edit.Only_details_title") %></h3>
+        <p>
+          <%= t("events.edit.Only_details_intro") %>
+        </p>
+      </div>
+      <div class="eventEditBodyCenter">
+        <%= f.submit t('events.edit.Jump') %>
+      </div>
+
     <% end %>
     <div class="eventEditBodyLeft">
       <% if @event.picture.nil? %>
