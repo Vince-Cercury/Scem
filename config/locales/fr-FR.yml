@@ -114,7 +114,8 @@ fr-FR:
     index:
       Listing_events: "Liste de &eacute;v&egrave;nements"
     edit:
-      Only_details_intro: "Nous vous invitons &agrave; donner quelques compl&eacute;ments d'information."
+      Only_details_title: "Etape 2: Nous vous invitons &agrave; donner quelques compl&eacute;ments d'information."
+      Only_details_intro: "Vous pouvez ne rien remplir pour le moment en cliquant sur le bouton ci-dessous, vous pourrez ensuite revenir compl&eacute;ter ces informations quand vous le souhaiterez."
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
       Attach_picture: "Joindre une photo"
@@ -138,6 +139,7 @@ fr-FR:
       Location: "Lieu :"
       Street: "Rue :"
       Town: "Ville :"
+      Jump: "Passer cette &eacute;tape"
 
     new:
       Step1: "Etape 1: Création de l'évènement."
