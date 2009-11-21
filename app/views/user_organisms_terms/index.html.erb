@@ -1,20 +1,22 @@
 <%= render :partial => "/users/header" %>
+<div class="userNetwork">
+  <ul class="tabsevent">
+    <li>
+      <% if params[:period]=='past'%>
+        <%= link_to t('terms.next_events_coming'), user_organisms_terms_path(:period => 'futur') %>
+      <% else %>
+        <%= link_to(t('terms.next_events_coming'), user_organisms_terms_path(:period => 'futur'), :class => 'selected') %>
+      <% end %>
+    </li>
+    <li>
+      <% if params[:period]!='past'%>
+        <%= link_to t('terms.already_started_or_past'), user_organisms_terms_path(:period => 'past') %>
+      <% else %>
+        <%= link_to t('terms.already_started_or_past'), user_organisms_terms_path(:period => 'past'), :class => 'selected' %>
+      <% end %>
+    </li>
+  </ul>
 
-<ul class="tabsevent">
-  <li>
-    <% if params[:period]=='past'%>
-      <%= link_to t('terms.next_events_coming'), user_organisms_terms_path(:period => 'futur') %>
-    <% else %>
-      <%= link_to(t('terms.next_events_coming'), user_organisms_terms_path(:period => 'futur'), :class => 'selected') %>
-    <% end %>
-  </li>
-  <li>
-    <% if params[:period]!='past'%>
-      <%= link_to t('terms.already_started_or_past'), user_organisms_terms_path(:period => 'past') %>
-    <% else %>
-      <%= link_to t('terms.already_started_or_past'), user_organisms_terms_path(:period => 'past'), :class => 'selected' %>
-    <% end %>
-  </li>
-</ul>
+  <%= render :partial => "/terms/terms_list" %>
 
-<%= render :partial => "/terms/terms_list" %>
+</div>

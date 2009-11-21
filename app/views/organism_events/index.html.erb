@@ -1,8 +1,12 @@
 <%= render :partial => "/organisms/header" %>
-<%= render :partial => "sub_header" %>
+<div class="organismEventContent">
+  <%= render :partial => "sub_header" %>
+</div>
 <% if is_organism_admin?(@organism) %>
-  <div class="noEventMessage">
-    <h4><%= link_to(t('organism_events.index.Create_new_event'), new_event_path) %></h4>
+  <div class="organismEventContentAction">
+    <div class="noEventMessage">
+      <h4><%= link_to(t('organism_events.index.Create_new_event'), new_event_path) %></h4>
+    </div>
   </div>
 <% end %>
 <% if @terms.size > 0 %>
@@ -18,4 +22,8 @@
     </div>
   </div>
 <% end %>
-<%= render :partial => "/terms/terms_list" %>
+<div class="organismEventContent">
+  <%= render :partial => "/terms/terms_list" %>
+</div>
+
+

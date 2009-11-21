@@ -180,6 +180,15 @@ fr-FR:
     Stars: "Etoiles"
     votes: "votes"
   users:
+    tabs:
+      profil: "Profil"
+      blog: "Blog"
+      participation: "Agenda"
+      network: "Ev&eacute;nements de mon réseau"
+      membership: "Mes organismes"
+      friends: "Amis"
+      edit: "Edition"
+      delete: "Supprimer"
     controller:
       Not_friend: "Vous n'&ecirc;tes pas un(e) ami(e)s de cet utilisateur, vous ne pouvez pas voir son profil..."
       Not_allowed: "Vous n&ecirc;tes pas autoris&eacute; &agrave; effectu&eacute; cette action. Essayer de vous connecter puis recommencez."
