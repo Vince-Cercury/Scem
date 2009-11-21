@@ -284,7 +284,7 @@ fr-FR:
       Cant_find_organism_activation: "Nous n'avons pu trouver un organisme avec ce code d'activation v&eacute;rifier votre email ou vous l'avez peut &ecirc;tre d&eacute;j&agrave; activ&eacute;. Essayez de l'utiliser."
       Not_allowed_to_do_this: "Vous n&ecirc;tes pas autoris&eacute; &agrave; effectu&eacute; cette action."
     index:
-      listing_activities: "Liste des organismes"
+      listing_organisms: "Liste des organismes"
     edit:
       Only_details_intro: "Vous pouvez si vous le souhaitez ajouter des d&eacute;tails"
       Destroy: "Supprimer"
