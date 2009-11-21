@@ -33,10 +33,10 @@
       <hr />
       <% get_next_curent_user_organisms_terms(max_user_organisms_terms).each do |term| %>
         <div  class="span-2">
-          <%= display_event_cover(term.event, "mini_width") %>
+          <%= display_term_cover(term, "mini_width") %>
         </div>
         <div  class="span-3 last">
-          <%= link_to(term.event.name, term.event) %><br />
+          <%= link_to(term.event.name, get_event_if_term_url(term)) %><br />
           <%= display_date_box(term.start_at) %>
         </div>
 
@@ -65,10 +65,10 @@
     <hr />
     <% get_next_events(max_next_terms).each do |term| %>
       <div  class="span-2">
-        <%= display_event_cover(term.event, "mini_width") %>
+        <%= display_term_cover(term, "mini_width") %>
       </div>
       <div  class="span-3 last">
-        <%= link_to(term.event.name, term.event) %><br />
+        <%= link_to(term.event.name, get_event_if_term_url(term)) %><br />
         <%= display_date_box(term.start_at) %>
       </div>
 
