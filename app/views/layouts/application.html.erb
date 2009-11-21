@@ -67,7 +67,7 @@
             <li><% if controller_name != 'activities' && controller_name != 'organisms' %><%= link_to(t('main_menu.directory'), url_for(activities_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.directory'), url_for(activities_path), :class => 'selected') %></div><% end %></li>
             <li><% if controller_name != 'galleries' %><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.pictures_galleries'), url_for(galleries_path), :class => 'selected') %></div><% end %></li>
             <li><% if controller_name != 'users' %><%= link_to(t('main_menu.users'), url_for(users_path)) %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.users'), url_for(users_path), :class => 'selected') %></div><% end %></li>
-            <li><% if controller_name != 'information' %><%= link_to(t('main_menu.information'), "/organisms/le-bounce-redac/posts/8") %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.information'), url_for(information_path), :class => 'selected') %></div><% end %></li>
+            <li><% if controller_name != 'information' %><%= link_to(t('main_menu.information'), "/organisms/le-bounce-redac/posts/8") %><% else %><div class="topId" id="TopId"></div><div id="SelectedId"><%= link_to(t('main_menu.information'), "/organisms/le-bounce-redac/posts/8", :class => 'selected') %></div><% end %></li>
           </ul>
           <script type="text/javascript">
             setBorder("SelectedId", "TopId");
