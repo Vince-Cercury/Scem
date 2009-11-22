@@ -1,0 +1,16 @@
+<%= render :partial => "/organisms/header" %>
+<% form_tag(url_for(:controller => 'mailings', :action => 'send_to_members', :id => @organism.id), :method => :put) do %>
+
+  <p><b><%= t('organisms.mailing.Form_title') %>:</b><br/>
+    <%= t('organisms.mailing.to_admins_label', :size => @organism.admins.size) %> : <%= check_box_tag 'to_admins' %><br/>
+    <%= t('organisms.mailing.to_moderators_label', :size => @organism.moderators.size) %> : <%= check_box_tag 'to_moderators' %><br/>
+    <%= t('organisms.mailing.to_members_label', :size => @organism.members.size) %> : <%= check_box_tag 'to_members' %><br/>
+  </p>
+  <p>
+    <%= t("organisms.mailing.subject_label") %> : <%= text_field_tag "subject" %><br />
+    <%= t("organisms.mailing.message_label") %> :<br />
+    <textarea name="message" cols="50" rows="10"></textarea>
+  </p>
+  <%= submit_tag t('organisms.mailing.Form_submit') %>
+
+<% end %>

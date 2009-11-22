@@ -53,6 +53,15 @@
   <% end %>
   <% if is_organism_admin?(@organism) %>
     <li>
+      <% if controller_name != 'mailings' %>
+        <%= link_to(t('organisms.sub_header.Mailing'), prep_to_members_organism_mailings_path(@organism)) %>
+      <% else %>
+        <%= link_to(t('organisms.sub_header.Mailing'), prep_to_members_organism_mailings_path(@organism), :class => 'selected') %>
+      <% end %>
+    </li>
+  <% end %>
+  <% if is_organism_admin?(@organism) %>
+    <li>
       <% if (controller_name != 'organisms' || controller.action_name!='edit') %>
         <%= link_to(t('organisms.sub_header.Edit'), edit_organism_path(@organism)) %>
       <% else %>

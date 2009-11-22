@@ -288,6 +288,15 @@ fr-FR:
       Create_new_event: "Cr&eacute;er et partagez un nouvel &eacute;v&egrave;nement maintenant !"
       Search: "Rechercher"
   organisms:
+    mailing:
+      Form_title: "Envoyer un email aux membres"
+      Form_submit: "Envoie !"
+      to_admins_label: "aux administrateurs ({{size}})"
+      to_moderators_label: "aux moderateurs ({{size}})"
+      to_members_label: "aux membres ({{size}})"
+      subject_label: "sujet"
+      message_label: "message"
+      Successfully_sent: "Le message est en cours d'envoie ..."
     controller:
       Successfully_destroyed: "L'organisme a &eacute;t&eacute; d&eacute;truit avec succ&egrave;s."
       Successfully_suspended: "L'organisme a &eacute;t&eacute; d&eacute;sactiv&eacute; avec succ&egrave;s."
@@ -324,6 +333,7 @@ fr-FR:
       Contact: "Merci de saisir les informations n&eacute;c&eacute;ssaire &#224; vous contacter (ce contact sera public si vous choisissez l'option Dans l'annuaire)"
       Password: "Chaque mot de passe est &agrave; utiliser par les visiteurs. Il permet de valider un role (membre, mod&eacute;rateur, administrateur) selon le mot de passe saisi"
     sub_header:
+      Mailing: "Emails"
       Profile: "Profil"
       Blog: "Blog"
       Events: "Ev&egrave;nements"

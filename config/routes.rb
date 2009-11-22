@@ -7,24 +7,26 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pictures, :member => { :suspend   => :get,
     :unsuspend => :get, :activate => :get  }
 
-#  map.resources :members, :member =>{ #:create_relation => :get,
-#    #:update_relation => :get,
-#    :create_or_update => :get,
-#    :create_or_update_current_user => :get,
-#    :destroy_relation => :get,
-#    :destroy_current_user_relation => :get,
-#    :accept => :get,
-#    :refuse => :get}
+  #  map.resources :members, :member =>{ #:create_relation => :get,
+  #    #:update_relation => :get,
+  #    :create_or_update => :get,
+  #    :create_or_update_current_user => :get,
+  #    :destroy_relation => :get,
+  #    :destroy_current_user_relation => :get,
+  #    :accept => :get,
+  #    :refuse => :get}
 
 
   map.resources :organisms, :collection => { :list   => :get} do |organism|
+    organism.resources :mailings, :member => { :prep_to_members   => :get,
+      :send_to_members => :put }
     organism.resources :events, :controller => 'organism_events'
     organism.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |post|
-        post.resources :comments, :collection => { :suspend   => :get,
-          :unsuspend => :get,
-          :activate     => :get }
-      end
+      post.resources :comments, :collection => { :suspend   => :get,
+        :unsuspend => :get,
+        :activate     => :get }
+    end
     organism.resources :galleries, :member => {:set_cover => :get, :move_a_pic => :get, :add_pics => :get,  :edit_pics => :get,  :do_add_pics => :put   } do |gallery|
       gallery.resources :pictures, :member => { :suspend   => :get,
         :unsuspend => :get, :activate => :get  } do |picture|
@@ -40,13 +42,13 @@ ActionController::Routing::Routes.draw do |map|
       :unsuspend => :get,
       :activate     => :get }
     organism.resources :members, :collection =>{ #:create_relation => :get,
-    #:update_relation => :get,
-    :create_or_update => :get,
-    :create_or_update_current_user => :get,
-    :destroy_relation => :get,
-    :destroy_current_user_relation => :get,
-    :accept => :get,
-    :refuse => :get}
+      #:update_relation => :get,
+      :create_or_update => :get,
+      :create_or_update_current_user => :get,
+      :destroy_relation => :get,
+      :destroy_current_user_relation => :get,
+      :accept => :get,
+      :refuse => :get}
     organism.resources :pictures, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |picture|
       picture.resources :comments, :collection => { :suspend   => :get,
@@ -65,10 +67,10 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :organisms_terms, :controller => 'user_organisms_terms'
     user.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |post|
-        post.resources :comments, :collection => { :suspend   => :get,
-          :unsuspend => :get,
-          :activate     => :get }
-      end
+      post.resources :comments, :collection => { :suspend   => :get,
+        :unsuspend => :get,
+        :activate     => :get }
+    end
   end
 
 
@@ -90,10 +92,10 @@ ActionController::Routing::Routes.draw do |map|
       :activate     => :get }
     event.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  } do |post|
-        post.resources :comments, :collection => { :suspend   => :get,
-          :unsuspend => :get,
-          :activate     => :get }
-      end
+      post.resources :comments, :collection => { :suspend   => :get,
+        :unsuspend => :get,
+        :activate     => :get }
+    end
     event.resources :pictures, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |picture|
       picture.resources :comments, :collection => { :suspend   => :get,
@@ -130,7 +132,7 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.resources :users do |user|
-        user.resources :pictures, :member => { :suspend   => :get,
+    user.resources :pictures, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |picture|
       picture.resources :comments, :collection => { :suspend   => :get,
         :unsuspend => :get,
