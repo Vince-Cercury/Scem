@@ -29,9 +29,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    return_to = session[:return_to]
     logout_killing_session!
     flash[:notice] = I18n.t("sessions.Logged_out")
-    redirect_back_or_default('/')
+    redirect_to(return_to || '/')
   end
 
 protected
