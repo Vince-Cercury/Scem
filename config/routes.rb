@@ -129,7 +129,14 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resources :users
+  map.resources :users do |user|
+        user.resources :pictures, :member => { :suspend   => :get,
+      :unsuspend => :get, :activate => :get  }do |picture|
+      picture.resources :comments, :collection => { :suspend   => :get,
+        :unsuspend => :get,
+        :activate     => :get }
+    end
+  end
 
   map.resource :session
 

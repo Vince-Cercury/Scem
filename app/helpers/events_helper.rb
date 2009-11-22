@@ -15,7 +15,7 @@ module EventsHelper
       if style == "mini"
         link_to(image_tag(event.picture.attached.url(:small), :height => get_mini_height,:alt => event.name), event, :title => event.name)
       elsif style == "mini_width"
-        link_to(image_tag(event.picture.attached.url(:small), :width => get_mini_height,:alt => event.name), event, :title => event.name)
+        link_to(image_tag(event.picture.attached.url(:small), :width => get_mini_width,:alt => event.name), event, :title => event.name)
       else
         link_to(image_tag(event.picture.attached.url(style),:alt => event.name), event, :title => event.name)
       end

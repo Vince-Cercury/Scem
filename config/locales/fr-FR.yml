@@ -180,6 +180,9 @@ fr-FR:
     Stars: "Etoiles"
     votes: "votes"
   users:
+    content:
+      Attach_picture: "Joindre une photo"
+      Change_image: "Changer l'image"
     tabs:
       profil: "Profil"
       blog: "Blog"

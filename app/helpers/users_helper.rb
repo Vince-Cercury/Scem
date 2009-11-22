@@ -1,11 +1,23 @@
 module UsersHelper
 
+  def get_mini_height
+    "36px"
+  end
+
+  def get_mini_width
+    "36px"
+  end
+
   def display_user_cover_by_id(id, style)
     display_user_cover(User.find(id), style)
   end
 
-  def get_default_user_cover(style)
-    image_tag("default/user/#{style}/1.jpg")
+  def get_default_user_cover(user, style)
+    if style == "mini"
+      image = image_tag("default/user/thumb/1.jpg",:alt => get_user_name_or_pseudo(user))
+    else
+     image =image_tag("default/user/#{style}/1.jpg",:alt => get_user_name_or_pseudo(user))
+    end
   end
 
   def display_user_cover(user, style)
@@ -16,26 +28,33 @@ module UsersHelper
     if user.facebook_user?
       case style
       when "mini"
-        image = image_tag(user.fb_image_small, :height => mini_height)
+        image = image_tag(user.fb_image_small, :height => mini_height,:alt => get_user_name_or_pseudo(user))
       when :thumb
-        image = image_tag(user.fb_image, :width => thumb_width)
+        image = image_tag(user.fb_image, :width => thumb_width,:alt => get_user_name_or_pseudo(user))
       when :small
-        image = image_tag(user.fb_image, :width => small_width)
+        image = image_tag(user.fb_image, :width => small_width,:alt => get_user_name_or_pseudo(user))
       when :medium
-        image = image_tag(user.fb_image)
+        image = image_tag(user.fb_image,:alt => get_user_name_or_pseudo(user))
       when :large
-        image = image_tag(user.fb_image_big)
+        image = image_tag(user.fb_image_big,:alt => get_user_name_or_pseudo(user))
       else
-        image = image_tag(user.fb_image)
+        image = image_tag(user.fb_image,:alt => get_user_name_or_pseudo(user))
       end
     else
-      if style == "mini"
-        image = image_tag("default/user/thumb/1.jpg", :height => mini_height)
-        
+      if user.picture.nil?
+        image = get_default_user_cover(user, style)
       else
-        image = image_tag("default/user/#{style}/1.jpg")
+        if style == "mini"
+          image = image_tag(user.picture.attached.url(:small), :height => get_mini_height,:alt => get_user_name_or_pseudo(user))
+        elsif style == "mini_width"
+          image = image_tag(user.picture.attached.url(:small), :width => get_mini_width,:alt => get_user_name_or_pseudo(user))
+        else
+          image = image_tag(user.picture.attached.url(style),:alt => get_user_name_or_pseudo(user))
+        end
       end
+      link_to(image, user, :title => get_user_name_or_pseudo(user))
     end
+    
     if acquaintance_rights?(user)
       link_to(image, user)
     else

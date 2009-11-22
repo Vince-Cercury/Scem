@@ -5,11 +5,22 @@
       <%= display_user_cover(@user, "large") %>
     </div>
   <% else %>
-    <div class="userShowBodyLeft">
-      <%= display_user_cover(@user, "medium") %>
+      <% if @user.picture.nil? %>
+      <%= get_default_user_picture(@user, :medium) %>
+      <% if current_user && current_user_equal(@user) %>
+        <div class="userShowBodyLeft">
+          <%= link_to(t('users.content.Attach_picture'), new_url_for_even_polymorphic(@user, :picture)) %>
+        </div>
+      <% end %>
+    <% else %>
+      <%= link_to(image_tag(@user.picture.attached.url(:medium)), url_for_even_polymorphic(@user.picture))  %>
+      <% if current_user && current_user_equal(@user) %>
+        <div class="userShowBodyLeft">
+          <%= link_to(t('users.content.Change_image'), new_url_for_even_polymorphic(@user, :picture)) %>
+        </div>
+      <% end %>
+    <% end %>
       <%= t('users.show.Limited_profile') %>
-    </div>
-
   <% end %>
   <div class="userShowBodyRight">
     <p>

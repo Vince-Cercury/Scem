@@ -53,6 +53,8 @@ class User < ActiveRecord::Base
   #  :after_message => ": too old, 130 is the max",
   #  :allow_nil => false
 
+  has_one :picture, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'"
+
   has_many :posts, :as => :parent, :dependent => :destroy
 
   def search_posts(search, page)
@@ -243,8 +245,8 @@ class User < ActiveRecord::Base
   end
 
   def get_moderators_list
-    moderators_list = Array.new
-    moderators_list +=self
+    #moderators_list = Array.new
+    return [self]
   end
 
   #Huuuu ?? wtf ? will never work, where does the variable id comes from ?
@@ -346,6 +348,10 @@ class User < ActiveRecord::Base
 
   def get_picture_root_path
     return 'users/'+id.to_s
+  end
+
+  def get_parent_object
+    return nil
   end
 
   protected
