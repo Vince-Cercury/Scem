@@ -286,6 +286,8 @@ fr-FR:
       Search: "Rechercher"
   organisms:
     controller:
+      Successfully_destroyed: "L'organisme a &eacute;t&eacute; d&eacute;truit avec succ&egrave;s."
+      Successfully_suspended: "L'organisme a &eacute;t&eacute; d&eacute;sactiv&eacute; avec succ&egrave;s."
       Successfully_created: "L'organisme a &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s, unmod&eacute;rateur doit d&eacute;sormais le valider."
       Successfully_updated: "L'organisme a &eacute;t&eacute; modifi&eacute; avec succ&egrave;s."
       Activated: "L'organisme est activ&eacute;, vous pouvez commencer &agrave; l'utiliser."

@@ -110,7 +110,7 @@ class OrganismsController < ApplicationController
 
     set_session_parent_pictures_root_path(@organism)
 
-     #hack: do not consider categories id made of hash ['_all'] => id. Problem comes from Swapselect
+    #hack: do not consider categories id made of hash ['_all'] => id. Problem comes from Swapselect
     if params[:organism][:category_ids]
       category_ids = Array.new
       params[:organism][:category_ids].each do |id|
@@ -136,12 +136,35 @@ class OrganismsController < ApplicationController
   # DELETE /organisms/1
   # DELETE /organisms/1.xml
   def destroy
-    @organism = Organism.find(params[:id])
-    @organism.destroy
+    organism = Organism.find(params[:id])
 
-    respond_to do |format|
-      format.html { redirect_to(organisms_url) }
-      format.xml  { head :ok }
+    destroyable = true
+
+    if(organism.galleries.size>0)
+      destroyable = false
+    end
+
+    if organism.comments.size>0
+      destroyable = false
+    end
+
+
+    if destroyable
+      #destroy in cascade
+      organism.destroy
+      flash[:notice] = I18n.t('organisms.controller.Successfully_destroyed')
+      respond_to do |format|
+        format.html { redirect_to(root_path) }
+        format.xml  { head :ok }
+      end
+    else
+
+      organism.suspend!
+      flash[:notice] = I18n.t('organisms.controller.Successfully_suspended')
+      respond_to do |format|
+        format.html { redirect_to(root_path) }
+        format.xml  { head :ok }
+      end
     end
   end
 
@@ -161,33 +184,33 @@ class OrganismsController < ApplicationController
     end
   end
 
-  # PUT /users/1/suspend
-  def suspend
-    @organism = Organism.find(params[:id])
-    @organism.suspend!
-    redirect_to(organisms_url)
-  end
-
-  # PUT /users/1/unsuspend
-  def unsuspend
-    @organism = Organism.find(params[:id])
-    @organism.unsuspend!
-    redirect_to(organisms_url)
-  end
-
-  # DELETE /users/1
-  def destroy
-    @organism = Organism.find(params[:id])
-    @organism.delete!
-    redirect_to(organisms_url)
-  end
-
-  # DELETE /users/1/purge
-  def purge
-    @organism = Organism.find(params[:id])
-    @organism.destroy
-    redirect_to(organisms_url)
-  end
+#  # PUT /users/1/suspend
+#  def suspend
+#    @organism = Organism.find(params[:id])
+#    @organism.suspend!
+#    redirect_to(organisms_url)
+#  end
+#
+#  # PUT /users/1/unsuspend
+#  def unsuspend
+#    @organism = Organism.find(params[:id])
+#    @organism.unsuspend!
+#    redirect_to(organisms_url)
+#  end
+#
+#  # DELETE /users/1
+#  def destroy
+#    @organism = Organism.find(params[:id])
+#    @organism.delete!
+#    redirect_to(organisms_url)
+#  end
+#
+#  # DELETE /users/1/purge
+#  def purge
+#    @organism = Organism.find(params[:id])
+#    @organism.destroy
+#    redirect_to(organisms_url)
+#  end
 
   # Check if logged in user has organism_admin or organism_moderator rights
   #
