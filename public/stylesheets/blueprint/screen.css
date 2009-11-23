@@ -492,7 +492,9 @@ body {font-size:75%;
 .userbarboxleft {width: 50px;  height: 40px; float:left;}
 .userbarboxright {width: 345px; margin: 8px 0 0 5px; height: 32px; vertical-align:middle; float:right;}
 
-
+                                                                    /*---*****  List Categorie *****---*/
+.listCategories{width: 678px; padding: 10px 5px 0 5px; background: #fff; overflow: auto; float: left;}
+.listCategoriesBody{background:#fff; width:678px; margin: 0; overflow: auto; padding: 0 5px 5px 5px; float: left; height: auto;}
                                                                     /*---*****  GENERIC *****---*/
 
 .box {background:#fff; padding: 5px 5px 5px 5px;}

@@ -1,9 +1,10 @@
 <div class="categorie">
- <h3><%=h @category.name %></h3>
- <b><%= t('categories.show.Description') %></b>
-    <%=h @category.description %>
+  <h3><%=h @category.name %></h3>
+  <b><%= t('categories.show.Description') %></b>
+  <%=h @category.description %>
 </div>
 
 <%= render :partial => "terms_sub_header" %>
-<%= render :partial => "/terms/terms_list" %>
-
+<div class="listCategoriesBody">
+  <%= render :partial => "/terms/terms_list" %>
+</div>
