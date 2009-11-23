@@ -93,7 +93,7 @@ body {font-size:75%;
 .listTermRightBottom{width: 600px; overflow: auto; float: left;}
 .listTermRightBottomLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
 .listTermRightBottomRight{width:439px; margin: 0; padding: 5px; background: #fff; float: right; text-align:left;}
-.noEvent{width: 668px; padding: 5px; margin: 0 0 0 0; background: #f0882f; color: #000; text-align: center; font-weight: bold;}
+.noEvent{width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
 .noEventMessage{width: 668px; padding: 5px; margin: 0 0 0 0; background: #000; color: #ffb500; text-align: center; font-weight: bold;}
 .organismEventContent{width: 678px; padding: 5px 5px 0px 5px; background: #fff; overflow: auto; float: left; }
 .organismEventContentAction{width: 678px; padding: 0px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
@@ -123,8 +123,8 @@ body {font-size:75%;
 
 /* Partners box*/
 .partnersbox {background:#fff; padding: 10px 5px 5px 20px;  margin: -1px 0 25px 0;}
-/* Agenda box*/
-.diarybox {background:#fff; padding: 5px 5px 5px 8px;  margin: -1px 0 25px 0;}
+
+
 
                                                                         /*--- PUBLICITEE ---*/
 .subFooter {background: #000; margin: 0px 0px 0 0px; padding: 10px 0 0px 0; float: left; text-align:center; width: 986px; height: 90px;}
@@ -214,7 +214,7 @@ body {font-size:75%;
 .eventEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
 .eventEditBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
 .eventEditBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.eventEditBody h3 { font-size:14px; color: #000; font-weight: bold;}
+.eventEditBody h3 { font-size:14px; color: #000; font-weight: bold; text-align: left;}
 .eventEditBodyCenterLeft{width: 129px; height: 35px; line-height: 35px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto;}
 .eventEditBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
 .eventEditBodyCenterRight{width: 529px; min-height: 35px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
@@ -223,7 +223,7 @@ body {font-size:75%;
 /*NEW*/
 .eventNewBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .eventNewBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.eventNewBody h3 { font-size:12px; color:#000;}
+.eventNewBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold;}
 .eventNewBody h4 { font-size:16px; font-weight: bold; text-align: left; text-indent: 30px; color:#000; padding-top: 5px;}
 .eventNewBodyCenterLeft{width: 179px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
 .eventNewBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
@@ -266,7 +266,7 @@ body {font-size:75%;
 .organismEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
 .organismEditBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
 .organismEditBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.organismEditBody h3 { font-size:14px;}
+.organismEditBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold;}
 .organismEditBodyCenterLeft{width: 229px; height: 35px; line-height: 35px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
 .organismEditBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
 .organismEditBodyCenterRight{width: 429px; height: 35px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
@@ -276,7 +276,7 @@ body {font-size:75%;
 /*NEW*/
 .organismNewBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .organismNewBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.organismNewBody h3 { font-size:14px;}
+.organismNewBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold;}
 .organismNewBody h4 { font-size:16px; font-weight: bold; text-align: left; text-indent: 30px;}
 .organismNewBodyCenterLeft{width: 179px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
 .organismNewBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
@@ -400,7 +400,7 @@ body {font-size:75%;
 .userListMessage {width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
 
 .userFriendListContent{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto; float: left; }
-.userNetwork{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto; float: left; }
+.userNetwork{width: 678px; padding: 5px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
 
 .contributionsBar {width: 668px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
 .contributionBarBox {width: 112px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
@@ -453,16 +453,20 @@ body {font-size:75%;
 .searchBoxWhite{background:#fff; width:658px; margin: 0; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
 
                                                  /* ---------------------AGENDA---------------------- */
-
-
+.diarybody {background:#fff; width: 231px; padding: 5px;  margin: 0; overflow: auto;}
+.diarybody h4 {text-indent: 10px; color: #000;}
+.diarybox{background:#fff; width: 231px; min-height: 50px; overflow:auto;}
+.diaryboxLeft{background:#fff; width: 36px; padding: 15px 5px 5px 0; min-height: 50px; float: left;}
+.diaryboxRight{background:#fff; width: 185px; min-height: 50px; padding: 5px 0 5px 5px; float: right; color: #000;}
+.diaryboxRight p{text-indent: 0px;}
                                                 /* ---------------------PAGE ANNUAIRE'---------------------- */
 
 .activitiesBody{background:#fff; width:688px; margin: 0; padding: 0; float: left; height: auto;}
-.activities{width: 229px; padding: 0 0 0 0; background: #fff; float: left; }
-.activitie{padding: 10px; margin: 10px; background: #ffad4c; }
+.activities{width: 229px; min-height: 50px; padding: 0 0 0 0; background: #fff; float: left; font-size: 12px;}
+.activitie{padding: 10px; margin: 10px; background: #fff; }
 .activitie h4{margin:0; color: #000; text-align: center;}
 .activitie h4 a{margin:0; color: #000; text-align: center; font-weight: bold;}
-.activitie a:hover {margin:0; color: #fff; text-align: center; font-weight: bold;}
+.activitie a:hover {margin:0; color: #ffb500; text-align: center; font-weight: bold;}
 
 .activitiesList {background:#fff; padding: 5px 5px 5px 5px;}
 .activitiesList h2 {text-align: center;}
@@ -491,8 +495,14 @@ body {font-size:75%;
 .userbarbox {vertical-align: middle;}
 .userbarboxleft {width: 50px;  height: 40px; float:left;}
 .userbarboxright {width: 345px; margin: 8px 0 0 5px; height: 32px; vertical-align:middle; float:right;}
-
-
+                                                                    /*---*****  List scearch *****---*/
+.searchBody{background:#fff; width:678px; margin: 0; overflow: auto; padding:5px; float: left; height: auto;}
+                                                                    /*---*****  List participation *****---*/
+.listParticipation{width: 678px; padding: 10px 5px 0 5px; background: #fff; overflow: auto; float: left;}
+.listParticipationBody{background:#fff; width:678px; margin: 0; overflow: auto; padding: 0 5px 5px 5px; float: left; height: auto;}
+                                                                    /*---*****  List Categorie *****---*/
+.listCategories{width: 678px; padding: 10px 5px 0 5px; background: #fff; overflow: auto; float: left;}
+.listCategoriesBody{background:#fff; width:678px; margin: 0; overflow: auto; padding: 0 5px 5px 5px; float: left; height: auto;}
                                                                     /*---*****  GENERIC *****---*/
 
 .box {background:#fff; padding: 5px 5px 5px 5px;}

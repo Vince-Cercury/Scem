@@ -1,25 +1,28 @@
 <div class="titlediary"></div>
-<div class="diarybox">
+<div class="diarybody">
 
   <% if logged_in? -%>
   <%#= raise get_next_user_participations(ENV['USER_EVENTS_MAX_RESULTS']).size.inspect %>
   <%# PARTICIPATIONS %>
     <% if get_next_user_participations(ENV['USER_EVENTS_MAX_RESULTS']).size>0 %>
-                                <!--<h3 class="caps"><%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)</h3>-->
+                                    <!--<h3 class="caps"><%= t("users.meetings") %> (<%= t('next_number', :number =>ENV['USER_EVENTS_MAX_RESULTS']) %>)</h3>-->
 
       <h4><%= t("users.participations") %> (<%= t('next_number', :number =>get_next_user_participations(ENV['USER_EVENTS_MAX_RESULTS']).size) %>)</h4>
-      <hr />
+
       <% get_next_user_participations(ENV['USER_EVENTS_MAX_RESULTS']).each do |term| %>
-        <%# term = participation.term %>
-        <div  class="span-2">
-          <%= display_term_cover(term, "mini_width") %>
-        </div>
-        <div  class="span-3 last">
-          <%= link_to(term.event.name, get_event_if_term_url(term)) %><br />
-          <%= display_date_box(term.start_at) %>
+      <%# term = participation.term %>
+        <div class="diarybox">
+          <div  class="diaryboxLeft">
+            <%= display_term_cover(term, "mini_width") %>
+          </div>
+          <div  class="diaryboxRight">
+            <%= link_to(term.event.name, get_event_if_term_url(term)) %>
+            <p>
+              <%= display_date_box(term.start_at) %>
+            </p>
+          </div>
         </div>
 
-        <hr />
       <% end %>
     <% end %>
   <%# Calculating how many events we should display regarding to participations results (we don't want the list to be too long) %>
@@ -28,19 +31,22 @@
 
   <%# MY ORGANISMS EVENTS %>
     <% if max_user_organisms_terms> 0 && get_next_curent_user_organisms_terms(max_user_organisms_terms).size>0 %>
-   
+
       <h4><%= t("users.organisms.events") %> (<%= t('next_number', :number =>get_next_curent_user_organisms_terms(max_user_organisms_terms).size) %>)</h4>
-      <hr />
+
       <% get_next_curent_user_organisms_terms(max_user_organisms_terms).each do |term| %>
-        <div  class="span-2">
-          <%= display_term_cover(term, "mini_width") %>
-        </div>
-        <div  class="span-3 last">
-          <%= link_to(term.event.name, get_event_if_term_url(term)) %><br />
-          <%= display_date_box(term.start_at) %>
+        <div class="diarybox">
+          <div  class="diaryboxLeft">
+            <%= display_term_cover(term, "mini_width") %>
+          </div>
+          <div  class="diaryboxRight">
+            <%= link_to(term.event.name, get_event_if_term_url(term)) %>
+            <p>
+              <%= display_date_box(term.start_at) %>
+            </p>
+          </div>
         </div>
 
-        <hr />
       <% end %>
     <% end %>
 
@@ -60,19 +66,22 @@
 <%# NEXT EVENTS %>
   <% if !max_next_terms %><% max_next_terms=Integer(ENV['USER_EVENTS_MAX_RESULTS']) %><% end %>
   <% if max_next_terms> 0 && get_next_events(max_next_terms).size>0 %>
-    
+
     <h4><%= t("terms.next_events_coming") %> (<%= t('next_number', :number =>max_next_terms) %>)</h4>
-    <hr />
+
     <% get_next_events(max_next_terms).each do |term| %>
-      <div  class="span-2">
-        <%= display_term_cover(term, "mini_width") %>
-      </div>
-      <div  class="span-3 last">
-        <%= link_to(term.event.name, get_event_if_term_url(term)) %><br />
-        <%= display_date_box(term.start_at) %>
+      <div class="diarybox">
+        <div  class="diaryboxLeft">
+          <%= display_term_cover(term, "mini_width") %>
+        </div>
+        <div  class="diaryboxRight">
+          <%= link_to(term.event.name, get_event_if_term_url(term)) %>
+          <p>
+            <%= display_date_box(term.start_at) %>
+          </p>
+        </div>
       </div>
 
-      <hr />
     <% end %>
   <% end %>
 

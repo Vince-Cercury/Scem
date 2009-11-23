@@ -5,9 +5,9 @@
     <% if @organism.picture.nil? %>
       <%= display_organism_cover(@organism, :medium) %>
       <% if current_user && @organism.is_user_moderator?(current_user) %>
-           <div class="organismShowBodyLeftContent">
-              <%= link_to(t('organisms.show.Attach_picture'), new_url_for_even_polymorphic(@organism, :picture)) %>
-           </div>
+        <div class="organismShowBodyLeftContent">
+          <%= link_to(t('organisms.show.Attach_picture'), new_url_for_even_polymorphic(@organism, :picture)) %>
+        </div>
       <% end %>
     <% else %>
       <%= link_to(image_tag(@organism.picture.attached.url(:medium)), url_for_even_polymorphic(@organism.picture)) %>
@@ -20,41 +20,41 @@
   </div>
   <div class="organismShowBodyRight">
     <% if !get_organism_address_as_string(@organism).blank? %>
-    <p>
-      <b><%= t('organisms.show.Address') %></b>
-      <%= link_to(get_organism_address_as_string(@organism), organism_maps_path(@organism)) %>
-    </p>
-    <% end %>
-      
-      <% if current_user && @organism.is_user_moderator?(current_user)%>
-        <p>
-          <b><%= t('organisms.show.Manager_name') %></b>
-          <%=h @organism.manager_name %>
-        </p>
-        <p>
-          <b><%= t('organisms.show.Phone') %></b>
-          <%=h @organism.phone %>
-        </p>
-        <p>
-          <b><%= t('organisms.show.In_directory') %></b>
-          <%=h boolean_to_literal(@organism.in_directory) %>
-        </p>
-      <% end %>
       <p>
-        <b><%= t('organisms.show.Activities') %></b>
-        <% @organism.activities.each do |@activity| %>
-          <%= link_to(@activity.name, url_for(activity_path(@activity))) %>&nbsp;
+        <b><%= t('organisms.show.Address') %></b>
+        <%= link_to(get_organism_address_as_string(@organism), organism_maps_path(@organism)) %>
+      </p>
+    <% end %>
+
+    <% if current_user && @organism.is_user_moderator?(current_user)%>
+      <p>
+        <b><%= t('organisms.show.Manager_name') %></b>
+        <%=h @organism.manager_name %>
+      </p>
+      <p>
+        <b><%= t('organisms.show.Phone') %></b>
+        <%=h @organism.phone %>
+      </p>
+      <p>
+        <b><%= t('organisms.show.In_directory') %></b>
+        <%=h boolean_to_literal(@organism.in_directory) %>
+      </p>
+    <% end %>
+    <p>
+      <b><%= t('organisms.show.Activities') %></b>
+      <% @organism.activities.each do |@activity| %>
+        <%= link_to(@activity.name, url_for(activity_path(@activity))) %>&nbsp;
+      <% end %>
+    </p>
+    <% if @organism.admins.size > 0 %>
+      <p>
+        <b><%= t('organisms.show.Manager_name') %></b>
+        <% @organism.admins.each do |admin| %>
+          <%= get_user_name_or_pseudo_link(admin) %>
         <% end %>
       </p>
-      <% if @organism.admins.size > 0 %>
-        <p>
-          <b><%= t('organisms.show.Manager_name') %></b>
-          <% @organism.admins.each do |admin| %>
-            <%= get_user_name_or_pseudo_link(admin) %>
-          <% end %>
-        </p>
-      <% end %>
-      <% if @organism.moderators.size > 0 %>
+    <% end %>
+    <% if @organism.moderators.size > 0 %>
       <p>
         <b><%= t('organisms.show.Moderators') %></b>
         <% @organism.moderators.each do |moderator| %>
@@ -62,14 +62,18 @@
         <% end %>
       </p>
     <% end %>
-      <script type="text/javascript">
+    <script type="text/javascript">
       var addthis_config = {
         services_compact: 'email, facebook, twitter,live, hotmail, gmail, favorites, myspace, blogger, bloggy, yahoomail, print, printfriendly, pdfonline, more',
         services_exclude: 'print'
       }
     </script>
     <!-- AddThis Button BEGIN -->
-
+    <script type="text/javascript">
+      var addthis_config = {
+        data_use_flash: false
+      }
+    </script>
     <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pub=lebounce"></script>
     <!-- AddThis Button END -->
 
@@ -82,12 +86,12 @@
   </div>
 
   <% if @organism.description_long && @organism.description_long!='' %>
-    </div>
-    <div class="titledescription"></div>
-    <div class="organismShowBodyMiddle">
-      <%= @organism.description_long %>
-    </div>
-    <div>
+  </div>
+  <div class="titledescription"></div>
+  <div class="organismShowBodyMiddle">
+    <%= @organism.description_long %>
+  </div>
+  <div>
   <% end %>
 </div>
 
@@ -117,8 +121,8 @@
     </div>
     <% @organism.organisms_users[0,4].each do |organisms_users| %>
       <div class="memberBarBox">
-          <%= display_user_cover(organisms_users.user, :thumb) %><br />
-          <%= get_user_name_or_pseudo_link(organisms_users.user) %>
+        <%= display_user_cover(organisms_users.user, :thumb) %><br />
+        <%= get_user_name_or_pseudo_link(organisms_users.user) %>
       </div>
     <% end %>
   </div>
@@ -127,8 +131,8 @@
 <%= render :partial => "/galleries/galleries_bar" %>
 <div class="titlecomment"></div>
 <div class="organismShowBodyCommentaire">
-    <%= render :partial => "/comments/form" %>
-    <%= render :partial => "/comments/list" %>
+  <%= render :partial => "/comments/form" %>
+  <%= render :partial => "/comments/list" %>
 </div>
 
 

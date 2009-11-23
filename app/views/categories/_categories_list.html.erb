@@ -6,7 +6,7 @@
         <%=h category.description %>
       </p>
       <%= link_to t('categories.list.Show'), category %>
-      <%= link_to t('categories.list.Edit'), edit_category_path(category) %></td>
+      <%= link_to t('categories.list.Edit'), edit_category_path(category) %>
       <%= link_to t('categories.list.Destroy'), category, :confirm => t('categories.list.Are_you_sure'), :method => :delete %>
     </div>
   <% end %>
