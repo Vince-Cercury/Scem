@@ -48,7 +48,6 @@
               <div class="listTermRightBottomRight">
                 <p>
                   <%= link_to(t('events.terms.Number_of_participants') + (term.sure_participants.size + term.maybe_participants.size).to_s, event) unless (term.sure_participants.size + term.maybe_participants.size) == 0 %>
-              
                   <%= link_to(t('events.terms.Number_of_comments') + event.comments.size.to_s, event) unless event.comments.size == 0 %>
                 </p>
               </div>

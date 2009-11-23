@@ -400,7 +400,7 @@ body {font-size:75%;
 .userListMessage {width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
 
 .userFriendListContent{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto; float: left; }
-.userNetwork{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto; float: left; }
+.userNetwork{width: 678px; padding: 5px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
 
 .contributionsBar {width: 668px; margin: 10px 0 0 0; padding: 5px; background: #fff; float: left;}
 .contributionBarBox {width: 112px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
