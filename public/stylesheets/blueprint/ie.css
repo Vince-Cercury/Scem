@@ -46,17 +46,17 @@ button, input.button {position:relative;top:0.25em;}
 .contentleft{width: 687px; float: left; margin: 0 10px 0 10px; position:relative;}
 .contentright{width: 241px; float: right; margin: 0 10px 0 10px; color:#f0882f;}
 .subFooter {background: #fff;
-           margin: 10px 20px 0 10px;
-           padding: 5px 0 5px 0;
-           float: left;
-           text-align:center;
-           width: 948px;
-           height: 90px;}
+            margin: 10px 20px 0 10px;
+            padding: 5px 0 5px 0;
+            float: left;
+            text-align:center;
+            width: 948px;
+            height: 90px;}
 .footer {background-image:url('/images/body/french/footer.png');
-        background-repeat: no-repeat;
-        width: 1004px;
-        margin : 0 0 10px 5px;
-        height: 73px;}
+         background-repeat: no-repeat;
+         width: 1004px;
+         margin : 0 0 10px 5px;
+         height: 73px;}
 
 /*calendar*/
 .numberEvent{
@@ -71,88 +71,88 @@ button, input.button {position:relative;top:0.25em;}
 
 /*screen.css tabs */
 .tabs {
-  border-bottom:none;
-  height:1%; /* fixing IE 6 */
-  margin:0 0 .75em 0;
-  height:60px;
-  overflow:auto;
-  color: #fff;
-width:470px;
+    border-bottom:none;
+    height:1%; /* fixing IE 6 */
+    margin:0 0 .75em 0;
+    height:60px;
+    overflow:auto;
+    color: #fff;
+    width:470px;
 }
 
 .tabs li {
-	float: left;
-  line-height:1.5;
-  list-style-type:none;
-  margin:0 .25em 0 0;
-  color:#f0882f;
-  font-weight:bold;
-  text-align:center;
-  height: 30px;
-  display:block;
- width : 100px
+    float: left;
+    line-height:1.5;
+    list-style-type:none;
+    margin:0 .25em 0 0;
+    color:#f0882f;
+    font-weight:bold;
+    text-align:center;
+    height: 30px;
+    display:block;
+    width : 100px
 
 }
 .topId{
     font-size: 0px; line-height: 0%; width: 0px;
-border-top: 5px solid transparent;
-border-bottom: 1px solid red;
-border-right: 0px solid red;
-margin-left:3px;
+    border-top: 5px solid transparent;
+    border-bottom: 1px solid red;
+    border-right: 0px solid red;
+    margin-left:3px;
 }
 .tabs li a {
-  background:#000;
-  height: 30px;
-  border-top:none;
-  border-bottom:none;
-  border-right:none;
-  padding:5px 5px 0 5px;
-  margin-top: 6px;
-  color:#fff;
-  cursor:pointer;
-  display:block;
-  float: none;
-  font-weight:bold;
-  text-decoration:none;
+    background:#000;
+    height: 30px;
+    border-top:none;
+    border-bottom:none;
+    border-right:none;
+    padding:5px 5px 0 5px;
+    margin-top: 6px;
+    color:#fff;
+    cursor:pointer;
+    display:block;
+    float: none;
+    font-weight:bold;
+    text-decoration:none;
 }
 
 .tabs li .selected {
-  line-height:1.5;
-  list-style-type:none;
-  margin:0 0 0 0;
-  color:#f0882f;
-  font-weight:bold;
-  float:none;
-  height: 30px;
-  display:block;
+    line-height:1.5;
+    list-style-type:none;
+    margin:0 0 0 0;
+    color:#f0882f;
+    font-weight:bold;
+    float:none;
+    height: 30px;
+    display:block;
 }
 
 .tabsevent li a {
-  background:#000;
-  float:right;
-  margin: -11px 5px 5px 5px;
-  padding: 2px 2px 2px 2px;
-  border-top:none;
-  border-bottom:none;
-  border-right:none;
-  color:#ffb500;
-  cursor:pointer;
-  display:block;
-  font-weight:bold;
-  text-decoration:none;
+    background:#000;
+    float:right;
+    margin: -11px 5px 5px 5px;
+    padding: 2px 2px 2px 2px;
+    border-top:none;
+    border-bottom:none;
+    border-right:none;
+    color:#ffb500;
+    cursor:pointer;
+    display:block;
+    font-weight:bold;
+    text-decoration:none;
 }
 
 
 .tabsevent li .selected {
-  float:right;
-  line-height:1.5;
-  list-style-type:none;
-  margin: 7px 5px 5px 5px;
-  padding: 2px 2px 2px 2px;
-  color:#fff;border-top:none;
-  border-bottom:none;
-  border-right:none;
-  background: #ffb500;
-  font-weight:bold;
-  display:block;
+    float:right;
+    line-height:1.5;
+    list-style-type:none;
+    margin: 7px 5px 5px 5px;
+    padding: 2px 2px 2px 2px;
+    color:#fff;border-top:none;
+    border-bottom:none;
+    border-right:none;
+    background: #ffb500;
+    font-weight:bold;
+    display:block;
 }

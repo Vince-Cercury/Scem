@@ -1,16 +1,46 @@
 <%= render :partial => "/organisms/header" %>
-<% form_tag(url_for(:controller => 'mailings', :action => 'send_to_members', :id => @organism.id), :method => :put) do %>
 
-  <p><b><%= t('organisms.mailing.Form_title') %>:</b><br/>
-    <%= t('organisms.mailing.to_admins_label', :size => @organism.admins.size) %> : <%= check_box_tag 'to_admins' %><br/>
-    <%= t('organisms.mailing.to_moderators_label', :size => @organism.moderators.size) %> : <%= check_box_tag 'to_moderators' %><br/>
-    <%= t('organisms.mailing.to_members_label', :size => @organism.members.size) %> : <%= check_box_tag 'to_members' %><br/>
-  </p>
-  <p>
-    <%= t("organisms.mailing.subject_label") %> : <%= text_field_tag "subject" %><br />
-    <%= t("organisms.mailing.message_label") %> :<br />
-    <textarea name="message" cols="50" rows="10"></textarea>
-  </p>
-  <%= submit_tag t('organisms.mailing.Form_submit') %>
-
-<% end %>
+<div class="mailingBody">
+  <% form_tag(url_for(:controller => 'mailings', :action => 'send_to_members', :id => @organism.id), :method => :put) do %>
+    <h3><%= t('organisms.mailing.Form_title') %></h3>
+    <div class="mailingBodyCenter">
+      <div class="mailingCenterLeft">
+        <%= t('organisms.mailing.to_admins_label', :size => @organism.admins.size) %>
+      </div>
+      <div class="mailingCenterRight">
+        <%= check_box_tag 'to_admins' %>
+      </div>
+    </div>
+    <div class="mailingBodyCenter">
+      <div class="mailingCenterLeft">
+        <%= t('organisms.mailing.to_moderators_label', :size => @organism.moderators.size) %>
+      </div>
+      <div class="mailingCenterRight">
+        <%= check_box_tag 'to_moderators' %>
+      </div>
+    </div>
+    <div class="mailingBodyCenter">
+      <div class="mailingCenterLeft">
+        <%= t('organisms.mailing.to_members_label', :size => @organism.members.size) %>
+      </div>
+      <div class="mailingCenterRight">
+        <%= check_box_tag 'to_members' %>
+      </div>
+    </div>
+    <div class="mailingBodyCenter">
+      <h3><%= t("organisms.mailing.subject_label") %></h3>
+    </div>
+    <div class="mailingBodyCenter">
+      <%= text_field_tag "subject", '', :class => 'textFieldSubjectMail'  %>
+    </div>
+    <div class="mailingBodyCenter">
+      <h3><%= t("organisms.mailing.message_label") %></h3>
+    </div>
+    <div class="mailingBodyCenter">
+      <textarea name="message" cols="90" rows="15"></textarea>
+    </div>
+    <div class="mailingBodyCenter">
+      <%= submit_tag t('organisms.mailing.Form_submit') %>
+    </div>
+  <% end %>
+</div>

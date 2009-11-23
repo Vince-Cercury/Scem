@@ -289,13 +289,13 @@ fr-FR:
       Search: "Rechercher"
   organisms:
     mailing:
-      Form_title: "Envoyer un email aux membres"
+      Form_title: "Envoyer un email aux membres : "
       Form_submit: "Envoie !"
-      to_admins_label: "aux administrateurs ({{size}})"
-      to_moderators_label: "aux moderateurs ({{size}})"
-      to_members_label: "aux membres ({{size}})"
-      subject_label: "sujet"
-      message_label: "message"
+      to_admins_label: "Aux {{size}} administrateurs : "
+      to_moderators_label: "Aux {{size}} mod&eacute;rateurs : "
+      to_members_label: "Aux {{size}} membres : "
+      subject_label: "Sujet du message :"
+      message_label: "Votre message :"
       Successfully_sent: "Le message est en cours d'envoie ..."
     controller:
       Successfully_destroyed: "L'organisme a &eacute;t&eacute; d&eacute;truit avec succ&egrave;s."
