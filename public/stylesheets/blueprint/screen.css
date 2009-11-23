@@ -214,7 +214,7 @@ body {font-size:75%;
 .eventEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
 .eventEditBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
 .eventEditBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.eventEditBody h3 { font-size:14px; color: #000; font-weight: bold;}
+.eventEditBody h3 { font-size:14px; color: #000; font-weight: bold; text-align: left;}
 .eventEditBodyCenterLeft{width: 129px; height: 35px; line-height: 35px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto;}
 .eventEditBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
 .eventEditBodyCenterRight{width: 529px; min-height: 35px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
@@ -223,7 +223,7 @@ body {font-size:75%;
 /*NEW*/
 .eventNewBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .eventNewBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.eventNewBody h3 { font-size:12px; color:#000;}
+.eventNewBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold;}
 .eventNewBody h4 { font-size:16px; font-weight: bold; text-align: left; text-indent: 30px; color:#000; padding-top: 5px;}
 .eventNewBodyCenterLeft{width: 179px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
 .eventNewBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
@@ -266,7 +266,7 @@ body {font-size:75%;
 .organismEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
 .organismEditBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
 .organismEditBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.organismEditBody h3 { font-size:14px;}
+.organismEditBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold;}
 .organismEditBodyCenterLeft{width: 229px; height: 35px; line-height: 35px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
 .organismEditBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
 .organismEditBodyCenterRight{width: 429px; height: 35px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
@@ -276,7 +276,7 @@ body {font-size:75%;
 /*NEW*/
 .organismNewBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .organismNewBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
-.organismNewBody h3 { font-size:14px;}
+.organismNewBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold;}
 .organismNewBody h4 { font-size:16px; font-weight: bold; text-align: left; text-indent: 30px;}
 .organismNewBodyCenterLeft{width: 179px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
 .organismNewBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
