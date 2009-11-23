@@ -2,7 +2,7 @@
   <div id="create-comment-form">
 
     <div class="commentaireBodyMiddle">
-      
+
       <% if @current_object.comments.size == 0 %>
         <h5 class="caps"><%= t('comments.form.Be_the_first_to_write') %></h5>
       <% else %>
@@ -23,41 +23,48 @@
     <%= image_tag "spinner-horizontal-big.gif", :class => "image", :alt => "loading form" %>
   </div>
 <% else %>
+  <div class="connect">
+    <h4><%= t('sessions.RightToComment') %></h4>
+    <div class="connectLeft">
 
-    <h4><%= t('sessions.Log_in_limited_account') %></h4>
-    <% form_tag session_path do -%>
+      <h4><%= t('sessions.Log_in_limited_account') %></h4>
+      <% form_tag session_path do -%>
+        <p>
+          <%= label_tag t('sessions.Login') %>
+        </p>
+        <p>
+          <%= text_field_tag 'login', @login %>
+        </p>
+
+        <p>
+          <%= label_tag t('sessions.Password') %>
+        </p>
+        <p>
+          <%= password_field_tag 'password', nil %>
+        </p>
+
+        <!-- Uncomment this if you want this functionality -->
+        <p>
+          <%= label_tag 'remember_me', t('sessions.Remember_me') %>
+          <%= check_box_tag 'remember_me', '1', @remember_me %>
+        </p>
+
+        <p>
+          <%= submit_tag t('sessions.Log_in') %>
+        </p>
+      <% end -%>
+
+      <h4><%= link_to t('sessions.Sign_up'), signup_path, { :title => t('sessions.Create_account') } %></h4>
+    </div>
+
+    <div class="connectRight">
+
+      <h4><%= t('sessions.Or_Facebook_connect') %></h4>
       <p>
-        <%= label_tag t('sessions.Login') %>
+        <%= fb_login_button('window.location = "/facebook";')%>
       </p>
-      <p>
-        <%= text_field_tag 'login', @login %>
-      </p>
+      <%= t('sessions.Get_facebook_account') %>
 
-      <p>
-        <%= label_tag t('sessions.Password') %>
-      </p>
-      <p>
-        <%= password_field_tag 'password', nil %>
-      </p>
-
-      <!-- Uncomment this if you want this functionality -->
-      <p>
-        <%= label_tag 'remember_me', t('sessions.Remember_me') %>
-        <%= check_box_tag 'remember_me', '1', @remember_me %>
-      </p>
-
-      <p>
-        <%= submit_tag t('sessions.Log_in') %>
-      </p>
-    <% end -%>
-
-    <h4><%= link_to t('sessions.Sign_up'), signup_path, { :title => t('sessions.Create_account') } %></h4>
-
-
-  <h4><%= t('sessions.Or_Facebook_connect') %></h4>
-  <p>
-    <%= fb_login_button('window.location = "/facebook";')%>
-  </p>
-  <%= t('sessions.Get_facebook_account') %>
-
-  <% end %>
+    </div>
+  </div>
+<% end %>

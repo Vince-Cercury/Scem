@@ -145,7 +145,7 @@ border-right: 0px solid black;
   color:#000;
   cursor:pointer;
   display:block;
-  float:right;
+  float:left;
   font-weight:bold;
   text-decoration:none;
 }
@@ -200,7 +200,7 @@ border-right: 0px solid black;
   color:#000;
   cursor:pointer;
   display:block;
-  float:right;
+  float:left;
   font-weight:bold;
   text-decoration:none;
 }
@@ -254,7 +254,7 @@ border-right: 0px solid black;
   color:#fff;
   cursor:pointer;
   display:block;
-  float:right;
+  float:left;
   font-weight:bold;
   text-decoration:none;
 }
@@ -309,7 +309,7 @@ border-right: 0px solid black;
   color:#fff;
   cursor:pointer;
   display:block;
-  float:right;
+  float:left;
   font-weight:bold;
   text-decoration:none;
 }
@@ -385,7 +385,7 @@ border-right: 0px solid black;
   color:#000;
   cursor:pointer;
   display:block;
-  float:right;
+  float:left;
   font-weight:bold;
   text-decoration:none;
 }
