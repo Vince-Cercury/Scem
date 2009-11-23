@@ -114,8 +114,8 @@ fr-FR:
       Go: "Go"
       Participation_decision: "J'y serais"
       Participation: "Participation :"
-      Number_of_participants: "Nombre de participants : "
-      Number_of_comments: "Nombre de commentaires : "
+      Number_of_participants: "Participants : "
+      Number_of_comments: "Commentaires : "
     index:
       Listing_events: "Liste de &eacute;v&egrave;nements"
     edit:

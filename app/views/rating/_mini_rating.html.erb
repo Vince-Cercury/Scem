@@ -1,5 +1,7 @@
 <div id="star-ratings-block-<%= current_object.id %>">
-  <%= number_with_precision(current_object.rating, 1) %>/5 <%= t('rating.Stars') %>
+  <%#= number_with_precision(current_object.rating, 1) %>
+  <%#*/5%>
+<%#= t('rating.Stars') %>
   <ul class='mini-star-rating'>
     <li class='current-rating' style='width:<%= (current_object.rating * 20).to_i -%>px;'>
       <%= t('rating.Currently') %><%= number_with_precision(current_object.rating, 1) %>/5 <%= t('rating.Stars') %>.
