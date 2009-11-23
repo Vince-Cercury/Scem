@@ -19,4 +19,7 @@
     <li><% if params[:role]!='admin' %><%= link_to t('memberships.Administrator_of')+"#{@user.is_admin_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:admin) %><% else %><%= link_to t('memberships.Administrator_of')+"#{@user.is_admin_of.size} "+ t('memberships.organisms'), user_memberships_path(:role =>:admin), :class => 'selected' %><% end %></li>
   </ul>
 </div>
+<div class="organismListContent">
   <%= render :partial => "/organisms/organisms_list" %>
+</div>
+  

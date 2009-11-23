@@ -93,7 +93,7 @@ body {font-size:75%;
 .listTermRightBottom{width: 600px; overflow: auto; float: left;}
 .listTermRightBottomLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
 .listTermRightBottomRight{width:439px; margin: 0; padding: 5px; background: #fff; float: right; text-align:left;}
-.noEvent{width: 668px; padding: 5px; margin: 0 0 0 0; background: #f0882f; color: #000; text-align: center; font-weight: bold;}
+.noEvent{width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
 .noEventMessage{width: 668px; padding: 5px; margin: 0 0 0 0; background: #000; color: #ffb500; text-align: center; font-weight: bold;}
 .organismEventContent{width: 678px; padding: 5px 5px 0px 5px; background: #fff; overflow: auto; float: left; }
 .organismEventContentAction{width: 678px; padding: 0px 5px 5px 5px; background: #fff; overflow: auto; float: left; }
@@ -495,7 +495,11 @@ body {font-size:75%;
 .userbarbox {vertical-align: middle;}
 .userbarboxleft {width: 50px;  height: 40px; float:left;}
 .userbarboxright {width: 345px; margin: 8px 0 0 5px; height: 32px; vertical-align:middle; float:right;}
-
+                                                                    /*---*****  List scearch *****---*/
+.searchBody{background:#fff; width:678px; margin: 0; overflow: auto; padding:5px; float: left; height: auto;}
+                                                                    /*---*****  List participation *****---*/
+.listParticipation{width: 678px; padding: 10px 5px 0 5px; background: #fff; overflow: auto; float: left;}
+.listParticipationBody{background:#fff; width:678px; margin: 0; overflow: auto; padding: 0 5px 5px 5px; float: left; height: auto;}
                                                                     /*---*****  List Categorie *****---*/
 .listCategories{width: 678px; padding: 10px 5px 0 5px; background: #fff; overflow: auto; float: left;}
 .listCategoriesBody{background:#fff; width:678px; margin: 0; overflow: auto; padding: 0 5px 5px 5px; float: left; height: auto;}
