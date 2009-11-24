@@ -66,7 +66,8 @@ button, input.button {position:relative;top:0.25em;}
     background: transparent;
     position: absolute;
     text-align:right;
-    margin: -7px 0 0 10px;
+    width: 0px;
+    margin: -7px 0 0 5px;
     z-index:1;}
 
 /*screen.css tabs */
@@ -139,11 +140,21 @@ button, input.button {position:relative;top:0.25em;}
 }
 
 .galleriesBoxImageNotation .mini-star-rating li.current-rating{
-        background: url(/images/mini_star_rating.gif) left bottom;
-        position: absolute;
-        height: 20px;
-        display: block;
-        margin-left: -50px;
-        text-indent: -9000px;
-        z-index: 1;
-    }
+    background: url(/images/mini_star_rating.gif) left bottom;
+    position: absolute;
+    height: 20px;
+    display: block;
+    margin-left: -50px;
+    text-indent: -9000px;
+    z-index: 1;
+}
+
+.organismDescription{width: 678px; margin: 0; padding: 5px; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
+
+.blogContent{width: 678px; margin: 0 0 0 0; padding: 5px -10px 5px 5px; background: #fff; float: left; text-align: left;}
+
+.participantContent{width: 688px; padding: 5px 0 5px 0; background: #fff; overflow: auto; float: left;}
+.searchBox{background:#fff; width:678px; margin: 0; padding: 0; float: left; height: auto; text-align: center;}
+.searchBoxBlack {background:#000; float:left; height:auto; margin:0 5px; padding:5px 0; text-align:center; width:668px;}
+.searchBoxWhite{background:#fff; width:638px; margin: 0 5px 0 5px; padding: 5px; float: left; height: auto; text-align: center;}
+

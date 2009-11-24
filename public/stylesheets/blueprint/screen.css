@@ -1,14 +1,10 @@
 /* -----------------------------------------------------------------------
-
-
  Blueprint CSS Framework 0.9
  http://blueprintcss.org
-
    * Copyright (c) 2007-Present. See LICENSE for more info.
    * See README for instructions on how to use Blueprint.
    * For credits and origins, see AUTHORS.
    * This is a compressed file. See the sources in the 'src' directory.
-
 ----------------------------------------------------------------------- */
 
 /* reset.css */
@@ -110,7 +106,7 @@ body {font-size:75%;
 /*--- COLONNE DROITE ---*/
 .contentright{width: 241px; float: right; margin: 0 20px 0 10px; color:#f0882f;}
 /*Search box*/
-.searchbox {background:#fff; padding: 5px 5px 5px 8px; height:35px; margin: -1px 0 25px 0;}
+.searchboxbar {background:#fff; padding: 5px 5px 5px 8px; height:35px; margin: -1px 0 25px 0;}
 
 /*Calendar box*/
 .calendarbox {background:#fff; padding: 5px 5px 5px 8px; height:35px; margin: -1px 0 10px 0;}
@@ -214,7 +210,7 @@ body {font-size:75%;
 .eventEditBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; margin: 0 0 0 0;}
 .eventEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
 .eventEditBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
-.eventEditBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
+.eventEditBodyCenter{width: 688px; padding: 0; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
 .eventEditBody h3 { font-size:14px; color: #000; font-weight: bold; text-align: left; text-indent: 30px;}
 .eventEditBodyCenterLeft{width: 129px; height: 35px; line-height: 35px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto;}
 .eventEditBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
@@ -248,7 +244,7 @@ body {font-size:75%;
 .organismHeaderNotation{width: 150px;  min-height: 72px;  padding: 30px 5px 0 5px; float: right; text-align:center;}
 .organismHeader h3{font-size: 20px;}
 /*SHOW*/
-.organismShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
+    .organismShowBody{width: 688px; padding: 0 0 0 0; margin: 0; background: #fff; overflow: auto;}
 .organismShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
 .organismShowBodyLeft img {margin: 10px 0;}
 .organismShowBodyLeftContent {width: 252px; padding: 0px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; font-weight: bold;}
@@ -256,12 +252,14 @@ body {font-size:75%;
 .organismShowBodyLeftContent a:hover {background:#ffb500; color:#000;}
 .organismShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px;}
 .organismShowBodyRight img {float: right;}
-.organismShowBodyMiddle{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
+.organismShowBodyMiddle{width: 688px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
 .organismShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
-.organismShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
+.organismShowBodyMiddleRight{width: 522px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 .organismShowBodyCommentaire {width: 688px; margin: 0 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
 .organismShowBodyCommentaire h5 {padding: 5px; color: #000; font-size: 16px; margin: 0px;}
 .organismShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
+.organismDescription{width: 678px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
+.organismBecomeMember{width: 688px; margin: 0 0 0 0; padding: 5px 0  5px 0; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
 /*EDIT*/
 .organismEditBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; text-indent: 30px; margin: 0 0 0 0;}
 .organismEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
@@ -330,7 +328,7 @@ body {font-size:75%;
 .galleriesBox {width: 658px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left; text-align: right;}
 .galleriesBoxImage {width: 186px; height: 190px; margin: 0; padding: 15px 16px 0 17px; background: #fff; float: left; text-align: center;}
 .galleriesBoxImageNotation {width: 100px; padding: 0 43px 0 43px;}
-.galleriesBoxImageEdit {width: 186px; height: 190px; margin: 0; padding: 15px 16px 0 17px; background: #fff; float: left;}
+.galleriesBoxImageEdit {width: 186px; height: 210px; margin: 0; padding: 15px 16px 0 17px; background: #fff; float: left;}
 .galleriesBoxImageEdit img{text-align: center;}
 .galleriesBoxImageEdit p { text-align: left; text-indent: 0;}
 .galleriesBoxEdit {width: 658px; margin: 0 0 0 0; padding: 0; background: #fff; float: left; text-align: center;}
@@ -354,7 +352,7 @@ body {font-size:75%;
 .pictureShowEditLeft{width: 256px; height:256px; line-height:256px; padding: 5px; margin: 0; background: #fff; float: left; text-align: right;}
 .pictureShowEditRight{width: 402px; padding: 50px 5px 25px 5px; margin: 0; background: #fff; float: right; text-align: left; font-weight: bold;}
 .pictureShowEditLeft img{text-align: center; vertical-align: middle;}
-.pictureShowEditCenter{width: 678px; padding: 0; margin: 0; background: #fff; overflow: auto; float: left; text-align: center;}
+.pictureShowEditCenter{width: 678px; padding: 0; margin: 10px 0; background: #fff; overflow: auto; float: left; text-align: center;}
 
 /* ---------------------EDIT ACCOUNT---------------------- */
 
@@ -374,12 +372,13 @@ body {font-size:75%;
 .blogBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .blogContent{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-align: left;}
 .blogContent p{text-align: center;}
-.blogContent h4{padding: 5px; font-size: 16px; margin: 0px; text-align: center;}
+.blogContent h4{padding: 5px; font-size: 16px; margin: 0px; text-align: center; font-weight: bold; color:#000;}
 .blogContent h5{padding: 5px; font-size: 12px; margin: 0px; text-align: left;}
 .blogCommentaire {width: 688px; margin: 0 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
 .blogCommentaire h5 {padding: 5px; color: #000; font-size: 16px; margin: 0px;}
 .blogCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px;}
 .blogBox{width: 658px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-align: left;}
+.blogBoxAuteur{text-align: right;}
 .blogBox h4{padding: 5px; font-size: 16px; margin: 0px; text-align: center;}
 .blogBox h5{text-align: left;}
 .blogBox p{text-align: left; text-indent: 30px;}
@@ -396,7 +395,9 @@ body {font-size:75%;
 .dateListDateContent {width: 658px; margin: 0; padding: 5px; background: #fff; float: left;}
 .dateListDate img {float: right; padding: 5px;}
 
-.participantContent{width: 678px; padding: 5px 5px 5px 5px; background: #fff; overflow: auto; float: left;}
+.participantContent0{width: 678px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left;}
+.participantContent{width: 688px; padding: 5px 0 5px 0; margin: 0; background: #fff; overflow: auto; float: left;}
+.participantContent2{width: 678px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left;}
 .userList {width: 668px; margin: 0; padding: 5px 5px 0 5px; background: #000; float: left;}
 .userListBox {width: 668px; margin: 0 0 5px 0; padding: 0; background: #fff; float: left; text-align: center;}
 .userListBoxImage {width: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
@@ -433,12 +434,14 @@ body {font-size:75%;
 /* ---------------------PAGE LIST GALLERY'---------------------- */
 
 .GalleryListHeader{background:#fff; width:688px; margin: 0; padding: 0; float: left; height: auto;}
-.GalleryListHeaderLeft{background:#fff; width:568px; padding: 5px; float: left; text-align: center; height: 40px; line-height: 40px; vertical-align: middle;}
-.GalleryListHeaderRight{background:#fff; width:100px; padding: 5px; float: right; text-align: right; height: 40px; line-height: 40px; vertical-align: middle; font-weight: bold;}
+.GalleryListHeaderLeft{background:#fff; width:538px; padding: 5px; float: left; text-align: center; height: 40px; line-height: 40px; vertical-align: middle;}
+.GalleryListHeaderRight{background:#fff; width:130px; padding: 5px; float: right; text-align: right; height: 40px; line-height: 40px; vertical-align: middle; font-weight: bold;}
 .GalleryListHeaderRight a {background:#000; color:#fff; padding: 5px;}
 .GalleryListHeaderRight a:hover {background:#ffb500; color:#000;}
 .GalleryListLeft{width:151px; padding:5px 0 0 5px; float:left;}
 .GalleryListRight{width:527px; padding:5px 0 0 5px; float:right;}
+.GalleryStar{padding: 10px 0;}
+.GalleryAuteur{text-align: right; padding: 5px 10px;}
 .GalleryListSeparator{background:#fff; width:688px; margin-bottom: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
 .GalleryAction{text-align:right; padding: 0 10px 0 0;}
 .GalleryListRight h4 {text-align:center; font-size: 16px;}
@@ -452,15 +455,16 @@ body {font-size:75%;
 .commentaireRightEdit a {background:#000; color:#fff; padding: 3px;}
 .commentaireRightEdit a:hover {background:#ffb500; color:#000;}
 
-.commentaireListHeader{background:#fff; width:678px; margin: 0; padding: 5px; float: left; height: auto; text-align: center;}
+.commentaireListHeader{background:#fff; width:678px; margin: 0; padding: 5px; float: left; height: auto; text-align: center; overflow: auto;}
 .commentaireBodyMiddle{width: 678px; margin: 0 0 10px 0; padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .commentaireBodyMiddleLeft{width: 72px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
-.commentaireBodyMiddleRight{width: 532px; min-height: 80px; padding: 5px 32px 5px 32px; background: #fff; float: right; text-align: center;}
-.commentaireBodyMiddleSpinner{width: 532px; min-height: 80px; line-height: 100px; padding: 5px 32px 5px 32px; background: #fff; float: right; text-align: center;}
+.commentaireBodyMiddleRight{width: 512px; min-height: 80px; padding: 5px 32px 5px 12px; background: #fff; float: right; text-align: center;}
+.commentaireBodyMiddleSpinner{width: 512px; min-height: 80px; line-height: 100px; padding: 5px 32px 5px 12px; background: #fff; float: right; text-align: center;}
 .commentaireBodyMiddleSpinner img{vertical-align: middle;}
 
-.searchBox{background:#000; width:668px; margin: 0; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
-.searchBoxWhite{background:#fff; width:658px; margin: 0; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
+.searchBox{background:#fff; width:688px; margin: 0; padding: 0; float: left; height: auto; text-align: center;}
+.searchBoxBlack {background:#000; float:left; height:auto; margin:0 5px; padding:5px 0; text-align:center; width:678px;}
+.searchBoxWhite{background:#fff; width:658px; margin: 0 5px 0 5px; padding: 5px; float: left; height: auto; text-align: center;}
 
 /* ---------------------AGENDA---------------------- */
 .diarybody {background:#fff; width: 231px; padding: 5px;  margin: 0; overflow: auto;}

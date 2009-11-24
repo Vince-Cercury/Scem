@@ -32,22 +32,22 @@
       <% end %>
     </div>
     <% if params[:only_details].nil? || params[:only_details] == false %>
-    <div class="eventEditBodyRight">
-      <h3><%= t('events.edit.Title')  %></h3>
-      <%= f.text_field :name, :class => 'title'%>
-    </div>
+      <div class="eventEditBodyRight">
+        <h3><%= t('events.edit.Title')  %></h3>
+        <%= f.text_field :name, :class => 'title'%>
+      </div>
     <% end %>
     <% if params[:only_details].nil? || params[:only_details] == false %>
-    <div class="eventEditBodyCenter">
-      <p>
-        <%=t('events.edit.Is_charged')  %>
-        <%= f.check_box :is_charged %>
-      </p>
-      <p>
-        <%= t('events.edit.Is_private') %>
-        <%= f.check_box :is_private %>
-      </p>
-    </div>
+      <div class="eventEditBodyCenter">
+        <p>
+          <%=t('events.edit.Is_charged')  %>
+          <%= f.check_box :is_charged %>
+        </p>
+        <p>
+          <%= t('events.edit.Is_private') %>
+          <%= f.check_box :is_private %>
+        </p>
+      </div>
     <% end %>
 
     <div class="eventEditBodyCenter">
@@ -81,46 +81,50 @@
 
   <%#= text_field_with_auto_complete :event, :organism_place_name, {  }, { :url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search' } %>
         <%= f.text_field_with_auto_complete :organism_place_name, { :class => 'textField'}, {:url => formatted_list_organisms_path(:js), :method => :get, :param_name => 'search', :skip_style => true, :indicator => 'contribution-spinner-'+String(@auto_complete_count+1), :after_update_element => "function(element, value){$('event-place-info').hide();} "}%>
-    <div class="contribution-spinner" id="contribution-spinner-<%= @auto_complete_count +=1  %>" style="display:none;">
-    <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
-    <%= image_tag "spinner.gif", :class => "image", :alt => "loading form" %>
-  </div>
+        <div class="contribution-spinner" id="contribution-spinner-<%= @auto_complete_count +=1  %>" style="display:none;">
+          <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->
+          <%= image_tag "spinner.gif", :class => "image", :alt => "loading form" %>
+        </div>
       </div>
       <div id="event-place-info">
-        <div class="eventEditBodyCenterLeft">
-          <p>
-            <%= t('events.edit.Street') %>
-          </p>
+        <div class="eventEditBodyCenter">
+          <div class="eventEditBodyCenterLeft">
+            <p>
+              <%= t('events.edit.Street') %>
+            </p>
+          </div>
+          <div class="eventEditBodyCenterRight">
+            <%= f.text_field :street, :class => 'textField' %>
+          </div>
         </div>
-        <div class="eventEditBodyCenterRight">
-          <%= f.text_field :street, :class => 'textField' %>
-        </div>
-
-        <div class="eventEditBodyCenterLeft">
-          <p>
-            <%= t('events.edit.Town') %>
-          </p>
-        </div>
-        <div class="eventEditBodyCenterRight">
-          <%= f.text_field :city, :class => 'textField' %>
+        <div class="eventEditBodyCenter">
+          <div class="eventEditBodyCenterLeft">
+            <p>
+              <%= t('events.edit.Town') %>
+            </p>
+          </div>
+          <div class="eventEditBodyCenterRight">
+            <%= f.text_field :city, :class => 'textField' %>
+          </div>
         </div>
       </div>
-    </div>
-    <% if current_user.is_admin_or_moderator_of.size>0 or current_user.has_system_role("moderator") %>
-      <div class="eventEditBodyCenter">
-        <h3><%= t('events.edit.Publisher') %></h3>
+
+      <% if current_user.is_admin_or_moderator_of.size>0 or current_user.has_system_role("moderator") %>
+        <div class="eventEditBodyCenter">
+          <h3><%= t('events.edit.Publisher') %></h3>
     <%# if get_list_organism_rights_user(current_user).size > 1 %>
-        <div class="eventEditBodyCenterRight">
-          <%= collection_select :contributions,
-            :publisher_ids,
-            get_list_organism_rights_user(current_user),
-            :id, :name,{ :selected => @event.get_first_publisher, :include_blank => false },
-            { :multiple => false, :class => 'textField' } -%>
-        </div>
+          <div class="eventEditBodyCenterRight">
+            <%= collection_select :contributions,
+              :publisher_ids,
+              get_list_organism_rights_user(current_user),
+              :id, :name,{ :selected => @event.get_first_publisher, :include_blank => false },
+              { :multiple => false, :class => 'textField' } -%>
+          </div>
 
     <%# elsif get_list_organism_rights_user(current_user).size == 1 %>
     <%#= get_list_organism_rights_user(current_user).first.name %>
     <%# end %>
+        </div>
       </div>
       <div class="eventEditBodyCenter">
         <h3><%= t('events.edit.Organizers') %></h3>
@@ -155,20 +159,20 @@
       </div>
     <% end %>
     <% if params[:only_details].nil? || params[:only_details] == false %>
-    <div class="eventEditBodyCenter">
-      <h3><%= t('events.edit.Date') %></h3>
-    </div>
+      <div class="eventEditBodyCenter">
+        <h3><%= t('events.edit.Date') %></h3>
+      </div>
 
-    <div id="terms">
-      <%= render :partial => 'term', :collection => @event.terms %>
-    </div>
-    <div class="eventEditBodyCenter">
-      <%= add_term_link t('events.edit.add_term') %>
-    </div>
+      <div id="terms">
+        <%= render :partial => 'term', :collection => @event.terms %>
+      </div>
+      <div class="eventEditBodyCenter">
+        <%= add_term_link t('events.edit.add_term') %>
+      </div>
     <% end %>
     <div class="eventEditBodyCenter">
       <%= f.submit t('events.edit.Update') %>
     </div>
   <% end %>
-    <%= hidden_field_tag "auto_complete_count", "0" %>
+  <%= hidden_field_tag "auto_complete_count", "0" %>
 </div>

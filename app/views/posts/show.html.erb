@@ -1,7 +1,7 @@
 <%= render :partial => @header_partial %>
 <div class="blogBody">
-    <div class="listContent">
-      <%= render :partial => "sub_header" %>
+  <div class="listContent">
+    <%= render :partial => "sub_header" %>
 
     <div class="list">
       <div class="listSeparator">
@@ -10,7 +10,9 @@
           <p>
             <%= @post.text_long %>
           </p>
-          <%= t('posts.show.Created') %> <%= time_ago_in_words(@post.created_at) %> <%= t('posts.show.by') %> <%= get_user_name_or_pseudo_link_by_id(@post.creator_id) %>
+          <div class="blogBoxAuteur">
+            <%= t('posts.show.Created') %> <%= time_ago_in_words(@post.created_at) %> <%= t('posts.show.by') %> <%= get_user_name_or_pseudo_link_by_id(@post.creator_id) %>
+          </div>
         </div>
       </div>
     </div>

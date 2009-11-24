@@ -68,12 +68,13 @@ thead tr {color: black;}
 
 .numberEvent{
     font-size: 0.9em;
-    text-align: center;
+    text-align: right;
     color: red;
     background: transparent;
     position: absolute;
     text-align:right;
-    margin: -7px 0 0 20px;
+    width: 22px;
+    margin: -7px 0 0 10px;
     z-index:1;}
 
 .dayEvent{position: relative; z-index: 0; }

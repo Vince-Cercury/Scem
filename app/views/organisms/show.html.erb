@@ -84,20 +84,20 @@
         src="http://s7.addthis.com/static/btn/v2/lg-share-fr.gif"
         width="125" height="16" border="0" alt="Share" /></a>
   </div>
-
-  <% if @organism.description_long && @organism.description_long!='' %>
-  </div>
-  <div class="titledescription"></div>
-  <div class="organismShowBodyMiddle">
-    <%= @organism.description_long %>
-  </div>
-  <div>
-  <% end %>
 </div>
+  <% if @organism.description_long && @organism.description_long!='' %>
+
+    <div class="titledescription"></div>
+    <div class="organismDescription">
+      <%= @organism.description_long %>
+    </div>
+
+  <% end %>
+
 
 <% if logged_in? -%>
   <div class="titledevenirmembre"></div>
-  <div class="organismShowBodyMiddle">
+  <div class="organismBecomeMember">
     <% if @organism.is_user_related?(current_user) %>
       <%= link_to t('organisms.show.Not_be_a_member_anymore'), { :controller => "members", :action => "destroy_current_user_relation", :organism_id => @organism.id  }%>
     <% elsif @organism.is_user_pending?(current_user) %>

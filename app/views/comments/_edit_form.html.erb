@@ -9,7 +9,7 @@
       <% remote_form_for(:comment, comment, :url => {:controller => 'comments', :action => 'update', :comment_id => comment.id}, :before => fckeditor_before_js('comment', 'text'), :loading => loading) do |f| %>
         <%= f.error_messages %>
         <p>
-          <%= t('comments.edit.Edit') %><br />
+          <%= t('comments.edit.Edit') %>
           <%= fckeditor_textarea(:comment, :text, :ajax => true, :toolbarSet => 'Comment', :width => '100%', :height => '150px') %>
         </p>
 

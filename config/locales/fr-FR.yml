@@ -154,7 +154,7 @@ fr-FR:
       New_event: "Nouvel &eacute;v&egrave;nement"
       Publisher: "Editeur : "
       Title: "Titre de l'&eacute;v&egrave;nement :"
-      DescriptionShort: "Descrivez en quelques mots votre &eacute;v&egrave;nement :"
+      DescriptionShort: "D&eacute;crivez en quelques mots votre &eacute;v&egrave;nement :"
     share:
       Tick_users: "Cochez les utilisateurs avec lesquels vous souhaitez partager"
       Search: "Rechercher"
@@ -327,7 +327,7 @@ fr-FR:
       Moderators_pwd: "Mot de passe mod&eacute;rateur : "
       Members_pwd: "Mot de passe membres :"
       Activities: "Choissez la ou les activit&eacute;s qui correspondent le mieux &#224; votre organisme"
-      Long_description: "Descrivez au mieux votre organisme"
+      Long_description: "D&eacute;crivez au mieux votre organisme"
       Adress: "Saisissez l'adresse"
       DescriptionShort: "D&eacute;crivez en quelques mots votre organisme"
       Public: "Cochez cette case si vous souhaitez qu'il figure dans l'annuaire"
@@ -817,11 +817,15 @@ fr-FR:
     list:
       Pictures: "&nbsp;Photos"
       From: "De "
+      Postby: " post&eacute; par "
       Created_by: "Cr&eacute;&eacute; par "
       Show: "Afficher"
       Edit: "Editer"
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
+      Organism: "l'organisme"
+      Event: "l'&eacute;v&egrave;nement"
+      User: "l'utilisateur"
     event_search:
       Search: "Rechercher"
       New_gallery: "Nouvelle galerie !"
@@ -979,7 +983,7 @@ fr-FR:
       or_log_in_facebook_connect: "Ou se connecter avec Facebook"
       Facebook_ad: "Si vous avez un compte Facebook, n'h&eacute;sitez pas c'est le plus simple !"
     edit:
-      Edit: "Editer le commentaire :"
+      Edit: "Editer le commentaire"
       Update: "Mettre &agrave; jour"
     create:
       Create: "Cr&eacute;er"

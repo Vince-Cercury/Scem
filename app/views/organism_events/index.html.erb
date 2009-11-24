@@ -11,18 +11,20 @@
 <% end %>
 <% if @terms.size > 0 %>
   <div class="searchBox">
-    <div class="searchBoxWhite">
-      <% form_tag organism_events_path, :method => 'get' do %>
-        <%= text_field_tag :search, params[:search] %>
-        <% if !params[:period].blank? %>
-          <%= hidden_field_tag :period, params[:period] %>
+    <div class="searchBoxBlack">
+      <div class="searchBoxWhite">
+        <% form_tag organism_events_path, :method => 'get' do %>
+          <%= text_field_tag :search, params[:search] %>
+          <% if !params[:period].blank? %>
+            <%= hidden_field_tag :period, params[:period] %>
+          <% end %>
+          <%= submit_tag t('organism_events.index.Search'), :name => nil %>
         <% end %>
-        <%= submit_tag t('organism_events.index.Search'), :name => nil %>
-      <% end %>
+      </div>
     </div>
   </div>
 <% end %>
-<div class="organismEventContent">
+<div class="organismEventContentAction">
   <%= render :partial => "/terms/terms_list" %>
 </div>
 
