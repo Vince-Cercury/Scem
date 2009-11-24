@@ -73,7 +73,7 @@ thead tr {color: black;}
     background: transparent;
     position: absolute;
     text-align:right;
-    margin: -7px 0 0 27px;
+    margin: -7px 0 0 20px;
     z-index:1;}
 
 .dayEvent{position: relative; z-index: 0; }
