@@ -5,22 +5,25 @@
       <%= display_user_cover(@user, "large") %>
     </div>
   <% else %>
-      <% if @user.picture.nil? %>
-      <%= display_user_cover(@user, :medium) %>
-      <% if current_user && current_user_equal(@user) %>
-        <div class="userShowBodyLeft">
+    <% if @user.picture.nil? %>
+      <div class="userShowBodyLeft">
+        <%= display_user_cover(@user, :medium) %>
+        <% if current_user && current_user_equal(@user) %>
+
           <%= link_to(t('users.content.Attach_picture'), new_url_for_even_polymorphic(@user, :picture)) %>
-        </div>
-      <% end %>
+
+        <% end %>
+      </div>
     <% else %>
-      <%= link_to(image_tag(@user.picture.attached.url(:medium)), url_for_even_polymorphic(@user.picture))  %>
-      <% if current_user && current_user_equal(@user) %>
-        <div class="userShowBodyLeft">
+      <div class="userShowBodyLeft">
+        <%= link_to(image_tag(@user.picture.attached.url(:medium)), url_for_even_polymorphic(@user.picture))  %>
+        <% if current_user && current_user_equal(@user) %>
+
           <%= link_to(t('users.content.Change_image'), new_url_for_even_polymorphic(@user, :picture)) %>
-        </div>
-      <% end %>
+
+        <% end %>
+      </div>
     <% end %>
-      <%= t('users.show.Limited_profile') %>
   <% end %>
   <div class="userShowBodyRight">
     <p>
@@ -32,12 +35,12 @@
       <%= @user.created_at %>
     </p>
     <% if current_user_equal(@user) %>
-    <p>
-      <%= link_to(t('users.show.meet_friends'), new_event_path(:type => 'user_event')) %>
-    </p>
-    <p>
-      <%= link_to(t('users.show.new_organism'), new_organism_path) %>
-    </p>
+      <p>
+        <%= link_to(t('users.show.meet_friends'), new_event_path(:type => 'user_event')) %>
+      </p>
+      <p>
+        <%= link_to(t('users.show.new_organism'), new_organism_path) %>
+      </p>
     <% end %>
   </div>
 </div>

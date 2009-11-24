@@ -295,15 +295,15 @@ body {font-size:75%;
 .userHeader{width: 688px; min-height: 82px; background: #fff; overflow:auto;}
 .userHeaderImage{width: 72px; min-height: 72px; line-height: 72px; padding: 5px; float: left; }
 .userHeaderImage img{vertical-align: middle;}
-.userHeaderRight{width: 596px; min-height: 82px; padding: 30px 5px 0 5px; background: #fff; overflow:auto; float: right;}
-.userHeader h3{font-size: 20px; text-align: center;}
+.userHeaderRight{width: 596px; min-height: 82px; padding: 0 5px 0 5px; background: #fff; overflow:auto; float: right;}
+.userHeaderRight h3{font-size: 20px; text-align: center; padding: 30px;}
 /*BODY*/
 .userShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
-.userShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
-.userShowBodyLeft img {margin: 10px 0;}
+.userShowBodyLeft{width: 262px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
+.userShowBodyLeft img {margin: 10px 0; padding: 5px 5px 5px 5px;}
 .userShowBodyLeftContent {width: 252px; padding: 0px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; font-weight: bold;}
 
-.userShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height:25px; text-align: right;}
+.userShowBodyRight{width: 406px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height:25px; text-align: right;}
 .userShowBodyRight a {background:#000; color:#fff; padding: 2px; text-align: right;}
 .userShowBodyRight a:hover {background:#ffb500; color:#000;}
 .userShowBodyRight p {text-align: left; text-indent: 0px; text-align: left;}
