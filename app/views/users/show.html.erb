@@ -6,7 +6,7 @@
     </div>
   <% else %>
       <% if @user.picture.nil? %>
-      <%= get_default_user_picture(@user, :medium) %>
+      <%= display_user_cover(@user, :medium) %>
       <% if current_user && current_user_equal(@user) %>
         <div class="userShowBodyLeft">
           <%= link_to(t('users.content.Attach_picture'), new_url_for_even_polymorphic(@user, :picture)) %>
