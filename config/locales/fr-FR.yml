@@ -1040,6 +1040,8 @@ fr-FR:
       Permission_denied: "Acc&egrave;s refus&eacute;"
   activerecord:
     errors:
+      messages:
+        blank: "Ceci ne peut être vide"
       template:
         header: "Formulaire non valide"
         body: "Merci de vérifier les champs qui posent problème"
