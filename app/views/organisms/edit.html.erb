@@ -8,20 +8,22 @@
       <%= t("organisms.edit.Only_details_intro") %>
     <% end %>
 
+    <% if params[:only_details].nil? || params[:only_details] == false %>
     <div class="organismEditBodyLeft">
       <% if @organism.picture.nil? %>
         <%= display_organism_cover(@organism, :medium) %>
         <div class="organismEditBodyLeftContent">
-          <%= link_to(t('organisms.edit.Attach_picture'), url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+          <%= link_to(t('organisms.edit.Attach_picture'), new_url_for_even_polymorphic(@organism, :picture)) %>
         </div>
 
       <% else %>
         <%= display_organism_cover(@organism, :medium) %>
         <div class="organismEditBodyLeftContent">
-          <%= link_to(t('organisms.edit.Change_picture'), url_for(:controller => 'pictures', :action => 'new', :parent_id => @organism.id, :parent_type => "Organism")) %>
+          <%= link_to(t('organisms.edit.Change_picture'),new_url_for_even_polymorphic(@organism, :picture)) %>
         </div>
       <% end %>
     </div>
+    <% end %>
     <% if params[:only_details].nil? || params[:only_details] == false %>
     <div class="organismEditBodyRight">
       <h3> <%= f.text_field :name, :class => 'title' %></h3>
