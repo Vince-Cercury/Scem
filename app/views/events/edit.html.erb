@@ -1,6 +1,7 @@
 <%= render :partial => "/events/sub_header" %>
 <% form_for(@event, :live_validations => true) do |f| %>
   <% @auto_complete_count = 0 %>
+  <%= hidden_field_tag "only_details", params[:only_details] %>
   <div class="eventEditBody">
 
     <%= f.error_messages %>
@@ -18,6 +19,7 @@
       </div>
 
     <% end %>
+    <% if params[:only_details].nil? || params[:only_details] == false %>
     <div class="eventEditBodyLeft">
       <% if @event.picture.nil? %>
         <%= get_default_event_picture(@event, :medium) %>
@@ -31,6 +33,7 @@
         </div>
       <% end %>
     </div>
+    <% end %>
     <% if params[:only_details].nil? || params[:only_details] == false %>
       <div class="eventEditBodyRight">
         <h3><%= t('events.edit.Title')  %></h3>

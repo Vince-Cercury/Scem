@@ -116,13 +116,14 @@ class Event < ActiveRecord::Base
   end
 
   def existing_term_attributes=(term_attributes)
-    
-    terms.reject(&:new_record?).each do |term|
-      attributes = term_attributes[term.to_param]
-      if attributes
-        term.attributes = parse_my_date(attributes)
-      else
-        terms.delete(term)
+    if term_attributes != "do_nothing"
+      terms.reject(&:new_record?).each do |term|
+        attributes = term_attributes[term.to_param]
+        if attributes
+          term.attributes = parse_my_date(attributes)
+        else
+          terms.delete(term)
+        end
       end
     end
     

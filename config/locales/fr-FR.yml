@@ -93,7 +93,7 @@ fr-FR:
     partner:
       Remove: "Supprimer ce partenaire"
     term:
-      Term_description: "Ajoutez une description pour cette date (conseill&eacute; seulement quand l'&eacute;v&egrave;nement est multi-dates)"
+      Term_description: "Ajoutez une description pour cette date"
       Remove: "Supprimer cette date"
       Start_at: "D&eacute;but : "
       End_at: "Fin : "
@@ -299,6 +299,7 @@ fr-FR:
       message_label: "Votre message :"
       Successfully_sent: "Le message est en cours d'envoie ..."
     controller:
+      Now_member_organism: "F&eacute;licitation. Vous faites maintenant partis des membres !"
       Successfully_destroyed: "L'organisme a &eacute;t&eacute; d&eacute;truit avec succ&egrave;s."
       Successfully_suspended: "L'organisme a &eacute;t&eacute; d&eacute;sactiv&eacute; avec succ&egrave;s."
       Successfully_created: "L'organisme a &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s, unmod&eacute;rateur doit d&eacute;sormais le valider."
@@ -1037,6 +1038,19 @@ fr-FR:
       Facebook_session_expired: "Votre seession Facebook a expir&eacute;. Merci de vous connecter de nouveau ..."
       You_ve_to_be_logged: "Vous devez &ecirc;tre connect&eacute; pour executer cette action."
       Permission_denied: "Acc&egrave;s refus&eacute;"
-
+  activerecord:
+    errors:
+      template:
+        header: "Formulaire non valide"
+        body: "Merci de vérifier les champs qui posent problème"
+      models:
+        event:
+          attributes:
+            terms:
+              invalid: ": une des date n'est pas valide ou la description correspondate est vide !"
+        term:
+          attributes:
+            description:
+              blank: "La description ne doit pas être vide !"
 
 
