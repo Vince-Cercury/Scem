@@ -26,7 +26,7 @@
   <% end %>
     <% if count_next_user_organisms_terms(@user).size > 0 || current_user_equal(@user) %>
     <li>
-      <% if controller_name != "organisms_terms" %>
+      <% if controller_name != "user_organisms_terms" %>
 
         <%= link_to(t('users.tabs.network'), user_organisms_terms_path(:user_id => @user.id)) %>
       <% else %>

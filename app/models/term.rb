@@ -174,19 +174,19 @@ class Term < ActiveRecord::Base
       :group => 'terms.id'
   end
 
-  def self.search_has_publisher_futur_by_organism(search, page, organism_id, is_private=false, event_state='active')
+  def self.search_has_publisher_futur_by_organism(search, page, organism_id, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and contributions.organism_id = ? and events.state = ?', "%#{search}%", is_private, organism_id, event_state],
+      :conditions => ['events.name LIKE ? and start_at >= NOW() and contributions.organism_id = ? and events.state = ?', "%#{search}%", organism_id, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'
   end
 
-  def self.search_has_publisher_past_by_organism(search, page, organism_id, is_private=false, event_state='active')
+  def self.search_has_publisher_past_by_organism(search, page, organism_id, event_state='active')
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at <= NOW() and contributions.organism_id = ? and events.state = ?', "%#{search}%", is_private, organism_id, event_state],
+      :conditions => ['events.name LIKE ? and start_at <= NOW() and contributions.organism_id = ? and events.state = ?', "%#{search}%", organism_id, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'

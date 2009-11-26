@@ -168,7 +168,12 @@ class EventsController < ApplicationController
     @event.edited_by = current_user.id
     set_session_parent_pictures_root_path(@event)
 
-    params[:event][:existing_term_attributes] ||= {}
+    if params[:only_details] && params[:only_details] == "true"
+      params[:event][:existing_term_attributes] = "do_nothing"
+    else
+      params[:event][:existing_term_attributes] ||= {}
+    end
+    
     #params[:event][:existing_organizer_attributes] ||= {}
 
 
