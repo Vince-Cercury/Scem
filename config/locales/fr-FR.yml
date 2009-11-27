@@ -254,7 +254,7 @@ fr-FR:
       step2: "Etape 2 :"
       info: "Pour pouvoir b&eacute;n&eacute;ficier de toutes les fonctions du site, nous devons demander quelques autorisations à votre compte FaceBook."
       info2: "Pour continuer cliquez sur le lien suivant  (vous pourrez changer d'avis et revenir en arri&egrave;re à tous moment):"
-      allow: "Autoriser les Facebook permissions !"
+      allow: "Autoriser les permissions Facebook!"
       confirmation: "Confirmer votre adresse e-mail, s'il vous plait."
       info3: "Ensuite vous pourrez utiliser toutes les fonctions du sites. (Demand&eacute; une seule fois)"
   sessions:
@@ -838,6 +838,7 @@ fr-FR:
       Feature_not_available: "Cette fonctionnalit&eacute; n'est pas accessible si vous n'&ecirc;tes pas sur Facebook"
   facebook:
     controller:
+      Registered_success: "Merci de vous &ecirc;tre connect&eacute;!"
       Publish_problem: "Un probl&egrave;me s'est produit durant la publication d'un objet sur Facebook. Vous pouvez r&eacute;essayer plus tard. D&eacute;sol&eacute;..."
       Publish_success: "L'objet a &eacute;t&eacute; publi&eacute; sur le mur avec succ&egrave;s !"
       Couldnt_find_account: "Vous voulez poster un message sur le mur de {{user}}. Mais nous ne pouvons trouver son compte sur Facebook ..."
@@ -1035,7 +1036,7 @@ fr-FR:
       Successfully_updated: "L'activit&eacute; a &eacute;t&eacute; mise &agrave; jour avec succ&egrave;s."
   application:
     controller:
-      Facebook_session_expired: "Votre seession Facebook a expir&eacute;. Merci de vous connecter de nouveau ..."
+      Facebook_session_expired: "Votre session Facebook a expir&eacute;. Merci de vous connecter de nouveau ..."
       You_ve_to_be_logged: "Vous devez &ecirc;tre connect&eacute; pour executer cette action."
       Permission_denied: "Acc&egrave;s refus&eacute;"
   activerecord:
