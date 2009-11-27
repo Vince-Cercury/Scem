@@ -146,7 +146,7 @@ class Term < ActiveRecord::Base
 
   def self.search_has_publisher_past(search, page, per_page, is_private=false, event_state='active')
 
-    conditions = SearchsTools.prepare_conditions(search, 'events.name', 'events.is_private = ? and terms.start_at > NOW() and events.state = ?', [is_private, event_state])
+    conditions = SearchsTools.prepare_conditions(search, 'events.name', 'events.is_private = ? and start_at <= NOW() and events.state = ?', [is_private, event_state])
 
     paginate  :per_page => per_page,
       :page => page,
