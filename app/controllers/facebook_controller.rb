@@ -14,7 +14,7 @@ class FacebookController < ApplicationController
       current_user.state = 'active'
       current_user.activated_at = Time.now
 
-      flash[:notice] = "Congratulations! You have registered with success thanks to your Facebook account."
+      flash[:notice] = I18n.t('facebook.controller.Registered_success')
     else
       #connect accounts
       self.current_user.link_fb_connect(facebook_session.user.id) unless self.current_user.fb_user_id == facebook_session.user.id
