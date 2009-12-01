@@ -79,14 +79,14 @@ class UsersController < ApplicationController
   def create
     logout_keeping_session!
     @user = User.new(params[:user])
-
+    #raise @user.terms_of_service.inspect
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
       redirect_back_or_default('/')
       flash[:notice] = I18n.t("users.create_success")
     else
-      flash[:error]  = I18n.t("users.create_error")
+      #flash[:error]  = I18n.t("users.create_error")
       render :action => 'new'
     end
   end

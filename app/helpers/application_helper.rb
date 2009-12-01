@@ -10,7 +10,9 @@ module ApplicationHelper
     end
     if controller_name == 'activities'
       if @activity
-        result += " - " + @activity.name
+        if @activity.name
+          result += " - " + @activity.name
+        end
       else
         result += " - " + t('Directory')
       end
