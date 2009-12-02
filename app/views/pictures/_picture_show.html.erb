@@ -7,6 +7,7 @@ loading = "$('spinner-pic').show(); " + "$('picture-show').hide(); " %>
   :url => url_for_even_polymorphic(@picture.next_item),
   :loading => loading, :complete => complete, :method => :get) unless @picture.last_item? %>
 <div id="results">
+  <%= render :partial => "header" %>
   <div class="pictureShowContent">
     <div class="pictureShowNotation">
       <%= render :partial => "rating/rating", :locals => { :current_object => @picture } %>

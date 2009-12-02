@@ -825,7 +825,7 @@ fr-FR:
       Edit: "Editer"
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
-      organisms: "Organisme"
+      Organism: "l'organisme"
       Postby: "par"
     event_search:
       Search: "Rechercher"
