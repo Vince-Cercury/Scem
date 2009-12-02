@@ -22,7 +22,7 @@ class ActivitiesController < ApplicationController
           page.replace_html 'results', :partial => 'activities_list'
         end
       }
-    end
+    end 
   end
 
   # GET /activities/1

@@ -31,7 +31,7 @@ class OrganismMailer < ActionMailer::Base
     #organism_admin and organism_modo, send this emails
     setup_email(user,organism)
     @subject    += I18n.t('organism_mailer.subject_your_organism_activated',:name => organism.name)
-    @body[:url]  = "#{ENV['SITE_URL']}#{organisms_path(organism)}"
+    #@body[:url]  = "#{ENV['SITE_URL']}#{organisms_path(organism)}"
   end
 
   protected

@@ -10,6 +10,7 @@ class Organism < ActiveRecord::Base
   before_save :generate_and_save_passwords
 
 
+  #validates_acceptance_of :terms_of_service, :allow_nil =>false
   validates_presence_of     :name, :description_short, :manager_name, :phone
   validates_uniqueness_of   :name
   validates_length_of :description_short, :maximum=>400
@@ -23,6 +24,7 @@ class Organism < ActiveRecord::Base
   acts_as_commentable
 
   acts_as_rateable
+
 
 
   include AASM

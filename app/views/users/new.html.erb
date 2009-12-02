@@ -1,6 +1,6 @@
 <div class="titlecreeruncompte"></div>
 <%#*<h1>%>
-  <%#= t('users.new.Sign_up_new_user') %>
+<%#= t('users.new.Sign_up_new_user') %>
 <%#*</h1>%>
 
 <div class="newAccountBody">
@@ -21,7 +21,7 @@
     <div class="newAccountBodyRight">
       <p><%= f.text_field :first_name %></p>
     </div>
-    
+
     <div class="newAccountBodyLeft">
       <p><%= label_tag t('users.new.Last_name') %></p>
     </div>
@@ -56,6 +56,19 @@
     <div class="newAccountBodyRight">
       <p><%= f.password_field :password_confirmation %></p>
     </div>
+
+
+
+
+    <%#*<div class="newAccountBodyLeft">%>
+       <%#*<p><%= t('users.new.Accept_conditions') %>
+        <%#*</p>%>
+    <%#*</div>%>
+    <%#*<div class="newAccountBodyRight">%>
+      <%#= check_box :user, :terms_of_service %>
+      <%#= f.check_box(:terms_of_service, {}, "yes", "no") %>
+      <%#= check_box_tag("terms_of_service") %>
+    <%#*</div>%>
 
     <div class="newAccountBodyCenter">
       <p><%= submit_tag t('users.new.Sign_up') %></p>

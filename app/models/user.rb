@@ -2,12 +2,17 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
 
+  #validates_acceptance_of :terms_of_service, :allow_nil =>false
+
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   include Authorization::AasmRoles
 
   serialize   :facebook_friends_info, Array
+
+  
+  
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -45,6 +50,8 @@ class User < ActiveRecord::Base
     return @validate_email unless @validate_email.nil?
     return true
   end
+
+
 
   #validates_date :date_of_birth,
   #  :before => Proc.new { 3.years.ago },

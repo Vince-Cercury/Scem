@@ -242,6 +242,7 @@ fr-FR:
       Email: "Email"
       Sign_up: "Enregistrer"
       Or_Facebook_connect: "Ou s'enregistrer &agrave; l'aide d'une connexion Facebook"
+      Accept_conditions: "J'accepte les conditions d'utilisation"
     show:
       Last_status: "Dernier statut :"
       Limited_profile: "(Cet utilisateur a un profil limit&eacute; car il n'est pas connect&eacute; avec Facebook)"
@@ -302,7 +303,7 @@ fr-FR:
       Now_member_organism: "F&eacute;licitation. Vous faites maintenant partis des membres !"
       Successfully_destroyed: "L'organisme a &eacute;t&eacute; d&eacute;truit avec succ&egrave;s."
       Successfully_suspended: "L'organisme a &eacute;t&eacute; d&eacute;sactiv&eacute; avec succ&egrave;s."
-      Successfully_created: "L'organisme a &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s, unmod&eacute;rateur doit d&eacute;sormais le valider."
+      Successfully_created: "L'organisme a &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s, un mod&eacute;rateur doit d&eacute;sormais le valider."
       Successfully_updated: "L'organisme a &eacute;t&eacute; modifi&eacute; avec succ&egrave;s."
       Activated: "L'organisme est activ&eacute;, vous pouvez commencer &agrave; l'utiliser."
       Activation_code_missing: "Le code d'activation est manquant. Merci de suivre l'adresse pr&eacute;sente dans votre email."
@@ -372,6 +373,7 @@ fr-FR:
       Manager: "Saissisez le nom de la personne responsable :"
       Phone: "Saissisez un num&eacute;ros de t&eacute;l&eacute;phone de contact :"
       Back: "Retour"
+      Accept_conditions: "J'accepte les conditions d'utilisation"
   search:
     model_type:
       events: "&eacute;v&eacute;nements"
@@ -823,6 +825,8 @@ fr-FR:
       Edit: "Editer"
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
+      organisms: "Organisme"
+      Postby: "par"
     event_search:
       Search: "Rechercher"
       New_gallery: "Nouvelle galerie !"
@@ -1043,6 +1047,7 @@ fr-FR:
     errors:
       messages:
         blank: "Ceci ne peut être vide"
+        accepted: "Ceci doit être accepté"
       template:
         header: "Formulaire non valide"
         body: "Merci de vérifier les champs qui posent problème"
@@ -1055,5 +1060,16 @@ fr-FR:
           attributes:
             description:
               blank: "La description ne doit pas être vide !"
+        user:
+          attributes:
+            password:
+              too_short: "Trop court"
+              confirmation: "Vérifiez la confirmation du mot de passe"
+            login:
+              too_short: "Trop court"
+              taken: "Déjà pris"
+            email:
+              too_short: "Trop court"
+              taken: "Déjà prise"
 
 

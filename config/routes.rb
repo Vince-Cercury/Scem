@@ -116,8 +116,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :participations, :collection =>{
     :create_or_update => :get }
-
-  map.information '/information', :controller => 'information', :action => 'index'
+    
 
   #deprecated
   map.resources :terms
