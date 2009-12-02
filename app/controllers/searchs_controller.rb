@@ -4,7 +4,7 @@ class SearchsController < ApplicationController
     #TERMS
     @terms_count = Term.count_search_has_publisher(params[:search]) 
     if params[:focus]=='terms' || params[:focus].nil?
-      params[:focus]=='terms'
+      params[:focus]='terms'
       @terms = Term.search_has_publisher(params[:search], params[:page], ENV['PER_PAGE'])
     end
   
