@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091115184903) do
+ActiveRecord::Schema.define(:version => 20091203172042) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -197,8 +197,8 @@ ActiveRecord::Schema.define(:version => 20091115184903) do
     t.string   "state",                 :default => "passive"
     t.datetime "suspended_at"
     t.integer  "suspended_by"
-    t.datetime "activated_by"
-    t.integer  "activated_at"
+    t.integer  "activated_by"
+    t.datetime "activated_at"
     t.boolean  "cover",                 :default => false
   end
 

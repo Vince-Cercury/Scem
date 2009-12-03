@@ -85,9 +85,9 @@ class Gallery < ActiveRecord::Base
         picture.set_activated
         #raise attributes[:creator_id].inspect
         picture.activated_by = attributes[:creator_id]
-        
       end
       pictures << picture
+      #raise picture.errors.full_messages.inspect
     end
   end
 

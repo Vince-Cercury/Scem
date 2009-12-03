@@ -763,7 +763,6 @@ fr-FR:
       Updating_error: "Une erreur s'est produite durant la modification."
       Incorrect_parameter: "Un param&egrave;tre est manquant ou incorrecte"
       Cant_decide_alone: "Vous ne pouvez pas d&eacute;cider seul de devenir administrateur ou mod&eacute;rateur de cet organisme."
-
   galleries:
     controller:
       Set_cover_success: "Couverture chang&eacute;e avec succ&egrave;s."
@@ -785,7 +784,7 @@ fr-FR:
       Edit: "Editer"
       Back: "Retour"
     new:
-      New_gallery: "Nouvelle galerie"
+      New_Gallery: "Nouvelle galerie"
       Create: "Cr&eacute;er"
       Back: "Retour"
     edit_pictures:
@@ -1053,6 +1052,10 @@ fr-FR:
         header: "Formulaire non valide"
         body: "Merci de vérifier les champs qui posent problème"
       models:
+        gallery:
+          attributes:
+            pictures:
+              invalid: "Ce fichier image n'est pas valide"
         event:
           attributes:
             terms:

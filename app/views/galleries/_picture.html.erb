@@ -1,5 +1,6 @@
 <div class="picture">
 <% fields_for "gallery[picture_attributes][]", picture do |p| %>
+  <%#= p.error_messages %>
   <p>
     <%= p.label :attached %><br />
     <%= p.file_field :attached, :index => nil %>
