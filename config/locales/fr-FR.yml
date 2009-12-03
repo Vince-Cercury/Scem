@@ -826,7 +826,7 @@ fr-FR:
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
       Organism: "l'organisme"
-      Event: "&eacute;v&egrave;nement"
+      Event: "l'&eacute;v&egrave;nement"
       Postby: "par"
     event_search:
       Search: "Rechercher"
