@@ -27,7 +27,7 @@ class UserMailer < ActionMailer::Base
 
   def activation_notification_to_moderators(admin_or_moderator, new_user)
     setup_email(admin_or_moderator)
-    @subject    += I18n.t(user_mailer.subject_new_account_activated)
+    @subject    += I18n.t('user_mailer.subject_new_account_activated')
     @body[:new_user]  = new_user
     @body[:url]  = "#{ENV['SITE_URL']}/"
   end
