@@ -19,6 +19,7 @@ fr-FR:
   next_number: "{{number}} suivants"
   type:
     Event: "&eacute;v&egrave;nement"
+    Picture: "image"
     Organism: "organisme"
     User: "utilisateur"
     Gallery: "galerie"
