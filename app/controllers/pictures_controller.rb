@@ -44,7 +44,7 @@ class PicturesController < ApplicationController
       @header_gallery  = '/galleries/header'
       @gallery = @parent_object
     end
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @picture }

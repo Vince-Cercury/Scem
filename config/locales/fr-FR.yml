@@ -649,16 +649,16 @@ fr-FR:
       Created: "Cr&eacute;&eacute; il y a "
       by: "par "
     new:
-      Add_new: "Ajout d'une nouvelle annonce"
+      Add_new: "Ajout d'un nouveau billet"
       Create: "Cr&eacute;er"
     edit:
-      Message_edition: "Edition du message"
+      Message_edition: "Edition du billet"
       Update: "Mettre &agrave; jour"
     sub_header:
       Back_to_blog_page: "Retourner sur la page du Blog"
       Show: "Afficher"
       Edit: "Editer"
-      New_message: "Nouveau message"
+      New_message: "Nouveau billet"
       Activate: "Activer"
       Suspend: "Suspendre"
       Unsuspend: "Valider"
@@ -666,6 +666,7 @@ fr-FR:
       No_results: "Aucun r&eacute;sultat"
       Created: "Cr&eacute;&eacute; il y a "
       by: "par "
+      New: "Nouveau billet"
     form:
       Title: "Titre :"
       Message: "Message :"
@@ -1052,6 +1053,9 @@ fr-FR:
         header: "Formulaire non valide"
         body: "Merci de vérifier les champs qui posent problème"
       models:
+        attributes:
+          user:
+            login: "nom d'utilisateur"
         gallery:
           attributes:
             pictures:
@@ -1075,5 +1079,6 @@ fr-FR:
             email:
               too_short: "Trop court"
               taken: "Déjà prise"
+              bad: "Doit ressembler à une adresse email."
 
 
