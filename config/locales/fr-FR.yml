@@ -610,7 +610,7 @@ fr-FR:
     creation_notification_to_sys: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes administrateur ou mod&eacute;rateur syst&egrave;me.</p><p>Un utilisateur a chang&eacute; son statut de participation &agrave; l'&eacute;v&egrave;nement {{eventname}} :<br />{{event}}</p><p>Le profil de l'utilisateur est visible ici :<br />{{url_user}}</p><p>Vous pouvez obtenir toutes les informations &agrave; propos des participants de l'&eacute;v&egrave;nement &agrave; l'adresse suivante : <br />{{url_participants}}</p><p>Cordialement,</p><br /><p>L'&eacute;quipe LeBounce.com,</p>"
     subject_participation_notification: "Notification de participation à l'évènement {{event}}"
   organisms_user:
-    activation_notification: "<p>Bonjour {{user}},</p><br /><p>Vous &ecirc;tes maintenant {{role}} de {{organism_name}}</p><p>Vous pouvez acc&eacute;der &agrave; la page de l'organisme en cliquant sur le len suivant : </p><p>{{url}}</p><br />Cordialement<br /><br />L'&eacute;quipe LeBounce."
+    activation_notification: "<p>Bonjour {{user}},</p><br /><p>Vous &ecirc;tes maintenant {{role}} de {{organism_name}}</p><p>Vous pouvez acc&eacute;der &agrave; la page de l'organisme en cliquant sur le lien suivant : </p><p>{{url}}</p><br />Cordialement<br /><br />L'&eacute;quipe LeBounce."
     creation_notification: "<p>Bonjour, </p><br /><p>Cet utilisateur souhaite devenir membre : {{user}}</p><p>Vous pouvez : </p><p>   - l'accepter comme membre : {{url_member}} </p><p>   - l'accepter comme mod&eacute;rateur : {{url_moderator}} </p><p>   - l'accepter comme administrateur : {{url_admin}} </p><p>   - le refuser : {{refuse}} </p><br /><p>Cordialement, </p><p>L'&eacute;quipe LeBounce.com</p>"
     subject_role_updated: "Vous avez maintenant le rôle {{role}} de {{name}}"
     subject_member_request: "Requête de membre {{name}}"
@@ -1081,5 +1081,19 @@ fr-FR:
               too_short: "Trop court"
               taken: "Déjà prise"
               bad: "Doit ressembler à une adresse email."
+    attributes:
+      user:
+        login: "Nom d'utilisateur"
+        email: "Email"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+        last_name:  "Nom de famille"
+        first_name: "Prénom"
+      event:
+        terms: "Dates"
+      gallery:
+        name: "Titre"
+        
+
 
 
