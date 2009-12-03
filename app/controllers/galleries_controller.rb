@@ -210,7 +210,7 @@ class GalleriesController < ApplicationController
     #prepare_pictures_attributes(@gallery)
 
     respond_to do |format|
-      if @picture.activate!
+      if @gallery.activate!
 
         flash[:notice] = I18n.t('galleries.controller.Gallery_successfully_created')
         #format.html { redirect_to(@gallery) }
