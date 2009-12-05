@@ -2,7 +2,7 @@
 <% fields_for "gallery[picture_attributes][]", picture do |p| %>
   <%#= p.error_messages %>
   <p>
-    <%= p.label :attached %><br />
+    <%= t('galleries.picture.Attached') %><br />
     <%= p.file_field :attached, :index => nil %>
     <%#= p.file_field :attached %>
     <%= link_to_function t('galleries.picture.Delete'), "remove_field($(this), ('.picture'))" %>

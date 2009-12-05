@@ -98,6 +98,7 @@ fr-FR:
       Remove: "Supprimer cette date"
       Start_at: "D&eacute;but : "
       End_at: "Fin : "
+      Term_error: "(Merci de v&eacute;rifier le format de la date et si celle ci n'est pas d&eacute;j&agrave; pass&eacute;e)"
       Check_format: "(Merci v&eacute;rifier le format de la date et que celle ci n'est pas d&eacute;j&agrave; pass&eacute;e.)"
     terms:
       See_on_facebook: "Voir sur Facebook"
@@ -225,6 +226,8 @@ fr-FR:
       Editing_user: "Edition d'utilisateur"
       Facebook_user: "Vous &ecirc;tes connect&eacute; grâce &agrave; Facebook, merci d'aller sur Facebook pour &eacute;diter vos informations. Cependant, vous pouvez &eacute;diter quelques param&egrave;tres sp&eacute;cifiques ici."
       Update: "Mettre &agrave; jour"
+      Receive_comment_notification: "Recevoir une notification de nouveau commentaire : "
+      Receive_picture_notification: "Recevoir une notification de nouvelle photo : "
       Login: "Nom d'utilisateur"
       First_name: "Pr&eacute;nom"
       Last_name: "Nom de famille"
@@ -259,6 +262,14 @@ fr-FR:
       allow: "Autoriser les permissions Facebook!"
       confirmation: "Confirmer votre adresse e-mail, s'il vous plait."
       info3: "Ensuite vous pourrez utiliser toutes les fonctions du sites. (Demand&eacute; une seule fois)"
+    signup:
+      Title: "Cr&eacute;ation d'un nouvel utilisateur"
+      Login: "Nom d'utilisateur : "
+      Email: "Email : "
+      Password: "Mot de passe : "
+      Password_confirmation: "Confirmation du mot de passe :"
+      Sign_up: "S'enregistrer"
+
   sessions:
     RightToComment: "Pour poster un commentaire vous devez &ecirc;tre connect&eacute;"
     Get_facebook_account: "Si vous avez un compte facebook, n'h&eacute;sitez pas, c'est le plus simple !"
@@ -281,11 +292,6 @@ fr-FR:
     bar:
       classic_account: "compte classique"
       Logged_in_as: "Connect&eacute; en tant que "
-  activities:
-    index:
-      listing_activities: "Liste des activit&eacute;s"
-    show:
-      listing_organisms: "Liste des organismes"
   organism_events:
     index:
       Create_new_event: "Cr&eacute;er et partagez un nouvel &eacute;v&egrave;nement maintenant !"
@@ -789,6 +795,10 @@ fr-FR:
       New_Gallery: "Nouvelle galerie"
       Create: "Cr&eacute;er"
       Back: "Retour"
+      Name: "Nom :"
+      Description: "Description :"
+      Add_picture_right: "Permettre l'ajout de photos :"
+      Add_picture_moderation: "Mod&eacute;rer l'ajout de photos :"
     edit_pictures:
       Allowed_edit_picture: "Vous &ecirc;tes autoris&eacute; &agrave; &eacute;diter cette image"
       Drop: "Supprimer"
@@ -799,6 +809,8 @@ fr-FR:
       Back_gallery: "La galerie"
       Back_to: "Retour &agrave; "
       Update: "Mettre &agrave; jour"
+      Add_picture_right: "Permettre l'ajout de photos :"
+      Add_picture_moderation: "Mod&eacute;rer l'ajout de photos :"
     add_picture:
       Add_picture: "Ajouter une image suppl&eacute;mentaire"
       Add_picture_not_possible: "Limite du nombre d'images atteinte"
@@ -806,6 +818,7 @@ fr-FR:
       Back_to_gallery: "Retour &agrave; la galerie"
     picture:
       Delete: "Supprimer"
+      Attached: "Attacher"
     header:
       Gallery: "Galerie"
       Back_to: "Retour "
@@ -1011,6 +1024,10 @@ fr-FR:
       New_category: "Nouvelle cat&eacute;gorie"
       Back: "Retour"
       Create: "Cr&eacute;er"
+      Name: "Nom"
+      Description: "Description"
+      To_display: "Afficher"
+
     index:
       New_category: "Nouvelle cat&eacute;gorie"
     edit:
@@ -1018,6 +1035,9 @@ fr-FR:
       Update: "Mettre &agrave; jour"
       Show: "Afficher"
       Back: "Retour"
+      Name: "Nom"
+      Description: "Description"
+      To_display: "Afficher"
     terms_subheader:
       Events_occuring: "Ev&egrave;nement du"
     list:
@@ -1026,17 +1046,24 @@ fr-FR:
       Destroy: "Supprimer"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
   activities:
+    index:
+      listing_activities: "Liste des activit&eacute;s"
     show:
+      listing_organisms: "Liste des organismes" 
       Back: "Retour"
     new:
       New_activity: "Nouvelle activit&eacute;"
       Create: "Cr&eacute;er"
       Back: "Retour"
+      Name: "Nom"
+      Description: "Description"
     edit:
       Edit: "Editer une activit&eacute;"
       Update: "Mettre &agrave; jour"
       Show: "Afficher"
       Back: "Retour"
+      Name: "Nom"
+      Description: "Description"
     controller:
       Successfully_created: "L'activit&eacute; a &eacute;t&eacute; cr&eacute;&eacute;e avec succ&egrave;s."
       Successfully_updated: "L'activit&eacute; a &eacute;t&eacute; mise &agrave; jour avec succ&egrave;s."

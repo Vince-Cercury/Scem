@@ -7,21 +7,21 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
+    <%= t('galleries.new.Name') %><br />
     <%= f.text_field :name, :class => 'title' %>
   </p>
   <p>
-    <%= f.label :description %><br />
+    <%= t('galleries.new.Description') %><br />
     <%= f.text_area :description %>
   </p>
     <p>
-    <%= f.label :add_picture_right %><br />
+    <%= t('galleries.new.Add_picture_right') %><br />
  <%=  select("gallery", "add_picture_right", @rights, {}, { }) %>
 
 
   </p>
       <p>
-    <%= f.label :add_picture_moderation %><br />
+    <%= t('galleries.new.Add_picture_moderation') %><br />
     <%= f.check_box :add_picture_moderation %>
   </p>
 

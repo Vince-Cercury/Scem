@@ -1,13 +1,13 @@
 <div class="term box">
 <% form_for(@term, :url => url_for_even_polymorphic(@term)) do |f| %>
     <p>
-      <%= f.label :start_at %> <% if !error_message_on(:term, :start_at).blank? %>(Please check the format of the date and that it's not already past)<% end %><br />
+      <%= t('events.terms.Start_at') %> <% if !error_message_on(:term, :start_at).blank? %> <%  t('events.terms.Term_error') %> <% end %><br />
   <%#= term_form.datetime_select :start %>
       <%= f.calendar_date_select :start_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false, :onchange => "copy_start_date_to_end_date($F(this));" %>
       <%= f.text_field :start_hour, :size => 2 %>:<%= f.text_field :start_min, :size => 2 %>
     </p>
     <p>
-      <%= f.label :end_at %> <% if !error_message_on(:term, :end).blank? %>(Please check the format of the date and that it's not already past)<% end %><br />
+      <%= t('events.terms.End_at') %> <% if !error_message_on(:term, :end).blank? %><%  t('events.terms.Term_error') %> <% end %><br />
   <%#= term_form.datetime_select :end_at %>
       <%= f.calendar_date_select :end_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false %>
       <%= f.text_field :end_hour, :size => 2 %>:<%= f.text_field :end_min, :size => 2 %>
