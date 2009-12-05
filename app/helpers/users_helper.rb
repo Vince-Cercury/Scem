@@ -15,9 +15,9 @@ module UsersHelper
   def get_default_user_cover(user, style)
     mini_height = "36px"
     if style == "mini"
-      image_tag("default/user/thumb/1.jpg", :height => mini_height, :alt => get_user_name_or_pseudo(user))
+      image_tag("default/user/thumb/1.png", :height => mini_height, :alt => get_user_name_or_pseudo(user))
     else
-      image_tag("default/user/#{style}/1.jpg",:alt => get_user_name_or_pseudo(user))
+      image_tag("default/user/#{style}/1.png",:alt => get_user_name_or_pseudo(user))
     end
   end
 

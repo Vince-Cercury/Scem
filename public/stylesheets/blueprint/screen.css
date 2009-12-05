@@ -125,7 +125,22 @@ body {font-size:75%;
 /*--- PUBLICITEE ---*/
 .subFooter {width: 988px; position:relative; padding: 10px 0 0px 0; float: left; text-align:center;height: 90px;}
 /*--- FOOTER ---*/
-.footer {background-image:url('/images/body/french/footer.png'); background-repeat: no-repeat;  width: 1004px; float: left; margin : 0 0 10px -16px; height: 73px;}
+.footer {
+    background-image:url('/images/body/french/footer.png');
+    background-repeat: no-repeat;
+    width: 1004px;
+    float: left;
+    margin : 0 0 10px -16px;
+    height: 73px;
+    padding: 10px 80px 10px 80px;
+    color: #ffffff;
+}
+.footer a{
+    color: #ffffff;
+}
+.footer a:hover{
+    color: #ffffff;
+}
 /* ---------------------TITLE---------------------- */
 /*Normal*/
 .titlegaleries {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000; background-image:url('/images/header/french/galeries.png'); background-repeat: no-repeat; float: left;}
