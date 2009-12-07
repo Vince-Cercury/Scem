@@ -1,41 +1,45 @@
 <h1><%= t('galleries.new.New_Gallery') %></h1>
 
-<% form_for @gallery, :html => { :multipart => true }  do |f| %>
+<div class="titlegalerie"></div>
+<div class="galleriesNewBody">
+  <div class="galleriesNewContent">
+    <% form_for @gallery, :html => { :multipart => true }  do |f| %>
 
-  <%=  hidden_field_tag :parent_id, params[:parent_id] %>
-  <%=  hidden_field_tag :parent_type, params[:parent_type] %>
-  <%= f.error_messages %>
+      <%=  hidden_field_tag :parent_id, params[:parent_id] %>
+      <%=  hidden_field_tag :parent_type, params[:parent_type] %>
+      <%= f.error_messages %>
+      
+      <h5><%= t('galleries.new.Name') %></h5>
+ 
+        <%= f.text_field :name, :class => 'title' %>
 
-  <p>
-    <%= t('galleries.new.Name') %><br />
-    <%= f.text_field :name, :class => 'title' %>
-  </p>
-  <p>
-    <%= t('galleries.new.Description') %><br />
-    <%= f.text_area :description %>
-  </p>
-    <p>
-    <%= t('galleries.new.Add_picture_right') %><br />
- <%=  select("gallery", "add_picture_right", @rights, {}, { }) %>
+      <h5><%= t('galleries.new.Description') %></h5>
+
+        
+        <%= f.text_area :description, :cols => 80, :rows => 6 %>
+
+      <h5><%= t('galleries.new.Add_picture_right') %></h5>
+
+         <%=  select("gallery", "add_picture_right", @rights, {}, { }) %>
+
+      <h5><%= t('galleries.new.Add_picture_moderation') %></h5>
+
+        
+        <%= f.check_box :add_picture_moderation %>
 
 
-  </p>
-      <p>
-    <%= t('galleries.new.Add_picture_moderation') %><br />
-    <%= f.check_box :add_picture_moderation %>
-  </p>
 
-
-<div id="pictures">
+      <div id="pictures">
   <%#= render :partial => 'picture', :collection => @new_pictures %>
-</div>
+      </div>
 
   <%#= link_to_function "Add a picture" do |page|
-    page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
+  page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
   end %>
-  <p>
-    <%= f.submit t('galleries.new.Create') %>
-  </p>
-<% end %>
+    
+        <%= f.submit t('galleries.new.Create') %>
+    
+    <% end %>
+  </div>
 
-<%= link_to t('galleries.new.Back'), galleries_path %>
+</div>
