@@ -292,11 +292,11 @@ body {font-size:75%;
 .organismNewBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
 .organismNewBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold;}
 .organismNewBody h4 { font-size:16px; font-weight: bold; text-align: left; }
-.organismNewBodyCenterLeft{width: 179px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
+.organismNewBodyCenterLeft{width: 668px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
 .organismNewBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
-.organismNewBodyCenterRight{width: 479px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
+.organismNewBodyCenterRight{width: 668px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
 .organismNewBodyCenterRight .title{width: 400px;}
-.textFieldOrganismNew {width: 300px;}
+.textFieldOrganismNew {width: 500px;}
 /*Mailing*/
 .mailingBody{width: 688px; padding: 5px 0 0 0; margin: 0 0 5px 0; background: #fff; overflow: auto;}
 .mailingBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
@@ -460,6 +460,7 @@ body {font-size:75%;
 .GalleryListSeparator{background:#fff; width:688px; margin-bottom: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
 .GalleryAction{text-align:right; padding: 0 10px 0 0;}
 .GalleryListRight h4 {text-align:center; font-size: 16px;}
+.GalleryListCenter{background:#fff; width:688px; margin: 0px; padding: 0; float: left; height: auto;}
 
 /* ---------------------COMMENTAIRE'---------------------- */
 .commentaireContent{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}

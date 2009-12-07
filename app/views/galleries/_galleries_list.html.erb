@@ -1,12 +1,9 @@
-
 <div id="results">
 
   <% @galleries.each do |gallery| %>
     <div class="GalleryListSeparator">
       <div class="GalleryListLeft">
         <%= display_gallery_cover(gallery, :small) %>
-        <%= gallery.pictures.size %><%= t('galleries.list.Pictures') %>
-
       </div>
       <div class="GalleryListRight">
         <h4><%= link_to(gallery.name, url_for_even_polymorphic(gallery)) %></h4>
@@ -17,16 +14,22 @@
           <%= render :partial => "rating/mini_rating", :locals => { :current_object => gallery } if gallery.rating > 0 %>
         </div>
         <div class="GalleryAuteur">
-         <%= t('galleries.list.From') %> <%= t('galleries.list.'+gallery.parent_type ) %> <%=  link_to(gallery.get_parent_object.name, gallery.get_parent_object) %> <%= t('galleries.list.Postby') %> <%= get_user_name_or_pseudo_link_by_id(gallery.creator_id) %>
+          <%= t('galleries.list.From') %> <%= t('galleries.list.'+gallery.parent_type ) %> <%=  link_to(gallery.get_parent_object.name, gallery.get_parent_object) %> <%= t('galleries.list.Postby') %> <%= get_user_name_or_pseudo_link_by_id(gallery.creator_id) %>
         </div>
-
-        <% if is_gallery_moderator?(gallery) %>
-          <div class="GalleryAction">
-            <%= link_to t('galleries.list.Show'), url_for_even_polymorphic(gallery) %>
-            <%= link_to t('galleries.list.Edit'), edit_polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
-            <%= link_to t('galleries.list.Destroy'), gallery, :confirm => t('galleries.list.Are_you_sure'), :method => :delete %>
-          </div>
-        <% end %>
+      </div>
+      <div class="GalleryListCenter">
+        <div class="GalleryListLeft">
+          <%= gallery.pictures.size %><%= t('galleries.list.Pictures') %>
+        </div>
+        <div class="GalleryListRight">
+          <% if is_gallery_moderator?(gallery) %>
+            <div class="GalleryAction">
+              <%= link_to t('galleries.list.Show'), url_for_even_polymorphic(gallery) %>
+              <%= link_to t('galleries.list.Edit'), edit_polymorphic_path([gallery.get_parent_object, gallery].flatten) %>
+              <%= link_to t('galleries.list.Destroy'), gallery, :confirm => t('galleries.list.Are_you_sure'), :method => :delete %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

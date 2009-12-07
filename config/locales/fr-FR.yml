@@ -373,12 +373,12 @@ fr-FR:
       All_members: "Tout les membres"
       Address: "Adresse :"
     new:
-      Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. Vous avez la possibilité de le remplir partiellement et de le compl&eacute;ter ult&#233;rieurement. L'organisme est soumis &#224; une validation, il sera donc valid&eacute; une fois que vous aurez enti&#233;rement compl&eacute;t&eacute; ce formulaire."
+      Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. L'organisme est soumis &agrave; une validation de la part des mod&eacute;rateurs du Bounce, dans cette premi&egrave;re &eacute;tape nous vous demandons de bien vouloir remplir les informations indispensables à cette validation.."
       Create: "Cr&eacute;er"
-      Title: "Entrez le nom de votre organisme :"
-      DescriptionShort: "D&eacute;crivez bri&egrave;vement votre organisme :"
-      Manager: "Saissisez le nom de la personne responsable :"
-      Phone: "Saissisez un num&eacute;ros de t&eacute;l&eacute;phone de contact :"
+      Title: "Nom de l'organisme :"
+      DescriptionShort: "Description br&egrave;ve de l'organisme :"
+      Manager: "Nom d'une personne responsable :"
+      Phone: "Num&eacute;ros de t&eacute;l&eacute;phone de contact (Seule l'équipe LeBounce aura accès à ce numéros) :"
       Back: "Retour"
       Accept_conditions: "J'accepte les conditions d'utilisation"
   search:
