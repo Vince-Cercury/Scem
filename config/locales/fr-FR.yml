@@ -290,6 +290,7 @@ fr-FR:
     from: " depuis "
     at: " &agrave; "
     bar:
+      create_event: "Cr&eacute;er un &eacute;v&egrave;nement"
       classic_account: "compte classique"
       Logged_in_as: "Connect&eacute; en tant que "
   organism_events:
@@ -373,12 +374,12 @@ fr-FR:
       All_members: "Tout les membres"
       Address: "Adresse :"
     new:
-      Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. Vous avez la possibilité de le remplir partiellement et de le compl&eacute;ter ult&#233;rieurement. L'organisme est soumis &#224; une validation, il sera donc valid&eacute; une fois que vous aurez enti&#233;rement compl&eacute;t&eacute; ce formulaire."
+      Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. L'organisme est soumis &agrave; une validation de la part des mod&eacute;rateurs du Bounce, dans cette premi&egrave;re &eacute;tape nous vous demandons de bien vouloir remplir les informations indispensables à cette validation.."
       Create: "Cr&eacute;er"
-      Title: "Entrez le nom de votre organisme :"
-      DescriptionShort: "D&eacute;crivez bri&egrave;vement votre organisme :"
-      Manager: "Saissisez le nom de la personne responsable :"
-      Phone: "Saissisez un num&eacute;ros de t&eacute;l&eacute;phone de contact :"
+      Title: "Nom de l'organisme :"
+      DescriptionShort: "Description br&egrave;ve de l'organisme :"
+      Manager: "Nom d'une personne responsable :"
+      Phone: "Num&eacute;ros de t&eacute;l&eacute;phone de contact (Seule l'équipe LeBounce aura accès à ce numéros) :"
       Back: "Retour"
       Accept_conditions: "J'accepte les conditions d'utilisation"
   search:
@@ -1121,5 +1122,5 @@ fr-FR:
       gallery:
         name: "Titre"
   footer:
-    copyright: "Copyright &copy; 2008-2010 association LeBounce - Conception : LeBounce' Team - Design : <a href='http://www.studio-fgx.com/'><u>Studio FGX</u></a> - Tous droits r&eacute;serv&eacute;s."
+    copyright: "Copyright &copy; 2008-2010 association LeBounce - Conception : LeBounce' Team - Design : <a href='http://www.studio-fgx.com/' target='_blank'><u>Studio FGX</u></a> - Tous droits r&eacute;serv&eacute;s."
     bug: "Vous-avez trouv&eacute; un bug ? Merci de bien vouloir nous en faire part &agrave; l'adresse suivante : <a href='mailto:contact@lebounce.com'><u>contact@lebounce.com</u></a>"

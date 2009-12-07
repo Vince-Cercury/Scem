@@ -11,14 +11,16 @@ class SearchsController < ApplicationController
 
     #ORGANISMS
     @organisms_count = Organism.count_search(params[:search])
-    if params[:focus]=='organisms'
+    if params[:focus]=='organisms' || @terms_count == 0
+      params[:focus]='organisms'
       @organisms = Organism.search(params[:search], params[:page])
     end
 
 
     #USERS
     @users_count = User.count_search(params[:search])
-    if params[:focus]=='users'
+    if params[:focus]=='users' || (@organisms_count == 0 && @terms_count == 0 && @users_count!=0)
+      params[:focus]='users'
       @users = User.search(params[:search], params[:page])
     end
 

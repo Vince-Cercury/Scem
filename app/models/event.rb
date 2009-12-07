@@ -190,7 +190,11 @@ class Event < ActiveRecord::Base
 
   #Auto complete place name proceed result (organism)
   def organism_place_name
-    places.first.name if places.first
+    if places.first
+      places.first.name
+    elsif location
+      location
+    end
   end
 
   def organism_place_name=(name)
