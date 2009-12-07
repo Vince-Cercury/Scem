@@ -353,6 +353,11 @@ body {font-size:75%;
 .galleriesBoxImageEdit p { text-align: left; text-indent: 0;}
 .galleriesBoxEdit {width: 658px; margin: 0 0 0 0; padding: 0; background: #fff; float: left; text-align: center;}
 
+/*NEW*/
+.galleriesNewBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
+.galleriesNewContent{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-align: center;}
+.galleriesNewContent h4{padding: 5px; font-size: 16px; margin: 0px; text-align: center; font-weight: bold; color:#000;}
+.galleriesNewContent h5{padding: 5px; font-size: 12px; margin: 0px; text-align: left;}
 
 /* ---------------------PAGE PICTURE SHOW---------------------- */
 /*SHOW*/
