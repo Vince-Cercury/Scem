@@ -1,3 +1,11 @@
 <%= render :partial => @header %>
-<%= @map.div(:width => 600, :height => 400) %>
+<div class="map">
+  <div class="mapLeft">
+    <%= @map.div(:width => 600, :height => 400) %>
+  </div>
+  <div class="mapRight">
+    <a href="http://www.cotra.fr"<img src="/images/cotra.png" alt="Trouver un bus sur Cotra.fr" title="Trouver un bus sur Cotra.fr" ></a>
+  </div>
+
+</div>
 
