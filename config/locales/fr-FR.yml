@@ -99,7 +99,7 @@ fr-FR:
       Start_at: "D&eacute;but : "
       End_at: "Fin : "
       Term_error: "(Merci de v&eacute;rifier le format de la date et si celle ci n'est pas d&eacute;j&agrave; pass&eacute;e)"
-      Check_format: "(Merci v&eacute;rifier le format de la date et que celle ci n'est pas d&eacute;j&agrave; pass&eacute;e.)"
+      Check_format: "(Merci de v&eacute;rifier le format de la date et que celle ci n'est pas d&eacute;j&agrave; pass&eacute;e.)"
     terms:
       See_on_facebook: "Voir sur Facebook"
       Delete_the_Facebook_page: "Supprimer la page Facebook"
