@@ -290,6 +290,7 @@ fr-FR:
     from: " depuis "
     at: " &agrave; "
     bar:
+      create_event: "Cr&eacute;er un &eacute;v&egrave;nement"
       classic_account: "compte classique"
       Logged_in_as: "Connect&eacute; en tant que "
   organism_events:
