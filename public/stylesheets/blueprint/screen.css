@@ -414,6 +414,11 @@ body {font-size:75%;
 .participantContent0{width: 678px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left;}
 .participantContent{width: 688px; padding: 5px 0 5px 0; margin: 0; background: #fff; overflow: auto; float: left;}
 .participantContent2{width: 678px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left;}
+
+.participantListBlack {background:#000; float:left; height:auto; margin:0; padding:5px 0; text-align:center; width:678px;}
+.participantListWhite {background:#fff; width:658px; margin: 0 5px 0 5px; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
+.participantEvent {width: 678px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left;}
+
 .userList {width: 668px; margin: 0; padding: 5px 5px 0 5px; background: #000; float: left;}
 .userListBox {width: 668px; margin: 0 0 5px 0; padding: 0; background: #fff; float: left; text-align: center;}
 .userListBoxImage {width: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
