@@ -3,15 +3,15 @@
 
 
 
-<% if @terms %>
+<% if params[:focus]=='terms' %>
   <%= render :partial => '/terms/terms_list' %>
 <% end %>
 
-<% if @organisms %>
+<% if params[:focus]=='organisms' %>
   <%= render :partial => '/organisms/organisms_list' %>
 <% end %>
 
-<% if @users %>
+<% if params[:focus]=='users' %>
   <%= render :partial => '/users/users_list' %>
 <% end %>
 
