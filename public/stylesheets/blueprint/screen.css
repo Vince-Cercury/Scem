@@ -173,6 +173,7 @@ body {font-size:75%;
 .connectRight{width: 473px; padding: 40px 5px 5px 5px; margin: 0 0 0 5px; background: #fff; float: right; text-align: center;}
 .connectRight h4 {font-size: 16px; text-align:center; font-weight: bold;}
 .connectRight p {text-align: center; text-indent: 0px;}
+.connectPub{width: 678px; padding: 5px 5px 5px 5px; text-align: center; background: #fff; float: left;}
 .connectPubLeft{width: 334px; padding: 5px 5px 5px 5px; text-align: center; background: #fff; float: left;}
 .connectPubRight{width: 334px; padding: 5px 5px 5px 5px; text-align: center; background: #fff; float: right;}
 /* ---------------------PAGE DE CREATION DE COMPTE---------------------- */
