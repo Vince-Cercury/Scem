@@ -196,7 +196,7 @@ fr-FR:
       delete: "Supprimer"
     controller:
       Not_friend: "Vous n'&ecirc;tes pas un(e) ami(e)s de cet utilisateur, vous ne pouvez pas voir son profil..."
-      Not_allowed: "Vous n&ecirc;tes pas autoris&eacute; &agrave; effectu&eacute; cette action. Essayer de vous connecter puis recommencez."
+      Not_allowed: "Vous n'&ecirc;tes pas autoris&eacute; &agrave; effectu&eacute; cette action. Essayer de vous connecter puis recommencez."
     participations: "Mes participations"
     organisms: "Mes organismes"
     organisms:
@@ -316,7 +316,7 @@ fr-FR:
       Activated: "L'organisme est activ&eacute;, vous pouvez commencer &agrave; l'utiliser."
       Activation_code_missing: "Le code d'activation est manquant. Merci de suivre l'adresse pr&eacute;sente dans votre email."
       Cant_find_organism_activation: "Nous n'avons pu trouver un organisme avec ce code d'activation v&eacute;rifier votre email ou vous l'avez peut &ecirc;tre d&eacute;j&agrave; activ&eacute;. Essayez de l'utiliser."
-      Not_allowed_to_do_this: "Vous n&ecirc;tes pas autoris&eacute; &agrave; effectu&eacute; cette action."
+      Not_allowed_to_do_this: "Vous n'&ecirc;tes pas autoris&eacute; &agrave; effectu&eacute; cette action."
     index:
       listing_organisms: "Liste des organismes"
     edit:
@@ -598,14 +598,14 @@ fr-FR:
       n_to_m_of_x: 'Displaying {{pluralized_entry_name}} <em>{{start_count}}&nbsp;-&nbsp;{{end_count}}</em> of <em>{{total_count}}</em> in total'
   user_mailer:
     account_created: "<html><body>Bienvenue sur LeBounce.Com<br /><br />Vous &ecirc;tes pri&eacute; de conserver cet e-mail dans vos archives. Les informations concernant votre compte :<br /><br />----------------------------<br />Nom d'utilisateur : {{username}}<br />Mot de passe : {{password}}<br />----------------------------<br /><br />Votre compte a &eacute;t&eacute; cr&eacute;&eacute; mais est actuellement inactif. Vous ne pouvez pas l'utiliser tant que vous n'aurez pas visit&eacute; le lien suivant : <br /><br />{{url}}<br /><br />Merci de vous &ecirc;tre enregistr&eacute;.<br /><br />--<br />L'&eacute;quipe de LeBounce.com</body></html>"
-    account_activated: "<html><body>Bienvenue sur LeBounce.com,<br /><br />Votre compte LeBounce a bien &eacute;t&eacute; activ&eacute;.<br /><br />Vous pouvez d&eacute;sormais participer, commenter et administrer des &eacute;v&egrave;nements.<br /><br />Pensez &agrave; inviter vos amis &agrave; rejoindre la communaut&eacute;, vous pourrez ainsi partager vos &eacute;v&egrave;nements avec eux.<br /><br />Nous vous remercions pour votre confiance.<br /><br />L&eacute;quipe {{url}}</body></html>"
+    account_activated: "<html><body>Bienvenue sur LeBounce.com,<br /><br />Votre compte LeBounce a bien &eacute;t&eacute; activ&eacute;.<br /><br />Vous pouvez d&eacute;sormais participer, commenter et administrer des &eacute;v&egrave;nements.<br /><br />Pensez &agrave; inviter vos amis &agrave; rejoindre la communaut&eacute;, vous pourrez ainsi partager vos &eacute;v&egrave;nements avec eux.<br /><br />Nous vous remercions pour votre confiance.<br /><br />L'&eacute;quipe {{url}}</body></html>"
     account_created_to_moderators: "Bonjour {{username}}, <br /><br />Le compte de l'utilisateur {{newuser}} vient d'&ecirc;tre activ&eacute;.<br /><br />Cordialement,<br /><br />L'&eacute;quipe LeBounce."
     subject_created: "Merci d'activer votre nouveau compte."
     subject_activated: "Votre compte à été activé !"
     subject_new_account_activated: "Un nouveau compte utilisateur à activer !"
   organism_mailer:
-    activation_to_organism_admin_modo: "<html><body>Bonjour {{user}},<br /><br />Votre organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />Vous pouvez d&eacute;sormais publier, administrer des &eacute;v&egrave;nements, des photos.<br /><br />Pensez &agrave; inviter vos amis &agrave; rejoindre la communaut&eacute;, vous pourrez ainsi partager vos &eacute;v&egrave;nements avec eux.<br /> Nous vous remercions pour votre confiance.<br /><br />L&eacute;quipe LeBounce.com<br /></body></html>"
-    activation_to_system_admin_modo: "<html><body>Bonjour {{user}},<br /><br />L'organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />L&eacute;quipe LeBounce.com<br /></body></html>"
+    activation_to_organism_admin_modo: "<html><body>Bonjour {{user}},<br /><br />Votre organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />Vous pouvez d&eacute;sormais publier, administrer des &eacute;v&egrave;nements, des photos.<br /><br />Pensez &agrave; inviter vos amis &agrave; rejoindre la communaut&eacute;, vous pourrez ainsi partager vos &eacute;v&egrave;nements avec eux.<br /> Nous vous remercions pour votre confiance.<br /><br />L'&eacute;quipe LeBounce.com<br /></body></html>"
+    activation_to_system_admin_modo: "<html><body>Bonjour {{user}},<br /><br />L'organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />L'&eacute;quipe LeBounce.com<br /></body></html>"
     signup_notif_to_organism_modo_admin: "<p>Bonjour {{user}},</p><br /><p>Votre organisme vient d'&ecirc;tre cr&eacute;e.</p><br /><p>Nom : {{organism}}<br />Nom du g&eacute;rant : {{manager}}<br />Description courte :<br />{{description}}</p><p>Vous devez maintenant attendre qu'un mod&eacute;rateur l'active.</p><br /><p>Cordialement</p><br /><br /><p>L'&eacute;quipe LeBounce.Com</p>"
     signup_notif_to_system_modo_admin: "<p>Bonjour {{user}},</p><br /><p>Un organisme vient d'&ecirc;tre cr&eacute;e.</p><br /><p>Nom : {{organism}}<br />Nom du g&eacute;rant : {{manager}}<br />Description courte :<br />{{description}}</p><p>Visitez le lien suivant pour activer l'organisme : <br />{{url}}</p><br /><p>Cordialement</p><br /><br /><p>L'&eacute;quipe LeBounce.Com</p>"
     subject_an_organism_created: "Un nouvel organisme a été créé."
@@ -1092,7 +1092,7 @@ fr-FR:
         event:
           attributes:
             terms:
-              invalid: ": une des date n'est pas valide ou la description correspondate est vide !"
+              invalid: ": une ou plusieurs dates ne sont pas valides ou la description correspondante est vide !"
         term:
           attributes:
             description:
