@@ -12,6 +12,7 @@
         <h3><%= t('events.new.Title') %></h3>
       </div>
       <div class="eventNewBodyCenterRight">
+        <%= error_message_on :event, :name %>
         <%= f.text_field :name, :class => 'textFieldNew' %>
       </div>
     </div>

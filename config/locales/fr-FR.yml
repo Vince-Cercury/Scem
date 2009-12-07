@@ -1087,6 +1087,10 @@ fr-FR:
         attributes:
           user:
             login: "nom d'utilisateur"
+        organism:
+          attributes:
+            name:
+              taken: "Déjà pris"
         gallery:
           attributes:
             pictures:
@@ -1112,6 +1116,8 @@ fr-FR:
               taken: "Déjà prise"
               bad: "Doit ressembler à une adresse email."
     attributes:
+      organism:
+        name: "Nom"
       user:
         login: "Nom d'utilisateur"
         email: "Email"
