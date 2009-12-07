@@ -373,6 +373,8 @@ fr-FR:
       Go: "Go"
       All_members: "Tout les membres"
       Address: "Adresse :"
+      Become_member: "Devenir membre"
+      Member_action: "Membre :"
     new:
       Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. L'organisme est soumis &agrave; une validation de la part des mod&eacute;rateurs du Bounce, dans cette premi&egrave;re &eacute;tape nous vous demandons de bien vouloir remplir les informations indispensables à cette validation.."
       Create: "Cr&eacute;er"
@@ -765,9 +767,9 @@ fr-FR:
 
   members:
     Search: "Rechercher"
-    controlleur:
+    controller:
       Update_done: "Modification effectu&eacute;e."
-      Now_member_organism: "Vous &ecirc;tes d&eacute;sormais un membre de cet organisme."
+      Now_member_organism: "Vous &ecirc;tes d&eacute;sormais membre de cet organisme."
       Membership_pending: "Votre demande est en attente d'acceptation par un mod&eacute;rateur."
       Updating_error: "Une erreur s'est produite durant la modification."
       Incorrect_parameter: "Un param&egrave;tre est manquant ou incorrecte"

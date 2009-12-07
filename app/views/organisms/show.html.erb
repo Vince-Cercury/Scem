@@ -62,6 +62,29 @@
         <% end %>
       </p>
     <% end %>
+    <% if logged_in? -%>
+
+      <% if @organism.is_user_related?(current_user) %>
+        <b><%= t('organisms.show.Member_action') %></b> <%= link_to t('organisms.show.Not_be_a_member_anymore'), { :controller => "members", :action => "destroy_current_user_relation", :organism_id => @organism.id  }%>
+      <% elsif @organism.is_user_pending?(current_user) %>
+        <%= link_to t('organisms.show.Cancel_membership_pending_activation'), { :controller => "members", :action => "destroy_current_user_relation", :organism_id => @organism.id }%>
+      <% else %>
+        <% form_tag  url_for(:controller => "members", :organism_id => @organism.id, :action => "create_or_update_current_user"), :method => 'get' do  %>
+            <%=   link_to_function(t('organisms.show.Become_member'), nil, :id => "member_action_link") do |page|
+      page.visual_effect(:toggle_blind, 'become_member_form')
+      #page << "if ($('description_long').getStyle('display')=='none'){"
+      #page.replace_html(:more_link,t('events.content.Show_me_less'))
+      #page << "}else{"
+      #page.replace_html(:more_link,t('events.content.Show_me_more'))
+      #page << "}"
+    end %>
+        <p id="become_member_form" style="display:none;">
+            <%= t('organisms.show.Optional_password') %> <%= text_field_tag :members_password, params[:members_password] %> <%= t('organisms.show.only_if_u_know_it') %>
+            <%= submit_tag t('organisms.show.Go'), :name => nil %>
+          </p>
+        <% end %>
+      <% end  %>
+    <% end  %>
     <script type="text/javascript">
       var addthis_config = {
         services_compact: 'email, facebook, twitter,live, hotmail, gmail, favorites, myspace, blogger, bloggy, yahoomail, print, printfriendly, pdfonline, more',
@@ -85,33 +108,15 @@
         width="125" height="16" border="0" alt="Share" /></a>
   </div>
 </div>
-  <% if @organism.description_long && @organism.description_long!='' %>
+<% if @organism.description_long && @organism.description_long!='' %>
 
-    <div class="titledescription"></div>
-    <div class="organismDescription">
-      <%= @organism.description_long %>
-    </div>
-
-  <% end %>
-
-
-<% if logged_in? -%>
-  <div class="titledevenirmembre"></div>
-  <div class="organismBecomeMember">
-    <% if @organism.is_user_related?(current_user) %>
-      <%= link_to t('organisms.show.Not_be_a_member_anymore'), { :controller => "members", :action => "destroy_current_user_relation", :organism_id => @organism.id  }%>
-    <% elsif @organism.is_user_pending?(current_user) %>
-      <%= link_to t('organisms.show.Cancel_membership_pending_activation'), { :controller => "members", :action => "destroy_current_user_relation", :organism_id => @organism.id }%>
-    <% else %>
-      <% form_tag  url_for(:controller => "members", :organism_id => @organism.id, :action => "create_or_update_current_user"), :method => 'get' do  %>
-        <p>
-          <%= t('organisms.show.Optional_password') %> <%= text_field_tag :members_password, params[:members_password] %> <%= t('organisms.show.only_if_u_know_it') %>
-          <%= submit_tag t('organisms.show.Go'), :name => nil %>
-        </p>
-      <% end %>
-    <% end  %>
+  <div class="titledescription"></div>
+  <div class="organismDescription">
+    <%= @organism.description_long %>
   </div>
-<% end  %>
+
+<% end %>
+
 
 <% if @organism.members.size>0 %>
   <div class="titlederniersmembres"></div>
