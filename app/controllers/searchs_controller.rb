@@ -1,27 +1,39 @@
 class SearchsController < ApplicationController
   def index
-
-    #TERMS
-    @terms_count = Term.count_search_has_publisher(params[:search]) 
-    if params[:focus]=='terms' || params[:focus].nil?
-      params[:focus]='terms'
-      @terms = Term.search_has_publisher(params[:search], params[:page], ENV['PER_PAGE'])
-    end
-  
-
-    #ORGANISMS
+    
+    @terms_count = Term.count_search_has_publisher(params[:search])
     @organisms_count = Organism.count_search(params[:search])
-    if params[:focus]=='organisms' || @terms_count == 0
-      params[:focus]='organisms'
-      @organisms = Organism.search(params[:search], params[:page])
-    end
-
-
-    #USERS
     @users_count = User.count_search(params[:search])
-    if params[:focus]=='users' || (@organisms_count == 0 && @terms_count == 0 && @users_count!=0)
-      params[:focus]='users'
-      @users = User.search(params[:search], params[:page])
+
+    if !params[:focus].blank?
+      #TERMS
+      if params[:focus]=='terms'
+        @terms = Term.search_has_publisher(params[:search], params[:page], ENV['PER_PAGE'])
+      end
+
+      #ORGANISMS
+      if params[:focus]=='organisms'
+        @organisms = Organism.search(params[:search], params[:page])
+      end
+
+
+      #USERS
+      if params[:focus]=='users'
+        @users = User.search(params[:search], params[:page])
+      end
+    else
+      if @terms_count > 0 || (@organisms_count==0 && @users_count == 0)
+        params[:focus]='terms'
+        @terms = Term.search_has_publisher(params[:search], params[:page], ENV['PER_PAGE'])
+
+      elsif @organisms_count > 0
+        params[:focus]='organisms'
+        @organisms = Organism.search(params[:search], params[:page])
+        
+      elsif @users_count > 0
+        params[:focus]='users'
+        @users = User.search(params[:search], params[:page])
+      end
     end
 
     #@users = User.search(params[:search], params[:page], ENV['PER_PAGE'])
