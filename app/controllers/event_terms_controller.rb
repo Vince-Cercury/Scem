@@ -44,7 +44,7 @@ class EventTermsController < ApplicationController
     end
   end
 
-    def show
+  def show
     @current_object = @event = Event.find(params[:event_id])
     @comments = @event.search_comments('', 1, 3)
     #the object comment is needed for displaying the form of new comment
