@@ -395,7 +395,11 @@ class FacebookController < ApplicationController
   end
 
   def process_description(original_description)
-    original_description = original_description.gsub(/<\/?[^>]*>/, "")
+    if !original_description.blank?
+      original_description = original_description.gsub(/<\/?[^>]*>/, "")
+    else
+      original_description = ""
+    end
     text = ""
     unless original_description.blank?
       description = original_description.gsub(/\[(.+?)\|(.+?)\]/, '\2 (\1)') # Replace named links
