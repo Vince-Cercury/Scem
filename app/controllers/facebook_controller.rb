@@ -112,7 +112,7 @@ class FacebookController < ApplicationController
           if @gallery
             message += process_description(@current_object.description) + "\n\n"
           else
-            message += process_description(@current_object.description_short) + "\n\n"
+            message += process_description(@current_object.description_long) + "\n\n"
           end
           message += "#{url_for(@current_object)}\n"
 
