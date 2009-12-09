@@ -26,7 +26,7 @@
     <% end %>
     <% if params[:only_details].nil? || params[:only_details] == "false" %>
     <div class="organismEditBodyRight">
-      <h3> <%= f.text_field :name, :class => 'title' %></h3>
+      <%= f.text_field :name, :class => 'title' %>
     </div>
     <% end %>
 
