@@ -244,9 +244,9 @@ fr-FR:
       Password: "Mot de passe"
       Password_confirmation: "Confirmer le mot de passe"
       Email: "Email"
-      Sign_up: "Enregistrer"
+      Sign_up: "Cr&eacute;er mon compte"
       Or_Facebook_connect: "Ou s'enregistrer &agrave; l'aide d'une connexion Facebook"
-      Accept_conditions: "J'accepte les conditions d'utilisation"
+      Accept_conditions: "En cr&eacute;ant ce compte j'accepte les conditions d'utilisation suivantes:"
     show:
       Last_status: "Dernier statut :"
       Limited_profile: "(Cet utilisateur a un profil limit&eacute; car il n'est pas connect&eacute; avec Facebook)"
