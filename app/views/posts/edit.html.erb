@@ -5,7 +5,7 @@
       <div class="list">
         <div class="listSeparator">
           <div class="blogBox">
-            <h4><%= t('posts.edit.Message_edition') %></h4>
+            <h2><%= t('posts.edit.Message_edition') %></h2>
 
             <% form_for(@post, :live_validations => true, :url => polymorphic_path([@parent_object, @post].flatten)) do |f| %>
               <%= f.error_messages %>

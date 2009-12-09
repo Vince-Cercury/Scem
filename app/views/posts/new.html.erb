@@ -1,7 +1,7 @@
 <%= render :partial => @header_partial %>
 <div class="blogBody">
   <div class="blogContent">
-    <h4><%= t('posts.new.Add_new') %></h4>
+    <h2><%= t('posts.new.Add_new') %></h2>
 
     <% form_for(@post, :url => polymorphic_path([@parent_object, :posts].flatten), :live_validations => true) do |f| %>
       <%= f.error_messages %>

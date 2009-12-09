@@ -5,9 +5,8 @@
   <div class="eventEditBody">
 
     <%= f.error_messages %>
-
-
-    <% if params[:only_details] %>
+   
+    <% if params[:only_details] == "true" %>
       <div class="eventNewBodyCenter">
         <h3><%= t("events.edit.Only_details_title") %></h3>
         <p>
@@ -19,7 +18,8 @@
       </div>
 
     <% end %>
-    <% if params[:only_details].nil? || params[:only_details] == false %>
+    
+    <% if params[:only_details].blank? || params[:only_details] == "false" %>
     <div class="eventEditBodyLeft">
       <% if @event.picture.nil? %>
         <%= get_default_event_picture(@event, :medium) %>
@@ -34,13 +34,13 @@
       <% end %>
     </div>
     <% end %>
-    <% if params[:only_details].nil? || params[:only_details] == false %>
+    <% if params[:only_details].blank? || params[:only_details] == "false" %>
       <div class="eventEditBodyRight">
         <h3><%= t('events.edit.Title')  %></h3>
         <%= f.text_field :name, :class => 'title'%>
       </div>
     <% end %>
-    <% if params[:only_details].nil? || params[:only_details] == false %>
+    <% if params[:only_details].blank? || params[:only_details] == "false" %>
       <div class="eventEditBodyCenter">
         <p>
           <%=t('events.edit.Is_charged')  %>
@@ -162,7 +162,7 @@
         <%= add_partner_link t('events.edit.add_partner') %>
       </div>
     <% end %>
-    <% if params[:only_details].nil? || params[:only_details] == false %>
+    <% if params[:only_details].blank? || params[:only_details] == "false" %>
       <div class="eventEditBodyCenter">
         <h3><%= t('events.edit.Date') %></h3>
       </div>

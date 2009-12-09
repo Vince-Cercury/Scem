@@ -83,6 +83,7 @@ fr-FR:
       Show_me_more: "Lire la suite..."
       Show_me_less: "R&eacute;duire..."
       Place: "Lieu :"
+      Cancel: "Cet &eacute;v&egrave;nement est annul&eacute; :"
       Is_charged: "Payant :"
       Is_private: "Priv&eacute; :"
       Categories: "Cat&eacute;gories :"
@@ -99,7 +100,7 @@ fr-FR:
       Start_at: "D&eacute;but : "
       End_at: "Fin : "
       Term_error: "(Merci de v&eacute;rifier le format de la date et si celle ci n'est pas d&eacute;j&agrave; pass&eacute;e)"
-      Check_format: "(Merci v&eacute;rifier le format de la date et que celle ci n'est pas d&eacute;j&agrave; pass&eacute;e.)"
+      Check_format: "(Merci de v&eacute;rifier le format de la date et que celle ci n'est pas d&eacute;j&agrave; pass&eacute;e.)"
     terms:
       See_on_facebook: "Voir sur Facebook"
       Delete_the_Facebook_page: "Supprimer la page Facebook"
@@ -108,7 +109,7 @@ fr-FR:
       See_on_Facebook: "Voir sur Facebook"
       Edit: "Editer"
       Destroy: "Supprimer"
-      Currently_no_event_category: "Aucun &eacute;v&egrave;nement dans cette cat&eacute;gorie actuellement"
+      Currently_no_event_category: "Aucun r&eacute;sultat"
       Are_you_sure: "Etes-vous s&ucirc;r(e) ?"
       sure: "s&ucirc;r(e)"
       maybe: "peut &ecirc;tre"
@@ -244,9 +245,9 @@ fr-FR:
       Password: "Mot de passe"
       Password_confirmation: "Confirmer le mot de passe"
       Email: "Email"
-      Sign_up: "Enregistrer"
+      Sign_up: "Cr&eacute;er mon compte"
       Or_Facebook_connect: "Ou s'enregistrer &agrave; l'aide d'une connexion Facebook"
-      Accept_conditions: "J'accepte les conditions d'utilisation"
+      Accept_conditions: "En cr&eacute;ant ce compte j'accepte les conditions d'utilisation suivantes:"
     show:
       Last_status: "Dernier statut :"
       Limited_profile: "(Cet utilisateur a un profil limit&eacute; car il n'est pas connect&eacute; avec Facebook)"
@@ -373,6 +374,8 @@ fr-FR:
       Go: "Go"
       All_members: "Tout les membres"
       Address: "Adresse :"
+      Become_member: "Devenir membre"
+      Member_action: "Membre :"
     new:
       Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. L'organisme est soumis &agrave; une validation de la part des mod&eacute;rateurs du Bounce, dans cette premi&egrave;re &eacute;tape nous vous demandons de bien vouloir remplir les informations indispensables à cette validation.."
       Create: "Cr&eacute;er"
@@ -765,9 +768,9 @@ fr-FR:
 
   members:
     Search: "Rechercher"
-    controlleur:
+    controller:
       Update_done: "Modification effectu&eacute;e."
-      Now_member_organism: "Vous &ecirc;tes d&eacute;sormais un membre de cet organisme."
+      Now_member_organism: "Vous &ecirc;tes d&eacute;sormais membre de cet organisme."
       Membership_pending: "Votre demande est en attente d'acceptation par un mod&eacute;rateur."
       Updating_error: "Une erreur s'est produite durant la modification."
       Incorrect_parameter: "Un param&egrave;tre est manquant ou incorrecte"
@@ -1085,6 +1088,10 @@ fr-FR:
         attributes:
           user:
             login: "nom d'utilisateur"
+        organism:
+          attributes:
+            name:
+              taken: "Déjà pris"
         gallery:
           attributes:
             pictures:
@@ -1110,6 +1117,8 @@ fr-FR:
               taken: "Déjà prise"
               bad: "Doit ressembler à une adresse email."
     attributes:
+      organism:
+        name: "Nom"
       user:
         login: "Nom d'utilisateur"
         email: "Email"

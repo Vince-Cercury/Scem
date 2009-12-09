@@ -2,16 +2,15 @@
   <% fields_for_term(term) do |term_form| %>
     <% @term = term %>
     <div class="termboxLeft">
-      <p>
-        <%= t('events.term.Start_at') %> <% if !error_message_on(:term, :start_at).blank? %><%= t('events.term.Check_format') %><% end %>
-      </p>
+        <%= t('events.term.Start_at') %> <% if !error_message_on(:term, :start_at).blank? %><div class="formError"><%= t('events.term.Check_format') %></div><% end %>
+
 
       <%= term_form.calendar_date_select :start_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false, :onchange => "event_copy_start_date_to_end_date($F(this));", :maxlength => 10, :size => 10 %>
       <%= term_form.text_field :start_hour, :size => 2, :maxlength => 2 %>:<%= term_form.text_field :start_min, :size => 2, :maxlength => 2 %>
 
-      <p>
-        <%= t('events.term.End_at') %> <% if !error_message_on(:term, :end_at).blank? %><%= t('events.term.Check_format') %><% end %>
-      </p>
+    
+        <%= t('events.term.End_at') %> <% if !error_message_on(:term, :end_at).blank? %><div class="formError"><%= t('events.term.Check_format') %></div><% end %>
+    
       <%= term_form.calendar_date_select :end_at, :embedded => false,:year_range => [0.years.ago, 2.years.from_now], :time => false, :buttons => false, :maxlength => 10, :size => 10 %>
       <%= term_form.text_field :end_hour, :size => 2, :maxlength => 2 %>:<%= term_form.text_field :end_min, :size => 2, :maxlength => 2 %>
       <p>

@@ -13,6 +13,7 @@
         <h3><%= t('organisms.new.Title') %></h3>
       </div>
       <div class="organismNewBodyCenterRight">
+        <%= error_message_on :organism, :name %>
         <%= f.text_field :name, :class => 'textFieldOrganismNew' %>
       </div>
     </div>
@@ -44,21 +45,61 @@
       </div>
     </div>
 
-    <%#*<div class="organismNewBodyCenter">%>
-      <%#*<div class="organismNewBodyCenterRight">%>
-        <%#*<textarea rows="15" cols="39">Conditions</textarea>%>
-      <%#*</div>%>
-    <%#*</div>%>
+    <div class="organismNewBodyCenter">
+      <div class="organismNewBodyCenterRight">
+        <textarea rows="10" cols="70">Charte d'utilisation LeBounce :
 
-    <%#*<div class="organismNewBodyCenter">%>
-      <%#*<div class="organismNewBodyCenterLeft">%>
-        <%#*<h3><%= t('organisms.new.Accept_conditions') %>
-<%#*</h3>%>
-      <%#*</div>%>
-      <%#*<div class="organismNewBodyCenterRight">%>
-        <%#= f.check_box  :terms_of_service %>
-      <%#*</div>%>
-    <%#*</div>%>
+R&egrave;gles importantes pour un climat agr&eacute;able dans la communaut&eacute; LeBounce :
+Sur lebounce.com, beaucoup de personnes sont vou&eacute;es &agrave; se rencontrer, ces personnes peuvent avoir des centres d'int&eacute;r&ecirc;ts diff&eacute;rents. Ainsi, certaines r&egrave;gles sont n&eacute;cessaires afin de pr&eacute;server une ambiance agr&eacute;able. En vous inscrivant en tant que membres, vous devez consentir &agrave; respecter le r&egrave;glement suivant.
+
+R&egrave;glement LeBounce
+
+Les commentaires :
+Les commentaires seront post&eacute;s sur les images et les &eacute;v&egrave;nements, il est important de respecter les r&egrave;gles suivantes :
+Le langage SMS ne sera pas admis sur le site
+Ne pas traiter les autres d'une façon qui te d&eacute;plairait
+Ne pas traiter les autres d'une façon qui te d&eacute;plairait :
+Pas d'insulte ou d'attaque envers quiconque
+Pas de discrimination due au sexe, aux opinions politiques ou religieuses
+Pas de r&eacute;flexions racistes
+Pas de commentaire d&eacute;pr&eacute;ciatif sur le physique des personnes
+Pas de menace ni de harc&egrave;lement (vous pouvez contacter un administrateur)
+Pas de publicit&eacute; ni de spam :
+Pas de r&eacute;p&eacute;tition sans raison de mots ou de phrases
+Pas de publicit&eacute; pour des produits ou des sites Internet
+Pas de dires immoraux qui vont &agrave; l'encontre des lois.
+Pas de proposition de casting, LeBounce n'est pas une agence
+Pas de proposition d'argent en &eacute;change de sexe
+Pas de glorification de la drogue
+Pas de repr&eacute;sentations pornographiques
+
+Les photos :
+Les photos suivantes ne seront pas admises sur le site :
+Photos obsc&egrave;nes (caract&egrave;re pornographique)
+Symbole politique extr&eacute;miste (comme la croix gamm&eacute;e)
+Les personnes publiant les photos prennent la responsabilit&eacute; de celles-ci
+En cas de m&eacute;contentement d'une personne ou d'un organisme contacter en premier lieu le propri&eacute;taire de la galerie et dans le pire des cas, l'administrateur.
+Les comptes utilisateur
+Un utilisateur peut avoir un et un seul compte par personne
+Les informations doivent &ecirc;tre exactes ou les champs vides
+
+Les &eacute;v&egrave;nements :
+Les &eacute;v&egrave;nements ne doivent pas glorifier l'alcool ou la drogue
+
+Les organismes
+Les organismes ne peuvent pas faire de la publicit&eacute; pour un autre organisme</textarea>
+      </div>
+    </div>
+
+    <div class="organismNewBodyCenter">
+      <div class="organismNewBodyCenterLeft">
+        <h3><%= t('organisms.new.Accept_conditions') %>
+</h3>
+  </div>
+      <div class="organismNewBodyCenterRight">
+        <%= f.check_box  :terms_of_service %>
+      </div>
+    </div>
 
     <div class="organismNewBodyCenter">
       <%= f.submit t('organisms.new.Create') %>
