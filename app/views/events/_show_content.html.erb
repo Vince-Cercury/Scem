@@ -34,7 +34,7 @@
       <%= link_to(t('events.content.Has_many_dates_link'), event_terms_path(@event)) %>
     <% end %>
     <% if @event.canceled? %>
-      <h4>CANCELLED !</h4>
+      <h4><%= t('events.content.Cancel') %></h4>
     <% end %>
     <% if !get_event_place_as_string(@event).blank? %>
       <p>

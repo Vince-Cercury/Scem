@@ -36,7 +36,7 @@ FCKConfig.ToolbarSets["Blog"] = [
 	['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull'],
 	['Link','Unlink','Anchor'],
 	'/',
-	['Style','FontFormat','FontName','FontSize']
+	['Style','FontName','FontSize']
 	
 			// No comma for the last row.
 ] ;

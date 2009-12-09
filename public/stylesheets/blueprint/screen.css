@@ -82,7 +82,7 @@ body {font-size:75%;
 .listTermSeparator{position:relative; width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center; overflow: auto;}
 .listTermRight{width:590px; margin: 0; padding: 0; background: #fff; float: right; text-align: left;}
 .listTermRightTitle{width: 580px; padding: 5px; background: #fff; float: left; text-align: center; }
-.listTermRightTitle h4 {font-size: 16px; text-align:center;}
+.listTermRightTitle h2 {font-size: 16px; text-align:center;}
 .listTermRightContent{width: 590px; overflow: auto; float: left;}
 .listTermRightContentLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
 .listTermRightContentRight{width:429px; margin: 0; padding: 5px; background: #fff; float: right;}
@@ -187,7 +187,7 @@ body {font-size:75%;
 
 /* ---------------------PAGE D'UNE CATEGORIE'---------------------- */
 .categorie {background:#fff; padding: 5px 5px 5px 5px;}
-.categorie h3{margin-bottom:5px; text-align: center; font-size: 16px; font-weight: bold; color:#f0882f;}
+.categorie h1{text-align: center; font-size: 22px;}
 
 /* ---------------------PAGE EVENT SHOW'---------------------- */
 /*HEADER*/
@@ -197,7 +197,7 @@ body {font-size:75%;
 .eventHeaderRight{width: 606px; min-height: 82px; background: #fff; overflow:auto; float: right;}
 .eventHeaderTitle{width: 436px; padding: 30px 5px 0 5px; float: left; text-align:center; }
 .eventHeaderNotation{width: 150px;  min-height: 72px;  padding: 30px 5px 0 5px; float: right; text-align:center;}
-.eventHeader h3{font-size: 20px;}
+.eventHeader h1{font-size: 20px;}
 /*SHOW*/
 .eventShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .eventShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
@@ -207,6 +207,7 @@ body {font-size:75%;
 .eventShowBodyLeftContent a:hover {background:#ffb500; color:#000;}
 .eventShowBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px;}
 .eventShowBodyRight img {float: right;}
+.eventShowBodyRight p{text-indent: 0px;}
 .eventShowBodyMiddle{width: 678px; min-height: 50px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px; text-align: justify;}
 .eventShowBodyMiddleLong{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px; text-align: justify;}
 .eventShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
@@ -262,7 +263,7 @@ body {font-size:75%;
 .organismHeaderRight{width: 606px; min-height: 82px; background: #fff; overflow:auto; float: right;}
 .organismHeaderTitle{width: 436px; padding: 30px 5px 0 5px; float: left; text-align:center; }
 .organismHeaderNotation{width: 150px;  min-height: 72px;  padding: 30px 5px 0 5px; float: right; text-align:center;}
-.organismHeader h3{font-size: 20px;}
+.organismHeader h1{font-size: 20px;}
 /*SHOW*/
     .organismShowBody{width: 688px; padding: 0 0 0 0; margin: 0; background: #fff; overflow: auto;}
 .organismShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
@@ -282,8 +283,9 @@ body {font-size:75%;
 .organismBecomeMember{width: 688px; margin: 0 0 0 0; padding: 5px 0  5px 0; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
 /*EDIT*/
 .organismEditBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; text-indent: 30px; margin: 0 0 0 0;}
-.organismEditBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
-.organismEditBodyRight{width: 416px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
+.organismEditBodyLeft{width: 302px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
+.organismEditBodyRight{width: 366px; padding: 10px 5px 10px 5px; margin: 0 0 0 0; background: #fff; float: right; line-height: 25px; text-align: center;}
+
 .organismEditBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
 .organismEditBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold; text-indent: 30px;}
 .organismEditBodyCenterLeft{width: 229px; height: 35px; line-height: 35px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
@@ -316,7 +318,7 @@ body {font-size:75%;
 .userHeaderImage{width: 72px; min-height: 72px; line-height: 72px; padding: 5px; float: left; }
 .userHeaderImage img{vertical-align: middle;}
 .userHeaderRight{width: 596px; min-height: 82px; padding: 0 5px 0 5px; background: #fff; overflow:auto; float: right;}
-.userHeaderRight h3{font-size: 20px; text-align: center; padding: 30px;}
+.userHeaderRight h1{font-size: 20px; text-align: center; padding: 30px;}
 /*BODY*/
 .userShowBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .userShowBodyLeft{width: 262px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
@@ -335,7 +337,7 @@ body {font-size:75%;
 /*HEADER*/
 .galleriesHeader{width: 688px; background: #fff; overflow:auto; margin-bottom: 10px;}
 .galleriesHeaderTitle{width: 517px; padding: 10px; float: right; text-align:center; }
-.galleriesHeaderTitle h3{font-size: 20px; text-align: center;}
+.galleriesHeaderTitle h1{font-size: 20px; text-align: center;}
 .galleriesHeaderImage {width: 126px; min-height: 126px; line-height: 126px; padding: 10px; float: left; }
 .galleriesHeaderImage img{vertical-align: middle;}
 .galleriesHeaderNotation { background: #fff; overflow:auto; float: right; padding: 10px 183px 10px 183px; text-align: center; }
@@ -397,15 +399,16 @@ body {font-size:75%;
 .blogBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
 .blogContent{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-align: left;}
 .blogContent p{text-align: center;}
-.blogContent h4{padding: 5px; font-size: 16px; margin: 0px; text-align: center; font-weight: bold; color:#000;}
+.blogContent h2{padding: 5px; font-size: 16px; margin: 0px; text-align: center; font-weight: bold; color:#000;}
 .blogContent h5{padding: 5px; font-size: 12px; margin: 0px; text-align: left;}
 .blogCommentaire {width: 688px; margin: 0 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
 .blogCommentaire h5 {padding: 5px; color: #000; font-size: 16px; margin: 0px;}
 .blogCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px;}
 .blogBox{width: 658px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-align: left;}
 .blogBoxAuteur{text-align: right;}
-.blogBox h4{padding: 5px; font-size: 16px; margin: 0px; text-align: center;}
-.blogBox h5{text-align: left;}
+.blogBox h2{padding: 5px; font-size: 20px; margin: 0px; text-align: center; color: #000;}
+.blogBox h5{padding: 5px; font-size: 16px; margin: 0px; text-align: left;}
+.blogBox .title{width: 600px;}
 .blogBox p{text-align: left; text-indent: 30px;}
 .newPost {width: 678px; background: #fff; float: left; text-align: right; font-weight: bold; margin:10px 0 10px 0;}
 .newPost a {background:#000; color:#fff; padding: 5px; }
@@ -435,7 +438,7 @@ body {font-size:75%;
 .userListBoxRight {width: 576px; height: 54px; line-height: 18px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
 .userListBoxRight a {background: #000; color: #fff; padding: 1px; font-weight: bold;}
 .userListBoxRight a:hover {background: #f0882f; color: #fff;}
-.userListBoxName h4 {vertical-align: middle; font-size: 14px;}
+.userListBoxName h2 {vertical-align: middle; font-size: 14px;}
 .userListMessage {width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
 
 .userFriendListContent{width: 678px; padding: 0 5px 5px 5px; background: #fff; overflow: auto; float: left; }
@@ -473,7 +476,7 @@ body {font-size:75%;
 .GalleryAuteur{text-align: right; padding: 5px 10px;}
 .GalleryListSeparator{background:#fff; width:688px; margin-bottom: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
 .GalleryAction{text-align:right; padding: 0 10px 0 0;}
-.GalleryListRight h4 {text-align:center; font-size: 16px;}
+.GalleryListRight h2 {text-align:center; font-size: 16px;}
 .GalleryListCenter{background:#fff; width:688px; margin: 0px; padding: 0; float: left; height: auto;}
 
 /* ---------------------COMMENTAIRE'---------------------- */
@@ -508,12 +511,12 @@ body {font-size:75%;
 .activitiesBody{background:#fff; width:688px; margin: 0; padding: 0; float: left; height: auto;}
 .activities{width: 229px; min-height: 50px; padding: 0 0 0 0; background: #fff; float: left; font-size: 12px;}
 .activitie{padding: 10px; margin: 10px; background: #fff; }
-.activitie h4{margin:0; color: #000; text-align: center;}
-.activitie h4 a{margin:0; color: #000; text-align: center; font-weight: bold;}
+.activitie h2{margin:0; color: #000; text-align: center; font-size: 12px;}
+.activitie h2 a{margin:0; color: #000; text-align: center; font-weight: bold;}
 .activitie a:hover {margin:0; color: #ffb500; text-align: center; font-weight: bold;}
 
 .activitiesList {background:#fff; padding: 5px 5px 5px 5px;}
-.activitiesList h2 {text-align: center;}
+.activitiesList h1 {text-align: center; font-size: 22px;}
 .activitiesListBack {text-align: right; font-weight: bold;}
 .activitiesListBack a {background:#000; color:#fff; padding: 3px;}
 .activitiesListBack a:hover {background:#ffb500; color:#000;}
@@ -526,7 +529,7 @@ body {font-size:75%;
 .organismListBoxImage img {vertical-align: middle;}
 .organismListBoxName {width: 522px; height: 18px; line-height: 18px; margin: 0; padding: 5px; background: #fff; float: right; text-align: center;}
 .organismListBoxRight {width: 522px; height: 108px; line-height: 18px; margin: 0; padding: 5px; float: right; background: #fff;}
-.organismListBoxName h4 {vertical-align: middle; font-size: 14px;}
+.organismListBoxName h2 {vertical-align: middle; font-size: 14px;}
 .organismListMessage {width: 658px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left; font-weight: bold; text-align: center; color: #f0802f;}
 .mini{overflow: auto; background: #fff;}
 
