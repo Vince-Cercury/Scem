@@ -384,8 +384,8 @@ class FacebookController < ApplicationController
       "Event also visible on: #{url_for(event)}" +
       "\n\n---------------------------------------------------------------------\n\n"
 
-
-    text += process_description(event.description_short)
+    
+    text += process_description(event.description_long)
 
     #TODO: price, contributors, etc
 
