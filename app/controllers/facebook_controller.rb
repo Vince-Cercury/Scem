@@ -358,8 +358,8 @@ class FacebookController < ApplicationController
     # date. have fun!
     #
     # http://wiki.developers.facebook.com/index.php/Events.create
-    start_time = (term.start + 8.hours).to_i
-    end_time = term.end ? (term.end + 8.hours).to_i : start_time
+    start_time = (term.start_at + 8.hours).to_i
+    end_time = term.end_at ? (term.end_at + 8.hours).to_i : start_time
 
     {
       'name' => event.name,
