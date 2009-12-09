@@ -153,7 +153,7 @@ module ApplicationHelper
       #prev_month_link = link_to( l(the_date.last_month, :format => 'only_month'), category_path(current_category, :date => "01-#{the_date.last_month.month}-#{the_date.last_month.year}" ))
       #raise prev_month_link.inspect
     end
-    if the_date.year < 2020
+    if the_date.year < (Time.now.year+2)
       next_date = "01-#{the_date.next_month.month}-#{the_date.next_month.year}"
       next_month_link = link_to_remote( l(the_date.next_month, :format => 'only_month'),  :url => { :controller => "calendar",
           :action => "generate", :category_id => current_category.id, :date => next_date, :no_day_selection => true}, :loading => loading, :complete => complete)

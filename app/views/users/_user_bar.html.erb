@@ -12,6 +12,9 @@
         <%= t("sessions.bar.Logged_in_as") %> <%= link_to_current_user :content_method => :login %>
         (<%= link_to t("sessions.Log_out"), logout_path   %>)
       <% end %>
+      <% if current_user.is_admin_or_moderator_of.size>0 %>
+        <br /><%= link_to(t('sessions.bar.create_event'), new_event_path(:type => 'user_event')) %>
+      <% end %>
     </div>
 
   <% else -%>

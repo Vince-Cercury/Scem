@@ -10,11 +10,11 @@
           <%= fckeditor_textarea(:gallery, :description, :toolbarSet => 'Simple', :width => '80%', :height => '400px') %>
         
         <p>
-          <%= f.label :add_picture_right %>
+          <%= t('galleries.edit.Add_picture_right') %>
           <%=  select("gallery", "add_picture_right", @rights, {}, { }) %>
         </p>
         <p>
-          <%= f.label :add_picture_moderation %>
+          <%= t('galleries.edit.Add_picture_moderation') %>
           <%= f.check_box :add_picture_moderation %>
         </p>
        

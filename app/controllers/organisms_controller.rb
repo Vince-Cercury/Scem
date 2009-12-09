@@ -67,7 +67,7 @@ class OrganismsController < ApplicationController
   def create
     @organism = Organism.new(params[:organism])
     @organism.created_by = current_user.id
-    
+    #raise @organism.terms_of_service.inspect
     
     #set the creator as an admin
     organism_user = OrganismsUser.new

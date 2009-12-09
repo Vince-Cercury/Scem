@@ -38,14 +38,10 @@ class TermsController < ApplicationController
   # GET /terms/1
   # GET /terms/1.xml
   def show
-    #@event = Event.find(params[:event_id])
-    @term = Term.find(params[:id])
-    @current_object = @event = @term.event unless @term.nil?
-    @comment = Comment.new
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @term }
-    end
+
+    term = Term.find(params[:id])
+
+    redirect_to(url_for_even_polymorphic(term))
   end
 
   # GET /terms/new

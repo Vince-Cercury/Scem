@@ -40,11 +40,11 @@ module EventsHelper
 
   def get_default_event_picture(event, style)
     if style == "mini"
-      image_tag("default/event/small/1.jpg", :height => get_mini_height,:alt => event.name)
+      image_tag("default/event/small/1.png", :height => get_mini_height,:alt => event.name)
     elsif style == "mini_width"
-      image_tag("default/event/small/1.jpg", :width => get_mini_width,:alt => event.name)
+      image_tag("default/event/small/1.png", :width => get_mini_width,:alt => event.name)
     else
-      image_tag("default/event/#{style}/1.jpg",:alt => event.name)
+      image_tag("default/event/#{style}/1.png",:alt => event.name)
     end
   end
 

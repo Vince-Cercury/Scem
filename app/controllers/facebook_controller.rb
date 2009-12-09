@@ -266,7 +266,7 @@ class FacebookController < ApplicationController
 
           #Prepare picture for event
           if @term.event.picture.nil?
-            fullpath = RAILS_ROOT  + "/public" + '/system/uploads' + "/default/event/medium/1.jpg"
+            fullpath = RAILS_ROOT  + "/public" + '/system/uploads' + "/default/event/medium/1.png"
           else
             fullpath = @term.event.picture.attached.path(:medium)
           end

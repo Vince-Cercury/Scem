@@ -109,9 +109,9 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   #deprecated
-  map.resources :terms do |term|
-    term.resources :participations
-  end
+#  map.resources :terms do |term|
+#    term.resources :participations
+#  end
 
 
   map.resources :participations, :collection =>{

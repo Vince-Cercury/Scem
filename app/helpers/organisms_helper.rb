@@ -19,11 +19,11 @@ module OrganismsHelper
 
   def get_default_organism_picture(organism, style)
     if style == "mini"
-      image_tag("default/organism/small/1.jpg", :height => get_mini_height,:alt => organism.name)
+      image_tag("default/organism/small/1.png", :height => get_mini_height,:alt => organism.name)
     elsif style == "mini_width"
-      image_tag("default/organism/small/1.jpg", :width => get_mini_width,:alt => organism.name)
+      image_tag("default/organism/small/1.png", :width => get_mini_width,:alt => organism.name)
     else
-      image_tag("default/organism/#{style}/1.jpg",:alt => organism.name)
+      image_tag("default/organism/#{style}/1.png",:alt => organism.name)
     end
   end
 

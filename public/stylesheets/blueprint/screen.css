@@ -125,7 +125,22 @@ body {font-size:75%;
 /*--- PUBLICITEE ---*/
 .subFooter {width: 988px; position:relative; padding: 10px 0 0px 0; float: left; text-align:center;height: 90px;}
 /*--- FOOTER ---*/
-.footer {background-image:url('/images/body/french/footer.png'); background-repeat: no-repeat;  width: 1004px; float: left; margin : 0 0 10px -16px; height: 73px;}
+.footer {
+    background-image:url('/images/body/french/footer.png');
+    background-repeat: no-repeat;
+    width: 1004px;
+    float: left;
+    margin : 0 0 10px -16px;
+    height: 73px;
+    padding: 10px 80px 10px 80px;
+    color: #ffffff;
+}
+.footer a{
+    color: #ffffff;
+}
+.footer a:hover{
+    color: #ffffff;
+}
 /* ---------------------TITLE---------------------- */
 /*Normal*/
 .titlegaleries {width: 143px; height: 30px; margin: 10px 0 0 10px; background: #000; background-image:url('/images/header/french/galeries.png'); background-repeat: no-repeat; float: left;}
@@ -158,6 +173,7 @@ body {font-size:75%;
 .connectRight{width: 473px; padding: 40px 5px 5px 5px; margin: 0 0 0 5px; background: #fff; float: right; text-align: center;}
 .connectRight h4 {font-size: 16px; text-align:center; font-weight: bold;}
 .connectRight p {text-align: center; text-indent: 0px;}
+.connectPub{width: 678px; padding: 5px 5px 5px 5px; text-align: center; background: #fff; float: left;}
 .connectPubLeft{width: 334px; padding: 5px 5px 5px 5px; text-align: center; background: #fff; float: left;}
 .connectPubRight{width: 334px; padding: 5px 5px 5px 5px; text-align: center; background: #fff; float: right;}
 /* ---------------------PAGE DE CREATION DE COMPTE---------------------- */
@@ -234,6 +250,10 @@ body {font-size:75%;
 .termboxLeft{width: 329px; padding: 25px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center;}
 .termboxRight{width: 329px; padding: 5px 5px 5px 5px;; margin: 0 0 0 0; background: #fff; float: right; text-align: center;}
 
+.participantListBlack {background:#000; float:left; height:auto; margin:0; padding:5px 0; text-align:center; width:678px;}
+.participantListWhite {background:#fff; width:658px; margin: 0 5px 0 5px; padding: 5px 5px 0 5px; float: left; height: auto; text-align: center;}
+.participantEvent {width: 678px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left;}
+
 /* ---------------------PAGE ORGANISM SHOW'---------------------- */
 /*HEADER*/
 .organismHeader{width: 688px; min-height: 82px; background: #fff; overflow:auto;}
@@ -277,11 +297,11 @@ body {font-size:75%;
 .organismNewBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
 .organismNewBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold;}
 .organismNewBody h4 { font-size:16px; font-weight: bold; text-align: left; }
-.organismNewBodyCenterLeft{width: 179px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
+.organismNewBodyCenterLeft{width: 668px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
 .organismNewBodyCenterLeft p{vertical-align: middle; text-indent: 0; text-align: right; }
-.organismNewBodyCenterRight{width: 479px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
+.organismNewBodyCenterRight{width: 668px; padding: 5px; margin: 0 0 0 0; float: right; overflow: auto; text-align: left;}
 .organismNewBodyCenterRight .title{width: 400px;}
-.textFieldOrganismNew {width: 300px;}
+.textFieldOrganismNew {width: 500px;}
 /*Mailing*/
 .mailingBody{width: 688px; padding: 5px 0 0 0; margin: 0 0 5px 0; background: #fff; overflow: auto;}
 .mailingBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
@@ -333,6 +353,11 @@ body {font-size:75%;
 .galleriesBoxImageEdit p { text-align: left; text-indent: 0;}
 .galleriesBoxEdit {width: 658px; margin: 0 0 0 0; padding: 0; background: #fff; float: left; text-align: center;}
 
+/*NEW*/
+.galleriesNewBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
+.galleriesNewContent{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-align: center;}
+.galleriesNewContent h4{padding: 5px; font-size: 16px; margin: 0px; text-align: center; font-weight: bold; color:#000;}
+.galleriesNewContent h5{padding: 5px; font-size: 12px; margin: 0px; text-align: left;}
 
 /* ---------------------PAGE PICTURE SHOW---------------------- */
 /*SHOW*/
@@ -387,7 +412,10 @@ body {font-size:75%;
 .newPost a:hover {background:#ffb500; color:#000;}
 
 .noPost{width: 668px; padding: 0; margin: 0 0 0 0; background: #f0882f; color: #000; text-align: center; font-weight: bold; font-size: 14px;}
-
+/* ---------------------MAP---------------------- */
+.map{width: 678px; padding: 5px; background: #fff; overflow: auto;}
+.mapLeft{width: 600px; margin: 0 5px 0 0; float: left;}
+.mapRight{width: 68px; height: 410px; text-align: center; float: right;}
 /* ---------------------DATE LIST'---------------------- */
 .dateListBody{width: 678px; padding: 5px 5px 5px 5px; background: #fff; overflow: auto;}
 .dateListContent{width: 668px; margin: 0; padding: 0 5px 5px 5px; background: #000; float: left;}
@@ -398,6 +426,7 @@ body {font-size:75%;
 .participantContent0{width: 678px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left;}
 .participantContent{width: 688px; padding: 5px 0 5px 0; margin: 0; background: #fff; overflow: auto; float: left;}
 .participantContent2{width: 678px; padding: 5px; margin: 0; background: #fff; overflow: auto; float: left;}
+
 .userList {width: 668px; margin: 0; padding: 5px 5px 0 5px; background: #000; float: left;}
 .userListBox {width: 668px; margin: 0 0 5px 0; padding: 0; background: #fff; float: left; text-align: center;}
 .userListBoxImage {width: 72px; margin: 0; padding: 5px; background: #fff; float: left; text-align: center;}
@@ -445,6 +474,7 @@ body {font-size:75%;
 .GalleryListSeparator{background:#fff; width:688px; margin-bottom: 10px; padding: 5px 0 5px 0; float: left; height: auto;}
 .GalleryAction{text-align:right; padding: 0 10px 0 0;}
 .GalleryListRight h4 {text-align:center; font-size: 16px;}
+.GalleryListCenter{background:#fff; width:688px; margin: 0px; padding: 0; float: left; height: auto;}
 
 /* ---------------------COMMENTAIRE'---------------------- */
 .commentaireContent{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto;}
@@ -596,6 +626,8 @@ form.inline p {margin-bottom:0;}
 .error a {color:#8a1f11;}
 .notice a {color:#514721;}
 .success a {color:#264409;}
+.formError {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.errorExplanation  {padding:.8em;margin-bottom:1em;border:2px solid #ddd; background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
 
 /* grid.css */
 
