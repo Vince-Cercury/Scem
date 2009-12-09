@@ -951,37 +951,37 @@ fr-FR:
       Retail: "Vente au d&eacute;tail"
       Wedding: "Mariage"
       Publish_Facebook: "Publier sur Facebook"
-  ask_facebook_event_cancel:
-     Summary: "Ceci va annuler d&eacute;finitivement l'&eacute;v&egrave;nement sur <b>Facebook</b> &agrave; la date sp&eacute;cifi&eacute;e. Cependant, l'&eacute;v&egrave;nement du site ne sera pas supprim&eacute; !"
-     Optional_message: "Message optionnel (Pour les utilisateurs pr&eacute;sents sur Facebook)..."
-     Cancel_Facebook: "Supprimer de FaceBook !"
-  ask_events_permissions_rscp:
-    Summary: "Nous avons remarqu&eacute; que cet &eacute;v&egrave;nement existe d&eacute;j&agrave; sur facebook. Afin de changer votre statut sur facebook, nous avons besoin de votre permission."
-    Summary_link: "S'il vous plait, cliquer sur ce lien pour poursuivre."
-    Try_again: "Vous pouvez d&eacute;sormais r&eacute;essayer."
-    sure: "s&ucirc;r(e)"
-    maybe: "peut &ecirc;tre"
-    not: "non"
-    Go: "Go"
-  ask_events_permissions_for_creation:
-    Summary: "Pour publier un &eacute;v&egrave;nement sur Facebook, Vous devez pour cela autoriser LeBounce &agrave; y acc&eacute;der. Vous pouvez changer d'avis &agrave; tout moment."
-    Summary_link: "Merci de cliquer sur le lien pour continuer."
-    link: "Ensuite, vous pouvez r&eacute;essayer de publier cet &eacute;v&egrave;nement sur facebook, en cliquant sur ce lien."
-    Publish_on_Facebook: "Publier sur Facebook"
-  ask_events_permissions_for_cancelling:
-    Summary: "Pour publier un &eacute;v&egrave;nement sur Facebook, Vous devez pour cela autoriser LeBounce &agrave; y acc&eacute;der. Vous pouvez changer d'avis &agrave; tout moment."
-    Summary_link: "Merci de cliquer sur le lien pour continuer."
-    link: "Ensuite, vous pouvez r&eacute;essayer de publier cet &eacute;v&egrave;nement sur facebook, en cliquant sur ce lien."
-    Delete_on_Facebook: "Supprimer de Facebook"
-  wall_permissions_for_organism:
-    Summary: "Vous pouvez r&eacute;essayer de publier l'organisme sur votre mur en cliquant sur ce lien :"
-    Publish_object_on_wall: "Publier l'organisme sur mon mur"
-  wall_permissions_for_gallery:
-    Summary: "Vous pouvez r&eacute;essayer de publier la galerie sur votre mur en cliquant sur ce lien :"
-    Publish_gallery_on_wall: "Publier la galerie sur mon mur"
-  wall_permissions_for_event:
-    Summary: "Vous pouvez r&eacute;essayer de publier l'&eacute;v&egrave;nement sur votre mur en cliquant sur ce lien :"
-    Publish_event_on_wall: "Publier l'&eacute;v&egrave;nement sur mon mur"
+    ask_facebook_event_cancel:
+      Summary: "Ceci va annuler d&eacute;finitivement l'&eacute;v&egrave;nement sur <b>Facebook</b> &agrave; la date sp&eacute;cifi&eacute;e. Cependant, l'&eacute;v&egrave;nement du site ne sera pas supprim&eacute; !"
+      Optional_message: "Message optionnel (Pour les utilisateurs pr&eacute;sents sur Facebook)..."
+      Cancel_Facebook: "Supprimer de FaceBook !"
+    ask_events_permissions_rscp:
+      Summary: "Nous avons remarqu&eacute; que cet &eacute;v&egrave;nement existe d&eacute;j&agrave; sur facebook. Afin de changer votre statut sur facebook, nous avons besoin de votre permission."
+      Summary_link: "S'il vous plait, cliquer sur ce lien pour poursuivre."
+      Try_again: "Vous pouvez d&eacute;sormais r&eacute;essayer."
+      sure: "s&ucirc;r(e)"
+      maybe: "peut &ecirc;tre"
+      not: "non"
+      Go: "Go"
+    ask_events_permissions_for_creation:
+      Summary: "Pour publier un &eacute;v&egrave;nement sur Facebook, Vous devez pour cela autoriser LeBounce &agrave; y acc&eacute;der. Vous pouvez changer d'avis &agrave; tout moment."
+      Summary_link: "Merci de cliquer sur le lien pour continuer."
+      link: "Ensuite, vous pouvez r&eacute;essayer de publier cet &eacute;v&egrave;nement sur facebook, en cliquant sur ce lien."
+      Publish_on_Facebook: "Publier sur Facebook"
+    ask_events_permissions_for_cancelling:
+      Summary: "Pour publier un &eacute;v&egrave;nement sur Facebook, Vous devez pour cela autoriser LeBounce &agrave; y acc&eacute;der. Vous pouvez changer d'avis &agrave; tout moment."
+      Summary_link: "Merci de cliquer sur le lien pour continuer."
+      link: "Ensuite, vous pouvez r&eacute;essayer de publier cet &eacute;v&egrave;nement sur facebook, en cliquant sur ce lien."
+      Delete_on_Facebook: "Supprimer de Facebook"
+    wall_permissions_for_organism:
+      Summary: "Vous pouvez r&eacute;essayer de publier l'organisme sur votre mur en cliquant sur ce lien :"
+      Publish_object_on_wall: "Publier l'organisme sur mon mur"
+    wall_permissions_for_gallery:
+      Summary: "Vous pouvez r&eacute;essayer de publier la galerie sur votre mur en cliquant sur ce lien :"
+      Publish_gallery_on_wall: "Publier la galerie sur mon mur"
+    wall_permissions_for_event:
+      Summary: "Vous pouvez r&eacute;essayer de publier l'&eacute;v&egrave;nement sur votre mur en cliquant sur ce lien :"
+      Publish_event_on_wall: "Publier l'&eacute;v&egrave;nement sur mon mur"
   comments:
     controller:
       Comment_activated: "Commentaire activ&eacute;."
