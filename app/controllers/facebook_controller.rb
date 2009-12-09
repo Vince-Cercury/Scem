@@ -112,7 +112,7 @@ class FacebookController < ApplicationController
           if @gallery
             message += process_description(@current_object.description) + "\n\n"
           else
-            message += process_description(@current_object.description_short) + "\n\n"
+            message += process_description(@current_object.description_long) + "\n\n"
           end
           message += "#{url_for(@current_object)}\n"
 
@@ -358,8 +358,8 @@ class FacebookController < ApplicationController
     # date. have fun!
     #
     # http://wiki.developers.facebook.com/index.php/Events.create
-    start_time = (term.start + 8.hours).to_i
-    end_time = term.end ? (term.end + 8.hours).to_i : start_time
+    start_time = (term.start_at + 8.hours).to_i
+    end_time = term.end_at ? (term.end_at + 8.hours).to_i : start_time
 
     {
       'name' => event.name,
@@ -395,7 +395,11 @@ class FacebookController < ApplicationController
   end
 
   def process_description(original_description)
-    original_description = original_description.gsub(/<\/?[^>]*>/, "")
+    if !original_description.blank?
+      original_description = original_description.gsub(/<\/?[^>]*>/, "")
+    else
+      original_description = ""
+    end
     text = ""
     unless original_description.blank?
       description = original_description.gsub(/\[(.+?)\|(.+?)\]/, '\2 (\1)') # Replace named links
