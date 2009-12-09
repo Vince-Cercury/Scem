@@ -4,7 +4,7 @@
     <div class="listSeparator">
 
       <div class="blogBox">
-        <h4><%= link_to post.name, polymorphic_path([@parent_object, post].flatten) %></h4>
+        <h2><%= link_to post.name, polymorphic_path([@parent_object, post].flatten) %></h2>
         <p>
           <%= post.text_long %>
         </p>

@@ -4,10 +4,10 @@
       <div class="activities">
         <div class="activitie">
           <% if activity.organisms.size>0 %>
-            <h4><%= link_to(activity.name, activity) %> (<%= activity.organisms.size %>) </h4>
+            <h2><%= link_to(activity.name, activity) %> (<%= activity.organisms.size %>) </h2>
 
           <% else %>
-            <h4><%= activity.name %></h4>
+            <h2><%= activity.name %></h2>
           <% end %>
         </div>
       </div>
