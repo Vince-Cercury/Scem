@@ -51,12 +51,7 @@ class FacebookController < ApplicationController
     if current_user.email.blank? #(current_user.email.nil? or current_user.email=="" or !facebook_session.user.has_permissions?(['email','rsvp_event','create_event']))
       redirect_to url_for(:controller => 'users', :id => current_user.id, :action => 'ask_facebook_info')
     else
-      if current_user.email.include?('facebook.com')
-        redirect_to url_for(:controller => 'users', :id => current_user.id, :action => 'ask_facebook_info')
-      else
-        redirect_back_or_default('/')
-      end
-      
+        redirect_back_or_default('/')   
     end
 
 
