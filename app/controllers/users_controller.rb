@@ -121,7 +121,7 @@ class UsersController < ApplicationController
         format.html { redirect_back_or_default('/') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "ask_email" }
+        format.html { render :action => "ask_facebook_info" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
