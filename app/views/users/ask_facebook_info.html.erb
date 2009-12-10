@@ -21,7 +21,7 @@
     <%#*</p>%>
   <%# end %>
 
-  <% if current_user.email.nil? or current_user.email=="" %>
+  <%# if current_user.email.nil? or current_user.email=="" %>
     <%#  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','rsvp_event','create_event'])) %>
       <%#*<h3>%>
 <%#= t('users.facebook.step2') %>
@@ -48,6 +48,6 @@
         <%= f.submit 'Update' %>
       </p>
     <% end %>
-  <% end %>
+  <%# end %>
 
 </div>
