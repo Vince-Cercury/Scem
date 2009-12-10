@@ -31,13 +31,13 @@ class FacebookController < ApplicationController
     current_user.first_name=facebook_session.user.first_name
     current_user.last_name=facebook_session.user.last_name
 
-    if  !current_user.email.blank?
-      if current_user.email.include?('facebook.com')
-        current_user.email = facebook_session.user.proxied_email
-      end
-    else
-        current_user.email = facebook_session.user.proxied_email
-    end
+#    if  !current_user.email.blank?
+#      if current_user.email.include?('facebook.com')
+#        current_user.email = facebook_session.user.proxied_email
+#      end
+#    else
+#        current_user.email = facebook_session.user.proxied_email
+#    end
 
     current_user.save(false)
 
@@ -48,10 +48,15 @@ class FacebookController < ApplicationController
     #Delayed::Job.enqueue(FacebookRetrieveFriendsJob.new(current_user.id, facebook_session.user), 3)
 
 
-    if(current_user.email.nil? or current_user.email=="" or !facebook_session.user.has_permissions?(['email','rsvp_event','create_event']))
+    if current_user.email.blank? #(current_user.email.nil? or current_user.email=="" or !facebook_session.user.has_permissions?(['email','rsvp_event','create_event']))
       redirect_to url_for(:controller => 'users', :id => current_user.id, :action => 'ask_facebook_info')
     else
-      redirect_back_or_default('/')
+      if current_user.email.include?('facebook.com')
+        redirect_to url_for(:controller => 'users', :id => current_user.id, :action => 'ask_facebook_info')
+      else
+        redirect_back_or_default('/')
+      end
+      
     end
 
 
