@@ -304,11 +304,11 @@ class Event < ActiveRecord::Base
     end
 
     #NOTE:uncomment if you want the organizers allowed to edit event
-    #    self.organizers.each do |organism|
-    #      if organism.is_user_moderator?(user)
-    #        result = true
-    #      end
-    #    end
+        self.organizers.each do |organism|
+          if organism.is_user_moderator?(user)
+            result = true
+          end
+        end
 
     #NOTE:uncomment if you want the partners allowed to edit event
     #    self.partners.each do |organism|
