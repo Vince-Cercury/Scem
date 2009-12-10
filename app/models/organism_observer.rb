@@ -9,8 +9,9 @@ class OrganismObserver < ActiveRecord::Observer
 
     #for each system_moderator and system_admin, send signup notification email (contening all organism infos)
     @system_admins_or_modo = User.find(:all, :conditions => ["role = ? or role = ?", "admin", "moderator"] )
+    raise @system_admins_or_modo.inspect
     @system_admins_or_modo.each  do |user|
-      OrganismMailer.deliver_signup_notification_to_system_admin_or_modo(user, organism) if organism.pending? unless user.email.blank?
+      OrganismMailer.deliver_signup_notification_to_system_admin_or_modo(user, organism) if organism.pending? unless user.email==""
     end
   end
 
