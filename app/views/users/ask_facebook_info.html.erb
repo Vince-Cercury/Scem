@@ -19,7 +19,7 @@
   <% end %>
 
   <% if current_user.email.nil? or current_user.email=="" %>
-    <%  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])) %>
+    <%  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','rsvp_event','create_event'])) %>
       <h3><%= t('users.facebook.step2') %></h3>
     <% else %>
       <h3><%= t('users.facebook.laststep') %></h3>
