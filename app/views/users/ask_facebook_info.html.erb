@@ -1,29 +1,34 @@
 <div class="facebookPermissions">
 
-  <% if !facebook_session.user.has_permissions?(['email','rsvp_event','create_event'])  %>
-    <%  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])) %>
-      <h3><%= t('users.facebook.step1') %></h3>
-    <% else %>
-      <h3><%= t('users.facebook.laststep') %></h3>
-    <% end %>
+  <%# if !facebook_session.user.has_permissions?(['email','rsvp_event','create_event'])  %>
+    <%#  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])) %>
+      <%#*<h3><%= t('users.facebook.step1') %>
+      <%#*</h3>%>
+    <%# else %>
+      <%#*<h3><%= t('users.facebook.laststep') %>
+      <%#*</h3>%>
+    <%# end %>
 
-    <p>
-      <%= t('users.facebook.info') %>
-    </p>
-    <p>
-      <%= t('users.facebook.info2') %>
-    </p>
-    <p>
-      <a href="javascript:ask_fb_permissions();" ><%= t('users.facebook.allow') %></a>
-    </p>
-  <% end %>
+    <%#*<p>%>
+      <%#= t('users.facebook.info') %>
+    <%#*</p>%>
+    <%#*<p>%>
+      <%#= t('users.facebook.info2') %>
+    <%#*</p>%>
+    <%#*<p>%>
+      <%#*<a href="javascript:ask_fb_permissions();" ><%= t('users.facebook.allow') %>
+<%#*</a>%>
+    <%#*</p>%>
+  <%# end %>
 
-  <% if current_user.email.nil? or current_user.email=="" %>
-    <%  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','publish_stream','rsvp_event','create_event'])) %>
-      <h3><%= t('users.facebook.step2') %></h3>
-    <% else %>
+  <%# if current_user.email.nil? or current_user.email=="" %>
+    <%#  if((current_user.email.nil? or current_user.email=="") and !facebook_session.user.has_permissions?(['email','rsvp_event','create_event'])) %>
+      <%#*<h3>%>
+<%#= t('users.facebook.step2') %>
+      <%#*</h3>%>
+    <%# else %>
       <h3><%= t('users.facebook.laststep') %></h3>
-    <% end %>
+    <%# end %>
     <p>
       <%= t('users.facebook.confirmation') %>
     </p>
@@ -43,6 +48,6 @@
         <%= f.submit 'Update' %>
       </p>
     <% end %>
-  <% end %>
+  <%# end %>
 
 </div>

@@ -87,9 +87,9 @@ ActionController::Routing::Routes.draw do |map|
         :unsuspend => :get,
         :activate     => :get }
     end
-    event.resources :comments, :collection => { :suspend   => :get,
+    event.resources :comments, :member => { :suspend   => :get,
       :unsuspend => :get,
-      :activate     => :get }
+      :activate     => :get } 
     event.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  } do |post|
       post.resources :comments, :collection => { :suspend   => :get,

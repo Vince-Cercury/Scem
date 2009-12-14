@@ -12,4 +12,3 @@ config/environments/staging.rb
 public/system/*
 nbproject
 tmp/*
-vendor/plugins/restful-authentication
