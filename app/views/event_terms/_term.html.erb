@@ -1,9 +1,9 @@
 <% if facebook_session %>
 
   <% if @term.facebook_eid %>
-    <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => t('events.terms.See_on_Facebook')), "http://wwwfacebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank') %>
+    <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => t('events.terms.See_on_Facebook')), "http://www.facebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank') %>
     <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
-      (<%= link_to(image_tag("bouton/FaceBook_Logo2n.png",:alt => t('events.terms.Delete_the_Facebook_page')), url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_cancel_message')) %> )
+      <%= link_to(image_tag("bouton/FaceBook_Logo2n.png",:alt => t('events.terms.Delete_the_Facebook_page')), url_for(:controller => 'facebook', :id =>@term.id, :action => 'ask_facebook_event_cancel_message')) %> 
     <% end  %>
   <% else %>
     <% if current_user && current_user.facebook_user? && facebook_session && @event.is_user_moderator?(current_user) %>
@@ -12,7 +12,7 @@
   <% end %>
 <% else %>
   <% if @term.facebook_eid %>
-    <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => t('events.terms.See_on_Facebook')), "http://wwwfacebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank') %>
+    <%= link_to(image_tag("bouton/FaceBook_Logo2.png",:alt => t('events.terms.See_on_Facebook')), "http://www.facebook.com/event.php?eid=#{@term.facebook_eid}", :target => 'blank') %>
   <% end  %>
 <% end %>
 

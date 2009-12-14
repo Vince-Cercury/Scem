@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091203172042) do
+ActiveRecord::Schema.define(:version => 20091214161207) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -255,7 +255,7 @@ ActiveRecord::Schema.define(:version => 20091203172042) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
-    t.integer  "facebook_eid", :limit => 8
+    t.integer  "facebook_eid", :limit => 12
     t.text     "description"
     t.string   "cached_slug"
   end

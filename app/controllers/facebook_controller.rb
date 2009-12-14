@@ -1,4 +1,8 @@
 class FacebookController < ApplicationController
+
+  require 'htmlentities'
+
+
   before_filter :ensure_authenticated_to_facebook
   
   # Protect these actions behind a moderator login
@@ -202,18 +206,23 @@ class FacebookController < ApplicationController
         @term = Term.find(params[:id])
         if @term
           #raise params[:cancel_message].inspect
-          facebook_session.cancel_event(@term.facebook_eid, :cancel_message => params[:cancel_message])
+          begin
+            facebook_session.cancel_event(@term.facebook_eid, :cancel_message => params[:cancel_message])
+          rescue
+            
+          end
           @term.facebook_eid = ""
           @term.updated_at = Time.now
 
-          if @term.save!
+          #if @term.save!
+          @term.save(false)
             #redirect to the Facebook event page 
             flash[:notice] = I18n.t('facebook.controller.Cancel_success')
             redirect_to @term.event
-          else
-            flash[:error] =  I18n.t('facebook.controller.Cancel_problem')
-            redirect_to @term.event
-          end
+#          else
+#            flash[:error] =  I18n.t('facebook.controller.Cancel_problem')
+#            redirect_to @term.event
+#          end
         else
           flash[:error] = I18n.t('facebook.controller.Event_not_found')
           redirect_to root_path
@@ -263,7 +272,7 @@ class FacebookController < ApplicationController
   def create_event
     #check if the app has the extended event permission granted by the current user
     if facebook_session
-      if facebook_session.user.has_permissions?(['create_event','rsvp_event'])
+      if facebook_session.user.has_permissions?(['create_event'])
 
         @term = Term.find(params[:id])
         if @term
@@ -283,16 +292,16 @@ class FacebookController < ApplicationController
           file.close
           @term.facebook_eid = event_eid
           @term.updated_at = Time.now
-
-          if @term.save!
+          
+          #if @term.save(false)
             #redirect to the Facebook event page
-            
+            @term.save(false)
             flash[:notice] = I18n.t('facebook.controller.Publish_event_success')
             redirect_to @term.event
-          else
-            flash[:error] =  I18n.t('facebook.controller.Event_problem')
-            redirect_to @term.event
-          end
+#          else
+#            flash[:error] =  I18n.t('facebook.controller.Event_problem')
+#            redirect_to @term.event
+#          end
         else
           flash[:error] = I18n.t('facebook.controller.Event_not_found')
           redirect_to root_path
@@ -340,14 +349,14 @@ class FacebookController < ApplicationController
       privacy_type = 'OPEN'
     end
 
-    if term.event.publishers.size > 0
-      location = term.event.publishers.first.name + ' (' + url_for(term.event.publishers.first) + ')'
-      # city = 'Angers, France'
-      # street = 'not precised'
+    if term.event.places.size > 0
+      location = term.event.places.first.name + ' (' + url_for(term.event.places.first) + ')'
+      city = term.event.places.first.city
+      street = term.event.places.first.street
     else
-      location = 'not precised'
-      #city = 'Angers, France'
-      #street = 'not precised'
+      location = term.event.location
+      city = term.event.city
+      street = term.event.street
     end
 
     # Note: The start_time and end_time are the times that were input by the event creator,
@@ -367,8 +376,8 @@ class FacebookController < ApplicationController
       'subcategory' => params[:subcategory], #event.facebook_subcategory.to_s,
       'host' => url_for(term.event),
       'location' => location,#[event.place.title, event.place.classification].compact.join(', '),
-      #'street' => street,
-      #'city' => city, #event.city.to_s,
+      'street' => street,
+      'city' => city, #event.city.to_s,
       'description' => facebook_description(event),
       'privacy_type' => privacy_type,
       'start_time' => start_time,
@@ -380,8 +389,8 @@ class FacebookController < ApplicationController
     text = ""
 
     text +=
-      "Publicated by SCEM application - http://www.lebounce.com\n" +
-      "Event also visible on: #{url_for(event)}" +
+      "Publié par LeBounce.com - http://www.lebounce.com\n"+
+      "Evènement aussi visible sur: #{url_for(event)}"
       "\n\n---------------------------------------------------------------------\n\n"
 
     if !process_description(event.description_long).blank?
@@ -391,13 +400,17 @@ class FacebookController < ApplicationController
     #TODO: price, contributors, etc
 
     text += "\n\n---------------------------------------------------------------------\n" +
-      "Publicated by SCEM application - http://www.lebounce.com\n"+
-      "Event also visible on: #{url_for(event)}"
+      "Publié par LeBounce.com - http://www.lebounce.com\n"+
+      "Evènement aussi visible sur: #{url_for(event)}"
   end
 
   def process_description(original_description)
     if !original_description.blank?
+      #original_description =  CGI.escapeHTML(original_description)
+      coder = HTMLEntities.new
+      original_description = coder.decode(original_description) # => "élan"
       original_description = original_description.gsub(/<\/?[^>]*>/, "")
+
     else
       original_description = ""
     end
