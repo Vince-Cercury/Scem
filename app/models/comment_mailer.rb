@@ -11,40 +11,40 @@ class CommentMailer < ActionMailer::Base
   def to_moderators_creation_moderate(user, comment, parent_object)
 
     setup_email(user, comment,parent_object)
-    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type.#{comment.commentable_type}"))
-    @body[:url_activate]  = "#{ENV['SITE_URL']}/comments/activate?id=#{comment.id}"
-    @body[:parent_object_url]  = url_for_even_polymorphic(parent_object)
+    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
+    @body[:url_activate]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'activate')}"
+    @body[:parent_object_url]  = ENV['SITE_URL']+url_for_even_polymorphic(parent_object)
   end
 
   def to_moderators_creation_notification(user, comment, parent_object)
     setup_email(user, comment, parent_object)
-    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type.#{comment.commentable_type}"))
-    @body[:url_suspend]  = "#{ENV['SITE_URL']}/comments/suspend?id=#{comment.id}"
+    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
+    @body[:url_suspend]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'suspend')}"
     
-    @body[:parent_object_url]  = url_for_even_polymorphic(parent_object)
+    @body[:parent_object_url]  = ENV['SITE_URL']+url_for_even_polymorphic(parent_object)
   end
 
   def to_sys_moderators_accepted_notification(user, comment, parent_object)
     setup_email(user, comment,parent_object)
-    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type.#{comment.commentable_type}"))
-    @body[:url_suspend]  = "#{ENV['SITE_URL']}/comments/suspend?id=#{comment.id}"
-    @body[:url_edit]  = "#{ENV['SITE_URL']}/comments/#{comment.id}/edit"
-    @body[:parent_object_url]  = url_for_even_polymorphic(parent_object)
+    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
+    @body[:url_suspend]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'suspend')}"
+    @body[:url_edit]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'edit')}"
+    @body[:parent_object_url]  = ENV['SITE_URL']+url_for_even_polymorphic(parent_object)
   end
 
   def to_sys_moderators_creation_notification(user, comment, parent_object)
     setup_email(user, comment,parent_object)
-    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type.#{comment.commentable_type}"))
-    @body[:url_suspend]  = "#{ENV['SITE_URL']}/comments/suspend?id=#{comment.id}"
-    @body[:url_edit]  = "#{ENV['SITE_URL']}/comments/#{comment.id}/edit"
-    @body[:parent_object_url]  = url_for_even_polymorphic(parent_object)
+    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
+    @body[:url_suspend]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'suspend')}"
+    @body[:url_edit]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'edit')}"
+    @body[:parent_object_url]  = ENV['SITE_URL']+url_for_even_polymorphic(parent_object)
   end
 
 
   def to_sys_moderators_suspended_notification(user, comment, parent_object)
     setup_email(user, comment,parent_object)
-    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type.#{comment.commentable_type}"))
-   @body[:parent_object_url]  = url_for_even_polymorphic(parent_object)
+    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
+   @body[:parent_object_url]  = ENV['SITE_URL']+url_for_even_polymorphic(parent_object)
   end
 
 
@@ -64,11 +64,20 @@ class CommentMailer < ActionMailer::Base
   private
 
   #polymorphic url to manage or not ?
-  def url_for_even_polymorphic(object)
-    if(object.class.to_s.eql?('Post'))
-      return "#{ENV['SITE_URL']}#{polymorphic_path([object.get_parent_object, object].flatten)}"
+  def url_for_even_polymorphic(object, options = {})
+    if(object.get_parent_object)
+      if object.get_parent_object.get_parent_object
+        if object.get_parent_object.get_parent_object
+          return polymorphic_path([object.get_parent_object.get_parent_object.get_parent_object, object.get_parent_object.get_parent_object, object.get_parent_object, object].flatten, options)
+        else
+          return polymorphic_path([object.get_parent_object.get_parent_object, object.get_parent_object, object].flatten, options)
+        end
+      else
+        return polymorphic_path([object.get_parent_object, object].flatten, options)
+      end
     else
-      return "#{ENV['SITE_URL']}#{polymorphic_path([object].flatten)}"
+      return polymorphic_path([object].flatten, options)
     end
   end
+  
 end

@@ -25,7 +25,7 @@ fr-FR:
     Gallery: "galerie"
     Post: "billet"
   type_no_html:
-    Event: "Evènement"
+    Event: "évènement"
     Organism: "organisme"
     User: "utilisateur"
     Gallery: "galerie"
@@ -628,10 +628,10 @@ fr-FR:
     to_author_accepted_notification: "<p>Bonjour {{user}},</p><br /><p>Vous recevez cet email car vous avez post&eacute; un commentaire sur www.LeBounce.com</p><p>Votre commentaire a &eacute;t&eacute; accept&eacute;.<br />{{comment}}</p><p>Votre commentaire dans son contexte :<br />{{url}}</p><br /><p>Cordialement</p><br /><p>L'&eacute;quipe LeBounce.com</p>"
     to_moderators_creation_moderate: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur d'un organisme.</p><p>Un commentaire a &eacute;t&eacute; post&eacute; :<br />{{comment}}</p><p>Vous pouvez l'accepter &agrave; l'adresse suivante : <br /> {{url_activate}}</p><p>Ou ne rien si vous ne voulez pas l'accepter.</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'&eacute;quipe LeBounce</p>"
     to_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur d'un organisme.</p><p>Un commentaire a &eacute;t&eacute; post&eacute; :<br />{{comment}}</p><p>Vous pouvez &eacute;ventuellement le suspendre (dans le cas où il ne respecte pas les r&egrave;gles du site) &agrave; l'adresse suivante : <br /> {{url_suspend}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'&eacute;quipe LeBounce</p>"
-    to_sys_moderators_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Un commentaire a &eacute;t&eacute; valid&eacute; par un mod&eacute;rateur.</p><p>Le commentaire concern&eacute; est le suivant :<br />{{comment}}</p><p>Vous pouvez &eacute;ventuellement : <br />l'&eacute;diter &agrave; l'adresse suivante : {{url_edit}} <br /> le suspendre (dans le cas où il ne respecte pas les r&egrave;gles du site) &agrave; l'adresse suivante : <br /> {{url_suspend}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'&eacute;quipe LeBounce</p>"
-    to_sys_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Un commentaire a &eacute;t&eacute; cr&eacute;&eacute; mais la mod&eacute;ration n'est pas activ&eacute;e. Ainsi le commentaire est d&eacute;j&agrave; publi&eacute; et visible.</p><p>Le commentaire concern&eacute; est le suivant :<br />{{comment}}</p><p>Vous pouvez &eacute;ventuellement : <br />l'&eacute;diter &agrave; l'adresse suivante : {{url_edit}} <br /> le suspendre (dans le cas où il ne respecte pas les r&egrave;gles du site) &agrave; l'adresse suivante : <br /> {{url_suspend}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'&eacute;quipe LeBounce</p>"
+    to_sys_moderators_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Un commentaire a &eacute;t&eacute; valid&eacute; par un mod&eacute;rateur.</p><p>Le commentaire concern&eacute; est le suivant :<br />{{comment}}</p><p>Vous pouvez &eacute;ventuellement :  <br /> le suspendre (dans le cas où il ne respecte pas les r&egrave;gles du site) &agrave; l'adresse suivante : <br /> {{url_suspend}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'&eacute;quipe LeBounce</p>"
+    to_sys_moderators_creation_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Un commentaire a &eacute;t&eacute; cr&eacute;&eacute; mais la mod&eacute;ration n'est pas activ&eacute;e. Ainsi le commentaire est d&eacute;j&agrave; publi&eacute; et visible.</p><p>Le commentaire concern&eacute; est le suivant :<br />{{comment}}</p><p>Vous pouvez &eacute;ventuellement :  <br /> le suspendre (dans le cas où il ne respecte pas les r&egrave;gles du site) &agrave; l'adresse suivante : <br /> {{url_suspend}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><p>Cordialement,</p><br /><br /><p>L'&eacute;quipe LeBounce</p>"
     to_sys_moderators_suspended_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Un commentaire a &eacute;t&eacute; suspendu par un administrateur de l'organisme.</p><p>Le commentaire concern&eacute; est le suivant :<br />{{comment}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><br /><p>Cordialement,</p><br /><p>L'&eacute;quipe LeBounce</p>"
-    subject_comment_suspended: "Un commentaire a été posté sur un(e) {{type}}"
+    subject_comment_suspended: "Un commentaire a été suspendu sur un(e) {{type}}"
     subject_comment_accepted: "Commentaire accepté"
   picture_mailer:
     to_author_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous avez post&eacute; une photo sur www.LeBounce.com</p><p>Votre photo a &eacute;t&eacute; accept&eacute;e &agrave; l'adresse suivante : <br />{{url}}</p><p>Vous pouvez &eacute;galement voir l'image dans son contexte &agrave; l'adresse suivante : <br />{{url_context}}</p><br /><p>Cordialement,</p><br /><p>L'&eacute;quipe LeBounce</p>"
@@ -1009,7 +1009,7 @@ fr-FR:
     create:
       Create: "Cr&eacute;er"
     content:
-      Suspended: "Commentaire suspendu il y a "
+      Suspend: "Commentaire suspendu il y a "
       ago_by: " par "
       ago: " "
       Created: "Cr&eacute;&eacute; il y a "

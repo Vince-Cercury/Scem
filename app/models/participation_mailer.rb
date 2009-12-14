@@ -1,6 +1,6 @@
 class ParticipationMailer < ActionMailer::Base
 
-  helper :users, :application
+  helper :users
 
   def creation_notification(admin_or_modo, user, event, term, role)
     
