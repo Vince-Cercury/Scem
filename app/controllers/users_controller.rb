@@ -193,7 +193,13 @@ class UsersController < ApplicationController
     user_to_display = find_user
     if current_user
       if current_user.id==user_to_display.id || current_user.has_system_role('moderator')
-        allowed_to_view_profile = true
+        if user_to_display.facebook_user?
+          if facebook_session
+            allowed_to_view_profile = true
+          end
+        else
+          allowed_to_view_profile = true
+        end
       else
         #check if both current user and user to display are facebook users in order to use the friends system
         if current_user.facebook_user? && user_to_display.facebook_user?

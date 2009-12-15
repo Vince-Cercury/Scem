@@ -78,6 +78,10 @@ class Organism < ActiveRecord::Base
       :distinct => true
   end
 
+  def get_last_organism_users(number)
+    organisms_users.all(:order => 'id DESC', :limit =>number)
+  end
+
   def search_users_by_role(role, search, page)
     if role=="admins"
       admins.paginate :per_page => ENV['PER_PAGE'], :page => page,
