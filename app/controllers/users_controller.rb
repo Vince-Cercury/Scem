@@ -132,7 +132,10 @@ class UsersController < ApplicationController
     user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
     case
     when (!params[:activation_code].blank?) && user && !user.active?
-      user.activate!
+
+      user.activate
+      user.save(false)
+
       flash[:notice] = I18n.t("users.activate_success")
       redirect_to '/login'
     when params[:activation_code].blank?
