@@ -11,14 +11,14 @@ class CommentMailer < ActionMailer::Base
   def to_moderators_creation_moderate(user, comment, parent_object)
 
     setup_email(user, comment,parent_object)
-    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
+    @subject    += I18n.t('comment_mailer.subject_comment_posted',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
     @body[:url_activate]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'activate')}"
     @body[:parent_object_url]  = ENV['SITE_URL']+url_for_even_polymorphic(parent_object)
   end
 
   def to_moderators_creation_notification(user, comment, parent_object)
     setup_email(user, comment, parent_object)
-    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
+    @subject    += I18n.t('comment_mailer.subject_comment_posted',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
     @body[:url_suspend]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'suspend')}"
     
     @body[:parent_object_url]  = ENV['SITE_URL']+url_for_even_polymorphic(parent_object)
@@ -26,7 +26,7 @@ class CommentMailer < ActionMailer::Base
 
   def to_sys_moderators_accepted_notification(user, comment, parent_object)
     setup_email(user, comment,parent_object)
-    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
+    @subject    += I18n.t('comment_mailer.subject_comment_accepted')
     @body[:url_suspend]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'suspend')}"
     @body[:url_edit]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'edit')}"
     @body[:parent_object_url]  = ENV['SITE_URL']+url_for_even_polymorphic(parent_object)
@@ -34,7 +34,7 @@ class CommentMailer < ActionMailer::Base
 
   def to_sys_moderators_creation_notification(user, comment, parent_object)
     setup_email(user, comment,parent_object)
-    @subject    += I18n.t('comment_mailer.subject_comment_suspended',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
+    @subject    += I18n.t('comment_mailer.subject_comment_posted',:type =>  I18n.t("type_no_html.#{comment.commentable_type}"))
     @body[:url_suspend]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'suspend')}"
     @body[:url_edit]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(comment,:action => 'edit')}"
     @body[:parent_object_url]  = ENV['SITE_URL']+url_for_even_polymorphic(parent_object)
