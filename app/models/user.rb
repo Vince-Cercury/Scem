@@ -297,7 +297,7 @@ class User < ActiveRecord::Base
   def self.create_from_fb_connect(fb_user)
     new_facebooker = User.new(:first_name => fb_user.first_name, :last_name => fb_user.last_name, :login => "facebooker_#{fb_user.uid}", :password => "", :email => "", :state => "active")
     new_facebooker.fb_user_id = fb_user.uid.to_i
-    new_facebooker.email = fb_user.proxied_email
+    #new_facebooker.email = fb_user.proxied_email
     #We need to save without validations
     new_facebooker.save(false)
     #Following line does not look correct

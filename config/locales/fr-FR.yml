@@ -605,7 +605,7 @@ fr-FR:
     account_created_to_moderators: "Bonjour {{username}}, <br /><br />Le compte de l'utilisateur {{newuser}} vient d'&ecirc;tre activ&eacute;.<br /><br />Cordialement,<br /><br />L'&eacute;quipe LeBounce."
     subject_created: "Merci d'activer votre nouveau compte."
     subject_activated: "Votre compte à été activé !"
-    subject_new_account_activated: "Un nouveau compte utilisateur à activer !"
+    subject_new_account_activated: "Un nouveau compte utilisateur à été activé !"
   organism_mailer:
     activation_to_organism_admin_modo: "<html><body>Bonjour {{user}},<br /><br />Votre organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />Vous pouvez d&eacute;sormais publier, administrer des &eacute;v&egrave;nements, des photos.<br /><br />Pensez &agrave; inviter vos amis &agrave; rejoindre la communaut&eacute;, vous pourrez ainsi partager vos &eacute;v&egrave;nements avec eux.<br /> Nous vous remercions pour votre confiance.<br /><br />L'&eacute;quipe LeBounce.com<br /></body></html>"
     activation_to_system_admin_modo: "<html><body>Bonjour {{user}},<br /><br />L'organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />L'&eacute;quipe LeBounce.com<br /></body></html>"
