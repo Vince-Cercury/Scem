@@ -22,7 +22,7 @@ class OrganismsUserMailer < ActionMailer::Base
     setup_email(user, user, organism, role)
     @subject    += I18n.t('organisms_user.subject_role_updated',:role =>role, :name => organism.name)
     @body[:role] = role
-    @body[:url]  = "#{ENV['SITE_URL']}#{organism_path(:id => organism.id)}"
+    @body[:url]  = "#{ENV['SITE_URL']}#{organism_path(organism)}"
   end
 
   protected

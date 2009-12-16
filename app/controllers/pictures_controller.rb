@@ -26,7 +26,7 @@ class PicturesController < ApplicationController
 #        end
 #      }
 #    end
-    flash[:error] = "Wrong url. Please contact admin if prolem persist"
+    flash[:error] = "Wrong url. Please contact admin if problem persists..."
     redirect_to root_path
   end
 
