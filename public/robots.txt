@@ -1,5 +1,17 @@
 # See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
 #
 # To ban all spiders from the entire site uncomment the next two lines:
-# User-Agent: *
-# Disallow: /
+ User-Agent: *
+Disallow: /categories/tout/date/
+Disallow: /categories/soirees/date/
+Disallow: /categories/concerts/date/
+Disallow: /categories/spectacles/date/
+Disallow: /categories/art-culture/date/
+Disallow: /categories/expositions/date/
+Disallow: /categories/festivals/date/
+Disallow: /categories/entraide/date/
+Disallow: /categories/danse/date/
+Disallow: /categories/rencontre/date/
+Disallow: /categories/actions-de-groupe/date/
+Disallow: /categories/s-informer/date/
+Disallow: /categories/sport-nature/date/

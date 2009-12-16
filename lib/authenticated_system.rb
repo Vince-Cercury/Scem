@@ -147,6 +147,8 @@ module AuthenticatedSystem
     kill_remember_cookie!     # Kill client-side auth cookie
     session[:user_id] = nil   # keeps the session but kill our variable
     # explicitly kill any other session variables you set
+    clear_fb_cookies!
+    clear_facebook_session_information
   end
 
   # The session should only be reset at the tail end of a form POST --

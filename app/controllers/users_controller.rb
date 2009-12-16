@@ -132,7 +132,10 @@ class UsersController < ApplicationController
     user = User.find_by_activation_code(params[:activation_code]) unless params[:activation_code].blank?
     case
     when (!params[:activation_code].blank?) && user && !user.active?
-      user.activate!
+
+      user.activate
+      user.save(false)
+
       flash[:notice] = I18n.t("users.activate_success")
       redirect_to '/login'
     when params[:activation_code].blank?
@@ -190,7 +193,13 @@ class UsersController < ApplicationController
     user_to_display = find_user
     if current_user
       if current_user.id==user_to_display.id || current_user.has_system_role('moderator')
-        allowed_to_view_profile = true
+        if user_to_display.facebook_user?
+          if facebook_session
+            allowed_to_view_profile = true
+          end
+        else
+          allowed_to_view_profile = true
+        end
       else
         #check if both current user and user to display are facebook users in order to use the friends system
         if current_user.facebook_user? && user_to_display.facebook_user?

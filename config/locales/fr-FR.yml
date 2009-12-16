@@ -605,7 +605,7 @@ fr-FR:
     account_created_to_moderators: "Bonjour {{username}}, <br /><br />Le compte de l'utilisateur {{newuser}} vient d'&ecirc;tre activ&eacute;.<br /><br />Cordialement,<br /><br />L'&eacute;quipe LeBounce."
     subject_created: "Merci d'activer votre nouveau compte."
     subject_activated: "Votre compte à été activé !"
-    subject_new_account_activated: "Un nouveau compte utilisateur à activer !"
+    subject_new_account_activated: "Un nouveau compte utilisateur à été activé !"
   organism_mailer:
     activation_to_organism_admin_modo: "<html><body>Bonjour {{user}},<br /><br />Votre organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />Vous pouvez d&eacute;sormais publier, administrer des &eacute;v&egrave;nements, des photos.<br /><br />Pensez &agrave; inviter vos amis &agrave; rejoindre la communaut&eacute;, vous pourrez ainsi partager vos &eacute;v&egrave;nements avec eux.<br /> Nous vous remercions pour votre confiance.<br /><br />L'&eacute;quipe LeBounce.com<br /></body></html>"
     activation_to_system_admin_modo: "<html><body>Bonjour {{user}},<br /><br />L'organisme {{organism}} a bien &eacute;t&eacute; activ&eacute;.<br /><br />L'&eacute;quipe LeBounce.com<br /></body></html>"
@@ -633,6 +633,7 @@ fr-FR:
     to_sys_moderators_suspended_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Un commentaire a &eacute;t&eacute; suspendu par un administrateur de l'organisme.</p><p>Le commentaire concern&eacute; est le suivant :<br />{{comment}}</p><p>Vous pouvez voir le commentaire dans son contexte ici:<br />{{url}}</p><br /><p>Cordialement,</p><br /><p>L'&eacute;quipe LeBounce</p>"
     subject_comment_suspended: "Un commentaire a été suspendu sur un(e) {{type}}"
     subject_comment_accepted: "Commentaire accepté"
+    subject_comment_posted: "Un commentaire a été posté sur un(e) {{type}}"
   picture_mailer:
     to_author_accepted_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous avez post&eacute; une photo sur www.LeBounce.com</p><p>Votre photo a &eacute;t&eacute; accept&eacute;e &agrave; l'adresse suivante : <br />{{url}}</p><p>Vous pouvez &eacute;galement voir l'image dans son contexte &agrave; l'adresse suivante : <br />{{url_context}}</p><br /><p>Cordialement,</p><br /><p>L'&eacute;quipe LeBounce</p>"
     to_moderators_creation_moderate: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur d'un organisme.</p><p>Une image a &eacute;t&eacute; post&eacute;e</p><p>Vous pouvez accepter l'image en cliquant sur ce lien (ne rien faire si vous ne voulez pas publier l'image) : <br />{{url_activate}}</p><p>L'image : <br />{{url_picture}}</p><p>Ainsi que l'image dans son contexte : <br /> {{url_context}}</p><br /><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"

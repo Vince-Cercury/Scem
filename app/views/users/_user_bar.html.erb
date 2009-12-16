@@ -5,13 +5,14 @@
     </div>
     <div class="userbarboxright">
       <%# if current_user.facebook_user? %>
-      <% if !facebook_session.nil? %>
-        <%= t("sessions.bar.Logged_in_as") %> <%= get_user_name_or_pseudo_link_by_id(current_user.id) %>
-        (<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'><%= t("sessions.Log_out") %></a>)
-      <% else %>
+      <%# if !facebook_session.nil? %>
+        <%#= t("sessions.bar.Logged_in_as") %> <%#= get_user_name_or_pseudo_link_by_id(current_user.id) %>
+        <%#*(<a href="#" onclick='FB.Connect.logoutAndRedirect("/logout")'><%= t("sessions.Log_out") %>
+        <%#*</a>)%>
+      <%# else %>
         <%= t("sessions.bar.Logged_in_as") %> <%= link_to_current_user :content_method => :login %>
         (<%= link_to t("sessions.Log_out"), logout_path   %>)
-      <% end %>
+      <%# end %>
       <% if current_user.is_admin_or_moderator_of.size>0 %>
         <br /><%= link_to(t('sessions.bar.create_event'), new_event_path(:type => 'user_event')) %>
       <% end %>
