@@ -191,7 +191,7 @@ class UsersController < ApplicationController
     allowed_to_view_profile = false
     
     user_to_display = find_user
-    if current_user && current_user.state == 'active'
+    if current_user && user_to_display
       if current_user.id==user_to_display.id || current_user.has_system_role('moderator')
         if user_to_display.facebook_user?
           if facebook_session
