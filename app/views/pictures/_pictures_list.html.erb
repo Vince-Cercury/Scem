@@ -10,7 +10,7 @@
     <% @pictures.each do |picture| %>
       <tr>
         <td><%=  link_to(image_tag(picture.attached.url(:small)), picture) %></td>
-        <td>From <%= picture.parent_type %> <%=  link_to(picture.get_parent_object.name, picture.get_parent_object) %></td>
+        <td>From <%= picture.parent_type %> <%=  link_to(get_object_name(picture.get_parent_object), picture.get_parent_object) %></td>
         <td><%=h picture.description %></td>
         <td><%= get_user_name_or_pseudo_link_by_id(picture.creator_id) %></td>
         <td><%= link_to t('pictures.list.Edit'), edit_picture_path(picture) %></td>

@@ -14,18 +14,20 @@ class PicturesController < ApplicationController
   # GET /pictures
   # GET /pictures.xml
   def index
-    @pictures = Picture.paginate :per_page => ENV['PER_PAGE'], :page => params[:page],
-      :order => 'created_at DESC'
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @pictures }
-      format.js {
-        render :update do |page|
-          page.replace_html 'results', :partial => 'pictures_list'
-        end
-      }
-    end
+#    @pictures = Picture.paginate :per_page => ENV['PER_PAGE'], :page => params[:page],
+#      :order => 'created_at DESC'
+#
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.xml  { render :xml => @pictures }
+#      format.js {
+#        render :update do |page|
+#          page.replace_html 'results', :partial => 'pictures_list'
+#        end
+#      }
+#    end
+    flash[:error] = "Wrong url. Please contact admin if problem persists..."
+    redirect_to root_path
   end
 
   # GET /pictures/1

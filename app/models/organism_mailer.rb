@@ -2,6 +2,7 @@
 class OrganismMailer < ActionMailer::Base
   
   helper :users
+  include ApplicationHelper
   
   def signup_notification_to_system_admin_or_modo(admin_or_modo, organism)
 
@@ -10,6 +11,7 @@ class OrganismMailer < ActionMailer::Base
     @subject    += I18n.t('organism_mailer.subject_an_organism_created')
 
     @body[:url]  = "#{ENV['SITE_URL']}/activate_organism/#{organism.activation_code}"
+    @body[:url_organism]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(organism)}"
   end
 
   def signup_notification_to_organism_admin_or_modo(admin_or_modo, organism)
@@ -17,21 +19,21 @@ class OrganismMailer < ActionMailer::Base
     #system_admin and system_modo, send this emails
     setup_email(admin_or_modo, organism)
     @subject    += I18n.t('organism_mailer.subject_your_organism_created')
-    @body[:url]  = "#{ENV['SITE_URL']}#{organisms_path(organism)}"
+    @body[:url]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(organism)}"
   end
 
   def activation_to_system_admin_or_modo(user, organism)
     #system_admin and system_modo, send this emails
     setup_email(user,organism)
     @subject    += I18n.t('organism_mailer.subject_your_organism_activated',:name => organism.name)
-    @body[:url]  = "#{ENV['SITE_URL']}#{organisms_path(organism)}"
+    @body[:url]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(organism)}"
   end
 
   def activation_to_organism_admin_or_modo(user, organism)
     #organism_admin and organism_modo, send this emails
     setup_email(user,organism)
     @subject    += I18n.t('organism_mailer.subject_your_organism_activated',:name => organism.name)
-    #@body[:url]  = "#{ENV['SITE_URL']}#{organisms_path(organism)}"
+    @body[:url]  = "#{ENV['SITE_URL']}#{url_for_even_polymorphic(organism)}"
   end
 
   protected

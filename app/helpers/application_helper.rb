@@ -356,5 +356,13 @@ module ApplicationHelper
 
 
 
+  def get_object_name(object)
+    if object.type == 'User'
+      get_user_name_or_pseudo(object)
+    else
+      object.name
+    end
+  end
+
 
 end
