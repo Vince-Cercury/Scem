@@ -1,3 +1,3 @@
 <%= render :partial => "/shared_templates/email_header" %>
-<%= t("organisms_user.creation_notification", :user => get_user_name_or_pseudo(@user), :url_member => link_to(@url_member,@url_member), :url_moderator=> link_to(@url_moderator,@url_moderator), :url_admin => link_to(@url_admin,@url_admin), :refuse =>link_to(@url_refuse,@url_refuse) ) %>
+<%= t("organisms_user_mailer.creation_notification", :user => get_user_name_or_pseudo(@user), :url_member => link_to(@url_member,@url_member), :url_moderator=> link_to(@url_moderator,@url_moderator), :url_admin => link_to(@url_admin,@url_admin), :refuse =>link_to(@url_refuse,@url_refuse) ) %>
 <%= render :partial => "/shared_templates/email_footer" %>
