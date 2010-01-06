@@ -117,7 +117,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-
+    
     @event = Event.new(params[:event])
     
 
@@ -139,17 +139,16 @@ class EventsController < ApplicationController
     set_session_parent_pictures_root_path(@event)
 
     #FIXME : put these default parameters in table structure instead
-    @event.is_charged=false
-    @event.is_private=false
+    #@event.is_charged=false
+    #@event.is_private=false
 
     #add the categories not to display in the list of categories of the event
     add_categories_not_to_display(@event)
 
 
-
     respond_to do |format|
       if @event.activate! #@event.save
-        
+       
         flash[:notice] = I18n.t('events.controller.Successfully_created')
         format.html { redirect_to(edit_event_path(@event, :only_details => true)) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
