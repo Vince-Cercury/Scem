@@ -75,7 +75,9 @@ module UsersHelper
 
   def get_user_name_or_pseudo(user)
     if user.facebook_user?
-      return user.first_name + " " + user.last_name
+      if user.first_name && user.last_name
+        return user.first_name + " " + user.last_name
+      end
     else
       return user.login
     end
