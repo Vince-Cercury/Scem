@@ -27,30 +27,23 @@ module UsersHelper
     small_width = "126px"
 
     if user.facebook_user?
-      case style
-      when "mini"
-        if user.fb_image_small
-          image = image_tag(user.fb_image_small, :height => mini_height,:alt => get_user_name_or_pseudo(user))
-        end
-      when :thumb
-        if user.fb_image
-          image = image_tag(user.fb_image, :width => thumb_width,:alt => get_user_name_or_pseudo(user))
-        end
-      when :small
-        if user.fb_image
-          image = image_tag(user.fb_image, :width => small_width,:alt => get_user_name_or_pseudo(user))
-        end
-      when :medium
-        if user.fb_image
-          image = image_tag(user.fb_image,:alt => get_user_name_or_pseudo(user))
-        end
-      when :large
-        if user.fb_image_big
-          image = image_tag(user.fb_image_big,:alt => get_user_name_or_pseudo(user))
-        end
+
+      if user.fb_image_small.blank? || user.fb_image.blank? || user.fb_image_big.blank?
+        image = get_default_user_cover(user, style)
       else
-        if user.fb_image
-          image = image_tag(user.fb_image,:alt => get_user_name_or_pseudo(user))
+        case style
+        when "mini"
+            image = image_tag(user.fb_image_small, :height => mini_height,:alt => get_user_name_or_pseudo(user))
+        when :thumb
+            image = image_tag(user.fb_image, :width => thumb_width,:alt => get_user_name_or_pseudo(user))
+        when :small
+            image = image_tag(user.fb_image, :width => small_width,:alt => get_user_name_or_pseudo(user))
+        when :medium
+            image = image_tag(user.fb_image,:alt => get_user_name_or_pseudo(user))
+        when :large
+            image = image_tag(user.fb_image_big,:alt => get_user_name_or_pseudo(user))
+        else
+            image = image_tag(user.fb_image,:alt => get_user_name_or_pseudo(user))
         end
       end
     else
