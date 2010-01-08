@@ -36,7 +36,7 @@
     </p>
     <% if current_user_equal(@user) %>
       <p>
-        <%= link_to(t('users.show.meet_friends'), new_event_path(:type => 'user_event')) %>
+        <%#= link_to(t('users.show.meet_friends'), new_event_path(:type => 'user_event')) %>
       </p>
       <p>
         <%= link_to(t('organism_events.index.Create_new_event'), new_event_path) %>
