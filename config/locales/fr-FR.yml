@@ -1093,10 +1093,14 @@ fr-FR:
           attributes:
             name:
               taken: "Déjà pris"
+        picture:
+          attributes:
+            attached:
+              invalid: "Ce fichier image n'est pas valide (jpeg, gif, png seulement)"
         gallery:
           attributes:
             pictures:
-              invalid: "Ce fichier image n'est pas valide"
+              invalid: "Ce fichier image n'est pas valide (jpeg, gif, png seulement)"
         event:
           attributes:
             terms:
