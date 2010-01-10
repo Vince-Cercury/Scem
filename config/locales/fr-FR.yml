@@ -251,7 +251,7 @@ fr-FR:
     show:
       Last_status: "Dernier statut :"
       Limited_profile: "(Cet utilisateur a un profil limit&eacute; car il n'est pas connect&eacute; avec Facebook)"
-      meet_friends: "Cr&eacute;er un &eacute;v&egrave;nement"
+      meet_friends: "Cr&eacute;er un rendez-vous"
       new_organism: "Cr&eacute;er un organisme"
       Create_account: "Compte cr&eacute;&eacute; le : "
     facebook:
@@ -296,7 +296,7 @@ fr-FR:
       Logged_in_as: "Connect&eacute; en tant que "
   organism_events:
     index:
-      Create_new_event: "Cr&eacute;er et partagez un nouvel &eacute;v&egrave;nement maintenant !"
+      Create_new_event: "Cr&eacute;er un nouvel &eacute;v&egrave;nement"
       Search: "Rechercher"
   organisms:
     mailing:
@@ -1096,10 +1096,14 @@ fr-FR:
           attributes:
             name:
               taken: "Déjà pris"
+        picture:
+          attributes:
+            attached:
+              invalid: "Ce fichier image n'est pas valide (jpeg, gif, png seulement)"
         gallery:
           attributes:
             pictures:
-              invalid: "Ce fichier image n'est pas valide"
+              invalid: "Ce fichier image n'est pas valide (jpeg, gif, png seulement)"
         event:
           attributes:
             terms:

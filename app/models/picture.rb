@@ -12,7 +12,7 @@ class Picture < ActiveRecord::Base
     :path => ":rails_root/public/system/uploads/:parent_root_path/Image/:id/:style.:extension"
 
   validates_attachment_presence :attached
-  validates_attachment_content_type :attached, :content_type => ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'] 
+  validates_attachment_content_type :attached, :content_type => ['image/jpg', 'image/pjpeg', 'image/jpeg', 'image/gif', 'image/png']
   validates_attachment_size :attached, :less_than => 6.megabytes
 
   #validates_presence_of :parent_id

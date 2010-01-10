@@ -5,7 +5,7 @@ loading = "$('spinner-pic').show(); " + "$('picture-show').hide(); " %>
   :loading => loading, :complete => complete, :method => :get) unless @picture.first_item? || @picture.previous_item.nil?%>
 <%  next_pic_link = link_to_remote( t('pictures.show.Next'),
   :url => url_for_even_polymorphic(@picture.next_item),
-  :loading => loading, :complete => complete, :method => :get) unless @picture.last_item? || @picture.next_item.nil?%>
+  :loading => loading, :complete => complete, :method => :get) unless @picture.last_item? || @picture.next_item.nil? %>
 <div id="results">
   <%= render :partial => "header" %>
   <div class="pictureShowContent">
@@ -25,7 +25,11 @@ loading = "$('spinner-pic').show(); " + "$('picture-show').hide(); " %>
     <% end %>
 
     <div class="pictureShowPicure" id="picture-show">
-      <%= link_to(image_tag(@picture.attached.url(:large)),get_picture_polymorphic_parent_url(@picture)) %>
+      <% if @picture.last_item? || @picture.next_item.nil? %>
+        <%= link_to(image_tag(@picture.attached.url(:large)),get_picture_polymorphic_parent_url(@picture)) %>
+      <% else %>
+        <%= link_to_remote(image_tag(@picture.attached.url(:large)), :url => url_for_even_polymorphic(@picture.next_item), :loading => loading, :complete => complete, :method => :get) %>
+      <% end %>
     </div>
     <div id="spinner-pic" class="pictureShowPicure" style="display:none;">
       <!--<img id ="yop" src="/images/spinner.gif" alt="Refreshing calendar" />-->

@@ -5,8 +5,13 @@
         <% event=term.event %>
         <div class="listTermSeparator">
           <div class="kangooDate">
-            <div class="kangooDayDate"><%= l(term.start_at,:format => 'day_number') %></div>
-            <div class="kangooMonthDate"><%= l(term.start_at,:format => 'only_short_month') %></div>
+            <% if @the_selected_date %>
+              <div class="kangooDayDate"><%= l(@the_selected_date,:format => 'day_number') %></div>
+              <div class="kangooMonthDate"><%= l(@the_selected_date,:format => 'only_short_month') %></div>
+            <% else %>
+              <div class="kangooDayDate"><%= l(term.start_at,:format => 'day_number') %></div>
+              <div class="kangooMonthDate"><%= l(term.start_at,:format => 'only_short_month') %></div>
+            <% end %>
           </div>
 
 
