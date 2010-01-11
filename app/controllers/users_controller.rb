@@ -59,6 +59,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
+    # do not check passwords
+    @user.set_validate_password(false)
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         flash[:notice] = I18n.t("users.update_success")
