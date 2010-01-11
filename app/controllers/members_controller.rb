@@ -154,7 +154,7 @@ class MembersController < ApplicationController
 
     if organism_user && !organism_user.active?
       organism_user.activate!
-      flash[:notice] = I18n.t('members.controller.Now_member_organism')
+      flash[:notice] = I18n.t('members.controller.Member_added')
       redirect_to(organism)
     elsif organism_user && organism_user.active?
       if organism_user.role != params[:role]

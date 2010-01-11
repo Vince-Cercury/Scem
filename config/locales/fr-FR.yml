@@ -776,7 +776,8 @@ fr-FR:
     Search: "Rechercher"
     controller:
       Update_done: "Modification effectu&eacute;e."
-      Now_member_organism: "L'utilisateur &eacute;t&eacute ajout&eacute."
+      Member_added: "L'utilisateur &eacute;t&eacute ajout&eacute."
+      Now_member_organism: "Vous &ecirc;tes d&eacute;sormais membre de cet organisme."
       Membership_pending: "Votre demande est en attente d'acceptation par un mod&eacute;rateur."
       Updating_error: "Une erreur s'est produite durant la modification."
       Incorrect_parameter: "Un param&egrave;tre est manquant ou incorrecte"
