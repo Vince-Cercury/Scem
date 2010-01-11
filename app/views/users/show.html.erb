@@ -30,10 +30,10 @@
       <%= @user.first_name %>
       <%= @user.last_name %>
     </p>
-    <p>
-      <%= t('users.show.Create_account') %>
-      <%= @user.created_at %>
-    </p>
+    <%#*<p>%>
+      <%#= t('users.show.Create_account') %>
+      <%#= @user.created_at %>
+    <%#*</p>%>
     <% if current_user_equal(@user) %>
       <p>
         <%#= link_to(t('users.show.meet_friends'), new_event_path(:type => 'user_event')) %>
