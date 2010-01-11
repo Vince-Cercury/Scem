@@ -2,7 +2,7 @@ class Organism < ActiveRecord::Base
   include SharedMethods
   before_validation :remove_whitespace_from_name
 
-  attr_accessible :name, :activity_ids, :description_short, :description_long, :manager_name, :phone, :street, :city
+  attr_accessible :name, :activity_ids, :description_short, :description_long, :manager_name, :phone, :street, :city, :members_password, :admins_password, :moderators_password
 
 
   has_friendly_id :name, :use_slug => true, :strip_diacritics => true #, :reserved => ["new","edit"]

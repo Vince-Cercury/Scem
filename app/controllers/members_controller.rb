@@ -20,8 +20,8 @@ class MembersController < ApplicationController
   # GET /terms
   # GET /terms.xml
   def index
-      @organism = Organism.find(params[:organism_id])
-      @users = @organism.search_users(params[:search], params[:page])
+    @organism = Organism.find(params[:organism_id])
+    @users = @organism.search_users(params[:search], params[:page])
 
 
     respond_to do |format|
@@ -69,41 +69,41 @@ class MembersController < ApplicationController
     organism_user = organism.organisms_users.find(:first, :conditions => ["user_id=? ", self.current_user.id])
 
     
-
+    todo=''
     if(organism_user.nil?)
       organism_user = OrganismsUser.new
       organism_user.organism_id=params[:organism_id]
       organism_user.user_id=current_user.id
       organism_user.role=params[:role]
-      organism_user.register! #unless params[:members_password] && params[:members_password] == organism.members_password
+      todo = 'register'
+      #organism_user.register! #unless params[:members_password] && params[:members_password] == organism.members_password
     else
       organism_user.role=params[:role]
     end
 
-
-
-    accepted = false
-
+    
     if (params[:members_password] && params[:members_password] == organism.members_password) or organism.members_password.blank?
       organism_user.role = 'member'
-      accepted = true
-      flash[:notice] = I18n.t('members.controller.Now_member_organism')
+      todo = 'activate'
     end
+    
 
     if params[:members_password] && params[:members_password] == organism.moderators_password
       organism_user.role = 'moderator'
-      accepted = true
-      flash[:notice] = I18n.t('members.controller.Now_member_organism')
+      todo = 'activate'
     end
 
     if params[:members_password] && params[:members_password] == organism.admins_password
       organism_user.role = 'admin'
-      accepted = true
-      flash[:notice] = I18n.t('members.controller.Now_member_organism')
+      todo = 'activate'
     end
     
-    if accepted
+    if todo=='activate'
       organism_user.activate!
+      flash[:notice] = I18n.t('members.controller.Now_member_organism')
+    elsif todo=='register'
+      organism_user.register!
+      flash[:notice] = I18n.t('members.controller.Membership_pending')
     else
       flash[:notice] = I18n.t('members.controller.Membership_pending')
     end

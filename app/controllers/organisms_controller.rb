@@ -123,6 +123,7 @@ class OrganismsController < ApplicationController
     
     respond_to do |format|
       if @organism.update_attributes(params[:organism])
+
         flash[:notice] = I18n.t('organisms.controller.Successfully_updated')
         format.html { redirect_to(@organism) }
         format.xml  { head :ok }

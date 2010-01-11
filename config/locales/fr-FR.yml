@@ -622,8 +622,10 @@ fr-FR:
   organisms_user_mailer:
     activation_notification: "<p>Bonjour {{user}},</p><br /><p>Vous &ecirc;tes maintenant {{role}} de {{organism_name}}</p><p>Vous pouvez acc&eacute;der &agrave; la page de l'organisme en cliquant sur le lien suivant : </p><p>{{url}}</p><br />Cordialement<br /><br />L'&eacute;quipe LeBounce."
     creation_notification: "<p>Bonjour, </p><br /><p>Cet utilisateur souhaite devenir membre : {{user}}</p><p>Vous pouvez : </p><p>   - l'accepter comme membre : {{url_member}} </p><p>   - l'accepter comme mod&eacute;rateur : {{url_moderator}} </p><p>   - l'accepter comme administrateur : {{url_admin}} </p><p>   - le refuser : {{refuse}} </p><br /><p>Cordialement, </p><p>L'&eacute;quipe LeBounce.com</p>"
+    creation_notification_accepted: "<p>Bonjour, </p><br /><p>Cet utilisateur est devenu membre : {{user}}!</p><br /><p>Vous pouvez &eacute;ventuellement: </p><p>   - le d&eacute;signer mod&eacute;rateur : {{url_moderator}} </p><p>   - le d&eacute;signer  administrateur : {{url_admin}} </p><p>   - le refuser : {{refuse}} </p><br /><p>Cordialement, </p><p>L'&eacute;quipe LeBounce.com</p>"
     subject_role_updated: "Vous avez maintenant le rôle {{role}} de {{name}}"
     subject_member_request: "Requête de membre {{name}}"
+    subject_member_request_accepted: "Un utilisateur est devenu membre de {{name}}"
     admin: "administrateur"
     moderator: "mod&eacute;rateur"
     member: "membre"
@@ -774,7 +776,7 @@ fr-FR:
     Search: "Rechercher"
     controller:
       Update_done: "Modification effectu&eacute;e."
-      Now_member_organism: "Vous &ecirc;tes d&eacute;sormais membre de cet organisme."
+      Now_member_organism: "L'utilisateur &eacute;t&eacute ajout&eacute."
       Membership_pending: "Votre demande est en attente d'acceptation par un mod&eacute;rateur."
       Updating_error: "Une erreur s'est produite durant la modification."
       Incorrect_parameter: "Un param&egrave;tre est manquant ou incorrecte"
