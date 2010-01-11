@@ -18,7 +18,7 @@ class OrganismsUserObserver < ActiveRecord::Observer
   def after_save(organisms_user)
     organisms_user.reload
 
-    OrganismsUserMailer.deliver_activation_notification(organisms_user.user, organisms_user.organism, organisms_user.role) if organisms_user.active? unless organisms_user.user.email==""
+    OrganismsUserMailer.deliver_activation_notification(organisms_user.user, organisms_user.organism, organisms_user.role) if organisms_user.active? && organisms_user.organism.active? unless organisms_user.user.email==""
     
   end
 end
