@@ -7,13 +7,16 @@
 
       <% if comment.suspended?  %>
         <div class="quiet">
-          <%= t('comments.content.Suspend') %> <%= time_ago_in_words(comment.suspended_at) %> <%= t('comments.content.ago_by') %> <%= get_user_name_or_pseudo_by_id(comment.suspended_by) %>
+          <%= t('comments.content.Suspended') %> <%= time_ago_in_words(comment.suspended_at) %> <%= t('comments.content.ago_by') %> <%= get_user_name_or_pseudo_by_id(comment.suspended_by) %>
         </div>
       <% end %>
       <% if comment.edited? or comment.active?  %>
         <%= comment.text %>
         <div class="commentaireRightEdit">
-            <%= t('comments.content.Created') %><%= time_ago_in_words(comment.created_at) %> <%= t('comments.content.ago') %> <%=  edit_comment_if_not_too_late(comment.created_at, comment) %>
+            <%= t('comments.content.Created') %><%= time_ago_in_words(comment.created_at) %> <%= t('comments.content.ago') %>
+
+            <%=  edit_comment_if_not_too_late(comment.created_at, comment) %>
+            <%= suspend_comment_if_allowed(comment) %>
         </div>
       <% end %>
       <% if comment.edited? %>

@@ -1016,7 +1016,9 @@ fr-FR:
     create:
       Create: "Cr&eacute;er"
     content:
-      Suspend: "Commentaire suspendu il y a "
+      Edit: "Editer"
+      Suspend: "Supprimer"
+      Suspended: "Commentaire suspendu il y a "
       ago_by: " par "
       ago: " "
       Created: "Cr&eacute;&eacute; il y a "

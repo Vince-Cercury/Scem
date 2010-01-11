@@ -23,22 +23,22 @@ ActionController::Routing::Routes.draw do |map|
     organism.resources :events, :controller => 'organism_events'
     organism.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |post|
-      post.resources :comments, :member => { :suspend   => :get,
+      post.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
         :unsuspend => :get,
         :activate     => :get }
     end
     organism.resources :galleries, :member => {:set_cover => :get, :move_a_pic => :get, :add_pics => :get,  :edit_pics => :get,  :do_add_pics => :put   } do |gallery|
       gallery.resources :pictures, :member => { :suspend   => :get,
         :unsuspend => :get, :activate => :get  } do |picture|
-        picture.resources :comments, :member => { :suspend   => :get,
+        picture.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
           :unsuspend => :get,
           :activate     => :get }
       end
-      gallery.resources :comments, :member => { :suspend   => :get,
+      gallery.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
         :unsuspend => :get,
         :activate     => :get }
     end
-    organism.resources :comments, :member => { :suspend   => :get,
+    organism.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
       :unsuspend => :get,
       :activate     => :get }
     organism.resources :members, :collection =>{ #:create_relation => :get,
@@ -51,7 +51,7 @@ ActionController::Routing::Routes.draw do |map|
       :refuse => :get}
     organism.resources :pictures, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |picture|
-      picture.resources :comments, :member => { :suspend   => :get,
+      picture.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
         :unsuspend => :get,
         :activate     => :get }
     end
@@ -67,7 +67,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :organisms_terms, :controller => 'user_organisms_terms'
     user.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |post|
-      post.resources :comments, :member => { :suspend   => :get,
+      post.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
         :unsuspend => :get,
         :activate     => :get }
     end
@@ -79,26 +79,27 @@ ActionController::Routing::Routes.draw do |map|
     event.resources :galleries, :member => {:set_cover => :get, :move_a_pic => :get, :add_pics => :get,  :edit_pics => :get,  :do_add_pics => :put   } do |gallery|
       gallery.resources :pictures, :member => { :suspend   => :get,
         :unsuspend => :get, :activate => :get  }do |picture|
-        picture.resources :comments, :member => { :suspend   => :get,
+        picture.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
           :unsuspend => :get,
           :activate     => :get }
       end
-      gallery.resources :comments, :member => { :suspend   => :get,
+      gallery.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
         :unsuspend => :get,
         :activate     => :get }
     end
-    event.resources :comments, :member => { :suspend   => :get,
+    event.resources :comments, :member => { :remote_suspend   => :get,
+      :suspend   => :get,
       :unsuspend => :get,
       :activate     => :get } 
     event.resources :posts, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  } do |post|
-      post.resources :comments, :member => { :suspend   => :get,
+      post.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
         :unsuspend => :get,
         :activate     => :get }
     end
     event.resources :pictures, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |picture|
-      picture.resources :comments, :member => { :suspend   => :get,
+      picture.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
         :unsuspend => :get,
         :activate     => :get }
     end
@@ -133,7 +134,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users do |user|
     user.resources :pictures, :member => { :suspend   => :get,
       :unsuspend => :get, :activate => :get  }do |picture|
-      picture.resources :comments, :member => { :suspend   => :get,
+      picture.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
         :unsuspend => :get,
         :activate     => :get }
     end
@@ -157,7 +158,7 @@ ActionController::Routing::Routes.draw do |map|
     :rate => :get }
 
   #deprecated
-  map.resources :comments, :member => { :suspend   => :get,
+  map.resources :comments, :member => { :remote_suspend => :get, :suspend   => :get,
     :unsuspend => :get,
     :activate     => :get }
 

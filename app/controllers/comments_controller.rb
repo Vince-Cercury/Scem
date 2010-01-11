@@ -168,6 +168,25 @@ class CommentsController < ApplicationController
     end
   end
 
+  def remote_suspend
+    @comment = Comment.find(params[:comment_id])
+
+    if current_user
+      @comment.suspended_by = current_user.id
+      @comment.suspend!
+    end
+
+		respond_to do |format|
+			#format.html
+			#format.xml { render :xml => @comment }
+      format.js {
+        render :update do |page|
+          page.replace_html "comment_#{@comment.id}-content", :partial => 'content', :locals => {:comment => @comment}
+        end
+      }
+    end
+  end
+
   # PUT /users/1/suspend
   def suspend
     @comment = Comment.find(params[:id])
