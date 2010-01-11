@@ -6,7 +6,7 @@ class OrganismsUserMailer < ActionMailer::Base
     
     #organism_admin and organism_modo, send this emails
     setup_email(admin_or_modo,user, organism, role)
-    @subject    += I18n.t('organisms_user.subject_member_request', :name => organism.name)
+    @subject    += I18n.t('organisms_user_mailer.subject_member_request', :name => organism.name)
 
     @body[:state] = state
     @body[:role] = role
@@ -20,7 +20,7 @@ class OrganismsUserMailer < ActionMailer::Base
   def activation_notification(user, organism, role)
     #organism_admin and organism_modo, send this emails
     setup_email(user, user, organism, role)
-    @subject    += I18n.t('organisms_user.subject_role_updated',:role =>role, :name => organism.name)
+    @subject    += I18n.t('organisms_user_mailer.subject_role_updated',:role =>role, :name => organism.name)
     @body[:role] = role
     @body[:url]  = "#{ENV['SITE_URL']}#{organism_path(organism)}"
   end
