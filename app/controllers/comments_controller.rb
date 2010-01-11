@@ -209,7 +209,7 @@ class CommentsController < ApplicationController
   private
 
   def has_current_user_moderation_rights
-    comment = Comment.find(params[:id])
+    comment = Comment.find(params[:comment_id])
     commentable_object = Comment.find_commentable(comment.commentable_type, comment.commentable_id)
 
     comment && self.current_user && (commentable_object.is_user_moderator?(self.current_user) or self.current_user.has_system_role('moderator'))
