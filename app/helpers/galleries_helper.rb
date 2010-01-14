@@ -1,7 +1,7 @@
 module GalleriesHelper
   def display_gallery_cover(gallery, style)
     if gallery.cover.nil?
-      link_to(image_tag("default/gallery/#{style}/1.jpg",:alt => gallery.name), polymorphic_path([gallery.get_parent_object, gallery].flatten), :title => gallery.name)
+      link_to(image_tag("default/gallery/#{style}/1.png",:alt => gallery.name), polymorphic_path([gallery.get_parent_object, gallery].flatten), :title => gallery.name)
     else
       link_to(image_tag(gallery.cover.attached.url(style),:alt => gallery.name), polymorphic_path([gallery.get_parent_object, gallery].flatten), :title => gallery.name)
     end
