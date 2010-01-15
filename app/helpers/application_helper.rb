@@ -308,6 +308,14 @@ module ApplicationHelper
     end
   end
 
+  def is_allowed_to_create_gallery?(current_object)
+    if current_user && current_object.is_allowed_to_create_gallery?(current_user)
+      return true
+    else
+      return false
+    end
+  end
+
 
   def url_for_even_polymorphic(object, options = {})
     

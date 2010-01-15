@@ -352,6 +352,40 @@ class Event < ActiveRecord::Base
 	
   end
 
+  def is_allowed_to_create_gallery?(user)
+    result = false
+    if(user)
+      if  user.has_system_role('moderator')
+        result = true
+      end
+
+
+      if(created_by==user.id)
+        result = true
+      end
+
+      self.publishers.each do |organism|
+        if organism.is_user_moderator?(user)
+          result = true
+        end
+      end
+
+      self.organizers.each do |organism|
+        if organism.is_user_moderator?(user)
+          result = true
+        end
+      end
+
+      self.partners.each do |organism|
+        if organism.is_user_moderator?(user)
+          result = true
+        end
+      end
+    end
+    return result
+
+  end
+
   def is_user_member?(user)
     result = false
 
