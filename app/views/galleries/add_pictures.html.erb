@@ -13,7 +13,7 @@
 
         <%= link_to_function t('galleries.add_picture.Add_picture'), nil, :id => "more_pic" do |page|
           page << "if ( typeof( window['counter'] ) == 'undefined' ) {counter=0}"
-          page << "if(counter < 6) {"
+          page << "if(counter < 22) {"
             page.insert_html :bottom, :pictures, :partial => 'picture', :object => Picture.new
             page << "counter += 1"
           page << "}else{"
