@@ -54,7 +54,7 @@ body {font-size:75%;
 /*--- CORPS ---*/
 .subheader {background-image:url('/images/body/french/corps.png');
             background-repeat:repeat-y;
-            margin: 0 0 0 -1px;
+            margin: 0 0 0 0;
             float: left;
             width: 988px;
             height: 100%;}
@@ -120,6 +120,8 @@ body {font-size:75%;
 /* Partners box*/
 .partnersbox {background:#fff; padding: 10px 5px 5px 20px;  margin: -1px 0 25px 0;}
 
+/* Partners box*/
+.facebookbox {background:#fff; padding: 0;  margin: -1px 0 25px 0;}
 
 
 /*--- PUBLICITEE ---*/
