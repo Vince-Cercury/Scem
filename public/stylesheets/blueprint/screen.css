@@ -265,7 +265,7 @@ body {font-size:75%;
 .organismHeaderNotation{width: 150px;  min-height: 72px;  padding: 30px 5px 0 5px; float: right; text-align:center;}
 .organismHeader h1{font-size: 20px;}
 /*SHOW*/
-    .organismShowBody{width: 688px; padding: 0 0 0 0; margin: 0; background: #fff; overflow: auto;}
+.organismShowBody{width: 688px; padding: 0 0 0 0; margin: 0; background: #fff; overflow: auto;}
 .organismShowBodyLeft{width: 252px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
 .organismShowBodyLeft img {margin: 10px 0;}
 .organismShowBodyLeftContent {width: 252px; padding: 0px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; font-weight: bold;}
@@ -281,6 +281,9 @@ body {font-size:75%;
 .organismShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
 .organismDescription{width: 678px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
 .organismBecomeMember{width: 688px; margin: 0 0 0 0; padding: 5px 0  5px 0; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
+.organismShowBouton p {text-align: right;}
+.organismShowBouton a {background:#000; color:#fff; padding: 5px; font-weight: bold;}
+.organismShowBouton a:hover {background:#ffb500; color:#000;}
 /*EDIT*/
 .organismEditBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; text-indent: 30px; margin: 0 0 0 0;}
 .organismEditBodyLeft{width: 302px; padding: 5px 5px 5px 5px; margin: 0 0 0 0; background: #fff; float: left; text-align: center; margin-bottom:5px;}
