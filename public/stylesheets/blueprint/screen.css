@@ -68,7 +68,7 @@ body {font-size:75%;
 
 /*Non utilisé mais a conserver*/
 .list{width: 668px; margin: 0; padding: 5px 5px 5px 5px; background: #000; float: left;}
-.listSeparator{position:relative; width: 668px; margin: 5px 0 0 0; padding: 0; background: #fff; float: left; text-align: center; overflow: auto;}
+.listSeparator{position:relative; width: 668px; margin: 10px 0 0 0; padding: 0; background: #fff; float: left; text-align: center; overflow: auto;}
 .listLeft{width:141px; margin: 0; padding: 5px; background: #fff; float: left; text-align: left;}
 .listRight{width:507px; margin: 0; padding: 5px; background: #fff; float: right; text-align: left;}
 .listRight h4 {font-size: 16px; text-align:center;}
