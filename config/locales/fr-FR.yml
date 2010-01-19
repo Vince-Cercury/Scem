@@ -358,6 +358,7 @@ fr-FR:
     list:
       Sorry_no_result: "D&eacute;sol&eacute;, aucun r&eacute;sultat"
     show:
+      Share: "Partager cet &eacute;v&eacute;nement sur votre r&eacute;seaux :"
       Attach_picture: "Joindre une photo !"
       Change_image: "Changer l'image"
       Publish_Facebook_wall: "Publier l'organisme sur mon mur Facebook"
@@ -367,7 +368,7 @@ fr-FR:
       Activities: "Activit&eacute;es :"
       Admins: "Administrateurs :"
       Moderators: "Mod&eacute;rateurs :"
-      Not_be_a_member_anymore: "Se d&eacute;sinscrire"
+      Not_be_a_member_anymore: "Ne plus &#234;tre membre"
       Cancel_membership_pending_activation: "Annuler la demande de membre en attente"
       Optional_password: "Mot de passe optionnel :"
       only_if_u_know_it: " (seulement si vous le connaissez, facultatif)"
@@ -375,7 +376,6 @@ fr-FR:
       All_members: "Tout les membres"
       Address: "Adresse :"
       Become_member: "Devenir membre"
-      Member_action: "Membre :"
     new:
       Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. L'organisme est soumis &agrave; une validation de la part des mod&eacute;rateurs du Bounce, dans cette premi&egrave;re &eacute;tape nous vous demandons de bien vouloir remplir les informations indispensables à cette validation.."
       Create: "Cr&eacute;er"

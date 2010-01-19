@@ -197,6 +197,14 @@ class Organism < ActiveRecord::Base
   #    no_permission_redirection unless is_user_moderator?(user)
   #	end
 
+  def is_allowed_to_create_gallery?(user)
+    if user
+      user && (self.moderators.include?(user) or self.admins.include?(user)) or user.has_system_role('moderator')
+    else
+      return false
+    end
+	end
+
   def is_user_moderator?(user)
     if user
       user && (self.moderators.include?(user) or self.admins.include?(user)) or user.has_system_role('moderator')

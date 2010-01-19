@@ -1,7 +1,7 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 
-class SearchsTools
+class SearchsTools # < ActiveRecord::Base
 
   def self.prepare_conditions(search, search_attributes, more_conditions='', more_conditions_param=Array.new)
 
@@ -44,6 +44,7 @@ class SearchsTools
 
     conditions =  [search_query] + search_keyword
     #raise conditions.inspect
+
     return conditions
   end
 

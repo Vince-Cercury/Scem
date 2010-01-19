@@ -54,7 +54,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       if organism_user.save
         flash[:notice] = I18n.t('members.controller.Update_done')
-        format.html { redirect_back_or_default('/') }
+        format.html { redirect_to(organism) }
         format.xml  { head :ok }
       else
         format.html { render :action => "new" }
@@ -111,7 +111,7 @@ class MembersController < ApplicationController
     
     respond_to do |format|
       if organism_user      
-        format.html { redirect_back_or_default('/') }
+        format.html { redirect_to(organism) }
         format.xml  { head :ok }
       else
         format.html { render :action => "new" }
@@ -128,7 +128,7 @@ class MembersController < ApplicationController
     organism_user.destroy unless(organism_user.nil?)
 
     respond_to do |format|
-      format.html { redirect_back_or_default('/') }
+      format.html { redirect_to(organism) }
       format.xml  { head :ok }
     end
   end
@@ -141,7 +141,7 @@ class MembersController < ApplicationController
     organism_user.destroy unless(organism_user.nil?)
 
     respond_to do |format|
-      format.html { redirect_back_or_default('/') }
+      format.html { redirect_to(organism) }
       format.xml  { head :ok }
     end
   end

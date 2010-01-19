@@ -27,9 +27,9 @@
               <div class="listTermRightContentRight">
 
                 <% if @show_end_date%>
-                  <%=  display_term_box(term.start_at, term.end_at) %>
+                  <b><%=  display_term_box(term.start_at, term.end_at) %></b>
                 <% else %>
-                  <%=  display_date_box(term.start_at) %>
+                  <b><%=  display_date_box(term.start_at) %></b>
                 <% end %>
 
                 <% if !h(term.description).blank? %>

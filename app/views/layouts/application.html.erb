@@ -3,6 +3,8 @@
   <head>
     <title><%= get_page_title %></title>
     <meta name="description" content="LeBounce référence tous les évènements d'Angers et la région. Sortir, partager, s'informer, rencontrer, n'a jamais été aussi facile. Tous les concerts, les boîtes de nuits, les restaurants, les festivals, les associations, les fêtes sont là." />
+    <meta name="keywords" content="Le Bounce, Angers, Sortir, Agir, étudiant, association, évènement, soirée, culture, tonus, sport, concert, festival, bar, restaurant" />
+ 
 <%#= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'livevalidation' %>
     <%= stylesheet_link_tag 'swapselect' %>
@@ -44,7 +46,7 @@
       <%= GMap.header %>
       <%= @map.to_html %>
     <% end %>
-  <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   </head>
   <body>
 
@@ -169,6 +171,14 @@
 
           <!-- Right column -->
           <div class="contentright">
+            <%#*<div class="facebookbox">%>
+              <%#*<script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_GB"></script>%>
+              <%#*<script type="text/javascript">FB.init("a9d92ba216c544f61a752bf756df9a10");</script>%>
+              <%#*<fb:fan profile_id="196337074427" stream="0" connections="0" logobar="0" width="241"></fb:fan>%>
+              <%#*<div style="font-size:14px; padding-left:10px">%>
+                <%#*<a href="http://www.facebook.com/pages/Le-Bounce/196337074427">Le Bounce</a> sur Facebook%>
+              <%#*</div>%>
+            <%#*</div>%>
             <div class="sidebar">
               <div class="titlesearch">
              <!--  <h3 class="caps"><%= t("side_bar.search_into") %> <%#=  get_current_search_model_type %></h3>-->
@@ -176,9 +186,9 @@
               <div class="searchboxbar">
                 <% form_tag searchs_path, :method => 'get' do %>
 
-                  <%# if !params[:period].blank? %>
-                    <%#= hidden_field_tag :period, params[:period] %>
-                  <%# end %>
+  <%# if !params[:period].blank? %>
+  <%#= hidden_field_tag :period, params[:period] %>
+  <%# end %>
   <%# if !params[:date].blank? %>
   <%#= hidden_field_tag :date, params[:date] %>
   <%# end %>
@@ -215,19 +225,19 @@
         </div>
 
 
-      
-      <div class="subFooter">
-        <script type="text/javascript"><!--
-          google_ad_client = "pub-3129952355573123";
-          /* 728x90, date de création 02/11/09 */
-          google_ad_slot = "5713324159";
-          google_ad_width = 728;
-          google_ad_height = 90;
-          //-->
-        </script>
-        <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-      </div>
+
+        <div class="subFooter">
+          <script type="text/javascript"><!--
+            google_ad_client = "pub-3129952355573123";
+            /* 728x90, date de création 02/11/09 */
+            google_ad_slot = "5713324159";
+            google_ad_width = 728;
+            google_ad_height = 90;
+            //-->
+          </script>
+          <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+          </script>
+        </div>
       </div>
     </div>
 
