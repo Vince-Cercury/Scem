@@ -54,7 +54,7 @@ body {font-size:75%;
 /*--- CORPS ---*/
 .subheader {background-image:url('/images/body/french/corps.png');
             background-repeat:repeat-y;
-            margin: 0 0 0 0;
+            margin: 0 auto;
             float: left;
             width: 988px;
             height: 100%;}
