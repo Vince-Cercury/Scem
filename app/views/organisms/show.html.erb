@@ -86,9 +86,9 @@
         <% end %>
       </p>
     <% end %>
-    
-      <% if logged_in? -%>
-<div class="organismShowBouton">
+
+    <% if logged_in? -%>
+      <div class="organismShowBouton"> 
         <% if @organism.is_user_related?(current_user) %>
           <p>
             <%= link_to t('organisms.show.Not_be_a_member_anymore'), { :controller => "members", :action => "destroy_current_user_relation", :organism_id => @organism.id  }%>
@@ -115,8 +115,8 @@
         <% end  %>
       </div>
     <% end  %>
- </div>
   </div>
+</div>
 
 <% if @organism.description_long && @organism.description_long!='' %>
 
