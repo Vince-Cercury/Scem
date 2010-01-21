@@ -12,7 +12,7 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.xml
   def index
-
+    
     if params[:organism_id]
       @parent_object = @organism = Organism.find(params[:organism_id])
       @galleries = @organism.search_galleries(params[:search], params[:page])
