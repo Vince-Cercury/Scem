@@ -5,6 +5,9 @@ class PicturesController < ApplicationController
   before_filter :ensure_moderator_edit_rights?, :only => [:edit, :update, :suspend]
   before_filter :ensure_has_current_user_moderation_rights, :only => [:activate, :unsuspend]
 
+  # logged in mandatory to view a picture full size
+  before_filter :is_logged?, :only => [:show]
+
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:show, :index]
 
