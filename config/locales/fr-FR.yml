@@ -689,6 +689,7 @@ fr-FR:
       Message: "Message :"
   pictures:
     controller:
+      You_ve_to_be_logged: "Vous devez &ecirc;tre connect&eacute; pour voir l'image ou la photo."
       Successfully_created: "L'image a &eacute;t&eacute; cr&eacute;&eacute;e avec succ&egrave;s."
       Successfully_updated: "L'image a &eacute;t&eacute; modifi&eacute;e avec succ&egrave;s."
       Cant_find_picture: "Nous ne pouvons pas trouer la photo."

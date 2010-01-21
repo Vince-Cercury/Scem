@@ -5,13 +5,11 @@ class PicturesController < ApplicationController
   before_filter :ensure_moderator_edit_rights?, :only => [:edit, :update, :suspend]
   before_filter :ensure_has_current_user_moderation_rights, :only => [:activate, :unsuspend]
 
-  # logged in mandatory to view a picture full size
-  before_filter :is_logged?, :only => [:show]
-
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:show, :index]
 
-
+  # logged in mandatory to view a picture full size
+  before_filter :ensure_is_logged_show_picture?, :only => [:show]
 
 
   # GET /pictures
@@ -263,5 +261,15 @@ class PicturesController < ApplicationController
     flash[:error] =  I18n.t('pictures.controller.Not_visible')
     redirect_to root_path
   end
-  
+
+    # store the current location in case of an atempt to login, for redirecting back
+	def ensure_is_logged_show_picture?
+    if current_user
+      return true
+    else
+      store_location
+      flash[:error] = I18n.t('pictures.controller.You_ve_to_be_logged')
+      redirect_to login_path
+    end
+  end
 end
