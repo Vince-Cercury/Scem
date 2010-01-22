@@ -2,10 +2,10 @@
 loading = "$('spinner-pic').show(); " + "$('picture-show').hide(); " %>
 <%  prev_pic_link = link_to_remote( t('pictures.show.Previous'),
   :url => url_for_even_polymorphic(@picture.previous_item),
-  :loading => loading, :complete => complete, :method => :get) unless @picture.first_item? || @picture.previous_item.nil?%>
+  :loading => loading, :complete => complete, :method => :get) unless @picture.previous_item.nil?%>
 <%  next_pic_link = link_to_remote( t('pictures.show.Next'),
   :url => url_for_even_polymorphic(@picture.next_item),
-  :loading => loading, :complete => complete, :method => :get) unless @picture.last_item? || @picture.next_item.nil? %>
+  :loading => loading, :complete => complete, :method => :get) unless @picture.next_item.nil? %>
 <div id="results">
   <%= render :partial => "header" %>
   <div class="pictureShowContent">
