@@ -288,20 +288,33 @@ class FacebookController < ApplicationController
           data = data = file.read
           mpf = Net::HTTP::MultipartPostFile.new(@term.event.picture.attached_file_name,nil,data)
 
-          event_eid = facebook_session.create_event(facebook_event_info(@term), mpf)
+          success = -1
+          begin
+            # we first try the normal way
+            event_eid = facebook_session.create_event(facebook_event_info(@term), mpf)
+            success = 1
+          rescue
+            # something went wrong, trying without specifying the city (in case it's unknow)
+            event_eid = facebook_session.create_event(facebook_event_info(@term, false), mpf)
+            success = 0
+          end
           file.close
-          @term.facebook_eid = event_eid
-          @term.updated_at = Time.now
+          
+          if success >= 0
+            @term.facebook_eid = event_eid
+            @term.updated_at = Time.now
+            @term.save(false)
+          end
           
           #if @term.save(false)
             #redirect to the Facebook event page
-            @term.save(false)
-            flash[:notice] = I18n.t('facebook.controller.Publish_event_success')
-            redirect_to @term.event
-#          else
-#            flash[:error] =  I18n.t('facebook.controller.Event_problem')
-#            redirect_to @term.event
-#          end
+            if success == 1
+              flash[:notice] = I18n.t('facebook.controller.Publish_event_success')
+              redirect_to @term.event
+            elsif success == 0
+              flash[:notice] =  I18n.t('facebook.controller.Publish_event_success_no_city')
+             redirect_to @term.event
+            end
         else
           flash[:error] = I18n.t('facebook.controller.Event_not_found')
           redirect_to root_path
@@ -340,7 +353,7 @@ class FacebookController < ApplicationController
 
   protected
 
-  def facebook_event_info(term)
+  def facebook_event_info(term, set_city=true)
     event = term.event
 
     if term.event.is_private
@@ -351,11 +364,11 @@ class FacebookController < ApplicationController
 
     if term.event.places.size > 0
       location = term.event.places.first.name + ' (' + url_for(term.event.places.first) + ')'
-      city = term.event.places.first.city
+      city = term.event.places.first.city if set_city
       street = term.event.places.first.street
     else
       location = term.event.location
-      city = term.event.city
+      city = term.event.city if set_city
       street = term.event.street
     end
 
