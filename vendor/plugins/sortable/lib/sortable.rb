@@ -158,6 +158,7 @@ module Huberry
           before_create :add_to_lists
           before_update :update_lists
           after_destroy :remove_from_lists
+          
           alias_method_chain :reload, :sortable
         end
       end

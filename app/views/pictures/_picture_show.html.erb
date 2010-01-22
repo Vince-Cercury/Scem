@@ -1,11 +1,11 @@
 <%  complete = "$('spinner-pic').hide(); " + "$('picture-show').show()"
 loading = "$('spinner-pic').show(); " + "$('picture-show').hide(); " %>
 <%  prev_pic_link = link_to_remote( t('pictures.show.Previous'),
-  :url => url_for_even_polymorphic(@picture.previous_item),
-  :loading => loading, :complete => complete, :method => :get) unless @picture.first_item? %>
+  :url => url_for_even_polymorphic(@picture.previous_item(:active)),
+  :loading => loading, :complete => complete, :method => :get) unless @picture.first_item?(:active) %>
 <%  next_pic_link = link_to_remote( t('pictures.show.Next'),
-  :url => url_for_even_polymorphic(@picture.next_item),
-  :loading => loading, :complete => complete, :method => :get) unless @picture.last_item? %>
+  :url => url_for_even_polymorphic(@picture.next_item(:active)),
+  :loading => loading, :complete => complete, :method => :get) unless @picture.last_item?(:active) %>
 <div id="results">
   <%= render :partial => "header" %>
   <div class="pictureShowContent">
@@ -25,10 +25,10 @@ loading = "$('spinner-pic').show(); " + "$('picture-show').hide(); " %>
     <% end %>
 
     <div class="pictureShowPicure" id="picture-show">
-      <% if @picture.last_item? || @picture.next_item.nil? %>
+      <% if @picture.last_item?(:active) %>
         <%= link_to(image_tag(@picture.attached.url(:large)),get_picture_polymorphic_parent_url(@picture)) %>
       <% else %>
-        <%= link_to_remote(image_tag(@picture.attached.url(:large)), :url => url_for_even_polymorphic(@picture.next_item), :loading => loading, :complete => complete, :method => :get) %>
+        <%= link_to_remote(image_tag(@picture.attached.url(:large)), :url => url_for_even_polymorphic(@picture.next_item(:active)), :loading => loading, :complete => complete, :method => :get) %>
       <% end %>
     </div>
     <div id="spinner-pic" class="pictureShowPicure" style="display:none;">

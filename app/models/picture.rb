@@ -1,6 +1,8 @@
 class Picture < ActiveRecord::Base
 
-  sortable :scope => [:parent_id, :parent_type, :state]
+  #sortable :scope => [:parent_id, :parent_type, :state]
+  sortable :scope => [:parent_id, :parent_type, :state], :column => :position_active, :list_name => :active
+  sortable :scope => [:parent_id, :parent_type, :state], :column => :position_unactive, :list_name => :unactive
 
   has_attached_file :attached, :styles => {
     :original => "1024x768>",
@@ -56,6 +58,8 @@ class Picture < ActiveRecord::Base
   def do_suspend
     @suspended = true
     self.suspended_at = Time.now.utc
+    self.remove_from_list!(:active)
+    self.add_to_list!(:unactive)
   end
 
   def do_activate
