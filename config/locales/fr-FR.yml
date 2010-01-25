@@ -204,7 +204,7 @@ fr-FR:
       events: "Les &eacute;v&eacute;nements de mes organismes"
     meetings: "Les rendez-vous"
     update_success: "Utilisateur mis &agrave; jour avec succ&egrave;s."
-    create_success: "Merci de vous &ecirc;tre inscris! Nous vous envoyons un email avec votre code d'activation."
+    create_success: "Merci de vous &ecirc;tre inscrit! Nous vous envoyons un email avec votre code d'activation."
     create_error: "Nous n'avons pas pu cr&eacute;er ce compte, d&eacute;sol&eacute;. Merci de r&eacute;essayer, ou contacter un administrateur."
     activate_success: "Inscription compl&egrave;te! Authentifiez-vous pour continuer."
     activate_code_missing: "Le code d'activation est absent. Merci de suivre le lien qui se trouve dans l'email."
