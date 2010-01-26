@@ -262,7 +262,7 @@ class Term < ActiveRecord::Base
       :page => page,
       :conditions => ['events.name LIKE ? and events.is_private = ?  and categories_events.category_id = ? and start_at < ? and end_at > ? and events.state = ?', "%#{search}%", is_private, category_id, end_of_day, start_of_day, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
-      :order => 'start_at ASC',
+      :order => 'rank DESC, start_at ASC',
       :group => 'terms.id'
   end
 

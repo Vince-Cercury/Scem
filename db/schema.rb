@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100122132754) do
+ActiveRecord::Schema.define(:version => 20100126201736) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -259,6 +259,7 @@ ActiveRecord::Schema.define(:version => 20100122132754) do
     t.integer  "facebook_eid", :limit => 8
     t.text     "description"
     t.string   "cached_slug"
+    t.integer  "rank",                      :default => 5
   end
 
   create_table "users", :force => true do |t|

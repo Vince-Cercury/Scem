@@ -158,7 +158,7 @@ class Event < ActiveRecord::Base
     end
   end
 
-    def existing_partner_attributes=(partner_attributes)
+  def existing_partner_attributes=(partner_attributes)
     partner_attributes.each do |attributes|
       proceed_contribution_attribute(attributes[1][:name], 'partner')
     end
@@ -172,7 +172,7 @@ class Event < ActiveRecord::Base
 
   def proceed_contribution_attribute(contributor_name, role)
     begin
-    contributor = Organism.find_by_name(contributor_name) unless contributor_name.blank?
+      contributor = Organism.find_by_name(contributor_name) unless contributor_name.blank?
       if contributor
         if(!self.organizers.include?(contributor))
           contribution = Contribution.new
@@ -304,11 +304,11 @@ class Event < ActiveRecord::Base
     end
 
     #NOTE:uncomment if you want the organizers allowed to edit event
-        self.organizers.each do |organism|
-          if organism.is_user_moderator?(user)
-            result = true
-          end
-        end
+    self.organizers.each do |organism|
+      if organism.is_user_moderator?(user)
+        result = true
+      end
+    end
 
     #NOTE:uncomment if you want the partners allowed to edit event
     #    self.partners.each do |organism|
@@ -446,9 +446,30 @@ class Event < ActiveRecord::Base
     rescue
       parsed_attributes[:start_at] = ""
     end
-    #raise parsed_attributes.inspect
-    #return attributes
+
+    #manage the rank regarding to the numbers of days the term last
+    parsed_attributes[:rank] = set_rank_from_term_days_diff(parsed_attributes[:start_at], parsed_attributes[:end_at])
+
     return parsed_attributes
+  end
+
+  def set_rank_from_term_days_diff(start_at, end_at)
+    #manage the rank regarding to the numbers of days the term last
+    days_diff = end_at.ld - start_at.ld
+    #default
+    rank = 5
+    if days_diff <= 1
+      rank = 5
+    elsif days_diff > 1 && days_diff <= 6
+      rank = 4
+    elsif days_diff > 6 && days_diff <= 15
+      rank = 3
+    elsif days_diff > 15 && days_diff <= 30
+      rank = 2
+    elsif days_diff > 30
+      rank = 1
+    end
+    return rank
   end
 end
 
