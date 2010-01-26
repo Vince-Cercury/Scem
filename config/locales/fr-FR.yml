@@ -196,6 +196,7 @@ fr-FR:
       edit: "Edition"
       delete: "Supprimer"
     controller:
+      You_ve_to_be_logged: "Vous devez &ecirc;tre connect&eacute; pour voir la liste des utilisateurs."
       Not_friend: "Vous n'&ecirc;tes pas un(e) ami(e)s de cet utilisateur, vous ne pouvez pas voir son profil..."
       Not_allowed: "Vous n'&ecirc;tes pas autoris&eacute; &agrave; effectuer cette action. Essayer de vous connecter puis recommencez."
     participations: "Mes participations"
