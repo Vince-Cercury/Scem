@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
 
+  before_filter :is_logged?, :only => [:index]
+
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:show, :index]
 
