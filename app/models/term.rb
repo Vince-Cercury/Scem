@@ -252,11 +252,17 @@ class Term < ActiveRecord::Base
 
   def self.search_has_publisher_by_date_and_category(search, page, category_id, the_date, is_private=false, event_state='active')
     #preparing 2 datetime dates from year, month, day
-    #one at 00h00, the other at 23h59
-    start_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).utc.to_s(:db)
 
-    end_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 23, 59, 59).utc.to_s(:db)
+    #calculating an offset : our days start at 7 am !, not 00h00
+    offset = (60 * 60 * 7) + 60
 
+    #start_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).utc.to_s(:db)
+    start_of_day = (DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).to_time+offset).to_datetime.utc.to_s(:db)
+
+    #end_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 23, 59, 59).utc.to_s(:db)
+    end_of_day = (DateTime.new(the_date.year, the_date.month, the_date.day, 23, 59, 59).to_time+offset).to_datetime.utc.to_s(:db)
+
+    #raise end_of_day.inspect
 
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
@@ -353,14 +359,20 @@ class Term < ActiveRecord::Base
       :order => 'start_at ASC'
   end
 
-
+  #basically, this method is called by the calendar for each day
   def self.count_occuring_in_the_day(category_id, the_date, is_private=false, event_state='active')
 
     #preparing 2 datetime dates from year, month, day
-    #one at 00h00, the other at 23h59
-    start_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).utc.to_s(:db)
+    #
+    #calculating an offset : our days start at 7 am !, not 00h00
+    offset = (60 * 60 * 7) + 60
 
-    end_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 23, 59, 59).utc.to_s(:db)
+    #start_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).utc.to_s(:db)
+    start_of_day = (DateTime.new(the_date.year, the_date.month, the_date.day, 0, 0, 0).to_time+offset).to_datetime.utc.to_s(:db)
+
+    #end_of_day = DateTime.new(the_date.year, the_date.month, the_date.day, 23, 59, 59).utc.to_s(:db)
+    end_of_day = (DateTime.new(the_date.year, the_date.month, the_date.day, 23, 59, 59).to_time+offset).to_datetime.utc.to_s(:db)
+
 
 
     count 'terms.id', :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
