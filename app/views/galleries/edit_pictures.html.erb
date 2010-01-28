@@ -3,7 +3,7 @@
   <%= render :partial => "sub_header" %>
   <div class="galleriesList">
     <div class="galleriesBox">
-      <% for picture in @gallery.pictures %>
+      <% for picture in @gallery.pictures(:active) %>
         <% if picture.creator_id == current_user.id or @gallery.is_user_moderator?(current_user) %>
 
           <div class="galleriesBoxImageEdit">
@@ -17,10 +17,10 @@
               <%= link_to(t('galleries.edit_pictures.Set_as_cover'), url_for_even_polymorphic(@gallery, :action => 'set_cover', :picture_id => picture.id)) unless picture.cover %>
             </p>
             <p>
-              <%= link_to(t('galleries.edit_pictures.Move_before'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'up')) unless picture.first_item?  %>
+              <%= link_to(t('galleries.edit_pictures.Move_before'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'up')) unless picture.first_item?(:active)  %>
             </p>
             <p>
-              <%= link_to(t('galleries.edit_pictures.Move_after'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'down')) unless picture.last_item? %>
+              <%= link_to(t('galleries.edit_pictures.Move_after'), url_for_even_polymorphic(@gallery, :action => 'move_a_pic', :picture_id => picture.id, :direction => 'down')) unless picture.last_item?(:active) %>
             </p>
 
 

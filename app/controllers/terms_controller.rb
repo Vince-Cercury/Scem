@@ -13,6 +13,7 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.xml
   def index
+    
     @show_end_date = true
 
     if params[:period] == "past"

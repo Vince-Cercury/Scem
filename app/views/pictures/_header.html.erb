@@ -1,12 +1,12 @@
 <%= render :partial => @header_gallery %>
 <ul class="tabsShowUser">
 
-  <% if @picture.last_position != 0 %>
+  <% if @picture.last_position(:active) != 0 %>
     <li>
       <% if action_name == 'show' %>
-        <%= link_to(t('pictures.header.Picture') + "#{@picture.position}" + t('pictures.header.of') + "#{@picture.last_position}", @picture, :class => 'selected') %>
+        <%= link_to(t('pictures.header.Picture') + "#{@picture.position_active}" + t('pictures.header.of') + "#{@picture.last_position(:active)}", @picture, :class => 'selected') %>
       <% else %>
-        <%= link_to(t('pictures.header.Picture') + "#{@picture.position}" + t('pictures.header.of') + "#{@picture.last_position}", @picture) %>
+        <%= link_to(t('pictures.header.Picture') + "#{@picture.position_active}" + t('pictures.header.of') + "#{@picture.last_position(:active)}", @picture) %>
       <% end %>
     </li>
   <% end %>

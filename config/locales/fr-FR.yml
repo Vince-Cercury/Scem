@@ -196,6 +196,7 @@ fr-FR:
       edit: "Edition"
       delete: "Supprimer"
     controller:
+      You_ve_to_be_logged: "Vous devez &ecirc;tre connect&eacute; pour voir la liste des utilisateurs."
       Not_friend: "Vous n'&ecirc;tes pas un(e) ami(e)s de cet utilisateur, vous ne pouvez pas voir son profil..."
       Not_allowed: "Vous n'&ecirc;tes pas autoris&eacute; &agrave; effectuer cette action. Essayer de vous connecter puis recommencez."
     participations: "Mes participations"
@@ -204,7 +205,7 @@ fr-FR:
       events: "Les &eacute;v&eacute;nements de mes organismes"
     meetings: "Les rendez-vous"
     update_success: "Utilisateur mis &agrave; jour avec succ&egrave;s."
-    create_success: "Merci de vous &ecirc;tre inscris! Nous vous envoyons un email avec votre code d'activation."
+    create_success: "Merci de vous &ecirc;tre inscrit! Nous vous envoyons un email avec votre code d'activation."
     create_error: "Nous n'avons pas pu cr&eacute;er ce compte, d&eacute;sol&eacute;. Merci de r&eacute;essayer, ou contacter un administrateur."
     activate_success: "Inscription compl&egrave;te! Authentifiez-vous pour continuer."
     activate_code_missing: "Le code d'activation est absent. Merci de suivre le lien qui se trouve dans l'email."
@@ -358,7 +359,7 @@ fr-FR:
     list:
       Sorry_no_result: "D&eacute;sol&eacute;, aucun r&eacute;sultat"
     show:
-      Share: "Partager cet &eacute;v&eacute;nement sur votre r&eacute;seaux :"
+      Share: "Partager cette page sur votre r&eacute;seau :"
       Attach_picture: "Joindre une photo !"
       Change_image: "Changer l'image"
       Publish_Facebook_wall: "Publier l'organisme sur mon mur Facebook"
@@ -689,6 +690,7 @@ fr-FR:
       Message: "Message :"
   pictures:
     controller:
+      You_ve_to_be_logged: "Vous devez &ecirc;tre connect&eacute; pour voir l'image ou la photo."
       Successfully_created: "L'image a &eacute;t&eacute; cr&eacute;&eacute;e avec succ&egrave;s."
       Successfully_updated: "L'image a &eacute;t&eacute; modifi&eacute;e avec succ&egrave;s."
       Cant_find_picture: "Nous ne pouvons pas trouer la photo."
@@ -879,6 +881,7 @@ fr-FR:
       Event_not_found: "L'&eacute;v&egrave;nement n'a pas &eacute;t&eacute; trouv&eacute;. Etes-vous s&ucirc;r(e) du lien ? Si le probl&egrave;me persiste, contactez un administrateur."
       Logged_request_create: "Vous devez &ecirc;tre connect&eacute; avec Facebook pour cr&eacute;er un &eacute;v&egrave;nement."
       Publish_event_success: "L'&eacute;v&egrave;nement a &eacute;t&eacute; publi&eacute; sur Facebook avec succ&egrave;s. Vous pouvez visiter la page pour v&eacute;rifier ou modifier le contenu."
+      Publish_event_success_no_city: "L'&eacute;v&egrave;nement a &eacute;t&eacute; publi&eacute; sur Facebook avec succ&egrave;s. Vous pouvez visiter la page pour v&eacute;rifier ou modifier le contenu. Notez que Facebook n'a pas trouv&eacute; la ville. Vous pouvez essayer de la modifier manuellement."
       Event_problem: "Un probl&egrave;me est survenu durant la cr&eacute;ation ou la modification de l'&eacute;v&egrave;nement Facebook sur ce site. D&eacute;sol&eacute;..."
       Logged_request_status: "Vous devez &ecirc;tre connect&eacute; avec Facebook pour mettre &agrave; jour votre statut pour un &eacute;v&egrave;nement Facebook."
       Not_allowed_to_do_this: "Vous n'&ecirc;tes pas autoris&eacute; &agrave; effectuer cette action."
@@ -959,7 +962,7 @@ fr-FR:
       Wedding: "Mariage"
       Publish_Facebook: "Publier sur Facebook"
     ask_facebook_event_cancel:
-      Summary: "Ceci va annuler d&eacute;finitivement l'&eacute;v&egrave;nement sur <b>Facebook</b> &agrave; la date sp&eacute;cifi&eacute;e. Cependant, l'&eacute;v&egrave;nement du site ne sera pas supprim&eacute; !"
+      Summary: "Ceci va annuler d&eacute;finitivement l'&eacute;v&egrave;nement sur <b>Facebook</b> &agrave; la date sp&eacute;cifi&eacute;e. Cependant, l'&eacute;v&egrave;nement ne sera pas supprim&eacute; ici !"
       Optional_message: "Message optionnel (Pour les utilisateurs pr&eacute;sents sur Facebook)..."
       Cancel_Facebook: "Supprimer de FaceBook !"
     ask_events_permissions_rscp:
@@ -1052,7 +1055,7 @@ fr-FR:
       Description: "Description"
       To_display: "Afficher"
     terms_subheader:
-      Events_occuring: "Ev&egrave;nement du"
+      Events_occuring: "Ev&egrave;nements du"
     list:
       Show: "Afficher"
       Edit: "Editer"

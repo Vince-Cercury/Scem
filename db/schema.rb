@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091214161207) do
+ActiveRecord::Schema.define(:version => 20100126201736) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -193,13 +193,14 @@ ActiveRecord::Schema.define(:version => 20091214161207) do
     t.datetime "attached_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position",              :default => 1
+    t.integer  "position_active",       :default => 1
     t.string   "state",                 :default => "passive"
     t.datetime "suspended_at"
     t.integer  "suspended_by"
     t.integer  "activated_by"
     t.datetime "activated_at"
     t.boolean  "cover",                 :default => false
+    t.integer  "position_unactive"
   end
 
   create_table "posts", :force => true do |t|
@@ -255,9 +256,10 @@ ActiveRecord::Schema.define(:version => 20091214161207) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
-    t.integer  "facebook_eid", :limit => 12
+    t.integer  "facebook_eid", :limit => 8
     t.text     "description"
     t.string   "cached_slug"
+    t.integer  "rank",                      :default => 5
   end
 
   create_table "users", :force => true do |t|

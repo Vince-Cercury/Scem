@@ -33,6 +33,7 @@ class SessionsController < ApplicationController
     logout_killing_session!
     flash[:notice] = I18n.t("sessions.Logged_out")
     redirect_to(return_to || '/')
+    #redirect_to root_path
   end
 
 protected
