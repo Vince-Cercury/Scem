@@ -4,7 +4,7 @@ class Gallery < ActiveRecord::Base
 
   has_friendly_id :name, :use_slug => true, :strip_diacritics => true , :reserved => ["edit_pics", "add_pics"]
 
-  has_many :pictures, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'", :order => "pictures.position"
+  has_many :pictures, :as => :parent, :dependent => :destroy, :conditions => "pictures.state = 'active'", :order => "pictures.position_active"
 
   #has_many :galleries_pictures
   #has_many :pictures, :through => :galleries_pictures, :conditions => "pictures.state = 'active'", :order => "position"

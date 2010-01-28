@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
 
+  before_filter :ensure_is_logged_show_list?, :only => [:index]
+
   # store the current location in case of an atempt to login, for redirecting back
   before_filter :store_location, :only => [:show, :index]
 
@@ -226,6 +228,17 @@ class UsersController < ApplicationController
       redirect_to login_path
     end
 
+  end
+
+      # store the current location in case of an atempt to login, for redirecting back
+	def ensure_is_logged_show_list?
+    if current_user
+      return true
+    else
+      store_location
+      flash[:error] = I18n.t('users.controller.You_ve_to_be_logged')
+      redirect_to login_path
+    end
   end
 
 end
