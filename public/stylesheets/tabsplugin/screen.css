@@ -8,6 +8,23 @@
    * See README for instructions on how to use this plugin.
    * For credits and origins, see AUTHORS.
 
+body {font-size:75%;
+      color:#222;
+      background:#ffb500;
+      font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
+      padding: 0px;
+      width: 988px;
+      margin: 0 auto;}
+.container {padding: 0;
+            margin-top: -10px;
+            background-image:url('/images/body/french/largeBackground.png');
+            background-repeat: no-repeat;
+            background-position: top center;
+            left: 50%;
+            margin-left: -494px;
+            width: 988px;
+            position: relative;}
+
 ----------------------------------------------------------------------- */
 /***************************** MENU PRINCIPAL****************************/
 .tabs {
