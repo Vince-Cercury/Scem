@@ -454,20 +454,23 @@ class Event < ActiveRecord::Base
   end
 
   def set_rank_from_term_days_diff(start_at, end_at)
-    #manage the rank regarding to the numbers of days the term last
-    days_diff = end_at.ld - start_at.ld
-    #default
     rank = 5
-    if days_diff <= 1
-      rank = 5
-    elsif days_diff > 1 && days_diff <= 6
-      rank = 4
-    elsif days_diff > 6 && days_diff <= 15
-      rank = 3
-    elsif days_diff > 15 && days_diff <= 30
-      rank = 2
-    elsif days_diff > 30
-      rank = 1
+    #manage the rank regarding to the numbers of days the term last
+    if !end_at.blank? && !start_at.blank?
+      days_diff = end_at.ld - start_at.ld
+      #default
+
+      if days_diff <= 1
+        rank = 5
+      elsif days_diff > 1 && days_diff <= 6
+        rank = 4
+      elsif days_diff > 6 && days_diff <= 15
+        rank = 3
+      elsif days_diff > 15 && days_diff <= 30
+        rank = 2
+      elsif days_diff > 30
+        rank = 1
+      end
     end
     return rank
   end
