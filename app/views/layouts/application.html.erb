@@ -4,7 +4,7 @@
     <title><%= get_page_title %></title>
     <meta name="description" content="LeBounce référence tous les évènements d'Angers et la région. Sortir, partager, s'informer, rencontrer, n'a jamais été aussi facile. Tous les concerts, les boîtes de nuits, les restaurants, les festivals, les associations, les fêtes sont là." />
     <meta name="keywords" content="Le Bounce, Angers, Sortir, Agir, étudiant, association, évènement, soirée, culture, tonus, sport, concert, festival, bar, restaurant" />
- 
+
 <%#= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'livevalidation' %>
     <%= stylesheet_link_tag 'swapselect' %>
@@ -13,6 +13,10 @@
     <%= stylesheet_link_tag 'rating' %>
     <%= stylesheet_link_tag 'autocomplete' %>
     <%= stylesheet_link_tag 'blueprint/screen', :media => "all" %>
+    <script type="text/javascript">
+      if ( screen.width<1024 )
+      {     document.write('<%= stylesheet_link_tag 'blueprint/screenBug', :media => "all" %>');}
+    </script>
     <%= stylesheet_link_tag 'blueprint/print', :media => "print" %>
     <%= stylesheet_link_tag 'tabsplugin/screen', :media => "all" %>
     <%= stylesheet_link_tag 'application', :media => "print" %>
@@ -140,6 +144,7 @@
         <div class="content">
           <div class="contentleft">
             <div class="information">
+              <p>Votre publicité ICI, contactez nous à publicite@lebounce.com</p>
               <script type="text/javascript"><!--
                 google_ad_client = "pub-3129952355573123";
                 /* 468x60, date de création 16/11/09 */
@@ -171,14 +176,14 @@
 
           <!-- Right column -->
           <div class="contentright">
-            <%#*<div class="facebookbox">%>
-              <%#*<script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_GB"></script>%>
-              <%#*<script type="text/javascript">FB.init("a9d92ba216c544f61a752bf756df9a10");</script>%>
-              <%#*<fb:fan profile_id="196337074427" stream="0" connections="0" logobar="0" width="241"></fb:fan>%>
-              <%#*<div style="font-size:14px; padding-left:10px">%>
-                <%#*<a href="http://www.facebook.com/pages/Le-Bounce/196337074427">Le Bounce</a> sur Facebook%>
-              <%#*</div>%>
-            <%#*</div>%>
+<%#*<div class="facebookbox">%>
+<%#*<script type="text/javascript" src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_GB"></script>%>
+<%#*<script type="text/javascript">FB.init("a9d92ba216c544f61a752bf756df9a10");</script>%>
+<%#*<fb:fan profile_id="196337074427" stream="0" connections="0" logobar="0" width="241"></fb:fan>%>
+<%#*<div style="font-size:14px; padding-left:10px">%>
+<%#*<a href="http://www.facebook.com/pages/Le-Bounce/196337074427">Le Bounce</a> sur Facebook%>
+<%#*</div>%>
+<%#*</div>%>
             <div class="sidebar">
               <div class="titlesearch">
              <!--  <h3 class="caps"><%= t("side_bar.search_into") %> <%#=  get_current_search_model_type %></h3>-->
@@ -203,8 +208,9 @@
               <%= render :partial => "/calendar/display" %>
 <%#= events_calendar_display %>
               <br />
-              <div class="titlepartners"></div>
-              <div class="partnersbox">
+              <div class="titlepublicity"></div>
+              <div class="publicitybox">
+                <p>Votre publicité ICI, contactez nous à publicite@lebounce.com</p>
                 <script type="text/javascript"><!--
                   google_ad_client = "pub-3129952355573123";
                   /* 200x200, date de création 29/10/09 */
@@ -219,7 +225,14 @@
               </div>
 
               <%= render :partial => "/diary/side_diary" %>
+              <div class="titlepartners"></div>
 
+              <div class="partnersbox">
+                <a href="http://www.fe2a.fr/joomla/" target=_blank <img src="/images/partners/fe2a.png" alt="La Fé2a" title="La Fé2a soutient le Bounce :-D"></a>
+                <a href="http://www.facebook.com/intercampusangers" target=_blank <img src="/images/partners/intercampus.jpg" alt="InterCampus" title="InterCampus soutient le Bounce :-D"></a>
+                <a href="http://www.ville-saint-barthelemy-anjou.fr/thv/accueil.htm" target=_blank <img src="/images/partners/THV.jpg" alt="Le THV" title="Le THV soutient le Bounce :-D"></a>
+                <!-- <a href="http://www.radiocampusangers.com/" target=_blank <img src="/images/partners/radiocampus.png" alt="Radio Campus" title="Radio Campus soutient le Bounce :-D"></a> -->
+              </div>
             </div>
           </div>
         </div>
@@ -249,5 +262,6 @@
         <%= t("footer.bug") %>
       </p>
     </div>
+
   </body>
 </html>

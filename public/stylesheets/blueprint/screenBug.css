@@ -1,0 +1,26 @@
+/* -----------------------------------------------------------------------
+ Blueprint CSS Framework 0.9
+ http://blueprintcss.org
+   * Copyright (c) 2007-Present. See LICENSE for more info.
+   * See README for instructions on how to use Blueprint.
+   * For credits and origins, see AUTHORS.
+   * This is a compressed file. See the sources in the 'src' directory.
+----------------------------------------------------------------------- */
+
+body {font-size:75%;
+      color:#222;
+      background:#ffb500;
+      font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
+      padding: 0px;
+      width: 988px;
+      margin: 0 auto;}
+
+.container {padding: 0;
+            margin-top: -10px;
+            background-image:url('/images/body/french/largeBackground.png');
+            background-repeat: no-repeat;
+            background-position: top center;
+            left: 50%;
+            margin-left: -494px;
+            width: 988px;
+            position: relative;}
