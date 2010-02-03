@@ -116,8 +116,14 @@ class Term < ActiveRecord::Base
   end
 
   def self.search_has_publisher_futur(search, page, per_page, is_private=false, event_state='active')
-    
-    conditions = SearchsTools.prepare_conditions(search, 'events.name', 'events.is_private = ? and terms.start_at > NOW() and events.state = ?', [is_private, event_state])
+
+    #calculating an offset : we still display events that has started 3 hours ago
+    offset = 60 * 60 * 3
+    the_date = Time.now
+    start_time = (the_date.to_time-offset).to_datetime.utc.to_s(:db)
+
+    conditions = SearchsTools.prepare_conditions(search, 'events.name', 'events.is_private = ? and terms.start_at > ? and terms.end_at > NOW() and events.state = ?', [is_private, start_time, event_state])
+    #conditions = SearchsTools.prepare_conditions(search, 'events.name', 'events.is_private = ? and terms.start_at > NOW() and events.state = ?', [is_private, event_state])
     
     paginate  :per_page => per_page,
       :page => page,
@@ -166,9 +172,16 @@ class Term < ActiveRecord::Base
   end
 
   def self.search_has_publisher_futur_by_category(search, page, category_id, is_private=false, event_state='active')
+
+    #calculating an offset : we still display events that has started 3 hours ago
+    offset = 60 * 60 * 3
+    the_date = Time.now
+    start_time = (the_date.to_time-offset).to_datetime.utc.to_s(:db)
+
+
     paginate  :per_page => ENV['PER_PAGE'],
       :page => page,
-      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at >= NOW() and categories_events.category_id = ? and events.state = ?', "%#{search}%", is_private, category_id, event_state],
+      :conditions => ['events.name LIKE ? and events.is_private = ? and start_at > ? and terms.end_at > NOW() and categories_events.category_id = ? and events.state = ?', "%#{search}%", is_private, start_time, category_id, event_state],
       :joins => "inner join events on events.id = terms.event_id inner join contributions on contributions.event_id = events.id and contributions.role='publisher' inner join categories_events on categories_events.event_id = events.id",
       :order => 'start_at ASC',
       :group => 'terms.id'
