@@ -650,7 +650,7 @@ fr-FR:
     to_sys_moderators_suspended_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une image a &eacute;t&eacute; suspendue par l'administrateur d'un organisme.</p><p>Vous pouvez voir l'image &agrave; l'adresse suivante : <br />{{url_picture}}</p>Le contexte de cette photo est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
     to_sys_moderators_updated_notification: "<p>Bonjour {{user}},</p><p>Vous recevez cet email car vous &ecirc;tes mod&eacute;rateur ou administrateur syst&egrave;me.</p><p>Une image a &eacute;t&eacute; mise &agrave; jour.</p><p>Vous pouvez &eacute;ventuellement : <br />    - &eacute;diter la photo : {{url_edit}}<br />    - suspendre l'image : {{url_suspend}}<br />    - voir la photo : {{url_picture}}<br />Le contexte de cette image est : {{url_context}}</p><p>Cordialement, <br /><br />L'&eacute;quipe LeBounce</p>"
     subject_picture_suspended: "Une image d'un {{parent}} a été suspendue"
-    subject_pitcure_posted: "Une image a été postée pour un {{parent}}"
+    subject_pitcure_posted: "Une image a été postée pour un(e) {{parent}}"
     subject_picture_accepted: "Image acceptée"
   posts:
     controller:
