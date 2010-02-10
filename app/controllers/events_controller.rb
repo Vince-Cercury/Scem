@@ -463,11 +463,12 @@ class EventsController < ApplicationController
   end
 
   def not_moderator_of_any_organism
+    store_location
     if current_user
       flash[:error] = I18n.t('events.controller.Create_event_ve_to_be_admin')
-      redirect_back_or_default('/')
+      redirect_to new_organism_path
     else
-      flash[:error] = I18n.t('events.controller.Not_allowed_to_do_this_login')
+      flash[:error] = I18n.t('events.controller.Create_event_ve_to_be_connected')
       redirect_to login_path
     end
 
