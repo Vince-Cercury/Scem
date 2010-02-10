@@ -65,7 +65,7 @@ fr-FR:
       Private_event: "C'est un &eacute;v&egrave;nement priv&eacute;. Vous devez &ecirc;tre membre d'un des organismes organisateurs pour y acc&eacute;der."
       Not_allowed_to_do_this: "Action non autoris&eacute;e."
       Not_allowed_to_do_this_login: "Action non autoris&eacute;e, essayez de vous connecter."
-      Create_event_ve_to_be_admin: "Pour cr&eacute;er un &eacute;v&egrave;nement, vous devez au moins &ecirc;tre mod&eacute;rateur ou administrateur. Vous pouvez essayer de cr&eacute;er un organisme en premier."
+      Create_event_ve_to_be_admin: "Pour cr&eacute;er un &eacute;v&egrave;nement, vous devez au moins &ecirc;tre mod&eacute;rateur ou administrateur d'un organisme. Voici le formulaire de cr&eation d'un organisme."
       cancel:
         Send_notification:
           Header: "Cet &eacute;v&egrave;nement a &eacute;t&eacute; annul&eacute; : {{event_name}}\n"
@@ -292,7 +292,7 @@ fr-FR:
     from: " depuis "
     at: " &agrave; "
     bar:
-      create_event: "Cr&eacute;er un &eacute;v&egrave;nement"
+      create_event: "Publier un &eacute;v&egrave;nement"
       classic_account: "compte classique"
       Logged_in_as: "Connect&eacute; en tant que "
   organism_events:

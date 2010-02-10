@@ -124,7 +124,11 @@ body {font-size:75%;
 .partnersbox {background:#fff; padding: 10px 5px 5px 20px;  margin: -1px 0 25px 0;}
 .partnersbox img{width: 75px; padding: 10px;}
 
-/* Partners box*/
+/* Tools box*/
+.toolsbox {padding: 5px;  margin: -1px 0 25px 0; text-align: center; font-size: 12px; font-weight: bold; background: #fff;}
+.toolsbox a{color: #000;}
+.toolsbox a:hover{color:#f0882f;}
+/* FaceBook box*/
 .facebookbox {background:#fff; padding: 0;  margin: -1px 0 25px 0;}
 
 
@@ -216,7 +220,10 @@ body {font-size:75%;
 .eventShowBodyRight img {float: right;}
 .eventShowBodyRight p{text-indent: 0px; text-align: left;}
 .eventShowBodyMiddle{width: 678px; min-height: 50px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px; text-align: justify;}
-.eventShowBodyMiddleLong{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-indent: 30px; text-align: justify;}
+.eventShowBodyMiddleLong{width: 678px; margin: 0 0 0 0; padding: 5px 5px 5px 5px; background: #fff; float: left; text-align: justify;text-indent: 0px;}
+.eventShowBodyMiddleLong a{color: blue; text-decoration: underline;}
+.eventShowBodyMiddleLong a:hover{color: blue;}
+.eventShowBodyMiddleLong p{text-indent: 0px;}
 .eventShowBodyMiddleLeft{width: 126px; text-align: center;  padding: 5px 5px 5px 5px; background: #fff; float: left;}
 .eventShowBodyMiddleRight{width: 532px; padding: 5px 5px 5px 5px; background: #fff; float: right;}
 .eventShowBodyCenter{width: 688px; padding: 0 0 0 0; margin: 0 0 0 0; float: left; overflow: auto;}
@@ -288,7 +295,10 @@ body {font-size:75%;
 .organismShowBodyCommentaire {width: 688px; margin: 0 0 0 0; padding: 0px 0px 0px 0px; background: #fff; float: left;}
 .organismShowBodyCommentaire h5 {padding: 5px; color: #000; font-size: 16px; margin: 0px;}
 .organismShowBodyCommentaire h4 {padding: 5px; font-size: 16px; margin: 0px; }
-.organismDescription{width: 678px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
+.organismDescription{width: 678px; margin: 0 0 0 0; padding: 5px; background: #fff; float: left; text-indent: 0px;}
+.organismDescription p{text-indent: 0px;}
+.organismDescription a{color: blue; text-decoration: underline;}
+.organismDescription a:hover{color: blue;}
 .organismBecomeMember{width: 688px; margin: 0 0 0 0; padding: 5px 0  5px 0; background: #fff; float: left; text-indent: 30px;  text-align: justify;}
 .organismShowBouton p {text-align: right;}
 .organismShowBouton a {background:#000; color:#fff; padding: 5px; font-weight: bold;}
