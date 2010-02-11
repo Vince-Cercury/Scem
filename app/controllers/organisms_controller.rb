@@ -114,7 +114,7 @@ class OrganismsController < ApplicationController
     if params[:organism][:activity_ids]
       activity_ids = Array.new
       params[:organism][:activity_ids].each do |id|
-        if !id.include? "_all"
+        if !id.include?("_all") && !id.include?("_selected")
           activity_ids << id
         end
       end
