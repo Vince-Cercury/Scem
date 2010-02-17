@@ -6,7 +6,7 @@ class Picture < ActiveRecord::Base
 
   has_attached_file :attached, :styles => {
     :original => "1024x768>",
-    :large => ["504x504>", :jpg],  #has to be multiple of 18
+    :large => ["670x670>", :jpg],  #has to be multiple of 18
     :medium => ["252x252>", :jpg],
     :small => ["126x126>", :jpg],
     :thumb => ["72x72>", :jpg],},

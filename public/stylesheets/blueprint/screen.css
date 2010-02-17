@@ -390,7 +390,7 @@ body {font-size:75%;
 .pictureShowCenter{width: 678px; padding: 0; margin: 0; background: #fff; overflow: auto; float: left;}
 .pictureShowLeft{width: 329px; padding: 5px; margin: 0; background: #fff; float: left; text-align: right;}
 .pictureShowRight{width: 329px; padding: 5px; margin: 0; background: #fff; float: right; text-align: left;}
-.pictureShowPicure{width: 504px; height: 504px; line-height: 504px; padding: 10px 87px 10px 87px; margin: 0; background: #fff; float: left; text-align: center;}
+.pictureShowPicure{width: 670px; height: 670px; line-height: 670px; padding: 10px 0px 10px 0px; margin: 0; background: #fff; float: left; text-align: center;}
 .pictureShowPicure img{text-align: center; vertical-align: middle;}
 /*NEW*/
 .pictureNew{width: 678px; padding: 5px; margin: 0 0 10px 0; background: #fff; overflow: auto; float: left;}
