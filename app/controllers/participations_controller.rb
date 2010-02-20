@@ -133,9 +133,10 @@ class ParticipationsController < ApplicationController
 
 
   def ensure_participation_role_parameter
-    if params[:participation][:role]
+    if params[:participation]
       params[:participation][:role]="maybe" unless (params[:participation][:role]=="sure" or params[:participation][:role]=="maybe" or params[:participation][:role]=="not")
     else
+      params[:participation] = Hash.new
       params[:participation][:role]="maybe"
     end
   end
