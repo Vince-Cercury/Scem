@@ -96,7 +96,7 @@ fr-FR:
     partner:
       Remove: "Supprimer ce partenaire"
     term:
-      Term_description: "Ajoutez une description pour cette date"
+      Term_description: "Ajoutez une description courte pour cette date (2 lignes)"
       Remove: "Supprimer cette date"
       Start_at: "D&eacute;but : "
       End_at: "Fin : "
