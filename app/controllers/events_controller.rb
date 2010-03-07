@@ -189,7 +189,7 @@ class EventsController < ApplicationController
     if params[:event][:category_ids]
       category_ids = Array.new
       params[:event][:category_ids].each do |id|
-        if !id.include? "_all"
+        if !id.include? "_all" && !id.include?("_selected")
           category_ids << id
         end
       end
