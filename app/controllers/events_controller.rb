@@ -177,22 +177,25 @@ class EventsController < ApplicationController
 
 
     #deleting all contributions for this event, whatever the role of the organism
-   Contribution.delete_all(["event_id = ?", @event.id])
-#
-#
+    Contribution.delete_all(["event_id = ?", @event.id])
+    #
+    #
     create_contribution(:contributions, :publisher_ids, "publisher")
-#    create_contribution(:contributions, :partner_ids, "partner")
-#    create_contribution(:contributions, :organizer_ids, "organizer")
+    #    create_contribution(:contributions, :partner_ids, "partner")
+    #    create_contribution(:contributions, :organizer_ids, "organizer")
     #create_contribution(:contributions, :place_ids, "place")
 
     #hack: do not consider categories id made of hash ['_all'] => id. Problem comes from Swapselect
     if params[:event][:category_ids]
       category_ids = Array.new
       params[:event][:category_ids].each do |id|
-        if !id.include? "_all" && !id.include?("_selected")
-          category_ids << id
+        if !id.include? "_all"
+          if !id.include?("_selected")
+            category_ids << id
+          end
         end
       end
+      #raise category_ids.inspect
       params[:event][:category_ids] = category_ids
     end
     
