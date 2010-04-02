@@ -379,7 +379,8 @@ fr-FR:
       Address: "Adresse :"
       Become_member: "Devenir membre"
     new:
-      Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. L'organisme est soumis &agrave; une validation de la part des mod&eacute;rateurs du Bounce, dans cette premi&egrave;re &eacute;tape nous vous demandons de bien vouloir remplir les informations indispensables à cette validation.."
+      Message: "Bienvenue dans le formulaire de cr&eacute;ation d'un organisme. L'organisme est soumis &agrave; une validation de la part des mod&eacute;rateurs du Bounce, dans cette premi&egrave;re &eacute;tape nous vous demandons de bien vouloir remplir les informations indispensables &agrave; cette validation.."
+      MessageWarning: "Attention vous cr&eacute;ez un organisme pas un &eacute;v&egrave;nement ! Vous acc&eacute;derez &agrave; la page de cr&eacute;ation d'un &eacute;v&egrave;nement une fois que votre organisme sera valid&eacute;."
       Create: "Cr&eacute;er"
       Title: "Nom de l'organisme :"
       DescriptionShort: "Description br&egrave;ve de l'organisme :"

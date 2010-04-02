@@ -318,6 +318,7 @@ body {font-size:75%;
 /*NEW*/
 .organismNewBody{width: 688px; padding: 0 0 0 0; background: #fff; overflow: auto; margin: 0 0 0 0; float: left;}
 .organismNewBodyCenter{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center;}
+.organismNewBodyCenterWarning{width: 678px; padding: 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: center; font-size: 14px; font-weight: bold; color: red;}
 .organismNewBody h3 { font-size:14px; color:#000; text-align: left; font-weight: bold;}
 .organismNewBody h4 { font-size:16px; font-weight: bold; text-align: left; }
 .organismNewBodyCenterLeft{width: 668px; padding: 10px 5px 5px 5px; margin: 0 0 0 0; float: left; overflow: auto; text-align: right;}
